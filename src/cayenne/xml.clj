@@ -64,7 +64,7 @@
          (filter #(= (.getAttribute % (second selector)) (nth selector 2)) nodes)
          false)
         :else
-         (map #(.getAttribute % (second selector)) nodes)))
+        (map #(.getAttribute % f) nodes)))
 
      (= :> selector)
      (->SelectorContext nodes true)

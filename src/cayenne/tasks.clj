@@ -18,3 +18,13 @@
     (fn [doi-record]
       (.println wrtr (json/write-str doi-record)))))
 
+(defn text-citation-writer [out-file]
+  (let [wrtr (PrintWriter. (io/writer out-file))
+        write-citation (fn [citation] 
+                         (when (:unstructured citation)
+                           (.println wrtr (:unstructured citation))))]
+    (fn [doi-record]
+      (doseq [citation (:citations doi-record)]
+        (write-citation citation)))))
+
+
