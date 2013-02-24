@@ -1,14 +1,20 @@
 (ns cayenne.formats.unixref
   (:require [cayenne.xml :as xml]))
 
+(defn find-proc [record-loc]
+  (xml/xselect1 record-loc :> "conference" "proceedings_metadata"))
+
+(defn find-journal [record-loc]
+  (xml/xselect1 record-loc :> "journal_metadata"))
+
 (defn find-journal-article [record-loc]
   (xml/xselect1 record-loc :> "journal" "journal_article"))
 
 (defn find-conf-proc [record-loc]
   (xml/xselect1 record-loc :> "conference" "conference_paper"))
 
-(defn find-work-doi [work-loc]
-  (xml/xselect1 work-loc "doi_data" "doi" :text))
+(defn find-item-doi [item-loc]
+  (xml/xselect1 item-loc "doi_data" "doi" :text))
 
 ; todo nil should not come back from xselect - empty list should
 (defn find-work-citations [work-loc]
@@ -74,8 +80,17 @@
 (defn parse-citation-ids [citation-loc]
   {:doi (xml/xselect1 citation-loc "doi" :text)})
 
+;; todo can be more than one title and abbrev title
+(defn parse-journal [journal-loc]
+  {:title (xml/xselect1 journal-loc "full_title" :text)
+   :short-title (xml/xselect1 journal-loc "abbrev_title" :text)})
+
+;; todo instead return list of "items", which can have or not have DOIs associated with them.
+;; e.g. a journal article record would have a journal item without DOI, maybe a journal issue
+;; with or without doi, and a journal article with DOI.
 (defn unixref-record-parser [oai-record]
   (if-let [article (find-journal-article oai-record)]
     {:type :journal-article
      :citations (map parse-citation (find-work-citations article))
-     :doi (find-work-doi article)}))
+     :journal (parse-journal (find-journal oai-record))
+     :doi (find-item-doi article)}))
