@@ -21,6 +21,3 @@
       "_abrvjt.html")) 
    a-to-z))
 
-; (use 'cayenne.sources.wok)
-; (use 'cayenne.tasks)
-; (scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt"))

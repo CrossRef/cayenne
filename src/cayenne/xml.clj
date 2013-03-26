@@ -1,4 +1,5 @@
 (ns cayenne.xml
+  (:require [clojure.data.json :as json])
   (:require [clojure.java.io :as io]))
 
 (defn- root-element? [^nu.xom.Element element]
@@ -11,7 +12,9 @@
   (apply str (map #(.getValue %) nodes)))
 
 (defn- child-seq [^nu.xom.Node node]
-  (map #(.getChild node %) (range 0 (.getChildCount node))))
+  (if (nil? node)
+    []
+    (map #(.getChild node %) (range 0 (.getChildCount node)))))
 
 (defn- descendant-seq* [nodes where-fn]
   (let [children (flatten (map child-seq nodes))
@@ -45,7 +48,9 @@
 
 (defn- xselect-result [out-val]
   (if (= SelectorContext (type out-val))
-    (:nodes out-val)
+    (if (nil? (:nodes out-val))
+      []
+      (:nodes out-val))
     out-val))
 
 (defn- xselect* [^SelectorContext context selector]
@@ -84,10 +89,12 @@
       false))))
 
 (defn xselect [nodes & path]
-  (let [node-seq (if (seq? nodes) nodes (cons nodes nil))
-        initial (->SelectorContext node-seq false)
-        result (reduce xselect* initial path)]
-    (xselect-result result)))
+  (if (nil? nodes)
+    []
+    (let [node-seq (if (seq? nodes) nodes (cons nodes nil))
+          initial (->SelectorContext node-seq false)
+          result (reduce xselect* initial path)]
+      (xselect-result result))))
 
 (defn xselect1 [& args]
   (first (apply xselect args)))

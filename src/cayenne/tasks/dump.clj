@@ -1,6 +1,6 @@
-(ns cayenne.tasks
-  (import [java.io PrintWriter])
-  (require [clojure.data.json :as json]
+(ns cayenne.tasks.dump
+  (:import [java.io PrintWriter])
+  (:require [clojure.data.json :as json]
            [clojure.java.io :as io]))
 
 (defn record-writer [out-file]

@@ -1,23 +1,67 @@
 (ns cayenne.formats.unixref
-  (:require [cayenne.xml :as xml]))
-
-(defn find-proc [record-loc]
-  (xml/xselect1 record-loc :> "conference" "proceedings_metadata"))
+  (:require [cayenne.xml :as xml])
+  (:use [cayenne.ids.doi]))
 
 (defn find-journal [record-loc]
-  (xml/xselect1 record-loc :> "journal_metadata"))
+  (xml/xselect1 record-loc :> "journal" "journal_metadata"))
+
+(defn find-journal-issue [record-loc]
+  (xml/xselect1 record-loc :> "journal" "journal_issue"))
 
 (defn find-journal-article [record-loc]
   (xml/xselect1 record-loc :> "journal" "journal_article"))
 
-(defn find-conf-proc [record-loc]
+(defn find-journal-volume [record-loc]
+  (xml/xselect1 record-loc :> "journal" "journal_issue" "journal_volume"))
+
+(defn find-book [record-loc]
+  ())
+
+(defn find-book-series [record-loc]
+  ())
+
+(defn find-conference [record-loc]
+  ())
+
+(defn find-proceedings [record-loc]
+  (xml/xselect1 record-loc :> "conference" "proceedings_metadata"))
+
+(defn find-event [record-loc]
+  "Sometimes present in a proceedings. Never has a DOI."
+  ())
+
+(defn find-conference-paper [record-loc]
+  "Found in conferences."
   (xml/xselect1 record-loc :> "conference" "conference_paper"))
 
-(defn find-item-doi [item-loc]
-  (xml/xselect1 item-loc "doi_data" "doi" :text))
+(defn find-dissertation [record-loc]
+  ())
+
+(defn find-institution [record-loc]
+  "Sometimes found in a dissertation."
+  ())
+
+(defn find-report-paper [record-loc]
+  ())
+
+(defn find-standard [record-loc]
+  ())
+
+(defn find-database [record-loc]
+  ())
+
+(defn find-stand-alone-component [record-loc]
+  ())
+
+(defn find-components [record-loc]
+  "One of chapter, section, part, track, reference_entry or other."
+  ())
+
+(defn find-item-pub-dates [work-loc]
+  (xml/xselect work-loc "publication_date"))
 
 ; todo nil should not come back from xselect - empty list should
-(defn find-work-citations [work-loc]
+(defn find-item-citations [work-loc]
   (let [r (xml/xselect work-loc "citation_list" "citation")]
     (if (nil? r)
       '()
@@ -57,11 +101,9 @@
      :year year-val 
      :time-of-year (parse-time-of-year month-val)}))
 
-(defn find-pub-date [work-loc]
-  (xml/xselect1 work-loc :> "publication_date"))
-
 (defn parse-citation [citation-loc]
-  {:doi (xml/xselect1 citation-loc "doi" :text)
+  {:doi (normalize-long-doi (xml/xselect1 citation-loc "doi" :text))
+   :display-doi (xml/xselect1 citation-loc "doi" :text)
    :issn (xml/xselect1 citation-loc "issn" :text)
    :journal-title (xml/xselect1 citation-loc "journal_title" :text)
    :author (xml/xselect1 citation-loc "author" :text)
@@ -80,17 +122,73 @@
 (defn parse-citation-ids [citation-loc]
   {:doi (xml/xselect1 citation-loc "doi" :text)})
 
+;; todo timestamp and doi collection info (including crawler resources)
+(defn parse-item-doi [item-loc]
+  (let [doi-data-loc (xml/xselect1 item-loc "doi_data")
+        doi (xml/xselect1 doi-data-loc "doi" :text)]
+    {:doi (normalize-long-doi doi)
+     :display-doi doi
+     :url (xml/xselect1 doi-data-loc "resource" :text)}))
+
+(defn parse-item-citations [item-loc]
+  (map parse-citation (find-item-citations item-loc)))
+
+(defn parse-item-pub-dates [item-loc]
+  (map parse-pub-date (find-item-pub-dates item-loc)))
+
+(defn parse-item [item-loc]
+  {:published (parse-item-pub-dates item-loc)
+   :citation (parse-item-citations item-loc)
+   :doi (parse-item-doi item-loc)})
+
+(defn parse-journal-article [article-loc]
+  (conj (parse-item article-loc)
+        {:type :journal-article}))
+
 ;; todo can be more than one title and abbrev title
 (defn parse-journal [journal-loc]
-  {:title (xml/xselect1 journal-loc "full_title" :text)
-   :short-title (xml/xselect1 journal-loc "abbrev_title" :text)})
+  (conj (parse-item journal-loc)
+        {:type :journal
+         :title (xml/xselect1 journal-loc "full_title" :text)
+         :short-title (xml/xselect1 journal-loc "abbrev_title" :text)}))
 
-;; todo instead return list of "items", which can have or not have DOIs associated with them.
-;; e.g. a journal article record would have a journal item without DOI, maybe a journal issue
-;; with or without doi, and a journal article with DOI.
+(defn parse-journal-issue [issue-loc]
+  (conj (parse-item issue-loc)
+        {:type :journal-issue
+         :numbering (xml/xselect1 issue-loc "special_numbering" :text)
+         :issue (xml/xselect1 issue-loc "issue" :text)}))
+
+(defn parse-journal-volume [volume-loc]
+  (conj (parse-item volume-loc)
+        {:type :journal-volume}))
+
+(defn append-items [a b]
+  "Appends a map, or concats a list of maps, to an existing item list."
+  (if (map? b)
+    (conj a b)
+    (concat a b)))
+
 (defn unixref-record-parser [oai-record]
-  (if-let [article (find-journal-article oai-record)]
-    {:type :journal-article
-     :citations (map parse-citation (find-work-citations article))
-     :journal (parse-journal (find-journal oai-record))
-     :doi (find-item-doi article)}))
+  "Returns a tree of the items present in an OAI record. Each item has 
+   :contributor, :citation and :component keys that may list further items.
+   Items can be any of:
+   journal
+   journal-issue
+   journal-volume
+   journal-article
+   proceedings-article
+   conference
+   institution
+   location
+   report-article
+   standard
+   dataset
+   citation
+   contributor"
+
+  (-> []
+      (append-items (parse-journal-article (find-journal-article oai-record)))
+      (append-items (parse-journal-issue (find-journal-issue oai-record)))
+      (append-items (parse-journal-volume (find-journal-volume oai-record)))
+      (append-items (parse-journal (find-journal oai-record)))))
+
