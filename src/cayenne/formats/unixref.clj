@@ -122,13 +122,35 @@
 (defn parse-citation-ids [citation-loc]
   {:doi (xml/xselect1 citation-loc "doi" :text)})
 
+(defn parse-item-resources [item-loc]
+  ())
+
 ;; todo timestamp and doi collection info (including crawler resources)
 (defn parse-item-doi [item-loc]
-  (let [doi-data-loc (xml/xselect1 item-loc "doi_data")
-        doi (xml/xselect1 doi-data-loc "doi" :text)]
-    {:doi (normalize-long-doi doi)
-     :display-doi doi
-     :url (xml/xselect1 doi-data-loc "resource" :text)}))
+  (if-let [doi (xml/xselect1 item-loc "doi_data" "doi" :text)]
+    {:type :doi
+     :subtype :crossref
+     :value (normalize-long-doi doi)
+     :original doi}))
+
+(defn find-item-issns [item-loc]
+  (xml/xselect item-loc "issn"))
+
+(defn parse-item-issn [issn-loc]
+  (let [issn-type (or (xml/xselect1 issn-loc ["media_type"]) "print")
+        issn-subtype (if (= issn-type "print") :p :e)
+        issn-value (xml/xselect1 issn-loc :text)]
+    {:type :issn
+     :subtype issn-subtype
+     ;:value (normalize-issn issn-value)
+     :original issn-value}))
+
+(defn parse-item-ids [item-loc]
+  "Extracts all IDs for an item (DOI, ISSN, ISBN, so on). Extracts into
+   maps with the keys :type, :subtype, :value and :original."
+  (-> []
+      (conj (parse-item-doi item-loc))
+      (concat (map parse-item-issn (find-item-issns item-loc)))))
 
 (defn parse-item-citations [item-loc]
   (map parse-citation (find-item-citations item-loc)))
@@ -137,13 +159,21 @@
   (map parse-pub-date (find-item-pub-dates item-loc)))
 
 (defn parse-item [item-loc]
-  {:published (parse-item-pub-dates item-loc)
-   :citation (parse-item-citations item-loc)
-   :doi (parse-item-doi item-loc)})
+  "Pulls out metadata that is somewhat standard across types: contributors,
+   resource urls, some dates, titles, ids, citations and components."
+  {:citation (parse-item-citations item-loc)
+   ;;:contributor
+   ;;:title
+   ;;:resources
+   :date [{:published (parse-item-pub-dates item-loc)}]
+   :id (parse-item-ids item-loc)})
 
 (defn parse-journal-article [article-loc]
   (conj (parse-item article-loc)
-        {:type :journal-article}))
+        {:type :journal-article
+         :first-page (xml/xselect1 article-loc "pages" "first_page" :text)
+         :last-page (xml/xselect1 article-loc "pages" "last_page" :text)
+         :other-pages (xml/xselect1 article-loc "pages" "other_pages" :text)}))
 
 ;; todo can be more than one title and abbrev title
 (defn parse-journal [journal-loc]
@@ -171,6 +201,7 @@
 (defn unixref-record-parser [oai-record]
   "Returns a tree of the items present in an OAI record. Each item has 
    :contributor, :citation and :component keys that may list further items.
+
    Items can be any of:
    journal
    journal-issue
@@ -184,8 +215,11 @@
    standard
    dataset
    citation
-   contributor"
+   contributor
 
+   Each item may have a list of :id structures, a list of :title structures,
+   a list of :date structures, any number of flat :key value pairs, and finally, 
+   relationship structures in :contributor, :citation and :component."
   (-> []
       (append-items (parse-journal-article (find-journal-article oai-record)))
       (append-items (parse-journal-issue (find-journal-issue oai-record)))
