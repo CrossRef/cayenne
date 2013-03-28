@@ -5,7 +5,7 @@
   (:use cayenne.tasks.dump)
   (:require [cayenne.oai :as oai])
   (:require [cayenne.html :as html])
-  (:use [cayenne.formats.unixref :only [unixref-record-parser]]))
+  (:use [cayenne.formats.unixref :only [unixref-record-parser unixref-simple-record-parser]]))
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
@@ -17,3 +17,6 @@
 
 (defn parse-oai-file [f]
   (oai/process-file unixref-record-parser (record-json-writer "out.txt") f))
+
+(defn parse-citations [f]
+  (oai/process-file unixref-simple-record-parser (citation-info-writer "out.txt") f))
