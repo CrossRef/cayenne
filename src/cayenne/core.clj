@@ -22,5 +22,3 @@
 (defn parse-oai-file [f]
   (oai/process-file unixref-record-parser (record-json-writer "out.txt") f))
 
-(defn parse-citations [f]
-  (oai/process-file unixref-simple-record-parser (citation-info-writer "out.txt") f))

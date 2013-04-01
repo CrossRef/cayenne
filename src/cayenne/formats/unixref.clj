@@ -205,7 +205,7 @@
 ;; Titles
 
 (defn parse-journal-title [full-title-loc kind]
-  {:type kind :value (xml/xselect1 full-title-loc :text)})
+  {:type :title :subtype kind :value (xml/xselect1 full-title-loc :text)})
 
 (defn parse-full-titles [item-loc]
   (map #(parse-journal-title % :long) (xml/xselect item-loc "full_title")))
@@ -215,19 +215,20 @@
 
 (defn parse-proceedings-title [item-loc]
   (if-let [title (xml/xselect1 item-loc "proceedings_title" :text)]
-    {:type :long :value title}))
+    {:type :title :subtype :long :value title}))
 
 (defn parse-title [item-loc]
   (if-let [title (xml/xselect1 item-loc "titles" "title" :text)]
-    {:type :long :value title}))
+    {:type :title :subtype :long :value title}))
 
 (defn parse-subtitle [item-loc]
   (if-let [title (xml/xselect1 item-loc "titles" "subtitle" :text)]
-    {:type :secondary :value title}))
+    {:type :title :subtype :secondary :value title}))
 
 (defn parse-language-title [item-loc]
   (if-let [title-loc (xml/xselect1 item-loc "titles" "original_language_title")]
-    {:type :long
+    {:type :title
+     :subtype :long
      :language (xml/xselect1 title-loc ["language"])
      :value (xml/xselect1 title-loc :text)}))
 
@@ -331,7 +332,7 @@
 (defn parse-item [item-loc]
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations and components."
-  (-> {}
+  (-> {:type :work}
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
@@ -348,72 +349,80 @@
 ;; Specific item parsing
 
 (defn parse-journal-article [article-loc]
-  (conj (parse-item article-loc)
-        {:type :journal-article
-         :first-page (xml/xselect1 article-loc "pages" "first_page" :text)
-         :last-page (xml/xselect1 article-loc "pages" "last_page" :text)
-         :other-pages (xml/xselect1 article-loc "pages" "other_pages" :text)}))
+  (when article-loc
+    (conj (parse-item article-loc)
+          {:subtype :journal-article
+           :first-page (xml/xselect1 article-loc "pages" "first_page" :text)
+           :last-page (xml/xselect1 article-loc "pages" "last_page" :text)
+           :other-pages (xml/xselect1 article-loc "pages" "other_pages" :text)})))
 
 (defn parse-journal-issue [issue-loc]
-  (-> (parse-item issue-loc)
-      (conj {:type :journal-issue
-             :numbering (xml/xselect1 issue-loc "special_numbering" :text)
-             :issue (xml/xselect1 issue-loc "issue" :text)})))
+  (when issue-loc
+    (-> (parse-item issue-loc)
+        (conj {:subtype :journal-issue
+               :numbering (xml/xselect1 issue-loc "special_numbering" :text)
+               :issue (xml/xselect1 issue-loc "issue" :text)}))))
 
 (defn parse-journal-volume [volume-loc]
-  (-> (parse-item volume-loc)
-      (conj {:type :journal-volume
-             :volume (xml/xselect1 volume-loc "volume" :text)})))
+  (when volume-loc
+    (-> (parse-item volume-loc)
+        (conj {:subtype :journal-volume
+               :volume (xml/xselect1 volume-loc "volume" :text)}))))
 
 (defn parse-journal [journal-loc]
-  (let [issue (-> journal-loc (find-journal-issue) (parse-journal-issue))
-        volume (-> journal-loc (find-journal-volume) (parse-journal-volume))
-        article (-> journal-loc (find-journal-article) (parse-journal-article))
-        journal (-> journal-loc (find-journal-metadata) (parse-item)
-                    (assoc :type :journal))]
-    (cond 
-     (nil? issue)   (->> article
-                         (attach-rel journal :component))
-     (nil? volume)  (->> article
-                         (attach-rel issue :component) 
-                         (attach-rel journal :component))
-     :else          (->> article
-                         (attach-rel volume :component)
-                         (attach-rel issue :component)
-                         (attach-rel journal :component)))))
+  (when journal-loc
+    (let [issue (-> journal-loc (find-journal-issue) (parse-journal-issue))
+          volume (-> journal-loc (find-journal-volume) (parse-journal-volume))
+          article (-> journal-loc (find-journal-article) (parse-journal-article))
+          journal (-> journal-loc (find-journal-metadata) (parse-item)
+                      (assoc :subtype :journal))]
+      (cond 
+       (nil? issue)   (->> article
+                           (attach-rel journal :component))
+       (nil? volume)  (->> article
+                           (attach-rel issue :component) 
+                           (attach-rel journal :component))
+       :else          (->> article
+                           (attach-rel volume :component)
+                           (attach-rel issue :component)
+                           (attach-rel journal :component))))))
 
 (defn parse-conf-paper [conf-paper-loc]
-  (-> (parse-item conf-paper-loc)
-      (conj
-       {:type :proceedings-article
-        :start-page (xml/xselect1 conf-paper-loc "pages" "start_page")
-        :end-page (xml/xselect1 conf-paper-loc "pages" "end_page")
-        :other-pages (xml/xselect1 conf-paper-loc "pages" "other_pages")})))
+  (when conf-paper-loc
+    (-> (parse-item conf-paper-loc)
+        (conj
+         {:subtype :proceedings-article
+          :start-page (xml/xselect1 conf-paper-loc "pages" "start_page")
+          :end-page (xml/xselect1 conf-paper-loc "pages" "end_page")
+          :other-pages (xml/xselect1 conf-paper-loc "pages" "other_pages")}))))
 
 ;; todo perhaps make sponsor organisation and event location address first class items.
 (defn parse-event [event-loc]
-  (-> (parse-item event-loc)
-      (parse-attach :start event-loc :single (comp parse-start-date find-event-date))
-      (parse-attach :end event-loc :single (comp parse-end-date find-event-date))
-      (conj
-       {:type :conference
-        :name (xml/xselect1 "conference_name" :text)
-        :theme (xml/xselect1 "conference_theme" :text)
-        :location (xml/xselect1 "conference_location" :text)
-        :sponsor (xml/xselect1 "conference_sponsor" :text)
-        :acronym (xml/xselect1 "conference_acronym" :text)
-        :number (xml/xselect1 "conference_number" :text)})))
+  (when event-loc
+    (-> (parse-item event-loc)
+        (parse-attach :start event-loc :single (comp parse-start-date find-event-date))
+        (parse-attach :end event-loc :single (comp parse-end-date find-event-date))
+        (conj
+         {:type :event
+          :subtype :conference
+          :name (xml/xselect1 event-loc "conference_name" :text)
+          :theme (xml/xselect1 event-loc "conference_theme" :text)
+          :location (xml/xselect1 event-loc "conference_location" :text)
+          :sponsor (xml/xselect1 event-loc "conference_sponsor" :text)
+          :acronym (xml/xselect1 event-loc "conference_acronym" :text)
+          :number (xml/xselect1 event-loc "conference_number" :text)}))))
 
 (defn parse-conf [conf-loc]
-  (let [proceedings-loc (xml/xselect1 conf-loc "proceedings_metadata")]
-    (-> (parse-item proceedings-loc)
-        (parse-attach :component conf-loc :single (comp parse-event find-event))
-        (parse-attach :component conf-loc :single (comp parse-conf-paper find-conf-paper))
-        (conj
-         {:type :proceedings
-          :coden (xml/xselect1 proceedings-loc "coden" :text)
-          :subject (xml/xselect1 proceedings-loc "proceedings_subject")
-          :volume (xml/xselect1 proceedings-loc "volume")}))))
+  (when conf-loc
+    (let [proceedings-loc (xml/xselect1 conf-loc "proceedings_metadata")]
+      (-> (parse-item proceedings-loc)
+          (parse-attach :component conf-loc :single (comp parse-event find-event))
+          (parse-attach :component conf-loc :single (comp parse-conf-paper find-conf-paper))
+          (conj
+           {:subtype :proceedings
+            :coden (xml/xselect1 proceedings-loc "coden" :text)
+            :subject (xml/xselect1 proceedings-loc "proceedings_subject")
+            :volume (xml/xselect1 proceedings-loc "volume")})))))
 
 ;(defn parse-book [book-loc]
 ;  (let [series-loc (xml/xselect1 book-loc "book_metadata" "series_metadata")
@@ -422,34 +431,40 @@
 
 ;; ---------------------------------------------------------------
 
-(defn unixref-simple-record-parser [oai-record]
-  (let [journal-loc (xml/xselect1 oai-record :> "journal")
-        article-loc (xml/xselect1 journal-loc "journal_article")]
-    {:doi (xml/xselect1 article-loc "doi_data" "doi" :text)
-     :citations (map parse-citation (find-item-citations article-loc))
-     :pub-date (first (parse-item-pub-dates article-loc))
-     :issn (first (xml/xselect journal-loc "journal_metadata" "issn" :text))}))
-        
 (defn unixref-record-parser [oai-record]
   "Returns a tree of the items present in an OAI record. Each item has 
    :contributor, :citation and :component keys that may list further items.
 
    Items can be any of:
 
-   journal
-   journal-issue
-   journal-volume
-   journal-article
-   proceedings
-   proceedings-article
-   conference
-   -location
-   report-article
-   standard
-   dataset
+   work
+     journal
+     journal-issue
+     journal-volume
+     journal-article
+     proceedings
+     proceedings-article
+     report-article
+     standard
+     dataset
+   event
+     conference
    citation
    person
    org
+   date
+   doi
+     crossref
+   issn
+     print
+     electronic
+   isbn
+     print
+     electroic
+   title
+     short
+     long
+     secondary
 
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 
@@ -461,7 +476,7 @@
    contain one tree.)"
   (try
     (-> []
-        (append-items (parse-journal (find-journal oai-record))))
-        ;(append-items (parse-conf (find-conf oai-record))))
+        (append-items (parse-journal (find-journal oai-record)))
+        (append-items (parse-conf (find-conf oai-record))))
     (catch Exception e (st/print-stack-trace e))))
 
