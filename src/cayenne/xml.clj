@@ -66,11 +66,12 @@
        (cond 
         (= :has f)
         (->SelectorContext 
-         (filter #(= (.getAttribute % (second selector)) nil) nodes)
+         (filter #(not= (.getAttribute % (second selector)) nil) nodes)
          false)
         (= := f)
         (->SelectorContext
-         (filter #(= (.getAttribute % (second selector)) (nth selector 2)) nodes)
+         (filter 
+          #(= (-> % (.getAttribute (second selector)) (attribute->str)) (nth selector 2)) nodes)
          false)
         :else
         (map #(-> % (.getAttribute f) (attribute->str)) nodes)))

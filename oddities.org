@@ -2,3 +2,8 @@
 ** Journal articles with duplicated identical publication dates.
 ** XSD lists "subtitle" element twice under "titles". 
    Is one potentially original language subtitle?
+
+* Intentionally missing from unixref.clj
+** DOI timestamps
+** Some DOI resource collection info such as setById, multi-res lock/unlock, collection types
+** SOme DOI resource item types - country and labelled

@@ -9,19 +9,22 @@
 ;; todo rename to parse-attach-rel
 (defn parse-attach [item relation loc kind parse-fn]
   "Attach a relation by running a function on an xml location."
-  (let [existing (or (get item relation) [])]
+  (let [existing (or (get item relation) [])
+        related (parse-fn loc)]
     (cond 
      (= kind :single)
-     (when-let [related-item (parse-fn loc)]
-       (assoc item relation (conj existing related-item)))
+     (if (not (nil? related))
+       (assoc-in item [:rel relation] (conj existing related))
+       item)
      (= kind :multi)
-     (when-let [related-items (parse-fn loc)]
-       (assoc item relation (concat existing related-items))))))
+     (if (and (not (nil? related)) (not (empty? related)))
+       (assoc-in item [:rel relation] (concat existing related))
+       item))))
 
 (defn attach-rel [item relation related-item]
   "Attach related item to another item via relation."
   (let [existing (or (get item relation) [])]
-    (assoc item relation (conj existing related-item))))
+    (assoc-in item [:rel relation] (conj existing related-item))))
 
 (defn append-items [a b]
   "Appends a map, or concats a list of maps, to an existing item list."
@@ -99,8 +102,8 @@
 ;; --------------------------------------------------------------------
 ;; Dates
 
-(defn find-item-pub-dates [work-loc]
-  (xml/xselect work-loc "publication_date"))
+(defn find-pub-dates [work-loc kind]
+  (xml/xselect work-loc "publication_date" [:= "media_type" kind]))
 
 (defn find-event-date [event-loc]
   (xml/xselect1 event-loc "conference_date"))
@@ -129,12 +132,11 @@
        :else nil))))
 
 (defn parse-pub-date [pub-date-loc]
-  (let [media-type (keyword (or (xml/xselect1 pub-date-loc ["media_type"]) :print))
-        day-val (xml/xselect1 pub-date-loc "day" :text)
+  "Parse 'print' or 'online' publication dates."
+  (let [day-val (xml/xselect1 pub-date-loc "day" :text)
         month-val (xml/xselect1 pub-date-loc "month" :text)
         year-val (xml/xselect1 pub-date-loc "year" :text)]
-    {:type :published
-     :subtype media-type
+    {:type :date
      :day day-val 
      :month (parse-month month-val) 
      :year year-val 
@@ -142,7 +144,7 @@
 
 (defn parse-start-date [start-date-loc]
   (let [month-val (xml/xselect1 start-date-loc "start_month" :text)]
-    {:type :start
+    {:type :date
      :day (xml/xselect1 start-date-loc "start_day" :text)
      :month (parse-month month-val)
      :year (xml/xselect1 start-date-loc "start_year" :text)
@@ -150,7 +152,7 @@
 
 (defn parse-end-date [end-date-loc]
   (let [month-val (xml/xselect1 end-date-loc "end_month" :text)]
-    {:type :end
+    {:type :date
      :day (xml/xselect1 end-date-loc "end_day" :text)
      :month (parse-month month-val)
      :year (xml/xselect1 end-date-loc "end_year" :text)
@@ -159,7 +161,7 @@
 ;; --------------------------------------------------------------
 ;; Citations
 
-(defn find-item-citations [work-loc]
+(defn find-citations [work-loc]
   (xml/xselect work-loc "citation_list" "citation"))
 
 (defn parse-citation [citation-loc]
@@ -183,13 +185,23 @@
 (defn parse-citation-ids [citation-loc]
   {:doi (xml/xselect1 citation-loc "doi" :text)})
 
-;; ------------------------------------------------------------------
+;; ---------------------------------------------------------------------
 ;; Resources
 
-(defn parse-item-resources [item-loc]
-  ())
+(defn parse-collection-item [coll-item-loc]
+  {:type :url
+   :value (xml/xselect1 coll-item-loc "resource" :text)})
 
-;; -----------------------------------------------------------
+(defn parse-collection [with-attribute item-loc]
+  (let [items (xml/xselect item-loc "doi_data" :> "item" [:has with-attribute])]
+    (map parse-collection-item items)))
+
+(defn parse-resource [item-loc]
+  (when-let [value (xml/xselect1 item-loc "doi_data" "resource" :text)]
+    {:type :url
+     :value value}))
+
+;; ----------------------------------------------------------------------
 ;; Titles
 
 (defn parse-journal-title [full-title-loc kind]
@@ -219,22 +231,51 @@
      :language (xml/xselect1 title-loc ["language"])
      :value (xml/xselect1 title-loc :text)}))
 
+;; ---------------------------------------------------------------
+;; Contributors
+
+(defn parse-affiliation [affiliation-loc]
+  (when affiliation-loc
+    {:type :org
+     :name (xml/xselect1 affiliation-loc :text)}))
+
+(defn find-affiliation [person-loc]
+  (xml/xselect1 person-loc "affiliation"))
+
+(defn parse-person-name [person-loc]
+  (let [person {:type :person
+                :first-name (xml/xselect1 person-loc "given_name" :text)
+                :last-name (xml/xselect1 person-loc "surname" :text)
+                :suffix (xml/xselect1 person-loc "suffix" :text)}
+        parse-fn (comp parse-affiliation find-affiliation)]
+    (-> person
+      (parse-attach :affiliation person-loc :single parse-fn))))
+
+(defn parse-organization [org-loc]
+  {:type :org
+   :name (xml/xselect1 org-loc :text)})
+
+(defn find-person-names [item-loc kind]
+  (xml/xselect item-loc "contributors" "person_name" [:= "contributor_role" kind]))
+
+(defn find-organizations [item-loc kind]
+  (xml/xselect item-loc "contributors" "organization" [:= "contributor_role" kind]))
+
 ;; --------------------------------------------------------------
 ;; Identifiers
 
-;; todo timestamp and doi collection info (including crawler resources)
-(defn parse-item-doi [item-loc]
+(defn parse-doi [item-loc]
   (if-let [doi (xml/xselect1 item-loc "doi_data" "doi" :text)]
     {:type :doi
      :subtype :crossref
      :value (normalize-long-doi doi)
      :original doi}))
 
-(defn find-item-issns [item-loc]
+(defn find-issns [item-loc]
   (xml/xselect item-loc "issn"))
 
 ;; todo normalize issn
-(defn parse-item-issn [issn-loc]
+(defn parse-issn [issn-loc]
   (let [issn-type (or (xml/xselect1 issn-loc ["media_type"]) "print")
         issn-value (xml/xselect1 issn-loc :text)]
     {:type :issn
@@ -242,11 +283,11 @@
      :value issn-value
      :original issn-value}))
 
-(defn find-item-isbns [item-loc]
+(defn find-isbns [item-loc]
   (xml/xselect item-loc "isbn"))
 
 ;; todo normalize isbn
-(defn parse-item-isbn [isbn-loc]
+(defn parse-isbn [isbn-loc]
   (let [isbn-type (or (xml/xselect1 isbn-loc ["media_type"]) "print")
         isbn-value (xml/xselect1 isbn-loc :text)]
     {:type :isbn
@@ -254,22 +295,23 @@
      :value isbn-value
      :original isbn-value}))
 
-(defn parse-item-ids [item-loc]
-  "Extracts all IDs for an item (DOI, ISSN, ISBN, so on). Extracts into
-   maps with the keys :type, :subtype, :value and :original."
-  (-> []
-      (if-conj (parse-item-doi item-loc))
-      (concat (map parse-item-issn (find-item-issns item-loc)))
-      (concat (map parse-item-isbn (find-item-isbns item-loc)))))
 
 ;; ---------------------------------------------------------------
 ;; Generic item parsing
 
-(defn parse-item-citations [item-loc]
-  (map parse-citation (find-item-citations item-loc)))
+(defn parse-item-ids [item-loc]
+  "Extracts all IDs for an item (DOI, ISSN, ISBN, so on). Extracts into
+   maps with the keys :type, :subtype, :value and :original."
+  (-> []
+      (if-conj (parse-doi item-loc))
+      (concat (map parse-issn (find-issns item-loc)))
+      (concat (map parse-isbn (find-isbns item-loc)))))
 
-(defn parse-item-pub-dates [item-loc]
-  (map parse-pub-date (find-item-pub-dates item-loc)))
+(defn parse-item-citations [item-loc]
+  (map parse-citation (find-citations item-loc)))
+
+(defn parse-item-pub-dates [kind item-loc]
+  (map parse-pub-date (find-pub-dates item-loc kind)))
 
 (defn parse-item-titles [item-loc]
   (-> []
@@ -280,17 +322,27 @@
       (if-conj (parse-subtitle item-loc))
       (if-conj (parse-language-title item-loc))))
 
+(defn parse-item-contributors [kind item-loc]
+  (-> []
+      (concat (map parse-person-name (find-person-names item-loc kind)))
+      (concat (map parse-organization (find-organizations item-loc kind)))))
+
 ; also todo: publisher_item crossmark component_list
 (defn parse-item [item-loc]
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations and components."
   (-> {}
-      ;(parse-attach :contributor item-loc parse-contributors)
+      (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
+      (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
+      (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
+      (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
       (parse-attach :id item-loc :multi parse-item-ids)
-      ;(parse-attach :resource item-loc :multi parse-resources)
+      (parse-attach :resource-resolution item-loc :single parse-resource)
+      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :title item-loc :multi parse-item-titles)
       ;(parse-attach :citation item-loc :multi parse-item-citations)
-      (parse-attach :date item-loc :multi parse-item-pub-dates)))
+      (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
+      (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))))
 
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
@@ -341,8 +393,8 @@
 ;; todo perhaps make sponsor organisation and event location address first class items.
 (defn parse-event [event-loc]
   (-> (parse-item event-loc)
-      (parse-attach :date event-loc :single (comp parse-start-date find-event-date))
-      (parse-attach :date event-loc :single (comp parse-end-date find-event-date))
+      (parse-attach :start event-loc :single (comp parse-start-date find-event-date))
+      (parse-attach :end event-loc :single (comp parse-end-date find-event-date))
       (conj
        {:type :conference
         :name (xml/xselect1 "conference_name" :text)
@@ -391,17 +443,19 @@
    proceedings
    proceedings-article
    conference
-   -institution
    -location
    report-article
    standard
    dataset
    citation
-   contributor
+   person
+   org
 
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 
-   relationship structures in :contributor, :citation and :component.
+   relationship structures :rel, which contains a key per relation type. Some
+   common relationship types include :author, :citation and :component.
+   Anything mentioned as a value in :rel will be an item itself.
 
    The result of this function is a list of trees (and in most cases the list will
    contain one tree.)"
