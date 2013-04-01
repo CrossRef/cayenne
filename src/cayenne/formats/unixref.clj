@@ -1,19 +1,27 @@
 (ns cayenne.formats.unixref
+  (:require [clojure.stacktrace :as st])
   (:require [cayenne.xml :as xml])
   (:use [cayenne.ids.doi]))
 
 ;; -----------------------------------------------------------------
 ;; Helpers
 
-(defn parse-attach [item relation loc 
-                         & {:keys [single multi]
-                            :or {single nil
-                                 multi nil}}]
-  (prn relation loc)
+;; todo rename to parse-attach-rel
+(defn parse-attach [item relation loc kind parse-fn]
+  "Attach a relation by running a function on an xml location."
   (let [existing (or (get item relation) [])]
-    (if single
-      (assoc item relation (conj existing (single loc)))
-      (assoc item relation (concat existing (multi loc))))))
+    (cond 
+     (= kind :single)
+     (when-let [related-item (parse-fn loc)]
+       (assoc item relation (conj existing related-item)))
+     (= kind :multi)
+     (when-let [related-items (parse-fn loc)]
+       (assoc item relation (concat existing related-items))))))
+
+(defn attach-rel [item relation related-item]
+  "Attach related item to another item via relation."
+  (let [existing (or (get item relation) [])]
+    (assoc item relation (conj existing related-item))))
 
 (defn append-items [a b]
   "Appends a map, or concats a list of maps, to an existing item list."
@@ -21,11 +29,20 @@
     (conj a b)
     (concat a b)))
 
+(defn if-conj [coll item]
+  "Conjion item to coll iff item is not nil."
+  (if (not (nil? item))
+    (conj coll item)
+    coll))
+
 ;; -----------------------------------------------------------------
 ;; Component locators
 
 (defn find-journal [record-loc]
-  (xml/xselect1 record-loc :> "journal" "journal_metadata"))
+  (xml/xselect1 record-loc :> "journal"))
+
+(defn find-journal-metadata [journal-loc]
+  (xml/xselect1 journal-loc "journal_metadata"))
 
 (defn find-journal-issue [journal-loc]
   (xml/xselect1 journal-loc "journal_issue"))
@@ -33,8 +50,8 @@
 (defn find-journal-article [journal-loc]
   (xml/xselect1 journal-loc "journal_article"))
 
-(defn find-journal-volume [issue-loc]
-  (xml/xselect1 issue-loc "journal_volume"))
+(defn find-journal-volume [journal-loc]
+  (xml/xselect1 journal-loc "journal_issue" "journal_volume"))
 
 (defn find-conf [record-loc]
   (xml/xselect1 record-loc :> "conference"))
@@ -172,6 +189,36 @@
 (defn parse-item-resources [item-loc]
   ())
 
+;; -----------------------------------------------------------
+;; Titles
+
+(defn parse-journal-title [full-title-loc kind]
+  {:type kind :value (xml/xselect1 full-title-loc :text)})
+
+(defn parse-full-titles [item-loc]
+  (map #(parse-journal-title % :long) (xml/xselect item-loc "full_title")))
+
+(defn parse-abbrev-titles [item-loc]
+  (map #(parse-journal-title % :short) (xml/xselect item-loc "abbrev_title")))
+
+(defn parse-proceedings-title [item-loc]
+  (if-let [title (xml/xselect1 item-loc "proceedings_title" :text)]
+    {:type :long :value title}))
+
+(defn parse-title [item-loc]
+  (if-let [title (xml/xselect1 item-loc "titles" "title" :text)]
+    {:type :long :value title}))
+
+(defn parse-subtitle [item-loc]
+  (if-let [title (xml/xselect1 item-loc "titles" "subtitle" :text)]
+    {:type :secondary :value title}))
+
+(defn parse-language-title [item-loc]
+  (if-let [title-loc (xml/xselect1 item-loc "titles" "original_language_title")]
+    {:type :long
+     :language (xml/xselect1 title-loc ["language"])
+     :value (xml/xselect1 title-loc :text)}))
+
 ;; --------------------------------------------------------------
 ;; Identifiers
 
@@ -191,7 +238,7 @@
   (let [issn-type (or (xml/xselect1 issn-loc ["media_type"]) "print")
         issn-value (xml/xselect1 issn-loc :text)]
     {:type :issn
-     :subtype (if (= issn-type "print") :p :e)
+     :subtype (if (= issn-type "print") :print :electronic)
      :value issn-value
      :original issn-value}))
 
@@ -203,7 +250,7 @@
   (let [isbn-type (or (xml/xselect1 isbn-loc ["media_type"]) "print")
         isbn-value (xml/xselect1 isbn-loc :text)]
     {:type :isbn
-     :subtype (if (= isbn-type "print") :p :e)
+     :subtype (if (= isbn-type "print") :print :electronic)
      :value isbn-value
      :original isbn-value}))
 
@@ -211,7 +258,7 @@
   "Extracts all IDs for an item (DOI, ISSN, ISBN, so on). Extracts into
    maps with the keys :type, :subtype, :value and :original."
   (-> []
-      (conj (parse-item-doi item-loc))
+      (if-conj (parse-item-doi item-loc))
       (concat (map parse-item-issn (find-item-issns item-loc)))
       (concat (map parse-item-isbn (find-item-isbns item-loc)))))
 
@@ -224,6 +271,15 @@
 (defn parse-item-pub-dates [item-loc]
   (map parse-pub-date (find-item-pub-dates item-loc)))
 
+(defn parse-item-titles [item-loc]
+  (-> []
+      (concat (parse-full-titles item-loc))
+      (concat (parse-abbrev-titles item-loc))
+      (if-conj (parse-proceedings-title item-loc))
+      (if-conj (parse-title item-loc))
+      (if-conj (parse-subtitle item-loc))
+      (if-conj (parse-language-title item-loc))))
+
 ; also todo: publisher_item crossmark component_list
 (defn parse-item [item-loc]
   "Pulls out metadata that is somewhat standard across types: contributors,
@@ -232,8 +288,8 @@
       ;(parse-attach :contributor item-loc parse-contributors)
       (parse-attach :id item-loc :multi parse-item-ids)
       ;(parse-attach :resource item-loc :multi parse-resources)
-      ;(parse-attach :title item-loc :multi parse-titles)
-      (parse-attach :citation item-loc :multi parse-item-citations)
+      (parse-attach :title item-loc :multi parse-item-titles)
+      ;(parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :date item-loc :multi parse-item-pub-dates)))
 
 ;; -----------------------------------------------------------------
@@ -248,8 +304,6 @@
 
 (defn parse-journal-issue [issue-loc]
   (-> (parse-item issue-loc)
-      (parse-attach :component issue-loc :single (comp find-journal-volume parse-journal-volume))
-      (parse-attach :component issue-loc :single (comp find-journal-article parse-journal-article))
       (conj {:type :journal-issue
              :numbering (xml/xselect1 issue-loc "special_numbering" :text)
              :issue (xml/xselect1 issue-loc "issue" :text)})))
@@ -259,15 +313,22 @@
       (conj {:type :journal-volume
              :volume (xml/xselect1 volume-loc "volume" :text)})))
 
-;; todo move full_title and abbrev_title into parse-titles
 (defn parse-journal [journal-loc]
-  (-> (parse-item journal-loc)
-      (parse-attach :component journal-loc :single (comp find-journal-issue parse-journal-issue))
-      (parse-attach :component journal-loc :single (comp find-journal-article parse-journal-article))
-      (conj
-       {:type :journal
-        :title (xml/xselect1 journal-loc "full_title" :text)
-        :short-title (xml/xselect1 journal-loc "abbrev_title" :text)})))
+  (let [issue (-> journal-loc (find-journal-issue) (parse-journal-issue))
+        volume (-> journal-loc (find-journal-volume) (parse-journal-volume))
+        article (-> journal-loc (find-journal-article) (parse-journal-article))
+        journal (-> journal-loc (find-journal-metadata) (parse-item)
+                    (assoc :type :journal))]
+    (cond 
+     (nil? issue)   (->> article
+                         (attach-rel journal :component))
+     (nil? volume)  (->> article
+                         (attach-rel issue :component) 
+                         (attach-rel journal :component))
+     :else          (->> article
+                         (attach-rel volume :component)
+                         (attach-rel issue :component)
+                         (attach-rel journal :component)))))
 
 (defn parse-conf-paper [conf-paper-loc]
   (-> (parse-item conf-paper-loc)
@@ -280,8 +341,8 @@
 ;; todo perhaps make sponsor organisation and event location address first class items.
 (defn parse-event [event-loc]
   (-> (parse-item event-loc)
-      (parse-attach :date event-loc :single (comp find-event-date parse-start-date))
-      (parse-attach :date event-loc :single (comp find-event-date parse-end-date))
+      (parse-attach :date event-loc :single (comp parse-start-date find-event-date))
+      (parse-attach :date event-loc :single (comp parse-end-date find-event-date))
       (conj
        {:type :conference
         :name (xml/xselect1 "conference_name" :text)
@@ -294,8 +355,8 @@
 (defn parse-conf [conf-loc]
   (let [proceedings-loc (xml/xselect1 conf-loc "proceedings_metadata")]
     (-> (parse-item proceedings-loc)
-        (parse-attach :component conf-loc :single (comp find-event parse-event))
-        (parse-attach :component conf-loc :single (comp find-conf-paper parse-conf-paper))
+        (parse-attach :component conf-loc :single (comp parse-event find-event))
+        (parse-attach :component conf-loc :single (comp parse-conf-paper find-conf-paper))
         (conj
          {:type :proceedings
           :coden (xml/xselect1 proceedings-loc "coden" :text)
@@ -344,7 +405,9 @@
 
    The result of this function is a list of trees (and in most cases the list will
    contain one tree.)"
-  (-> []
-      (append-items (parse-journal (find-journal oai-record)))
-      (append-items (parse-conf (find-conf oai-record)))))
+  (try
+    (-> []
+        (append-items (parse-journal (find-journal oai-record))))
+        ;(append-items (parse-conf (find-conf oai-record))))
+    (catch Exception e (st/print-stack-trace e))))
 

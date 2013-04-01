@@ -1,0 +1,4 @@
+* Unixref
+** Journal articles with duplicated identical publication dates.
+** XSD lists "subtitle" element twice under "titles". 
+   Is one potentially original language subtitle?

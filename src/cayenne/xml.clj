@@ -27,6 +27,10 @@
 (defn- descendant-seq [nodes where-fn]
   (flatten (descendant-seq* nodes where-fn)))
 
+(defn- attribute->str [attribute]
+  (when (not (nil? attribute))
+    (.getValue attribute)))
+
 (defn process-xml [^java.io.Reader rdr tag-name process-fn]
   (let [keep? (atom false)
         empty (nu.xom.Nodes.)
@@ -69,7 +73,7 @@
          (filter #(= (.getAttribute % (second selector)) (nth selector 2)) nodes)
          false)
         :else
-        (map #(.getAttribute % f) nodes)))
+        (map #(-> % (.getAttribute f) (attribute->str)) nodes)))
 
      (= :> selector)
      (->SelectorContext nodes true)
