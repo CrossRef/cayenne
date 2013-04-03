@@ -17,14 +17,14 @@
       (doseq [record records]
         (.println wrtr (json/write-str record))))))
 
+;; these are not generic and should move elsewhere:
+
 (defn record-tab-writer [out-file]
   "Write whole records as TSV."
   (let [wrtr (PrintWriter. (io/writer out-file))]
     (fn [records]
       (doseq [record records]
         (.println wrtr (str (:full-name record) \tab (:short-name record)))))))
-
-;; these are not generic and should move elsewhere:
 
 (defn doi-writer [out-file]
   "Write only DOIs to a file."

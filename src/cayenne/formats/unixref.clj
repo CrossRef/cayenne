@@ -7,8 +7,9 @@
 ;; Helpers
 
 ;; todo rename to parse-attach-rel
-(defn parse-attach [item relation loc kind parse-fn]
+(defn parse-attach
   "Attach a relation by running a function on an xml location."
+  [item relation loc kind parse-fn]
   (let [existing (or (get item relation) [])
         related (parse-fn loc)]
     (cond 
@@ -21,19 +22,22 @@
        (assoc-in item [:rel relation] (concat existing related))
        item))))
 
-(defn attach-rel [item relation related-item]
+(defn attach-rel
   "Attach related item to another item via relation."
+  [item relation related-item]
   (let [existing (or (get item relation) [])]
     (assoc-in item [:rel relation] (conj existing related-item))))
 
-(defn append-items [a b]
+(defn append-items
   "Appends a map, or concats a list of maps, to an existing item list."
+  [a b]
   (if (map? b)
     (conj a b)
     (concat a b)))
 
-(defn if-conj [coll item]
+(defn if-conj
   "Conjion item to coll iff item is not nil."
+  [coll item]
   (if (not (nil? item))
     (conj coll item)
     coll))
@@ -62,12 +66,14 @@
 (defn find-proceedings [conf-loc]
   (xml/xselect1 conf-loc "proceedings_metadata"))
 
-(defn find-event [conf-loc]
+(defn find-event
   "Sometimes present in a proceedings. Never has a DOI."
+  [conf-loc]
   (xml/xselect1 conf-loc "event_metadata"))
 
-(defn find-conf-paper [conf-loc]
+(defn find-conf-paper
   "Found in conferences."
+  [conf-loc]
   (xml/xselect1 conf-loc "conference_paper"))
 
 (defn find-book [record-loc]
@@ -76,8 +82,9 @@
 (defn find-dissertation [record-loc]
   ())
 
-(defn find-institution [record-loc]
+(defn find-institution
   "Sometimes found in a dissertation."
+  [record-loc]
   ())
 
 (defn find-report-paper [record-loc]
@@ -92,8 +99,9 @@
 (defn find-stand-alone-component [record-loc]
   ())
 
-(defn find-components [record-loc]
+(defn find-components
   "One of chapter, section, part, track, reference_entry or other."
+  [record-loc]
   ())
 
 ;; --------------------------------------------------------------------
@@ -128,8 +136,9 @@
        (= month-val 34) :forth-quarter
        :else nil))))
 
-(defn parse-pub-date [pub-date-loc]
+(defn parse-pub-date
   "Parse 'print' or 'online' publication dates."
+  [pub-date-loc]
   (let [day-val (xml/xselect1 pub-date-loc "day" :text)
         month-val (xml/xselect1 pub-date-loc "month" :text)
         year-val (xml/xselect1 pub-date-loc "year" :text)]
@@ -309,9 +318,10 @@
 ;; ---------------------------------------------------------------
 ;; Generic item parsing
 
-(defn parse-item-ids [item-loc]
+(defn parse-item-ids
   "Extracts all IDs for an item (DOI, ISSN, ISBN, so on). Extracts into
    maps with the keys :type, :subtype, :value and :original."
+  [item-loc]
   (-> []
       (if-conj (parse-doi item-loc))
       (concat (map parse-issn (find-issns item-loc)))
@@ -338,9 +348,10 @@
       (concat (map parse-organization (find-organizations item-loc kind)))))
 
 ; also todo: publisher_item, crossmark (fundref, update relations, licence info), component_list
-(defn parse-item [item-loc]
+(defn parse-item
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations and components."
+  [item-loc]
   (-> {:type :work}
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
@@ -433,7 +444,6 @@
             :subject (xml/xselect1 proceedings-loc "proceedings_subject")
             :volume (xml/xselect1 proceedings-loc "volume")})))))
 
-;; todo parse missing bits (attributes)
 (defn parse-content-item-type [content-item-loc]
   (let [type (xml/xselect1 content-item-loc ["component_type"])]
     (cond
@@ -450,6 +460,8 @@
     (-> (parse-item content-item-loc)
         (conj
          {:subtype (parse-content-item-type content-item-loc)
+          :language (xml/xselect1 content-item-loc ["language"])
+          :nest-level (xml/xselect1 content-item-loc ["level_sequence_number"])
           :component-number (xml/xselect1 content-item-loc "component_number" :text)
           :first-page (xml/xselect1 content-item-loc "pages" "first_page" :text)
           :last-page (xml/xselect1 content-item-loc "pages" "last_page" :text)
@@ -521,7 +533,7 @@
 
 ;; ---------------------------------------------------------------
 
-(defn unixref-record-parser [oai-record]
+(defn unixref-record-parser
   "Returns a tree of the items present in an OAI record. Each item has 
    :contributor, :citation and :component keys that may list further items.
 
@@ -555,14 +567,10 @@
    person
    org
    date
-   doi
-     crossref
-   issn
-     print
-     electronic
-   isbn
-     print
-     electroic
+   id
+     doi
+     issn
+     isbn
    title
      short
      long
@@ -594,6 +602,7 @@
 
    The result of this function is a list of trees (and in most cases the list will
    contain one tree.)"
+  [oai-record]
   (try
     (-> []
         (append-items (parse-journal (find-journal oai-record)))

@@ -11,6 +11,7 @@
 ** Some DOI resource collection info such as setById, multi-res lock/unlock, collection types
 ** Some DOI resource item types - country and labelled
 ** noisbn element and its reason attribute
+** publication_type for content_item, papers, dissertation, etc
 
 * Should be items
 ** Location of publishers
