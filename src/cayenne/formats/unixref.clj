@@ -71,10 +71,7 @@
   (xml/xselect1 conf-loc "conference_paper"))
 
 (defn find-book [record-loc]
-  ())
-
-(defn find-book-series [record-loc]
-  ())
+  (xml/xselect1 record-loc :> "book"))
 
 (defn find-dissertation [record-loc]
   ())
@@ -232,43 +229,14 @@
      :language (xml/xselect1 title-loc ["language"])
      :value (xml/xselect1 title-loc :text)}))
 
-;; ---------------------------------------------------------------
-;; Contributors
-
-(defn parse-affiliation [affiliation-loc]
-  (when affiliation-loc
-    {:type :org
-     :name (xml/xselect1 affiliation-loc :text)}))
-
-(defn find-affiliation [person-loc]
-  (xml/xselect1 person-loc "affiliation"))
-
-(defn parse-person-name [person-loc]
-  (let [person {:type :person
-                :first-name (xml/xselect1 person-loc "given_name" :text)
-                :last-name (xml/xselect1 person-loc "surname" :text)
-                :suffix (xml/xselect1 person-loc "suffix" :text)}
-        parse-fn (comp parse-affiliation find-affiliation)]
-    (-> person
-      (parse-attach :affiliation person-loc :single parse-fn))))
-
-(defn parse-organization [org-loc]
-  {:type :org
-   :name (xml/xselect1 org-loc :text)})
-
-(defn find-person-names [item-loc kind]
-  (xml/xselect item-loc "contributors" "person_name" [:= "contributor_role" kind]))
-
-(defn find-organizations [item-loc kind]
-  (xml/xselect item-loc "contributors" "organization" [:= "contributor_role" kind]))
-
 ;; --------------------------------------------------------------
 ;; Identifiers
 
 (defn parse-doi [item-loc]
   (if-let [doi (xml/xselect1 item-loc "doi_data" "doi" :text)]
-    {:type :doi
-     :subtype :crossref
+    {:type :id
+     :subtype :doi
+     :ra :crossref
      :value (normalize-long-doi doi)
      :original doi}))
 
@@ -279,8 +247,9 @@
 (defn parse-issn [issn-loc]
   (let [issn-type (or (xml/xselect1 issn-loc ["media_type"]) "print")
         issn-value (xml/xselect1 issn-loc :text)]
-    {:type :issn
-     :subtype (if (= issn-type "print") :print :electronic)
+    {:type :id
+     :subtype :issn
+     :kind (if (= issn-type "print") :print :electronic)
      :value issn-value
      :original issn-value}))
 
@@ -291,11 +260,51 @@
 (defn parse-isbn [isbn-loc]
   (let [isbn-type (or (xml/xselect1 isbn-loc ["media_type"]) "print")
         isbn-value (xml/xselect1 isbn-loc :text)]
-    {:type :isbn
-     :subtype (if (= isbn-type "print") :print :electronic)
+    {:type :id
+     :subtype :isbn
+     :kind (if (= isbn-type "print") :print :electronic)
      :value isbn-value
      :original isbn-value}))
 
+;; ---------------------------------------------------------------
+;; Contributors
+
+;; todo normalize orcid
+(defn parse-orcid [person-loc]
+  (when-let [orcid-loc (xml/xselect1 person-loc "ORCID")]
+    {:type :id
+     :subtype :orcid
+     :authenticated (or (xml/xselect1 orcid-loc ["authenticated"]) "false")
+     :value (xml/xselect1 orcid-loc :text)
+     :original (xml/xselect1 orcid-loc :text)}))
+     
+;; todo can have location after a comma
+(defn parse-affiliation [affiliation-loc]
+  {:type :org
+   :name (xml/xselect1 affiliation-loc :text)})
+
+(defn find-affiliations [person-loc]
+  (xml/xselect person-loc "affiliation"))
+
+(defn parse-person-name [person-loc]
+  (let [person {:type :person
+                :first-name (xml/xselect1 person-loc "given_name" :text)
+                :last-name (xml/xselect1 person-loc "surname" :text)
+                :suffix (xml/xselect1 person-loc "suffix" :text)}
+        parse-fn #(map parse-affiliation (find-affiliation %))]
+    (-> person
+      (parse-attach :id person-loc :single parse-orcid)
+      (parse-attach :affiliation person-loc :multi parse-fn))))
+
+(defn parse-organization [org-loc]
+  {:type :org
+   :name (xml/xselect1 org-loc :text)})
+
+(defn find-person-names [item-loc kind]
+  (xml/xselect item-loc "contributors" "person_name" [:= "contributor_role" kind]))
+
+(defn find-organizations [item-loc kind]
+  (xml/xselect item-loc "contributors" "organization" [:= "contributor_role" kind]))
 
 ;; ---------------------------------------------------------------
 ;; Generic item parsing
@@ -328,7 +337,7 @@
       (concat (map parse-person-name (find-person-names item-loc kind)))
       (concat (map parse-organization (find-organizations item-loc kind)))))
 
-; also todo: publisher_item crossmark component_list
+; also todo: publisher_item, crossmark (fundref, update relations, licence info), component_list
 (defn parse-item [item-loc]
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations and components."
@@ -416,7 +425,7 @@
   (when conf-loc
     (let [proceedings-loc (xml/xselect1 conf-loc "proceedings_metadata")]
       (-> (parse-item proceedings-loc)
-          (parse-attach :component conf-loc :single (comp parse-event find-event))
+          (parse-attach :about conf-loc :single (comp parse-event find-event))
           (parse-attach :component conf-loc :single (comp parse-conf-paper find-conf-paper))
           (conj
            {:subtype :proceedings
@@ -424,10 +433,46 @@
             :subject (xml/xselect1 proceedings-loc "proceedings_subject")
             :volume (xml/xselect1 proceedings-loc "volume")})))))
 
-;(defn parse-book [book-loc]
-;  (let [series-loc (xml/xselect1 book-loc "book_metadata" "series_metadata")
-;        content-loc (xml/xselect1 book-loc "content_item")]
-    
+;; todo convert content item type "reference_entry" to "reference-entry"
+;; todo parse missing bits
+(defn parse-content-item [content-item-loc]
+  (when content-item-loc
+    (-> (parse-item content-item-loc)
+        (conj
+         {:subtype (keyword (xml/xselect1 content-item-loc ["component_type"]))}))))
+
+;; parse missing bits
+(defn parse-single-book [book-meta-loc content-item-loc]
+  (-> (parse-item book-meta-loc)
+      (parse-attach :component content-item-loc :single parse-content-item)
+      (conj
+       {:subtype :book
+        :volume (xml/xselect1 book-meta-loc "volume" :text)})))
+
+;; parse missing bits
+(defn parse-book-set [book-set-meta-loc content-item-loc]
+  (-> (parse-item (xml/xselect1 book-set-meta-loc "set_metadata"))
+      (parse-attach :component book-set-meta-loc :single #(parse-single-book % content-item-loc))
+      (conj
+       {:subtype :book-set})))
+
+;; parse missing bits
+(defn parse-book-series [book-series-meta-loc content-item-loc]
+  (-> (parse-item (xml/xselect1 book-series-meta-loc "series_metadata"))
+      (parse-attach :component book-series-meta-loc :single #(parse-single-book % content-item-loc))
+      (conj
+       {:subtype :book-series})))
+
+;; todo handle book content_item (chapters etc), book type
+(defn parse-book [book-loc]
+  (let [book-meta-loc (xml/xselect1 book-loc "book_metadata")
+        book-series-meta-loc (xml/xselect1 book-loc "book_series_metadata")
+        book-set-meta-loc (xml/xselect1 book-loc "book_set_metadata")
+        content-item-loc (xml/xselect1 book-loc "content_item")]
+    (cond
+     book-meta-loc (parse-single-book book-meta-loc content-item-loc)
+     book-series-meta-loc (parse-book-series book-series-meta-loc content-item-loc)
+     book-set-meta-loc (parse-book-set book-set-meta-loc content-item-loc))))
 
 ;; ---------------------------------------------------------------
 
@@ -447,6 +492,15 @@
      report-article
      standard
      dataset
+     book
+     book-series
+     book-set
+     chapter
+     section
+     part
+     track
+     reference-entry
+     other
    event
      conference
    citation
@@ -466,6 +520,24 @@
      long
      secondary
 
+   Relations include:
+
+   id
+   published-online
+   published-print
+   start
+   end
+   citation
+   author
+   chair
+   translator
+   editor
+   about
+   title
+   resource-fulltext
+   resource-resolution
+   affiliation
+
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 
    relationship structures :rel, which contains a key per relation type. Some
@@ -477,6 +549,7 @@
   (try
     (-> []
         (append-items (parse-journal (find-journal oai-record)))
+        (append-items (parse-book (find-book oai-record)))
         (append-items (parse-conf (find-conf oai-record))))
     (catch Exception e (st/print-stack-trace e))))
 
