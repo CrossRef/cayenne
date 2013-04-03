@@ -433,46 +433,91 @@
             :subject (xml/xselect1 proceedings-loc "proceedings_subject")
             :volume (xml/xselect1 proceedings-loc "volume")})))))
 
-;; todo convert content item type "reference_entry" to "reference-entry"
-;; todo parse missing bits
+;; todo parse missing bits (attributes)
+(defn parse-content-item-type [content-item-loc]
+  (let [type (xml/xselect1 content-item-loc ["component_type"])]
+    (cond
+     (= type "chapter") :chapter
+     (= type "section") :section
+     (= type "part") :part
+     (= type "track") :track
+     (= type "reference_entry") :reference-entry
+     (= type "other") :other
+     :else :other)))
+
 (defn parse-content-item [content-item-loc]
   (when content-item-loc
     (-> (parse-item content-item-loc)
         (conj
-         {:subtype (keyword (xml/xselect1 content-item-loc ["component_type"]))}))))
+         {:subtype (parse-content-item-type content-item-loc)
+          :component-number (xml/xselect1 content-item-loc "component_number" :text)
+          :first-page (xml/xselect1 content-item-loc "pages" "first_page" :text)
+          :last-page (xml/xselect1 content-item-loc "pages" "last_page" :text)
+          :other-pages (xml/xselect1 content-item-loc "pages" "other_pages" :text)}))))
 
-;; parse missing bits
-(defn parse-single-book [book-meta-loc content-item-loc]
+;; todo parse publisher as org
+(defn parse-single-book [book-meta-loc content-item-loc book-type]
   (-> (parse-item book-meta-loc)
       (parse-attach :component content-item-loc :single parse-content-item)
       (conj
-       {:subtype :book
+       {:subtype book-type
+        :language (xml/xselect1 book-meta-loc ["language"])
+        :edition-number (xml/xselect1 book-meta-loc "edition_number" :text)
         :volume (xml/xselect1 book-meta-loc "volume" :text)})))
 
-;; parse missing bits
-(defn parse-book-set [book-set-meta-loc content-item-loc]
+(defn parse-book-set [book-set-meta-loc content-item-loc book-type]
   (-> (parse-item (xml/xselect1 book-set-meta-loc "set_metadata"))
-      (parse-attach :component book-set-meta-loc :single #(parse-single-book % content-item-loc))
+      (parse-attach 
+       :component book-set-meta-loc 
+       :single #(parse-single-book % content-item-loc book-type))
       (conj
-       {:subtype :book-set})))
+       {:subtype :book-set
+        :part-number (xml/xselect1 book-set-meta-loc "set_metadata" "part_number" :text)})))
 
-;; parse missing bits
-(defn parse-book-series [book-series-meta-loc content-item-loc]
+(defn parse-book-series [book-series-meta-loc content-item-loc book-type]
   (-> (parse-item (xml/xselect1 book-series-meta-loc "series_metadata"))
-      (parse-attach :component book-series-meta-loc :single #(parse-single-book % content-item-loc))
+      (parse-attach 
+       :component book-series-meta-loc 
+       :single #(parse-single-book % content-item-loc book-type))
       (conj
-       {:subtype :book-series})))
+       {:subtype :book-series
+        :coden (xml/xselect1 book-series-meta-loc "series_metadata" "coden" :text)
+        :series-number (xml/xselect1 book-series-meta-loc "series_metadata" "series_number" :text)})))
 
-;; todo handle book content_item (chapters etc), book type
+(defn parse-book-type [book-loc]
+  (let [type (xml/xselect1 book-loc ["book_type"])]
+    (cond
+     (= type "edited_book") :edited-book
+     (= type "monograph") :monograph
+     (= type "reference") :reference-book
+     (= type "other") :book
+     :else :book)))
+
 (defn parse-book [book-loc]
   (let [book-meta-loc (xml/xselect1 book-loc "book_metadata")
         book-series-meta-loc (xml/xselect1 book-loc "book_series_metadata")
         book-set-meta-loc (xml/xselect1 book-loc "book_set_metadata")
-        content-item-loc (xml/xselect1 book-loc "content_item")]
+        content-item-loc (xml/xselect1 book-loc "content_item")
+        book-type (parse-book-type book-loc)]
     (cond
-     book-meta-loc (parse-single-book book-meta-loc content-item-loc)
-     book-series-meta-loc (parse-book-series book-series-meta-loc content-item-loc)
-     book-set-meta-loc (parse-book-set book-set-meta-loc content-item-loc))))
+     book-meta-loc (parse-single-book book-meta-loc content-item-loc book-type)
+     book-series-meta-loc (parse-book-series book-series-meta-loc content-item-loc book-type)
+     book-set-meta-loc (parse-book-set book-set-meta-loc content-item-loc book-type))))
+
+;(defn parse-institution [dissertation-loc]
+;  ())
+
+;(defn parse-institutions [dissertation-loc]
+;  ())
+
+;; todo degree
+;(defn parse-dissertation [dissertation-loc]
+;  (when dissertation-loc
+;    (-> (parse-item dissertation-loc)
+;        (parse-attach :approval dissertation-loc :multi parse-approval-dates)
+;        (parse-attach :from dissertation-loc :multi parse-institutions)
+;        (conj
+;         {:subtype :dissertation}))))
 
 ;; ---------------------------------------------------------------
 
@@ -492,6 +537,9 @@
      report-article
      standard
      dataset
+     edited-book
+     monograph
+     reference-book
      book
      book-series
      book-set
