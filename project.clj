@@ -9,7 +9,7 @@
                    "local/xalan.jar",
                    "local/xercesImpl.jar",
                    "local/xml-apis.jar"]
-  :dependencies [[clojurewerkz/neocons "1.0.2"]
+  :dependencies [[clojurewerkz/neocons "1.1.0-beta4"]
                  [com.novemberain/monger "1.5.0-rc1"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]

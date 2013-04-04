@@ -9,4 +9,4 @@ chmod a+x /usr/local/bin/lein
 
 cd /vagrant
 lein deps
-lein repl :headless
+nohup lein repl :headless &

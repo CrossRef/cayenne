@@ -279,6 +279,7 @@
 ;; Contributors
 
 ;; todo normalize orcid
+;; todo authenticated should be a property of the relation
 (defn parse-orcid [person-loc]
   (when-let [orcid-loc (xml/xselect1 person-loc "ORCID")]
     {:type :id
@@ -300,7 +301,7 @@
                 :first-name (xml/xselect1 person-loc "given_name" :text)
                 :last-name (xml/xselect1 person-loc "surname" :text)
                 :suffix (xml/xselect1 person-loc "suffix" :text)}
-        parse-fn #(map parse-affiliation (find-affiliation %))]
+        parse-fn #(map parse-affiliation (find-affiliations %))]
     (-> person
       (parse-attach :id person-loc :single parse-orcid)
       (parse-attach :affiliation person-loc :multi parse-fn))))
@@ -467,9 +468,17 @@
           :last-page (xml/xselect1 content-item-loc "pages" "last_page" :text)
           :other-pages (xml/xselect1 content-item-loc "pages" "other_pages" :text)}))))
 
+;; todo handle locations as first class items?
+(defn parse-publisher [book-meta-loc]
+  (when-let [publisher-loc (xml/xselect1 book-meta-loc "publisher")]
+    {:type :org
+     :name (xml/xselect1 publisher-loc "publisher_name" :text)
+     :location (xml/xselect1 publisher-loc "publisher_place" :text)}))
+
 ;; todo parse publisher as org
 (defn parse-single-book [book-meta-loc content-item-loc book-type]
   (-> (parse-item book-meta-loc)
+      (parse-attach :publisher book-meta-loc :single parse-publisher)
       (parse-attach :component content-item-loc :single parse-content-item)
       (conj
        {:subtype book-type
@@ -593,6 +602,7 @@
    resource-fulltext
    resource-resolution
    affiliation
+   publisher
 
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 
