@@ -3,6 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
+  :repl-options {:port 9494}
   :resource-paths ["local/harvester2.jar", 
                    "local/log4j-1.2.12.jar",
                    "local/xalan.jar",
