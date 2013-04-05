@@ -1,5 +1,6 @@
 (ns cayenne.graft
   (:require [clojure.string :as string]
+
             [clojurewerkz.neocons.rest :as neo]
             [clojurewerkz.neocons.rest.nodes :as nodes]
             [clojurewerkz.neocons.rest.relationships :as rels]))
@@ -68,19 +69,18 @@
       (doseq [child-item (get-in item [:rel rel-type])]
         (insert-item-with-rel child-item rel-type parent-node)))))
 
-(defn insert-item
-  "Insert a metadata item into neo4j."
-  [item]
-  (let [parent-node (item-node item)]
-    (doseq [rel-type (keys (:rel item))]
-      (doseq [child-item (get-in item [:rel rel-type])]
-        (insert-item-with-rel child-item rel-type parent-node)))))
-
 (defn match-exact [item & fields]
   (let [index-fields (index-for-type (:type item))
         field-fn #(str (name %) ":\"" (name (get item %)) "\"")
         query (string/join " AND " (map field-fn index-fields))]
     (first (nodes/query (name (:type item)) query))))
+
+(defn insert-item
+  [item]
+  (let [parent-node (item-node item)]
+    (doseq [rel-type (keys (:rel item))]
+      (doseq [child-item (get-in item [:rel rel-type])]
+        (insert-item-with-rel child-item rel-type parent-node)))))
 
 ;; todo afterwards, run dedup tasks. For example, for each journal work, merge similar journal
 ;; volumes it is pointing to. So on.

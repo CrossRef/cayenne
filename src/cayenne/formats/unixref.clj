@@ -348,7 +348,7 @@
       (concat (map parse-person-name (find-person-names item-loc kind)))
       (concat (map parse-organization (find-organizations item-loc kind)))))
 
-; also todo: publisher_item, crossmark (fundref, update relations, licence info), component_list
+;; also todo: publisher_item, crossmark (fundref, update relations, licence info), component_list
 (defn parse-item
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations and components."
@@ -469,8 +469,8 @@
           :other-pages (xml/xselect1 content-item-loc "pages" "other_pages" :text)}))))
 
 ;; todo handle locations as first class items?
-(defn parse-publisher [book-meta-loc]
-  (when-let [publisher-loc (xml/xselect1 book-meta-loc "publisher")]
+(defn parse-publisher [parent-loc]
+  (when-let [publisher-loc (xml/xselect1 parent-loc "publisher")]
     {:type :org
      :name (xml/xselect1 publisher-loc "publisher_name" :text)
      :location (xml/xselect1 publisher-loc "publisher_place" :text)}))
@@ -524,6 +524,40 @@
      book-meta-loc (parse-single-book book-meta-loc content-item-loc book-type)
      book-series-meta-loc (parse-book-series book-series-meta-loc content-item-loc book-type)
      book-set-meta-loc (parse-book-set book-set-meta-loc content-item-loc book-type))))
+
+(defn parse-dataset-type [dataset-loc]
+  (let [type (xml/xselect1 dataset-loc ["dataset_type"])]
+    (cond
+     (= type "record") :record
+     (= type "collection") :collection
+     (= type "crossmark_policy") :crossmark-policy
+     (= type "other") :other
+     :else :record)))
+
+;; todo dates
+(defn parse-dataset [dataset-loc]
+  (-> (parse-item dataset-loc)
+      (parse-attach :publisher dataset-loc :single parse-publisher)
+      (conj
+       {:subtype :dataset
+        :kind (parse-dataset-type dataset-loc)
+        :format (xml/xselect1 dataset-loc "format" :text)
+        :format-mime (xml/xselect1 dataset-loc "format" ["mime_type"])
+        :description (xml/xselect1 dataset-loc "description")})))
+
+(defn parse-datasets [database-loc]
+  (map parse-dataset (xml/xselect database-loc "dataset")))
+
+;; todo institutions dates
+(defn parse-database [database-loc]
+  (let [metadata-loc (xml/xselect1 database-loc "database_metadata")]
+    (-> (parse-item metadata-loc)
+        (parse-attach :component database-loc :multi parse-datasets)
+        (parse-attach :publisher metadata-loc :single parse-publisher)
+        (conj
+         {:subtype :dataset
+          :language (xml/xselect1 metadata-loc ["language"])
+          :description (xml/xselect1 metadata-loc "description")}))))
 
 ;(defn parse-institution [dissertation-loc]
 ;  ())
