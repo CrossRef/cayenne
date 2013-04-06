@@ -1,29 +1,33 @@
 (ns cayenne.ids.doi)
 
-(defn is-long-doi? [s]
-  "Return true if s is a valid long DOI handle."
+(defn is-long-doi?
+  "Return true if s is a valid long DOI handle without URI prefix."
+  [s]
   (not (nil? (re-find #"\A10\.[0-9]{4,}/[^\s]+\Z" s))))
 
-(defn is-short-doi? [s]
-  "Return true if s is a valid short DOI handle."
+(defn is-short-doi?
+  "Return true if s is a valid short DOI handle without URI prefix."
+  [s]
   (not (nil? (re-find #"\A10/[a-z0-9]+\Z" s))))
 
 (defn is-any-doi? [s]
   (or (is-short-doi? s) (is-long-doi? s)))
 
-(defn extract-long-doi [s]
+(defn extract-long-doi
   "Attempt to extract a DOI from the forms:
    http://dx.doi.org/<DOI>
    dx.doi.org/<DOI>
    doi:<DOI>
    <DOI>"
+  [s]
   (re-find #"10\.[0-9]{4,}/[^\s]+" s))
 
-(defn extract-short-doi [s]
+(defn extract-short-doi
   "Attempt to extract a short DOI from the forms:
    http://doi.org/<SHORT_DOI_SUFFIX>
    doi.org/<SHORT_DOI_SUFFIX>
    <SHORT_DOI>"
+  [s]
   (let [match (re-find #"doi\.org/([a-zA-Z0-9]+)" s)]
     (if match
       (str "10/" (nth match 1))
@@ -34,3 +38,13 @@
 
 (defn normalize-short-doi [s]
   (when s (.toLowerCase (extract-short-doi s))))
+
+(defn as-long-doi-uri 
+  "Ensure a long DOI is in a normalized URI form."
+  [s]
+  (str "http://dx.doi.org/" + (normalize-long-doi s)))
+
+(defn as-short-doi-uri 
+  "Ensure a short DOI is in a normalized URI form."
+  [s]
+  (str "http://doi.org/" + (normalize-short-doi s)))

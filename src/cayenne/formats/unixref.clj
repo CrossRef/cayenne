@@ -1,7 +1,10 @@
 (ns cayenne.formats.unixref
-  (:require [clojure.stacktrace :as st])
-  (:require [cayenne.xml :as xml])
-  (:use [cayenne.ids.doi]))
+  (:require [[clojure.stacktrace :as st]
+             [cayenne.xml :as xml]])
+  (:use [[cayenne.ids.doi :only [as-long-doi-uri]]
+         [cayenne.ids.issn :only [as-issn-uri]]
+         [cayenne.ids.isbn :only [as-isbn-uri]]
+         [cayenne.ids.orcid :only [as-orcid-uri]]]))
 
 ;; -----------------------------------------------------------------
 ;; Helpers
@@ -171,16 +174,16 @@
   (xml/xselect work-loc "citation_list" "citation"))
 
 (defn parse-citation [citation-loc]
-  {:doi (normalize-long-doi (xml/xselect1 citation-loc "doi" :text))
+  {:doi (as-long-doi-uri (xml/xselect1 citation-loc "doi" :text))
    :display-doi (xml/xselect1 citation-loc "doi" :text)
-   :issn (xml/xselect1 citation-loc "issn" :text)
+   :issn (as-issn-uri (xml/xselect1 citation-loc "issn" :text))
    :journal-title (xml/xselect1 citation-loc "journal_title" :text)
    :author (xml/xselect1 citation-loc "author" :text)
    :volume (xml/xselect1 citation-loc "volume" :text)
    :issue (xml/xselect1 citation-loc "issue" :text)
    :first-page (xml/xselect1 citation-loc "first_page" :text)
    :year (xml/xselect1 citation-loc "cYear" :text)
-   :isbn (xml/xselect1 citation-loc "isbn" :text)
+   :isbn (as-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
    :series-title (xml/xselect1 citation-loc "series_title" :text)
    :volume-title (xml/xselect1 citation-loc "volume_title" :text)
    :edition-number (xml/xselect1 citation-loc "edition_number" :text)
@@ -189,7 +192,7 @@
    :unstructured (xml/xselect1 citation-loc "unstructured_citation" :text)})
 
 (defn parse-citation-ids [citation-loc]
-  {:doi (xml/xselect1 citation-loc "doi" :text)})
+  {:doi (as-long-doi-uri (xml/xselect1 citation-loc "doi" :text))})
 
 ;; ---------------------------------------------------------------------
 ;; Resources
@@ -246,20 +249,19 @@
     {:type :id
      :subtype :doi
      :ra :crossref
-     :value (normalize-long-doi doi)
+     :value (to-long-doi-uri doi)
      :original doi}))
 
 (defn find-issns [item-loc]
   (xml/xselect item-loc "issn"))
 
-;; todo normalize issn
 (defn parse-issn [issn-loc]
   (let [issn-type (or (xml/xselect1 issn-loc ["media_type"]) "print")
         issn-value (xml/xselect1 issn-loc :text)]
     {:type :id
      :subtype :issn
      :kind (if (= issn-type "print") :print :electronic)
-     :value issn-value
+     :value (as-issn-uri issn-value)
      :original issn-value}))
 
 (defn find-isbns [item-loc]
@@ -272,20 +274,19 @@
     {:type :id
      :subtype :isbn
      :kind (if (= isbn-type "print") :print :electronic)
-     :value isbn-value
+     :value (as-isbn-uri isbn-value)
      :original isbn-value}))
 
 ;; ---------------------------------------------------------------
 ;; Contributors
 
-;; todo normalize orcid
 ;; todo authenticated should be a property of the relation
 (defn parse-orcid [person-loc]
   (when-let [orcid-loc (xml/xselect1 person-loc "ORCID")]
     {:type :id
      :subtype :orcid
      :authenticated (or (xml/xselect1 orcid-loc ["authenticated"]) "false")
-     :value (xml/xselect1 orcid-loc :text)
+     :value (as-orcid-uri (xml/xselect1 orcid-loc :text))
      :original (xml/xselect1 orcid-loc :text)}))
      
 ;; todo can have location after a comma

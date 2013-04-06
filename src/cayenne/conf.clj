@@ -1,10 +1,17 @@
-(ns cayenne.conf)
+(ns cayenne.conf
+  (:require [clojure.data.json :as json]))
 
-(defn conf-get [path]
-  ())
+(def parameters (atom {}))
 
-(defn conf-set [path value]
-  ())
+(defn get-param [path & default]
+  (or (get-in @parameters path) default))
 
-(conf-set [:oai :dir] "/home/cayenne/data/oai")
-(conf-set [:oai :uri] "http://oai.crossref.org")
+(defn set-param! [path value]
+  (swap! parameters assoc-in path value))
+
+(set-param! [:dir :oai] "/home/cayenne/data/oai")
+(set-param! [:dir :neo4j] "/home/cayenne/data/neo4j")
+
+(set-param! [:oai :crossref :uri] "http://oai.crossref.org")
+(set-param! [:oai :datacite :uri] "http://oai.datacite.org")
+

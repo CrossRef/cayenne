@@ -9,20 +9,34 @@
     (+ 2)
     (* 3))))
 
-(def job-pool (ref (sorted-map)))
+(def future-pool (ref {}))
 
 (defn put-job [job] 
   (let [id (.toString (UUID/randomUUID))]
     (dosync 
-      (alter job-pool assoc id (.submit processing-pool job)))
+      (alter future-pool assoc id (.submit processing-pool job)))
     id))
 
 (defn forget-job [job-id]
   (dosync
-    (alter job-pool dissoc job-id)))
+    (alter future-pool dissoc job-id)))
 
 (defn cancel-job [job-id]
-  (.cancel (get @job-pool job-id) true))
+  (.cancel (get @future-pool job-id) true))
+
+(defn get-job-result [job-id]
+  (-> @future-pool (get job-id) (.get)))
+
+(defn get-job-status [job-id]
+  (let [future (get @future-pool job-id)]
+    (cond
+     (nil? future) :inactive
+     (.isDone future) :complete
+     (.isCancelled future) :cancelled
+     :else :waiting)))
+
+(defn job-count []
+  (count @future-pool))
 
 (defn list-all-jobs [] (keys @job-pool))
 ;(defn list-finished-jobs [] (filter #(.isDone %) @task-list))

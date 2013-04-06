@@ -2,7 +2,6 @@
 
 apt-get update
 apt-get install -y openjdk-7-jdk
-apt-get install -y rabbitmq-server
 apt-get install -y wget
 
 wget -O /usr/local/bin/lein "https://raw.github.com/technomancy/leiningen/stable/bin/lein" 
