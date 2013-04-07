@@ -4,7 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:port 9494}
-  :jvm-opts ["-Xmx16g" "-XX:+UseConcMarkSweepGC"]
+  :jvm-opts ["-Xms2G" "-Xmx18G" "-XX:+UseG1GC"]
   :resource-paths ["local/harvester2.jar", 
                    "local/log4j-1.2.12.jar",
                    "local/xalan.jar",
