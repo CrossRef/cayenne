@@ -1,4 +1,5 @@
-(ns cayenne.ids.doi)
+(ns cayenne.ids.doi
+  (:require [cayenne.conf :as conf]))
 
 (defn is-long-doi?
   "Return true if s is a valid long DOI handle without URI prefix."
@@ -39,12 +40,12 @@
 (defn normalize-short-doi [s]
   (when s (.toLowerCase (extract-short-doi s))))
 
-(defn as-long-doi-uri 
+(defn to-long-doi-uri 
   "Ensure a long DOI is in a normalized URI form."
   [s]
-  (str "http://dx.doi.org/" + (normalize-long-doi s)))
+  (str (conf/get-param [:id :long-doi :path]) (normalize-long-doi s)))
 
-(defn as-short-doi-uri 
+(defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."
   [s]
-  (str "http://doi.org/" + (normalize-short-doi s)))
+  (str (conf/get-param [:id :short-doi :path]) (normalize-short-doi s)))

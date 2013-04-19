@@ -3,10 +3,11 @@
   (:use cayenne.conf)
   (:use cayenne.sources.wok)
   (:use cayenne.tasks.dump)
+  (:use cayenne.tasks.citations)
   (:use cayenne.tasks.neo4j)
   (:require [cayenne.oai :as oai])
   (:require [cayenne.html :as html])
-  (:use [cayenne.formats.unixref :only [unixref-record-parser]]))
+  (:use [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]))
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
@@ -21,3 +22,12 @@
 (defn load-oai-file [f]
   (oai/process-file unixref-record-parser (record-neo-inserter) f))
 
+(defn find-citations-like [dir matcher]
+  (oai/process-dir 
+   dir 
+   :parser unixref-citation-parser 
+   :task (matching-citation-finder "match.log.txt" matcher)))
+
+(defn find-standards-citations [dir]
+  (let [matcher #"^(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
+    (find-citations-like dir matcher)))

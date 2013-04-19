@@ -16,4 +16,5 @@
                  [htmlcleaner "2.2.4"]
                  [xom "1.2.5"]
                  [org.clojure/clojure "1.4.0"]
-                 [org.clojure/data.json "0.2.0"]])
+                 [org.clojure/data.json "0.2.0"]
+                 [org.neo4j/neo4j "1.9.RC1"]])

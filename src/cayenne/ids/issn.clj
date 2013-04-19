@@ -1,5 +1,6 @@
 (ns cayenne.ids.issn
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string])
+  (:require [cayenne.conf :as conf]))
 
 (def digit-set #{\0 \1 \2 \3 \4 \5 \6 \7 \8 \9 \X \x})
 
@@ -27,5 +28,5 @@
   "Find anything in s that looks like it may be an ISSN and return it
   in a normalized URI form."
   [s]
-  (str "http://id.crossref.org/issn/" (normalize-issn s)))
+  (str (conf/get-param [:id :issn :path]) (normalize-issn s)))
 

@@ -3,14 +3,14 @@
   (:use [clojure.java.io :only [file reader]])
   (:use [cayenne.job]))
 
-(def debug-processing false)
+(def debug-processing true)
 
 (defn process-file [parser-fn task-fn file]
   "Run a parser and task over a file."
   (with-open [rdr (reader file)]
     (xml/process-xml rdr "record" (comp task-fn parser-fn))))
 
-(defn process-file-in-pool [pool parser-fn task-fn file]
+(defn process-file-in-pool [parser-fn task-fn file]
   "Asynchronously run a parser and task over a file"
   (when debug-processing
     (prn (str "Executing " file)))
@@ -42,5 +42,5 @@
    file under dir."
   (doseq [file (file-kind-seq kind dir count)]
     (if async
-      (process-file-in-pool processing-pool parser task file)
+      (process-file-in-pool parser task file)
       (process-file parser task file))))

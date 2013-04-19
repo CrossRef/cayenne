@@ -1,30 +1,97 @@
 (ns cayenne.graft
-  (:require [clojure.string :as string]
-
+  (:import ;[org.neo4j.server WrappingNeoServerBootstrapper]
+           [org.neo4j.kernel EmbeddedGraphDatabase]
+           [org.neo4j.graphdb Direction NotFoundException RelationshipType])
+           ;[org.neo4j.cypher.javacompat ExecutionEngine CypherParser])
+  (:require [cayenne.conf :as conf]
+            [clojure.string :as string]
             [clojurewerkz.neocons.rest :as neo]
             [clojurewerkz.neocons.rest.nodes :as nodes]
             [clojurewerkz.neocons.rest.relationships :as rels]))
 
-;; Graft metadata trees into neo4j. Each item type has a strategy to find an existing
-;; matching node in the graph. Some item types never match existing nodes and are
-;; always created new (they are ambiguous types).
+(def ^:dynamic *graph-db* nil)
+(def ^:dynamic *graph-server* nil)
 
-(declare match-exact)
+(defn make-embedded-graph-db
+  [path]
+  (EmbeddedGraphDatabase. path))
 
-(defmulti find-item-node :type)
+;(defn make-graph-server
+;  [db]
+;  (WrappingNeoServerBootstrapper *graph-db*))
 
-(defmethod find-item-node :work [item] nil)
-(defmethod find-item-node :person [item] nil)
-(defmethod find-item-node :citation [item] nil)
-(defmethod find-item-node :event [item] nil)
-(defmethod find-item-node :id [item] (match-exact item :subtype :value))
-(defmethod find-item-node :org [item] (match-exact item :name))
-;(defmethod find-item-node :url [item] (match-exact item :value))
-;(defmethod find-item-node :title [item] (match-exact item :subtype :language :value))
-;(defmethod find-item-node :date [item] (match-exact item :day :month :year :time-of-year))
-(defmethod find-item-node :title [item] nil)
-(defmethod find-item-node :date [item] nil)
-(defmethod find-item-node :url [item] nil)
+(defn set-graph-db!
+  [db]
+  (alter-var-root #'*graph-db* (constantly db)))
+
+(defn set-graph-server!
+  [server]
+  (alter-var-root #'*graph-server* (constantly server)))
+
+(defmacro with-connection [db & body]
+  `(binding [*graph-db* ~db]
+     ~@body))
+
+(defmacro with-transaction
+  [& body]
+  `(let [transaction# (.beginTx *graph-db*)]
+     (try
+       (let [val# (do ~@body)]
+         (.success transaction#)
+         val#)
+       (finally (.finish transaction#)))))
+
+(defmacro with-transaction*
+  [db & body]
+  `(with-connection ~db
+     (with-transaction
+       ~@body)))
+
+(defn remove-ambiguous-at
+  "Traverses nodes from a point, stopping when encountering nodes with the property
+   id, and deleting any nodes without it. All relations connecting to nodes found
+   without an id property are also deleted."
+  [node]
+  (if-not (.hasProperty node "id")
+    (do
+      (doseq [rel (.getRelationships node Direction/OUTGOING)]
+        (remove-ambiguous-at (.getEndNode rel))
+        (.delete rel))
+      (doseq [rel (.getRelationships node Direction/INCOMING)]
+        (remove-ambiguous-at (.getStartNode rel))
+        (.delete rel))
+      (.delete node))))
+
+(defn remove-ambiguous-from
+  "Same as remove-ambiguous-at but starts from all nodes connected to the given
+   node. The given node is not deleted, nor checked for ambiguouity."
+  [node]
+  (doseq [rel (.getRelationships node Direction/OUTGOING)]
+    (remove-ambiguous-at (.getEndNode rel)))
+  (doseq [rel (.getRelationships node Direction/INCOMING)]
+    (remove-ambiguous-at (.getStartNode rel))))
+
+(defn find-node-for-item 
+  "Find a node that matches the type and an ID from item."
+  [item]
+  (let [item-type (:type item)
+        item-id (first (:id item))]
+    (when (and item-id item-type)
+      (.. *graph-db* (index) (forNodes item-type) (get "id" item-id)))))
+
+(defn update-node [node properties]
+  (doseq [[k v] properties]
+    (.setProperty node (name k) v))
+  node)
+
+(defn recreate-node [node properties]
+  (doseq [k (.getPropertyKeys node)]
+    (.removeProperty node k))
+  (update-node node properties)
+  node)
+
+(defn create-node [properties]
+  (recreate-node (.createNode *graph-db*) properties))
 
 (def index-for-type {:work [:subtype]
                      :org [:name] 
@@ -40,47 +107,8 @@
 (defn without-nils [record]
   (reduce (fn [m [k v]] (if (nil? v) (dissoc m k) m)) record record))
 
-(defn index-item-node
-  "Fields are concatenated then indexed under an index whose name is the 
-   concatenation of field names."
-  [item node]
-  (let [index-fields (get index-for-type (:type item))]
-    (doseq [index-field (get index-for-type (:type item))]
-      (when-let [value (get item index-field)]
-        (nodes/add-to-index (:id node) (name (:type item)) (name index-field) value))))
-  node)
+(defn insert-item [item]
+  ())
 
-(defn make-item-node [item]
-  (let [doc (without-nils (dissoc item :rel))
-        node (nodes/create doc)]
-    (index-item-node item node)))
-
-;; todo delete rel out of node and everything connected.
-(defn item-node [item]
-  (let [node (or (find-item-node item) (make-item-node item))]
-    ;(when (= (:type node) :id)
-    ;  ())
-    node))
-
-(defn insert-item-with-rel [item rel from-node]
-  (let [parent-node (item-node item)]
-    (rels/create from-node parent-node (name rel))
-    (doseq [rel-type (keys (:rel item))]
-      (doseq [child-item (get-in item [:rel rel-type])]
-        (insert-item-with-rel child-item rel-type parent-node)))))
-
-(defn match-exact [item & fields]
-  (let [index-fields (index-for-type (:type item))
-        field-fn #(str (name %) ":\"" (name (get item %)) "\"")
-        query (string/join " AND " (map field-fn index-fields))]
-    (first (nodes/query (name (:type item)) query))))
-
-(defn insert-item
-  [item]
-  (let [parent-node (item-node item)]
-    (doseq [rel-type (keys (:rel item))]
-      (doseq [child-item (get-in item [:rel rel-type])]
-        (insert-item-with-rel child-item rel-type parent-node)))))
-
-;; todo afterwards, run dedup tasks. For example, for each journal work, merge similar journal
-;; volumes it is pointing to. So on.
+;(set-graph-db! (make-embedded-graph-db (conf/get-param [:db :neo4j :dir])))
+;(set-graph-server! (make-graph-server *graph-db*))

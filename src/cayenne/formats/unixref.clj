@@ -1,10 +1,10 @@
 (ns cayenne.formats.unixref
-  (:require [[clojure.stacktrace :as st]
-             [cayenne.xml :as xml]])
-  (:use [[cayenne.ids.doi :only [as-long-doi-uri]]
-         [cayenne.ids.issn :only [as-issn-uri]]
-         [cayenne.ids.isbn :only [as-isbn-uri]]
-         [cayenne.ids.orcid :only [as-orcid-uri]]]))
+  (:require [clojure.stacktrace :as st])
+  (:require [cayenne.xml :as xml])
+  (:use [cayenne.ids.doi :only [to-long-doi-uri]])
+  (:use [cayenne.ids.issn :only [to-issn-uri]])
+  (:use [cayenne.ids.isbn :only [to-isbn-uri]])
+  (:use [cayenne.ids.orcid :only [to-orcid-uri]]))
 
 ;; -----------------------------------------------------------------
 ;; Helpers
@@ -31,6 +31,21 @@
   (let [existing (or (get item relation) [])]
     (assoc-in item [:rel relation] (conj existing related-item))))
 
+(defn attach-id
+  "Attach URI ids to an item."
+  [item id]
+  (if id
+    (let [existing (or (get item :id) [])]
+      (assoc item :id (conj existing id)))
+    item))
+
+(defn attach-ids
+  [item ids]
+  (if (not (empty? ids))
+    (let [existing (or (get item :id) [])]
+      (assoc item :id (concat existing ids)))
+    item))
+
 (defn append-items
   "Appends a map, or concats a list of maps, to an existing item list."
   [a b]
@@ -39,7 +54,7 @@
     (concat a b)))
 
 (defn if-conj
-  "Conjion item to coll iff item is not nil."
+  "Conj item to coll iff item is not nil."
   [coll item]
   (if (not (nil? item))
     (conj coll item)
@@ -174,16 +189,16 @@
   (xml/xselect work-loc "citation_list" "citation"))
 
 (defn parse-citation [citation-loc]
-  {:doi (as-long-doi-uri (xml/xselect1 citation-loc "doi" :text))
+  {:doi (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text))
    :display-doi (xml/xselect1 citation-loc "doi" :text)
-   :issn (as-issn-uri (xml/xselect1 citation-loc "issn" :text))
+   :issn (to-issn-uri (xml/xselect1 citation-loc "issn" :text))
    :journal-title (xml/xselect1 citation-loc "journal_title" :text)
    :author (xml/xselect1 citation-loc "author" :text)
    :volume (xml/xselect1 citation-loc "volume" :text)
    :issue (xml/xselect1 citation-loc "issue" :text)
    :first-page (xml/xselect1 citation-loc "first_page" :text)
    :year (xml/xselect1 citation-loc "cYear" :text)
-   :isbn (as-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
+   :isbn (to-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
    :series-title (xml/xselect1 citation-loc "series_title" :text)
    :volume-title (xml/xselect1 citation-loc "volume_title" :text)
    :edition-number (xml/xselect1 citation-loc "edition_number" :text)
@@ -192,7 +207,7 @@
    :unstructured (xml/xselect1 citation-loc "unstructured_citation" :text)})
 
 (defn parse-citation-ids [citation-loc]
-  {:doi (as-long-doi-uri (xml/xselect1 citation-loc "doi" :text))})
+  {:doi (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text))})
 
 ;; ---------------------------------------------------------------------
 ;; Resources
@@ -252,6 +267,10 @@
      :value (to-long-doi-uri doi)
      :original doi}))
 
+(defn parse-doi-uri [item-loc]
+  (if-let [doi (xml/xselect1 item-loc "doi_data" "doi" :text)]
+    (to-long-doi-uri doi)))
+
 (defn find-issns [item-loc]
   (xml/xselect item-loc "issn"))
 
@@ -261,8 +280,12 @@
     {:type :id
      :subtype :issn
      :kind (if (= issn-type "print") :print :electronic)
-     :value (as-issn-uri issn-value)
+     :value (to-issn-uri issn-value)
      :original issn-value}))
+
+(defn parse-issn-uri [issn-loc]
+  (if-let [issn (xml/xselect1 issn-loc :text)]
+    (to-issn-uri issn)))
 
 (defn find-isbns [item-loc]
   (xml/xselect item-loc "isbn"))
@@ -274,8 +297,12 @@
     {:type :id
      :subtype :isbn
      :kind (if (= isbn-type "print") :print :electronic)
-     :value (as-isbn-uri isbn-value)
+     :value (to-isbn-uri isbn-value)
      :original isbn-value}))
+
+(defn parse-isbn-uri [isbn-loc]
+  (if-let [isbn (xml/xselect1 isbn-loc :text)]
+    (to-isbn-uri isbn)))
 
 ;; ---------------------------------------------------------------
 ;; Contributors
@@ -286,8 +313,12 @@
     {:type :id
      :subtype :orcid
      :authenticated (or (xml/xselect1 orcid-loc ["authenticated"]) "false")
-     :value (as-orcid-uri (xml/xselect1 orcid-loc :text))
+     :value (to-orcid-uri (xml/xselect1 orcid-loc :text))
      :original (xml/xselect1 orcid-loc :text)}))
+
+(defn parse-orcid-uri [person-loc]
+  (when-let [orcid-loc (xml/xselect1 person-loc "ORCID")]
+    (to-orcid-uri (xml/xselect1 orcid-loc :text))))
      
 ;; todo can have location after a comma
 (defn parse-affiliation [affiliation-loc]
@@ -304,8 +335,9 @@
                 :suffix (xml/xselect1 person-loc "suffix" :text)}
         parse-fn #(map parse-affiliation (find-affiliations %))]
     (-> person
-      (parse-attach :id person-loc :single parse-orcid)
-      (parse-attach :affiliation person-loc :multi parse-fn))))
+        (attach-id (parse-orcid-uri person-loc))
+        (parse-attach :id person-loc :single parse-orcid)
+        (parse-attach :affiliation person-loc :multi parse-fn))))
 
 (defn parse-organization [org-loc]
   {:type :org
@@ -328,6 +360,13 @@
       (if-conj (parse-doi item-loc))
       (concat (map parse-issn (find-issns item-loc)))
       (concat (map parse-isbn (find-isbns item-loc)))))
+
+(defn parse-item-id-uris
+  [item-loc]
+  (-> []
+      (if-conj (parse-doi-uri item-loc))
+      (concat (map parse-issn-uri (find-issns item-loc)))
+      (concat (map parse-isbn-uri (find-isbns item-loc)))))
 
 (defn parse-item-citations [item-loc]
   (map parse-citation (find-citations item-loc)))
@@ -355,11 +394,12 @@
    resource urls, some dates, titles, ids, citations and components."
   [item-loc]
   (-> {:type :work}
+      (attach-ids (parse-item-id-uris item-loc))
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
       (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
-      (parse-attach :id item-loc :multi parse-item-ids)
+      ;(parse-attach :id item-loc :multi parse-item-ids)
       (parse-attach :resource-resolution item-loc :single parse-resource)
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :title item-loc :multi parse-item-titles)
@@ -576,6 +616,10 @@
 ;         {:subtype :dissertation}))))
 
 ;; ---------------------------------------------------------------
+
+(defn unixref-citation-parser
+  [oai-record]
+  (map parse-citation (xml/xselect oai-record :> "citation_list" "citation")))
 
 (defn unixref-record-parser
   "Returns a tree of the items present in an OAI record. Each item has 

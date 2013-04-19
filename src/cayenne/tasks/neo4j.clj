@@ -1,9 +1,9 @@
 (ns cayenne.tasks.neo4j
-  (:use [cayenne.graft :only [insert-item ensure-indexes]]))
+  (:use [cayenne.graft :only [with-transaction insert-item]]))
 
 (defn record-neo-inserter []
-  (ensure-indexes)
   (fn [records]
-    (doseq [record records]
-      (insert-item record))))
+    (with-transaction
+      (doseq [record records]
+        (insert-item record)))))
     

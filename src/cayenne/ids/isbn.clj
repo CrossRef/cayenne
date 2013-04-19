@@ -1,15 +1,17 @@
-(ns cayenne.ids.isbn)
+(ns cayenne.ids.isbn
+  (:require [cayenne.conf :as conf]))
 
 (defn is-isbn?
-  []
+  [s]
   ())
 
-(defn extract-issn [] ())
+(defn extract-isbn [s] s)
 
-(defn normalize-issn [] ())
+(defn normalize-isbn [s] 
+  (extract-isbn s))
 
 (defn to-isbn-uri
   "Find anything in s that looks like it may be an ISBN and return it
   in a normalized URI form."
   [s]
-  (str "http://id.crossref.org/isbn/" (normalize-isbn s)))
+  (str (conf/get-param [:id :isbn :path]) (normalize-isbn s)))

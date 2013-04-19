@@ -38,7 +38,7 @@
 (defn job-count []
   (count @future-pool))
 
-(defn list-all-jobs [] (keys @job-pool))
+;(defn list-all-jobs [] (keys @job-pool))
 ;(defn list-finished-jobs [] (filter #(.isDone %) @task-list))
 ;(defn list-unfinished-jobs [] (filter #(not (.isDone %)) @task-list))
 ;(defn list-cancelled-jobs [] (filter #(.isCancelled %) @task-list))

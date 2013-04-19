@@ -1,5 +1,6 @@
 (ns cayenne.ids.orcid
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string])
+  (:require [cayenne.conf :as conf]))
 
 (def digit-set #{\0 \1 \2 \3 \4 \5 \6 \7 \8 \9 \X \x})
 
@@ -21,4 +22,4 @@
 
 (defn to-orcid-uri
   [s]
-  (str "http://orcid.org/" (normalize-orcid s)))
+  (str (conf/get-param [:id :orcid :path]) (normalize-orcid s)))
