@@ -22,12 +22,16 @@
 (defn load-oai-file [f]
   (oai/process-file unixref-record-parser (record-neo-inserter) f))
 
-(defn find-citations-like [dir matcher]
+(defn find-citations-like [dir patt]
   (oai/process-dir 
    dir 
    :parser unixref-citation-parser 
-   :task (matching-citation-finder "match.log.txt" matcher)))
+   :task (matching-citation-finder "match.log.txt" patt)))
+
+(defn find-citations-like-in-file [f patt]
+  (oai/process-file unixref-citation-parser (matching-citation-finder "match.log.txt" patt) f))
 
 (defn find-standards-citations [dir]
-  (let [matcher #"^(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
-    (find-citations-like dir matcher)))
+  (let [patt #"^(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
+    (find-citations-like dir patt)))
+

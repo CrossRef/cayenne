@@ -28,5 +28,6 @@
   "Find anything in s that looks like it may be an ISSN and return it
   in a normalized URI form."
   [s]
-  (str (conf/get-param [:id :issn :path]) (normalize-issn s)))
+  (when s
+    (str (conf/get-param [:id :issn :path]) (normalize-issn s))))
 

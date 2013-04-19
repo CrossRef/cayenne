@@ -22,4 +22,5 @@
 
 (defn to-orcid-uri
   [s]
-  (str (conf/get-param [:id :orcid :path]) (normalize-orcid s)))
+  (when s
+    (str (conf/get-param [:id :orcid :path]) (normalize-orcid s))))

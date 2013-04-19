@@ -12,9 +12,13 @@
 (def future-pool (ref {}))
 
 (defn put-job [job] 
-  (let [id (.toString (UUID/randomUUID))]
+  (let [id (.toString (UUID/randomUUID))
+        job-fn (fn [] (try
+                        (job)
+                        (catch Exception e
+                          (prn e))))]
     (dosync 
-      (alter future-pool assoc id (.submit processing-pool job)))
+      (alter future-pool assoc id (.submit processing-pool job-fn)))
     id))
 
 (defn forget-job [job-id]

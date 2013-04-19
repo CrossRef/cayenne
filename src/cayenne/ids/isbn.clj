@@ -14,4 +14,5 @@
   "Find anything in s that looks like it may be an ISBN and return it
   in a normalized URI form."
   [s]
-  (str (conf/get-param [:id :isbn :path]) (normalize-isbn s)))
+  (when s
+    (str (conf/get-param [:id :isbn :path]) (normalize-isbn s))))
