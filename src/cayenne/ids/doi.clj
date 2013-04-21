@@ -44,10 +44,11 @@
   "Ensure a long DOI is in a normalized URI form."
   [s]
   (when s
-    (str (conf/get-param [:id :long-doi :path]) (normalize-long-doi s))))
+    (conf/get-id-uri :long-doi (normalize-long-doi s))))
 
 (defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."
   [s]
   (when s
-    (str (conf/get-param [:id :short-doi :path]) (normalize-short-doi s))))
+    (conf/get-id-uri :short-doi (normalize-short-doi s))))
+

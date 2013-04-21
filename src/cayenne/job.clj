@@ -11,6 +11,13 @@
 
 (def future-pool (ref {}))
 
+(defn forget-job [job-id]
+  (dosync
+    (alter future-pool dissoc job-id)))
+
+(defn cancel-job [job-id]
+  (.cancel (get @future-pool job-id) true))
+
 (defn put-job [job] 
   (let [id (.toString (UUID/randomUUID))
         job-fn (fn [] (try
@@ -20,13 +27,6 @@
     (dosync 
       (alter future-pool assoc id (.submit processing-pool job-fn)))
     id))
-
-(defn forget-job [job-id]
-  (dosync
-    (alter future-pool dissoc job-id)))
-
-(defn cancel-job [job-id]
-  (.cancel (get @future-pool job-id) true))
 
 (defn get-job-result [job-id]
   (-> @future-pool (get job-id) (.get)))

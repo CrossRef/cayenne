@@ -618,6 +618,7 @@
 ;; ---------------------------------------------------------------
 
 (defn unixref-citation-parser
+  "Produces lists of citations found in unixref. (Does not return item record structures.)"
   [oai-record]
   (map parse-citation (xml/xselect oai-record :> "citation_list" "citation")))
 

@@ -15,4 +15,5 @@
   in a normalized URI form."
   [s]
   (when s
-    (str (conf/get-param [:id :isbn :path]) (normalize-isbn s))))
+    (conf/get-id-uri :isbn (normalize-isbn s))))
+

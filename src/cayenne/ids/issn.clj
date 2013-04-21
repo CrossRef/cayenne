@@ -29,5 +29,5 @@
   in a normalized URI form."
   [s]
   (when s
-    (str (conf/get-param [:id :issn :path]) (normalize-issn s))))
+    (conf/get-id-uri :issn (normalize-issn s))))
 
