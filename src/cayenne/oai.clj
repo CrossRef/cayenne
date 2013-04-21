@@ -3,7 +3,7 @@
   (:use [clojure.java.io :only [file reader]])
   (:use [cayenne.job]))
 
-(def debug-processing true)
+(def debug-processing false)
 
 (defn process-file [parser-fn task-fn file]
   "Run a parser and task over a file."
