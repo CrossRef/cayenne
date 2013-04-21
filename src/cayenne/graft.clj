@@ -9,43 +9,14 @@
             [clojurewerkz.neocons.rest.nodes :as nodes]
             [clojurewerkz.neocons.rest.relationships :as rels]))
 
-(def ^:dynamic *graph-db* nil)
-(def ^:dynamic *graph-server* nil)
-
-(defn make-embedded-graph-db
-  [path]
-  (EmbeddedGraphDatabase. path))
-
-;(defn make-graph-server
-;  [db]
-;  (WrappingNeoServerBootstrapper *graph-db*))
-
-(defn set-graph-db!
-  [db]
-  (alter-var-root #'*graph-db* (constantly db)))
-
-(defn set-graph-server!
-  [server]
-  (alter-var-root #'*graph-server* (constantly server)))
-
-(defmacro with-connection [db & body]
-  `(binding [*graph-db* ~db]
-     ~@body))
-
 (defmacro with-transaction
   [& body]
-  `(let [transaction# (.beginTx *graph-db*)]
+  `(let [transaction# (.beginTx (conf/get-service :neo4j-db))]
      (try
        (let [val# (do ~@body)]
          (.success transaction#)
          val#)
        (finally (.finish transaction#)))))
-
-(defmacro with-transaction*
-  [db & body]
-  `(with-connection ~db
-     (with-transaction
-       ~@body)))
 
 (defn remove-ambiguous-at
   "Traverses nodes from a point, stopping when encountering nodes with the property
@@ -77,7 +48,7 @@
   (let [item-type (:type item)
         item-id (first (:id item))]
     (when (and item-id item-type)
-      (.. *graph-db* (index) (forNodes item-type) (get "id" item-id)))))
+      (.. (conf/get-service :neo4j-db) (index) (forNodes item-type) (get "id" item-id)))))
 
 (defn update-node [node properties]
   (doseq [[k v] properties]
@@ -91,7 +62,7 @@
   node)
 
 (defn create-node [properties]
-  (recreate-node (.createNode *graph-db*) properties))
+  (recreate-node (.createNode (conf/get-service :neo4j-db) properties)))
 
 (def index-for-type {:work [:subtype]
                      :org [:name] 
@@ -110,5 +81,3 @@
 (defn insert-item [item]
   ())
 
-;(set-graph-db! (make-embedded-graph-db (conf/get-param [:db :neo4j :dir])))
-;(set-graph-server! (make-graph-server *graph-db*))

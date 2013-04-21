@@ -18,11 +18,12 @@
 (defn cancel-job [job-id]
   (.cancel (get @future-pool job-id) true))
 
-(defn put-job [job] 
+(defn put-job [job]
   (let [id (.toString (UUID/randomUUID))
         job-fn (fn [] (try
                         (job)
                         (catch Exception e
+                          (prn (.getStackTrace e))
                           (prn e))))]
     (dosync 
       (alter future-pool assoc id (.submit processing-pool job-fn)))

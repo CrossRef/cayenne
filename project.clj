@@ -11,10 +11,12 @@
                    "local/xercesImpl.jar",
                    "local/xml-apis.jar"]
   :dependencies [[clojurewerkz/neocons "1.1.0-beta4"]
+                 [riemann-clojure-client "0.2.1"]
                  [com.novemberain/monger "1.5.0-rc1"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]
                  [xom "1.2.5"]
+                 [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.2.0"]
                  [org.neo4j/neo4j "1.9.RC1"]])
