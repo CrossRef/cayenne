@@ -26,7 +26,6 @@
 (defn load-oai [file-or-dir]
   (oai/process 
    file-or-dir
-   :async false
    :name :load
    :parser unixref-record-parser 
    :task [record-neo-inserter]))

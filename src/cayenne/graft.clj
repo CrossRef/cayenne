@@ -33,11 +33,11 @@
   (if-not (.hasProperty node "id")
     (do
       (doseq [rel (.getRelationships node Direction/OUTGOING)]
-        (remove-ambiguous-at (.getEndNode rel))
-        (.delete rel))
+        (.delete rel)
+        (remove-ambiguous-at (.getEndNode rel)))
       (doseq [rel (.getRelationships node Direction/INCOMING)]
-        (remove-ambiguous-at (.getStartNode rel))
-        (.delete rel))
+        (.delete rel)
+        (remove-ambiguous-at (.getStartNode rel)))
       (.delete node))))
 
 (defn remove-ambiguous-from
@@ -67,7 +67,7 @@
   (doseq [[k v] (with-safe-vals properties)]
     (.setProperty node (name k) v))
   (when (:id properties)
-    (index-node node (:type properties) "id" (:id properties)))
+    (index-node node (name (:type properties)) "id" (into-array (:id properties))))
   node)
 
 (defn recreate-node [node properties]
@@ -79,8 +79,16 @@
 (defn create-node []
   (.createNode (conf/get-service :neo4j-db)))
 
+(defn linked? [from type to]
+  (->> (.getRelationships from (DynamicRelationshipType/withName (name type)) Direction/OUTGOING) 
+       (filter #(= (.getId to) (.getId (.getEndNode %))))
+       (count) 
+       (zero?) 
+       (not)))
+
 (defn link-nodes [from type to]
-  (.createRelationshipTo from to (DynamicRelationshipType/withName (name type))))
+  (when (not (linked? from type to))
+    (.createRelationshipTo from to (DynamicRelationshipType/withName (name type)))))
 
 (defn insert-item* 
   "Insert a child item, creating a relation from its parent."
