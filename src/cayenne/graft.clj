@@ -1,13 +1,8 @@
 (ns cayenne.graft
-  (:import ;[org.neo4j.server WrappingNeoServerBootstrapper]
-           [org.neo4j.kernel EmbeddedGraphDatabase]
-           [org.neo4j.graphdb Direction NotFoundException RelationshipType])
-           ;[org.neo4j.cypher.javacompat ExecutionEngine CypherParser])
+  (:import [org.neo4j.graphdb Direction NotFoundException DynamicRelationshipType])
+  (:use [cayenne.util :only [with-safe-vals]])
   (:require [cayenne.conf :as conf]
-            [clojure.string :as string]
-            [clojurewerkz.neocons.rest :as neo]
-            [clojurewerkz.neocons.rest.nodes :as nodes]
-            [clojurewerkz.neocons.rest.relationships :as rels]))
+            [clojure.string :as string]))
 
 (defmacro with-transaction
   [& body]
@@ -17,6 +12,18 @@
          (.success transaction#)
          val#)
        (finally (.finish transaction#)))))
+
+(defn find-node-for-item 
+  "Find a node that matches the type and an ID from item."
+  [item]
+  (let [item-type (:type item)
+        item-id (first (:id item))]
+    (when (and item-id item-type)
+      (.. (conf/get-service :neo4j-db) 
+          (index) 
+          (forNodes (name item-type))
+          (get "id" item-id)
+          (getSingle)))))
 
 (defn remove-ambiguous-at
   "Traverses nodes from a point, stopping when encountering nodes with the property
@@ -42,42 +49,57 @@
   (doseq [rel (.getRelationships node Direction/INCOMING)]
     (remove-ambiguous-at (.getStartNode rel))))
 
-(defn find-node-for-item 
-  "Find a node that matches the type and an ID from item."
-  [item]
-  (let [item-type (:type item)
-        item-id (first (:id item))]
-    (when (and item-id item-type)
-      (.. (conf/get-service :neo4j-db) (index) (forNodes item-type) (get "id" item-id)))))
+;; todo instead of calling find-node-for-item all over the place, iterate
+;; once over the item and attach nodes to the item tree where they exist
+
+(defn remove-ambiguous-for-item [item]
+  (when (:id item) 
+    (when-let [node (find-node-for-item item)]
+      (remove-ambiguous-from node)))
+  (doseq [[rel-type children] (:rel item)]
+    (doseq [child children]
+      (remove-ambiguous-for-item child))))
+
+(defn index-node [node type key val]
+  (.. (conf/get-service :neo4j-db) (index) (forNodes (name type)) (add node (name key) val)))
 
 (defn update-node [node properties]
-  (doseq [[k v] properties]
+  (doseq [[k v] (with-safe-vals properties)]
     (.setProperty node (name k) v))
+  (when (:id properties)
+    (index-node node (:type properties) "id" (:id properties)))
   node)
 
 (defn recreate-node [node properties]
   (doseq [k (.getPropertyKeys node)]
-    (.removeProperty node k))
+    (.removeProperty node (name k)))
   (update-node node properties)
   node)
 
-(defn create-node [properties]
-  (recreate-node (.createNode (conf/get-service :neo4j-db) properties)))
+(defn create-node []
+  (.createNode (conf/get-service :neo4j-db)))
 
-(def index-for-type {:work [:subtype]
-                     :org [:name] 
-                     :id [:subtype :value] 
-                     :url [:value]
-                     :title [:subtype :language :value]
-                     :date [:day :month :year :time-of-year]})
+(defn link-nodes [from type to]
+  (.createRelationshipTo from to (DynamicRelationshipType/withName (name type))))
 
-(defn ensure-indexes []
-  (neo/connect! "http://localhost:7474/db/data/")
-  (doseq [index-name (keys index-for-type)] (nodes/create-index index-name)))
+(defn insert-item* 
+  "Insert a child item, creating a relation from its parent."
+  [item parent rel-type]
+  (let [node (or (find-node-for-item item) (create-node))]
+    (recreate-node node (dissoc item :rel))
+    (link-nodes parent rel-type node)
+    (doseq [[rel-type children] (:rel item)]
+      (doseq [child children] 
+        (insert-item* child node rel-type)))))
 
-(defn without-nils [record]
-  (reduce (fn [m [k v]] (if (nil? v) (dissoc m k) m)) record record))
-
-(defn insert-item [item]
-  ())
+(defn insert-item 
+  "Insert an item into the graph db. First removes any ambiguous nodes
+   reachable from non-ambiguous items in the item's tree."
+  [item]
+  (remove-ambiguous-for-item item)
+  (let [node (or (find-node-for-item item) (create-node))]
+    (recreate-node node (dissoc item :rel))
+    (doseq [[rel-type children] (:rel item)]
+      (doseq [child children] 
+        (insert-item* child node rel-type)))))
 

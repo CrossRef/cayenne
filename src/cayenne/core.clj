@@ -16,26 +16,33 @@
 (def b (file "/Users/karl/Projects/cayenne/test-data/b.xml"))
 (def s (file "/Users/karl/Projects/cayenne/test-data/s.xml"))
 
-(defn parse-oai-file [f]
-  (oai/process-file unixref-record-parser (record-json-writer "out.txt") f))
+(defn parse-oai [file-or-dir]
+  (oai/process
+   file-or-dir
+   :name :parse
+   :parser unixref-record-parser 
+   :task [record-json-writer "out.txt"]))
 
-(defn load-oai-file [f]
-  (oai/process-file unixref-record-parser (record-neo-inserter) f))
+(defn load-oai [file-or-dir]
+  (oai/process 
+   file-or-dir
+   :async false
+   :name :load
+   :parser unixref-record-parser 
+   :task [record-neo-inserter]))
 
-(defn find-citations-like [name dir patt]
-  (oai/process-dir 
-   dir 
+(defn find-citations-like [file-or-dir patt]
+  (oai/process
+   file-or-dir
+   :name :find-citations
    :parser unixref-citation-parser 
-   :task (matching-citation-finder name "match.log.txt" patt)))
+   :task [matching-citation-finder "match.log.txt" patt]))
 
-(defn find-citations-like-in-file [name f patt]
-  (oai/process-file unixref-citation-parser (matching-citation-finder name "match.log.txt" patt) f))
-
-(defn find-standards-citations [dir]
+(defn find-standards-citations [file-or-dir]
   (let [patt #"^(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
-    (find-citations-like :find-standards dir patt)))
+    (find-citations-like file-or-dir patt)))
 
-(defn find-standards-citations-loose [dir]
+(defn find-standards-citations-loose [file-or-dir]
   (let [patt #"(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
-    (find-citations-like :find-standards-loose dir patt)))
+    (find-citations-like file-or-dir patt)))
 

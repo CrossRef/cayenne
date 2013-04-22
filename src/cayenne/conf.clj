@@ -1,5 +1,6 @@
 (ns cayenne.conf
-  (:import [org.neo4j.kernel EmbeddedGraphDatabase])
+  (:import [org.neo4j.server WrappingNeoServerBootstrapper]
+           [org.neo4j.kernel EmbeddedGraphDatabase])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
             [riemann.client :as rie]))
@@ -49,9 +50,9 @@
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
-    (set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:services :neo4j :dir])))
-    ;(set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
-    (set-service! :riemann (rie/tcp-client :host (get-param [:services :riemann :host])))))
+    (set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:service :neo4j :dir])))
+    (set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
+    (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
 
 (defn set-core! [name]
   (alter-var-root #'*core-name* (constantly name)))
@@ -67,7 +68,7 @@
     (str (get-param [:id :data-path]) (name id-type) "/" id-value)))
 
 (with-core :default
-  (set-param! [:service :neo4j :dir] "/home/cayenne/data/neo4j")
+  (set-param! [:service :neo4j :dir] "/Users/karl/Projects/cayenne/data/neo4j")
   (set-param! [:service :riemann :host] "127.0.0.1")
   
   (set-param! [:oai :dir] "/home/cayenne/data/oai")
