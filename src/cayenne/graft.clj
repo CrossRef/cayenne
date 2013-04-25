@@ -1,8 +1,86 @@
 (ns cayenne.graft
   (:import [org.neo4j.graphdb Direction NotFoundException DynamicRelationshipType])
-  (:use [cayenne.util :only [with-safe-vals]])
+  (:require [cayenne.neo :as neo])
   (:require [cayenne.conf :as conf]
             [clojure.string :as string]))
+
+(defn ambiguous-item? [item] (not (:id item)))
+(defn ambiguous-node? [node] (not (has-property item :id)))
+(defn item->properties [item] (neo/as-properties (dissoc item :rel)))
+(defn node-for-item [item] (find-node) (create-node))
+
+(defrecord GraftContext [item item-tree parent-node parent-item parent-rel])
+
+(defn graft-by 
+  "Graft an item into a node. First look for nodes with matching id,
+   if none found try the finders (based on looking around from a parent,)
+   if none found create a new node."
+  [graft-context & {:keys [match-properties match-title only-rel-type]
+                    :or {match-properties [] match-title false only-rel-type :any}}]
+  ; first look for any ids already in the graph.
+
+  ; if not, try match-properties and only-rel-type (search from parent)
+
+  ; if not, create a new node
+
+  ; update node properties
+  ())
+
+(defmulti graft-item* (fn [item] [(:type item) (:subtype item)])
+
+(defmethod graft-item* [:work :journal] [graft-context]
+  (graft-by graft-context))
+
+(defmethod graft-item* [:work :journal-issue] [issue parent-node]
+  (graft-by graft-context :try-id true :matching-properties [:subtype :issue]))
+
+(defmethod graft-item* [:work :journal-volume] [volume parent-node]
+  (graft-by graft-context :id-match :yes :property-match [:subtype :volume]))
+
+(defmethod graft-item* [:work :journal-article] [article parent-node]
+  (graft-by graft-context :id-match :yes))
+
+(defmethod graft-item* [:org nil] [org parent-node]
+  (graft-by graft-context :id-match :yes :property-match [:type :name]))
+
+(defmethod graft-item* [:date nil] [date parent-node]
+  (graft-by graft-context :property-match [:type :day :year :month :time-of-year]))
+
+(defmethod graft-item* [:person nil] [person parent-node]
+  (graft-by graft-context :id-match :yes))
+
+;; todo title subtypes should be relationship types!
+
+(defmethod graft-item* [:title :short] [title parent-node]
+  (graft-by :property-match [:type :subtype :language :value]
+            title parent-node))
+
+(defmethod graft-item* [:title :long] [title parent-node]
+  (graft-by :property-match [:type :subtype :language :value]
+            title parent-node))
+
+(defmethod graft-item* [:title :secondary] [title parent-node]
+  (graft-by :property-match [:type :subtype :language :value]
+            title parent-node))
+
+(defn graft-item [item]
+  (graft-item* (GraftContext. item 
+  (graft-item* item nil))
+
+
+
+(defmulti graft-rels first :default :other)
+
+(defmethod graft-rels :author [authors parent-item parent-node]
+  (let [out-rels (out-rels-from parent-node :author)]
+    (delete (end-nodes out-rels) :when ambiguous-node?)
+    (delete out-rels)
+    (doseq [author authors]
+      (-> (node-for-item author)
+          (update-node (item->properties author))
+          (create-rel parent-node :author)))))
+
+
 
 (defmacro with-transaction
   [& body]

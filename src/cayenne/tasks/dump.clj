@@ -1,30 +1,31 @@
 (ns cayenne.tasks.dump
   (:import [java.io PrintWriter])
+  (:use [clojure.tools.trace])
   (:require [clojure.data.json :as json]
            [clojure.java.io :as io]))
 
 (defn record-writer [out-file]
   "Write whole records as clojure serialized data structures."
   (let [wrtr (PrintWriter. (io/writer out-file))]
-    (fn [records] 
-      (doseq [record records]
-        (.println wrtr (pr-str record))))))
+    (fn [record] 
+      (.println wrtr (pr-str record)))))
 
 (defn record-json-writer [out-file]
   "Write whole records as JSON."
   (let [wrtr (PrintWriter. (io/writer out-file))]
-    (fn [records]
-      (doseq [record records]
-        (.println wrtr (json/write-str record))))))
+    (fn [record]
+      (.println wrtr (json/write-str record))
+      (.flush wrtr))))
 
-;; these are not generic and should move elsewhere:
+;; todo these are not generic and should move elsewhere:
+;; (they are probably not working with the latest output of
+;;  parsers anyway)
 
 (defn record-tab-writer [out-file]
   "Write whole records as TSV."
   (let [wrtr (PrintWriter. (io/writer out-file))]
-    (fn [records]
-      (doseq [record records]
-        (.println wrtr (str (:full-name record) \tab (:short-name record)))))))
+    (fn [record]
+      (.println wrtr (str (:full-name record) \tab (:short-name record))))))
 
 (defn doi-writer [out-file]
   "Write only DOIs to a file."

@@ -1,10 +1,10 @@
 (ns cayenne.formats.unixref
-  (:require [clojure.stacktrace :as st])
   (:require [cayenne.xml :as xml])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
   (:use [cayenne.ids.isbn :only [to-isbn-uri]])
-  (:use [cayenne.ids.orcid :only [to-orcid-uri]]))
+  (:use [cayenne.ids.orcid :only [to-orcid-uri]])
+  (:use [clojure.tools.trace]))
 
 ;; -----------------------------------------------------------------
 ;; Helpers
@@ -112,7 +112,7 @@
   ())
 
 (defn find-database [record-loc]
-  ())
+  nil)
 
 (defn find-stand-alone-component [record-loc]
   ())
@@ -388,13 +388,37 @@
       (concat (map parse-person-name (find-person-names item-loc kind)))
       (concat (map parse-organization (find-organizations item-loc kind)))))
 
-;; also todo: publisher_item, crossmark (fundref, update relations, licence info), component_list
+(defn parse-funder [funder-group-loc]
+  (-> {:type :org
+       :name (xml/xselect1 funder-group-loc "assertion" [:= "name" "funder_name"] :plain)}
+      (attach-id (xml/xselect1 funder-group-loc "assertion" "assertion" [:= "name" "funder_identifier"] :plain))))
+
+(defn parse-grant [funder-group-loc]
+  (-> {:type :grant}
+      (parse-attach :funder funder-group-loc :single parse-funder)
+      (attach-id (xml/xselect1 funder-group-loc "assertion" [:= "name" "funding_identifier"] :plain))))
+
+(defn parse-item-grants [item-loc]
+  (let [funder-groups-loc (concat 
+                           (xml/xselect item-loc "program" "assertion" [:= "name" "fundgroup"])
+                           (xml/xselect item-loc
+                                        "crossmark" 
+                                        "custom_metadata" 
+                                        "program" 
+                                        [:= "name" "fundref"]
+                                        "assertion"
+                                        [:= "name" "fundgroup"]))]
+    (map parse-grant funder-groups-loc)))
+
+;; also todo: publisher_item, component_list
 (defn parse-item
   "Pulls out metadata that is somewhat standard across types: contributors,
-   resource urls, some dates, titles, ids, citations and components."
+   resource urls, some dates, titles, ids, citations, components, crossmark assertions
+   and programs."
   [item-loc]
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
+      (parse-attach :grant item-loc :multi parse-item-grants)
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
@@ -591,14 +615,15 @@
 
 ;; todo institutions dates
 (defn parse-database [database-loc]
-  (let [metadata-loc (xml/xselect1 database-loc "database_metadata")]
-    (-> (parse-item metadata-loc)
-        (parse-attach :component database-loc :multi parse-datasets)
-        (parse-attach :publisher metadata-loc :single parse-publisher)
-        (conj
-         {:subtype :dataset
-          :language (xml/xselect1 metadata-loc ["language"])
-          :description (xml/xselect1 metadata-loc "description")}))))
+  (when database-loc
+    (let [metadata-loc (xml/xselect1 database-loc "database_metadata")]
+      (-> (parse-item metadata-loc)
+          (parse-attach :component database-loc :multi parse-datasets)
+          (parse-attach :publisher metadata-loc :single parse-publisher)
+          (conj
+           {:subtype :dataset
+            :language (xml/xselect1 metadata-loc ["language"])
+            :description (xml/xselect1 metadata-loc "description")})))))
 
 ;(defn parse-institution [dissertation-loc]
 ;  ())
@@ -616,6 +641,11 @@
 ;         {:subtype :dissertation}))))
 
 ;; ---------------------------------------------------------------
+
+(defn parse-primary-id [record]
+  (-> record
+      (xml/xselect1 "header" "identifier" :text)
+      (to-long-doi-uri)))
 
 (defn unixref-citation-parser
   "Produces lists of citations found in unixref. (Does not return item record structures.)"
@@ -656,18 +686,15 @@
    person
    org
    date
-   id
-     doi
-     issn
-     isbn
    title
      short
      long
      secondary
+   grant
+   license
 
    Relations include:
 
-   id
    published-online
    published-print
    start
@@ -683,6 +710,9 @@
    resource-resolution
    affiliation
    publisher
+   component
+   grant
+   funder
 
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 
@@ -690,13 +720,12 @@
    common relationship types include :author, :citation and :component.
    Anything mentioned as a value in :rel will be an item itself.
 
-   The result of this function is a list of trees (and in most cases the list will
-   contain one tree.)"
+   The result of this function is a list, [primary-id, item-tree]."
   [oai-record]
-  (try
-    (-> []
-        (append-items (parse-journal (find-journal oai-record)))
-        (append-items (parse-book (find-book oai-record)))
-        (append-items (parse-conf (find-conf oai-record))))
-    (catch Exception e (st/print-stack-trace e))))
+  [(parse-primary-id oai-record)
+   (or
+    (parse-database (find-database oai-record))
+    (parse-journal (find-journal oai-record))
+    (parse-book (find-book oai-record))
+    (parse-conf (find-conf oai-record)))])
 

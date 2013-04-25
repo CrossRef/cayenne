@@ -46,7 +46,7 @@
   `(binding [*result-name* ~name]
      ~@body))
 
-(defn create-core! 
+(defn create-core!
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
@@ -57,18 +57,9 @@
 (defn set-core! [name]
   (alter-var-root #'*core-name* (constantly name)))
 
-(defn get-id-uri [id-type id-value]
-  (if-let [prefix (get-param [:id (keyword id-type) :path])]
-    (str prefix id-value)
-    (str (get-param [:id :path]) (name id-type) "/" id-value)))
-
-(defn get-data-uri [id-type id-value]
-  (if-let [prefix (get-param [:id (keyword id-type) :data-path])]
-    (str prefix id-value)
-    (str (get-param [:id :data-path]) (name id-type) "/" id-value)))
-
 (with-core :default
   (set-param! [:service :neo4j :dir] "/Users/karl/Projects/cayenne/data/neo4j")
+  (set-param! [:service :mongo :host] "127.0.0.1")
   (set-param! [:service :riemann :host] "127.0.0.1")
   
   (set-param! [:oai :dir] "/home/cayenne/data/oai")
@@ -81,8 +72,13 @@
   (set-param! [:id :long-doi :path] "http://dx.doi.org/")
   (set-param! [:id :short-doi :path] "http://doi.org/")
   
-  (set-param! [:id :path] "http://id.crossref.org/")
-  (set-param! [:id :data-path] "http://data.crossref.org/"))
+  (set-param! [:id-generic :path] "http://id.crossref.org/")
+  (set-param! [:id-generic :data-path] "http://data.crossref.org/")
+
+  (set-param! [:api :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix=")
+  
+  (set-param! [:coll :issns] "issns")
+  (set-param! [:coll :categories] "categories"))
 
 (set-core! :default)
 

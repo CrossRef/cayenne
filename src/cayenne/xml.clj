@@ -11,6 +11,16 @@
 (defn- nodes->str [nodes]
   (apply str (map #(.getValue %) nodes)))
 
+(defn- nodes->xml [nodes]
+  (apply str (map #(.toXML %) nodes)))
+
+(defn- nodes->plain [nodes]
+  (->> nodes
+       (filter #(= (type %) nu.xom.Text))
+       (map #(.getValue %))
+       (apply str)
+       (.trim)))
+     
 (defn- child-seq [^nu.xom.Node node]
   (if (nil? node)
     []
@@ -48,6 +58,9 @@
                       empty)))]
     (.build (nu.xom.Builder. factory) rdr)))
 
+(defn read-xml [^java.io.Reader rdr]
+  (.getRootElement (.build (nu.xom.Builder.) rdr)))
+
 (defrecord SelectorContext [nodes descending?])
 
 (defn- xselect-result [out-val]
@@ -81,6 +94,12 @@
 
      (= :text selector)
      (map (comp nodes->str child-seq) nodes)
+
+     (= :plain selector)
+     (map (comp nodes->plain child-seq) nodes)
+
+     (= :xml selector)
+     (map (comp nodes->xml child-seq) nodes)
 
      (and descending? (= java.lang.String (type selector)))
      (->SelectorContext

@@ -1,5 +1,5 @@
 (ns cayenne.ids.isbn
-  (:require [cayenne.conf :as conf]))
+  (:require [cayenne.ids :as ids]))
 
 (defn is-isbn?
   [s]
@@ -15,5 +15,5 @@
   in a normalized URI form."
   [s]
   (when s
-    (conf/get-id-uri :isbn (normalize-isbn s))))
+    (ids/get-id-uri :isbn (normalize-isbn s))))
 

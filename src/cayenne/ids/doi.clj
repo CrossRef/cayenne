@@ -1,5 +1,5 @@
 (ns cayenne.ids.doi
-  (:require [cayenne.conf :as conf]))
+  (:require [cayenne.ids :as ids]))
 
 (defn is-long-doi?
   "Return true if s is a valid long DOI handle without URI prefix."
@@ -21,7 +21,7 @@
    doi:<DOI>
    <DOI>"
   [s]
-  (re-find #"10\.[0-9]{4,}/[^\s]+" s))
+  (or (re-find #"10\.[0-9]{4,}/[^\s]+" s) ""))
 
 (defn extract-short-doi
   "Attempt to extract a short DOI from the forms:
@@ -44,11 +44,11 @@
   "Ensure a long DOI is in a normalized URI form."
   [s]
   (when s
-    (conf/get-id-uri :long-doi (normalize-long-doi s))))
+    (ids/get-id-uri :long-doi (normalize-long-doi s))))
 
 (defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."
   [s]
   (when s
-    (conf/get-id-uri :short-doi (normalize-short-doi s))))
+    (ids/get-id-uri :short-doi (normalize-short-doi s))))
 

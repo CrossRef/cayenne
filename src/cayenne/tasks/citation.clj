@@ -1,4 +1,4 @@
-(ns cayenne.tasks.citations
+(ns cayenne.tasks.citation
   (:import [java.io PrintWriter])
   (:require [clojure.java.io :as io]
             [cayenne.conf :as conf]))

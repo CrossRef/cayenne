@@ -3,22 +3,22 @@
             [cayenne.conf :as conf])
   (:use [clojure.java.io :only [file reader]])
   (:use [cayenne.job])
-  (:use [cayenne.util]))
+  (:use [cayenne.util])
+  (:use [clojure.tools.trace]))
 
 (def debug-processing true)
 
-(defn process-oai-xml-file [parser-fn task file result-set]
+(defn process-oai-xml-file [parser-fn task-fn file result-set]
   "Run a parser and task over a file."
   (conf/with-result-set result-set
     (with-open [rdr (reader file)]
-      (let [task-fn (apply (first task) (rest task))]
-        (xml/process-xml rdr "record" (comp task-fn parser-fn))))))
+      (xml/process-xml rdr "record" (comp task-fn parser-fn)))))
 
-(defn process-oai-xml-file-async [parser-fn task file result-set]
+(defn process-oai-xml-file-async [parser-fn task-fn file result-set]
   "Asynchronously run a parser and task over a file"
   (when debug-processing
     (prn (str "Executing " file)))
-  (put-job #(process-oai-xml-file parser-fn task file result-set)))
+  (put-job #(process-oai-xml-file parser-fn task-fn file result-set)))
 
 (defn process [file-or-dir & {:keys [count task parser after before async kind name]
                               :or {kind ".xml"

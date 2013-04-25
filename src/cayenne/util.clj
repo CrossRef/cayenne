@@ -9,20 +9,57 @@
          :when v]
      [k v])))
 
-(defn without-nil-vals [record]
+(defn map-diff 
+  "Produce the list of keys in a but not in b."
+  [a b]
+  (filter #(not (get b %)) (keys a)))
+
+(defn map-intersect 
+  "Produce a list of keys present in a and b."
+  [a b]
+  (filter #(get a %) (keys b)))
+
+(defn without-nil-vals
+  "Dissoc any key val pairs where the val is nil."
+  [record]
   (reduce (fn [m [k v]] (if (nil? v) (dissoc m k) m)) record record))
 
-(defn without-keyword-vals [record]
+(defn without-keyword-vals
+  "Convert all map values that are keywords into Java strings."
+  [record]
   (reduce (fn [m [k v]] (if (keyword? v) (assoc m k (name v)) m)) record record))
 
-(defn with-java-array-vals [record]
-  (reduce (fn [m [k v]] (if (or (vector? v) (seq? v)) (assoc m k (into-array v)) m)) record record))
+(defn without-keyword-keys
+  "Convert all map keys that are keywords into Java strings."
+  [record]
+  (reduce (fn [m [k v]] (if (keyword? k) (assoc m (name k) v) m)) record record))
 
-(defn with-safe-vals [record]
-  (-> record (without-nil-vals) (without-keyword-vals) (with-java-array-vals)))
+(defn with-java-array-vals 
+  "Convert all clojure vectors and seqs in a map to Java arrays."
+  [record]
+  (reduce 
+   (fn [m [k v]] 
+     (if (or (vector? v) (seq? v)) (assoc m k (into-array v)) m)) record record))
 
-; File utils
-; ---------------------------------------------------------------
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Control flow stuff taken from Prismatic's plumbing lib
+
+(defmacro ?>>
+  "Conditional double-arrow operation (->> nums (?>> inc-all? map inc))"
+  [do-it? f & args]
+  `(if ~do-it?
+     (~f ~@args)
+     ~(last args)))
+
+(defmacro ?>
+  "Conditional single-arrow operation (-> m (?> add-kv? assoc :k :v))"
+  [arg do-it? f & rest]
+  `(if ~do-it?
+     (~f ~arg ~@rest)
+     ~arg))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; File utils
 
 (defn file-of-kind? [kind path]
   "Does the path point to a file that ends with kind?"

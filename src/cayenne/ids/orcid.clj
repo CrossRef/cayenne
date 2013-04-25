@@ -1,6 +1,6 @@
 (ns cayenne.ids.orcid
   (:require [clojure.string :as string])
-  (:require [cayenne.conf :as conf]))
+  (:require [cayenne.ids :as ids]))
 
 (def digit-set #{\0 \1 \2 \3 \4 \5 \6 \7 \8 \9 \X \x})
 
@@ -23,5 +23,5 @@
 (defn to-orcid-uri
   [s]
   (when s
-    (conf/get-id-uri :orcid (normalize-orcid s))))
+    (ids/get-id-uri :orcid (normalize-orcid s))))
 
