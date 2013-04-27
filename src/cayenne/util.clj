@@ -61,12 +61,14 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; File utils
 
-(defn file-of-kind? [kind path]
+(defn file-of-kind? 
   "Does the path point to a file that ends with kind?"
+  [kind path]
   (and (.isFile path) (.endsWith (.getName path) kind)))
 
-(defn file-kind-seq [kind file-or-dir count]
+(defn file-kind-seq 
   "Return a seq of all xml files under the given directory."
+  [kind file-or-dir count]
   (if (= count :all)
     (->> (file-seq file-or-dir)
          (filter #(file-of-kind? kind %)))

@@ -1,4 +1,4 @@
-(ns cayenne.tasks.neo4j
+(ns cayenne.tasks.neo4j)
   (:use [cayenne.graft :only [with-transaction insert-item]]))
 
 (defn record-neo-inserter []
@@ -7,3 +7,6 @@
       (doseq [record records]
         (insert-item record)))))
     
+(defn record-neo-rel-inserter []
+  (fn [records]
+    ()))

@@ -3,7 +3,7 @@
   (:use cayenne.conf)
   (:use cayenne.sources.wok)
   (:use cayenne.tasks.dump)
-  (:use cayenne.tasks.citations)
+  (:use cayenne.tasks.citation)
   ;;(:use cayenne.tasks.neo4j)
   (:require [cayenne.oai :as oai])
   (:require [cayenne.html :as html])
@@ -13,11 +13,11 @@
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
 
-(def j (file "/Users/karl/Projects/cayenne/test-data/j.xml"))
-(def b (file "/Users/karl/Projects/cayenne/test-data/b.xml"))
-(def s (file "/Users/karl/Projects/cayenne/test-data/s.xml"))
-(def funder-crossmark (file "/Users/karl/Projects/cayenne/test-data/funder-crossmark.xml"))
-(def funder-no-crossmark (file "/Users/karl/Projects/cayenne/test-data/funder-no-crossmark.xml"))
+(def j (file (str (get-param [:dir :test-data]) "/j.xml")))
+(def b (file (str (get-param [:dir :test-data]) "/b.xml")))
+(def s (file (str (get-param [:dir :test-data]) "/s.xml")))
+(def funder-crossmark (file (str (get-param [:dir :test-data]) "/funder-crossmark.xml")))
+(def funder-no-crossmark (file (str (get-param [:dir :test-data]) "/funder-no-crossmark.xml")))
 
 (defn parse-oai [file-or-dir]
   (oai/process

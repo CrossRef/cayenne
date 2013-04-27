@@ -1,33 +1,32 @@
 (ns cayenne.tasks.category
-  (:require [monger.collection :as coll]))
+  (:require [somnium.congomongo :as m]
+            [clojure.core.memoize :as memoize]
+            [cayenne.ids.issn :as issn]
+            [cayenne.conf :as conf]))
 
-(def issn-categories (atom {}))
-(def category-names (atom {}))
+(defn get-category-name [category]
+  (let [code (String/valueOf category)]
+    (m/with-mongo (conf/get-service :mongo)
+      (-> (m/fetch-one :categories :where {:code code}) (:name)))))
 
-(defn load []
-  (letfn [(to-category [record]
-            [(Integer/parseInt (:code %)) (:name %)])
-          (to-issns [record]
-            (->> [:e_issn :p_issn]
-                 ()))
+(defn get-issn-categories [issn]
+  (let [norm-issn (issn/normalize-issn issn)]
+    (m/with-mongo (conf/get-service :mongo)
+      (-> (m/fetch-one :issns :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]})
+          (:categories)
+          (map #(Integer/parseInt %))))))
 
-    (coll/with-collection (conf/get-param [:coll :issns])
-      (let [issns (->> (coll/find {}) (map to-issns) (flatten) (into {}))]
-        (swap! cached-issns (constantly issns))))
+(def get-issn-categories-memo (memoize/memo-lru get-issn-categories))
 
-    (coll/with-collection (conf/get-param [:coll :categories])
-      (let [categories (->> (coll/find {}) (map to-category) (into {}))]
-        (swap! cached-categories (constantly categories)))))))
-
-(defn apply-to
-  "Merge categories into an item if it is a journal item."
-  [item]
-  (if (and (= (:type item) :journal) (contains? item :id))
-    (let [categories (->> (:id item)
-                          (map #(cached-issns %))
-                          (filter #(not (nil? %)))
-                          (unique)
-                          (flatten))]
-      (merge item :categories categories))
-    item))
+;; (defn apply-to
+;;   "Merge categories into an item if it is a journal item."
+;;   [item]
+;;   (if (and (= (:type item) :journal) (contains? item :id))
+;;     (let [categories (->> (:id item)
+;;                           (map #(cached-issns %))
+;;                           (filter #(not (nil? %)))
+;;                           (unique)
+;;                           (flatten))]
+;;       (merge item :categories categories))
+;;     item))
 

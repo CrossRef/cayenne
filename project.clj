@@ -11,7 +11,7 @@
                    "local/xercesImpl.jar",
                    "local/xml-apis.jar"]
   :dependencies [[riemann-clojure-client "0.2.1"]
-                 [com.novemberain/monger "1.5.0-rc1"]
+                 [congomongo "0.4.1"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]
                  [xom "1.2.5"]

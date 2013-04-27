@@ -3,7 +3,9 @@
            [org.neo4j.kernel EmbeddedGraphDatabase])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
-            [riemann.client :as rie]))
+            [riemann.client :as rie]
+            [somnium.congomongo :as m]
+            [clj-http.conn-mgr :as conn]))
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -50,20 +52,42 @@
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
+    (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
     (set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:service :neo4j :dir])))
     (set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
+    (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
+                                            :host (get-param [:service :mongo :host])))
     (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
 
 (defn set-core! [name]
   (alter-var-root #'*core-name* (constantly name)))
 
 (with-core :default
-  (set-param! [:service :neo4j :dir] "/Users/karl/Projects/cayenne/data/neo4j")
+  (set-param! [:dir :home] "/Users/karl/Projects/cayenne")
+  (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
+  (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
+
+  (set-param! [:service :neo4j :dir] (str (get-param [:dir :data]) "/neo4j"))
+  (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "127.0.0.1")
   (set-param! [:service :riemann :host] "127.0.0.1")
-  
-  (set-param! [:oai :dir] "/home/cayenne/data/oai")
-  (set-param! [:oai :crossref :uri] "http://oai.crossref.org")
+
+  (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
+  (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")
+  (set-param! [:oai :crossref-journals :type] "cr_unixml")
+  (set-param! [:oai :crossref-journals :set-spec] "J")
+
+  (set-param! [:oai :crossref-books :dir] (str (get-param [:dir :data]) "/oai/crossref-books"))
+  (set-param! [:oai :crossref-books :url] "http://oai.crossref.org/OAIHandler")
+  (set-param! [:oai :crossref-books :type] "cr_unixml")
+  (set-param! [:oai :crossref-books :set-spec] "B")
+
+  (set-param! [:oai :crossref-serials :dir] (str (get-param [:dir :data]) "/oai/crossref-serials"))
+  (set-param! [:oai :crossref-serials :url] "http://oai.crossref.org/OAIHandler")
+  (set-param! [:oai :crossref-serials :type] "cr_unixml")
+  (set-param! [:oai :crossref-serials :set-spec] "S")
+
+  (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
   (set-param! [:oai :datacite :uri] "http://oai.datacite.org")
 
   (set-param! [:id :issn :path] "http://id.crossref.org/issn/")
@@ -75,10 +99,7 @@
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
-  (set-param! [:api :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix=")
-  
-  (set-param! [:coll :issns] "issns")
-  (set-param! [:coll :categories] "categories"))
+  (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 
 (set-core! :default)
 
