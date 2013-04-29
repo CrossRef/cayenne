@@ -42,7 +42,6 @@
 (defn check-url-citations [file-or-dir]
   (oai/process
    file-or-dir
-   :async false
    :name :check-url-citations
    :parser unixref-record-parser
    :task (url-citation-checker "check.log.txt")))
