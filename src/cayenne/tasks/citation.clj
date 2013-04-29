@@ -58,7 +58,7 @@
             citation-texts (map :unstructured (filter :unstructured citations))
             urls (doall (filter #(not (nil? %))
                                 (map url/locate citation-texts)))] 
-        (csv/write-csv wrtr (map (partial to-csv-line [] year) urls))
+        (csv/write-csv wrtr (map (partial to-csv-line categories year) urls))
         (.flush wrtr)))))
 ;        (conf/update-result! :records-scannned inc)
 ;        (conf/update-result! :citations-scanned + (count citation-texts))))))

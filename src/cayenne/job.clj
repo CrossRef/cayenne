@@ -20,8 +20,8 @@
 (defn forget-job [job-id]
   (let [set-name (get-set job-id)]
     (dosync
-     (swap! set-future-pool dissoc-in [set-name job-id])
-     (swap! job-id-set-map dissoc job-id))))
+     (alter set-future-pool dissoc-in [set-name job-id])
+     (alter job-id-set-map dissoc job-id))))
 
 (defn cancel-job [job-id]
   (.cancel (get-in @set-future-pool [(get-set job-id) job-id])))
@@ -31,7 +31,7 @@
    (doseq [[job-id future] (get @set-future-pool set-name)]
      (.cancel future)
      (forget-job future))
-   (swap! set-future-pool dissoc set-name))) 
+   (alter set-future-pool dissoc set-name))) 
 
 (defn job-count [set-name]
   (count (keys (get @set-future-pool set-name))))
