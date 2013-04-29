@@ -34,7 +34,7 @@
      (:root url)
      (:tld url)
      (:resolves url)
-     (:url url)]))
+     (:url url)])
 
 (defn url-citation-checker
   "Finds URLs in citations. Will pull out year and science categories
