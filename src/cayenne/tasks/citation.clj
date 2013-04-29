@@ -27,14 +27,24 @@
               (.flush wrtr))
             (conf/update-result! :miss-count inc)))))))
 
-(defn to-csv-line [categories year url]
+(defn to-csv-line [categories year citation url]
+  (if url
     [(string/join " " categories) 
      year 
+     true
      (:valid url)
+     (:resolves url)
      (:root url)
      (:tld url)
-     (:resolves url)
-     (:url url)])
+     (:url url)]
+    [(string/join " " categories) 
+     year
+     false
+     false
+     false
+     nil
+     nil
+     nil]))
 
 (defn url-citation-checker
   "Finds URLs in citations. Will pull out year and science categories
@@ -56,9 +66,8 @@
             categories (cat/get-issn-categories-memo issn)
             citations (get-in article [:rel :citation])
             citation-texts (map :unstructured (filter :unstructured citations))
-            urls (doall (filter #(not (nil? %))
-                                (map url/locate citation-texts)))] 
-        (csv/write-csv wrtr (map (partial to-csv-line categories year) urls))
+            urls (map url/locate citation-texts)]
+        (csv/write-csv wrtr (map (partial to-csv-line categories year) citation-texts urls))
         (.flush wrtr)))))
 ;        (conf/update-result! :records-scannned inc)
 ;        (conf/update-result! :citations-scanned + (count citation-texts))))))
