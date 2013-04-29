@@ -9,7 +9,8 @@
                    "local/log4j-1.2.12.jar"
                    "local/xalan.jar"
                    "local/xercesImpl.jar"
-                   "local/xml-apis.jar"]
+                   "local/xml-apis.jar"
+                   "res"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[riemann-clojure-client "0.2.1"]
                  [congomongo "0.4.1"]
@@ -20,6 +21,7 @@
                  [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.2.0"]
+                 [org.clojure/data.csv "0.1.2"]
                  [org.clojure/tools.trace "0.7.5"]
                  [org.clojure/core.memoize "0.5.3"]
                  [org.neo4j/neo4j "1.9.RC1"]

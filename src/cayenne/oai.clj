@@ -22,7 +22,7 @@
   [parser-fn task-fn file result-set]
   (when debug-processing
     (prn (str "Executing " file)))
-  (put-job #(process-oai-xml-file parser-fn task-fn file result-set)))
+  (put-job result-set #(process-oai-xml-file parser-fn task-fn file result-set)))
 
 (defn resumption-token 
   "Cheap and cheerful grab of resumption token."

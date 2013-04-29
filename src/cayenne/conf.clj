@@ -35,7 +35,10 @@
 (defn drop-result-set! []
   (swap! cores dissoc-in [*core-name* :results *result-name*]))
 
-(defmacro with-core 
+(defn get-resource [name]
+  (.getFile (clojure.java.io/resource (get-param [:res name]))))
+
+(defmacro with-core
   "Run operations on a particular core."
   [name & body]
   `(binding [*core-name* ~name]
@@ -53,8 +56,8 @@
   [name & opts]
   (with-core name
     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
-    (set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:service :neo4j :dir])))
-    (set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
+    ;(set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:service :neo4j :dir])))
+    ;(set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
     (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
@@ -69,7 +72,7 @@
 
   (set-param! [:service :neo4j :dir] (str (get-param [:dir :data]) "/neo4j"))
   (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "127.0.0.1")
+  (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
@@ -98,6 +101,8 @@
   
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
+
+  (set-param! [:res :tld-list] "tlds.txt")
 
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 

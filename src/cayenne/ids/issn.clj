@@ -8,7 +8,7 @@
   "Return true if s is a valid, normalized ISSN without URI prefix.
    Does not check checksum digit."
   [s]
-  (not (nil? (re-find #"\A[0-9]{4}-[0-9]{3}[0-9X]{3}\Z" s))))
+  (not (nil? (re-find #"\A[0-9]{4}-[0-9]{3}[0-9X]\Z" s))))
 
 (defn extract-issn 
   "Find anything in s that looks like it may be an ISSN and return it

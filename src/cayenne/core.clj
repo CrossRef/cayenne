@@ -39,6 +39,14 @@
 ;;    :parser unixref-record-parser 
 ;;    :task (record-neo-inserter)))
 
+(defn check-url-citations [file-or-dir]
+  (oai/process
+   file-or-dir
+   :async false
+   :name :check-url-citations
+   :parser unixref-record-parser
+   :task (url-citation-checker "check.log.txt")))
+
 (defn find-citations-like [file-or-dir patt]
   (oai/process
    file-or-dir

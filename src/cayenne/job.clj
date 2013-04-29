@@ -47,7 +47,7 @@
                             (prn e)))))]
     (dosync 
      (let [future (.submit processing-pool job-fn)]
-       (alter set-pool assoc [set-name id] future)
-       (alter future-pool assoc id (.submit processing-pool job-fn))))
+       (alter set-future-pool assoc [set-name id] future)
+       (alter job-id-set-map assoc id set-name)))
     id))
 

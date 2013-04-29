@@ -427,7 +427,7 @@
       (parse-attach :resource-resolution item-loc :single parse-resource)
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :title item-loc :multi parse-item-titles)
-      ;(parse-attach :citation item-loc :multi parse-item-citations)
+      (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))))
 
