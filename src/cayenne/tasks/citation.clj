@@ -28,8 +28,7 @@
             (conf/update-result! :miss-count inc)))))))
 
 (defn to-csv-line [categories year url]
-  (let [major-categories (filter #(zero? (mod % 1000)) categories)]
-    [(string/join " " major-categories) 
+    [(string/join " " categories) 
      year 
      (:valid url)
      (:root url)

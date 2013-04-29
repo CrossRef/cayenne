@@ -1,7 +1,7 @@
 (ns cayenne.tasks.category
+  (:use [cayenne.ids.issn :only [normalize-issn]])
   (:require [somnium.congomongo :as m]
             [clojure.core.memoize :as memoize]
-            [cayenne.ids.issn :as issn]
             [cayenne.conf :as conf]))
 
 (defn get-category-name [category]
@@ -10,9 +10,9 @@
       (-> (m/fetch-one :categories :where {:code code}) (:name)))))
 
 (defn get-issn-categories [issn]
-  (let [norm-issn (issn/normalize-issn issn)]
+  (let [norm-issn (normalize-issn issn)]
     (m/with-mongo (conf/get-service :mongo)
-      (-> (m/fetch-one :issns :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]})
+      (->> (m/fetch-one :issns :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]})
           (:categories)
           (map #(Integer/parseInt %))))))
 
