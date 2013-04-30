@@ -3,6 +3,7 @@
            [org.neo4j.kernel EmbeddedGraphDatabase])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
+            [clojure.java.io :as io]
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]))
@@ -37,6 +38,16 @@
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))
+
+(defn file-writer [file-name]
+  (let [wrtr (io/writer file-name)]
+    (add-watch (agent nil) :file-writer
+               (fn [key agent old new]
+                 (.write wrtr new)
+                 (.flush wrtr)))))
+
+(defn write-to [file-writer msg]
+  (send file-writer (constantly msg)))
 
 (defmacro with-core
   "Run operations on a particular core."

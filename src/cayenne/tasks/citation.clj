@@ -1,5 +1,5 @@
 (ns cayenne.tasks.citation
-  (:import [java.io PrintWriter])
+  (:import [java.io StringWriter])
   (:use [cayenne.util])
   (:require [clojure.java.io :as io]
             [clojure.data.csv :as csv]
@@ -8,7 +8,8 @@
             [cayenne.url :as url]
             [cayenne.conf :as conf]
             [cayenne.tasks.category :as cat]
-            [cayenne.ids.issn :as issn]))
+            [cayenne.ids.issn :as issn]
+            [somnium.congomongo :as m]))
 
 (defn matching-citation-finder
   "Count unstructured citations matching a particular regex pattern. Expects
@@ -29,15 +30,15 @@
 
 (defn to-csv-line [categories year citation url]
   (if url
-    [(string/join " " categories) 
-     year 
+    [(string/join " " categories)
+     year
      true
      (:valid url)
      (:resolves url)
      (:root url)
      (:tld url)
      (:url url)]
-    [(string/join " " categories) 
+    [(string/join " " categories)
      year
      false
      false
@@ -53,7 +54,7 @@
   [out-file]
   (conf/set-result! :citations-scanned 0)
   (conf/set-result! :records-scanned 0)
-  (let [wrtr (PrintWriter. (io/writer out-file))]
+  (let [wrtr (conf/file-writer out-file)]
     (fn [item]
       (let [journal (itree/find-item-of-subtype (second item) :journal)
             article (itree/find-item-of-subtype (second item) :journal-article)
@@ -67,8 +68,9 @@
             citations (get-in article [:rel :citation])
             citation-texts (map :unstructured (filter :unstructured citations))
             urls (map url/locate citation-texts)]
-        (csv/write-csv wrtr (map (partial to-csv-line categories year) citation-texts urls))
-        (.flush wrtr)))))
+        (with-open [str-wrtr (StringWriter.)]
+          (csv/write-csv str-wrtr (map (partial to-csv-line categories year) citation-texts urls))
+          (conf/write-to wrtr (.toString str-wrtr)))))))
 ;        (conf/update-result! :records-scannned inc)
 ;        (conf/update-result! :citations-scanned + (count citation-texts))))))
 
