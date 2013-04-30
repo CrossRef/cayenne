@@ -30,7 +30,12 @@
 
 (defn to-csv-line [categories year citation url]
   (if url
-    [(string/join " " categories)
+    [(nth categories 0 nil)
+     (nth categories 1 nil)
+     (nth categories 2 nil)
+     (nth categories 3 nil)
+     (nth categories 4 nil)
+     (nth categories 5 nil)
      year
      true
      (:valid url)
@@ -38,7 +43,12 @@
      (:root url)
      (:tld url)
      (:url url)]
-    [(string/join " " categories)
+    [(nth categories 0 nil)
+     (nth categories 1 nil)
+     (nth categories 2 nil)
+     (nth categories 3 nil)
+     (nth categories 4 nil)
+     (nth categories 5 nil)
      year
      false
      false
