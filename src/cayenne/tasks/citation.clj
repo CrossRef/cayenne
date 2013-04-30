@@ -1,5 +1,5 @@
 (ns cayenne.tasks.citation
-  (:import [java.io StringWriter])
+  (:import [java.io StringWriter PrintWriter])
   (:use [cayenne.util])
   (:require [clojure.java.io :as io]
             [clojure.data.csv :as csv]
