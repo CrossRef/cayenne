@@ -35,12 +35,13 @@
   (let [dir-name (str from "-" until)
         file-name (str (or token "first") ".xml")
         xml-file (file (:dir service) dir-name file-name)
-        params (-> {"metadataPrefix" (:type service)
-                    "verb" "ListRecords"}
-                   (?> #(:set-spec service) assoc "setspec" (:set-spec service))
-                   (?> from assoc "from" from)
-                   (?> until assoc "until" until)
-                   (?> token assoc "resumptionToken" token))]
+        params (-> 
+                {"metadataPrefix" (:type service)
+                 "verb" "ListRecords"}
+                (?> #(:set-spec service) assoc "setspec" (:set-spec service))
+                (?> from assoc "from" from)
+                (?> until assoc "until" until)
+                (?> token assoc "resumptionToken" token))]
     (let [conn-mgr (conf/get-service :conn-mgr)
           resp (client/get (:url service) {:query-params params
                                            :throw-exceptions false
@@ -54,20 +55,21 @@
         (when process-fn 
           (process-fn xml-file))))))
 
-(defn grab-oai-xml-file-async [service from until count token resumer-fn process-fn]
+(defn grab-oai-xml-file-async [service from until count token process-fn]
   (when debug-grabbing
     (prn (str "Grabbing " from " " until)))
   (put-job #(grab-oai-xml-file service from until count process-fn)))
 
-(defn process [file-or-dir & {:keys [count task parser after before async kind name]
-                              :or {kind ".xml"
-                                   async true
-                                   count :all
-                                   task [constantly nil]
-                                   after (constantly nil)
-                                   before (constantly nil)}}]
-  "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, one for each xml 
-   file under dir."
+(defn process 
+  "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
+   one for each xml file under dir."
+  [file-or-dir & {:keys [count task parser after before async kind name]
+                  :or {kind ".xml"
+                       async true
+                       count :all
+                       task [constantly nil]
+                       after (constantly nil)
+                       before (constantly nil)}}]
   (doseq [file (file-kind-seq kind file-or-dir count)]
     (if async
       (process-oai-xml-file-async parser task file name)
@@ -76,11 +78,9 @@
 (defn run [service & {:keys [from until task parser]
                             :or {task nil
                                  parser nil}}]
-  ())
-
-;; (oai/run (conf/get-param [:oai :crossref-journals])
-;;          :from "2000-01-01"
-;;          :until "2013-04-01"
-;;          :parser unixref-record-parser
-;;          :task (record-json-writer "out.txt"))
+  (let [process-fn (cond (and task parser) (comp task parser)
+                         task task
+                         parser parser
+                         :else nil)]
+    (grab-oai-xml-file-async service from until 0 nil process-fn)))
 

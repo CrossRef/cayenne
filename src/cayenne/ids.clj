@@ -26,8 +26,3 @@
         :else
         :unknown))
 
-(defn find-ids 
-  "Returns a lazy seq of all IDs in an item tree."
-  [item-tree]
-  ())
-  

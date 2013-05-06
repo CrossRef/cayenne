@@ -336,7 +336,6 @@
         parse-fn #(map parse-affiliation (find-affiliations %))]
     (-> person
         (attach-id (parse-orcid-uri person-loc))
-        (parse-attach :id person-loc :single parse-orcid)
         (parse-attach :affiliation person-loc :multi parse-fn))))
 
 (defn parse-organization [org-loc]

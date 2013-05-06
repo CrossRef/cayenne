@@ -7,6 +7,8 @@
   ;;(:use cayenne.tasks.neo4j)
   (:require [cayenne.oai :as oai])
   (:require [cayenne.html :as html])
+  (:require [cayenne.item-tree :as itree])
+  (:require [cayenne.tasks.solr :as solr])
   (:use clojure.tools.trace)
   (:use [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]))
 
@@ -18,26 +20,20 @@
 (def s (file (str (get-param [:dir :test-data]) "/s.xml")))
 (def funder-crossmark (file (str (get-param [:dir :test-data]) "/funder-crossmark.xml")))
 (def funder-no-crossmark (file (str (get-param [:dir :test-data]) "/funder-no-crossmark.xml")))
+(def orcid (file (str (get-param [:dir :test-data]) "/orcid.xml")))
 
-(defn parse-oai [file-or-dir]
-  (oai/process
-   file-or-dir
-   :name :parse
-   :parser unixref-record-parser 
-   :task (record-json-writer "out.txt")))
+(defn parse-unixref [file-or-dir]
+  (oai/process file-or-dir
+               :async false
+               :name :parse
+               :parser unixref-record-parser 
+               :task (comp 
+                      (record-json-writer "out.txt") 
+                      solr/as-solr-document
+                      #(itree/centre-on (second %) (first %)))))
 
-; todo load-oai should insert objects with ids into mongo and create
-; rels between objects with ids in neo4j and update solr
-
-; may also want to attach bits and pieces, such as science categories
-; maybe keep science cats in memory?
-
-;; (defn load-oai [file-or-dir]
-;;   (oai/process 
-;;    file-or-dir
-;;    :name :load
-;;    :parser unixref-record-parser 
-;;    :task (record-neo-inserter)))
+(defn get-unixref [service from until]
+  (oai/run service :from from :until until))
 
 (defn check-url-citations [file-or-dir]
   (oai/process
