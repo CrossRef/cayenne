@@ -72,11 +72,17 @@
 (defn get-item-rel [item-tree rel-type]
   (get-in item-tree [:rel rel-type])) 
 
-(defn get-tree-rel 
+(defn get-tree-rel
   "Return all items that are the endpoint of a rel of type rel-type,
-   regardless of where the rel starts in the tree."
+   regardless of where the relation starts in the tree."
   [item-tree rel-type]
-  ())
+  (if-let [related-items (get-in item-tree [:rel rel-type])]
+    (concat 
+     related-items 
+     (flatten 
+      (map #(get-tree-rel % rel-type) (children item-tree))))
+    (flatten 
+     (map #(get-tree-rel % rel-type) (children item-tree)))))
 
 (defn get-item-type [item-tree]
   (:type item-tree))

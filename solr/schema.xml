@@ -41,8 +41,6 @@
     <field name="doi" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
     <field name="issn" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="isbn" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
-    <field name="funder" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
-    <field name="grant" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="orcid" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
 
     <!-- Full text search -->
@@ -56,6 +54,7 @@
     <field name="subtype" type="string" indexed="true" stored="true" required="false"/>
     <field name="category" type="string" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="publication" type="string" indexed="true" stored="true" required="false"/>
+    <field name="publication_short" type="string" indexed="true" stored="true" required="false"/>
     <field name="year" type="integer" indexed="true" stored="true" required="false"/>
     <field name="oa_status" type="string" indexed="true" stored="true" required="false"/>
     <field name="funder_name" type="string" indexed="true" stored="true" required="false"/>
@@ -65,10 +64,16 @@
     <field name="hl_volume" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_issue" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_authors" type="stringTokens" indexed="true" stored="true" required="false"/>
+    <field name="hl_editors" type="stringTokens" indexed="true" stored="true" required="false"/>
+    <field name="hl_chairs" type="stringTokens" indexed="true" stored="true" required="false"/>
+    <field name="hl_translators" type="stringToken" indexed="true" stored="true" required="false"/>
+    <field name="hl_contributors" type="stringToken" indexed="true" stored="true" required="false"/>
     <field name="hl_publication" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_year" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_first_page" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_last_page" type="stringTokens" indexed="true" stored="true" required="false"/>
+    <field name="hl_grant" type="string" indexed="true" stored="true" multiValued="true" required="false"/>
+    <field name="hl_funder_name" type="string" indexed="true" stored="true" multiValued="true" required="false"/>
 
     <!-- Other stored fields -->
     <field name="first_author_given" type="stringTokens" indexed="false" stored="true" required="false"/>
