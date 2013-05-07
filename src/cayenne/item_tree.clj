@@ -1,6 +1,8 @@
 (ns cayenne.item-tree
   (:require [cayenne.ids :as ids]))
 
+(def contributor-rels [:author :chair :translator :editor :contributor])
+
 (defn add-property [item k v]
   (assoc item k v))
 
@@ -90,6 +92,7 @@
 (defn get-item-subtype [item-tree]
   (:subtype item-tree))
 
+;; todo should instead remove all rels to ancestors
 (defn without-id
   "Returns an item tree without items with id."
   [item-tree id]

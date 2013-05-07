@@ -703,6 +703,7 @@
    chair
    translator
    editor
+   contributor
    about
    title
    resource-fulltext
