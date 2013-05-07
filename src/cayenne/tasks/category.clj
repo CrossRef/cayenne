@@ -1,5 +1,6 @@
 (ns cayenne.tasks.category
-  (:use [cayenne.ids.issn :only [normalize-issn]])
+  (:use [cayenne.ids.issn :only [normalize-issn]]
+        [cayenne.item-tree])
   (:require [somnium.congomongo :as m]
             [clojure.core.memoize :as memoize]
             [cayenne.conf :as conf]))
@@ -16,17 +17,18 @@
           (:categories)
           (map #(Integer/parseInt %))))))
 
+(def get-category-name-memo (memoize/memo-lru get-category-name))
+
 (def get-issn-categories-memo (memoize/memo-lru get-issn-categories))
 
-;; (defn apply-to
-;;   "Merge categories into an item if it is a journal item."
-;;   [item]
-;;   (if (and (= (:type item) :journal) (contains? item :id))
-;;     (let [categories (->> (:id item)
-;;                           (map #(cached-issns %))
-;;                           (filter #(not (nil? %)))
-;;                           (unique)
-;;                           (flatten))]
-;;       (merge item :categories categories))
-;;     item))
+(defn apply-to
+  "Merge categories into an item if it is a journal item."
+  ([item]
+     (if (= :journal (get-item-subtype item))
+       (let [issns (map normalize-issn (get-item-ids item :issn))
+             categories (set (mapcat get-issn-categories-memo issns))]
+         (assoc item :category (map get-category-name-memo categories)))
+       item))
+  ([id item]
+     [id (apply-to item)]))
 

@@ -1,16 +1,17 @@
 (ns cayenne.core
-  (:use clojure.java.io)
-  (:use cayenne.conf)
-  (:use cayenne.sources.wok)
-  (:use cayenne.tasks.dump)
-  (:use cayenne.tasks.citation)
+  (:use [clojure.java.io]
+        [cayenne.conf]
+        [cayenne.sources.wok]
+        [cayenne.tasks.dump]
+        [cayenne.tasks.citation]
+        [clojure.tools.trace]
+        [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]])
   ;;(:use cayenne.tasks.neo4j)
-  (:require [cayenne.oai :as oai])
-  (:require [cayenne.html :as html])
-  (:require [cayenne.item-tree :as itree])
-  (:require [cayenne.tasks.solr :as solr])
-  (:use clojure.tools.trace)
-  (:use [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]))
+  (:require [cayenne.oai :as oai]
+            [cayenne.html :as html]
+            [cayenne.tasks.category :as cat]
+            [cayenne.item-tree :as itree]
+            [cayenne.tasks.solr :as solr]))
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
@@ -30,7 +31,8 @@
                :task (comp 
                       (record-json-writer "out.txt") 
                       solr/as-solr-document
-                      #(itree/centre-on (second %) (first %)))))
+                      #(itree/centre-on (second %) (first %))
+                      #(cat/apply-to (first %) (second %)))))
 
 (defn get-unixref [service from until]
   (oai/run service :from from :until until))
