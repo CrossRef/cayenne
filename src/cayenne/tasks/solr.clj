@@ -43,8 +43,13 @@
   (let [titles (get-descendant-rel item :title)]
     (map :value titles)))
 
+(defn get-oa-status [item]
+  (let [journal (find-item-of-subtype item :journal)]
+    (or (:oa-status journal) "Other")))
+
 (defn initials [first-name]
-  (string/join " " (map first (string/split first-name #"[\s\-]+"))))
+  "")
+  ;(string/join " " (map first (string/split first-name #"[\s\-]+"))))
 
 (defn as-solr-base-field [item]
   (string/join 
@@ -88,16 +93,14 @@
      "orcid" (get-contributor-orcids item)
      "category" (get-categories item)
      "funder_name" funder-names
-     "type" (get-item-subtype item)
+     "type" (subtype-labels (get-item-subtype item))
      "first_author_given" (:first-name primary-author)
      "first_author_surnanme" (:last-name primary-author)
      "content" (as-solr-content-field item)
      "content_citation" (as-solr-citation-field item)
      "publication" container-titles
-; "oa_status"
+     "oa_status" (get-oa-status item)
      "hl_publication" container-titles
-; "mongo_id"
-; "from_file"
      "year" (:year pub-date)
      "month" (:month pub-date)
      "day" (:day pub-date)

@@ -1,7 +1,30 @@
 (ns cayenne.item-tree
+  (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [cayenne.ids :as ids]))
 
 (def contributor-rels [:author :chair :translator :editor :contributor])
+
+(def subtype-labels {:journal "Journal"
+                     :journal-article "Journal Article"
+                     :journal-issue "Journal Issue"
+                     :journal-volume "Journal Volume"
+                     :proceedings "Proceedings"
+                     :proceedings-artcile "Proceedings Article"
+                     :report-article "Report"
+                     :standard "Standard"
+                     :dataset "Dataset"
+                     :edited-book "Book"
+                     :monograph "Monograph"
+                     :reference-book "Reference"
+                     :book "Book"
+                     :book-series "Book Series"
+                     :book-set "Book Set"
+                     :chapter "Book Chapter"
+                     :section "Book Section"
+                     :part "Book Part"
+                     :track "Book Track"
+                     :reference-entry "Reference Book Entry"
+                     :other "Other"})
 
 (defn add-property [item k v]
   (assoc item k v))
@@ -101,7 +124,7 @@
 (defn without-id
   "Returns an item tree without items with id."
   [item-tree id]
-  item-tree)
+  (dissoc-in item-tree [:rel :component]))
 
 (defn path-to* [item-tree path id]
   (if (in? (:id item-tree) id)

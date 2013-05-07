@@ -10,6 +10,7 @@
   (:require [cayenne.oai :as oai]
             [cayenne.html :as html]
             [cayenne.tasks.category :as cat]
+            [cayenne.tasks.doaj :as doaj]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]))
 
@@ -32,6 +33,7 @@
                       (record-json-writer "out.txt") 
                       solr/as-solr-document
                       #(itree/centre-on (second %) (first %))
+                      #(doaj/apply-to (first %) (second %))
                       #(cat/apply-to (first %) (second %)))))
 
 (defn get-unixref [service from until]
