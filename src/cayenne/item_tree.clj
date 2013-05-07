@@ -79,12 +79,17 @@
    regardless of where the relation starts in the tree."
   [item-tree rel-type]
   (if-let [related-items (get-in item-tree [:rel rel-type])]
-    (concat 
+    (concat
      related-items 
      (flatten 
       (map #(get-tree-rel % rel-type) (children item-tree))))
     (flatten 
      (map #(get-tree-rel % rel-type) (children item-tree)))))
+
+(defn get-descendant-rel
+  "Like get-tree-rel except excludes rels directly from top-level item."
+  [item-tree rel-type]
+  (mapcat #(get-tree-rel % rel-type) (children item-tree)))
 
 (defn get-item-type [item-tree]
   (:type item-tree))

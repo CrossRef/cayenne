@@ -51,7 +51,6 @@
 
     <!-- Faceting -->
     <field name="type" type="string" indexed="true" stored="true" required="false"/>
-    <field name="subtype" type="string" indexed="true" stored="true" required="false"/>
     <field name="category" type="string" multiValued="true" indexed="true" stored="true" required="false"/>
     <field name="publication" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="year" type="integer" indexed="true" stored="true" required="false"/>
