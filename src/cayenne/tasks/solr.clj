@@ -48,8 +48,8 @@
     (or (:oa-status journal) "Other")))
 
 (defn initials [first-name]
-  "")
-  ;(string/join " " (map first (string/split first-name #"[\s\-]+"))))
+  (when first-name
+    (string/join " " (map first (string/split first-name #"[\s\-]+")))))
 
 (defn as-solr-base-field [item]
   (string/join 
