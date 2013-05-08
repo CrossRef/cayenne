@@ -12,10 +12,14 @@ cd /vagrant
 
 cp solr/solr-web.xml /etc/tomcat7/Catalina/localhost
 cp -r solr /opt
+mkdir /var/lib/tomcat7/lib
+mv /opt/solr/lib/* /var/lib/tomcat7/lib
+mv /opt/solr/setenv.sh /usr/share/tomcat7/bin
+rmdir /opt/solr/lib
 mkdir /opt/solr/data
 mkdir /opt/solr/data/crmds1
 mkdir /opt/solr/data/crmds2
-chown -R tomcat7 /opt/solr
+chown -R tomcat7:tomcat7 /opt/solr
 service tomcat7 restart
 
 lein deps

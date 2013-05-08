@@ -64,8 +64,8 @@
     <field name="hl_authors" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_editors" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_chairs" type="stringTokens" indexed="true" stored="true" required="false"/>
-    <field name="hl_translators" type="stringToken" indexed="true" stored="true" required="false"/>
-    <field name="hl_contributors" type="stringToken" indexed="true" stored="true" required="false"/>
+    <field name="hl_translators" type="stringTokens" indexed="true" stored="true" required="false"/>
+    <field name="hl_contributors" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_publication" type="stringTokens" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="hl_year" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_first_page" type="stringTokens" indexed="true" stored="true" required="false"/>
