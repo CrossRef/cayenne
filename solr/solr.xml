@@ -2,6 +2,6 @@
 <solr persistent="true">
   <cores defaultCoreName="crmds1" adminPath="/admin/cores" zkClientTimeout="${zkClientTimeout:15000}" hostPort="8983">
     <core instanceDir="crmds1/" name="crmds1"/>
-    <core instanceDir="crmds1/" name="crmds2"/>
+    <core instanceDir="crmds2/" name="crmds2"/>
   </cores>
 </solr>
