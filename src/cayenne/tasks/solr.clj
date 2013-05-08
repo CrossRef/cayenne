@@ -13,6 +13,10 @@
    (.commit (conf/get-service :solr) false false)
    (alter insert-list (constantly []))))
 
+(defn clear-insert-list []
+  (dosync
+   (alter insert-list (constantly []))))
+
 (defn get-categories [item]
   (if-let [journal (find-item-of-subtype item :journal)]
     (or (:category journal) [])
@@ -84,7 +88,7 @@
        (concat (map 
                 #(str (:first-name %) " " (:last-name %)) 
                 (get-contributors item))) ; full names
-       (concat (mapcat get-item-ids (get-tree-rel item :grant))) ; grant numbers
+       (concat (mapcat get-item-ids (get-tree-rel item :awarded))) ; grant numbers
        (concat (map :name (get-tree-rel item :funder)))))) ; funder names
        
 (defn as-solr-document [item]
@@ -120,7 +124,7 @@
      "hl_first_page" (:first-page item)
      "hl_last_page" (:last-page item)
      "hl_funder_name" funder-names
-     "hl_grant" (mapcat get-item-ids (get-tree-rel item :grant))
+     "hl_grant" (mapcat get-item-ids (get-tree-rel item :awarded))
      "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))}))

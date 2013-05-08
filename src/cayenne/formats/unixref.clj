@@ -387,17 +387,22 @@
       (concat (map parse-person-name (find-person-names item-loc kind)))
       (concat (map parse-organization (find-organizations item-loc kind)))))
 
+(defn parse-grant [funding-identifier-loc]
+  (-> {:type :grant}
+      (attach-id (xml/xselect1 funding-identifier-loc :plain))))
+
+(defn parse-grants [funder-group-loc]
+  (map parse-grant
+       (xml/xselect funder-group-loc "assertion" [:= "name" "funding_identifier"])))
+
 (defn parse-funder [funder-group-loc]
   (-> {:type :org
        :name (xml/xselect1 funder-group-loc "assertion" [:= "name" "funder_name"] :plain)}
+      (parse-attach :awarded funder-group-loc :multi parse-grants)
       (attach-id (xml/xselect1 funder-group-loc "assertion" "assertion" [:= "name" "funder_identifier"] :plain))))
 
-(defn parse-grant [funder-group-loc]
-  (-> {:type :grant}
-      (parse-attach :funder funder-group-loc :single parse-funder)
-      (attach-id (xml/xselect1 funder-group-loc "assertion" [:= "name" "funding_identifier"] :plain))))
 
-(defn parse-item-grants [item-loc]
+(defn parse-item-funders [item-loc]
   (let [funder-groups-loc (concat 
                            (xml/xselect item-loc "program" "assertion" [:= "name" "fundgroup"])
                            (xml/xselect item-loc
@@ -407,7 +412,7 @@
                                         [:= "name" "fundref"]
                                         "assertion"
                                         [:= "name" "fundgroup"]))]
-    (map parse-grant funder-groups-loc)))
+    (map parse-funder funder-groups-loc)))
 
 ;; also todo: publisher_item, component_list
 (defn parse-item
@@ -417,7 +422,7 @@
   [item-loc]
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
-      (parse-attach :grant item-loc :multi parse-item-grants)
+      (parse-attach :funder item-loc :multi parse-item-funders)
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))

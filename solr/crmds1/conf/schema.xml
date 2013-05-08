@@ -55,7 +55,7 @@
     <field name="publication" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="year" type="integer" indexed="true" stored="true" required="false"/>
     <field name="oa_status" type="string" indexed="true" stored="true" required="false"/>
-    <field name="funder_name" type="string" indexed="true" stored="true" required="false"/>
+    <field name="funder_name" type="string" indexed="true" stored="true" required="false" multiValied="true"/>
     <field name="source" type="string" indexed="true" stored="true" required="false"/>
 
     <!-- Stored fields for highlighting -->
