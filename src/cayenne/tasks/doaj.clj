@@ -15,7 +15,7 @@
                         (m/fetch-one :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]})
                         (:oa_status)))]
     (if (= oa-status "doaj")
-      "Open Access"
+      "DOAJ"
       "Other")))
 
 (def get-oa-status-memo (memoize/memo-lru get-oa-status))

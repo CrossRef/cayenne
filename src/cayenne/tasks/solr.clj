@@ -34,10 +34,10 @@
     (string/join ", " (map as-name contributors))))
 
 (defn get-primary-author [item]
-  (first (get-item-rel item :author)))
+  (first (get-item-rel item :author))) ;; todo deal with orgs
 
 (defn get-contributors [item]
-  (mapcat (partial get-item-rel item) contributor-rels))
+  (mapcat (partial get-item-rel item) contributor-rels)) ;; todo deal with orgs
 
 (defn get-container-titles [item]
   (let [titles (get-descendant-rel item :title)]

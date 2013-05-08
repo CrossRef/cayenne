@@ -30,11 +30,11 @@
                :name :parse
                :parser unixref-record-parser 
                :task (comp 
-                      (record-json-writer "out.txt") 
+                      (record-json-writer "out.txt")
                       solr/as-solr-document
-                      #(itree/centre-on (second %) (first %))
-                      #(doaj/apply-to (first %) (second %))
-                      #(cat/apply-to (first %) (second %)))))
+                      #(apply itree/centre-on %)
+                      #(apply doaj/apply-to %)
+                      #(apply cat/apply-to %))))
 
 (defn get-unixref [service from until]
   (oai/run service :from from :until until))

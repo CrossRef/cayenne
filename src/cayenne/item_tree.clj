@@ -144,7 +144,7 @@
 (defn flatten-ancestors
   "Flatten ancestors of an item in item-tree with id. Ancestors of item are
    placed as embeded maps with the parent item type as key."
-  [item-tree id]
+  [id item-tree]
   (let [around-item (find-item-with-id item-tree id)]
     (reduce
      #(assoc %1 (:subtype %2) (without-id %2 id))
@@ -154,13 +154,11 @@
 (defn centre-on
   "Flatten ancestors of an item in item-tree with id. Ancestors of item are
    placed as embeded maps with the parent item type as key."
-  [item-tree id]
+  [id item-tree]
   (let [around-item (find-item-with-id item-tree id)]
     (reduce
      #(add-relation %1 :ancestor (without-id %2 id))
      around-item
      (path-to item-tree id))))
 
-
-   
 ; defn issns dois etc

@@ -724,7 +724,7 @@
   [oai-record]
   [(parse-primary-id oai-record)
    (or
-    (parse-database (find-database oai-record))
+    ;(parse-database (find-database oai-record))
     (parse-journal (find-journal oai-record))
     (parse-book (find-book oai-record))
     (parse-conf (find-conf oai-record)))])
