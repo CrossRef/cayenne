@@ -32,6 +32,7 @@
                :task (comp 
                       (record-json-writer "out.txt")
                       solr/as-solr-document
+                      #(assoc % :source "CrossRef")
                       #(apply itree/centre-on %)
                       #(apply doaj/apply-to %)
                       #(apply cat/apply-to %))))
@@ -43,6 +44,7 @@
                :parser unixref-record-parser 
                :task (comp 
                       solr/insert-item
+                      #(assoc % :source "CrossRef")
                       #(apply itree/centre-on %)
                       #(apply doaj/apply-to %)
                       #(apply cat/apply-to %))))

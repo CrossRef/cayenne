@@ -92,7 +92,7 @@
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)]
-    {;"source" "CrossRef" ;; todo should come from elsewhere
+    {"source" (:source item)
      "doi_key" (first (get-item-ids item :long-doi))
      "doi" (first (get-item-ids item :long-doi))
      "issn" (get-tree-ids item :issn)
