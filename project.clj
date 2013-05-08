@@ -13,7 +13,8 @@
                    "local/xml-apis.jar"
                    "res"]
   :plugins [[codox "0.6.4"]]
-  :dependencies [[riemann-clojure-client "0.2.1"]
+  :dependencies [[org.apache.solr/solr-solrj "4.3.0"]
+                 [riemann-clojure-client "0.2.1"]
                  [congomongo "0.4.1"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]

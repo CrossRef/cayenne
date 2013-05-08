@@ -1,6 +1,7 @@
 (ns cayenne.conf
   (:import [org.neo4j.server WrappingNeoServerBootstrapper]
-           [org.neo4j.kernel EmbeddedGraphDatabase])
+           [org.neo4j.kernel EmbeddedGraphDatabase]
+           [org.apache.solr.client.solrj.impl HttpSolrServer])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -71,6 +72,7 @@
     ;(set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
+    (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
     (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
 
 (defn set-core! [name]
@@ -85,6 +87,7 @@
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
+  (set-param! [:service :solr :url] "http://78.46.87.34:8080/solr-web")
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")

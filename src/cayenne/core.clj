@@ -36,6 +36,17 @@
                       #(apply doaj/apply-to %)
                       #(apply cat/apply-to %))))
 
+(defn index-unixref [file-or-dir]
+  (oai/process file-or-dir
+               :async false
+               :name :parse
+               :parser unixref-record-parser 
+               :task (comp 
+                      solr/insert-item
+                      #(apply itree/centre-on %)
+                      #(apply doaj/apply-to %)
+                      #(apply cat/apply-to %))))
+
 (defn get-unixref [service from until]
   (oai/run service :from from :until until))
 

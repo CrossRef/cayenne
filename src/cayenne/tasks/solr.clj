@@ -1,11 +1,17 @@
 (ns cayenne.tasks.solr
   (:use cayenne.item-tree)
-  (:require [clojure.string :as string]))
+  (:import [org.apache.solr.common SolrInputDocument])
+  (:require [clojure.string :as string]
+            [cayenne.conf :as conf]))
 
-(def pre-insert-cache (ref []))
+(def insert-list-max-size 10000)
+(def insert-list (ref []))
 
-(defn flush-insert-cache []
-  ())
+(defn flush-insert-list []
+  (dosync
+   (.add (conf/get-service :solr) @insert-list)
+   (.commit (conf/get-service :solr) false false)
+   (alter insert-list (constantly []))))
 
 (defn get-categories [item]
   (if-let [journal (find-item-of-subtype item :journal)]
@@ -86,7 +92,8 @@
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)]
-    {"doi_key" (first (get-item-ids item :long-doi))
+    {;"source" "CrossRef" ;; todo should come from elsewhere
+     "doi_key" (first (get-item-ids item :long-doi))
      "doi" (first (get-item-ids item :long-doi))
      "issn" (get-tree-ids item :issn)
      "isbn" (get-tree-ids item :isbn)
@@ -95,7 +102,7 @@
      "funder_name" funder-names
      "type" (subtype-labels (get-item-subtype item))
      "first_author_given" (:first-name primary-author)
-     "first_author_surnanme" (:last-name primary-author)
+     "first_author_surname" (:last-name primary-author)
      "content" (as-solr-content-field item)
      "content_citation" (as-solr-citation-field item)
      "publication" container-titles
@@ -117,8 +124,16 @@
      "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))}))
+
+(defn as-solr-input-document [item]
+  (let [doc (SolrInputDocument.)]
+    (doseq [[k v] (as-solr-document item)]
+      (.addField doc k v))
+    doc))
      
 (defn insert-item [item]
-  (as-solr-document item))
-  
+  (dosync
+   (alter insert-list conj (as-solr-input-document item))
+   (when (> (count @insert-list) insert-list-max-size)
+     (flush-insert-list))))
   
