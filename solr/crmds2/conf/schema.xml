@@ -72,7 +72,7 @@
     <field name="hl_first_page" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_last_page" type="stringTokens" indexed="true" stored="true" required="false"/>
     <field name="hl_grant" type="string" indexed="true" stored="true" multiValued="true" required="false"/>
-    <field name="hl_funder_name" type="string" indexed="true" stored="true" multiValued="true" required="false"/>
+    <field name="hl_funder_name" type="stringTokens" indexed="true" stored="true" multiValued="true" required="false"/>
 
     <!-- Other stored fields -->
     <field name="first_author_given" type="stringTokens" indexed="false" stored="true" required="false"/>
