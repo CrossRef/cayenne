@@ -24,33 +24,36 @@
 (def funder-no-crossmark (file (str (get-param [:dir :test-data]) "/funder-no-crossmark.xml")))
 (def orcid (file (str (get-param [:dir :test-data]) "/orcid.xml")))
 
-(defn parse-unixref [file-or-dir]
+(def dump-solr-docs
+  (comp
+   (record-json-writer "out.txt")
+   solr/as-solr-document
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
+
+(def index-solr-docs
+  (comp 
+   solr/insert-item
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
+
+(defn parse-unixref [file-or-dir using]
   (oai/process file-or-dir
                :async false
                :name :parse
                :parser unixref-record-parser 
-               :task (comp 
-                      (record-json-writer "out.txt")
-                      solr/as-solr-document
-                      #(assoc % :source "CrossRef")
-                      #(apply itree/centre-on %)
-                      #(apply doaj/apply-to %)
-                      #(apply cat/apply-to %))))
+               :task using))
 
-(defn index-unixref [file-or-dir]
-  (oai/process file-or-dir
-               :async false
-               :name :parse
-               :parser unixref-record-parser 
-               :task (comp 
-                      solr/insert-item
-                      #(assoc % :source "CrossRef")
-                      #(apply itree/centre-on %)
-                      #(apply doaj/apply-to %)
-                      #(apply cat/apply-to %))))
-
-(defn get-unixref [service from until]
-  (oai/run service :from from :until until))
+(defn get-unixref [service from until using]
+  (oai/run service 
+           :from from 
+           :until until
+           :parser unixref-record-parser
+           :task using))
 
 (defn check-url-citations [file-or-dir]
   (oai/process
