@@ -42,8 +42,6 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
-
-
 (def index-solr-docs
   (comp 
    solr/insert-item
