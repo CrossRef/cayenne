@@ -24,6 +24,15 @@
 (def funder-no-crossmark (file (str (get-param [:dir :test-data]) "/funder-no-crossmark.xml")))
 (def orcid (file (str (get-param [:dir :test-data]) "/orcid.xml")))
 
+(def dump-plain-docs
+  (record-json-writer "out.txt"))
+
+(def dump-annotated-docs
+  (comp
+   (record-json-writer "out.txt")
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
+
 (def dump-solr-docs
   (comp
    (record-json-writer "out.txt")
@@ -32,6 +41,8 @@
    #(apply itree/centre-on %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
+
+
 
 (def index-solr-docs
   (comp 
