@@ -370,6 +370,13 @@
       (concat (map parse-issn-uri (find-issns item-loc)))
       (concat (map parse-isbn-uri (find-isbns item-loc)))))
 
+;; todo handle locations as first class items?
+(defn parse-item-publisher [parent-loc]
+  (when-let [publisher-loc (xml/xselect1 parent-loc "publisher")]
+    {:type :org
+     :name (xml/xselect1 publisher-loc "publisher_name" :text)
+     :location (xml/xselect1 publisher-loc "publisher_place" :text)}))
+
 (defn parse-item-citations [item-loc]
   (map parse-citation (find-citations item-loc)))
 
@@ -433,7 +440,7 @@
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
       (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
-      ;(parse-attach :id item-loc :multi parse-item-ids)
+      (parse-attach :publisher item-loc :single parse-item-publisher)
       (parse-attach :resource-resolution item-loc :single parse-resource)
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :title item-loc :multi parse-item-titles)
@@ -545,17 +552,8 @@
           :last-page (xml/xselect1 content-item-loc "pages" "last_page" :text)
           :other-pages (xml/xselect1 content-item-loc "pages" "other_pages" :text)}))))
 
-;; todo handle locations as first class items?
-(defn parse-publisher [parent-loc]
-  (when-let [publisher-loc (xml/xselect1 parent-loc "publisher")]
-    {:type :org
-     :name (xml/xselect1 publisher-loc "publisher_name" :text)
-     :location (xml/xselect1 publisher-loc "publisher_place" :text)}))
-
-;; todo parse publisher as org
 (defn parse-single-book [book-meta-loc content-item-loc book-type]
   (-> (parse-item book-meta-loc)
-      (parse-attach :publisher book-meta-loc :single parse-publisher)
       (parse-attach :component content-item-loc :single parse-content-item)
       (conj
        {:subtype book-type
@@ -614,7 +612,6 @@
 ;; todo dates
 (defn parse-dataset [dataset-loc]
   (-> (parse-item dataset-loc)
-      (parse-attach :publisher dataset-loc :single parse-publisher)
       (conj
        {:subtype :dataset
         :kind (parse-dataset-type dataset-loc)
@@ -631,7 +628,6 @@
     (let [metadata-loc (xml/xselect1 database-loc "database_metadata")]
       (-> (parse-item metadata-loc)
           (parse-attach :component database-loc :multi parse-datasets)
-          (parse-attach :publisher metadata-loc :single parse-publisher)
           (conj
            {:subtype :dataset
             :language (xml/xselect1 metadata-loc ["language"])
