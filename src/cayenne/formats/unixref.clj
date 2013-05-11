@@ -105,8 +105,8 @@
   [record-loc]
   ())
 
-(defn find-report-paper [record-loc]
-  ())
+(defn find-report [record-loc]
+  (xml/xselect1 record-loc :> "report-paper"))
 
 (defn find-standard [record-loc]
   ())
@@ -629,6 +629,12 @@
             :language (xml/xselect1 metadata-loc ["language"])
             :description (xml/xselect1 metadata-loc "description")})))))
 
+;; todo support report-series and report-specific bits
+(defn parse-report [report-loc]
+  (when report-loc
+    (-> (parse-item (xml/xselect1 report-loc "report-paper_metadata"))
+        (assoc :subtype :report))))
+
 ;(defn parse-institution [dissertation-loc]
 ;  ())
 
@@ -669,7 +675,8 @@
      journal-article
      proceedings
      proceedings-article
-     report-article
+     report
+     report-series
      standard
      dataset
      edited-book
@@ -729,6 +736,7 @@
   [oai-record]
   [(parse-primary-id oai-record)
    (or
+    (parse-report (find-report oai-record))
     (parse-database (find-database oai-record))
     (parse-journal (find-journal oai-record))
     (parse-book (find-book oai-record))

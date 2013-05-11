@@ -136,11 +136,9 @@
     doc))
      
 (defn insert-item [item]
-  (if (empty? (get-item-ids item :long-doi))
-    (prn "Item with no doi_key")
-    (let [solr-doc (as-solr-input-document item)]
-      (dosync
-       (alter insert-list conj solr-doc)
-       (when (> (count @insert-list) insert-list-max-size)
-         (flush-insert-list))))))
+  (let [solr-doc (as-solr-input-document item)]
+    (dosync
+     (alter insert-list conj solr-doc)
+     (when (> (count @insert-list) insert-list-max-size)
+       (flush-insert-list)))))
   

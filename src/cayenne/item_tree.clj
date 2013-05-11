@@ -10,7 +10,8 @@
                      :journal-volume "Journal Volume"
                      :proceedings "Proceedings"
                      :proceedings-artcile "Proceedings Article"
-                     :report-article "Report"
+                     :report "Report"
+                     :report-series "Report Series"
                      :standard "Standard"
                      :dataset "Dataset"
                      :edited-book "Book"
@@ -19,12 +20,14 @@
                      :book "Book"
                      :book-series "Book Series"
                      :book-set "Book Set"
-                     :chapter "Book Chapter"
-                     :section "Book Section"
-                     :part "Book Part"
-                     :track "Book Track"
-                     :reference-entry "Reference Book Entry"
+                     :chapter "Chapter"
+                     :section "Section"
+                     :part "Part"
+                     :track "Track"
+                     :reference-entry "Entry"
                      :other "Other"})
+
+;; todo are section part track only for books or for article figures etc too?
 
 (defn add-property [item k v]
   (assoc item k v))

@@ -10,12 +10,23 @@
 (def debug-processing true)
 (def debug-grabbing true)
 
+(defn parser-task-pass 
+  "If the parser doesn't support a record (returns nil)
+   we skip the task fn."
+  [task-fn parser-fn]
+  (fn [record]
+    (let [parsed-record (parser-fn record)]
+      (if-not (nil? (second parsed-record))
+        (task-fn parsed-record)
+        (when debug-processing
+          (prn "Parser returned nil for a record"))))))
+
 (defn process-oai-xml-file 
   "Run a parser and task over a file."
   [parser-fn task-fn file result-set]
   (conf/with-result-set result-set
     (with-open [rdr (reader file)]
-      (xml/process-xml rdr "record" (comp task-fn parser-fn)))))
+      (xml/process-xml rdr "record" (parser-task-pass task-fn parser-fn)))))
 
 (defn process-oai-xml-file-async 
   "Asynchronously run a parser and task over a file"
