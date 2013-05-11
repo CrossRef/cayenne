@@ -128,6 +128,9 @@
 (defn find-pub-dates [work-loc kind]
   (xml/xselect work-loc "publication_date" [:= "media_type" kind]))
 
+(defn find-approval-dates [work-loc kind]
+  (xml/xselect work-loc "approval_date" [:= "media_type" kind]))
+
 (defn find-event-date [event-loc]
   (xml/xselect1 event-loc "conference_date"))
 
@@ -154,12 +157,12 @@
        (= month-val 34) :forth-quarter
        :else nil))))
 
-(defn parse-pub-date
+(defn parse-date
   "Parse 'print' or 'online' publication dates."
-  [pub-date-loc]
-  (let [day-val (xml/xselect1 pub-date-loc "day" :text)
-        month-val (xml/xselect1 pub-date-loc "month" :text)
-        year-val (xml/xselect1 pub-date-loc "year" :text)]
+  [date-loc]
+  (let [day-val (xml/xselect1 date-loc "day" :text)
+        month-val (xml/xselect1 date-loc "month" :text)
+        year-val (xml/xselect1 date-loc "year" :text)]
     {:type :date
      :day day-val 
      :month (parse-month month-val) 
@@ -371,7 +374,10 @@
   (map parse-citation (find-citations item-loc)))
 
 (defn parse-item-pub-dates [kind item-loc]
-  (map parse-pub-date (find-pub-dates item-loc kind)))
+  (map parse-date (find-pub-dates item-loc kind)))
+
+(defn parse-item-approval-dates [kind item-loc]
+  (map parse-date (find-approval-dates item-loc kind)))
 
 (defn parse-item-titles [item-loc]
   (-> []
@@ -433,7 +439,9 @@
       (parse-attach :title item-loc :multi parse-item-titles)
       (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
-      (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))))
+      (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
+      (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
+      (parse-attach :approval-online item-loc :multi (partial parse-item-approval-dates "online"))))
 
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
@@ -629,11 +637,16 @@
             :language (xml/xselect1 metadata-loc ["language"])
             :description (xml/xselect1 metadata-loc "description")})))))
 
+(defn parse-report-contract-number [report-loc]
+  (xml/xselect1 report-loc "report-paper_metadata" "contact_number" :text))
+
 ;; todo support report-series and report-specific bits
 (defn parse-report [report-loc]
   (when report-loc
     (-> (parse-item (xml/xselect1 report-loc "report-paper_metadata"))
-        (assoc :subtype :report))))
+        (conj 
+         {:subtype :report
+          :contract-number (parse-report-contract-number report-loc)}))))
 
 ;(defn parse-institution [dissertation-loc]
 ;  ())
@@ -645,7 +658,6 @@
 ;(defn parse-dissertation [dissertation-loc]
 ;  (when dissertation-loc
 ;    (-> (parse-item dissertation-loc)
-;        (parse-attach :approval dissertation-loc :multi parse-approval-dates)
 ;        (parse-attach :from dissertation-loc :multi parse-institutions)
 ;        (conj
 ;         {:subtype :dissertation}))))
