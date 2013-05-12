@@ -112,7 +112,7 @@
   ())
 
 (defn find-database [record-loc]
-  nil)
+  (xml/xselect1 record-loc :> "database"))
 
 (defn find-stand-alone-component [record-loc]
   ())
@@ -552,6 +552,9 @@
           :last-page (xml/xselect1 content-item-loc "pages" "last_page" :text)
           :other-pages (xml/xselect1 content-item-loc "pages" "other_pages" :text)}))))
 
+(defn parse-content-items [parent-loc]
+  (map parse-content-item (xml/xselect parent-loc "content_item")))
+
 (defn parse-single-book [book-meta-loc content-item-loc book-type]
   (-> (parse-item book-meta-loc)
       (parse-attach :component content-item-loc :single parse-content-item)
@@ -636,13 +639,37 @@
 (defn parse-report-contract-number [report-loc]
   (xml/xselect1 report-loc "report-paper_metadata" "contact_number" :text))
 
-;; todo support report-series and report-specific bits
-(defn parse-report [report-loc]
+(defn parse-single-report [report-loc]
   (when report-loc
     (-> (parse-item (xml/xselect1 report-loc "report-paper_metadata"))
+        (parse-attach :component report-loc :multi parse-content-items)
         (conj 
          {:subtype :report
           :contract-number (parse-report-contract-number report-loc)}))))
+
+(defn parse-report-series [series-meta-loc]
+  (-> (parse-item series-meta-loc)
+      (conj
+       {:subtype :report-series
+        :coden (xml/xselect1 series-meta-loc "coden" :text)
+        :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))
+
+(defn parse-single-report-with-series [report-loc series-meta-loc]
+  (-> (parse-report-series series-meta-loc)
+      (parse-attach :component report-loc :single parse-single-report)))
+
+;; todo parse institution
+(defn parse-report [report-loc]
+  (let [report-meta-loc (xml/xselect1 report-loc "report-paper_metadata")
+        report-series-meta-loc (xml/xselect1 report-loc "report-paper-series_metadata")
+        series-meta-loc (xml/xselect1 report-loc "report-paper_metadata" "series_metadata")]
+    (cond
+     report-meta-loc
+     (parse-single-report report-loc)
+     report-series-meta-loc
+     (parse-report-series report-series-meta-loc)
+     series-meta-loc
+     (parse-single-report-with-series report-loc series-meta-loc))))
 
 ;(defn parse-institution [dissertation-loc]
 ;  ())

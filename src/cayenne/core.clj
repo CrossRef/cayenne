@@ -17,12 +17,14 @@
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
 
-(def j (file (str (get-param [:dir :test-data]) "/j.xml")))
-(def b (file (str (get-param [:dir :test-data]) "/b.xml")))
-(def s (file (str (get-param [:dir :test-data]) "/s.xml")))
-(def funder-crossmark (file (str (get-param [:dir :test-data]) "/funder-crossmark.xml")))
-(def funder-no-crossmark (file (str (get-param [:dir :test-data]) "/funder-no-crossmark.xml")))
-(def orcid (file (str (get-param [:dir :test-data]) "/orcid.xml")))
+(defn test-input-file [name]
+  (file (str (get-param [:dir :test-data]) "/" name ".xml")))
+
+(defn test-accepted-file [name test-name]
+  (file (str (get-param [:dir :test-data]) "/" name "-" test-name ".accepted")))
+
+(defn test-output-file [name test-name]
+  (file (str (get-param [:dir :test-data]) "/" name "-" test-name ".out")))
 
 (def dump-plain-docs
   (record-json-writer "out.txt"))
