@@ -351,6 +351,29 @@
 (defn find-organizations [item-loc kind]
   (xml/xselect item-loc "contributors" "organization" [:= "contributor_role" kind]))
 
+;; --------------------------------------------------------------
+;; Institutions
+
+(defn parse-department [department-loc]
+  (when-let [department (xml/xselect1 department-loc :text)]
+    {:type :org
+     :subtype :department
+     :name department}))
+
+(defn parse-departments [institution-loc]
+  (map parse-department (xml/xselect institution-loc "institution_department")))
+
+;; todo acronym and location {0, 6}
+(defn parse-institution [institution-loc]
+  (-> {:type :org
+       :name (xml/xselect1 institution-loc "institution_name" :text)
+       :acronym (xml/xselect1 institution-loc "institution_acronym" :text)
+       :location (xml/xselect1 institution-loc "institution_location" :text)}
+      (parse-attach :component institution-loc :multi parse-departments)))
+
+(defn parse-institutions [parent-loc]
+  (map parse-institution (xml/xselect parent-loc "institution")))
+
 ;; ---------------------------------------------------------------
 ;; Generic item parsing
 
@@ -435,6 +458,7 @@
   [item-loc]
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
+      (parse-attach :institution item-loc :multi parse-institutions)
       (parse-attach :funder item-loc :multi parse-item-funders)
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
@@ -452,6 +476,7 @@
 
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
+
 
 (defn parse-journal-article [article-loc]
   (when article-loc
@@ -703,17 +728,12 @@
      standard-series-meta-loc
      (parse-standard-series standard-series-meta-loc))))
 
-;(defn parse-institution [dissertation-loc]
-;  ())
 
-;(defn parse-institutions [dissertation-loc]
-;  ())
 
 ;; todo degree
 ;(defn parse-dissertation [dissertation-loc]
 ;  (when dissertation-loc
 ;    (-> (parse-item dissertation-loc)
-;        (parse-attach :from dissertation-loc :multi parse-institutions)
 ;        (conj
 ;         {:subtype :dissertation}))))
 
