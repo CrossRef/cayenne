@@ -9,7 +9,7 @@
                      :journal-issue "Journal Issue"
                      :journal-volume "Journal Volume"
                      :proceedings "Proceedings"
-                     :proceedings-artcile "Proceedings Article"
+                     :proceedings-article "Conference Paper"
                      :report "Report"
                      :report-series "Report Series"
                      :standard "Standard"
