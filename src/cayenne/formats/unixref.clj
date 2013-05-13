@@ -98,12 +98,7 @@
   (xml/xselect1 record-loc :> "book"))
 
 (defn find-dissertation [record-loc]
-  ())
-
-(defn find-institution
-  "Sometimes found in a dissertation."
-  [record-loc]
-  ())
+  (xml/xselect1 record-loc :> "dissertation"))
 
 (defn find-report [record-loc]
   (xml/xselect1 record-loc :> "report-paper"))
@@ -728,14 +723,15 @@
      standard-series-meta-loc
      (parse-standard-series standard-series-meta-loc))))
 
-
-
-;; todo degree
-;(defn parse-dissertation [dissertation-loc]
-;  (when dissertation-loc
-;    (-> (parse-item dissertation-loc)
-;        (conj
-;         {:subtype :dissertation}))))
+(defn parse-dissertation [dissertation-loc]
+  (when dissertation-loc
+    (let [person-loc (xml/xselect dissertation-loc "person_name")]
+      (-> (parse-item dissertation-loc)
+          (parse-attach :author person-loc :single parse-person-name)
+          (conj 
+           {:subtype :dissertation
+            :language (xml/xselect1 dissertation-loc ["language"] :text)
+            :degree (xml/xselect1 dissertation-loc "degree" :text)})))))
 
 ;; ---------------------------------------------------------------
 
@@ -823,6 +819,7 @@
   [oai-record]
   [(parse-primary-id oai-record)
    (or
+    (parse-dissertation (find-dissertation oai-record))
     (parse-standard (find-standard oai-record))
     (parse-report (find-report oai-record))
     (parse-database (find-database oai-record))
