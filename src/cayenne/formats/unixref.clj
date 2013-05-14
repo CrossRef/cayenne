@@ -110,7 +110,7 @@
   (xml/xselect1 record-loc :> "database"))
 
 (defn find-stand-alone-component [record-loc]
-  ())
+  (xml/xselect1 record-loc :> "sa_component"))
 
 (defn find-components
   "One of chapter, section, part, track, reference_entry or other."
@@ -445,7 +445,20 @@
                                         [:= "name" "fundgroup"]))]
     (map parse-funder funder-groups-loc)))
 
-;; also todo: publisher_item, component_list
+;; todo parse format
+(defn parse-component [component-loc]
+  (-> (parse-item component-loc)
+      (conj
+       {:subtype :component
+        :size (xml/xselect1 component-loc ["component_size"] :text)
+        :agency (xml/xselect1 component-loc ["reg-agency"] :text)
+        :relation (xml/xselect1 component-loc ["parent_relation"] :text)
+        :description (xml/xselect1 component-loc "description" :text)})))
+
+(defn parse-component-list [parent-loc]
+  (map parse-component (xml/xselect parent-loc "component_list" "component")))
+
+;; also todo: publisher_item
 (defn parse-item
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations, components, crossmark assertions
@@ -453,6 +466,7 @@
   [item-loc]
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
+      (parse-attach :component item-loc :multi parse-component-list)
       (parse-attach :institution item-loc :multi parse-institutions)
       (parse-attach :funder item-loc :multi parse-item-funders)
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
@@ -471,7 +485,6 @@
 
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
-
 
 (defn parse-journal-article [article-loc]
   (when article-loc
@@ -728,10 +741,20 @@
     (let [person-loc (xml/xselect dissertation-loc "person_name")]
       (-> (parse-item dissertation-loc)
           (parse-attach :author person-loc :single parse-person-name)
-          (conj 
+          (conj
            {:subtype :dissertation
             :language (xml/xselect1 dissertation-loc ["language"] :text)
             :degree (xml/xselect1 dissertation-loc "degree" :text)})))))
+
+
+
+(defn parse-stand-alone-component [sa-component-loc]
+  (when sa-component-loc
+    (let [id (xml/xselect1 sa-component-loc ["parent_doi"] :text)
+          parent-doi (to-long-doi-uri id)]
+      (-> {:type :work}
+          (attach-id parent-doi)
+          (parse-attach :component sa-component-loc :multi parse-component-list)))))
 
 ;; ---------------------------------------------------------------
 
@@ -819,6 +842,7 @@
   [oai-record]
   [(parse-primary-id oai-record)
    (or
+    (parse-stand-alone-component (find-stand-alone-component oai-record))
     (parse-dissertation (find-dissertation oai-record))
     (parse-standard (find-standard oai-record))
     (parse-report (find-report oai-record))

@@ -13,6 +13,7 @@
                      :report "Report"
                      :report-series "Report Series"
                      :standard "Standard"
+                     :standard-series "Standard Series"
                      :dataset "Dataset"
                      :edited-book "Book"
                      :monograph "Monograph"
@@ -25,6 +26,8 @@
                      :part "Part"
                      :track "Track"
                      :reference-entry "Entry"
+                     :dissertation "Dissertation"
+                     :component "Component"
                      :other "Other"})
 
 ;; todo are section part track only for books or for article figures etc too?
