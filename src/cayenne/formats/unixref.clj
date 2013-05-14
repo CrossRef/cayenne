@@ -445,6 +445,8 @@
                                         [:= "name" "fundgroup"]))]
     (map parse-funder funder-groups-loc)))
 
+(declare parse-item)
+
 ;; todo parse format
 (defn parse-component [component-loc]
   (-> (parse-item component-loc)
