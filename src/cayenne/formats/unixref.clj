@@ -447,11 +447,12 @@
 
 (declare parse-item)
 
-;; todo parse format
 (defn parse-component [component-loc]
   (-> (parse-item component-loc)
       (conj
        {:subtype :component
+        :format (xml/xselect1 component-loc "format" :text)
+        :format-mime (xml/xselect1 component-loc "format" ["mime_type"] :text)
         :size (xml/xselect1 component-loc ["component_size"] :text)
         :agency (xml/xselect1 component-loc ["reg-agency"] :text)
         :relation (xml/xselect1 component-loc ["parent_relation"] :text)
@@ -654,7 +655,7 @@
        {:subtype :dataset
         :kind (parse-dataset-type dataset-loc)
         :format (xml/xselect1 dataset-loc "format" :text)
-        :format-mime (xml/xselect1 dataset-loc "format" ["mime_type"])
+        :format-mime (xml/xselect1 dataset-loc "format" ["mime_type"] :text)
         :description (xml/xselect1 dataset-loc "description")})))
 
 (defn parse-datasets [database-loc]
@@ -668,7 +669,7 @@
           (parse-attach :component database-loc :multi parse-datasets)
           (conj
            {:subtype :dataset
-            :language (xml/xselect1 metadata-loc ["language"])
+            :language (xml/xselect1 metadata-loc ["language"] :text)
             :description (xml/xselect1 metadata-loc "description")})))))
 
 (defn parse-report-contract-number [report-loc]
@@ -747,8 +748,6 @@
            {:subtype :dissertation
             :language (xml/xselect1 dissertation-loc ["language"] :text)
             :degree (xml/xselect1 dissertation-loc "degree" :text)})))))
-
-
 
 (defn parse-stand-alone-component [sa-component-loc]
   (when sa-component-loc
