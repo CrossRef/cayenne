@@ -4,6 +4,7 @@
             [clojure.data.csv :as csv]
             [clojure.java.io :as io]
             [clojure.string :as string]
+            [cayenne.item-tree :as itree]
             [cayenne.conf :as conf]
             [cayenne.ids.fundref :as fundref]))
 
@@ -56,13 +57,23 @@
 
 (defn get-funder-primary-name [funder-id]
   (m/with-mongo (conf/get-service :mongo)
+    (:primary_name_display (m/fetch-one :funders :where {:id funder-id}))))
 
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
+
+(def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
+
+(defn canonicalize-funder-name
+  [funder-item]
+  (let [funder-id (first (:id funder-item))]
+    (if-let [canonical-name (get-funder-primary-name-memo funder-id)]
+      (merge funder-item {:name canonical-name :canonical true})
+      funder-item)))
 
 (defn apply-to 
   "If a funder specifies an ID, replace its publisher-provided name with our
    canonical primary name."
   ([item]
-     
-
-  ())
+     (itree/update-tree-rel canonicalize-funder-name item :funder))
+  ([id item]
+     [id (apply-to item)]))

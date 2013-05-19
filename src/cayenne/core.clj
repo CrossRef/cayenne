@@ -11,6 +11,7 @@
             [cayenne.html :as html]
             [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
+            [cayenne.tasks.funder :as funder]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]))
 
@@ -32,6 +33,7 @@
 (def dump-annotated-docs
   (comp
    (record-json-writer "out.txt")
+   #(apply funder/apply-to %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
@@ -41,6 +43,7 @@
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
+   #(apply funder/apply-to %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
@@ -49,6 +52,7 @@
    solr/insert-item
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
+   #(apply funder/apply-to %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 

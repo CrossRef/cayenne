@@ -115,6 +115,21 @@
     (flatten 
      (map #(get-tree-rel % rel-type) (children item-tree)))))
 
+(defn descend-with [f item-tree]
+  (let [applied (f item-tree)
+        children (:rel applied)
+        rels (into {} (for [[k v] children] [k (map #(descend-with f %) v)]))]
+    (assoc applied :rel rels)))
+        
+(defn update-item-rel
+  [update-fn item-tree rel-type]
+  (if-let [related-items (get-in item-tree [:rel rel-type])]
+    (assoc-in item-tree [:rel rel-type] (map update-fn related-items))
+    item-tree))
+
+(defn update-tree-rel [update-fn item-tree rel-type] 
+  (descend-with #(update-item-rel update-fn % rel-type) item-tree))
+
 (defn get-descendant-rel
   "Like get-tree-rel except excludes rels directly from top-level item."
   [item-tree rel-type]
