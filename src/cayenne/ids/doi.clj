@@ -12,7 +12,7 @@
   (not (nil? (re-find #"\A10/[a-z0-9]+\Z" s))))
 
 (defn is-any-doi? [s]
-  (or (is-short-doi? s) (is-long-doi? s)))
+  (or (is-short-doi? s) (is-long-doi? s)))  
 
 (defn extract-long-doi
   "Attempt to extract a DOI from the forms:

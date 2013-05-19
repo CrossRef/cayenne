@@ -118,6 +118,7 @@
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
   (set-param! [:res :tld-list] "tlds.txt")
+  (set-param! [:res :funders] "funders.csv")
 
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 
