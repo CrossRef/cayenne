@@ -119,7 +119,9 @@
   (let [applied (f item-tree)
         children (:rel applied)
         rels (into {} (for [[k v] children] [k (map #(descend-with f %) v)]))]
-    (assoc applied :rel rels)))
+    (if (empty? rels)
+      applied
+      (assoc applied :rel rels))))
         
 (defn update-item-rel
   [update-fn item-tree rel-type]
