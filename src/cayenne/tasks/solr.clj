@@ -95,6 +95,7 @@
        
 (defn as-solr-document [item]
   (let [funder-names (map :name (get-tree-rel item :funder))
+        funder-dois (mapcat :id (get-tree-rel item :funder))
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)]
@@ -106,6 +107,7 @@
      "orcid" (get-contributor-orcids item)
      "category" (get-categories item)
      "funder_name" funder-names
+     "funder_doi" funder-dois
      "type" (subtype-labels (get-item-subtype item))
      "first_author_given" (:first-name primary-author)
      "first_author_surname" (:last-name primary-author)
