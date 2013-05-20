@@ -50,14 +50,14 @@
                          (second funder)
                          name-type))))))
 
-(defn get-funder-names [funder-id]
+(defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
-    (let [funder (m/fetch-one :funders :where {:id funder-id})]
+    (let [funder (m/fetch-one :funders :where {:uri funder-uri})]
       (conj (or (:other_names_display funder) []) (:primary_name_display funder)))))
 
-(defn get-funder-primary-name [funder-id]
+(defn get-funder-primary-name [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
-    (:primary_name_display (m/fetch-one :funders :where {:id funder-id}))))
+    (:primary_name_display (m/fetch-one :funders :where {:uri funder-uri}))))
 
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
 
@@ -65,8 +65,8 @@
 
 (defn canonicalize-funder-name
   [funder-item]
-  (let [funder-id (first (:id funder-item))]
-    (if-let [canonical-name (get-funder-primary-name-memo funder-id)]
+  (let [funder-uri (first (:id funder-item))]
+    (if-let [canonical-name (get-funder-primary-name-memo funder-uri)]
       (merge funder-item {:name canonical-name :canonical true})
       funder-item)))
 
