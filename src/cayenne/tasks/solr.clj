@@ -133,16 +133,18 @@
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))}))
 
-(defn as-solr-input-document [item]
+(defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]
-    (doseq [[k v] (as-solr-document item)]
+    (doseq [[k v] solr-map]
       (.addField doc k v))
     doc))
      
 (defn insert-item [item]
-  (let [solr-doc (as-solr-input-document item)]
-    (dosync
-     (alter insert-list conj solr-doc)
-     (when (> (count @insert-list) insert-list-max-size)
-       (flush-insert-list)))))
+  (let [solr-map (as-solr-document item)]
+    (when (get solr-map "doi_key")  ;; todo debug output for fail case
+      (let [solr-doc (as-solr-input-document solr-map)]
+        (dosync
+         (alter insert-list conj solr-doc)
+         (when (> (count @insert-list) insert-list-max-size)
+           (flush-insert-list)))))))
   
