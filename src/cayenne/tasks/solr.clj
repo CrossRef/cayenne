@@ -31,11 +31,21 @@
   (let [contributors (mapcat #(get-item-rel item %) contributor-rels)]
     (filter (complement nil?) (mapcat :id contributors))))
 
+(defn initials [first-name]
+  (when first-name
+    (string/join " " (map first (string/split first-name #"[\s\-]+")))))
+
 (defn as-name [org-or-person]
   (cond (= :org (get-item-type org-or-person))
         (:name org-or-person)
         (= :person (get-item-type org-or-person))
         (str (:first-name org-or-person) " " (:last-name org-or-person))))
+
+(defn as-initials [org-or-person]
+  (cond (= :org (get-item-type org-or-person))
+        (as-name org-or-person)
+        (= :person (get-item-type org-or-person))
+        (str (initials (:first-name org-or-person)) " " (:last-name org-or-person))))
 
 (defn get-contributor-names
   "Contributor names as a concatenated string."
@@ -44,7 +54,7 @@
     (string/join ", " (map as-name contributors))))
 
 (defn get-primary-author [item]
-  (first (get-item-rel item :author))) ;; todo deal with orgs
+  (first (get-item-rel item :author)))
 
 (defn get-contributors [item]
   (mapcat (partial get-item-rel item) contributor-rels)) ;; todo deal with orgs
@@ -56,10 +66,6 @@
 (defn get-oa-status [item]
   (let [journal (find-item-of-subtype item :journal)]
     (or (:oa-status journal) "Other")))
-
-(defn initials [first-name]
-  (when first-name
-    (string/join " " (map first (string/split first-name #"[\s\-]+")))))
 
 (defn as-solr-base-field [item]
   (string/join 
@@ -77,17 +83,13 @@
   (string/join
    " "
    (-> [(as-solr-base-field item)]
-       (concat (map 
-                #(str (initials (:first-name %)) " " (:last-name %))
-                (get-contributors item)))))) ; names with initials
+       (concat (map as-initials (get-contributors item)))))) ; names with initials
 
 (defn as-solr-content-field [item]
   (string/join
    " "
    (-> [(as-solr-base-field item)]
-       (concat (map 
-                #(str (:first-name %) " " (:last-name %)) 
-                (get-contributors item))) ; full names
+       (concat (map as-name (get-contributors item))) ; full names
        (concat (mapcat get-item-ids (get-tree-rel item :awarded))) ; grant numbers
        (concat (map :name (get-tree-rel item :funder)))))) ; funder names
        
