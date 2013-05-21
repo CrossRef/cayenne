@@ -120,6 +120,7 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
+  (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl?id=")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 
 (set-core! :default)

@@ -1,4 +1,5 @@
 (ns cayenne.core
+  (:import [java.net URI])
   (:use [clojure.java.io]
         [cayenne.conf]
         [cayenne.sources.wok]
@@ -13,7 +14,8 @@
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
             [cayenne.item-tree :as itree]
-            [cayenne.tasks.solr :as solr]))
+            [cayenne.tasks.solr :as solr]
+            [cayenne.ids.doi :as doi]))
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
@@ -26,6 +28,17 @@
 
 (defn test-output-file [name test-name]
   (file (str (get-param [:dir :test-data]) "/" name "-" test-name ".out")))
+
+(defn remote-file [url]
+  (let [content (slurp (URI. url))
+        f (file "remote.tmp")]
+    (spit f content)
+    f))
+
+(defn openurl-file [doi]
+  (let [extracted-doi (doi/extract-long-doi doi)
+        url (str (get-param [:upstream :openurl-url]) (URI/encode extracted-doi))]
+    (remote-file url)))
 
 (def dump-plain-docs
   (record-json-writer "out.txt"))
@@ -56,17 +69,27 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
-(defn parse-unixref [file-or-dir using]
+(defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
                :async false
                :name :parse
+               :split "record"
                :parser unixref-record-parser 
                :task using))
 
-(defn get-unixref [service from until using]
+(defn parse-unixref [file-or-dir using]
+  (oai/process file-or-dir
+               :async false
+               :name :parse-no-record
+               :split "crossref"
+               :parser unixref-record-parser
+               :task using))
+
+(defn get-unixref-records [service from until using]
   (oai/run service 
            :from from 
            :until until
+           :split "record"
            :parser unixref-record-parser
            :task using))
 
