@@ -1,5 +1,6 @@
 (ns cayenne.core
-  (:import [java.net URI])
+  (:import [java.net URI URLEncoder]
+           [java.util UUID])
   (:use [clojure.java.io]
         [cayenne.conf]
         [cayenne.sources.wok]
@@ -31,13 +32,13 @@
 
 (defn remote-file [url]
   (let [content (slurp (URI. url))
-        f (file "remote.tmp")]
-    (spit f content)
-    f))
+        path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
+    (spit (file path) content)
+    (file path)))
 
 (defn openurl-file [doi]
   (let [extracted-doi (doi/extract-long-doi doi)
-        url (str (get-param [:upstream :openurl-url]) (URI/encode extracted-doi))]
+        url (str (get-param [:upstream :openurl-url]) (URLEncoder/encode extracted-doi))]
     (remote-file url)))
 
 (def dump-plain-docs
@@ -77,13 +78,16 @@
                :parser unixref-record-parser 
                :task using))
 
-(defn parse-unixref [file-or-dir using]
-  (oai/process file-or-dir
+(defn parse-openurl [doi using]
+  (oai/process (openurl-file doi)
                :async false
-               :name :parse-no-record
-               :split "crossref"
+               :name :parse-openurl
+               :kind ".tmp"
+               :split "doi_record"
                :parser unixref-record-parser
-               :task using))
+               :task (comp 
+                      using
+                      #(vector (doi/to-long-doi-uri doi) (second %)))))
 
 (defn get-unixref-records [service from until using]
   (oai/run service 

@@ -4,6 +4,7 @@
 /checkouts
 /data
 /doc
+/tmp/*
 pom.xml
 *.class
 .lein-deps-sum

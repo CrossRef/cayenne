@@ -82,6 +82,7 @@
   (set-param! [:dir :home] "/Users/karl/Projects/cayenne")
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
+  (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
   (set-param! [:service :neo4j :dir] (str (get-param [:dir :data]) "/neo4j"))
   (set-param! [:service :mongo :db] "crossref")
@@ -120,7 +121,7 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
-  (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl?id=")
+  (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=kward@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 
 (set-core! :default)
