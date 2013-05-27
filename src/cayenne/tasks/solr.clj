@@ -92,10 +92,29 @@
        (concat (map as-name (get-contributors item))) ; full names
        (concat (mapcat get-item-ids (get-tree-rel item :awarded))) ; grant numbers
        (concat (map :name (get-tree-rel item :funder)))))) ; funder names
-       
+
+(defn as-grant-map [item]
+  (letfn [(combine [memo nxt]
+            (let [funder-name (:name nxt)
+                  awards (or (get memo funder-name) [])
+                  new-awards (mapcat :id (get-item-rel nxt :awarded))]
+              (assoc memo funder-name (concat awards new-awards))))]
+    (reduce combine {} (get-tree-rel item :funder))))
+
+(defn as-solr-grant-info-field [item]
+  (letfn [(funder-info [funder-name award-ids]
+              (str
+               funder-name
+               " "
+               (if-not (empty? award-ids)
+                 (str "(" (string/join ", " award-ids) ")")
+                 "")))]
+    (string/join " | " (for [[k v] (as-grant-map item)] (funder-info k v)))))
+
 (defn as-solr-document [item]
-  (let [funder-names (map :name (get-tree-rel item :funder))
-        funder-dois (mapcat :id (get-tree-rel item :funder))
+  (let [grant-map (as-grant-map item)
+        funder-names (set (map :name (get-tree-rel item :funder)))
+        funder-dois (set (mapcat :id (get-tree-rel item :funder)))
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)]
@@ -128,7 +147,7 @@
      "hl_first_page" (:first-page item)
      "hl_last_page" (:last-page item)
      "hl_funder_name" funder-names
-     "hl_grant" (mapcat get-item-ids (get-tree-rel item :awarded))
+     "hl_grant" (as-solr-grant-info-field item)
      "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))}))
