@@ -103,7 +103,7 @@
                         (slurp)
                         (json/read-str))]
     (doseq [doi (get funder-info "items")]
-      (parse-openurl doi dump-solr-docs))
+      (parse-openurl doi index-solr-docs))
     (cayenne.tasks.solr/flush-insert-list)))
 
 (defn reindex-dev-fundref []
