@@ -79,7 +79,7 @@
   (alter-var-root #'*core-name* (constantly name)))
 
 (with-core :default
-  (set-param! [:dir :home] "/Users/karl/Projects/cayenne")
+  (set-param! [:dir :home] (System/getProperty "user.dir"))
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
