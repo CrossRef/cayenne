@@ -102,8 +102,8 @@
   (let [funder-info (-> funder-list-loc
                         (slurp)
                         (json/read-str))]
-    (doseq [doi (:items funder-info)]
-      (parse-openurl (doi/extract-long-doi doi) index-solr-docs))
+    (doseq [doi (get funder-info "items")]
+      (parse-openurl doi dump-solr-docs))
     (cayenne.tasks.solr/flush-insert-list)))
 
 (defn reindex-dev-fundref []
@@ -111,7 +111,6 @@
 
 (defn reindex-live-fundref []
   (reindex-fundref "http://search.crossref.org/funders/dois?rows=10000"))
-
 
 (defn check-url-citations [file-or-dir]
   (oai/process
