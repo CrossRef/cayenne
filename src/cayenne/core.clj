@@ -9,7 +9,8 @@
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]])
   ;;(:use cayenne.tasks.neo4j)
-  (:require [cayenne.oai :as oai]
+  (:require [clojure.data.json :as json] 
+            [cayenne.oai :as oai]
             [cayenne.html :as html]
             [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
@@ -96,6 +97,21 @@
            :split "record"
            :parser unixref-record-parser
            :task using))
+
+(defn reindex-fundref [funder-list-loc]
+  (let [funder-info (-> funder-list-loc
+                        (slurp)
+                        (json/read-str))]
+    (doseq [doi (:items funder-info)]
+      (parse-openurl (doi/extract-long-doi doi) index-solr-docs))
+    (cayenne.tasks.solr/flush-insert-list)))
+
+(defn reindex-dev-fundref []
+  (reindex-fundref "http://search-dev.labs.crossref.org/funders/dois?rows=10000"))
+
+(defn reindex-live-fundref []
+  (reindex-fundref "http://search.crossref.org/funders/dois?rows=10000"))
+
 
 (defn check-url-citations [file-or-dir]
   (oai/process
