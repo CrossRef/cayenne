@@ -10,7 +10,7 @@
 
 (defn ensure-funder-indexes! []
   (m/with-mongo (conf/get-service :mongo)
-    (m/add-index! :funders [:primary_name_tokens])
+    (m/add-index! :funders [:name_tokens])
     (m/add-index! :funders [:id])
     (m/add-index! :funders [:uri])))
 
@@ -26,13 +26,20 @@
 (defn tokenize-name [name]
   (string/split (simplyfy-name name) #"\s+"))
 
+(defn add-tokens [existing tokens]
+  (let [existing-tokens (or (:name_tokens existing) [])]
+    (assoc existing :name_tokens (set (concat existing-tokens tokens)))))
+
 (defn add-name [existing name name-type]
   (if (= name-type :primary)
-    (merge existing {:primary_name_display (.trim name)
-                     :primary_name_tokens (tokenize-name name)})
+    (-> existing
+        (assoc :primary_name_display (.trim name))
+        (add-tokens (tokenize-name name)))
     (let [other-names (or (:other_names existing) [])
           other-names-display (or (:other_names_display existing) [])]
-      (merge existing {:other_names_display (conj other-names-display (.trim name))}))))
+      (-> existing
+          (assoc :other_names_display (conj other-names-display (.trim name)))
+          (add-tokens (tokenize-name name))))))
 
 (defn insert-funder [id name name-type]
   (m/with-mongo (conf/get-service :mongo)
