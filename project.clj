@@ -18,6 +18,7 @@
                  [congomongo "0.4.1"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]
+                 [org.apache.jena/jena-core "2.10.1"]
                  [xom "1.2.5"]
                  [clj-http "0.7.2"]
                  [org.clojure/core.incubator "0.1.2"]
