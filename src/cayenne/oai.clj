@@ -63,7 +63,7 @@
         (spit xml-file (:body resp))
         (when process-fn (process-fn xml-file))
         (when-let [token (resumption-token (:body resp))]
-          (grab-oai-xml-file-async service from until token process-fn))))))
+          (grab-oai-xml-file-async service from until token process-fn result-set))))))
 
 (defn grab-oai-xml-file-async [service from until count token process-fn result-set]
   (when debug-grabbing
