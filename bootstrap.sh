@@ -8,7 +8,7 @@ apt-get install -y wget
 wget -O /usr/local/bin/lein "https://raw.github.com/technomancy/leiningen/stable/bin/lein"
 chmod a+x /usr/local/bin/lein
 
-cd /vagrant
+# cd /vagrant
 
 cp solr/solr-web.xml /etc/tomcat7/Catalina/localhost
 cp -r solr /opt
