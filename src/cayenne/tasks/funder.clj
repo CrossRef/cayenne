@@ -5,6 +5,7 @@
             [clojure.java.io :as io]
             [clojure.string :as string]
             [cayenne.item-tree :as itree]
+            [cayenne.rdf :as rdf]
             [cayenne.conf :as conf]
             [cayenne.ids.fundref :as fundref]))
 
@@ -46,8 +47,11 @@
     (if-let [existing-doc (m/fetch-one :funders :where {:id id})]
       (m/update! :funders existing-doc (add-name existing-doc name name-type))
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
+
+(defn insert-full-funder [id name alt-names parent-id child-ids affiliation-ids]
+  ())
   
-(defn load-funders []
+(defn load-funders-csv []
   (ensure-funder-indexes!)
   (with-open [rdr (io/reader (conf/get-resource :funders))]
     (let [funders (csv/read-csv rdr :separator \tab)]
@@ -56,6 +60,36 @@
           (insert-funder (first funder)
                          (second funder)
                          name-type))))))
+
+(defn find-funders [model]
+  (rdf/select model
+              :predicate (rdf/rdf model "type")
+              :object (rdf/skos-type model "Concept")))
+
+(defm res->id [funder-concept-node]
+  (last (string/split (rdf/->uri funder-concept-node) "/")))
+
+(defn funder-concept->map [model funder-concept-node]
+  {:id (res->id funder-concept-node)
+   :broader-id 
+   :narrower-id 
+   :affiliated-ids 
+   :name
+   :alternate-names
+
+(defn load-funders-rdf [rdf-file]
+  (ensure-funder-indexes!)
+  (doall
+   (->> (rdf/document->model rdf-file)
+        (find-funders)
+        (map funder-concept->map)
+        (map insert-funder))))
+      
+
+  (let [model (rdf/document->model rdf-file)
+        top-level-orgs (find-top-level-funders model)]
+    (insert-top-levl-
+    
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
