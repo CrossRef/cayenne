@@ -66,29 +66,29 @@
               :predicate (rdf/rdf model "type")
               :object (rdf/skos-type model "Concept")))
 
-(defm res->id [funder-concept-node]
+(defn res->id [funder-concept-node]
   (last (string/split (rdf/->uri funder-concept-node) "/")))
 
-(defn funder-concept->map [model funder-concept-node]
-  {:id (res->id funder-concept-node)
-   :broader-id 
-   :narrower-id 
-   :affiliated-ids 
-   :name
-   :alternate-names
+;; (defn funder-concept->map [model funder-concept-node]
+;;   {:id (res->id funder-concept-node)
+;;    :broader-id 
+;;    :narrower-id 
+;;    :affiliated-ids 
+;;    :name
+;;    :alternate-names
 
-(defn load-funders-rdf [rdf-file]
-  (ensure-funder-indexes!)
-  (doall
-   (->> (rdf/document->model rdf-file)
-        (find-funders)
-        (map funder-concept->map)
-        (map insert-funder))))
+;; (defn load-funders-rdf [rdf-file]
+;;   (ensure-funder-indexes!)
+;;   (doall
+;;    (->> (rdf/document->model rdf-file)
+;;         (find-funders)
+;;         (map funder-concept->map)
+;;         (map insert-funder))))
       
 
-  (let [model (rdf/document->model rdf-file)
-        top-level-orgs (find-top-level-funders model)]
-    (insert-top-levl-
+;;   (let [model (rdf/document->model rdf-file)
+;;         top-level-orgs (find-top-level-funders model)]
+;;     (insert-top-levl-
     
 
 (defn get-funder-names [funder-uri]
