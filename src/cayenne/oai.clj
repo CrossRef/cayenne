@@ -59,7 +59,7 @@
                                            :throw-exceptions false
                                            :connection-manager conn-mgr})]
       (when (client/success? resp)
-        (.mkdirs xml-file)
+        (.mkdirs dir-path)
         (spit xml-file (:body resp))
         (when process-fn (process-fn xml-file))
         (when-let [token (resumption-token (:body resp))]
