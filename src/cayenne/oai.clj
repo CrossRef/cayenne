@@ -60,12 +60,10 @@
                                            :connection-manager conn-mgr})]
       (when (client/success? resp)
         (.mkdirs xml-file)
-        (with-open [xml-out (writer xml-file)]
-          (.write xml-out (:body resp)))
+        (spit xml-file (:body resp))
+        (when process-fn (process-fn xml-file))
         (when-let [token (resumption-token (:body resp))]
-          (grab-oai-xml-file-async service from until token process-fn))
-        (when process-fn 
-          (process-fn xml-file))))))
+          (grab-oai-xml-file-async service from until token process-fn))))))
 
 (defn grab-oai-xml-file-async [service from until count token process-fn result-set]
   (when debug-grabbing
