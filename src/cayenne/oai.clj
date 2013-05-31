@@ -42,7 +42,7 @@
   
 (declare grab-oai-xml-file-async)
 
-(defn grab-oai-xml-file [service from until token process-fn]
+(defn grab-oai-xml-file [service from until token process-fn result-set]
   (let [dir-name (str from "-" until)
         file-name (str (or token "first") ".xml")
         xml-file (file (:dir service) dir-name file-name)
@@ -66,10 +66,10 @@
         (when process-fn 
           (process-fn xml-file))))))
 
-(defn grab-oai-xml-file-async [service from until count token process-fn]
+(defn grab-oai-xml-file-async [service from until count token process-fn result-set]
   (when debug-grabbing
     (prn (str "Grabbing " from " " until)))
-  (put-job #(grab-oai-xml-file service from until count process-fn)))
+  (put-job result-set #(grab-oai-xml-file service from until count process-fn result-set)))
 
 (defn process 
   "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
@@ -87,12 +87,12 @@
       (process-oai-xml-file-async parser task file name split)
       (process-oai-xml-file parser task file name split))))
 
-(defn run [service & {:keys [from until task parser]
+(defn run [service & {:keys [from until task parser name]
                             :or {task nil
                                  parser nil}}]
   (let [process-fn (cond (and task parser) (comp task parser)
                          task task
                          parser parser
                          :else nil)]
-    (grab-oai-xml-file-async service from until 0 nil process-fn)))
+    (grab-oai-xml-file-async service from until 0 nil process-fn name)))
 
