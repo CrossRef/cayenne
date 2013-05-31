@@ -44,8 +44,9 @@
 
 (defn grab-oai-xml-file [service from until token process-fn result-set]
   (let [dir-name (str from "-" until)
+        dir-path (file (:dir service) dir-name)
         file-name (str (or token "first") ".xml")
-        xml-file (file (:dir service) dir-name file-name)
+        xml-file (file dir-path file-name)
         params (-> 
                 {"metadataPrefix" (:type service)
                  "verb" "ListRecords"}
@@ -87,8 +88,9 @@
       (process-oai-xml-file-async parser task file name split)
       (process-oai-xml-file parser task file name split))))
 
-(defn run [service & {:keys [from until task parser name]
-                            :or {task nil
+(defn run [service & {:keys [from until task parser name async]
+                            :or {async true
+                                 task nil
                                  parser nil}}]
   (let [process-fn (cond (and task parser) (comp task parser)
                          task task

@@ -106,7 +106,7 @@
   (set-param! [:oai :crossref-serials :set-spec] "S")
 
   (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
-  (set-param! [:oai :datacite :uri] "http://oai.datacite.org/oai")
+  (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
   (set-param! [:oai :datacite :type] "datacite")
 
   (set-param! [:id :issn :path] "http://id.crossref.org/issn/")
