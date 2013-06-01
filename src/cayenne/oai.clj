@@ -59,7 +59,9 @@
                                            :throw-exceptions false
                                            :connection-manager conn-mgr})]
       (if (not (client/success? resp))
-        (when debug-grabbing (prn "Unsuccessful OAI download:" (:url service) from until token))
+        (when debug-grabbing 
+          (prn "Unsuccessful OAI download:" (:url service) from until token)
+          (prn (:body resp)))
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
