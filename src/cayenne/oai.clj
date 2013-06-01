@@ -1,7 +1,8 @@
 (ns cayenne.oai
   (:require [cayenne.xml :as xml]
             [cayenne.conf :as conf]
-            [clj-http.client :as client])
+            [clj-http.client :as client]
+            [clj-time :as time])
   (:use [clojure.java.io :only [file reader writer]])
   (:use [cayenne.job])
   (:use [cayenne.util])
@@ -47,13 +48,14 @@
         dir-path (file (:dir service) dir-name)
         file-name (str count "-" (or token "no-token") ".xml")
         xml-file (file dir-path file-name)
-        params (-> 
-                {"metadataPrefix" (:type service)
-                 "verb" "ListRecords"}
-                (?> #(:set-spec service) assoc "setspec" (:set-spec service))
-                (?> from assoc "from" from)
-                (?> until assoc "until" until)
-                (?> token assoc "resumptionToken" token))]
+        params (if token
+                 {"resumptionToken" token}
+                 (-> 
+                  {"metadataPrefix" (:type service)
+                   "verb" "ListRecords"}
+                  (?> #(:set-spec service) assoc "setspec" (:set-spec service))
+                  (?> from assoc "from" from)
+                  (?> until assoc "until" until)))]
     (let [conn-mgr (conf/get-service :conn-mgr)
           resp (client/get (:url service) {:query-params params
                                            :throw-exceptions false
@@ -94,4 +96,15 @@
                             :or {task nil
                                  parser nil}}]
   (grab-oai-xml-file-async service from until 1 nil parser task name))
+
+(defn run-range [service & {:keys [from until task parser name separation]
+                            :or {task nil
+                                 parser nil
+                                 separation (d/days 1)}}]
+  (let [from-date (apply d/date-time (split from "-"))
+        until-date (apply d/date-time (split until "-"))]
+    (doseq [from-point (take-while #(before? % until-date) 
+                                   (d/periodic-seq from-date separation))]
+      (run service from-point (d/plus from-point separation) task parser name separation))))
+    
 
