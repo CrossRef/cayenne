@@ -2,7 +2,9 @@
   (:require [cayenne.xml :as xml]
             [cayenne.conf :as conf]
             [clj-http.client :as client]
-            [clj-time :as time])
+            [clj-time.core :as time]
+            [clj-time.periodic :as ptime]
+            [clojure.string :as string])
   (:use [clojure.java.io :only [file reader writer]])
   (:use [cayenne.job])
   (:use [cayenne.util])
@@ -100,11 +102,11 @@
 (defn run-range [service & {:keys [from until task parser name separation]
                             :or {task nil
                                  parser nil
-                                 separation (d/days 1)}}]
-  (let [from-date (apply d/date-time (split from "-"))
-        until-date (apply d/date-time (split until "-"))]
-    (doseq [from-point (take-while #(before? % until-date) 
-                                   (d/periodic-seq from-date separation))]
-      (run service from-point (d/plus from-point separation) task parser name separation))))
+                                 separation (time/days 1)}}]
+  (let [from-date (apply time/date-time (string/split from "-"))
+        until-date (apply time/date-time (string/split until "-"))]
+    (doseq [from-point (take-while #(time/before? % until-date) 
+                                   (ptime/periodic-seq from-date separation))]
+      (run service from-point (time/plus from-point separation) task parser name separation))))
     
 
