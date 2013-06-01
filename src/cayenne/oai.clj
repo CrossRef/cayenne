@@ -42,7 +42,7 @@
   
 (declare grab-oai-xml-file-async)
 
-(defn grab-oai-xml-file [service from until token process-fn result-set]
+(defn grab-oai-xml-file [service from until token parser-fn task-fn result-set]
   (let [dir-name (str from "-" until)
         dir-path (file (:dir service) dir-name)
         file-name (str (or token "first") ".xml")
@@ -58,17 +58,20 @@
           resp (client/get (:url service) {:query-params params
                                            :throw-exceptions false
                                            :connection-manager conn-mgr})]
-      (when (client/success? resp)
-        (.mkdirs dir-path)
-        (spit xml-file (:body resp))
-        (when process-fn (process-fn xml-file))
-        (when-let [token (resumption-token (:body resp))]
-          (grab-oai-xml-file-async service from until token process-fn result-set))))))
+      (if (not (client/success? resp))
+        (when debug-grabbing (prn "Unsuccessful OAI download:" (:url service) from until token))
+        (do
+          (.mkdirs dir-path)
+          (spit xml-file (:body resp))
+          (when parser-fn 
+            (process-oai-xml-file-async parser-fn task-fn xml-file result-set "record"))
+          (when-let [token (resumption-token (:body resp))]
+            (grab-oai-xml-file-async service from until token parser-fn task-fn result-set)))))))
 
-(defn grab-oai-xml-file-async [service from until count token process-fn result-set]
+(defn grab-oai-xml-file-async [service from until count token parser-fn task-fn result-set]
   (when debug-grabbing
     (prn (str "Grabbing " from " " until)))
-  (put-job result-set #(grab-oai-xml-file service from until count process-fn result-set)))
+  (put-job result-set #(grab-oai-xml-file service from until count parser-fn task-fn result-set)))
 
 (defn process 
   "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
@@ -90,9 +93,5 @@
                             :or {async true
                                  task nil
                                  parser nil}}]
-  (let [process-fn (cond (and task parser) (comp task parser)
-                         task task
-                         parser parser
-                         :else nil)]
-    (grab-oai-xml-file-async service from until 0 nil process-fn name)))
+  (grab-oai-xml-file-async service from until 0 nil parser task name))
 

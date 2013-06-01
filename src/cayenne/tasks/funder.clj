@@ -88,13 +88,13 @@
 
 ;;   (let [model (rdf/document->model rdf-file)
 ;;         top-level-orgs (find-top-level-funders model)]
-;;     (insert-top-levl-
-    
+;;     (insert-top-levl-    
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
     (let [funder (m/fetch-one :funders :where {:uri funder-uri})]
-      (conj (or (:other_names_display funder) []) (:primary_name_display funder)))))
+      (conj (or (:other_names_display funder) []) 
+            (:primary_name_display funder)))))
 
 (defn get-funder-primary-name [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
