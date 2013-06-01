@@ -38,14 +38,14 @@
 (defn resumption-token 
   "Cheap and cheerful grab of resumption token."
   [body]
-  (second (re-find "resumptionToken=\"([^\"]+)\"")))
+  (second (re-find #"resumptionToken=\"([^\"]+)\"" body)))
   
 (declare grab-oai-xml-file-async)
 
-(defn grab-oai-xml-file [service from until token parser-fn task-fn result-set]
+(defn grab-oai-xml-file [service from until count token parser-fn task-fn result-set]
   (let [dir-name (str from "-" until)
         dir-path (file (:dir service) dir-name)
-        file-name (str (or token "first") ".xml")
+        file-name (str count "-" (or token "no-token") ".xml")
         xml-file (file dir-path file-name)
         params (-> 
                 {"metadataPrefix" (:type service)
@@ -60,20 +60,19 @@
                                            :connection-manager conn-mgr})]
       (if (not (client/success? resp))
         (when debug-grabbing 
-          (prn "Unsuccessful OAI download:" (:url service) from until token)
-          (prn (:body resp)))
+          (prn "Unsuccessful OAI download:" (:url service) from until token))
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
           (when parser-fn 
             (process-oai-xml-file-async parser-fn task-fn xml-file result-set "record"))
           (when-let [token (resumption-token (:body resp))]
-            (grab-oai-xml-file-async service from until token parser-fn task-fn result-set)))))))
+            (grab-oai-xml-file-async service from until (inc count) token parser-fn task-fn result-set)))))))
 
 (defn grab-oai-xml-file-async [service from until count token parser-fn task-fn result-set]
   (when debug-grabbing
-    (prn (str "Grabbing " from " " until)))
-  (put-job result-set #(grab-oai-xml-file service from until count parser-fn task-fn result-set)))
+    (prn (str "Grabbing " from " " until " " count)))
+  (put-job result-set #(grab-oai-xml-file service from until count token parser-fn task-fn result-set)))
 
 (defn process 
   "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
@@ -91,9 +90,8 @@
       (process-oai-xml-file-async parser task file name split)
       (process-oai-xml-file parser task file name split))))
 
-(defn run [service & {:keys [from until task parser name async]
-                            :or {async true
-                                 task nil
+(defn run [service & {:keys [from until task parser name]
+                            :or {task nil
                                  parser nil}}]
-  (grab-oai-xml-file-async service from until 0 nil parser task name))
+  (grab-oai-xml-file-async service from until 1 nil parser task name))
 
