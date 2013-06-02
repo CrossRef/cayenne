@@ -21,6 +21,10 @@
 
 (def get-issn-categories-memo (memoize/memo-lru get-issn-categories))
 
+(defn clear! []
+  (memoize/memo-clear! get-category-name-memo)
+  (memoize/memo-clear! get-issn-categories-memo))
+
 (defn apply-to
   "Merge categories into an item if it is a journal item."
   ([item]

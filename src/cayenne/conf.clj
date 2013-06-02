@@ -1,7 +1,9 @@
 (ns cayenne.conf
   (:import [org.neo4j.server WrappingNeoServerBootstrapper]
            [org.neo4j.kernel EmbeddedGraphDatabase]
-           [org.apache.solr.client.solrj.impl HttpSolrServer])
+           [org.apache.solr.client.solrj.impl HttpSolrServer]
+           [java.net URI]
+           [java.util UUID])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -78,6 +80,21 @@
 (defn set-core! [name]
   (alter-var-root #'*core-name* (constantly name)))
 
+(defn test-input-file [name]
+  (io/file (str (get-param [:dir :test-data]) "/" name ".xml")))
+
+(defn test-accepted-file [name test-name]
+  (io/file (str (get-param [:dir :test-data]) "/" name "-" test-name ".accepted")))
+
+(defn test-output-file [name test-name]
+  (io/file (str (get-param [:dir :test-data]) "/" name "-" test-name ".out")))
+
+(defn remote-file [url]
+  (let [content (slurp (URI. url))
+        path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
+    (spit (io/file path) content)
+    (io/file path)))
+
 (with-core :default
   (set-param! [:dir :home] (System/getProperty "user.dir"))
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
@@ -121,6 +138,8 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
+  (set-param! [:upstream :fundref-dois] "http://search.crossref.org/funders/dois?rows=10000000000")
+  (set-param! [:upstream :fundref-registry] "http://dx.doi.org/10.13039/fundref_registry")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=kward@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 

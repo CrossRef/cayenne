@@ -1,8 +1,6 @@
-(ns cayenne.core
-  (:import [java.net URI URLEncoder]
-           [java.util UUID])
-  (:use [clojure.java.io]
-        [cayenne.conf]
+(ns cayenne.action
+  (:import [java.net URLEncoder])
+  (:use [cayenne.conf]
         [cayenne.sources.wok]
         [cayenne.tasks.dump]
         [cayenne.tasks.citation]
@@ -21,21 +19,6 @@
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
-
-(defn test-input-file [name]
-  (file (str (get-param [:dir :test-data]) "/" name ".xml")))
-
-(defn test-accepted-file [name test-name]
-  (file (str (get-param [:dir :test-data]) "/" name "-" test-name ".accepted")))
-
-(defn test-output-file [name test-name]
-  (file (str (get-param [:dir :test-data]) "/" name "-" test-name ".out")))
-
-(defn remote-file [url]
-  (let [content (slurp (URI. url))
-        path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
-    (spit (file path) content)
-    (file path)))
 
 (defn openurl-file [doi]
   (let [extracted-doi (doi/extract-long-doi doi)
@@ -91,26 +74,20 @@
                       #(vector (doi/to-long-doi-uri doi) (second %)))))
 
 (defn get-unixref-records [service from until using]
-  (oai/run service 
-           :from from 
-           :until until
-           :split "record"
-           :parser unixref-record-parser
-           :task using))
+  (oai/run-range service 
+                 :from from 
+                 :until until
+                 :split "record"
+                 :parser unixref-record-parser
+                 :task using))
 
 (defn reindex-fundref [funder-list-loc]
-  (let [funder-info (-> funder-list-loc
+    (let [funder-info (-> funder-list-loc
                         (slurp)
                         (json/read-str))]
     (doseq [doi (get funder-info "items")]
       (parse-openurl doi index-solr-docs))
     (cayenne.tasks.solr/flush-insert-list)))
-
-(defn reindex-dev-fundref []
-  (reindex-fundref "http://search-dev.labs.crossref.org/funders/dois?rows=10000"))
-
-(defn reindex-live-fundref []
-  (reindex-fundref "http://search.crossref.org/funders/dois?rows=10000"))
 
 (defn check-url-citations [file-or-dir]
   (oai/process

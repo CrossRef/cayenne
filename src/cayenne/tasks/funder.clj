@@ -88,7 +88,7 @@
 
 ;;   (let [model (rdf/document->model rdf-file)
 ;;         top-level-orgs (find-top-level-funders model)]
-;;     (insert-top-levl-    
+;;     (insert-top-levl-      
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
@@ -103,6 +103,10 @@
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
 
 (def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
+
+(defn clear! []
+  (memoize/memo-clear! get-funder-primary-name)
+  (memoize/memo-clear! get-funder-names))
 
 (defn canonicalize-funder-name
   [funder-item]

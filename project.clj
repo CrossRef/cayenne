@@ -3,7 +3,7 @@
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
-  :repl-options {:port 9494 :init-ns cayenne.core}
+  :repl-options {:port 9494 :init-ns cayenne.action}
   :jvm-opts ["-javaagent:local/newrelic.jar"
              "-Xms2G" "-Xmx8G" "-XX:+UseG1GC"]
   :resource-paths ["local/harvester2.jar"
@@ -14,6 +14,7 @@
                    "res"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[org.apache.solr/solr-solrj "4.3.0"]
+                 [clojurewerkz/quartzite "1.0.1"]
                  [riemann-clojure-client "0.2.1"]
                  [congomongo "0.4.1"]
                  [enlive "1.1.1"]

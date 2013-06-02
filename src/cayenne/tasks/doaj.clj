@@ -20,6 +20,9 @@
 
 (def get-oa-status-memo (memoize/memo-lru get-oa-status))
 
+(defn clear! []
+  (memoize/memo-clear! get-oa-status-memo))
+
 (defn apply-to 
   ([item]
      (if (= (get-item-subtype item) :journal)
