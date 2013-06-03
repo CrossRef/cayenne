@@ -9,11 +9,14 @@
             [cayenne.conf :as conf]
             [cayenne.ids.fundref :as fundref]))
 
-(defn ensure-funder-indexes! []
+(defn ensure-funder-indexes! [collection-name]
   (m/with-mongo (conf/get-service :mongo)
-    (m/add-index! :funders [:name_tokens])
-    (m/add-index! :funders [:id])
-    (m/add-index! :funders [:uri])))
+    (m/add-index! collection-name [:name_tokens])
+    (m/add-index! collection-name [:id])
+    (m/add-index! collection-name [:uri])
+    (m/add-index! collection-name [:parent])
+    (m/add-index! collection-name [:children])
+    (m/add-index! collection-name [:affiliated])))
 
 (defn simplyfy-name [name]
   (-> (.toLowerCase name)
@@ -62,7 +65,7 @@
                 :affiliated (or affiliation-ids [])})))
   
 (defn load-funders-csv []
-  (ensure-funder-indexes!)
+  (ensure-funder-indexes! :funders)
   (with-open [rdr (io/reader (conf/get-resource :funders))]
     (let [funders (csv/read-csv rdr :separator \tab)]
       (doseq [funder funders]
@@ -103,20 +106,68 @@
                                   :predicate (rdf/skos model "narrower"))
                       (rdf/objects)
                       (map res->id))
-   :afilliated-ids (->> (rdf/select model
+   :affiliated-ids (->> (rdf/select model
                                     :subject funder-concept-node
                                     :predicate (svf model "affilWith"))
                         (rdf/objects)
                         (map res->id))
    :name (first (get-labels model funder-concept-node "prefLabel"))
-   :alternate-names (get-labels model funder-concept-node "altLabel")})
+   :alternative-names (get-labels model funder-concept-node "altLabel")})
+
+(defn patherize [coll]
+  (reduce #(conj %1 (conj (vec (last %1)) %2)) [] coll))
+
+(defn get-funder-ancestors [collection-name id]
+  (m/with-mongo (conf/get-service :mongo)
+    (when-let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
+      (cons parent-id
+            (lazy-seq (get-funder-ancestors collection-name parent-id))))))
+
+(defn get-funder-siblings [collection-name id]
+  (m/with-mongo (conf/get-service :mongo)
+    (let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
+      (map :id (m/fetch collection-name :where {:parent parent-id})))))
+  ;; todo what about affiliated?
+
+(defn get-funder-children [collection-name id]
+  (m/with-mongo (conf/get-service :mongo)
+    (map :id (m/fetch collection-name :where {:parent id}))))
+
+(defn has-children? [collection-name id]
+  (not (empty? (get-funder-children collection-name id))))
+
+(defn add-nesting [nesting path has-children]
+  (assoc-in nesting (vec path) (if has-children :more :end)))
+
+(defn add-nesting [collection-name nesting path]
+  (let [leaf (last path)
+        children (get-funder-children collection-name leaf)
+        with-path (assoc-in nesting path {})]
+    (reduce
+     #(assoc-in %1 
+                (conj (vec path) %2)
+                (if (has-children? collection-name %2)
+                  {:more true}
+                  {}))
+     with-path
+     children)))
+    
+(defn build-nestings [collection-name]
+  (m/with-mongo (conf/get-service :mongo)
+    (doseq [record (take 300 (m/fetch collection-name))]
+      (let [id (:id record)
+            lineage (reverse (cons id (get-funder-ancestors collection-name id)))
+            paths (patherize lineage)]
+        (prn (reduce
+              #(add-nesting collection-name %1 %2)
+              {}
+              paths))))))
 
 (defn load-funders-rdf [rdf-file]
-  (ensure-funder-indexes!)
+  (ensure-funder-indexes! :funderstest)
   (let [model (rdf/document->model rdf-file)]
     (doall
      (->> (find-funders model)
-          (take 10)
           (map (partial funder-concept->map model))
           (map #(insert-full-funder
                  (:id %)
@@ -124,7 +175,8 @@
                  (:alternative-names %)
                  (:broader-id %)
                  (:narrower-ids %)
-                 (:affiliated-ids %)))))))
+                 (:affiliated-ids %))))))
+  (build-nestings :funderstest))
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
@@ -136,13 +188,16 @@
   (m/with-mongo (conf/get-service :mongo)
     (:primary_name_display (m/fetch-one :funders :where {:uri funder-uri}))))
 
+;(def get-funder-children-memo (memoize/memo-lru get-funder-children))
+
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
 
 (def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
 
 (defn clear! []
-  (memoize/memo-clear! get-funder-primary-name)
-  (memoize/memo-clear! get-funder-names))
+;  (memoize/mem-clear! get-funder-children-memo)
+  (memoize/memo-clear! get-funder-primary-name-memo)
+  (memoize/memo-clear! get-funder-names-memo))
 
 (defn canonicalize-funder-name
   [funder-item]
