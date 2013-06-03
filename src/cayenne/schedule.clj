@@ -48,7 +48,7 @@
       (action/reindex-fundref)))
 
 (defjob ReindexDevFundref [ctx]
-  (-> (conf/get-param [:upstream :fundref-dois-live])
+  (-> (conf/get-param [:upstream :fundref-dois-dev])
       (conf/remote-file)
       (action/reindex-fundref)))
  
@@ -94,8 +94,4 @@
     (qj/of-type ReloadFunders)
     (qj/with-identity (qj/key "reload-funders")))
    weekly-work-trigger))
-   
-                
-    
-    
 

@@ -138,7 +138,8 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
-  (set-param! [:upstream :fundref-dois] "http://search.crossref.org/funders/dois?rows=10000000000")
+  (set-param! [:upstream :fundref-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
+  (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-registry] "http://dx.doi.org/10.13039/fundref_registry")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=kward@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))

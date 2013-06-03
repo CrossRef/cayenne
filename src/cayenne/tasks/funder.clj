@@ -49,7 +49,17 @@
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
 
 (defn insert-full-funder [id name alt-names parent-id child-ids affiliation-ids]
-  ())
+  (m/with-mongo (conf/get-service :mongo)
+    (m/insert! :funderstest
+               {:id id
+                :uri (fundref/id-to-doi-uri id)
+                :primary_name_display name
+                :other_names_display alt-names
+                :name_tokens (concat (tokenize-name name)
+                                     (mapcat tokenize-name alt-names))
+                :parent parent-id
+                :children (or child-ids [])
+                :affiliated (or affiliation-ids [])})))
   
 (defn load-funders-csv []
   (ensure-funder-indexes!)
@@ -62,33 +72,59 @@
                          name-type))))))
 
 (defn find-funders [model]
-  (rdf/select model
-              :predicate (rdf/rdf model "type")
-              :object (rdf/skos-type model "Concept")))
+  (-> (rdf/select model
+                  :predicate (rdf/rdf model "type")
+                  :object (rdf/skos-type model "Concept"))
+      (rdf/subjects)))
 
 (defn res->id [funder-concept-node]
-  (last (string/split (rdf/->uri funder-concept-node) "/")))
+  (when funder-concept-node
+    (last (string/split (rdf/->uri funder-concept-node) #"/"))))
 
-;; (defn funder-concept->map [model funder-concept-node]
-;;   {:id (res->id funder-concept-node)
-;;    :broader-id 
-;;    :narrower-id 
-;;    :affiliated-ids 
-;;    :name
-;;    :alternate-names
+(def svf (partial rdf/get-property "http://www.elsevier.com/xml/schema/grant/grant-1.2/"))
 
-;; (defn load-funders-rdf [rdf-file]
-;;   (ensure-funder-indexes!)
-;;   (doall
-;;    (->> (rdf/document->model rdf-file)
-;;         (find-funders)
-;;         (map funder-concept->map)
-;;         (map insert-funder))))
+(defn get-labels [model node kind]
+  (->> (rdf/select model :subject node :predicate (rdf/skos-xl model kind))
+       (rdf/objects)
+       (mapcat #(rdf/select model :subject % :predicate (rdf/skos-xl model "literalForm")))
+       (rdf/objects)
+       (map #(.getString %))))
       
+(defn funder-concept->map [model funder-concept-node]
+  {:id (res->id funder-concept-node)
+   :broader-id (-> (rdf/select model
+                               :subject funder-concept-node
+                               :predicate (rdf/skos model "broader"))
+                   (rdf/objects)
+                   (first)
+                   (res->id))
+   :narrower-ids (->> (rdf/select model
+                                  :subject funder-concept-node
+                                  :predicate (rdf/skos model "narrower"))
+                      (rdf/objects)
+                      (map res->id))
+   :afilliated-ids (->> (rdf/select model
+                                    :subject funder-concept-node
+                                    :predicate (svf model "affilWith"))
+                        (rdf/objects)
+                        (map res->id))
+   :name (first (get-labels model funder-concept-node "prefLabel"))
+   :alternate-names (get-labels model funder-concept-node "altLabel")})
 
-;;   (let [model (rdf/document->model rdf-file)
-;;         top-level-orgs (find-top-level-funders model)]
-;;     (insert-top-levl-      
+(defn load-funders-rdf [rdf-file]
+  (ensure-funder-indexes!)
+  (let [model (rdf/document->model rdf-file)]
+    (doall
+     (->> (find-funders model)
+          (take 10)
+          (map (partial funder-concept->map model))
+          (map #(insert-full-funder
+                 (:id %)
+                 (:name %)
+                 (:alternative-names %)
+                 (:broader-id %)
+                 (:narrower-ids %)
+                 (:affiliated-ids %)))))))
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)

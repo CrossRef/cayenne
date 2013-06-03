@@ -22,8 +22,6 @@
                        :or {subject nil predicate nil object nil}}]
   (-> (.listStatements model subject predicate object) (select-seq)))
 
-(defn select1 [& args] (first (apply select args)))
-
 (defn subject [stmt] (first stmt))
 (defn predicate [stmt] (second stmt))
 (defn object [stmt] (nth stmt 2))
