@@ -9,6 +9,14 @@
          :when v]
      [k v])))
 
+(defn keys-in 
+  "Return all keys in nested maps."
+  [m]
+  (if (map? m)
+    (concat
+     (keys m)
+     (mapcat (comp keys-in (partial get m)) (keys m)))))
+
 (defn map-diff 
   "Produce the list of keys in a but not in b."
   [a b]
@@ -40,6 +48,9 @@
   (reduce 
    (fn [m [k v]] 
      (if (or (vector? v) (seq? v)) (assoc m k (into-array v)) m)) record record))
+
+(defn patherize [coll]
+  (reduce #(conj %1 (conj (vec (last %1)) %2)) [] coll))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Control flow stuff taken from Prismatic's plumbing lib

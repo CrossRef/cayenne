@@ -7,6 +7,7 @@
             [cayenne.item-tree :as itree]
             [cayenne.rdf :as rdf]
             [cayenne.conf :as conf]
+            [cayenne.util :as util]
             [cayenne.ids.fundref :as fundref]))
 
 (defn ensure-funder-indexes! [collection-name]
@@ -114,34 +115,16 @@
    :name (first (get-labels model funder-concept-node "prefLabel"))
    :alternative-names (get-labels model funder-concept-node "altLabel")})
 
-(defn patherize [coll]
-  (reduce #(conj %1 (conj (vec (last %1)) %2)) [] coll))
-
-(defn get-funder-ancestors [collection-name id]
-  (m/with-mongo (conf/get-service :mongo)
-    (when-let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
-      (cons parent-id
-            (lazy-seq (get-funder-ancestors collection-name parent-id))))))
-
-(defn get-funder-siblings [collection-name id]
-  (m/with-mongo (conf/get-service :mongo)
-    (let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
-      (map :id (m/fetch collection-name :where {:parent parent-id})))))
-  ;; todo what about affiliated?
-
-(defn get-funder-children [collection-name id]
-  (m/with-mongo (conf/get-service :mongo)
-    (map :id (m/fetch collection-name :where {:parent id}))))
+(declare get-funder-ancestors-memo)
+(declare get-funder-children-memo)
+(declare get-funder-primary-name-memo)
 
 (defn has-children? [collection-name id]
-  (not (empty? (get-funder-children collection-name id))))
-
-(defn add-nesting [nesting path has-children]
-  (assoc-in nesting (vec path) (if has-children :more :end)))
+  (not (empty? (get-funder-children-memo collection-name id))))
 
 (defn add-nesting [collection-name nesting path]
   (let [leaf (last path)
-        children (get-funder-children collection-name leaf)
+        children (get-funder-children-memo collection-name leaf)
         with-path (assoc-in nesting path {})]
     (reduce
      #(assoc-in %1 
@@ -154,14 +137,22 @@
     
 (defn build-nestings [collection-name]
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [record (take 300 (m/fetch collection-name))]
+    (doseq [record (m/fetch collection-name)]
+      (prn (str "Working on " (:id record)))
       (let [id (:id record)
-            lineage (reverse (cons id (get-funder-ancestors collection-name id)))
-            paths (patherize lineage)]
-        (prn (reduce
-              #(add-nesting collection-name %1 %2)
-              {}
-              paths))))))
+            lineage (reverse (cons id (get-funder-ancestors-memo collection-name id)))
+            paths (util/patherize lineage)
+            nesting (reduce
+                     #(add-nesting collection-name %1 %2)
+                     {}
+                     paths)
+            nesting-names (into 
+                           {}
+                           (map 
+                            #(vector % (get-funder-primary-name-memo collection-name %))
+                            (util/keys-in nesting)))]
+        (m/update! collection-name {:id id} {"$set" {:nesting nesting
+                                                     :nesting_names nesting-names}})))))
 
 (defn load-funders-rdf [rdf-file]
   (ensure-funder-indexes! :funderstest)
@@ -184,18 +175,40 @@
       (conj (or (:other_names_display funder) []) 
             (:primary_name_display funder)))))
 
-(defn get-funder-primary-name [funder-uri]
+(defn get-funder-primary-name 
+  ([funder-uri]
+     (m/with-mongo (conf/get-service :mongo)
+       (:primary_name_display (m/fetch-one :funders :where {:uri funder-uri}))))
+  ([collection-name id]
+     (m/with-mongo (conf/get-service :mongo)
+       (:primary_name_display (m/fetch-one collection-name :where {:id id})))))
+
+(defn get-funder-ancestors [collection-name id]
   (m/with-mongo (conf/get-service :mongo)
-    (:primary_name_display (m/fetch-one :funders :where {:uri funder-uri}))))
+    (when-let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
+      (cons parent-id
+            (lazy-seq (get-funder-ancestors collection-name parent-id))))))
 
-;(def get-funder-children-memo (memoize/memo-lru get-funder-children))
+(defn get-funder-siblings [collection-name id]
+  (m/with-mongo (conf/get-service :mongo)
+    (let [parent-id (:parent (m/fetch-one collection-name :where {:id id}))]
+      (map :id (m/fetch collection-name :where {:parent parent-id})))))
+  ;; todo what about affiliated?
 
+(defn get-funder-children [collection-name id]
+  (m/with-mongo (conf/get-service :mongo)
+    (map :id (m/fetch collection-name :where {:parent id}))))
+
+(def get-funder-children-memo (memoize/memo-lru get-funder-children))
+(def get-funder-siblings-memo (memoize/memo-lru get-funder-siblings))
+(def get-funder-ancestors-memo (memoize/memo-lru get-funder-ancestors))
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
-
 (def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
 
 (defn clear! []
-;  (memoize/mem-clear! get-funder-children-memo)
+  (memoize/memo-clear! get-funder-children-memo)
+  (memoize/memo-clear! get-funder-siblings-memo)
+  (memoize/memo-clear! get-funder-ancestors-memo)
   (memoize/memo-clear! get-funder-primary-name-memo)
   (memoize/memo-clear! get-funder-names-memo))
 
