@@ -61,7 +61,9 @@
                 :other_names_display alt-names
                 :name_tokens (concat (tokenize-name name)
                                      (mapcat tokenize-name alt-names))
-                :parent parent-id
+                ; hack here since funders can appear as their own parent in
+                ; the registry. bug in the registry.
+                :parent (if (not= parent-id id) parent-id nil)
                 :children (or child-ids [])
                 :affiliated (or affiliation-ids [])})))
   
@@ -138,7 +140,6 @@
 (defn build-nestings [collection-name]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [record (m/fetch collection-name)]
-      (prn (str "Working on " (:id record)))
       (let [id (:id record)
             lineage (reverse (cons id (get-funder-ancestors-memo collection-name id)))
             paths (util/patherize lineage)
