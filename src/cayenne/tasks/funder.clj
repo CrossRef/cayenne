@@ -12,6 +12,7 @@
 
 (defn ensure-funder-indexes! [collection-name]
   (m/with-mongo (conf/get-service :mongo)
+    (m/add-index! collection-name [:level])
     (m/add-index! collection-name [:name_tokens])
     (m/add-index! collection-name [:id])
     (m/add-index! collection-name [:uri])
@@ -152,7 +153,8 @@
                            (map 
                             #(vector % (get-funder-primary-name-memo collection-name %))
                             (util/keys-in nesting)))]
-        (m/update! collection-name {:id id} {"$set" {:nesting nesting
+        (m/update! collection-name {:id id} {"$set" {:level (count lineage)
+                                                     :nesting nesting
                                                      :nesting_names nesting-names}})))))
 
 (defn load-funders-rdf [rdf-file]

@@ -9,7 +9,7 @@
          :when v]
      [k v])))
 
-(defn keys-in 
+(defn keys-in
   "Return all keys in nested maps."
   [m]
   (if (map? m)
