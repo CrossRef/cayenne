@@ -120,6 +120,7 @@
 
 (declare get-funder-ancestors-memo)
 (declare get-funder-children-memo)
+(declare get-funder-descendants)
 (declare get-funder-primary-name-memo)
 
 (defn has-children? [collection-name id]
@@ -137,7 +138,7 @@
                   {}))
      with-path
      children)))
-    
+
 (defn build-nestings [collection-name]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [record (m/fetch collection-name)]
@@ -153,9 +154,13 @@
                            (map 
                             #(vector % (get-funder-primary-name-memo collection-name %))
                             (util/keys-in nesting)))]
-        (m/update! collection-name {:id id} {"$set" {:level (count lineage)
-                                                     :nesting nesting
-                                                     :nesting_names nesting-names}})))))
+        (m/update! 
+         collection-name 
+         {:id id} 
+         {"$set" {:descendants (get-funder-descendants-memo collection-name id)
+                  :level (count lineage)
+                  :nesting nesting
+                  :nesting_names nesting-names}})))))
 
 (defn load-funders-rdf [rdf-file]
   (ensure-funder-indexes! :funderstest)
@@ -202,6 +207,15 @@
   (m/with-mongo (conf/get-service :mongo)
     (map :id (m/fetch collection-name :where {:parent id}))))
 
+(defn get-funder-descendants [collection-name id]
+  (let [children (get-funder-children collection-name id)]
+    (concat
+     children
+     (mapcat
+      (partial get-funder-children collection-name)
+      children))))
+      
+(def get-funder-descendants-memo (memoize/memo-lru get-funder-descendants))
 (def get-funder-children-memo (memoize/memo-lru get-funder-children))
 (def get-funder-siblings-memo (memoize/memo-lru get-funder-siblings))
 (def get-funder-ancestors-memo (memoize/memo-lru get-funder-ancestors))
@@ -209,6 +223,7 @@
 (def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
 
 (defn clear! []
+  (memoize/memo-clear! get-funder-descendants)
   (memoize/memo-clear! get-funder-children-memo)
   (memoize/memo-clear! get-funder-siblings-memo)
   (memoize/memo-clear! get-funder-ancestors-memo)
