@@ -4,14 +4,13 @@
   (:require [clojure.string :as string]
             [cayenne.conf :as conf]))
 
-(def insert-list-max-size 10000)
+(def insert-list-max-size 50000)
 (def insert-list (ref []))
 
 (defn flush-insert-list []
   (dosync
    (.add (conf/get-service :solr) @insert-list)
-   (.commit (conf/get-service :solr) false false)
-   (alter insert-list (constantly []))))
+      (alter insert-list (constantly []))))
 
 (defn clear-insert-list []
   (dosync
