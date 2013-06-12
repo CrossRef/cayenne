@@ -4,12 +4,14 @@
   (:use [clojure.core.incubator])
   (:require [cayenne.conf :as conf]))
 
+(def processing-mul 1)
+
 (def processing-pool 
   (Executors/newFixedThreadPool
    (->
     (.. Runtime getRuntime availableProcessors)
     (+ 2)
-    (* 3))))
+    (* processing-mul))))
 
 (def job-id-set-map (ref {}))
 (def set-future-pool (ref {}))
