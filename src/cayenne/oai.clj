@@ -15,7 +15,6 @@
   (conf/log
    {:message msg
     :state state
-    :stage (conf/get-result :stage)
     :file (str (conf/get-result :file))
     :oai {:resumption-token (conf/get-result :resumption-token)
           :set-spec (conf/get-result :set-spec)

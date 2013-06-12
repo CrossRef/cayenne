@@ -1,6 +1,8 @@
 (ns cayenne.formats.unixref
   (:require [cayenne.xml :as xml]
+            [cayenne.conf :as conf]
             [cayenne.ids.fundref :as fundref])
+  (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
   (:use [cayenne.ids.isbn :only [to-isbn-uri]])
@@ -241,7 +243,7 @@
     {:type :title :subtype :long :value title}))
 
 (defn parse-title [item-loc]
-  (if-let [title (xml/xselect1 item-loc "titles" "title" :text)]
+  (when-let [title (xml/xselect1 item-loc "titles" "title" :text)]
     {:type :title :subtype :long :value title}))
 
 (defn parse-subtitle [item-loc]
@@ -430,9 +432,10 @@
         (xml/xselect funder-group-loc "assertion" [:= "name" "award_number"]))))
 
 (defn normalize-funder-id-val [funder-id-val]
-  (if-let [id-only (re-find #"\A\d+\Z" (.trim funder-id-val))]
-    (fundref/id-to-doi-uri id-only)
-    (to-long-doi-uri funder-id-val)))
+  (when funder-id-val
+    (if-let [id-only (re-find #"\A\d+\Z" (.trim funder-id-val))]
+      (fundref/id-to-doi-uri id-only)
+      (to-long-doi-uri funder-id-val))))
 
 (defn parse-funder [funder-group-loc]
   (let [funder-id-val (xml/xselect1 funder-group-loc 
@@ -447,7 +450,7 @@
                              [:= "name" "funder_name"] 
                              :plain)}
         (parse-attach :awarded funder-group-loc :multi parse-grants)
-        (attach-id funder-uri))))
+        (?> funder-uri (attach-id funder-uri)))))
 
 (defn parse-item-funders [item-loc]
   (let [funder-groups-loc (concat 
