@@ -56,7 +56,7 @@
 
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
-               :async false
+               :async true
                :name :parse
                :split "record"
                :parser unixref-record-parser 
@@ -64,7 +64,7 @@
 
 (defn parse-openurl [doi using]
   (oai/process (openurl-file doi)
-               :async false
+               :async true
                :name :parse-openurl
                :kind ".tmp"
                :split "doi_record"

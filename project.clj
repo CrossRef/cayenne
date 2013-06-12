@@ -13,7 +13,8 @@
                    "local/xml-apis.jar"
                    "res"]
   :plugins [[codox "0.6.4"]]
-  :dependencies [[org.apache.solr/solr-solrj "4.3.0"]
+  :dependencies [[com.taoensso/timbre "2.1.2"]
+                 [org.apache.solr/solr-solrj "4.3.0"]
                  [clojurewerkz/quartzite "1.0.1"]
                  [riemann-clojure-client "0.2.1"]
                  [congomongo "0.4.1"]

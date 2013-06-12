@@ -13,7 +13,7 @@
 
 (defprotocol XmlParser
   "Translate from an xml structure representing a format to graftable data."
-  (parse-xml [this xml]))a
+  (parse-xml [this xml]))
 
 (defprotocol JsonParser
   "Translate from a json structure representing a format to graftable data."

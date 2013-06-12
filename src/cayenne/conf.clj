@@ -9,11 +9,17 @@
             [clojure.java.io :as io]
             [riemann.client :as rie]
             [somnium.congomongo :as m]
-            [clj-http.conn-mgr :as conn]))
+            [clj-http.conn-mgr :as conn]
+            [taoensso.timbre :as timbre
+             :refer (trace debug info warn error fatal spy)]))
+
+(timbre/set-config! [:appenders :spit :enabled?] true)
+(timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
 (def ^:dynamic *result-name*)
+(def ^:dynamic *result-job-name*)
 
 (defn get-param [path & default]
   (or (get-in @cores (concat [*core-name* :parameters] path) default)))
@@ -28,16 +34,19 @@
   (swap! cores assoc-in [*core-name* :services key] obj))
 
 (defn set-result! [key val]
-  (swap! cores assoc-in [*core-name* :results *result-name* key] val))
+  (swap! cores assoc-in [*core-name* :results *result-name* *result-job-name* key] val))
 
 (defn update-result! [key f]
-  (swap! cores update-in [*core-name* :results *result-name* key] f))
+  (swap! cores update-in [*core-name* :results *result-name* *result-job-name* key] f))
 
 (defn get-result [key]
-  (get-in @cores [*core-name* :results *result-name* key]))
+  (get-in @cores [*core-name* :results *result-name* *result-job-name* key]))
 
 (defn drop-result-set! []
   (swap! cores dissoc-in [*core-name* :results *result-name*]))
+
+(defn log [s]
+  (info (str *result-name* ": " s)))
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))
@@ -63,6 +72,11 @@
    write to."
   [name & body]
   `(binding [*result-name* ~name]
+     ~@body))
+
+(defmacro with-result-job
+  [name & body]
+  `(binding [*result-job-name* ~name]
      ~@body))
 
 (defn create-core!

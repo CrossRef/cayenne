@@ -1,18 +1,32 @@
 (ns cayenne.oai
   (:require [cayenne.xml :as xml]
             [cayenne.conf :as conf]
+            [cayenne.job :as job]
             [clj-http.client :as client]
             [clj-time.core :as ctime]
             [clj-time.periodic :as ptime]
             [clj-time.format :as ftime]
             [clojure.string :as string])
   (:use [clojure.java.io :only [file reader writer]])
-  (:use [cayenne.job])
   (:use [cayenne.util])
   (:use [clojure.tools.trace]))
 
-(def debug-processing true)
-(def debug-grabbing true)
+(defn log-state [msg state]
+  (conf/log
+   {:message msg
+    :state state
+    :stage (conf/get-result :stage)
+    :file (str (conf/get-result :file))
+    :oai {:resumption-token (conf/get-result :resumption-token)
+          :set-spec (conf/get-result :set-spec)
+          :from (conf/get-result :from)
+          :until (conf/get-result :until)
+          :url (conf/get-result :url)}}))
+
+(defn log-fail [msg] (log-state msg :fail))
+(defn log-info [msg] (log-state msg :info))
+
+(defn ex->info-str [ex] (str ex ": " (first (.getStackTrace ex))))
 
 (defn parser-task-pass 
   "If the parser doesn't support a record (returns nil)
@@ -22,22 +36,24 @@
     (let [parsed-record (parser-fn record)]
       (if-not (nil? (second parsed-record))
         (task-fn parsed-record)
-        (when debug-processing
-          (prn "Parser returned nil for a record"))))))
+        (log-fail "Parser returned nil for a record.")))))
 
 (defn process-oai-xml-file 
   "Run a parser and task over a file."
   [parser-fn task-fn file result-set split]
-  (conf/with-result-set result-set
-    (with-open [rdr (reader file)]
-      (xml/process-xml rdr split (parser-task-pass task-fn parser-fn)))))
+  (conf/set-result! :file file)
+  (log-info "Processing.")
+  (with-open [rdr (reader file)]
+    (xml/process-xml rdr split (parser-task-pass task-fn parser-fn))))
 
-(defn process-oai-xml-file-async 
+(defn process-oai-xml-file-async
   "Asynchronously run a parser and task over a file"
   [parser-fn task-fn file result-set split]
-  (when debug-processing
-    (prn (str "Executing " file)))
-  (put-job result-set #(process-oai-xml-file parser-fn task-fn file result-set split)))
+  (let [job (job/make-job #(process-oai-xml-file parser-fn task-fn file result-set split)
+                      :fail #(log-fail "Failed to process OAI file.")
+                      :exception #(log-fail (str "Failed to process OAI file due to: " (ex->info-str %3))))
+        meta {:file (str file)}]
+    (job/put-job result-set meta job)))
 
 (defn resumption-token 
   "Cheap and cheerful grab of resumption token."
@@ -58,13 +74,18 @@
                      (?> #(:set-spec service) assoc "setspec" (:set-spec service))
                      (?> from assoc "from" from)
                      (?> until assoc "until" until)))]
+    (conf/set-result! :from from)
+    (conf/set-result! :until until)
+    (conf/set-result! :resumption-token token)
+    (conf/set-result! :url (:url service))
+    (conf/set-result! :set-spec (:set-spec service))
+    (log-info "Downloading OAI-PMH file.")
     (let [conn-mgr (conf/get-service :conn-mgr)
           resp (client/get (:url service) {:query-params params
                                            :throw-exceptions false
                                            :connection-manager conn-mgr})]
       (if (not (client/success? resp))
-        (when debug-grabbing 
-          (prn "Unsuccessful OAI download:" (:url service) from until token))
+        (log-fail (str "Bad response from OAI server: " (:status resp)))
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
@@ -74,9 +95,10 @@
             (recur service from until (inc count) token parser-fn task-fn result-set)))))))
 
 (defn grab-oai-xml-file-async [service from until count token parser-fn task-fn result-set]
-  (when debug-grabbing
-    (prn (str "Grabbing " from " " until " " count)))
-  (put-job result-set #(grab-oai-xml-file service from until count token parser-fn task-fn result-set)))
+  (let [job (job/make-job #(grab-oai-xml-file service from until count token parser-fn task-fn result-set)
+                          :fail #(log-fail "Failed to download OAI file")
+                          :exception #(log-fail (str "Failed to download OAI file due to: " (ex->info-str %3))))]
+    (job/put-job result-set meta job)))
 
 (defn process 
   "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
@@ -110,7 +132,7 @@
                                  separation (ctime/days 1)}}]
   (let [from-date (apply ctime/date-time (str-date->parts from))
         until-date (apply ctime/date-time (str-date->parts until))]
-    (doseq [from-point (take-while #(ctime/before? % until-date) 
+    (doseq [from-point (take-while #(ctime/before? % until-date)
                                    (ptime/periodic-seq from-date separation))]
       (run service 
            :from (ftime/unparse oai-date-format from-point)
