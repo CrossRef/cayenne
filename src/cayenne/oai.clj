@@ -128,7 +128,7 @@
 (defn run-range [service & {:keys [from until task parser name separation]
                             :or {task nil
                                  parser nil
-                                 separation (ctime/days 1)}}]
+                                 separation (ctime/days 7)}}]
   (let [from-date (apply ctime/date-time (str-date->parts from))
         until-date (apply ctime/date-time (str-date->parts until))]
     (doseq [from-point (take-while #(ctime/before? % until-date)
