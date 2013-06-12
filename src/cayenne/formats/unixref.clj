@@ -133,27 +133,23 @@
   (xml/xselect1 event-loc "conference_date"))
 
 (defn parse-month [month]
-  (if (nil? month)
-    nil
-    (let [month-val (Integer/parseInt month)]
-      (if (and (>= month-val 1) (<= month-val 12))
-        month-val
-        nil))))
+  (if-let [month-val (try (Integer/parseInt month) (catch Exception _ nil))]
+    (if (and (>= month-val 1) (<= month-val 12))
+      month-val
+      nil)))
 
 (defn parse-time-of-year [month]
-  (if (nil? month)
-    nil
-    (let [month-val (Integer/parseInt month)]
-      (cond
-       (= month-val 21) :spring
-       (= month-val 22) :summer
-       (= month-val 23) :autumn
-       (= month-val 24) :winter
-       (= month-val 31) :first-quarter
-       (= month-val 32) :second-quarter
-       (= month-val 33) :third-quarter
-       (= month-val 34) :forth-quarter
-       :else nil))))
+  (if-let [month-val (try (Integer/parseInt month) (catch Exception _ nil))]
+    (cond
+     (= month-val 21) :spring
+     (= month-val 22) :summer
+     (= month-val 23) :autumn
+     (= month-val 24) :winter
+     (= month-val 31) :first-quarter
+     (= month-val 32) :second-quarter
+     (= month-val 33) :third-quarter
+     (= month-val 34) :forth-quarter
+     :else nil)))
 
 (defn parse-date
   "Parse 'print' or 'online' publication dates."
