@@ -9,14 +9,15 @@
 ;; At some point should be periodically downloading DOAJ info.
 
 (defn get-oa-status [issn]
-  (let [norm-issn (normalize-issn issn)
-        oa-status (m/with-mongo (conf/get-service :mongo)
-                    (-> :issns
-                        (m/fetch-one :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]})
-                        (:oa_status)))]
-    (if (= oa-status "doaj")
-      "DOAJ"
-      "Other")))
+  (if (nil? issn)
+    "Other"
+    (let [norm-issn (normalize-issn issn)
+          result (m/with-mongo (conf/get-service :mongo)
+                   (m/fetch-one :issns :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]}))]
+      (cond
+       (not result) "Other"
+       (= "doaj" (:oa_status result)) "DOAJ"
+       :else "Other"))))
 
 (def get-oa-status-memo (memoize/memo-lru get-oa-status))
 
