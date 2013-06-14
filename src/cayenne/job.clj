@@ -25,6 +25,11 @@
    :fail-handler fail
    :exception-handler exception})
 
+(defmacro make-finished-handler [result-set & body]
+  `(fn []
+     (if (= 0 (job-count ~result-set))
+       ~body)))
+
 (defn get-set [job-id]
   (get @job-id-set-map job-id))
 
@@ -57,6 +62,9 @@
                          ((:success-handler job) job meta)
                          ((:fail-handler job) job meta))
                        (forget-job id)
+                       (if (= 0 (job-count set-name))
+                         (if-let [after-fn (conf/get-result-set-post)]
+                           (after-fn)))
                        (catch Exception e
                          ((:exception-handler job) job meta e))))))]
     (dosync 

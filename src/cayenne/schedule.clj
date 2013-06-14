@@ -1,6 +1,7 @@
 (ns cayenne.schedule
   (:require [cayenne.action :as action]
             [cayenne.conf :as conf]
+            [cayenne.tasks.solr :as solr]
             [cayenne.tasks.prefix :as prefix]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.doaj :as doaj]
@@ -14,8 +15,7 @@
             [clojurewerkz.quartzite.schedule.calendar-interval :as cal])
    (:use [clojurewerkz.quartzite.jobs :only [defjob]]))
 
-(def crossref-oai-services 
-  [:crossref-journals :crossref-books :crossref-serials])
+(def crossref-oai-services [:crossref-journals :crossref-books :crossref-serials])
 
 (def daily-work-trigger 
   (qt/build
@@ -31,6 +31,7 @@
      (cal/schedule
       (cal/with-interval-in-days 7)))))
 
+;; afterwards call flush-insert-list, then solr commit, then solr swap cores
 (defjob IndexCrossrefOai [ctx]
   (let [formatter (timef/formatter "YYYY-MM-dd")
         until (time/today-at-midnight)
@@ -40,7 +41,8 @@
        (conf/get-param [:oai oai-service])
        (timef/unparse formatter from)
        (timef/unparse formatter until)
-       action/index-solr-docs))))
+       action/index-solr-docs
+       solr/flush-commit-swap))))
 
 (defjob ReindexLiveFundref [ctx]
   (-> (conf/get-param [:upstream :fundref-dois-live])
@@ -94,4 +96,3 @@
     (qj/of-type ReloadFunders)
     (qj/with-identity (qj/key "reload-funders")))
    weekly-work-trigger))
-

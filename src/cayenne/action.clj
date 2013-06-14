@@ -9,6 +9,7 @@
   ;;(:use cayenne.tasks.neo4j)
   (:require [clojure.data.json :as json] 
             [cayenne.oai :as oai]
+            [cayenne.job :as job]
             [cayenne.html :as html]
             [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
@@ -18,11 +19,15 @@
             [cayenne.ids.doi :as doi]))
 
 (defn scrape-journal-short-names-from-wok []
-  (html/scrape-urls journal-pages :scraper journal-names-scraper :task (record-writer "out.txt")))
+  (html/scrape-urls 
+   journal-pages 
+   :scraper journal-names-scraper 
+   :task (record-writer "out.txt")))
 
 (defn openurl-file [doi]
   (let [extracted-doi (doi/extract-long-doi doi)
-        url (str (get-param [:upstream :openurl-url]) (URLEncoder/encode extracted-doi))]
+        url (str (get-param [:upstream :openurl-url]) 
+                 (URLEncoder/encode extracted-doi))]
     (remote-file url)))
 
 (def dump-plain-docs
@@ -73,7 +78,8 @@
                       using
                       #(vector (doi/to-long-doi-uri doi) (second %)))))
 
-(defn get-unixref-records [service from until using]
+(defn get-unixref-records [service from until using after]
+  (when after (set-result-set-post! after))
   (oai/run-range service 
                  :from from 
                  :until until

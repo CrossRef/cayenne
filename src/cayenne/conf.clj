@@ -10,11 +10,16 @@
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
+            [taoensso.timbre.appenders.irc :as irc-appender]
             [taoensso.timbre :as timbre
              :refer (trace debug info warn error fatal spy)]))
 
 (timbre/set-config! [:appenders :spit :enabled?] true)
 (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+
+(timbre/set-config! [:appenders :irc] irc-appender/irc-appender)
+(timbre/set-config! [:appenders :irc :min-level] :error)
+(timbre/set-config! [:shared-appender-config :irc] {:host "localhost" :nick "cayenne" :name "Cayenne" :chan "#cayenne"})
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -45,8 +50,20 @@
 (defn drop-result-set! []
   (swap! cores dissoc-in [*core-name* :results *result-name*]))
 
-(defn log [s]
-  (info (str *result-name* ": " s)))
+(defn set-result-set-post! [f]
+  (swap! cores assoc-in [*core-name* :results *result-name* :post] f))
+
+(defn get-result-set-post []
+  (get-in @cores [*core-name* :results *result-name* :post]))
+
+(defn log [msg]
+  (cond
+   (map? msg)
+   (if (= (:state msg) :fail) 
+     (error (str *result-name* ": " msg)) 
+     (info (str *result-name* ": " msg)))
+   :else
+   (info (str *result-name* ": " msg))))
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))

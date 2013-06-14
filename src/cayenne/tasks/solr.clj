@@ -1,6 +1,8 @@
 (ns cayenne.tasks.solr
   (:use cayenne.item-tree)
-  (:import [org.apache.solr.common SolrInputDocument])
+  (:import [org.apache.solr.common SolrInputDocument]
+           [org.apache.solr.client.solrj.request CoreAdminRequest]
+           [org.apache.solr.common.params CoreAdminParams$CoreAdminAction])
   (:require [clojure.string :as string]
             [cayenne.conf :as conf]))
 
@@ -15,6 +17,18 @@
 (defn clear-insert-list []
   (dosync
    (alter insert-list (constantly []))))
+
+(defn flush-commit-swap []
+  (conf/log "Final solr insert list flush...")
+  (flush-insert-list)
+  (conf/log "Performing a SOLR commit...")
+  (.commit (conf/get-service :solr) true true)
+  (conf/log "Swapping SOLR cores...")
+  (doto (CoreAdminRequest.)
+    (.setCoreName "crmds2")
+    (.setOtherCoreName "crmds1")
+    (.setAction CoreAdminParams$CoreAdminAction/SWAP)
+    (.process (conf/get-service :solr))))
 
 (defn get-categories [item]
   (if-let [journal (find-item-of-subtype item :journal)]

@@ -94,7 +94,9 @@
 
 (defn grab-oai-xml-file-async [service from until count token parser-fn task-fn result-set]
   (let [job (job/make-job #(grab-oai-xml-file service from until count token parser-fn task-fn result-set)
-                          :exception (fn [_ _ ex] (log-fail (str "Failed to download OAI file due to: " (ex->info-str ex)))))
+                          :exception (fn [_ _ ex] 
+                                       (log-fail 
+                                        (str "Failed to download OAI file due to: " (ex->info-str ex)))))
         meta {:file (str file)}]
     (job/put-job result-set meta job)))
 

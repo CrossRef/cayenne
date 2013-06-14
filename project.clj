@@ -14,6 +14,7 @@
                    "res"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[com.taoensso/timbre "2.1.2"]
+                 [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "4.3.0"]
                  [clojurewerkz/quartzite "1.0.1"]
                  [riemann-clojure-client "0.2.1"]
@@ -24,6 +25,7 @@
                  [xom "1.2.5"]
                  [clj-http "0.7.2"]
                  [clj-time "0.5.1"]
+                 [org.clojure/ins
                  [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.2.0"]

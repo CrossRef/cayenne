@@ -29,9 +29,10 @@
   "Merge categories into an item if it is a journal item."
   ([item]
      (if (= :journal (get-item-subtype item))
-       (let [issns (map normalize-issn (get-item-ids item :issn))
-             categories (set (mapcat get-issn-categories-memo issns))]
-         (assoc item :category (map get-category-name-memo categories)))
+       (do 
+         (let [issns (map normalize-issn (get-item-ids item :issn))
+               categories (set (mapcat get-issn-categories-memo issns))]
+           (assoc item :category (map get-category-name-memo categories))))
        item))
   ([id item]
      [id (apply-to item)]))
