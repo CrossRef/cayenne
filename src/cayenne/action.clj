@@ -5,7 +5,8 @@
         [cayenne.tasks.dump]
         [cayenne.tasks.citation]
         [clojure.tools.trace]
-        [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]])
+        [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
+        [cayenne.formats.datacite :only [datacite-record-parser]])
   ;;(:use cayenne.tasks.neo4j)
   (:require [clojure.data.json :as json] 
             [cayenne.oai :as oai]
@@ -62,9 +63,17 @@
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
                :async true
-               :name :parse
+               :name :parse-unixref
                :split "record"
                :parser unixref-record-parser 
+               :task using))
+
+(defn parse-datacite-records [file-or-dir using]
+  (oai/process file-or-dir
+               :async true
+               :name :parse-datacite
+               :split "resource"
+               :parser datacite-record-parser
                :task using))
 
 (defn parse-openurl [doi using]

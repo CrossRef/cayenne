@@ -137,6 +137,8 @@
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://78.46.87.34:8080/solr-web")
+  (set-param! [:service :solr :query-core] "crmds1")
+  (set-param! [:service :solr :insert-core] "crmds2")
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")

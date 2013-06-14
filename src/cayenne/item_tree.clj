@@ -28,6 +28,9 @@
                      :reference-entry "Entry"
                      :dissertation "Dissertation"
                      :component "Component"
+                     :image "Image"
+                     :model "Model"
+                     :film "Film"
                      :other "Other"})
 
 ;; todo are section part track only for books or for article figures etc too?

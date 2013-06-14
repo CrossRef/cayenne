@@ -25,8 +25,8 @@
   (.commit (conf/get-service :solr) true true)
   (conf/log "Swapping SOLR cores...")
   (doto (CoreAdminRequest.)
-    (.setCoreName "crmds2")
-    (.setOtherCoreName "crmds1")
+    (.setCoreName (conf/get-param [:service :solr :insert-core]))
+    (.setOtherCoreName (conf/get-param [:service :solr :query-core]))
     (.setAction CoreAdminParams$CoreAdminAction/SWAP)
     (.process (conf/get-service :solr))))
 
