@@ -5,6 +5,7 @@
 (def contributor-rels [:author :chair :translator :editor :contributor])
 
 (def subtype-labels {:journal "Journal"
+                     :article "Article"
                      :journal-article "Journal Article"
                      :journal-issue "Journal Issue"
                      :journal-volume "Journal Volume"

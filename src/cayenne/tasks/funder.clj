@@ -149,6 +149,12 @@
                      #(add-nesting collection-name %1 %2)
                      {}
                      paths)
+            descendants (get-funder-descendants-memo collection-name id)
+            descendant-names (into
+                              {}
+                              (map
+                               #(vector % (get-funder-primary-name-memo collection-name %))
+                               descendants))
             nesting-names (into 
                            {}
                            (map 
@@ -157,7 +163,8 @@
         (m/update! 
          collection-name 
          {:id id} 
-         {"$set" {:descendants (get-funder-descendants-memo collection-name id)
+         {"$set" {:descendants descendants
+                  :descendant_names descendant-names
                   :level (count lineage)
                   :nesting nesting
                   :nesting_names nesting-names}})))))

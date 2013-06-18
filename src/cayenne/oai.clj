@@ -69,7 +69,7 @@
                  {"resumptionToken" token}
                  (-> {"metadataPrefix" (:type service)
                       "verb" "ListRecords"}
-                     (?> #(:set-spec service) assoc "setspec" (:set-spec service))
+                     (?> #(:set-spec service) assoc "set" (:set-spec service))
                      (?> from assoc "from" from)
                      (?> until assoc "until" until)))]
     (conf/set-result! :from from)

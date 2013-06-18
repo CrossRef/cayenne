@@ -48,14 +48,14 @@
      (= general-type "Image")
      :image
      (and (= general-type "Text") (= specific-type "Article"))
-     :journal-article
+     :article
      (and (= general-type "Event") (= specific-type "Conference presentation"))
      :proceedings-article
      (= general-type "Model")
      :model
      (= general-type "Film")
      :film
-     (= general-type "Data")
+     (= general-type "Dataset")
      :dataset
      :else
      :other)))

@@ -1,6 +1,6 @@
 (defproject cayenne "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
-  :url "http://example.com/FIXME"
+  :url "http://github.com/CrossRef/cayenne"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:port 9494 :init-ns cayenne.action}
@@ -25,7 +25,6 @@
                  [xom "1.2.5"]
                  [clj-http "0.7.2"]
                  [clj-time "0.5.1"]
-                 [org.clojure/ins
                  [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.2.0"]

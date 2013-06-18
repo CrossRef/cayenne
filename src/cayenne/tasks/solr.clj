@@ -12,7 +12,7 @@
 (defn flush-insert-list []
   (dosync
    (.add (conf/get-service :solr) @insert-list)
-      (alter insert-list (constantly []))))
+   (alter insert-list (constantly []))))
 
 (defn clear-insert-list []
   (dosync
