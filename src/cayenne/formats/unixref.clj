@@ -446,7 +446,7 @@
                              [:= "name" "funder_name"] 
                              :plain)}
         (parse-attach :awarded funder-group-loc :multi parse-grants)
-        (?> funder-uri (attach-id funder-uri)))))
+        (?> funder-uri attach-id funder-uri))))
 
 (defn parse-item-funders [item-loc]
   (let [funder-groups-loc (concat 
