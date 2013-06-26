@@ -19,7 +19,10 @@
 
 (timbre/set-config! [:appenders :irc] irc-appender/irc-appender)
 (timbre/set-config! [:appenders :irc :min-level] :error)
-(timbre/set-config! [:shared-appender-config :irc] {:host "localhost" :nick "cayenne" :name "Cayenne" :chan "#cayenne"})
+(timbre/set-config! [:shared-appender-config :irc] {:host "localhost" 
+                                                    :nick "cayenne" 
+                                                    :name "Cayenne" 
+                                                    :chan "#cayenne"})
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -106,6 +109,10 @@
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
     (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
+    (set-service! :solr-update (HttpSolrServer. 
+                                (str (get-param [:service :solr :url])
+                                     "/"
+                                     (get-param [:service :solr :insert-core]))))
     (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
 
 (defn set-core! [name]
