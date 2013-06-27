@@ -8,7 +8,8 @@
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
         [cayenne.formats.datacite :only [datacite-record-parser]])
   ;;(:use cayenne.tasks.neo4j)
-  (:require [clojure.data.json :as json] 
+  (:require [clojure.java.io :as io]
+            [clojure.data.json :as json]
             [cayenne.oai :as oai]
             [cayenne.job :as job]
             [cayenne.html :as html]
@@ -86,6 +87,19 @@
                :task (comp 
                       using
                       #(vector (doi/to-long-doi-uri doi) (second %)))))
+
+(defn parse-openurl-list [list-file using]
+  (with-open [rdr (io/reader (io/file list-file))]
+    (doseq [doi (line-seq rdr)]
+      (oai/process (openurl-file doi)
+                   :async true
+                   :name :parse-openurl-list
+                   :kind ".tmp"
+                   :split "doi_record"
+                   :parser unixref-record-parser
+                   :task (comp
+                          using
+                          #(vector (doi/to-long-doi-uri doi) (second %)))))))
 
 (defn get-unixref-records [service from until using after]
   (when after (set-result-set-post! after))

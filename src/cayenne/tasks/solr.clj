@@ -6,13 +6,14 @@
   (:require [clojure.string :as string]
             [cayenne.conf :as conf]))
 
-(def insert-list-max-size 1000)
+(def insert-list-max-size 50000)
 (def insert-list (ref []))
 
 (defn flush-insert-list []
   (dosync
-   (.add (conf/get-service :solr-update) @insert-list)
-   (alter insert-list (constantly []))))
+   (when-not (empty? @insert-list)
+     (.add (conf/get-service :solr-update) @insert-list)
+     (alter insert-list (constantly [])))))
 
 (defn clear-insert-list []
   (dosync
@@ -22,7 +23,7 @@
   (conf/log "Final solr insert list flush...")
   (flush-insert-list)
   (conf/log "Performing a SOLR commit...")
-  (.commit (conf/get-service :solr) true true)
+  (.commit (conf/get-service :solr-update) true true)
   (conf/log "Swapping SOLR cores...")
   (doto (CoreAdminRequest.)
     (.setCoreName (conf/get-param [:service :solr :insert-core]))

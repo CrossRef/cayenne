@@ -14,15 +14,9 @@
             [taoensso.timbre :as timbre
              :refer (trace debug info warn error fatal spy)]))
 
+(timbre/set-config! [:appenders :standard-out :enabled?] false)
 (timbre/set-config! [:appenders :spit :enabled?] true)
 (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
-
-(timbre/set-config! [:appenders :irc] irc-appender/irc-appender)
-(timbre/set-config! [:appenders :irc :min-level] :error)
-(timbre/set-config! [:shared-appender-config :irc] {:host "localhost" 
-                                                    :nick "cayenne" 
-                                                    :name "Cayenne" 
-                                                    :chan "#cayenne"})
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
