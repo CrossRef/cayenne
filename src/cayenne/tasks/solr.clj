@@ -139,7 +139,7 @@
      "doi" (first (get-item-ids item :long-doi))
      "issn" (get-tree-ids item :issn)
      "isbn" (get-tree-ids item :isbn)
-     "internal_id" (get-tree-ids item :supplementary)
+     "supplementary_id" (get-tree-ids item :supplementary)
      "orcid" (get-contributor-orcids item)
      "category" (get-categories item)
      "funder_name" funder-names
