@@ -43,6 +43,7 @@
     <field name="isbn" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="orcid" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="funder_doi" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="internal_id" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
 
     <!-- Full text search -->
     <field name="content" type="text" indexed="true" stored="false" required="true"/>

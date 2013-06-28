@@ -11,6 +11,12 @@
     (str prefix id-value)
     (str (conf/get-param [:id-generic :data-path]) (name id-type) "/" id-value)))
 
+(defn to-supplementary-id-uri [id-value]
+  (str (conf/get-param [:id :supplementary :path]) id-value))
+
+(defn extract-supplementary-id [id-uri]
+  (clojure.string/replace id-uri #"\Ahttp:\/\/id\.crossref\.org\/supp\/" ""))
+
 ;; todo generalize by looking at keys in get-param [:id]
 (defn id-uri-type [id-uri]
   (cond (.startsWith id-uri (conf/get-param [:id :issn :path]))
@@ -23,6 +29,8 @@
         :long-doi
         (.startsWith id-uri (conf/get-param [:id :short-doi :path]))
         :short-doi
+        (.startsWith id-uri (conf/get-param [:id :supplementary :path]))
+        :supplementary
         :else
         :unknown))
 

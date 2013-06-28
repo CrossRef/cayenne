@@ -1,6 +1,7 @@
 (ns cayenne.formats.unixref
   (:require [cayenne.xml :as xml]
             [cayenne.conf :as conf]
+            [cayenne.ids :as ids]
             [cayenne.ids.fundref :as fundref])
   (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
@@ -301,6 +302,14 @@
   (if-let [isbn (xml/xselect1 isbn-loc :text)]
     (to-isbn-uri isbn)))
 
+(defn parse-supplementary-id-uri [domain-id-loc]
+  (let [id-type (xml/xselect1 domain-id-loc ["id-type"])
+        id-val (xml/xselect1 domain-id-loc :text)]
+    (ids/to-supplementary-id-uri id-val)))
+
+(defn find-supplementary-ids [item-loc]
+  (xml/xselect item-loc "publisher_item" "identifier"))
+
 ;; ---------------------------------------------------------------
 ;; Contributors
 
@@ -384,6 +393,7 @@
   [item-loc]
   (-> []
       (if-conj (parse-doi-uri item-loc))
+      (concat (map parse-supplementary-id-uri (find-supplementary-ids item-loc)))
       (concat (map parse-issn-uri (find-issns item-loc)))
       (concat (map parse-isbn-uri (find-isbns item-loc)))))
 

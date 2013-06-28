@@ -4,7 +4,8 @@
            [org.apache.solr.client.solrj.request CoreAdminRequest]
            [org.apache.solr.common.params CoreAdminParams$CoreAdminAction])
   (:require [clojure.string :as string]
-            [cayenne.conf :as conf]))
+            [cayenne.conf :as conf]
+            [cayenne.ids :as ids]))
 
 (def insert-list-max-size 50000)
 (def insert-list (ref []))
@@ -103,6 +104,7 @@
   (string/join
    " "
    (-> [(as-solr-base-field item)]
+       (concat (map ids/extract-supplementary-id (get-tree-ids item :supplementary))) ; plain supp ids
        (concat (map as-name (get-contributors item))) ; full names
        (concat (mapcat get-item-ids (get-tree-rel item :awarded))) ; grant numbers
        (concat (map :name (get-tree-rel item :funder)))))) ; funder names
@@ -137,6 +139,7 @@
      "doi" (first (get-item-ids item :long-doi))
      "issn" (get-tree-ids item :issn)
      "isbn" (get-tree-ids item :isbn)
+     "internal_id" (get-tree-ids item :supplementary)
      "orcid" (get-contributor-orcids item)
      "category" (get-categories item)
      "funder_name" funder-names
