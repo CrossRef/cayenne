@@ -155,6 +155,7 @@
      "year" (:year pub-date)
      "month" (:month pub-date)
      "day" (:day pub-date)
+     "hl_description" (:description item)
      "hl_year" (:year pub-date)
      "hl_authors" (get-contributor-names item :author)
      "hl_editors" (get-contributor-names item :editor)
