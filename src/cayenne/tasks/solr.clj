@@ -104,6 +104,7 @@
   (string/join
    " "
    (-> [(as-solr-base-field item)]
+       (conj (:description item))
        (concat (map ids/extract-supplementary-id (get-tree-ids item :supplementary))) ; plain supp ids
        (concat (map as-name (get-contributors item))) ; full names
        (concat (mapcat get-item-ids (get-tree-rel item :awarded))) ; grant numbers
