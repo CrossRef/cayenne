@@ -22,6 +22,5 @@ mkdir /opt/solr/data/crmds2
 chown -R tomcat7:tomcat7 /opt/solr
 service tomcat7 restart
 
-lein deps
-
+# lein deps
 # nohup lein repl :headless &
