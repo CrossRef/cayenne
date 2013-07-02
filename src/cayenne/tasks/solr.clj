@@ -3,8 +3,10 @@
   (:import [org.apache.solr.common SolrInputDocument]
            [org.apache.solr.client.solrj.request CoreAdminRequest]
            [org.apache.solr.common.params CoreAdminParams$CoreAdminAction])
-  (:require [clojure.string :as string]
+  (:require [clj-time.core :as t]
+            [clojure.string :as string]
             [cayenne.conf :as conf]
+            [cayenne.ids.doi :as doi]
             [cayenne.ids :as ids]))
 
 (def insert-list-max-size 50000)
@@ -134,10 +136,17 @@
         funder-dois (set (mapcat :id (get-tree-rel item :funder)))
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
-        container-titles (get-container-titles item)]
+        container-titles (get-container-titles item)
+        deposit-date (first (get-item-rel item :deposited))
+        doi (first (get-item-ids item :long-doi))]
     {"source" (:source item)
-     "doi_key" (first (get-item-ids item :long-doi))
-     "doi" (first (get-item-ids item :long-doi))
+     "indexed_at" (t/now)
+     "deposited_at" (t/date-time (:year deposit-date) 
+                                 (:month deposit-date) 
+                                 (:day deposit-date))
+     "prefix" (doi/extract-long-prefix doi)
+     "doi_key" doi
+     "doi" doi
      "issn" (get-tree-ids item :issn)
      "isbn" (get-tree-ids item :isbn)
      "supplementary_id" (get-tree-ids item :supplementary)

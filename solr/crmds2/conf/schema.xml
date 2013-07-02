@@ -3,6 +3,7 @@
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
     <fieldType name="integer" class="solr.IntField"/>
+    <fieldType name="date" class="solr.TrieDateField"/>
 
     <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
       <analyzer type="index">
@@ -44,6 +45,10 @@
     <field name="orcid" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="funder_doi" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
     <field name="supplementary_id" type="string" indexed="true" stored="true" required="false" multiValued="true"/>
+    <field name="prefix" type="string" indexed="true" stored="true" required="true" multiValued="false"/>
+    <field name="owner_prefix" type="string" indexed="true" stored="true" required="false" multiValued="false"/>
+    <field name="deposited_at" type="date" indexed="true" stored="true" required="true" multiValued="false"/>
+    <field name="indexed_at" type="date" indexed="true" stored="true" required="true" multiValued="false"/>
 
     <!-- Full text search -->
     <field name="content" type="text" indexed="true" stored="false" required="true"/>

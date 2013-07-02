@@ -1,5 +1,7 @@
 (ns cayenne.formats.unixref
-  (:require [cayenne.xml :as xml]
+  (:require [clj-time.format :as ftime]
+            [clj-time.core :as t]
+            [cayenne.xml :as xml]
             [cayenne.conf :as conf]
             [cayenne.ids :as ids]
             [cayenne.ids.fundref :as fundref])
@@ -115,11 +117,6 @@
 
 (defn find-stand-alone-component [record-loc]
   (xml/xselect1 record-loc :> "sa_component"))
-
-(defn find-components
-  "One of chapter, section, part, track, reference_entry or other."
-  [record-loc]
-  ())
 
 ;; --------------------------------------------------------------------
 ;; Dates
@@ -486,7 +483,6 @@
 (defn parse-component-list [parent-loc]
   (map parse-component (xml/xselect parent-loc "component_list" "component")))
 
-;; also todo: publisher_item
 (defn parse-item
   "Pulls out metadata that is somewhat standard across types: contributors,
    resource urls, some dates, titles, ids, citations, components, crossmark assertions
@@ -789,6 +785,17 @@
       (xml/xselect1 "header" "identifier" :text)
       (to-long-doi-uri)))
 
+(def deposit-time-formatter (ftime/formatter "yyyy-MM-dd"))
+
+(defn parse-deposit-date [record]
+  (let [d (-> record
+              (xml/xselect1 "header" "datestamp" :text)
+              (partial ftime/parse deposit-time-formatter))]
+    {:type :date
+     :day (t/day d)
+     :month (t/month d)
+     :year (t/year d)}))
+
 (defn unixref-citation-parser
   "Produces lists of citations found in unixref. (Does not return item record structures.)"
   [oai-record]
@@ -840,6 +847,7 @@
 
    published-online
    published-print
+   deposited
    start
    end
    citation
@@ -867,13 +875,14 @@
    The result of this function is a list, [primary-id, item-tree]."
   [oai-record]
   [(parse-primary-id oai-record)
-   (or
-    (parse-stand-alone-component (find-stand-alone-component oai-record))
-    (parse-dissertation (find-dissertation oai-record))
-    (parse-standard (find-standard oai-record))
-    (parse-report (find-report oai-record))
-    (parse-database (find-database oai-record))
-    (parse-journal (find-journal oai-record))
-    (parse-book (find-book oai-record))
-    (parse-conf (find-conf oai-record)))])
+   (-> (or
+        (parse-stand-alone-component (find-stand-alone-component oai-record))
+        (parse-dissertation (find-dissertation oai-record))
+        (parse-standard (find-standard oai-record))
+        (parse-report (find-report oai-record))
+        (parse-database (find-database oai-record))
+        (parse-journal (find-journal oai-record))
+        (parse-book (find-book oai-record))
+        (parse-conf (find-conf oai-record)))
+       (parse-attach :deposited oai-record :single parse-deposit-date))])
 

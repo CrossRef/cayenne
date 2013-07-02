@@ -8,7 +8,7 @@
   "Return true if s is a valid, normalized ORCID without URI prefix.
    Does not check checksum digit."
   [s]
-  (not (nil? (re-find #"\A[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]\Z"))))
+  (not (nil? (re-find #"\A[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]\Z" s))))
 
 (defn extract-orcid
   [s]

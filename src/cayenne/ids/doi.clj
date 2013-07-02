@@ -1,5 +1,6 @@
 (ns cayenne.ids.doi
-  (:require [cayenne.ids :as ids]))
+  (:require [clojure.string :as string]
+            [cayenne.ids :as ids]))
 
 (defn is-long-doi?
   "Return true if s is a valid long DOI handle without URI prefix."
@@ -22,6 +23,9 @@
    <DOI>"
   [s]
   (or (re-find #"10\.[0-9]{4,}/[^\s]+" s) ""))
+
+(defn extract-long-prefix [s]
+  (first (string/split (extract-long-doi s) #"/")))
 
 (defn extract-short-doi
   "Attempt to extract a short DOI from the forms:
