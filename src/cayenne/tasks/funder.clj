@@ -8,7 +8,8 @@
             [cayenne.rdf :as rdf]
             [cayenne.conf :as conf]
             [cayenne.util :as util]
-            [cayenne.ids.fundref :as fundref]))
+            [cayenne.ids.fundref :as fundref]
+            [cayenne.tasks.geoname :as geoname]))
 
 (defn ensure-funder-indexes! [collection-name]
   (m/with-mongo (conf/get-service :mongo)
@@ -53,11 +54,12 @@
       (m/update! :funders existing-doc (add-name existing-doc name name-type))
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
 
-(defn insert-full-funder [id name alt-names parent-id child-ids affiliation-ids]
+(defn insert-full-funder [id name country alt-names parent-id child-ids affiliation-ids]
   (m/with-mongo (conf/get-service :mongo)
     (m/insert! :funderstest
                {:id id
                 :uri (fundref/id-to-doi-uri id)
+                :country country
                 :primary_name_display name
                 :other_names_display alt-names
                 :name_tokens (concat (tokenize-name name)
@@ -96,9 +98,20 @@
        (mapcat #(rdf/select model :subject % :predicate (rdf/skos-xl model "literalForm")))
        (rdf/objects)
        (map #(.getString %))))
+
+(defn get-country-literal-name [model node]
+  (-> model
+      (rdf/select :subject node
+                  :predicate (svf model "country"))
+      (rdf/objects)
+      (first)
+      (rdf/->uri)
+      (str "about.rdf")
+      (geoname/get-geoname-name-memo)))
       
 (defn funder-concept->map [model funder-concept-node]
   {:id (res->id funder-concept-node)
+   :country (get-country-literal-name model funder-concept-node)
    :broader-id (-> (rdf/select model
                                :subject funder-concept-node
                                :predicate (rdf/skos model "broader"))
@@ -178,6 +191,7 @@
           (map #(insert-full-funder
                  (:id %)
                  (:name %)
+                 (:country %)
                  (:alternative-names %)
                  (:broader-id %)
                  (:narrower-ids %)
