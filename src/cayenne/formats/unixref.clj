@@ -785,12 +785,20 @@
       (xml/xselect1 "header" "identifier" :text)
       (to-long-doi-uri)))
 
-(def deposit-time-formatter (ftime/formatter "yyyy-MM-dd"))
+(def oai-deposit-date-formatter (ftime/formatter "yyyy-MM-dd"))
+(def openurl-deposit-date-formatter (ftime/formatter "yyyy-MM-dd hh:mm:ss"))
+
+(defn parse-oai-deposit-date [loc]
+  (when-let [date-text (xml/xselect1 loc "header" "datestamp" :text)]
+    (ftime/parse oai-deposit-date-formatter date-text)))
+
+(defn parse-openurl-deposit-date [loc]
+  (when-let [date-text (xml/xselect1 loc ["timestamp"])]
+    (ftime/parse openurl-deposit-date-formatter date-text)))
 
 (defn parse-deposit-date [record]
-  (let [d (-> record
-              (xml/xselect1 "header" "datestamp" :text)
-              (partial ftime/parse deposit-time-formatter))]
+  (let [d (or (parse-oai-deposit-date record)
+              (parse-openurl-deposit-date record))]
     {:type :date
      :day (t/day d)
      :month (t/month d)
@@ -874,15 +882,17 @@
 
    The result of this function is a list, [primary-id, item-tree]."
   [oai-record]
-  [(parse-primary-id oai-record)
-   (-> (or
-        (parse-stand-alone-component (find-stand-alone-component oai-record))
-        (parse-dissertation (find-dissertation oai-record))
-        (parse-standard (find-standard oai-record))
-        (parse-report (find-report oai-record))
-        (parse-database (find-database oai-record))
-        (parse-journal (find-journal oai-record))
-        (parse-book (find-book oai-record))
-        (parse-conf (find-conf oai-record)))
-       (parse-attach :deposited oai-record :single parse-deposit-date))])
+  (let [work (or
+              (parse-stand-alone-component (find-stand-alone-component oai-record))
+              (parse-dissertation (find-dissertation oai-record))
+              (parse-standard (find-standard oai-record))
+              (parse-report (find-report oai-record))
+              (parse-database (find-database oai-record))
+              (parse-journal (find-journal oai-record))
+              (parse-book (find-book oai-record))
+              (parse-conf (find-conf oai-record)))]
+    (if work
+      [(parse-primary-id oai-record)
+       (parse-attach work :deposited oai-record :single parse-deposit-date)]
+      [(parse-primary-id oai-record) work])))
 

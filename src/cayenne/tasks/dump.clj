@@ -4,6 +4,11 @@
   (:require [clojure.data.json :as json]
            [clojure.java.io :as io]))
 
+(defn write-datetime-json [dt out]
+  (.print out (str "\"" (.toString dt) "\"")))
+
+(extend org.joda.time.DateTime json/JSONWriter {:-write write-datetime-json})
+
 (defn record-writer [out-file]
   "Write whole records as clojure serialized data structures."
   (let [wrtr (PrintWriter. (io/writer out-file))]

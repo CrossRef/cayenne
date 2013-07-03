@@ -137,7 +137,7 @@
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
-        deposit-date (first (get-item-rel item :deposited))
+        deposit-date (first (get-tree-rel item :deposited))
         doi (first (get-item-ids item :long-doi))]
     {"source" (:source item)
      "indexed_at" (t/now)
@@ -188,7 +188,8 @@
      
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]
-    (when (get solr-map "doi_key")  ;; todo debug output for fail case
+    (if-not (get solr-map "doi_key")
+      (conf/log {:state :fail :msg "No DOI in item tree - can't insert into solr"})
       (let [solr-doc (as-solr-input-document solr-map)]
         (dosync
          (alter insert-list conj solr-doc)
