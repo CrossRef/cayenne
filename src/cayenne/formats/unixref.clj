@@ -786,7 +786,7 @@
       (to-long-doi-uri)))
 
 (def oai-deposit-date-formatter (ftime/formatter "yyyy-MM-dd"))
-(def openurl-deposit-date-formatter (ftime/formatter "yyyy-MM-dd hh:mm:ss"))
+(def openurl-deposit-date-formatter (ftime/formatter "yyyy-MM-dd HH:mm:ss"))
 
 (defn parse-oai-deposit-date [loc]
   (when-let [date-text (xml/xselect1 loc "header" "datestamp" :text)]

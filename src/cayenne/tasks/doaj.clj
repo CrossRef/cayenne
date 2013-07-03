@@ -16,7 +16,7 @@
                    (m/fetch-one :issns :where {"$or" [{:p_issn norm-issn} {:e_issn norm-issn}]}))]
       (cond
        (not result) "Other"
-       (= "doaj" (:oa_status result)) "DOAJ"
+       (= "doaj" (:oa_info result)) "DOAJ"
        :else "Other"))))
 
 (def get-oa-status-memo (memoize/memo-lru get-oa-status))
