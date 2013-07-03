@@ -145,16 +145,19 @@
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")
   (set-param! [:oai :crossref-journals :type] "cr_unixml")
   (set-param! [:oai :crossref-journals :set-spec] "J")
+  (set-param! [:oai :crossref-journals :interval] 7)
 
   (set-param! [:oai :crossref-books :dir] (str (get-param [:dir :data]) "/oai/crossref-books"))
   (set-param! [:oai :crossref-books :url] "http://oai.crossref.org/OAIHandler")
   (set-param! [:oai :crossref-books :type] "cr_unixml")
   (set-param! [:oai :crossref-books :set-spec] "B")
+  (set-param! [:oai :crossref-journals :interval] 7)
 
   (set-param! [:oai :crossref-serials :dir] (str (get-param [:dir :data]) "/oai/crossref-serials"))
   (set-param! [:oai :crossref-serials :url] "http://oai.crossref.org/OAIHandler")
   (set-param! [:oai :crossref-serials :type] "cr_unixml")
   (set-param! [:oai :crossref-serials :set-spec] "S")
+  (set-param! [:oai :crossref-journals :interval] 7)
 
   (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
   (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
