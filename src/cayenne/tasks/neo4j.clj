@@ -44,6 +44,7 @@
 
 (defn insert-item [item]
   (doseq [triple (as-triples item)]
+    (conf/log (vec triple))
     (let [left-id (first triple)
           right-id (last triple)
           relation (second triple)
@@ -51,6 +52,6 @@
           right (or (nn/find-one "items" "id" right-id) (nn/create {:uri right-id}))]
       (nn/add-to-index left "items" "id" left-id)
       (nn/add-to-index right "items" "id" right-id)
-      (when (empty? (nrl/outgoing-for left :types [relation]))
+      (when-not (nrl/first-outgoing-between left right [relation])
         (nrl/create left right relation)))))
           
