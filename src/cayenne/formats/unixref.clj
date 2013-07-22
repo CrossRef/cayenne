@@ -457,7 +457,11 @@
 
 (defn parse-item-funders [item-loc]
   (let [funder-groups-loc (concat 
-                           (xml/xselect item-loc "program" "assertion" [:= "name" "fundgroup"])
+                           (xml/xselect item-loc 
+                                        "program" 
+                                        ;[:= "name" "fundref"]
+                                        "assertion" 
+                                        [:= "name" "fundgroup"])
                            (xml/xselect item-loc
                                         "crossmark" 
                                         "custom_metadata" 

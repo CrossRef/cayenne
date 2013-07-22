@@ -1,6 +1,7 @@
 (ns cayenne.item-tree
   (:use [clojure.core.incubator :only [dissoc-in]])
-  (:require [cayenne.ids :as ids]))
+  (:require [cayenne.ids :as ids]
+            [clojure.zip :as zip]))
 
 (def contributor-rels [:author :chair :translator :editor :contributor])
 
@@ -67,6 +68,23 @@
 
 (defn children [item-tree]
   (flatten (vals (:rel item-tree))))
+
+(defn follow-rel-children [item-tree rel]
+  (let [children (get-in item-tree [:rel rel])]
+    (concat
+     children
+     (flatten
+      (map #(follow-rel-children % rel) children)))))
+
+(defn similar-rel-children [item-tree]
+  (into 
+   {}
+   (for [[rel children] (:rel item-tree)]
+     [rel
+      (concat children (follow-rel-children item-tree rel))])))
+
+(defn has-id? [item]
+  (and (not (nil? (:id item))) (not (empty? (:id item)))))
 
 (defn item-seq
   [item]
@@ -187,5 +205,8 @@
      #(add-relation %1 :ancestor (without-id %2 id))
      around-item
      (path-to item-tree id))))
+
+(defn item-tree-zip [item-tree]
+  (zip/zipper associative? :rel (fn [_ c] c) item-tree))
 
 ; defn issns dois etc

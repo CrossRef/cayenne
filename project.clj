@@ -14,6 +14,7 @@
                    "res"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[com.taoensso/timbre "2.1.2"]
+                 [clojurewerkz/neocons "1.1.0"]
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "4.3.0"]
                  [clojurewerkz/quartzite "1.0.1"]
@@ -31,6 +32,7 @@
                  [org.clojure/data.csv "0.1.2"]
                  [org.clojure/tools.trace "0.7.5"]
                  [org.clojure/core.memoize "0.5.3"]
+                 [org.clojure/math.combinatorics "0.0.4"]
                  [org.neo4j/neo4j "1.9.RC1"]
                  [org.neo4j.app/neo4j-server "1.9.RC1" :classifier "static-web"]
                  [org.neo4j.app/neo4j-server "1.9.RC1"]])

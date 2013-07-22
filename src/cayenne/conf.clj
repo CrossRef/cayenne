@@ -10,6 +10,7 @@
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
+            [clojurewerkz.neocons.rest :as nr]
             [taoensso.timbre.appenders.irc :as irc-appender]
             [taoensso.timbre :as timbre
              :refer (trace debug info warn error fatal spy)]))
@@ -97,9 +98,8 @@
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
+    (set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
-    ;(set-service! :neo4j-db (EmbeddedGraphDatabase. (get-param [:service :neo4j :dir])))
-    ;(set-service! :neo4j-server (WrappingNeoServerBootstrapper. (get-service :neo4j-db)))
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
     (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
@@ -133,13 +133,13 @@
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
-  (set-param! [:service :neo4j :dir] (str (get-param [:dir :data]) "/neo4j"))
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://5.9.90.82:8080/solr-web")
   (set-param! [:service :solr :query-core] "crmds1")
   (set-param! [:service :solr :insert-core] "crmds2")
+  (set-param! [:service :neo4j :url] "http://5.9.51.2:7474/db/data")
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")
@@ -176,6 +176,7 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
+  (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
   (set-param! [:upstream :fundref-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-registry] "http://dx.doi.org/10.13039/fundref_registry")

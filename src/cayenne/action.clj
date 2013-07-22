@@ -7,7 +7,6 @@
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
         [cayenne.formats.datacite :only [datacite-record-parser]])
-  ;;(:use cayenne.tasks.neo4j)
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
             [cayenne.oai :as oai]
@@ -16,6 +15,7 @@
             [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
+            [cayenne.tasks.neo4j :as neo4j]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
             [cayenne.ids.doi :as doi]))
@@ -52,6 +52,12 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
+(def dump-triples
+  (comp
+   (record-json-writer "out.txt")
+   neo4j/as-triples
+   second))
+
 (def index-solr-docs
   (comp 
    solr/insert-item
@@ -60,6 +66,11 @@
    #(apply funder/apply-to %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
+
+(def graph-triples
+  (comp
+   neo4j/insert-item
+   second))
 
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
@@ -117,6 +128,14 @@
     (doseq [doi (get funder-info "items")]
       (parse-openurl doi index-solr-docs))
     (cayenne.tasks.solr/flush-insert-list)))
+
+(defn find-doi [doi]
+  (let [search-url (-> (get-param [:upstream :crmds-dois]) (str doi) (java.net.URL.))
+        response (-> search-url (slurp) (json/read-str))]
+    [doi (not (empty? response))]))
+
+(defn find-dois [doi-list-loc]
+  (into {} (map find-doi (-> doi-list-loc (line-seq) (distinct)))))
 
 (defn check-url-citations [file-or-dir]
   (oai/process
