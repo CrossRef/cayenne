@@ -4,14 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:port 9494 :init-ns cayenne.action}
-  :jvm-opts ["-javaagent:local/newrelic.jar"
-             "-Xms2G" "-Xmx8G" "-XX:+UseG1GC"]
-  :resource-paths ["local/harvester2.jar"
-                   "local/log4j-1.2.12.jar"
-                   "local/xalan.jar"
-                   "local/xercesImpl.jar"
-                   "local/xml-apis.jar"
-                   "res"]
+  :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[com.taoensso/timbre "2.1.2"]
                  [clojurewerkz/neocons "1.1.0"]
