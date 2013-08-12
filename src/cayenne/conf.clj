@@ -1,7 +1,5 @@
 (ns cayenne.conf
-  (:import [org.neo4j.server WrappingNeoServerBootstrapper]
-           [org.neo4j.kernel EmbeddedGraphDatabase]
-           [org.apache.solr.client.solrj.impl HttpSolrServer]
+  (:import [org.apache.solr.client.solrj.impl HttpSolrServer]
            [java.net URI]
            [java.util UUID])
   (:use [clojure.core.incubator :only [dissoc-in]])
