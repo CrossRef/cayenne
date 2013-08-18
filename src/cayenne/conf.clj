@@ -146,6 +146,7 @@
 
 (with-core :default
   (set-param! [:env] :none)
+  (set-param! [:status] :stopped)
   (set-param! [:dir :home] (System/getProperty "user.dir"))
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))

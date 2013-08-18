@@ -4,9 +4,9 @@
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.object :as o]
+            [cayenne.data.core :as c]
             [cayenne.api.types :as t]
             [clojure.data.json :as json]
-            [clojure.core.incubator :refer [dissoc-in]]
             [liberator.core :refer [defresource resource]]
             [liberator.dev :refer [wrap-trace]]
             [compojure.core :refer [defroutes ANY]]))
@@ -64,23 +64,14 @@
 
 (defresource cores-resource
   :allowed-methods [:get]
-  :media-type-available? (constantly true)
-  :known-content-type? (constantly true)
-  :exists? (constantly true)
-  :handle-ok (->1 #(json/write-str (keys @conf/cores))))
-
-(defn clean-core
-  "Produce a cleaned up core ready for JSON display."
-  [core]
-  (-> (get-in core [:parameters])
-      (dissoc-in [:service :api :var])))
+  :media-type-available? t/html-or-json
+  :handle-ok (->1 #(json/write-str (c/fetch-all))))
 
 (defresource core-resource [core-name]
   :allowed-methods [:get]
-  :media-type-available? (constantly true)
-  :known-content-type? (constantly true)
-  :exists? (->1 #(some #{(keyword core-name)} (keys @conf/cores)))
-  :handle-ok (->1 #(json/write-str (-> (get @conf/cores (keyword core-name)) (clean-core)))))
+  :available-media-types t/html-or-json
+  :exists? (->1 #(c/exists? core-name))
+  :handle-ok (->1 #(json/write-str (c/fetch core-name))))
 
 (defroutes api-routes
   (ANY "/cores" []
