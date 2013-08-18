@@ -184,22 +184,22 @@
   (xml/xselect work-loc "citation_list" "citation"))
 
 (defn parse-citation [citation-loc]
-  {:doi (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text))
-   :display-doi (xml/xselect1 citation-loc "doi" :text)
-   :issn (to-issn-uri (xml/xselect1 citation-loc "issn" :text))
-   :journal-title (xml/xselect1 citation-loc "journal_title" :text)
-   :author (xml/xselect1 citation-loc "author" :text)
-   :volume (xml/xselect1 citation-loc "volume" :text)
-   :issue (xml/xselect1 citation-loc "issue" :text)
-   :first-page (xml/xselect1 citation-loc "first_page" :text)
-   :year (xml/xselect1 citation-loc "cYear" :text)
-   :isbn (to-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
-   :series-title (xml/xselect1 citation-loc "series_title" :text)
-   :volume-title (xml/xselect1 citation-loc "volume_title" :text)
-   :edition-number (xml/xselect1 citation-loc "edition_number" :text)
-   :component-number (xml/xselect1 citation-loc "component_number" :text)
-   :article-title (xml/xselect1 citation-loc "article_title" :text)
-   :unstructured (xml/xselect1 citation-loc "unstructured_citation" :text)})
+  (-> {:display-doi (xml/xselect1 citation-loc "doi" :text)
+       :issn (to-issn-uri (xml/xselect1 citation-loc "issn" :text))
+       :journal-title (xml/xselect1 citation-loc "journal_title" :text)
+       :author (xml/xselect1 citation-loc "author" :text)
+       :volume (xml/xselect1 citation-loc "volume" :text)
+       :issue (xml/xselect1 citation-loc "issue" :text)
+       :first-page (xml/xselect1 citation-loc "first_page" :text)
+       :year (xml/xselect1 citation-loc "cYear" :text)
+       :isbn (to-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
+       :series-title (xml/xselect1 citation-loc "series_title" :text)
+       :volume-title (xml/xselect1 citation-loc "volume_title" :text)
+       :edition-number (xml/xselect1 citation-loc "edition_number" :text)
+       :component-number (xml/xselect1 citation-loc "component_number" :text)
+       :article-title (xml/xselect1 citation-loc "article_title" :text)
+       :unstructured (xml/xselect1 citation-loc "unstructured_citation" :text)}
+      (attach-id (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text)))))
 
 (defn parse-citation-ids [citation-loc]
   {:doi (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text))})
@@ -900,3 +900,6 @@
        (parse-attach work :deposited oai-record :single parse-deposit-date)]
       [(parse-primary-id oai-record) work])))
 
+;(defmethod ->format-name "xml" :unixref)
+;(defmethod ->format-name "unixref-xml" :unixref)
+;(defmethod ->format-name "application/vnd.crossref.unixref+xml" :unixref)

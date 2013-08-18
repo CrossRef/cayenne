@@ -27,7 +27,7 @@
 
 (defn ex->info-str [ex] (str ex ": " (first (.getStackTrace ex))))
 
-(defn parser-task-pass 
+(defn parser-task-pass
   "If the parser doesn't support a record (returns nil)
    we skip the task fn."
   [task-fn parser-fn]
@@ -37,7 +37,7 @@
         (task-fn parsed-record)
         (log-fail "Parser returned nil for a record.")))))
 
-(defn process-oai-xml-file 
+(defn process-oai-xml-file
   "Run a parser and task over a file."
   [parser-fn task-fn file result-set split]
   (conf/set-result! :file file)
@@ -53,11 +53,11 @@
         meta {:file (str file)}]
     (job/put-job result-set meta job)))
 
-(defn resumption-token 
+(defn resumption-token
   "Cheap and cheerful grab of resumption token."
   [body]
   (second (re-find #"resumptionToken=\"([^\"]+)\"" body)))
-  
+
 (declare grab-oai-xml-file-async)
 
 (defn grab-oai-xml-file [service from until count token parser-fn task-fn result-set]
@@ -87,21 +87,21 @@
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
-          (when parser-fn 
+          (when parser-fn
             (process-oai-xml-file parser-fn task-fn xml-file result-set "record"))
           (when-let [token (resumption-token (:body resp))]
             (recur service from until (inc count) token parser-fn task-fn result-set)))))))
 
 (defn grab-oai-xml-file-async [service from until count token parser-fn task-fn result-set]
   (let [job (job/make-job #(grab-oai-xml-file service from until count token parser-fn task-fn result-set)
-                          :exception (fn [_ _ ex] 
-                                       (log-fail 
+                          :exception (fn [_ _ ex]
+                                       (log-fail
                                         (str "Failed to download OAI file due to: " (ex->info-str ex)))))
         meta {:file (str file)}]
     (job/put-job result-set meta job)))
 
-(defn process 
-  "Invoke many process-oai-xml-file or process-oai-xml-file-async calls, 
+(defn process
+  "Invoke many process-oai-xml-file or process-oai-xml-file-async calls,
    one for each xml file under dir."
   [file-or-dir & {:keys [count task parser after before async kind name split]
                   :or {kind ".xml"
@@ -134,9 +134,9 @@
         until-date (apply ctime/date-time (str-date->parts until))]
     (doseq [from-point (take-while #(ctime/before? % until-date)
                                    (ptime/periodic-seq from-date separation))]
-      (run service 
+      (run service
            :from (ftime/unparse oai-date-format from-point)
            :until (ftime/unparse oai-date-format (ctime/plus from-point separation))
-           :task task 
-           :parser parser 
+           :task task
+           :parser parser
            :name name))))

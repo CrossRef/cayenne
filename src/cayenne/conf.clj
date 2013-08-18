@@ -9,6 +9,7 @@
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojurewerkz.neocons.rest :as nr]
+            [ring.adapter.jetty :as j]
             [taoensso.timbre.appenders.irc :as irc-appender]
             [taoensso.timbre :as timbre
              :refer (trace debug info warn error fatal spy)]))
@@ -56,7 +57,7 @@
   (cond
    (map? msg)
    (if (= (:state msg) :fail) 
-     (error (str *result-name* ": " msg)) 
+     (error (str *result-name* ": " msg))
      (info (str *result-name* ": " msg)))
    :else
    (info (str *result-name* ": " msg))))
@@ -92,10 +93,20 @@
   `(binding [*result-job-name* ~name]
      ~@body))
 
-(defn create-core!
+(defn create-core! [name]
+  (swap! cores assoc name {}))
+
+(defn create-core-from! [name copy-from-name]
+  (let [params (get-in @cores [copy-from-name :parameters])]
+    (swap! cores assoc-in [name :parameters] params)))
+
+(defn start-core!
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
+    (set-service! :api (j/run-jetty (get-param [:service :api :var])
+                                    {:join? false
+                                     :port (get-param [:service :api :port])}))
     (set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
@@ -105,7 +116,13 @@
                                 (str (get-param [:service :solr :url])
                                      "/"
                                      (get-param [:service :solr :insert-core]))))
-    (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))))
+    (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
+    (set-param! [:status] :running)))
+
+(defn stop-core! [name]
+  (with-core name
+    (.stop (get-service :api))
+    (set-param! [:status] :stopped)))
 
 (defn set-core! [name]
   (alter-var-root #'*core-name* (constantly name)))
@@ -125,7 +142,10 @@
     (spit (io/file path) content)
     (io/file path)))
 
+;; todo move default service config to the files that maintain maintan the service.
+
 (with-core :default
+  (set-param! [:env] :none)
   (set-param! [:dir :home] (System/getProperty "user.dir"))
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
@@ -138,6 +158,7 @@
   (set-param! [:service :solr :query-core] "crmds1")
   (set-param! [:service :solr :insert-core] "crmds2")
   (set-param! [:service :neo4j :url] "http://5.9.51.2:7474/db/data")
+  (set-param! [:service :api :port] 3000)
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")

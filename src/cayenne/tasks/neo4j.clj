@@ -11,6 +11,8 @@
 
 ;; todo award numbers as uris
 
+;; todo better handling of isbn uris
+
 (defn relation-triples [relation from to]
   (for [from-id (get-item-ids from) to-id (get-item-ids to)
         :when (and (not= :supplementary (ids/id-uri-type from-id))

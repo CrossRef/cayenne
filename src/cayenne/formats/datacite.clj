@@ -72,6 +72,9 @@
   [(parse-primary-id oai-record)
    (parse-record oai-record)])
 
+(defmethod ->format-name "datacite-xml" :datacite)
+(defmethod ->format-name "application/vnd.datacite+xml" :datacite)
+
 ;; todo for both datacite and unixref
 ;; record source (cr or datacite)
 ;; record last update time (deposit time)

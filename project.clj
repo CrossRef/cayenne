@@ -28,4 +28,8 @@
                  [org.clojure/math.combinatorics "0.0.4"]
                  [org.neo4j/neo4j "1.9.RC1"]
                  [org.neo4j.app/neo4j-server "1.9.RC1" :classifier "static-web"]
-                 [org.neo4j.app/neo4j-server "1.9.RC1"]])
+                 [org.neo4j.app/neo4j-server "1.9.RC1"]
+                 [liberator "0.9.0"]
+                 [compojure "1.1.5"]
+                 [ring/ring-jetty-adapter "1.2.0"]])
+

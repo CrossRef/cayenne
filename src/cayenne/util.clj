@@ -87,3 +87,6 @@
          (filter #(file-of-kind? kind %))
          (take count))))
 
+(defn file-ext [f]
+  (last (clojure.string/split "." (.getName f))))
+
