@@ -4,6 +4,7 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :repl-options {:port 9494 :init-ns cayenne.user}
+  :main cayenne.main
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[com.taoensso/timbre "2.1.2"]
