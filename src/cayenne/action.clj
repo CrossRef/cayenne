@@ -112,8 +112,7 @@
                           using
                           #(vector (doi/to-long-doi-uri doi) (second %)))))))
 
-(defn get-unixref-records [service from until using after]
-  (when after (set-result-set-post! after))
+(defn get-unixref-records [service from until using]
   (oai/run-range service 
                  :from from 
                  :until until

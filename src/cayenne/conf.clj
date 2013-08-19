@@ -35,24 +35,6 @@
 (defn set-service! [key obj]
   (swap! cores assoc-in [*core-name* :services key] obj))
 
-(defn set-result! [key val]
-  (swap! cores assoc-in [*core-name* :results *result-name* *result-job-name* key] val))
-
-(defn update-result! [key f]
-  (swap! cores update-in [*core-name* :results *result-name* *result-job-name* key] f))
-
-(defn get-result [key]
-  (get-in @cores [*core-name* :results *result-name* *result-job-name* key]))
-
-(defn drop-result-set! []
-  (swap! cores dissoc-in [*core-name* :results *result-name*]))
-
-(defn set-result-set-post! [f]
-  (swap! cores assoc-in [*core-name* :results *result-name* :post] f))
-
-(defn get-result-set-post []
-  (get-in @cores [*core-name* :results *result-name* :post]))
-
 (defn log [msg]
   (cond
    (map? msg)
@@ -79,18 +61,6 @@
   "Run operations on a particular core."
   [name & body]
   `(binding [*core-name* ~name]
-     ~@body))
-
-(defmacro with-result-set
-  "Run tasks within the context of a result, which they can update and
-   write to."
-  [name & body]
-  `(binding [*result-name* ~name]
-     ~@body))
-
-(defmacro with-result-job
-  [name & body]
-  `(binding [*result-job-name* ~name]
      ~@body))
 
 (defn create-core! [name]

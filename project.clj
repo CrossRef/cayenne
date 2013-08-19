@@ -7,7 +7,9 @@
   :main cayenne.main
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
-  :dependencies [[com.taoensso/timbre "2.1.2"]
+  :dependencies [[metrics-clojure "1.0.1"]
+                 [metrics-clojure-ring "1.0.1"]
+                 [com.taoensso/timbre "2.1.2"]
                  [clojurewerkz/neocons "1.1.0"]
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "4.3.0"]
@@ -32,5 +34,6 @@
                  [org.neo4j.app/neo4j-server "1.9.RC1"]
                  [liberator "0.9.0"]
                  [compojure "1.1.5"]
+                 [ring "1.1.0"]
                  [ring/ring-jetty-adapter "1.2.0"]])
 

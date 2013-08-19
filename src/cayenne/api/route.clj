@@ -9,7 +9,14 @@
             [clojure.data.json :as json]
             [liberator.core :refer [defresource resource]]
             [liberator.dev :refer [wrap-trace]]
-            [compojure.core :refer [defroutes ANY]]))
+            [metrics.ring.expose :refer [expose-metrics-as-json]]
+            [metrics.ring.instrument :refer [instrument]]
+            [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
+            [compojure.core :refer [defroutes ANY]]
+            [compojure.handler :as handler]))
+
+(extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
+(extend org.bson.types.ObjectId json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 
 (defn ->1
   "Helper that creates a function that calls f while itself taking one
@@ -17,7 +24,7 @@
   [f]
   (fn [_] (f)))
 
-(defn abs-url 
+(defn abs-url
   "Create an absolute url to a resource relative to the given request url. The
    request url acts as the base of a path created by concatentating paths."
   [request & paths]
@@ -38,17 +45,17 @@
 (defresource deposits-resource
   :allowed-methods [:post]
   :known-content-type? #(content-type-matches % t/depositable)
+  :available-media-types t/html-or-json
   :post-redirect? true
-  :post! #({:id (d/create! (:data %))})
+  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) (:data %)))
   :location #(abs-url (:request %) (:id %)))
 
 (defresource deposit-resource [id]
   :allowed-methods [:get]
-  :available-media-types [t/deposit])
-;  :delete!
-;  :exists?
-;  :handle-ok)
-
+  :available-media-types t/html-or-json
+  :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
+  :handle-ok :deposit)
+  
 (defresource object-resource [uri]
   :allowed-methods [:get]
   :available-media-types [])
@@ -91,7 +98,11 @@
 
 (def api
   (-> api-routes
-      (wrap-trace :ui)))
+      (handler/api)
+      (expose-metrics-as-json)
+      (instrument)
+      (wrap-trace :ui)
+      (wrap-stacktrace-web)))
 
 (conf/with-core :default 
   (conf/set-param! [:service :api :var] #'api))

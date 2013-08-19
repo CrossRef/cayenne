@@ -2,7 +2,9 @@
   (:import [java.util.concurrent Executors])
   (:import [java.util UUID])
   (:use [clojure.core.incubator])
-  (:require [cayenne.conf :as conf]))
+  (:require [cayenne.conf :as conf]
+            [metrics.counters :refer [defcounter] :as counters]
+            [metrics.gauges :refer [defgauge]]))
 
 (def processing-mul 1)
 
@@ -13,8 +15,14 @@
     (+ 2)
     (* processing-mul))))
 
-(def job-id-set-map (ref {}))
-(def set-future-pool (ref {}))
+(def job-id->future (atom {}))
+
+(defcounter [cayenne jobs waiting])
+(defcounter [cayenne jobs completed])
+(defcounter [cayenne jobs failed])
+
+(defgauge [cayenne jobs running]
+  (count @job-id->future))
 
 (defn make-job [p & {:keys [success fail exception]
                      :or {success (constantly nil)
@@ -25,51 +33,30 @@
    :fail-handler fail
    :exception-handler exception})
 
-(defmacro make-finished-handler [result-set & body]
-  `(fn []
-     (if (= 0 (job-count ~result-set))
-       ~body)))
-
-(defn get-set [job-id]
-  (get @job-id-set-map job-id))
-
 (defn forget-job [job-id]
-  (let [set-name (get-set job-id)]
-    (dosync
-     (alter set-future-pool dissoc-in [set-name job-id])
-     (alter job-id-set-map dissoc job-id))))
+  (swap! job-id->future dissoc job-id))
 
 (defn cancel-job [job-id]
-  (.cancel (get-in @set-future-pool [(get-set job-id) job-id])))
+  (when-let [job-future (get @job-id->future job-id)]
+    (.cancel job-future)))
 
-(defn cancel-set [set-name]
-  (dosync
-   (doseq [[job-id future] (get @set-future-pool set-name)]
-     (.cancel future)
-     (forget-job future))
-   (alter set-future-pool dissoc set-name)))
-
-(defn job-count [set-name]
-  (count (keys (get @set-future-pool set-name))))
-
-(defn put-job [set-name meta job]
+(defn put-job [meta job]
   (let [id (.toString (UUID/randomUUID))
         job-fn (fn [] 
-                 (conf/with-result-set set-name
-                   (conf/with-result-job id
-                     (try
-                       (if ((:process job))
-                         ((:success-handler job) job meta)
-                         ((:fail-handler job) job meta))
-                       (forget-job id)
-                       (if (= 0 (job-count set-name))
-                         (if-let [after-fn (conf/get-result-set-post)]
-                           (after-fn)))
-                       (catch Exception e
-                         ((:exception-handler job) job meta e))))))]
-    (dosync 
-     (let [future (.submit processing-pool job-fn)]
-       (alter set-future-pool assoc [set-name id] future)
-       (alter job-id-set-map assoc id set-name)))
+                 (try
+                   (counters/dec! waiting)
+                   (if ((:process job))
+                     (do
+                       (counters/inc! completed)
+                       ((:success-handler job) job meta))
+                     (do
+                       (counters/inc! failed)
+                       ((:fail-handler job) job meta)))
+                   (catch Exception e
+                     (counters/inc! failed)
+                     ((:exception-handler job) job meta e)))
+                 (forget-job id))]
+    (counters/inc! waiting)
+    (swap! job-id->future conj (.submit processing-pool job-fn))
     id))
 
