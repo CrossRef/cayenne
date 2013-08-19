@@ -8,32 +8,39 @@
             [metrics.histograms :refer [defhistogram] :as hist]))
 
 (defhistogram [cayenne data deposit-size])
+
 (defmeter [cayenne data deposits-received] "deposits-received")
+
+(defgauge [cayenne data deposit-count]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/fetch-count :deposits)))
 
 (defn id->s [doc]
   (-> doc (:_id) (.toString)))
 
 (defn create! [type deposit-data]
   (meter/mark! deposits-received)
-  (hist/update! deposit-size (count deposit-data))
   (m/with-mongo (conf/get-service :mongo)
-    (let [new-doc (m/insert! :deposits
+    (let [new-file (m/insert-file! :deposits deposit-data)
+          new-doc (m/insert! :deposits
                              {:processed false
                               :type type
-                              :data deposit-data
+                              :data-id (:_id new-file)
                               :created-at (Date.)})]
+      (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))
 
 (defn fetch-data [id]
   (m/with-mongo (conf/get-service :mongo)
     (when-let [deposit (m/fetch-by-id :deposits (m/object-id id))]
-      (:data deposit))))
+      (m/stream-from :deposits 
+                     (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})))))
 
 (defn fetch [id]
   (m/with-mongo (conf/get-service :mongo)
     (when-let [deposit (m/fetch-by-id :deposits (m/object-id id))]
-      (dissoc deposit :data))))
-      
-(defgauge [cayenne data deposit-count]
-  (m/with-mongo (conf/get-service :mongo)
-    (m/fetch-count :deposits)))
+      (let [deposit-file (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})]
+        (-> deposit
+            (dissoc :data)
+            (assoc :length (:length deposit-file)))))))
+

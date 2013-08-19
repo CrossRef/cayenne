@@ -42,12 +42,12 @@
   (let [ct (get-in ctx [:request :headers "content-type"])]
     (some #{ct} cts)))
 
-(defresource deposits-resource
+(defresource deposits-resource [data]
   :allowed-methods [:post]
   :known-content-type? #(content-type-matches % t/depositable)
   :available-media-types t/html-or-json
   :post-redirect? true
-  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) (:data %)))
+  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
   :location #(abs-url (:request %) (:id %)))
 
 (defresource deposit-resource [id]
@@ -55,6 +55,12 @@
   :available-media-types t/html-or-json
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok :deposit)
+
+(defresource deposit-data-resource [id]
+  :allowed-methods [:get]
+  :media-type-available? (constantly true)
+  :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
+  :handle-ok (->1 #(d/fetch-data id)))
   
 (defresource object-resource [uri]
   :allowed-methods [:get]
@@ -91,10 +97,12 @@
        (object-resource uri))
   (ANY "/objects/:uri/:instance" [uri instance]
        (object-instance-resource uri instance))
-  (ANY "/deposits" [] 
-       deposits-resource)
+  (ANY "/deposits" {body :body}
+       (deposits-resource body))
   (ANY "/deposits/:id" [id]
-       (deposit-resource id)))
+       (deposit-resource id))
+  (ANY "/deposits/:id/data" [id]
+       (deposit-data-resource id)))
 
 (def api
   (-> api-routes
