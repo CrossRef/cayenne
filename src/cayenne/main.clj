@@ -4,7 +4,7 @@
             [cayenne.conf :as conf]))
 
 (defn -main [& args]
-  (let [context (keyword (or (System/getenv "CONTEXT") "production"))]
+  (let [context (keyword (or (System/getenv "CAYENNE_CONTEXT") "production"))]
     (conf/create-core-from! context :default)
     (conf/with-core context 
       (conf/set-param! [:env] context)

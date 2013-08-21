@@ -11,22 +11,27 @@
             [cayenne.ids.issn :as issn]
             [somnium.congomongo :as m]))
 
+(def hit-count (atom 0))
+(def miss-count (atom 0))
+(def citations-scanned (atom 0))
+(def records-scanned (atom 0))
+
 (defn matching-citation-finder
   "Count unstructured citations matching a particular regex pattern. Expects
    input in the form produced by unixref-citation-parser."
   [log-file patt]
-  (conf/set-result! :hit-count 0)
-  (conf/set-result! :miss-count 0)
+  (reset! hit-count 0)
+  (reset! miss-count 0) 
   (let [wrtr (PrintWriter. (io/writer log-file))]
     (fn [citations]
       (doseq [citation citations]
         (when-let [citation-text (:unstructured citation)]
           (if (re-find patt (.trim citation-text))
             (do
-              (conf/update-result! :hit-count inc)
+              (swap! hit-count inc)
               (.println wrtr (str citation-text))
               (.flush wrtr))
-            (conf/update-result! :miss-count inc)))))))
+            (swap! miss-count inc)))))))
 
 (defn to-csv-line [categories year citation url]
   (if url
@@ -62,8 +67,8 @@
    of the citing work if available. Finally will try to resolve
    any extracted URLs."
   [out-file]
-  (conf/set-result! :citations-scanned 0)
-  (conf/set-result! :records-scanned 0)
+  (reset! citations-scanned 0)
+  (reset! records-scanned 0)
   (let [wrtr (conf/file-writer out-file)]
     (fn [item]
       (let [journal (itree/find-item-of-subtype (second item) :journal)

@@ -22,7 +22,8 @@
 (defcounter [cayenne jobs failed])
 
 (defgauge [cayenne jobs running]
-  (count @job-id->future))
+  (- (count @job-id->future)
+     (counters/value waiting)))
 
 (defn make-job [p & {:keys [success fail exception]
                      :or {success (constantly nil)
@@ -57,6 +58,6 @@
                      ((:exception-handler job) job meta e)))
                  (forget-job id))]
     (counters/inc! waiting)
-    (swap! job-id->future conj (.submit processing-pool job-fn))
+    (swap! job-id->future assoc id (.submit processing-pool job-fn))
     id))
 

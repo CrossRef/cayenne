@@ -1,6 +1,7 @@
 (ns cayenne.user
   (:require [cayenne.conf :as conf]
-            [cayenne.api.route :as route]))
+            [cayenne.api.route :as route]
+            [cayenne.action :as action]))
 
 (conf/create-core-from! :user :default)
 

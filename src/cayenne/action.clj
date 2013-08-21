@@ -75,7 +75,6 @@
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
                :async true
-               :name :parse-unixref
                :split "record"
                :parser unixref-record-parser 
                :task using))
@@ -83,7 +82,6 @@
 (defn parse-datacite-records [file-or-dir using]
   (oai/process file-or-dir
                :async true
-               :name :parse-datacite
                :split "resource"
                :parser datacite-record-parser
                :task using))
@@ -91,7 +89,6 @@
 (defn parse-openurl [doi using]
   (oai/process (openurl-file doi)
                :async true
-               :name :parse-openurl
                :kind ".tmp"
                :split "doi_record"
                :parser unixref-record-parser
@@ -104,7 +101,6 @@
     (doseq [doi (line-seq rdr)]
       (oai/process (openurl-file doi)
                    :async true
-                   :name :parse-openurl-list
                    :kind ".tmp"
                    :split "doi_record"
                    :parser unixref-record-parser
@@ -139,14 +135,12 @@
 (defn check-url-citations [file-or-dir]
   (oai/process
    file-or-dir
-   :name :check-url-citations
    :parser unixref-record-parser
    :task (url-citation-checker "check.log.txt")))
 
 (defn find-citations-like [file-or-dir patt]
   (oai/process
    file-or-dir
-   :name :find-citations
    :parser unixref-citation-parser 
    :task (matching-citation-finder "match.log.txt" patt)))
 

@@ -5,6 +5,7 @@
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
+            [clojure.tools.trace :as trace]
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
@@ -20,8 +21,6 @@
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
-(def ^:dynamic *result-name*)
-(def ^:dynamic *result-job-name*)
 
 (defn get-param [path & default]
   (or (get-in @cores (concat [*core-name* :parameters] path) default)))
@@ -39,10 +38,10 @@
   (cond
    (map? msg)
    (if (= (:state msg) :fail) 
-     (error (str *result-name* ": " msg))
-     (info (str *result-name* ": " msg)))
+     (error msg)
+     (info msg))
    :else
-   (info (str *result-name* ": " msg))))
+   (info msg)))
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))
@@ -130,6 +129,7 @@
   (set-param! [:service :solr :insert-core] "crmds2")
   (set-param! [:service :neo4j :url] "http://5.9.51.2:7474/db/data")
   (set-param! [:service :api :port] 3000)
+  (set-param! [:service :queue :host] "5.9.51.150")
 
   (set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")

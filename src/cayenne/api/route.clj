@@ -46,9 +46,8 @@
   :allowed-methods [:post]
   :known-content-type? #(content-type-matches % t/depositable)
   :available-media-types t/html-or-json
-  :post-redirect? true
-  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
-  :location #(abs-url (:request %) (:id %)))
+  :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
+  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data)))
 
 (defresource deposit-resource [id]
   :allowed-methods [:get]
