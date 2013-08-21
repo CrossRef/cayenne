@@ -1,6 +1,11 @@
 (ns cayenne.xml
-  (:require [clojure.data.json :as json])
-  (:require [clojure.java.io :as io]))
+  (:require [clojure.data.json :as json]
+            [clojure.java.io :as io]
+            [metrics.meters :refer [defmeter] :as meter]
+            [metrics.counters :refer [defcounter] :as counter]))
+
+(defcounter [cayenne xml records-processed])
+(defmeter [cayenne xml record-process-rate] "record-process-rate")
 
 (defn- root-element? [^nu.xom.Element element]
   (instance? nu.xom.Document (.getParent element)))
@@ -51,8 +56,11 @@
                     (proxy-super startMakingElement name ns))
                   (finishMakingElement [^nu.xom.Element element]
                     (when (= (.getLocalName element) tag-name)
-                      (process-fn element)
-                      (reset! keep? false))
+                      (do 
+                        (counter/inc! records-processed)
+                        (meter/mark! record-process-rate)
+                        (process-fn element)
+                        (reset! keep? false)))
                     (if (or @keep? (root-element? element))
                       (proxy-super finishMakingElement element)
                       empty)))]
