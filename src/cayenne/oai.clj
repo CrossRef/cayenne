@@ -13,13 +13,9 @@
 
 (defn ex->info-str [ex] (str ex ": " (first (.getStackTrace ex))))
 
-(defn oai-fail-handler [at-msg]
-  (fn [job meta]
-    (conf/log {:state :fail :info meta :at at-msg})))
-
 (defn oai-success-handler [at-msg]
   (fn [job meta]
-    (conf/log {:state :info :info meta :at at-msg})))
+    (conf/log {:state :info :info meta :at at-msg :complete true})))
 
 (defn oai-exception-handler [at-msg]
   (fn [job meta ex]
@@ -28,7 +24,6 @@
 (defn make-oai-job [at-msg func]
   (job/make-job func
                 :success (oai-success-handler at-msg)
-                :fail (oai-fail-handler at-msg)
                 :exception (oai-exception-handler at-msg)))
 
 (defn parser-task-pass
@@ -91,7 +86,10 @@
 (defn grab-oai-xml-file-async [service from until count token parser-fn task-fn]
   (let [job-func #(grab-oai-xml-file service from until count token parser-fn task-fn)
         job (make-oai-job :download job-func)
-        job-meta {:file (str file) :resumption-token token}]
+        job-meta {:service service
+                  :from from
+                  :until until 
+                  :resumption-token token}]
     (job/put-job job-meta job)))
 
 (defn process

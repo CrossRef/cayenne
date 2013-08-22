@@ -27,11 +27,9 @@
 
 (defn make-job [p & {:keys [success fail exception]
                      :or {success (constantly nil)
-                          fail (constantly nil)
                           exception (constantly nil)}}]
   {:process p
    :success-handler success
-   :fail-handler fail
    :exception-handler exception})
 
 (defn forget-job [job-id]
@@ -46,13 +44,9 @@
         job-fn (fn [] 
                  (try
                    (counters/dec! waiting)
-                   (if ((:process job))
-                     (do
-                       (counters/inc! completed)
-                       ((:success-handler job) job meta))
-                     (do
-                       (counters/inc! failed)
-                       ((:fail-handler job) job meta)))
+                   ((:process job))
+                   (counters/inc! completed)
+                   ((:success-handler job) job meta)
                    (catch Exception e
                      (counters/inc! failed)
                      ((:exception-handler job) job meta e)))
