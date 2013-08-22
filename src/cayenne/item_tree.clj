@@ -1,7 +1,8 @@
 (ns cayenne.item-tree
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [cayenne.ids :as ids]
-            [clojure.zip :as zip]))
+            [clojure.zip :as zip]
+            [cayenne.conf :as conf]))
 
 (def contributor-rels [:author :chair :translator :editor :contributor])
 
@@ -11,6 +12,7 @@
                      :journal-issue "Journal Issue"
                      :journal-volume "Journal Volume"
                      :proceedings "Proceedings"
+                     :proceedings-series "Proceedings Series"
                      :proceedings-article "Conference Paper"
                      :report "Report"
                      :report-series "Report Series"
@@ -198,7 +200,7 @@
 
 (defn centre-on
   "Flatten ancestors of an item in item-tree with id. Ancestors of item are
-   placed as embeded maps with the parent item type as key."
+   placed as embedded maps with the parent item type as key."
   [id item-tree]
   (let [around-item (find-item-with-id item-tree id)]
     (reduce

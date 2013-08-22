@@ -189,7 +189,7 @@
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]
     (if-not (get solr-map "doi_key")
-      (conf/log {:state :fail :msg "No DOI in item tree - can't insert into solr"})
+      (throw (Exception. "No DOI in item tree when inserting into solr."))
       (let [solr-doc (as-solr-input-document solr-map)]
         (dosync
          (alter insert-list conj solr-doc)

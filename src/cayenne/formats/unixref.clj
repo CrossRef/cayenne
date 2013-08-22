@@ -4,13 +4,13 @@
             [cayenne.xml :as xml]
             [cayenne.conf :as conf]
             [cayenne.ids :as ids]
-            [cayenne.ids.fundref :as fundref])
+            [cayenne.ids.fundref :as fundref]
+            [clojure.tools.trace :as trace])
   (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
   (:use [cayenne.ids.isbn :only [to-isbn-uri]])
-  (:use [cayenne.ids.orcid :only [to-orcid-uri]])
-  (:use [clojure.tools.trace]))
+  (:use [cayenne.ids.orcid :only [to-orcid-uri]]))
 
 ;; -----------------------------------------------------------------
 ;; Helpers
@@ -580,15 +580,17 @@
 
 (defn parse-conf [conf-loc]
   (when conf-loc
-    (let [proceedings-loc (xml/xselect1 conf-loc "proceedings_metadata")]
+    (let [series-loc (xml/xselect1 conf-loc :> "proceedings_series_metadata")
+          single-loc (xml/xselect1 conf-loc :> "proceedings_metadata")
+          proceedings-loc (or series-loc single-loc)]
       (-> (parse-item proceedings-loc)
           (parse-attach :about conf-loc :single (comp parse-event find-event))
           (parse-attach :component conf-loc :single (comp parse-conf-paper find-conf-paper))
           (conj
-           {:subtype :proceedings
-            :coden (xml/xselect1 proceedings-loc "coden" :text)
-            :subject (xml/xselect1 proceedings-loc "proceedings_subject")
-            :volume (xml/xselect1 proceedings-loc "volume")})))))
+           {:subtype (if series-loc :proceedings-series :proceedings)
+            :coden (xml/xselect1 conf-loc :> "coden" :text)
+            :subject (xml/xselect1 conf-loc :> "proceedings_subject")
+            :volume (xml/xselect1 conf-loc :> "volume")})))))
 
 (defn parse-content-item-type [content-item-loc]
   (let [type (xml/xselect1 content-item-loc ["component_type"])]
@@ -721,7 +723,7 @@
 ;; todo parse institution
 (defn parse-report [report-loc]
   (let [report-meta-loc (xml/xselect1 report-loc "report-paper_metadata")
-        report-series-meta-loc (xml/xselect1 report-loc "report-paper-series_metadata")
+        report-series-meta-loc (xml/xselect1 report-loc "report-paper_series_metadata")
         series-meta-loc (xml/xselect1 report-loc "report-paper_metadata" "series_metadata")]
     (cond
      series-meta-loc
@@ -754,7 +756,7 @@
 
 (defn parse-standard [standard-loc]
   (let [standard-meta-loc (xml/xselect1 standard-loc "standard_metadata")
-        standard-series-meta-loc (xml/xselect1 standard-loc "standard-series_metadata")
+        standard-series-meta-loc (xml/xselect1 standard-loc "standard_series_metadata")
         series-meta-loc (xml/xselect1 standard-loc "standard_metadata" "series_metadata")]
     (cond
      series-meta-loc
