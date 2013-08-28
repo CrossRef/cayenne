@@ -37,7 +37,7 @@
 (defn log [msg]
   (cond
    (map? msg)
-   (if (= (:state msg) :fail) 
+   (if (= (:state msg) :fail)
      (error msg)
      (info msg))
    :else

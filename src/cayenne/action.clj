@@ -109,7 +109,7 @@
                           #(vector (doi/to-long-doi-uri doi) (second %)))))))
 
 (defn get-unixref-records [service from until using]
-  (oai/run-range service 
+  (oai/run-range service
                  :from from 
                  :until until
                  :split "record"

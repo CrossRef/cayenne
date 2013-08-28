@@ -618,7 +618,7 @@
 (defn parse-content-items [parent-loc]
   (map parse-content-item (xml/xselect parent-loc "content_item")))
 
-(defn parse-single-book [book-meta-loc content-item-loc book-type]
+(defn parse-single-book* [book-meta-loc content-item-loc book-type]
   (-> (parse-item book-meta-loc)
       (parse-attach :component content-item-loc :single parse-content-item)
       (conj
@@ -626,6 +626,14 @@
         :language (xml/xselect1 book-meta-loc ["language"])
         :edition-number (xml/xselect1 book-meta-loc "edition_number" :text)
         :volume (xml/xselect1 book-meta-loc "volume" :text)})))
+
+(defn parse-single-book [book-meta-loc content-item-loc book-type]
+  (if-let [series-meta-loc (xml/xselect1 book-meta-loc "series_metadata")]
+    (-> (parse-item series-meta-loc)
+        (parse-attach :component book-meta-loc 
+                      :single #(parse-single-book* % content-item-loc book-type))
+        (conj {:subtype :book-series}))
+    (parse-single-book* book-meta-loc content-item-loc book-type)))
 
 (defn parse-book-set [book-set-meta-loc content-item-loc book-type]
   (-> (parse-item (xml/xselect1 book-set-meta-loc "set_metadata"))
@@ -897,6 +905,7 @@
               (parse-journal (find-journal oai-record))
               (parse-book (find-book oai-record))
               (parse-conf (find-conf oai-record)))]
+    (conf/log (:subtype work))
     (if work
       [(parse-primary-id oai-record)
        (parse-attach work :deposited oai-record :single parse-deposit-date)]
