@@ -905,7 +905,6 @@
               (parse-journal (find-journal oai-record))
               (parse-book (find-book oai-record))
               (parse-conf (find-conf oai-record)))]
-    (conf/log (:subtype work))
     (if work
       [(parse-primary-id oai-record)
        (parse-attach work :deposited oai-record :single parse-deposit-date)]

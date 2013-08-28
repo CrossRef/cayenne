@@ -131,7 +131,6 @@
     (string/join " | " (for [[k v] (as-grant-map item)] (funder-info k v)))))
 
 (defn as-solr-document [item]
-  (conf/log (:subtype item))
   (let [grant-map (as-grant-map item)
         funder-names (set (map :name (get-tree-rel item :funder)))
         funder-dois (set (mapcat :id (get-tree-rel item :funder)))
