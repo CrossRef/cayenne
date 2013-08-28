@@ -717,12 +717,20 @@
        {:subtype :report
         :contract-number (parse-report-contract-number report-loc)})))
 
-(defn parse-report-series [series-meta-loc]
+(defn parse-report-series* [series-meta-loc]
   (-> (parse-item series-meta-loc)
       (conj
        {:subtype :report-series
         :coden (xml/xselect1 series-meta-loc "coden" :text)
-        :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))
+        :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))  
+
+(defn parse-report-series [series-meta-loc]
+  (if-let [series-loc (xml/xselect1 series-meta-loc "series_metadata")]
+    (-> (parse-item series-loc)
+        (parse-attach :component series-meta-loc :single parse-report-series*)
+        (conj
+         {:subtype :report-series}))
+    (parse-report-series* series-meta-loc)))
 
 (defn parse-single-report-with-series [report-loc series-meta-loc]
   (-> (parse-report-series series-meta-loc)
