@@ -44,12 +44,16 @@
 (defn normalize-short-doi [s]
   (when s (.toLowerCase (extract-short-doi s))))
 
+;; Regex below is a hack to handle broken CrossRef DOIs that contain
+;; non printable characters.
 (defn to-long-doi-uri 
   "Ensure a long DOI is in a normalized URI form."
   [s]
   (when s
-    (ids/get-id-uri :long-doi (normalize-long-doi s))))
-
+    (->> (.replaceAll s "[^\\p{Print}]" "")
+         (normalize-long-doi)
+         (ids/get-id-uri :long-doi))))
+ 
 (defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."
   [s]
