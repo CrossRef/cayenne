@@ -127,6 +127,7 @@
   (set-param! [:service :solr :url] "http://5.9.90.82:8080/solr-web")
   (set-param! [:service :solr :query-core] "crmds1")
   (set-param! [:service :solr :insert-core] "crmds2")
+  (set-param! [:service :solr :insert-list-max-size] 100)
   (set-param! [:service :neo4j :url] "http://5.9.51.2:7474/db/data")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")

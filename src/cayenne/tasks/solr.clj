@@ -193,6 +193,7 @@
       (let [solr-doc (as-solr-input-document solr-map)]
         (dosync
          (alter insert-list conj solr-doc)
-         (when (> (count @insert-list) insert-list-max-size)
+         (when (> (count @insert-list) 
+                  (conf/get-param [:service :solr :insert-list-max-size]))
            (flush-insert-list)))))))
   
