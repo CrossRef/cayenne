@@ -9,6 +9,7 @@
         [cayenne.formats.datacite :only [datacite-record-parser]])
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
+            [clojure.string :as string]
             [cayenne.oai :as oai]
             [cayenne.job :as job]
             [cayenne.html :as html]
@@ -18,6 +19,7 @@
             [cayenne.tasks.neo4j :as neo4j]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
+            [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]))
 
 (defn scrape-journal-short-names-from-wok []
@@ -45,6 +47,23 @@
 (def dump-solr-docs
   (comp
    (record-json-writer "out.txt")
+   solr/as-solr-document
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)
+   #(apply funder/apply-to %)
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
+
+(def dump-plain-solr-docs
+  (comp
+   (record-json-writer "out.txt")
+   solr/as-solr-document
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)))
+
+(def print-solr-docs
+  (comp
+   #(cayenne.conf/log %)
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
@@ -124,12 +143,55 @@
       (parse-openurl doi index-solr-docs))
     (cayenne.tasks.solr/flush-insert-list)))
 
-(defn find-doi [doi]
-  (let [search-url (-> (get-param [:upstream :crmds-dois]) (str doi) (java.net.URL.))
+(defn rerun-oai-service [service from until action]
+  (let [existing-dir (clojure.java.io/file (:dir service)
+                                           (str from "-" until))]
+    (doseq [f (.listFiles existing-dir)]
+      (.delete f))
+    (get-unixref-records service from until action)))
+
+(defn rerun-cr-failed 
+  "Retry a failed CrossRef OAI-PMH download represented by a fail log line."
+  [log-line action]
+  (if (re-find #":file " log-line)
+
+    (let [path (second (re-find #":file ([\w/-]+)" log-line))
+          path-split (reverse (string/split path #"/"))
+          from-until (string/split (second path-split) #"-")
+          from (string/join "-" (take 3 from-until))
+          until (string/join "-" (take 3 (drop 3 from-until)))
+          service (conf/get-param [:oai (keyword (nth path-split 2))])]
+      (rerun-oai-service service from until action))
+
+    (let [from (second (re-find #":from ([0-9-]+)" log-line))
+          until (second (re-find #":until ([0-9-]+)" log-line))
+          service (condp = (second (re-find #":set-spec (J|S|B)" log-line))
+                    "J" (conf/get-param [:oai :crossref-journals])
+                    "S" (conf/get-param [:oai :crossref-serials])
+                    "B" (conf/get-param [:oai :crossref-books]))]
+      (rerun-oai-service service from until action))))
+
+(defn rerun-all-cr-failed 
+  "Retry CrossRef OAI-PMH download of each failed download in a log file."
+  [log-file action]
+  (with-open [rdr (clojure.java.io/reader log-file)]
+    (doseq [log-line (line-seq rdr)]
+      (when (re-find #":state :fail" log-line)
+        (rerun-cr-failed log-line action)))))
+
+(defn find-doi 
+  "Look up a DOI via CrossRef Metadata Search."
+  [doi]
+  (let [search-url (-> (get-param [:upstream :crmds-dois]) 
+                       (str doi) 
+                       (java.net.URL.))
         response (-> search-url (slurp) (json/read-str))]
     [doi (not (empty? response))]))
 
-(defn find-dois [doi-list-loc]
+(defn find-dois 
+  "Look up a list of DOIs via CrossRef Metadata Search. Result is a map mapping
+   DOI to CRMDS response."
+  [doi-list-loc]
   (into {} (map find-doi (-> doi-list-loc (line-seq) (distinct)))))
 
 (defn check-url-citations [file-or-dir]
