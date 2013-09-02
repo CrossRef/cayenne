@@ -10,7 +10,6 @@
                 params)))
 
 (defn ->query-context [resource-context]
-  (conf/log (get-in resource-context [:request :params :q]))
   {:terms (get-in resource-context [:request :params :q])
    :page (or (get-in resource-context [:request :params :p]) 1)
    :rows (or (get-in resource-context [:request :params :r]) 20)

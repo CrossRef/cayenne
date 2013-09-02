@@ -78,6 +78,8 @@
 
 (defresource subjects-resource)
 
+(defresource subject-resource [subject-id])
+
 (defresource dois-resource
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
