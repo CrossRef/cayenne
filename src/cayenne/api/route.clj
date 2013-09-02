@@ -5,7 +5,9 @@
             [cayenne.data.deposit :as d]
             [cayenne.data.object :as o]
             [cayenne.data.core :as c]
+            [cayenne.data.doi :as doi]
             [cayenne.api.types :as t]
+            [cayenne.api.query :as q]
             [clojure.data.json :as json]
             [liberator.core :refer [defresource resource]]
             [liberator.dev :refer [wrap-trace]]
@@ -74,6 +76,13 @@
 
 (defresource prefix-resource [prefix])
 
+(defresource subjects-resource)
+
+(defresource dois-resource
+  :allowed-methods [:get]
+  :media-type-available? t/html-or-json
+  :handle-ok #(json/write-str (doi/fetch-dois (q/->query-context %))))
+
 (defresource cores-resource
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
@@ -86,6 +95,8 @@
   :handle-ok (->1 #(json/write-str (c/fetch core-name))))
 
 (defroutes api-routes
+  (ANY "/dois" []
+       dois-resource)
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]

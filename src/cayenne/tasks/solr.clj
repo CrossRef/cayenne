@@ -7,10 +7,21 @@
             [clojure.string :as string]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
-            [cayenne.ids :as ids]))
+            [cayenne.ids :as ids]
+            [metrics.gauges :refer [defgauge] :as gauge]))
 
-(def insert-list-max-size 50000)
 (def insert-list (ref []))
+
+(defgauge [cayenne solr insert-waiting-list-size]
+  (count @insert-list))
+
+(defgauge [cayenne solr commit-waiting-list-size]
+  (let [request (doto (CoreAdminRequest.)
+                  (.setCoreName (conf/get-param [:service :solr :insert-core]))
+                  (.setAction CoreAdminParams$CoreAdminAction/STATUS))
+        response (-> (.process request (conf/get-service :solr))
+                     (.getCoreStatus))]
+    (conf/log response)))
 
 (defn flush-insert-list []
   (dosync
@@ -142,7 +153,7 @@
     {"source" (:source item)
      "indexed_at" (t/now)
      "deposited_at" (t/date-time (:year deposit-date) 
-                                 (:month deposit-date) 
+                                 (:month deposit-date)
                                  (:day deposit-date))
      "prefix" (doi/extract-long-prefix doi)
      "doi_key" doi

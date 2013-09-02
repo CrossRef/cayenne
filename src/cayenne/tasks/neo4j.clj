@@ -56,4 +56,4 @@
       (nn/add-to-index right "items" "id" right-id)
       (when-not (nrl/first-outgoing-between left right [relation])
         (nrl/create left right relation)))))
-          
+

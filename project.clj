@@ -7,7 +7,8 @@
   :main cayenne.main
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
-  :dependencies [[metrics-clojure "1.0.1"]
+  :dependencies [[xml-apis "1.4.01"]
+                 [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
                  [com.taoensso/timbre "2.1.2"]
                  [clojurewerkz/neocons "1.1.0"]
