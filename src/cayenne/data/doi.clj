@@ -6,8 +6,10 @@
             [cayenne.ids.isbn :as isbn-id]
             [cayenne.api.query :as query]
             [cayenne.api.response :as r]
+            [somnium.congomongo :as m]
             [clj-time.format :as df]
             [clj-time.core :as dt]
+            [clj-time.coerce :as dc]
             [clojure.string :as string]))
 
 ;; todo eventually produce citeproc from more detailed data stored in mongo
@@ -18,9 +20,7 @@
 
 ;; todo API links - orcids, subject ids, doi, issn, isbn, owner prefix
 
-(def solr-date-format (df/formatter "yyyy-MM-dd.hh:mm:ss."))
-
-(defn ->citeproc-date
+(defn ->date-parts
   ([year month day]
      (cond (and year month day)
            {:date-parts [[year, month, day]]}
@@ -28,12 +28,12 @@
            {:date-parts [[year, month]]}
            :else
            {:date-parts [[year]]}))
-  ([date-str]
-     (let [d (df/parse solr-date-format date-str)]
-       {:date-parts [[(dt/year d) (dt/month d) (dt/day d)
-                      (dt/hour d) (dt/minute d) (dt/sec d)]]})))
+  ([date-obj]
+     (let [d (dc/from-date date-obj)]
+       {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
+        :timestamp (dc/to-long d)})))
         
-(defn ->citeproc-contrib [solr-doc k orcid]
+(defn ->citeproc-contrib [name & orcid]
   (let [base {:literal name}]
     (if orcid
       (assoc base :ORCID orcid)
@@ -51,18 +51,18 @@
    :URL (get solr-doc "doi")
    :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn"))
    :ISSN (map issn-id/extract-issn (get solr-doc "issn"))
-   :title (set (get solr-doc "hl_title"))
-   :container-title (set (get solr-doc "hl_publication"))
+   :title (get solr-doc "hl_title")
+   :container-title (get solr-doc "hl_publication")
    :issued (->date-parts (get solr-doc "year") 
                          (get solr-doc "month") 
                          (get solr-doc "day"))
    :deposited (->date-parts (get solr-doc "deposited_at"))
    :indexed (->date-parts (get solr-doc "indexed_at"))
-   :author (->citeproc-contribs "hl_authors")
-   :editor (->citeproc-contribs "hl_editors")
-   :chair (->citeproc-contribs "hl_chairs")
-   :contributor (->citeproc-contribs "hl_contributors")
-   :translator (->citeproc-contribs "hl_translators")
+   :author (->citeproc-contribs solr-doc "hl_authors")
+   :editor (->citeproc-contribs solr-doc "hl_editors")
+   :chair (->citeproc-contribs solr-doc "hl_chairs")
+   :contributor (->citeproc-contribs solr-doc "hl_contributors")
+   :translator (->citeproc-contribs solr-doc "hl_translators")
    :page (str (get solr-doc "hl_first_page") 
               "-" 
               (get solr-doc "hl_last_page"))
@@ -78,6 +78,12 @@
         (r/with-result-items (.getNumFound doc-list) (map ->citeproc doc-list))
         (r/with-query-context-info query-context))))
 
-        
-
+(defn fetch-random-dois [count]
+  (m/with-mongo (conf/get-service :mongo)
+    (let [c (or (try (Integer/parseInt count) (catch Exception e nil)) 50)
+          records (m/fetch "dois"
+                           :where {:random_index {"$gte" (rand)}}
+                           :limit c
+                           :sort {:random_index 1})]
+      (r/api-response :random-doi-list :content (map :doi records)))))
 

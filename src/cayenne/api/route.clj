@@ -85,6 +85,11 @@
   :media-type-available? t/html-or-json
   :handle-ok #(json/write-str (doi/fetch-dois (q/->query-context %))))
 
+(defresource random-dois-resource [count]
+  :allowed-methods [:get]
+  :media-type-available? t/html-or-json
+  :handle-ok (->1 #(json/write-str (doi/fetch-random-dois count))))
+
 (defresource cores-resource
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
@@ -99,6 +104,8 @@
 (defroutes api-routes
   (ANY "/dois" []
        dois-resource)
+  (ANY "/dois/random/:count" [count]
+       (random-dois-resource count))
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]
