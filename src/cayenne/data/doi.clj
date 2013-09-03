@@ -16,9 +16,10 @@
 ;; for each DOI that comes back from solr. For now, covert the solr fields
 ;; to some (occasionally ambiguous) citeproc structures.
 
-;; todo ORCIDs
-
 ;; todo API links - orcids, subject ids, doi, issn, isbn, owner prefix
+
+;; todo conneg. currently returning two different formats - item-tree
+;; where a DOI is known, citeproc for search results.
 
 (defn ->date-parts
   ([year month day]
@@ -77,6 +78,12 @@
     (-> (r/api-response :doi-result-list)
         (r/with-result-items (.getNumFound doc-list) (map ->citeproc doc-list))
         (r/with-query-context-info query-context))))
+
+(defn fetch-doi 
+  "Fetch a known DOI, which we take from mongo."
+  [doi-uri]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/fetch-one "items" :where {:id doi-uri})))
 
 (defn fetch-random-dois [count]
   (m/with-mongo (conf/get-service :mongo)

@@ -91,6 +91,15 @@
    neo4j/insert-item
    second))
 
+(def store-item
+  (comp
+   (partial mongo/insert-item "items")
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)
+   #(apply funder/apply-to %)
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
+
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
                :async true

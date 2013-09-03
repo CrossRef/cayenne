@@ -1,6 +1,7 @@
 (ns cayenne.api.route
   (:import [java.net URL])
   (:require [cayenne.ids :as ids]
+            [cayenne.ids.doi :as doi-id]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.object :as o]
@@ -37,7 +38,7 @@
                 (:uri request)
                 (clojure.string/join "/" paths))))
 
-(defn content-type-matches 
+(defn content-type-matches
   "True if the content type contained in ctx matches any of those listed
    in cts."
   [ctx cts]
@@ -62,17 +63,6 @@
   :media-type-available? (constantly true)
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok (->1 #(d/fetch-data id)))
-  
-(defresource object-resource [uri]
-  :allowed-methods [:get]
-  :available-media-types [])
-  ;:exists?
-  ;:handle-ok)
-
-(defresource object-instance-resource [uri instance]
-  :allowed-methods [:get])
-  ;:exists?
-  ;:handle-ok)
 
 (defresource prefix-resource [prefix])
 
@@ -84,6 +74,11 @@
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
   :handle-ok #(json/write-str (doi/fetch-dois (q/->query-context %))))
+
+(defresource doi-resource [doi]
+  :allowed-methods [:get]
+  :media-type-available? t/html-or-json
+  :handle-ok (->1 #(json/write-str (doi/fetch-doi (doi-id/to-long-doi-uri doi)))))
 
 (defresource random-dois-resource [count]
   :allowed-methods [:get]
@@ -106,16 +101,12 @@
        dois-resource)
   (ANY "/dois/random/:count" [count]
        (random-dois-resource count))
+  (ANY "/dois/:doi" [doi]
+       (doi-resource doi))
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]
        (core-resource name))
-  (ANY "/objects/:type/:id" [type id]
-       (object-resource (ids/get-id-uri type id)))
-  (ANY "/objects/:uri" [uri]
-       (object-resource uri))
-  (ANY "/objects/:uri/:instance" [uri instance]
-       (object-instance-resource uri instance))
   (ANY "/deposits" {body :body}
        (deposits-resource body))
   (ANY "/deposits/:id" [id]
