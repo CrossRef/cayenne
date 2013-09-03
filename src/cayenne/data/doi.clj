@@ -64,7 +64,7 @@
    :chair (->citeproc-contribs solr-doc "hl_chairs")
    :contributor (->citeproc-contribs solr-doc "hl_contributors")
    :translator (->citeproc-contribs solr-doc "hl_translators")
-   :page (str (get solr-doc "hl_first_page") 
+   :page (str (get solr-doc "hl_first_page")
               "-" 
               (get solr-doc "hl_last_page"))
    :type (get solr-doc "type")

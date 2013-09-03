@@ -4,7 +4,6 @@
             [cayenne.ids.doi :as doi-id]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
-            [cayenne.data.object :as o]
             [cayenne.data.core :as c]
             [cayenne.data.doi :as doi]
             [cayenne.api.types :as t]
@@ -114,9 +113,18 @@
   (ANY "/deposits/:id/data" [id]
        (deposit-data-resource id)))
 
+(defn wrap-cors
+  [h]
+  (fn [request]
+    (-> (h request)
+        (assoc-in [:headers "Access-Control-Allow-Origin"] "*")
+        (assoc-in [:headers "Access-Control-Allow-Headers"]
+                  "X-Requested-With"))))
+
 (def api
   (-> api-routes
       (handler/api)
+      (wrap-cors)
       (expose-metrics-as-json)
       (instrument)
       (wrap-trace :ui)

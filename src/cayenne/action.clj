@@ -17,6 +17,7 @@
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.neo4j :as neo4j]
+            [cayenne.tasks.mongo :as mongo]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
