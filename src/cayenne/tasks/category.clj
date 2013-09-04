@@ -32,8 +32,6 @@
        (do 
          (let [issns (map normalize-issn (get-item-ids item :issn))
                categories (set (mapcat get-issn-categories-memo issns))]
-           (conf/log issns)
-           (conf/log categories)
            (assoc item :category (map get-category-name-memo categories))))
        item))
   ([id item]
