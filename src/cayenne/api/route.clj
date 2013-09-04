@@ -96,11 +96,11 @@
   :handle-ok (->1 #(json/write-str (c/fetch core-name))))
 
 (defroutes api-routes
-  (ANY "/dois" []
+  (ANY "/items" []
        dois-resource)
-  (ANY "/dois/random/:count" [count]
+  (ANY "/items/random/:count" [count]
        (random-dois-resource count))
-  (ANY "/dois/:doi" [doi]
+  (ANY "/items/:doi" [doi]
        (doi-resource doi))
   (ANY "/cores" []
        cores-resource)

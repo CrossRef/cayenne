@@ -22,6 +22,6 @@
                  {:id {"$in" ids}}
                  {:id ids
                   :rindex (rand)
-                  :updated (dt/date-time)
+                  :updated (java.util.Date.)
                   :item item}
                  :upsert true))))
