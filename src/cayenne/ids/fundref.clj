@@ -1,6 +1,7 @@
 (ns cayenne.ids.fundref
   (:require [cayenne.ids :as ids]
-            [cayenne.ids.doi :as doi]))
+            [cayenne.ids.doi :as doi]
+            [clojure.string :as string]))
 
 (def funder-prefix "10.13039")
 
@@ -12,10 +13,6 @@
   [id]
   (doi/to-long-doi-uri (id-to-doi id)))
 
-(defn doi-to-id
-  [doi]
-  ())
-
 (defn doi-uri-to-id
-  [doi-uri]
-  ())
+  [doi]
+  (last (string/split doi #"/")))

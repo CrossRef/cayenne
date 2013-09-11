@@ -2,10 +2,12 @@
   (:import [java.net URL])
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.fundref :as fr-id]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.doi :as doi]
+            [cayenne.data.funder :as funder]
             [cayenne.api.types :as t]
             [cayenne.api.query :as q]
             [clojure.data.json :as json]
@@ -63,26 +65,24 @@
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok (->1 #(d/fetch-data id)))
 
-(defresource prefix-resource [prefix])
-
 (defresource subjects-resource)
 
 (defresource subject-resource [subject-id])
 
-(defresource dois-resource
+(defresource works-resource
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
-  :handle-ok #(json/write-str (doi/fetch-dois (q/->query-context %))))
+  :handle-ok #(json/write-str (doi/fetch (q/->query-context %))))
 
-(defresource doi-resource [doi]
+(defresource work-resource [doi]
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
-  :handle-ok (->1 #(json/write-str (doi/fetch-doi (doi-id/to-long-doi-uri doi)))))
+  :handle-ok (->1 #(json/write-str (doi/fetch-one (doi-id/to-long-doi-uri doi)))))
 
-(defresource random-dois-resource [count]
+(defresource random-works-resource [count]
   :allowed-methods [:get]
   :media-type-available? t/html-or-json
-  :handle-ok (->1 #(json/write-str (doi/fetch-random-dois count))))
+  :handle-ok (->1 #(json/write-str (doi/fetch-random count))))
 
 (defresource cores-resource
   :allowed-methods [:get]
@@ -93,14 +93,47 @@
   :allowed-methods [:get]
   :available-media-types t/html-or-json
   :exists? (->1 #(c/exists? core-name))
-  :handle-ok (->1 #(json/write-str (c/fetch core-name))))
+  :handle-ok (->1 (c/fetch core-name)))
+
+(defresource funders-resource [])
+
+(defresource funder-resource [funder-id]
+  :allowed-methods [:get]
+  :available-media-types t/html-or-json
+  :exists? #(when-let [f (funder/fetch-one 
+                          (q/->query-context % :id (fr-id/id-to-doi-uri funder-id)))]
+              {:funder f})
+  :handle-ok :funder)
+
+(defresource funder-works-resource [funder-id]
+  :allowed-methods [:get]
+  :available-media-types t/html-or-json
+  :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
+
+(defresource publishers-resource [])
+
+(defresource publisher-resource [prefix])
+
+(defresource publisher-works-resource [prefix])
 
 (defroutes api-routes
-  (ANY "/items" []
+  (ANY "/funders" []
+       funders-resource)
+  (ANY "/funders/:id" [id]
+       (funder-resource id))
+  (ANY "/funders/:id/works" [id]
+       (funder-works-resource id))
+  (ANY "/publishers" []
+       publishers-resource)
+  (ANY "/publishers/:prefix" [prefix]
+       (publishers-resource prefix))
+  (ANY "/publishers/:prefix/works" [prefix]
+       (publishers-resource prefix))
+  (ANY "/works" []
        dois-resource)
-  (ANY "/items/random/:count" [count]
+  (ANY "/works/random/:count" [count]
        (random-dois-resource count))
-  (ANY "/items/:doi" [doi]
+  (ANY "/works/:doi" [doi]
        (doi-resource doi))
   (ANY "/cores" []
        cores-resource)
