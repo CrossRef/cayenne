@@ -10,13 +10,14 @@
             [cayenne.data.funder :as funder]
             [cayenne.api.types :as t]
             [cayenne.api.query :as q]
+            [cayenne.api.doc :as api-doc]
             [clojure.data.json :as json]
             [liberator.core :refer [defresource resource]]
             [liberator.dev :refer [wrap-trace]]
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
             [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
-            [compojure.core :refer [defroutes ANY]]
+            [compojure.core :refer [defroutes routes ANY]]
             [compojure.handler :as handler]))
 
 (extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
@@ -130,11 +131,11 @@
   (ANY "/publishers/:prefix/works" [prefix]
        (publishers-resource prefix))
   (ANY "/works" []
-       dois-resource)
+       works-resource)
   (ANY "/works/random/:count" [count]
-       (random-dois-resource count))
+       (random-works-resource count))
   (ANY "/works/:doi" [doi]
-       (doi-resource doi))
+       (work-resource doi))
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]
@@ -155,13 +156,16 @@
                   "X-Requested-With"))))
 
 (def api
-  (-> api-routes
-      (handler/api)
-      (wrap-cors)
-      (expose-metrics-as-json)
-      (instrument)
-      (wrap-trace :ui)
-      (wrap-stacktrace-web)))
+  (routes
+   (-> api-doc/api-doc-routes
+       (wrap-cors))
+   (-> api-routes
+       (handler/api)
+       (wrap-cors)
+       (expose-metrics-as-json)
+       (instrument)
+       (wrap-trace :ui)
+       (wrap-stacktrace-web))))
 
 (conf/with-core :default 
   (conf/set-param! [:service :api :var] #'api))
