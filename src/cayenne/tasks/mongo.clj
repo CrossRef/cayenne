@@ -27,13 +27,14 @@
                   :item item}
                  :upsert true))))
 
-(defn check-for-item [collection item-id]
+(defn get-item-with-id [collection item-id]
   (m/with-mongo (conf/get-service :mongo)
     (m/fetch-one collection :where {:id item-id})))
 
-(defn check-for-dois [collection dois]
+(defn get-dois [collection dois]
   (->> dois
        (map doi-id/to-long-doi-uri)
-       (map (partial check-for-item collection))
-       (filter nil?)))
-  
+       (map (partial get-item-with-id collection))))
+
+(defn check-for-dois [collection dois]
+  (filter (complement nil?) (get-dois collection dois)))  
