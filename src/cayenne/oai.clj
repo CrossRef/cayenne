@@ -63,7 +63,8 @@
         file-name (str count "-" (or token "no-token") ".xml")
         xml-file (file dir-path file-name)
         params (if token
-                 {"resumptionToken" token}
+                 {"resumptionToken" token
+                  "metadataPrefix" (:type service)}
                  (-> {"metadataPrefix" (:type service)
                       "verb" "ListRecords"}
                      (?> #(:set-spec service) assoc "set" (:set-spec service))
