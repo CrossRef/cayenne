@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.item-tree :as itree]
             [cayenne.ids :as ids]
+            [cayenne.ids.doi :as doi-id]
             [clj-time.core :as dt]
             [somnium.congomongo :as m]))
 
@@ -25,3 +26,14 @@
                   :updated (java.util.Date.)
                   :item item}
                  :upsert true))))
+
+(defn check-for-item [collection item-id]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/fetch-one collection :where {:id item-id})))
+
+(defn check-for-dois [collection dois]
+  (-> dois
+      (map doi-id/to-long-doi-uri)
+      (map (partial check-for-item collection))
+      (filter nil?)))
+  
