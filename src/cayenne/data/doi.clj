@@ -28,8 +28,8 @@
   [doi-uri]
   (let [work (m/with-mongo (conf/get-service :mongo)
                (m/fetch-one "items" :where {:id doi-uri}))]
-    (-> (r/api-response :work-summary)
-        (r/with-item work))))
+    (-> (r/api-response :work-summary
+                        :content work))))
 
 (defn fetch-random [count]
   (m/with-mongo (conf/get-service :mongo)

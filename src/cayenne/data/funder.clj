@@ -2,15 +2,34 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.query :as query]
             [cayenne.api.response :as r]
+            [cayenne.api.filter :as filter]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.fundref :as fr-id]
             [somnium.congomongo :as m]))
 
 (def solr-funder-id-field "funder_doi")
 
+(def filters
+  {"from-deposit-date" (filter/stamp-date "deposited_at" :from)
+   "until-deposit-date" (filter/stamp-date "deposited_at" :until)
+   "from-pub-date" (filter/particle-date "hl_year" "month" "day" :from)
+   "until-pub-date" (filter/particle-date "hl_year" "month" "day" :until)
+   "has-full-text" (filter/existence "") ;not in index
+   "has-license" (filter/existence "") ;not in index
+   "has-open-bib-data" (filter/existence "") ;not in index
+   "has-open-ref-data" (filter/existence "") ;not in index
+   "has-archive" (filter/existence "") ;not in index
+   "has-orcid" (filter/existence "orcid")
+   "orcid" (filter/equality "orcid")
+   "license" (filter/equality "") ;not in index
+   "publisher" (filter/equality "owner_prefix") ;waiting for index of new data
+   "funder" (filter/equality "funder_doi")})
+
 (defn get-solr-works [query-context]
   (-> (conf/get-service :solr)
-      (.query (query/->solr-query query-context :id-field solr-funder-id-field))
+      (.query (query/->solr-query query-context 
+                                  :id-field solr-funder-id-field
+                                  :filters filters))
       (.getResults)))
 
 (defn get-solr-work-count [query-context]
@@ -43,9 +62,7 @@
   ())
 
 (defn fetch-works [query-context]
-  (let [doc-list (-> (conf/get-service :solr)
-                     (.query (query/->solr-query query-context :id-field solr-funder-id-field))
-                     (.getResults))]
+  (let [doc-list (get-solr-works query-context)]
     (-> (r/api-response :funder-work-result-list)
         (r/with-query-context-info query-context)
         (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list)))))
