@@ -32,8 +32,8 @@
     (m/fetch-one collection :where {:id item-id})))
 
 (defn check-for-dois [collection dois]
-  (-> dois
-      (map doi-id/to-long-doi-uri)
-      (map (partial check-for-item collection))
-      (filter nil?)))
+  (->> dois
+       (map doi-id/to-long-doi-uri)
+       (map (partial check-for-item collection))
+       (filter nil?)))
   
