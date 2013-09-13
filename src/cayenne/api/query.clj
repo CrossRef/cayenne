@@ -38,7 +38,8 @@
         (.addFilterQuery (into-array String [(str id-field ":\"" (:id query-context) "\"")]))))
     (doseq [[filter-name filter-val] (:filters query-context)]
       (when (filters filter-name)
-        (.addFilterQuery (into-array String [((filters filter-name) filter-val)]))))
+        (doto query
+          (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
       (doto query
         (.setStart (int (:page query-context)))

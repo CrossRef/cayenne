@@ -9,27 +9,11 @@
 
 (def solr-funder-id-field "funder_doi")
 
-(def filters
-  {"from-deposit-date" (filter/stamp-date "deposited_at" :from)
-   "until-deposit-date" (filter/stamp-date "deposited_at" :until)
-   "from-pub-date" (filter/particle-date "hl_year" "month" "day" :from)
-   "until-pub-date" (filter/particle-date "hl_year" "month" "day" :until)
-   "has-full-text" (filter/existence "") ;not in index
-   "has-license" (filter/existence "") ;not in index
-   "has-open-bib-data" (filter/existence "") ;not in index
-   "has-open-ref-data" (filter/existence "") ;not in index
-   "has-archive" (filter/existence "") ;not in index
-   "has-orcid" (filter/existence "orcid")
-   "orcid" (filter/equality "orcid")
-   "license" (filter/equality "") ;not in index
-   "publisher" (filter/equality "owner_prefix") ;waiting for index of new data
-   "funder" (filter/equality "funder_doi")})
-
 (defn get-solr-works [query-context]
   (-> (conf/get-service :solr)
       (.query (query/->solr-query query-context 
                                   :id-field solr-funder-id-field
-                                  :filters filters))
+                                  :filters filter/std-filters))
       (.getResults)))
 
 (defn get-solr-work-count [query-context]

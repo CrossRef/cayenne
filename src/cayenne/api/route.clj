@@ -103,7 +103,7 @@
   :available-media-types t/html-or-json
   :exists? #(when-let [f (funder/fetch-one 
                           (q/->query-context % :id (fr-id/id-to-doi-uri funder-id)))]
-              {:funder f})
+              {:funder f})x
   :handle-ok :funder)
 
 (defresource funder-works-resource [funder-id]

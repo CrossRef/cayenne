@@ -9,3 +9,12 @@
    "has-full-text-link"
    "has-license"
    "funder"})
+
+(defn fetch [query-context]
+  ())
+
+(defn fetch-one [query-context]
+  ())
+
+(defn fetch-works [query-context]
+  ())
