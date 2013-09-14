@@ -37,7 +37,7 @@
         until (time/today-at-midnight)
         from (time/minus until (time/days 1))]
     (doseq [oai-service crossref-oai-services]
-      (action/get-unixref-records 
+      (action/get-oai-records 
        (conf/get-param [:oai oai-service])
        (timef/unparse formatter from)
        (timef/unparse formatter until)

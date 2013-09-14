@@ -57,7 +57,7 @@
 
 (declare grab-oai-xml-file-async)
 
-(defn grab-oai-xml-file [service from until count token parser-fn task-fn]
+(defn grab-oai-xml-file [service from until count token task-fn]
   (let [dir-name (str from "-" until)
         dir-path (file (:dir service) dir-name)
         file-name (str count "-" (or token "no-token") ".xml")
@@ -79,13 +79,13 @@
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
-          (when parser-fn
-            (process-oai-xml-file parser-fn task-fn xml-file "record"))
+          (when (:parser service)
+            (process-oai-xml-file (:parser service) task-fn xml-file (:split service)))
           (when-let [token (resumption-token (:body resp))]
-            (recur service from until (inc count) token parser-fn task-fn)))))))
+            (recur service from until (inc count) token task-fn)))))))
 
-(defn grab-oai-xml-file-async [service from until count token parser-fn task-fn]
-  (let [job-func #(grab-oai-xml-file service from until count token parser-fn task-fn)
+(defn grab-oai-xml-file-async [service from until count token task-fn]
+  (let [job-func #(grab-oai-xml-file service from until count token task-fn)
         job (make-oai-job :download job-func)
         job-meta {:service service
                   :from from
@@ -109,19 +109,17 @@
       (process-oai-xml-file-async parser task file split)
       (process-oai-xml-file parser task file split))))
 
-(defn run [service & {:keys [from until task parser]
-                            :or {task nil
-                                 parser nil}}]
-  (grab-oai-xml-file-async service from until 1 nil parser task))
+(defn run [service & {:keys [from until task]
+                            :or {task nil}}]
+  (grab-oai-xml-file-async service from until 1 nil task))
 
 (defn str-date->parts [d]
   (map #(Integer/parseInt %) (string/split d #"-")))
 
 (def oai-date-format (ftime/formatter "yyyy-MM-dd"))
 
-(defn run-range [service & {:keys [from until task parser separation]
+(defn run-range [service & {:keys [from until task separation]
                             :or {task nil
-                                 parser nil
                                  separation (ctime/days (:interval service))}}]
   (let [from-date (apply ctime/date-time (str-date->parts from))
         until-date (apply ctime/date-time (str-date->parts until))]
@@ -130,5 +128,4 @@
       (run service
            :from (ftime/unparse oai-date-format from-point)
            :until (ftime/unparse oai-date-format (ctime/plus from-point separation))
-           :task task
-           :parser parser))))
+           :task task))))

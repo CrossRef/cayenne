@@ -6,6 +6,7 @@
         [cayenne.tasks.citation]
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
+        [cayenne.formats.unixsd :only [unixsd-record-parser]]
         [cayenne.formats.datacite :only [datacite-record-parser]])
   (:require [clojure.java.io :as io]
             [clojure.data.json :as json]
@@ -22,6 +23,37 @@
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]))
+
+(conf/with-core :default
+  (conf/set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
+  (conf/set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")
+  (conf/set-param! [:oai :crossref-journals :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-journals :set-spec] "J")
+  (conf/set-param! [:oai :crossref-journals :interval] 7)
+  (conf/set-param! [:oai :crossref-journals :split] "record")
+  (conf/set-param! [:oai :crossref-journals :parser] cayenne.formats.unixsd/unixsd-record-parser)
+
+  (conf/set-param! [:oai :crossref-books :dir] (str (get-param [:dir :data]) "/oai/crossref-books"))
+  (conf/set-param! [:oai :crossref-books :url] "http://oai.crossref.org/OAIHandler")
+  (conf/set-param! [:oai :crossref-books :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-books :set-spec] "B")
+  (conf/set-param! [:oai :crossref-books :interval] 7)
+  (conf/set-param! [:oai :crossref-books :split] "record")
+  (conf/set-param! [:oai :crossref-books :parser] cayenne.formats.unixsd/unixsd-record-parser)
+
+  (conf/set-param! [:oai :crossref-serials :dir] (str (get-param [:dir :data]) "/oai/crossref-serials"))
+  (conf/set-param! [:oai :crossref-serials :url] "http://oai.crossref.org/OAIHandler")
+  (conf/set-param! [:oai :crossref-serials :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-serials :set-spec] "S")
+  (conf/set-param! [:oai :crossref-serials :interval] 7)
+  (conf/set-param! [:oai :crossref-serials :split] "record")
+  (conf/set-param! [:oai :crossref-serials :parser] cayenne.formats.unixsd/unixsd-record-parser)
+
+  (conf/set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
+  (conf/set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
+  (conf/set-param! [:oai :datacite :type] "datacite")
+  (conf/set-param! [:oai :datacite :split] "resource")
+  (conf/set-param! [:oai :datacite :parser] cayenne.formats.datacite/datacite-record-parser))
 
 (defn scrape-journal-short-names-from-wok []
   (html/scrape-urls 
@@ -108,6 +140,13 @@
                :parser unixref-record-parser 
                :task using))
 
+(defn parse-unixsd-records [file-or-dir using]
+  (oai/process file-or-dir
+               :async true
+               :split "record"
+               :parser unixsd-record-parser
+               :task using))
+
 (defn parse-datacite-records [file-or-dir using]
   (oai/process file-or-dir
                :async true
@@ -137,12 +176,10 @@
                           using
                           #(vector (doi/to-long-doi-uri doi) (second %)))))))
 
-(defn get-unixref-records [service from until using]
+(defn get-oai-records [service from until using]
   (oai/run-range service
                  :from from 
                  :until until
-                 :split "record"
-                 :parser unixref-record-parser
                  :task using))
 
 (defn reindex-fundref [funder-list-loc]
@@ -158,7 +195,7 @@
                                            (str from "-" until))]
     (doseq [f (.listFiles existing-dir)]
       (.delete f))
-    (get-unixref-records service from until action)))
+    (get-oai-records service from until action)))
 
 (defn rerun-cr-failed 
   "Retry a failed CrossRef OAI-PMH download represented by a fail log line."
