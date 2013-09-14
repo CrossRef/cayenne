@@ -10,14 +10,7 @@
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojurewerkz.neocons.rest :as nr]
-            [ring.adapter.jetty :as j]
-            [taoensso.timbre.appenders.irc :as irc-appender]
-            [taoensso.timbre :as timbre
-             :refer (trace debug info warn error fatal spy)]))
-
-(timbre/set-config! [:appenders :standard-out :enabled?] false)
-(timbre/set-config! [:appenders :spit :enabled?] true)
-(timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+            [ring.adapter.jetty :as j]))
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -33,15 +26,6 @@
 
 (defn set-service! [key obj]
   (swap! cores assoc-in [*core-name* :services key] obj))
-
-(defn log [msg]
-  (cond
-   (map? msg)
-   (if (= (:state msg) :fail)
-     (error msg)
-     (info msg))
-   :else
-   (info msg)))
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))

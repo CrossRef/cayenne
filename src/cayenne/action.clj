@@ -22,7 +22,8 @@
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
-            [cayenne.ids.doi :as doi]))
+            [cayenne.ids.doi :as doi]
+            [taoensso.timbre :as timbre :refer [info error]]))
 
 (conf/with-core :default
   (conf/set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
@@ -96,7 +97,7 @@
 
 (def print-solr-docs
   (comp
-   #(cayenne.conf/log %)
+   #(info %)
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)

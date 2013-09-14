@@ -8,7 +8,8 @@
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
             [cayenne.ids :as ids]
-            [metrics.gauges :refer [defgauge] :as gauge]))
+            [metrics.gauges :refer [defgauge] :as gauge]
+            [taoensso.timbre :as timbre :refer [error info]]))
 
 (def insert-list (ref []))
 
@@ -21,7 +22,7 @@
                   (.setAction CoreAdminParams$CoreAdminAction/STATUS))
         response (-> (.process request (conf/get-service :solr))
                      (.getCoreStatus))]
-    (conf/log response)))
+    (info response)))
 
 (defn flush-insert-list []
   (dosync
@@ -34,11 +35,11 @@
    (alter insert-list (constantly []))))
 
 (defn flush-commit-swap []
-  (conf/log "Final solr insert list flush...")
+  (info "Final solr insert list flush...")
   (flush-insert-list)
-  (conf/log "Performing a SOLR commit...")
+  (info "Performing a SOLR commit...")
   (.commit (conf/get-service :solr-update) true true)
-  (conf/log "Swapping SOLR cores...")
+  (info "Swapping SOLR cores...")
   (doto (CoreAdminRequest.)
     (.setCoreName (conf/get-param [:service :solr :insert-core]))
     (.setOtherCoreName (conf/get-param [:service :solr :query-core]))

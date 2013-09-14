@@ -7,7 +7,8 @@
             [clj-time.periodic :as ptime]
             [clj-time.format :as ftime]
             [clojure.string :as string]
-            [clojure.java.io :refer [file reader writer]])
+            [clojure.java.io :refer [file reader writer]]
+            [taoensso.timbre :as timbre :refer [info error]])
   (:use [cayenne.util])
   (:use [clojure.tools.trace]))
 
@@ -15,11 +16,11 @@
 
 (defn oai-success-handler [at-msg]
   (fn [job meta]
-    (conf/log {:state :info :info meta :at at-msg :complete true})))
+    (info {:info meta :at at-msg :complete true})))
 
 (defn oai-exception-handler [at-msg]
   (fn [job meta ex]
-    (conf/log {:state :fail :exception (ex->info-str ex) :info meta :at at-msg})))
+    (error {:exception (ex->info-str ex) :info meta :at at-msg})))
 
 (defn make-oai-job [at-msg func]
   (job/make-job func

@@ -4,7 +4,8 @@
             [cayenne.ids :as ids]
             [clojure.math.combinatorics :as c]
             [clojurewerkz.neocons.rest.nodes :as nn]
-            [clojurewerkz.neocons.rest.relationships :as nrl]))
+            [clojurewerkz.neocons.rest.relationships :as nrl]
+            [taoensso.timbre :as timbre :refer [info error]]))
 
 ;; todo for now we are ignoring supplementary ids. can be reintroduced once
 ;; they are namespaced by owner prefix
@@ -46,7 +47,7 @@
 
 (defn insert-item [item]
   (doseq [triple (as-triples item)]
-    (conf/log (vec triple))
+    (info (vec triple))
     (let [left-id (first triple)
           right-id (last triple)
           relation (second triple)
