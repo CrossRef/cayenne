@@ -90,3 +90,8 @@
 (defn file-ext [f]
   (last (clojure.string/split "." (.getName f))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Parse utils
+
+(defn parse-int [s]
+  (Integer. (re-find #"\d+" s)))

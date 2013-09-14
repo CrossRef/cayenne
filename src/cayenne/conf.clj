@@ -157,6 +157,7 @@
   (set-param! [:id :issn :path] "http://id.crossref.org/issn/")
   (set-param! [:id :isbn :path] "http://id.crossref.org/isbn/")
   (set-param! [:id :orcid :path] "http://orcid.org/")
+  (set-param! [:id :owner-prefix :path] "http://id.crossref.org/prefix/")
   (set-param! [:id :long-doi :path] "http://dx.doi.org/")
   (set-param! [:id :short-doi :path] "http://doi.org/")
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")

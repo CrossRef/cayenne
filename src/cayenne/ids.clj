@@ -25,6 +25,8 @@
         :isbn
         (.startsWith id-uri (conf/get-param [:id :orcid :path]))
         :orcid
+        (.startsWith id-uri (conf/get-param [:id :owner-prefix :path]))
+        :owner-prefix
         (.startsWith id-uri (conf/get-param [:id :long-doi :path]))
         :long-doi
         (.startsWith id-uri (conf/get-param [:id :short-doi :path]))
