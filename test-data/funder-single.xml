@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_records>
+  <doi_record owner="10.1037" timestamp="2013-07-25 14:11:07">
+    <crossref>
+      <journal>
+        <journal_metadata language="en">
+          <full_title>Experimental and Clinical Psychopharmacology</full_title>
+          <abbrev_title>Experimental and Clinical Psychopharmacology</abbrev_title>
+          <issn media_type="electronic">1936-2293</issn>
+          <issn media_type="print">1064-1297</issn>
+        </journal_metadata>
+        <journal_issue>
+          <publication_date media_type="online">
+            <year>2008</year>
+          </publication_date>
+          <journal_volume>
+            <volume>16</volume>
+          </journal_volume>
+          <issue>4</issue>
+        </journal_issue>
+        <journal_article>
+          <titles>
+            <title>Subliminal processing of smoking-related and affective stimuli in tobacco addiction.</title>
+          </titles>
+          <contributors>
+            <person_name sequence="first" contributor_role="author">
+              <given_name>Adam M.</given_name>
+              <surname>Leventhal</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Andrew J.</given_name>
+              <surname>Waters</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Bruno G.</given_name>
+              <surname>Breitmeyer</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Elizabeth K.</given_name>
+              <surname>Miller</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Evelina</given_name>
+              <surname>Tapia</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Yisheng</given_name>
+              <surname>Li</surname>
+            </person_name>
+          </contributors>
+          <publication_date media_type="online">
+            <year>2008</year>
+          </publication_date>
+          <pages>
+            <first_page>301</first_page>
+            <last_page>312</last_page>
+          </pages>
+          <publisher_item>
+            <identifier id_type="other">2008-10619-004</identifier>
+          </publisher_item>
+          <program>
+            <assertion name="funder_name">National Cancer Institute</assertion>
+            <assertion name="funder_identifier">http://dx.doi.org/10.13039/100000054</assertion>
+            <assertion name="award_number">R25 CA 57730-11</assertion>
+          </program>
+          <doi_data>
+            <doi>10.1037/a0012640</doi>
+            <timestamp>2013072510165100000</timestamp>
+            <resource>http://doi.apa.org/getdoi.cfm?doi=10.1037/a0012640</resource>
+          </doi_data>
+        </journal_article>
+      </journal>
+    </crossref>
+  </doi_record>
+</doi_records>
