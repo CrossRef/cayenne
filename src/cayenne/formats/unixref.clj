@@ -5,7 +5,9 @@
             [cayenne.conf :as conf]
             [cayenne.ids :as ids]
             [cayenne.ids.fundref :as fundref]
-            [clojure.tools.trace :as trace])
+            [cayenne.item-tree :as itree]
+            [clojure.tools.trace :as trace]
+            [taoensso.timbre :as timbre :refer [info error]])
   (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
@@ -209,6 +211,7 @@
 
 (defn parse-collection-item [coll-item-loc]
   {:type :url
+   :content-type (xml/xselect1 coll-item-loc "resource" ["mime_type"])
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
 (defn parse-collection [with-attribute item-loc]
@@ -455,6 +458,13 @@
         (parse-attach :awarded funder-group-loc :multi parse-grants)
         (?> funder-uri attach-id funder-uri))))
 
+(defn parse-single-funder [item-loc]
+  (let [program-loc (xml/xselect item-loc "program")
+        single-funder (parse-funder program-loc)]
+    (if (or (:name single-funder) (not (empty? (:id single-funder))))
+      [single-funder]
+      [])))
+
 (defn parse-item-funders [item-loc]
   (let [funder-groups-loc (concat 
                            (xml/xselect item-loc 
@@ -469,7 +479,9 @@
                                         [:= "name" "fundref"]
                                         "assertion"
                                         [:= "name" "fundgroup"]))]
-    (map parse-funder funder-groups-loc)))
+    (concat
+     (parse-single-funder item-loc)
+     (map parse-funder funder-groups-loc))))
 
 (declare parse-item)
 
@@ -503,6 +515,7 @@
       (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
       (parse-attach :publisher item-loc :single parse-item-publisher)
       (parse-attach :resource-resolution item-loc :single parse-resource)
+      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :title item-loc :multi parse-item-titles)
       (parse-attach :citation item-loc :multi parse-item-citations)

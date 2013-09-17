@@ -26,9 +26,14 @@
             [taoensso.timbre :as timbre :refer [info error]]))
 
 (conf/with-core :default
+  (conf/set-param! [:oai :crossref-test :dir] (str (get-param [:dir :data]) "/oai/crossref-test"))
+  (conf/set-param! [:oai :crossref-test :url] "http://oai.crossref.org/OAIHandler")
+  (conf/set-param! [:oai :crossref-test :type] "cr_unixsd")
+  (conf/set-param! [:oai :crossref-test :set-spec] "J:10.5555")
+
   (conf/set-param! [:oai :crossref-journals :dir] (str (get-param [:dir :data]) "/oai/crossref-journals"))
   (conf/set-param! [:oai :crossref-journals :url] "http://oai.crossref.org/OAIHandler")
-  (conf/set-param! [:oai :crossref-journals :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-journals :type] "cr_unixsd")
   (conf/set-param! [:oai :crossref-journals :set-spec] "J")
   (conf/set-param! [:oai :crossref-journals :interval] 7)
   (conf/set-param! [:oai :crossref-journals :split] "record")
@@ -36,7 +41,7 @@
 
   (conf/set-param! [:oai :crossref-books :dir] (str (get-param [:dir :data]) "/oai/crossref-books"))
   (conf/set-param! [:oai :crossref-books :url] "http://oai.crossref.org/OAIHandler")
-  (conf/set-param! [:oai :crossref-books :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-books :type] "cr_unixsd")
   (conf/set-param! [:oai :crossref-books :set-spec] "B")
   (conf/set-param! [:oai :crossref-books :interval] 7)
   (conf/set-param! [:oai :crossref-books :split] "record")
@@ -44,7 +49,7 @@
 
   (conf/set-param! [:oai :crossref-serials :dir] (str (get-param [:dir :data]) "/oai/crossref-serials"))
   (conf/set-param! [:oai :crossref-serials :url] "http://oai.crossref.org/OAIHandler")
-  (conf/set-param! [:oai :crossref-serials :type] "cr_unixml")
+  (conf/set-param! [:oai :crossref-serials :type] "cr_unixsd")
   (conf/set-param! [:oai :crossref-serials :set-spec] "S")
   (conf/set-param! [:oai :crossref-serials :interval] 7)
   (conf/set-param! [:oai :crossref-serials :split] "record")

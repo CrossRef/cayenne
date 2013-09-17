@@ -86,17 +86,17 @@
     (str field ":\"" val "\"")))
 
 (def std-filters
-  {"from-deposit-date" (stamp-date "deposited_at" :from)
-   "until-deposit-date" (stamp-date "deposited_at" :until)
+  {"from-update-date" (stamp-date "deposited_at" :from)
+   "until-update-date" (stamp-date "deposited_at" :until)
    "from-pub-date" (particle-date "hl_year" "month" "day" :from)
    "until-pub-date" (particle-date "hl_year" "month" "day" :until)
    "has-full-text" (existence "full_text_url") ;in new index
    "has-license" (existence "license_url") ;in new index
    "has-references" (bool "references") ;in new index
-   "has-archive" (existence "archive") ;in new index
+   "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
    "representation" (equality "full_text_type") ;in new index
    "orcid" (equality "orcid")
-   "license" (equality "license_url") ;in new index
+   "license" (equality "license_url") ;waiting for schema change
    "publisher" (equality "owner_prefix") ;in new index
    "funder" (equality "funder_doi")})

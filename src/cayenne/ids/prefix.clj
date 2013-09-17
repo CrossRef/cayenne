@@ -3,7 +3,7 @@
 
 (defn extract-prefix [s]
   (when s
-    (first (re-find #"10\\.\d+" s))))
+    (re-find #"10\.\d+" s)))
 
 (defn to-prefix-uri [s]
   (when s

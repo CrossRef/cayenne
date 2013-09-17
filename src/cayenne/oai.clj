@@ -59,7 +59,7 @@
 (declare grab-oai-xml-file-async)
 
 (defn grab-oai-xml-file [service from until count token task-fn]
-  (let [dir-name (str from "-" until)
+  (let [dir-name (str (or from "all") "-" (or until "all"))
         dir-path (file (:dir service) dir-name)
         file-name (str count "-" (or token "no-token") ".xml")
         xml-file (file dir-path file-name)

@@ -190,7 +190,16 @@
      "hl_grant" (as-solr-grant-info-field item)
      "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
-     "hl_title" (map :value (get-item-rel item :title))}))
+     "hl_title" (map :value (get-item-rel item :title))
+     "hl_publisher" nil ;now
+     "publisher" nil ;now
+     "archive" nil ;waiting
+     "references" nil ;now
+     "cited_by_count" nil ;now
+     "license_url" nil ;waiting
+     "full_text_type" nil ;now
+     "full_text_url" nil ;now
+     "owner_prefix" nil})) ;now
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]
