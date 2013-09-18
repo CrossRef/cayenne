@@ -146,6 +146,8 @@
   (let [grant-map (as-grant-map item)
         funder-names (set (map :name (get-tree-rel item :funder)))
         funder-dois (set (mapcat :id (get-tree-rel item :funder)))
+        publisher (first (get-tree-rel item :publisher))
+        full-text-resources (get-item-rel item :resource-fulltext)
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
@@ -191,15 +193,16 @@
      "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))
-     "hl_publisher" nil ;now
-     "publisher" nil ;now
-     "archive" nil ;waiting
+     "archive" nil ;later
+     "license_url" nil ;later
+     "license_start" nil ;later
      "references" nil ;now
      "cited_by_count" nil ;now
-     "license_url" nil ;waiting
-     "full_text_type" nil ;now
-     "full_text_url" nil ;now
-     "owner_prefix" nil})) ;now
+     "full_text_type" (map :content-type full-text-resources)
+     "full_text_url" (map :value full-text-resources)
+     "publisher" (:name publisher)
+     "hl_publisher" (:name publisher)
+     "owner_prefix" (first (get-item-ids publisher :owner-prefix))}))
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]
