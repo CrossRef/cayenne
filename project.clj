@@ -37,5 +37,6 @@
                  [liberator "0.9.0"]
                  [compojure "1.1.5"]
                  [ring "1.1.0"]
-                 [ring/ring-jetty-adapter "1.2.0"]])
+                 [http-kit "2.1.10"]])
+
 

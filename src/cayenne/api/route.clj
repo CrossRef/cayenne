@@ -156,16 +156,15 @@
                   "X-Requested-With"))))
 
 (def api
-  (routes
-   (-> api-doc/api-doc-routes
-       (wrap-cors))
-   (-> api-routes
-       (handler/api)
-       (wrap-cors)
-       (expose-metrics-as-json)
-       (instrument)
-       (wrap-trace :ui)
-       (wrap-stacktrace-web))))
+  (-> (routes
+       api-routes
+       api-doc/api-doc-routes)
+      (handler/api)
+      (wrap-cors)
+      (expose-metrics-as-json)
+      (instrument)
+      (wrap-trace :ui)
+      (wrap-stacktrace-web)))
 
 (conf/with-core :default 
   (conf/set-param! [:service :api :var] #'api))

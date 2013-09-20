@@ -10,7 +10,7 @@
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojurewerkz.neocons.rest :as nr]
-            [ring.adapter.jetty :as j]))
+            [org.httpkit.server :as hs]))
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -57,7 +57,7 @@
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
-    (set-service! :api (j/run-jetty (get-param [:service :api :var])
+    (set-service! :api (hs/run-server (get-param [:service :api :var])
                                     {:join? false
                                      :port (get-param [:service :api :port])}))
     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
