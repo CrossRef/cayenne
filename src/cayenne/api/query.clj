@@ -8,8 +8,8 @@
 (defn get-filters [params]
   (into {}
         (->> params
-             (filter (fn [k v] (.startsWith (name k) "f.")))
-             (map (fn [k v] [(apply str (drop 2 (name k))) v])))))
+             (filter (fn [[k v]] (.startsWith (name k) "f.")))
+             (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {:id nil}}]
   {:id id
