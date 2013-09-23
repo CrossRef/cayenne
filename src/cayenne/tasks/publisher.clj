@@ -24,3 +24,5 @@
                       :tokens (util/tokenize-name (:name publisher))
                       :name (:name publisher)}
                      {:upsert true}))))))
+
+
