@@ -1,6 +1,8 @@
 (ns cayenne.api.query
   (:require [cayenne.conf :as conf]
-            [clojure.string :as string])
+            [clojure.string :as string]
+            [clojure.data.json :as json]
+            [taoensso.timbre :as timbre :refer [info error]])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
 ;; todo validation of query context params
@@ -8,15 +10,23 @@
 (defn get-filters [params]
   (into {}
         (->> params
-             (filter (fn [[k v]] (.startsWith (name k) "f.")))
+             (filter (fn [[k v]] (.startsWith (name k) "fl.")))
              (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {:id nil}}]
-  {:id id
-   :terms (get-in resource-context [:request :params :q])
-   :page (or (get-in resource-context [:request :params :p]) 1)
-   :rows (or (get-in resource-context [:request :params :r]) 20)
-   :filters (get-filters (get-in resource-context [:request :params]))})
+  (info (:body resource-context))
+  (if (:body resource-context)
+    (let [json-body (-> resource-context (:body) (json/read-str))]
+      {:id id
+       :terms (:q json-body)
+       :page (:p json-body)
+       :rows (:r json-body)
+       :filters (:fl json-body)})
+    {:id id
+     :terms (get-in resource-context [:request :params :q])
+     :page (or (get-in resource-context [:request :params :p]) 1)
+     :rows (or (get-in resource-context [:request :params :r]) 20)
+     :filters (get-filters (get-in resource-context [:request :params]))}))
 
 (defn clean-terms [terms] terms)
 
