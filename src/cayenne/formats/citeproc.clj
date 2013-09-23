@@ -7,7 +7,6 @@
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.isbn :as isbn-id]))
 
-
 ;; todo currently this goes from solr doc to citeproc.
 ;; needs a rewrite since this differs from other formats which
 ;; go to/from item trees.
@@ -56,8 +55,8 @@
    :ISSN (map issn-id/extract-issn (get solr-doc "issn"))
    :title (get solr-doc "hl_title")
    :container-title (get solr-doc "hl_publication")
-   :issued (->date-parts (get solr-doc "year") 
-                         (get solr-doc "month") 
+   :issued (->date-parts (get solr-doc "year")
+                         (get solr-doc "month")
                          (get solr-doc "day"))
    :deposited (->date-parts (get solr-doc "deposited_at"))
    :indexed (->date-parts (get solr-doc "indexed_at"))
