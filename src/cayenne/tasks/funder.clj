@@ -21,18 +21,6 @@
     (m/add-index! collection-name [:children])
     (m/add-index! collection-name [:affiliated])))
 
-(defn simplyfy-name [name]
-  (-> (.toLowerCase name)
-      (.trim)
-      (.replaceAll "," "")
-      (.replaceAll "\\." "")
-      (.replaceAll "'" "")
-      (.replaceAll "\"" "")
-      (.replaceAll "-" "")))
-
-(defn tokenize-name [name]
-  (string/split (simplyfy-name name) #"\s+"))
-
 (defn add-tokens [existing tokens]
   (let [existing-tokens (or (:name_tokens existing) [])]
     (assoc existing :name_tokens (set (concat existing-tokens tokens)))))
@@ -41,12 +29,12 @@
   (if (= name-type :primary)
     (-> existing
         (assoc :primary_name_display (.trim name))
-        (add-tokens (tokenize-name name)))
+        (add-tokens (util/tokenize-name name)))
     (let [other-names (or (:other_names existing) [])
           other-names-display (or (:other_names_display existing) [])]
       (-> existing
           (assoc :other_names_display (conj other-names-display (.trim name)))
-          (add-tokens (tokenize-name name))))))
+          (add-tokens (util/tokenize-name name))))))
 
 (defn insert-funder [id name name-type]
   (m/with-mongo (conf/get-service :mongo)
@@ -62,8 +50,8 @@
                 :country country
                 :primary_name_display name
                 :other_names_display alt-names
-                :name_tokens (concat (tokenize-name name)
-                                     (mapcat tokenize-name alt-names))
+                :name_tokens (concat (util/tokenize-name name)
+                                     (mapcat util/tokenize-name alt-names))
                 ; hack here since funders can appear as their own parent in
                 ; the registry. bug in the registry.
                 :parent (if (not= parent-id id) parent-id nil)

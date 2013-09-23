@@ -1,4 +1,5 @@
-(ns cayenne.util)
+(ns cayenne.util
+  (:require [clojure.string :as string]))
 
 (defn assoc-when
   "Like assoc but only assocs when value is truthy"
@@ -95,3 +96,18 @@
 
 (defn parse-int [s]
   (Integer. (re-find #"\d+" s)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Misc
+
+(defn simplyfy-name [name]
+  (-> (.toLowerCase name)
+      (.trim)
+      (.replaceAll "," "")
+      (.replaceAll "\\." "")
+      (.replaceAll "'" "")
+      (.replaceAll "\"" "")
+      (.replaceAll "-" "")))
+
+(defn tokenize-name [name]
+  (string/split (simplyfy-name name) #"\s+"))
