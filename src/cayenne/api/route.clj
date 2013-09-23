@@ -3,11 +3,13 @@
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.fundref :as fr-id]
+            [cayenne.ids.prefix :as prefix]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.doi :as doi]
             [cayenne.data.funder :as funder]
+            [cayenne.data.publisher :as publisher]
             [cayenne.api.types :as t]
             [cayenne.api.query :as q]
             [cayenne.api.doc :as api-doc]
@@ -113,9 +115,18 @@
 
 (defresource publishers-resource [])
 
-(defresource publisher-resource [prefix])
+(defresource publisher-resource [prefix]
+  :allowed-methods [:get]
+  :available-media-types t/html-or-json
+  :exists? #(when-let [p (publisher/fetch-one
+                          (q/->query-context % :id (prefix/to-prefix-uri prefix)))]
+              {:publisher p})
+  :handle-ok :publisher)
 
-(defresource publisher-works-resource [prefix])
+(defresource publisher-works-resource [prefix]
+  :allowed-methods [:get]
+  :available-media-types t/html-or-json
+  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri prefix))))
 
 (defroutes api-routes
   (ANY "/funders" []

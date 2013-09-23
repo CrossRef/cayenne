@@ -29,8 +29,7 @@
   (let [pub-doc (m/with-mongo (conf/get-service :mongo)
                   (m/fetch-one "publishers"
                                :where {:id (-> query-context
-                                               (:id)
-                                               (prefix/to-prefix-uri))}))]
+                                               (:id))}))]
     (when pub-doc
       (r/api-response :publisher-summary
                       :content
