@@ -1,6 +1,12 @@
 (ns cayenne.api.route
-  (:require [cayenne.api.v1.routes :as v1]
+  (:require [cayenne.conf :as conf]
+            [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
+            [liberator.dev :refer [wrap-trace]]
+            [metrics.ring.expose :refer [expose-metrics-as-json]]
+            [metrics.ring.instrument :refer [instrument]]
+            [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
+            [compojure.handler :as handler]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (def all-routes

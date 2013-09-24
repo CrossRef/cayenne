@@ -1,8 +1,8 @@
 (ns cayenne.data.publisher
   (:require [cayenne.conf :as conf]
-            [cayenne.api.response :as r]
-            [cayenne.api.query :as query]
-            [cayenne.api.filter :as filter]
+            [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.query :as query]
+            [cayenne.api.v1.filter :as filter]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.prefix :as prefix]
             [somnium.congomongo :as m]))

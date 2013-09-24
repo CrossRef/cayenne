@@ -1,7 +1,7 @@
 (ns cayenne.data.doi
   (:require [cayenne.conf :as conf]
-            [cayenne.api.query :as query]
-            [cayenne.api.response :as r]
+            [cayenne.api.v1.query :as query]
+            [cayenne.api.v1.response :as r]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [clojure.string :as string]))

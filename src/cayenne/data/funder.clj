@@ -1,8 +1,8 @@
 (ns cayenne.data.funder
   (:require [cayenne.conf :as conf]
-            [cayenne.api.query :as query]
-            [cayenne.api.response :as r]
-            [cayenne.api.filter :as filter]
+            [cayenne.api.v1.query :as query]
+            [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.filter :as filter]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.fundref :as fr-id]
             [somnium.congomongo :as m]))

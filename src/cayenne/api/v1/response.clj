@@ -22,6 +22,6 @@
 (defn api-response [type & {:keys [content] :or {:content {}}}]
   {:status :ok
    :message-type type
-   :message-version 1
+   :message-version "1.0.0"
    :message content})
 
