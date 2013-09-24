@@ -6,6 +6,8 @@
 
 (def html-or-json ["application/json" "text/html"])
 
+(def json ["application/json"])
+
 (def deposit "application/vnd.crossref.deposit+json")
 
 (def prefix "application/vnd.crossref.prefix+json")
