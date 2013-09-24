@@ -11,8 +11,12 @@
 
 (def all-routes
   (routes
+   v1/api-routes
+   v1-doc/api-doc-routes
    (context "/v1" [] v1/api-routes)
-   (context "/v1" [] v1-doc/api-doc-routes)))
+   (context "/v1" [] v1-doc/api-doc-routes)
+   (context "/v1.0" [] v1/api-routes)
+   (context "/v1.0" [] v1-doc/api-doc-routes)))
 
 (defn wrap-cors
   [h]
