@@ -1,4 +1,4 @@
-(ns cayenne.api.query
+(ns cayenne.api.v1.query
   (:require [cayenne.conf :as conf]
             [clojure.string :as string]
             [clojure.data.json :as json]
@@ -13,7 +13,7 @@
              (filter (fn [[k v]] (.startsWith (name k) "fl.")))
              (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
-(defn ->query-context [resource-context & {:keys [id] :or {:id nil}}]
+(defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
   (if (:body resource-context)
     (let [json-body (-> resource-context (:body) (json/read-str))]
       {:id id

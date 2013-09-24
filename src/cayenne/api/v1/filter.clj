@@ -1,4 +1,4 @@
-(ns cayenne.api.filter
+(ns cayenne.api.v1.filter
   (:require [clojure.string :as string]))
 
 ; build solr filters

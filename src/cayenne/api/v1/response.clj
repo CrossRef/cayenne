@@ -1,4 +1,4 @@
-(ns cayenne.api.response)
+(ns cayenne.api.v1.response)
 
 (defn with-page-info [response start-page per-page]
   (-> response
@@ -22,5 +22,6 @@
 (defn api-response [type & {:keys [content] :or {:content {}}}]
   {:status :ok
    :message-type type
+   :message-version 1
    :message content})
 

@@ -1,4 +1,4 @@
-(ns cayenne.api.types)
+(ns cayenne.api.v1.types)
 
 (def depositable #{"application/vnd.crossref.mini+xml"
                    "application/vnd.crossref.common+xml"

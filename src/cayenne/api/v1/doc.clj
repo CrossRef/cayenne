@@ -1,4 +1,4 @@
-(ns cayenne.api.doc
+(ns cayenne.api.v1.doc
   (:require [compojure.core :refer [defroutes GET]]
             [clojure.data.json :as json]))
 
