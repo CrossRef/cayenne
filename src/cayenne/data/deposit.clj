@@ -2,7 +2,6 @@
   (:import [java.util Date])
   (:require [metrics.gauges :refer [defgauge]]
             [somnium.congomongo :as m]
-            [cayenne.api.ingest :as ingest]
             [cayenne.conf :as conf]
             [metrics.meters :refer [defmeter] :as meter]
             [metrics.histograms :refer [defhistogram] :as hist]))

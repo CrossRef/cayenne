@@ -14,26 +14,27 @@
              (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {:id nil}}]
-  (info (:body resource-context))
   (if (:body resource-context)
     (let [json-body (-> resource-context (:body) (json/read-str))]
       {:id id
        :terms (:q json-body)
-       :page (:p json-body)
-       :rows (:r json-body)
+       :page (or (:p json-body) "1")
+       :rows (or (:r json-body) "20")
        :filters (:fl json-body)})
     {:id id
      :terms (get-in resource-context [:request :params :q])
-     :page (or (get-in resource-context [:request :params :p]) 1)
-     :rows (or (get-in resource-context [:request :params :r]) 20)
+     :page (or (get-in resource-context [:request :params :p]) "1")
+     :rows (or (get-in resource-context [:request :params :r]) "20")
      :filters (get-filters (get-in resource-context [:request :params]))}))
 
 (defn clean-terms [terms] terms)
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]
-                     :or {:paged true :id-field nil :filters {}
-                          :count-only false}}]
+                     :or {paged true 
+                          id-field nil 
+                          filters {}
+                          count-only false}}]
   (let [query (doto (SolrQuery.)
                 (.setQuery (-> query-context (:terms) (clean-terms)))
                 (.addField "*")
@@ -52,8 +53,8 @@
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
       (doto query
-        (.setStart (int (:page query-context)))
-        (.setRows (int (:rows query-context)))))
+        (.setStart (Integer/parseInt (:page query-context)))
+        (.setRows (Integer/parseInt (:rows query-context)))))
     (when count-only
       (doto query
         (.setRows (int 0))))

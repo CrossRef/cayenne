@@ -41,7 +41,7 @@
 
 (defn put-job [meta job]
   (let [id (.toString (UUID/randomUUID))
-        job-fn (fn [] 
+        job-fn (fn []
                  (try
                    (counters/dec! waiting)
                    ((:process job))

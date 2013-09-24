@@ -115,18 +115,18 @@
 
 (defresource publishers-resource [])
 
-(defresource publisher-resource [prefix]
+(defresource publisher-resource [px]
   :allowed-methods [:get]
   :available-media-types t/html-or-json
   :exists? #(when-let [p (publisher/fetch-one
-                          (q/->query-context % :id (prefix/to-prefix-uri prefix)))]
+                          (q/->query-context % :id (prefix/to-prefix-uri px)))]
               {:publisher p})
   :handle-ok :publisher)
 
-(defresource publisher-works-resource [prefix]
+(defresource publisher-works-resource [px]
   :allowed-methods [:get]
   :available-media-types t/html-or-json
-  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri prefix))))
+  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri px))))
 
 (defroutes api-routes
   (ANY "/funders" []

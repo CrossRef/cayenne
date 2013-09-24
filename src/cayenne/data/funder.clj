@@ -49,7 +49,9 @@
   (let [doc-list (get-solr-works query-context)]
     (-> (r/api-response :funder-work-result-list)
         (r/with-query-context-info query-context)
-        (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list)))))
+        (r/with-result-items 
+          (.getNumFound doc-list) 
+          (map citeproc/->citeproc doc-list)))))
        
       
 
