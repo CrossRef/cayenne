@@ -52,9 +52,11 @@
         (doto query
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
-      (doto query
-        (.setStart (Integer/parseInt (:page query-context)))
-        (.setRows (Integer/parseInt (:rows query-context)))))
+      (let [rows (Integer/parseInt (:rows query-context))
+            start-index (* (Integer/parseInt (:page query-context)) rows)]
+        (doto query
+          (.setStart start-index)
+          (.setRows rows))))
     (when count-only
       (doto query
         (.setRows (int 0))))
