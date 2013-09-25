@@ -7,6 +7,7 @@
             [metrics.ring.instrument :refer [instrument]]
             [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
             [compojure.handler :as handler]
+            [ring.util.response :refer [redirect]]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (def all-routes
@@ -16,7 +17,13 @@
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)
    (context "/v1.0" [] v1/api-routes)
-   (context "/v1.0" [] v1-doc/api-doc-routes)))
+   (context "/v1.0" [] v1-doc/api-doc-routes)
+
+   ;; legacy urls
+   (ANY "/funder_kpi_metadata_best_practice.html" []
+        (redirect "http://fundref.crossref.org/docs/funder_kpi_metadata_best_practice.html"))
+   (ANY "/" [] 
+        (redirect "http://www.crossref.org/fundref"))))
 
 (defn wrap-cors
   [h]
