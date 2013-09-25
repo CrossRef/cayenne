@@ -10,7 +10,7 @@
 (defn get-filters [params]
   (into {}
         (->> params
-             (filter (fn [[k v]] (.startsWith (name k) "fl.")))
+             (filter (fn [[k v]] (.startsWith (name k) "filter.")))
              (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
@@ -18,13 +18,13 @@
     (let [json-body (-> resource-context (:body) (json/read-str))]
       {:id id
        :terms (:q json-body)
-       :page (or (:p json-body) "1")
-       :rows (or (:r json-body) "20")
-       :filters (:fl json-body)})
+       :offset (or (:offset json-body) "1")
+       :rows (or (:rows json-body) "20")
+       :filters (:filter json-body)})
     {:id id
      :terms (get-in resource-context [:request :params :q])
-     :page (or (get-in resource-context [:request :params :p]) "1")
-     :rows (or (get-in resource-context [:request :params :r]) "20")
+     :offset (or (get-in resource-context [:request :params :offset]) "0")
+     :rows (or (get-in resource-context [:request :params :rows]) "20")
      :filters (get-filters (get-in resource-context [:request :params]))}))
 
 (defn clean-terms [terms] terms)
@@ -53,7 +53,7 @@
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
       (let [rows (-> query-context (:rows) (Integer/parseInt))
-            offset (-> query-context (:page) (Integer/parseInt) (* rows) (int))]
+            offset (-> query-context (:offset) (Integer/parseInt))]
         (doto query
           (.setStart offset)
           (.setRows rows))))
