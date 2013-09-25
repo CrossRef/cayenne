@@ -39,7 +39,9 @@
       (wrap-cors)
       (expose-metrics-as-json)
       (instrument)
-      (wrap-trace :ui)
+      ;(wrap-trace :ui)
+      ; disabled due to bug in apache2 reverse proxy
+      ; (creates headers that are incompatible)
       (wrap-stacktrace-web)))
 
 (conf/with-core :default 
