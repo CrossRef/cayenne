@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [clojure.string :as string]
             [clojure.data.json :as json]
+            [clojure.java.io :as io]
             [taoensso.timbre :as timbre :refer [info error]])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
@@ -17,9 +18,9 @@
         (nil? val)
         default-rows
         (= (type val) java.lang.String)
-        (min [(Integer/parseInt val) max-rows])
+        (min (Integer/parseInt val) max-rows)
         :else
-        (min [val max-rows]))))
+        (min val max-rows))))
 
 (defn parse-offset-val [val]
   (int (cond
@@ -37,8 +38,11 @@
              (map (fn [[k v]] [(apply str (drop 2 (name k))) v])))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
-  (if (:body resource-context)
-    (let [json-body (-> resource-context (:body) (json/read-str))]
+  (if-not (nil? (get-in resource-context [:request :body]))
+    (let [json-body (-> resource-context 
+                        (get-in [:request :body]) 
+                        (io/reader) 
+                        (json/read :key-fn keyword))]
       {:id id
        :terms (:query json-body)
        :offset (-> json-body (:offset) (parse-offset-val))
