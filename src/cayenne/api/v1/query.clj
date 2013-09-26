@@ -5,8 +5,31 @@
             [taoensso.timbre :as timbre :refer [info error]])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
-;; todo validation of query context params
+;; todo complete validation of query context params
+;; and error response on invalid params
 
+(def default-offset 0)
+(def default-rows 20)
+(def max-rows 1000)
+
+(defn parse-rows-val [val]
+  (cond
+   (nil? val)
+   default-rows
+   (= (type val) java.lang.String)
+   (min [(Integer/parseInt val) max-rows])
+   :else
+   (min [val max-rows])))
+
+(defn parse-offset-val [val]
+  (cond
+   (nil? val)
+   default-rows
+   (= (type val) java.lang.String)
+   (Integer/parseInt val)
+   :else
+   val))
+    
 (defn get-filters [params]
   (into {}
         (->> params
@@ -18,13 +41,13 @@
     (let [json-body (-> resource-context (:body) (json/read-str))]
       {:id id
        :terms (:query json-body)
-       :offset (or (:offset json-body) "1")
-       :rows (or (:rows json-body) "20")
+       :offset (-> json-body (:offset) (parse-offset-val))
+       :rows (-> json-body (:rows) (parse-rows-val))
        :filters (:filter json-body)})
     {:id id
      :terms (get-in resource-context [:request :params :query])
-     :offset (or (get-in resource-context [:request :params :offset]) "0")
-     :rows (or (get-in resource-context [:request :params :rows]) "20")
+     :offset (-> resource-context (get-in [:request :params :offset]) (parse-offset-val))
+     :rows (-> resource-context (get-in [:request :params :rows]) (parse-rows-val))
      :filters (get-filters (get-in resource-context [:request :params]))}))
 
 (defn clean-terms [terms] terms)
@@ -52,11 +75,9 @@
         (doto query
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
-      (let [rows (-> query-context (:rows) (Integer/parseInt))
-            offset (-> query-context (:offset) (Integer/parseInt))]
-        (doto query
-          (.setStart offset)
-          (.setRows rows))))
+      (doto query
+        (.setStart (:offset query-context))
+        (.setRows (:rows query-context))))
     (when count-only
       (doto query
         (.setRows (int 0))))
