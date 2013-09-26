@@ -17,12 +17,12 @@
   (if (:body resource-context)
     (let [json-body (-> resource-context (:body) (json/read-str))]
       {:id id
-       :terms (:q json-body)
+       :terms (:query json-body)
        :offset (or (:offset json-body) "1")
        :rows (or (:rows json-body) "20")
        :filters (:filter json-body)})
     {:id id
-     :terms (get-in resource-context [:request :params :q])
+     :terms (get-in resource-context [:request :params :query])
      :offset (or (get-in resource-context [:request :params :offset]) "0")
      :rows (or (get-in resource-context [:request :params :rows]) "20")
      :filters (get-filters (get-in resource-context [:request :params]))}))
