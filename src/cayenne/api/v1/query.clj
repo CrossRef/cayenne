@@ -13,22 +13,22 @@
 (def max-rows 1000)
 
 (defn parse-rows-val [val]
-  (cond
-   (nil? val)
-   default-rows
-   (= (type val) java.lang.String)
-   (min [(Integer/parseInt val) max-rows])
-   :else
-   (min [val max-rows])))
+  (int (cond
+        (nil? val)
+        default-rows
+        (= (type val) java.lang.String)
+        (min [(Integer/parseInt val) max-rows])
+        :else
+        (min [val max-rows]))))
 
 (defn parse-offset-val [val]
-  (cond
-   (nil? val)
-   default-rows
-   (= (type val) java.lang.String)
-   (Integer/parseInt val)
-   :else
-   val))
+  (int (cond
+        (nil? val)
+        default-rows
+        (= (type val) java.lang.String)
+        (Integer/parseInt val)
+        :else
+        val)))
     
 (defn get-filters [params]
   (into {}
