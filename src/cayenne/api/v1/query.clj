@@ -25,7 +25,7 @@
 (defn parse-offset-val [val]
   (int (cond
         (nil? val)
-        default-rows
+        default-offset
         (= (type val) java.lang.String)
         (Integer/parseInt val)
         :else
