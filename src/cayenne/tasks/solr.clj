@@ -198,7 +198,7 @@
      "license_url" nil ;later
      "license_start" nil ;later
      "references" false ;now
-     "cited_by_count" nil ;now
+     "cited_by_count" 0 ;now
      "full_text_type" (map :content-type full-text-resources)
      "full_text_url" (map :value full-text-resources)
      "publisher" (:name publisher)
