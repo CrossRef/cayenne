@@ -197,7 +197,7 @@
      "archive" nil ;later
      "license_url" nil ;later
      "license_start" nil ;later
-     "references" nil ;now
+     "references" false ;now
      "cited_by_count" nil ;now
      "full_text_type" (map :content-type full-text-resources)
      "full_text_url" (map :value full-text-resources)
