@@ -68,8 +68,8 @@
                                 (str (get-param [:service :solr :url])
                                      "/"
                                      (get-param [:service :solr :insert-core]))))
-    (set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
-    (set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
+    ;(set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
+    ;(set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
     (set-param! [:status] :running)))
 
 (defn stop-core! [name]
