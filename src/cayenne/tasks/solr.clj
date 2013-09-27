@@ -11,7 +11,7 @@
             [metrics.gauges :refer [defgauge] :as gauge]
             [taoensso.timbre :as timbre :refer [error info]]))
 
-(def insert-list (ref []))
+(def insert-list (atom []))
 
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
@@ -24,12 +24,18 @@
                      (.getCoreStatus))]
     (info response)))
 
-(defn flush-insert-list []
-  (dosync
-   (when-not (empty? @insert-list)
-     (.add (conf/get-service :solr-update) @insert-list)
-     (.commit (conf/get-service :solr-update) false false)
-     (alter insert-list (constantly [])))))
+(defn flush-insert-list [insert-list]
+  (doseq [update-server (conf/get-service :solr-update-list)]
+    (.add update-server insert-list)
+    (.commit update-server false false)))
+
+(defn add-to-insert-list [insert-list doc]
+  (if (>= (count insert-list)
+           (conf/get-param [:service :solr :insert-list-max-size]))
+    (do
+      (flush-insert-list insert-list)
+      [doc])
+    (conj insert-list doc)))
 
 (defn clear-insert-list []
   (dosync
@@ -216,9 +222,6 @@
     (if-not (get solr-map "doi_key")
       (throw (Exception. "No DOI in item tree when inserting into solr."))
       (let [solr-doc (as-solr-input-document solr-map)]
-        (dosync
-         (alter insert-list conj solr-doc)
-         (when (> (count @insert-list) 
-                  (conf/get-param [:service :solr :insert-list-max-size]))
-           (flush-insert-list)))))))
+        (swap! insert-list add-to-insert-list solr-doc)))))
+
   

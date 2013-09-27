@@ -88,8 +88,8 @@
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
    "until-update-date" (stamp-date "deposited_at" :until)
-   "from-pub-date" (particle-date "hl_year" "month" "day" :from)
-   "until-pub-date" (particle-date "hl_year" "month" "day" :until)
+   "from-pub-date" (particle-date "year" "month" "day" :from)
+   "until-pub-date" (particle-date "year" "month" "day" :until)
    "has-full-text" (existence "full_text_url") ;in new index
    "has-license" (existence "license_url") ;in new index
    "has-references" (bool "references") ;in new index

@@ -64,10 +64,9 @@
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
     (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
-    (set-service! :solr-update (HttpSolrServer. 
-                                (str (get-param [:service :solr :url])
-                                     "/"
-                                     (get-param [:service :solr :insert-core]))))
+    (set-service! :solr-update-list
+                  (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
+                       (get-param [:service :solr :update-list])))
     ;(set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
     ;(set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
     (set-param! [:status] :running)))
@@ -105,12 +104,14 @@
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
+  (set-param! [:service :solr :update-list]
+              [{:url "http://localhost:8983/solr" :core "crmds1"}])
+
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://localhost:8983/solr")
-  (set-param! [:service :solr :query-core] "crmds1")
-  (set-param! [:service :solr :insert-core] "crmds1")
+  (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 1000)
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
   (set-param! [:service :api :port] 3000)
