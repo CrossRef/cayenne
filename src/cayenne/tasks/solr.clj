@@ -13,6 +13,8 @@
 
 (def insert-list (atom []))
 
+(def insert-count (agent 0))
+
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
 
@@ -24,16 +26,19 @@
                      (.getCoreStatus))]
     (info response)))
 
-(defn flush-insert-list [insert-list]
+(defn flush-insert-list [c insert-list]
   (doseq [update-server (conf/get-service :solr-update-list)]
-    (.add update-server insert-list)
-    (.commit update-server false false)))
+    (try
+      (.add update-server insert-list)
+      (.commit update-server false false)
+      (catch Exception e (error e "Solr insert failed" update-server))))
+  (inc c))
 
 (defn add-to-insert-list [insert-list doc]
   (if (>= (count insert-list)
            (conf/get-param [:service :solr :insert-list-max-size]))
     (do
-      (flush-insert-list insert-list)
+      (send-off insert-count flush-insert-list insert-list)
       [doc])
     (conj insert-list doc)))
 
