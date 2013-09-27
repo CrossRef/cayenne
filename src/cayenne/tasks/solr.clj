@@ -28,6 +28,7 @@
   (dosync
    (when-not (empty? @insert-list)
      (.add (conf/get-service :solr-update) @insert-list)
+     (.commit (conf/get-service :solr-update) false false)
      (alter insert-list (constantly [])))))
 
 (defn clear-insert-list []

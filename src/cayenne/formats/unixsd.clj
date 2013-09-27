@@ -28,9 +28,10 @@
   (let [result (unixref/unixref-record-parser oai-record)
         work (second result)
         primary-id (first result)]
-    (-> work
-        (itree/add-relation :publisher (parse-publisher oai-record))
-        (itree/add-property :citation-count (parse-citation-count oai-record)))))
+    [primary-id
+     (-> work
+         (itree/add-relation :publisher (parse-publisher oai-record))
+         (itree/add-property :citation-count (parse-citation-count oai-record)))]))
       
 ;; todo citation-count should be attached to item with primary-id, not tree root.
 
