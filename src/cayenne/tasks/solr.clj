@@ -214,7 +214,7 @@
      "full_text_url" (map :value full-text-resources)
      "publisher" (:name publisher)
      "hl_publisher" (:name publisher)
-     "owner_prefix" (first (get-item-ids publisher :owner-prefix))}))
+     "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}))
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]
