@@ -31,7 +31,8 @@
       base)))
 
 (defn ->citeproc-contribs [solr-doc k]
-  (let [contribs (string/split (get solr-doc k) #", ")]
+  (let [contribs (filter (complement clojure.string/blank?)
+                         (string/split (get solr-doc k) #", "))]
     (map ->citeproc-contrib contribs)))
 
 (defn ->citeproc-licenses [solr-doc]
@@ -44,34 +45,60 @@
        (get solr-doc "full_text_url")
        (get solr-doc "full_text_type")))
 
+(defn ->citeproc-pages [solr-doc]
+  (let [first-page (get solr-doc "hl_first_page")
+        last-page (get solr-doc "hl_last_page")]
+    (cond (and (not (clojure.string/blank? last-page))
+               (not (clojure.string/blank? first-page)))
+          (str first-page "-" last-page)
+          (not (clojure.string/blank? first-page))
+          first-page
+          :else
+          nil)))
+
+(defn ?> [m key value]
+  (cond (= (type value) java.lang.String)
+        (if (clojure.string/blank? value)
+          m
+          (assoc m key value))
+        (seq? value)
+        (if (empty? value)
+          m
+          (assoc m key value))
+        (nil? value)
+        m
+        :else
+        (assoc m key value)))
+
 (defn ->citeproc [solr-doc]
-  {:source (get solr-doc "source")
-   :volume (get solr-doc "hl_volume")
-   :issue (get solr-doc "hl_issue")
-   :prefix (get solr-doc "owner_prefix")
-   :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
-   :URL (get solr-doc "doi")
-   :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn"))
-   :ISSN (map issn-id/extract-issn (get solr-doc "issn"))
-   :title (get solr-doc "hl_title")
-   :container-title (get solr-doc "hl_publication")
-   :issued (->date-parts (get solr-doc "year")
-                         (get solr-doc "month")
-                         (get solr-doc "day"))
-   :deposited (->date-parts (get solr-doc "deposited_at"))
-   :indexed (->date-parts (get solr-doc "indexed_at"))
-   :author (->citeproc-contribs solr-doc "hl_authors")
-   :editor (->citeproc-contribs solr-doc "hl_editors")
-   :chair (->citeproc-contribs solr-doc "hl_chairs")
-   :contributor (->citeproc-contribs solr-doc "hl_contributors")
-   :translator (->citeproc-contribs solr-doc "hl_translators")
-   :publisher (get solr-doc "publisher")
-   :page (str (get solr-doc "hl_first_page")
-              "-" 
-              (get solr-doc "hl_last_page"))
-   :type (get solr-doc "type")
-   :subject (get solr-doc "category")
-   :archive (get solr-doc "archive")
-   :license (->citeproc-licenses solr-doc)
-   :link (->citeproc-links solr-doc)
-   :score (get solr-doc "score")})
+  (-> {:source (get solr-doc "source")
+       :prefix (get solr-doc "owner_prefix")
+       :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
+       :URL (get solr-doc "doi")
+       :issued (->date-parts (get solr-doc "year")
+                             (get solr-doc "month")
+                             (get solr-doc "day"))
+       :deposited (->date-parts (get solr-doc "deposited_at"))
+       :indexed (->date-parts (get solr-doc "indexed_at"))
+       :publisher (get solr-doc "publisher")
+       :page (str (get solr-doc "hl_first_page")
+                  "-" 
+                  (get solr-doc "hl_last_page"))
+       :type (get solr-doc "type")
+       :score (get solr-doc "score")}
+      (?> :volume (get solr-doc "hl_volume"))
+      (?> :issue (get solr-doc "hl_issue"))
+      (?> :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
+      (?> :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
+      (?> :title (set (get solr-doc "hl_title")))
+      (?> :container-title (set (get solr-doc "hl_publication")))
+      (?> :author (->citeproc-contribs solr-doc "hl_authors"))
+      (?> :editor (->citeproc-contribs solr-doc "hl_editors"))
+      (?> :chair (->citeproc-contribs solr-doc "hl_chairs"))
+      (?> :contributor (->citeproc-contribs solr-doc "hl_contributors"))
+      (?> :translator (->citeproc-contribs solr-doc "hl_translators"))
+      (?> :subject (get solr-doc "category"))
+      (?> :archive (get solr-doc "archive"))
+      (?> :license (->citeproc-licenses solr-doc))
+      (?> :link (->citeproc-links solr-doc))
+      (?> :page (->citeproc-pages solr-doc))))
