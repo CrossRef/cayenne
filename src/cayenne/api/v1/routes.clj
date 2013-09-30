@@ -134,9 +134,9 @@
   (ANY "/publishers" []
        publishers-resource)
   (ANY "/publishers/:prefix" [prefix]
-       (publishers-resource prefix))
+       (publisher-resource prefix))
   (ANY "/publishers/:prefix/works" [prefix]
-       (publishers-resource prefix))
+       (publisher-works-resource prefix))
   (ANY "/works" []
        works-resource)
   (ANY "/works/random/:count" [count]
