@@ -32,7 +32,7 @@
                                                   (:id)
                                                   (fr-id/doi-uri-to-id))}))]
     (when funder-doc
-      (r/api-response :funder-summary
+      (r/api-response :funder
                       :content
                       {:id (:id query-context)
                        :location (:country funder-doc)
@@ -47,7 +47,7 @@
 
 (defn fetch-works [query-context]
   (let [doc-list (get-solr-works query-context)]
-    (-> (r/api-response :funder-work-result-list)
+    (-> (r/api-response :work-list)
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list) 

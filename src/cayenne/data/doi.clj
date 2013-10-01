@@ -19,7 +19,7 @@
   (let [doc-list (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context))
                      (.getResults))]
-    (-> (r/api-response :work-result-list)
+    (-> (r/api-response :work-list)
         (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list))
         (r/with-query-context-info query-context))))
 
@@ -28,7 +28,7 @@
   [doi-uri]
   (let [work (m/with-mongo (conf/get-service :mongo)
                (m/fetch-one "items" :where {:id doi-uri}))]
-    (-> (r/api-response :work-summary
+    (-> (r/api-response :work
                         :content work))))
 
 (defn fetch-random [count]
@@ -38,5 +38,5 @@
                            :where {:random_index {"$gte" (rand)}}
                            :limit c
                            :sort {:random_index 1})]
-      (r/api-response :random-work-list :content (map :doi records)))))
+      (r/api-response :id-list :content (map :doi records)))))
 

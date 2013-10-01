@@ -31,7 +31,7 @@
                                :where {:id (-> query-context
                                                (:id))}))]
     (when pub-doc
-      (r/api-response :publisher-summary
+      (r/api-response :publisher
                       :content
                       {:id (:id query-context)
                        :name (:name pub-doc)
@@ -43,7 +43,7 @@
 
 (defn fetch-works [query-context]
   (let [doc-list (get-solr-works query-context)]
-    (-> (r/api-response :publisher-work-result-list)
+    (-> (r/api-response :work-list)
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list)

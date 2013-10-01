@@ -81,9 +81,6 @@
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
-       :page (str (get solr-doc "hl_first_page")
-                  "-" 
-                  (get solr-doc "hl_last_page"))
        :type (get solr-doc "type")
        :score (get solr-doc "score")}
       (?> :volume (get solr-doc "hl_volume"))

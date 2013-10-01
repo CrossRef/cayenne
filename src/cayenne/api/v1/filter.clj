@@ -41,8 +41,8 @@
 (defn split-date [date-str]
   (let [date-parts (string/split date-str #"-")]
     {:year (Integer/parseInt (first date-parts))
-     :month (Integer/parseInt (second date-parts))
-     :day (Integer/parseInt (nth date-parts 2))}))
+     :month (Integer/parseInt (nth date-parts 1 "-1"))
+     :day (Integer/parseInt (nth date-parts 2 "-1"))}))
 
 (defn stamp-date [date-stamp-field direction]
   (fn [val]
@@ -51,7 +51,7 @@
 (defn particle-date [year-field month-field day-field end-point]
   (fn [val]
     (let [d (split-date val)]
-      (cond (:day d)
+      (cond (not= (:day d) -1)
             (q-or
              (field-lt-or-gt year-field (:year d) end-point)
              (q-and (field-is year-field (:year d))
@@ -59,7 +59,7 @@
              (q-and (field-is year-field (:year d))
                     (field-is month-field (:month d))
                     (field-lte-or-gte day-field (:day d) end-point)))
-            (:month d)
+            (not= (:month d) -1)
             (q-or
              (field-lt-or-gt year-field (:year d) end-point)
              (q-and (field-is year-field (:year d))
