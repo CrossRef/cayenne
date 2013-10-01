@@ -32,9 +32,10 @@
         val)))
     
 (defn get-filters [params]
-  (into {}
-        (let [filter-list (string/split (get params :filter "") #",")]
-          (map #(string/split % #":") filter-list))))
+  (when (get params :filter)
+    (into {}
+          (let [filter-list (string/split (get params :filter) #",")]
+            (map #(string/split % #":") filter-list)))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
   (if-not (nil? (get-in resource-context [:request :body]))
@@ -75,8 +76,6 @@
         (.addFilterQuery (into-array String [(str id-field ":\"" (:id query-context) "\"")]))))
     (doseq [[filter-name filter-val] (:filters query-context)]
       (when (filters filter-name)
-        (info (filters filter-name))
-        (info ((filters filter-name) filter-val))
         (doto query
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
     (when paged
