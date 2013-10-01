@@ -72,7 +72,7 @@
     (cond (#{"t" "true" "1"} (.toLowerCase val))
           (str field ":[* TO *]")
           (#{"f" "false" "0"} (.toLowerCase val))
-          (str field ":-[* TO *]"))))
+          (str "-" field ":[* TO *]"))))
 
 (defn bool [field]
   (fn [val]
