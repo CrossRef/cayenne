@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.filter :as filter]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
@@ -17,7 +18,8 @@
 
 (defn fetch [query-context]
   (let [doc-list (-> (conf/get-service :solr)
-                     (.query (query/->solr-query query-context))
+                     (.query (query/->solr-query query-context 
+                                                 :filters filter/std-filters))
                      (.getResults))]
     (-> (r/api-response :work-list)
         (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list))
