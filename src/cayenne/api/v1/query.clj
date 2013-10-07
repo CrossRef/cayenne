@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.query
   (:require [cayenne.conf :as conf]
+            [cayenne.util :as util :refer [?> ?>>]]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -86,3 +87,10 @@
       (doto query
         (.setRows (int 0))))
     query))
+
+(defn ->mongo-query [query-context
+                     & {:keys [where sort] :or [where {} sort {}]}]
+  [:where where 
+   :sort sort
+   :limit (:rows query-context)
+   :skip (:offset query-context)])

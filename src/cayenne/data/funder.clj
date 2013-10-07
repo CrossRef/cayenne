@@ -59,14 +59,16 @@
       (string/split #"\s+")))
 
 (defn fetch 
-  "Search for funders by name tokens. Results are sorted by level within organisational
+  "Search for funders by name tokens. Results are sorted by level within organizational
    hierarchy."
   [query-context]
   (let [parsed-terms (parse-query-terms (:terms query-context))
-        query-lst (map #(hash-map "name_tokens" {"$regex" (str "^" %)}) parsed-terms)
-        query {"$and" query-lst}
+        and-list (map #(hash-map "name_tokens" {"$regex" (str "^" %)}) parsed-terms)
+        mongo-query (query/->mongo-query query-context
+                                         :where {"$and" and-list}
+                                         :sort {:level 1})
         docs (m/with-mongo (conf/get-service :mongo)
-               (m/fetch "funders" :where query :sort {:level 1}))]
+               (apply m/fetch "funders" mongo-query))]
     (r/api-response :funder-list :content (map ->response-doc docs))))
 
 (defn fetch-works 
@@ -78,6 +80,4 @@
         (r/with-result-items 
           (.getNumFound doc-list) 
           (map citeproc/->citeproc doc-list)))))
-       
-      
 
