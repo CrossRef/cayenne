@@ -73,6 +73,12 @@
                  (URLEncoder/encode extracted-doi))]
     (remote-file url)))
 
+(defn doi-file [doi]
+  (let [extracted-doi (doi/extract-long-doi doi)
+        url (str (get-param [:upstream :doi-url])
+                 (URLEncoder/encode extracted-doi))]
+    (remote-file url)))
+
 (def dump-plain-docs
   (record-json-writer "out.txt"))
 
@@ -178,6 +184,28 @@
                    :kind ".tmp"
                    :split "doi_record"
                    :parser unixref-record-parser
+                   :task (comp
+                          using
+                          #(vector (doi/to-long-doi-uri doi) (second %)))))))
+
+(defn parse-doi [doi using]
+  (oai/process (doi-file doi)
+               :async true
+               :kind ".tmp"
+               :split "crossref_result"
+               :parser unixsd-record-parser
+               :task (comp
+                      using
+                      #(vector (doi/to-long-doi-uri doi) (second %)))))
+
+(defn parse-doi-list [list-file using]
+  (with-open [rdr (io/reader (io/file list-file))]
+    (doseq [doi (line-seq rdr)]
+      (oai/process (doi-file doi)
+                   :async true
+                   :kind ".tmp"
+                   :split "crossref_result"
+                   :parser unixsd-record-parser
                    :task (comp
                           using
                           #(vector (doi/to-long-doi-uri doi) (second %)))))))

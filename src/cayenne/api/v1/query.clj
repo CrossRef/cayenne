@@ -86,4 +86,3 @@
       (doto query
         (.setRows (int 0))))
     query))
-

@@ -94,7 +94,10 @@
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
 
-(defresource funders-resource [])
+(defresource funders-resource
+  :allowed-methods [:get]
+  :available-media-types t/json
+  :handle-ok #(funder/fetch (q/->query-context %)))
 
 (defresource funder-resource [funder-id]
   :allowed-methods [:get]
