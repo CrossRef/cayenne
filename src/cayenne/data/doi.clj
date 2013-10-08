@@ -26,12 +26,12 @@
         (r/with-query-context-info query-context))))
 
 (defn fetch-one
-  "Fetch a known DOI, which we take from mongo."
+  "Fetch a known DOI."
   [doi-uri]
-  (let [work (m/with-mongo (conf/get-service :mongo)
-               (m/fetch-one "items" :where {:id doi-uri}))]
-    (-> (r/api-response :work
-                        :content work))))
+  (let [docs (-> (conf/get-service :solr)
+                 (.query (query/->solr-query {:id doi-uri}
+                                             :id-field "doi")))]
+    (r/api-response :work :content (citeproc/->citeproc (first docs)))))
 
 (defn fetch-random [count]
   (m/with-mongo (conf/get-service :mongo)

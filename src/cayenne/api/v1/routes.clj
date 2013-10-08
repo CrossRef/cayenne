@@ -1,5 +1,5 @@
 (ns cayenne.api.v1.routes
-  (:import [java.net URL])
+  (:import [java.net URL URLDecoder])
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.fundref :as fr-id]
@@ -76,7 +76,10 @@
 (defresource work-resource [doi]
   :allowed-methods [:get]
   :available-media-types t/json
-  :handle-ok (->1 #(doi/fetch-one (doi-id/to-long-doi-uri doi))))
+  :handle-ok (->1 #(-> doi
+                       (URLDecoder/decode)
+                       (doi-id/to-long-doi-uri)
+                       (doi/fetch-one))))
 
 (defresource random-works-resource [count]
   :allowed-methods [:get]

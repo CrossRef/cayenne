@@ -159,6 +159,14 @@
                :parser unixsd-record-parser
                :task using))
 
+(defn parse-unixsd-query-records [file-or-dir using]
+  (oai/process file-or-dir
+               :async false
+               :kind ".tmp"
+               :split "crossref_result"
+               :parser unixsd-record-parser
+               :task using))
+
 (defn parse-datacite-records [file-or-dir using]
   (oai/process file-or-dir
                :async true

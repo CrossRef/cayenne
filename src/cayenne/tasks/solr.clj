@@ -144,6 +144,27 @@
               (assoc memo funder-name (concat awards new-awards))))]
     (reduce combine {} (get-tree-rel item :funder))))
 
+(defn as-license-list 
+  "Returns all licenses within an item tree. If the license has no
+   explicit start date it is assumed to have a start date equal to
+   the preferred published date of the item."
+  [item]
+  (let [pub-date (get-preferred-pub-date item)
+        licenses (get-tree-rel item :license)]
+    (map #(if (:start %) % (assoc % :start pub-date))
+         licenses)))
+
+(defn as-datetime [particle-date]
+  (cond (:day particle-date)
+        (t/date-time (:year particle-date)
+                     (:month particle-date)
+                     (:day particle-date))
+        (:month particle-date)
+        (t/date-time (:year particle-date)
+                     (:month particle-date))
+        :else
+        (t/date-time (:year particle-date))))
+
 (defn as-solr-grant-info-field [item]
   (letfn [(funder-info [funder-name award-ids]
               (str
@@ -156,6 +177,7 @@
 
 (defn as-solr-document [item]
   (let [grant-map (as-grant-map item)
+        licenses (as-license-list item)
         funder-names (set (map :name (get-tree-rel item :funder)))
         funder-dois (set (mapcat :id (get-tree-rel item :funder)))
         publisher (first (get-tree-rel item :publisher))
@@ -167,9 +189,7 @@
         doi (first (get-item-ids item :long-doi))]
     {"source" (:source item)
      "indexed_at" (t/now)
-     "deposited_at" (t/date-time (:year deposit-date) 
-                                 (:month deposit-date)
-                                 (:day deposit-date))
+     "deposited_at" (if deposit-date (as-datetime deposit-date) (t/now))
      "prefix" (doi/extract-long-prefix doi)
      "doi_key" doi
      "doi" doi
@@ -206,8 +226,8 @@
      "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
      "hl_title" (map :value (get-item-rel item :title))
      "archive" nil ;later
-     "license_url" nil ;later
-     "license_start" nil ;later
+     "license_url" (map :value licenses)
+     "license_start" (map (comp as-datetime :start) licenses)
      "references" false ;now
      "cited_by_count" 0 ;now
      "full_text_type" (map :content-type full-text-resources)
@@ -215,6 +235,8 @@
      "publisher" (:name publisher)
      "hl_publisher" (:name publisher)
      "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}))
+
+;; TODO missing - license_version, full_text_version
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]

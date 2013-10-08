@@ -160,7 +160,7 @@
     {:type :date
      :day day-val 
      :month (parse-month month-val) 
-     :year year-val 
+     :year year-val
      :time-of-year (parse-time-of-year month-val)}))
 
 (defn parse-start-date [start-date-loc]
@@ -211,7 +211,7 @@
 
 (defn parse-collection-item [coll-item-loc]
   {:type :url
-   :content-type (xml/xselect1 coll-item-loc "resource" ["mime_type"])
+   :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "*/*")
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
 (defn parse-collection [with-attribute item-loc]
@@ -483,6 +483,25 @@
      (parse-single-funder item-loc)
      (map parse-funder funder-groups-loc))))
 
+(def license-date-formatter (ftime/formatter "yyyy-MM-dd"))
+
+(defn parse-license-start-date [license-loc]
+  (if-let [raw-date (xml/xselect1 license-loc ["start_date"])]
+    (let [d (ftime/parse license-date-formatter raw-date)]
+      {:year (t/year d)
+       :month (t/month d)
+       :day (t/day d)})))
+
+(defn parse-license [license-loc]
+  {:type :url
+   :version (or (xml/xselect1 license-loc ["applies_to"]) "none")
+   :start (parse-license-start-date license-loc)
+   :value (xml/xselect1 license-loc :text)})
+
+(defn parse-item-licenses [item-loc]
+  (let [license-locs (xml/xselect item-loc :> "license_ref")]
+    (map parse-license license-locs)))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -517,6 +536,7 @@
       (parse-attach :resource-resolution item-loc :single parse-resource)
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
+      (parse-attach :license item-loc :multi parse-item-licenses)
       (parse-attach :title item-loc :multi parse-item-titles)
       (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
@@ -832,8 +852,8 @@
     (ftime/parse openurl-deposit-date-formatter date-text)))
 
 (defn parse-deposit-date [record]
-  (let [d (or (parse-oai-deposit-date record)
-              (parse-openurl-deposit-date record))]
+  (when-let [d (or (parse-oai-deposit-date record)
+                   (parse-openurl-deposit-date record))]
     {:type :date
      :day (t/day d)
      :month (t/month d)

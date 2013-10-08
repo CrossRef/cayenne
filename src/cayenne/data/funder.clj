@@ -78,6 +78,6 @@
     (-> (r/api-response :work-list)
         (r/with-query-context-info query-context)
         (r/with-result-items 
-          (.getNumFound doc-list) 
+          (.getNumFound doc-list)
           (map citeproc/->citeproc doc-list)))))
 
