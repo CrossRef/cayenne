@@ -215,7 +215,9 @@
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
 (defn parse-collection [with-attribute item-loc]
-  (let [items (xml/xselect item-loc "doi_data" :> "item" [:has with-attribute])]
+  (let [items (xml/xselect item-loc 
+                           "doi_data" :> "collection"
+                           [:= "property" with-attribute] "item")]
     (map parse-collection-item items)))
 
 (defn parse-resource [item-loc]
