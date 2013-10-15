@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.filter
-  (:require [clojure.string :as string]))
+  (:require [clojure.string :as string]
+            [cayenne.ids.orcid :as orcid]))
 
 ; build solr filters
 
@@ -81,9 +82,8 @@
           (#{"f" "false" "0"} (.toLowerCase val))
           (str field ":false"))))
 
-(defn equality [field]
-  (fn [val]
-    (str field ":\"" val "\"")))
+(defn equality [field & {:keys [transformer] :or [transformer identity]}]
+  (fn [val] (str field ":\"" (transformer val) "\"")))
 
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
@@ -96,7 +96,7 @@
    "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
    "representation" (equality "full_text_type") ;in new index
-   "orcid" (equality "orcid")
+   "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "license" (equality "license_url") ;waiting for schema change
    "publisher" (equality "owner_prefix") ;in new index
    "funder" (equality "funder_doi")})
