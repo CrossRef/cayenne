@@ -24,17 +24,6 @@
        {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
         :timestamp (dc/to-long d)})))
         
-(defn ->citeproc-contrib [name & orcid]
-  (let [base {:literal name}]
-    (if orcid
-      (assoc base :ORCID orcid)
-      base)))
-
-(defn ->citeproc-contribs [solr-doc k]
-  (let [contribs (filter (complement clojure.string/blank?)
-                         (string/split (get solr-doc k) #", "))]
-    (map ->citeproc-contrib contribs)))
-
 (defn ->citeproc-licenses [solr-doc]
   (map #(if %2 {:URL %1 :start %2} {:URL %1})
        (get solr-doc "license_url")
@@ -70,6 +59,17 @@
         :else
         (assoc m key value)))
 
+(defn ->structured-contribs [solr-doc]
+  (into 
+   {}
+   (reduce #([(get % :type) (dissoc % :type)])
+           (map #({:type %1 :ORCID %2 :suffix %3 :given %4 :family %5})
+                (get solr-doc "contributor_type")
+                (get solr-doc "contributor_orcid")
+                (get solr-doc "contributor_suffix")
+                (get solr-doc "contributor_given_name")
+                (get solr-doc "contributor_family_name")))))
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -89,13 +89,9 @@
       (?> :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
       (?> :title (set (get solr-doc "hl_title")))
       (?> :container-title (set (get solr-doc "hl_publication")))
-      (?> :author (->citeproc-contribs solr-doc "hl_authors"))
-      (?> :editor (->citeproc-contribs solr-doc "hl_editors"))
-      (?> :chair (->citeproc-contribs solr-doc "hl_chairs"))
-      (?> :contributor (->citeproc-contribs solr-doc "hl_contributors"))
-      (?> :translator (->citeproc-contribs solr-doc "hl_translators"))
       (?> :subject (get solr-doc "category"))
       (?> :archive (get solr-doc "archive"))
       (?> :license (->citeproc-licenses solr-doc))
       (?> :link (->citeproc-links solr-doc))
-      (?> :page (->citeproc-pages solr-doc))))
+      (?> :page (->citeproc-pages solr-doc))
+      (merge (->structured-contribs solr-doc))))

@@ -94,6 +94,29 @@
   (let [contributors (get-item-rel item type)]
     (string/join ", " (map as-name contributors))))
 
+(defn as-details [contributor type]
+  {:given-name (:first-name contributor)
+   :family-name (:last-name contributor)
+   :suffix (:suffix contributor)
+   :orcid (first (get-item-ids item :orcid))
+   :type type})
+
+(defn get-contributor-details*
+  "For each person contributor, return a map of name, ORCID and
+   type of contribution."
+  [item type]
+  (let [contributors (filter #(= (get-item-type %) :person) 
+                             (get-item-rel item type))]
+    (map as-details contributors)))
+
+(defn get-contributor-details [item]
+  (concat
+   (get-contributor-details* item :author)
+   (get-contributor-details* item :chair)
+   (get-contributor-details* item :editor)
+   (get-contributor-details* item :translator)
+   (get-contributor-details* item :contributor)))
+
 (defn get-primary-author [item]
   (first (get-item-rel item :author)))
 
@@ -186,6 +209,7 @@
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
+        contrib-details (get-contributor-details item)
         doi (first (get-item-ids item :long-doi))]
     {"source" (:source item)
      "indexed_at" (t/now)
@@ -211,6 +235,11 @@
      "year" (:year pub-date)
      "month" (:month pub-date)
      "day" (:day pub-date)
+     "contributor_given_name" (map :given-name contrib-details)
+     "contributor_family_name" (map :family-name contrib-details)
+     "contributor_suffix" (map :suffix contrib-details)
+     "contributor_orcid" (map :orcid contrib-details)
+     "contributor_type" (map :type contrib-details)
      "hl_description" (:description item)
      "hl_year" (:year pub-date)
      "hl_authors" (get-contributor-names item :author)
