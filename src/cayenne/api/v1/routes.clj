@@ -81,11 +81,6 @@
                        (doi-id/to-long-doi-uri)
                        (doi/fetch-one))))
 
-(defresource random-works-resource [count]
-  :allowed-methods [:get]
-  :available-media-types t/json
-  :handle-ok (->1 #(doi/fetch-random count)))
-
 (defresource cores-resource
   :allowed-methods [:get]
   :available-media-types t/json
@@ -145,8 +140,6 @@
        (publisher-works-resource prefix))
   (ANY "/works" []
        works-resource)
-  (ANY "/works/random/:count" [count]
-       (random-works-resource count))
   (ANY "/works/:doi" [doi]
        (work-resource doi))
   (ANY "/cores" []

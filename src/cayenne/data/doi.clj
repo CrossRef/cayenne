@@ -32,13 +32,3 @@
                  (.query (query/->solr-query {:id doi-uri}
                                              :id-field "doi")))]
     (r/api-response :work :content (citeproc/->citeproc (first docs)))))
-
-(defn fetch-random [count]
-  (m/with-mongo (conf/get-service :mongo)
-    (let [c (or (try (Integer/parseInt count) (catch Exception e nil)) 50)
-          records (m/fetch "dois"
-                           :where {:random_index {"$gte" (rand)}}
-                           :limit c
-                           :sort {:random_index 1})]
-      (r/api-response :id-list :content (map :doi records)))))
-
