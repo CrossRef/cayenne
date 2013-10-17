@@ -550,7 +550,7 @@
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
-      (parse-attach :approval-online item-loc :multi (partial parse-item-approval-dates "online"))))
+      (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
