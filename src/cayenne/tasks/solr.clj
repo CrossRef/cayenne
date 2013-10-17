@@ -188,6 +188,11 @@
         :else
         (t/date-time (:year particle-date))))
 
+(defn as-day-diff [left-particle-date right-particle-date]
+  (-> (t/interval (as-datetime left-particle-date) 
+                  (as-datetime right-particle-date))
+      (t/in-days)))
+
 (defn as-solr-grant-info-field [item]
   (letfn [(funder-info [funder-name award-ids]
               (str
@@ -257,10 +262,13 @@
      "archive" nil ;later
      "license_url" (map :value licenses)
      "license_start" (map (comp as-datetime :start) licenses)
+     "license_version" (map :content-version licenses)
+     "license_delay" (map #(as-day-diff (:start %) pub-date) licenses)
      "references" false ;now
      "cited_by_count" 0 ;now
      "full_text_type" (map :content-type full-text-resources)
      "full_text_url" (map :value full-text-resources)
+     "full_text_version" (map :content-version full-text-resources)
      "publisher" (:name publisher)
      "hl_publisher" (:name publisher)
      "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}))

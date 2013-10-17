@@ -11,40 +11,6 @@
 ;; needs a rewrite since this differs from other formats which
 ;; go to/from item trees.
 
-(defn ->date-parts
-  ([year month day]
-     (cond (and year month day)
-           {:date-parts [[year, month, day]]}
-           (and year month)
-           {:date-parts [[year, month]]}
-           :else
-           {:date-parts [[year]]}))
-  ([date-obj]
-     (let [d (dc/from-date date-obj)]
-       {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
-        :timestamp (dc/to-long d)})))
-        
-(defn ->citeproc-licenses [solr-doc]
-  (map #(if %2 {:URL %1 :start %2} {:URL %1})
-       (get solr-doc "license_url")
-       (get solr-doc "license_start")))
-
-(defn ->citeproc-links [solr-doc]
-  (map #(if %2 {:URL %1 :content-type %2} {:URL %1})
-       (get solr-doc "full_text_url")
-       (get solr-doc "full_text_type")))
-
-(defn ->citeproc-pages [solr-doc]
-  (let [first-page (get solr-doc "hl_first_page")
-        last-page (get solr-doc "hl_last_page")]
-    (cond (and (not (clojure.string/blank? last-page))
-               (not (clojure.string/blank? first-page)))
-          (str first-page "-" last-page)
-          (not (clojure.string/blank? first-page))
-          first-page
-          :else
-          nil)))
-
 (defn ?> [m key value]
   (cond (= (type value) java.lang.String)
         (if (clojure.string/blank? value)
@@ -58,6 +24,54 @@
         m
         :else
         (assoc m key value)))
+
+(defn ->date-parts
+  ([year month day]
+     (cond (and year month day)
+           {:date-parts [[year, month, day]]}
+           (and year month)
+           {:date-parts [[year, month]]}
+           :else
+           {:date-parts [[year]]}))
+  ([date-obj]
+     (let [d (dc/from-date date-obj)]
+       {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
+        :timestamp (dc/to-long d)})))
+        
+(defn license [url start-date delay-in-days content-version]
+  (-> {:URL url}
+      (?> :start (->date-parts start-date))
+      (?> :delay-in-days delay-in-days)
+      (?> :content-version content-version)))
+
+(defn ->citeproc-licenses
+  (map license
+       (get solr-doc "license_url")
+       (get solr-doc "license_start")
+       (get solr-doc "license_delay")
+       (get solr-doc "license_version")))
+
+(defn link [url content-type content-version]
+  (-> {:URL url}
+      (?> :content-type content-type)
+      (?> :content-version content-version)))
+
+(defn ->citeproc-links [solr-doc]
+  (map link
+       (get solr-doc "full_text_url")
+       (get solr-doc "full_text_type")
+       (get solr-doc "full_text_version")))
+
+(defn ->citeproc-pages [solr-doc]
+  (let [first-page (get solr-doc "hl_first_page")
+        last-page (get solr-doc "hl_last_page")]
+    (cond (and (not (clojure.string/blank? last-page))
+               (not (clojure.string/blank? first-page)))
+          (str first-page "-" last-page)
+          (not (clojure.string/blank? first-page))
+          first-page
+          :else
+          nil)))
 
 (defn ->structured-contribs [solr-doc]
   (into 
