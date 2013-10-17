@@ -501,10 +501,10 @@
 (defn parse-license 
   "Returns a license. :content-version can be any of tdm, vor, am or unspecified."
   [license-loc]
-  {:type :url
-   :content-version (or (xml/xselect1 license-loc ["applies_to"]) "unspecified")
-   :start (parse-license-start-date license-loc)
-   :value (xml/xselect1 license-loc :text)})
+  (-> {:type :url
+       :content-version (or (xml/xselect1 license-loc ["applies_to"]) "unspecified")
+       :value (xml/xselect1 license-loc :text)}
+      (parse-attach :start license-loc :single parse-license-start-date)))
 
 (defn parse-item-licenses [item-loc]
   (let [license-locs (xml/xselect item-loc :> "license_ref")]

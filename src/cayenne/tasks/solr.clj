@@ -193,6 +193,16 @@
                   (as-datetime right-particle-date))
       (t/in-days)))
 
+(defn ->license-start-date [license]
+  (if-let [start-date (first (get-item-rel license :start))]
+    (as-datetime start-date)
+    (as-datetime pub-date)))
+
+(defn ->license-delay [pub-date license]
+  (if-let [start-date (first (get-item-rel license :start))]
+    (as-day-diff pub-date start-date)
+    0))
+
 (defn as-solr-grant-info-field [item]
   (letfn [(funder-info [funder-name award-ids]
               (str
@@ -261,9 +271,9 @@
      "hl_title" (map :value (get-item-rel item :title))
      "archive" nil ;later
      "license_url" (map :value licenses)
-     "license_start" (map (comp as-datetime :start) licenses)
      "license_version" (map :content-version licenses)
-     "license_delay" (map #(as-day-diff (:start %) pub-date) licenses)
+     "license_start" (map ->license-start-date licenses)
+     "license_delay" (map ->license-delay licenses)
      "references" false ;now
      "cited_by_count" 0 ;now
      "full_text_type" (map :content-type full-text-resources)
