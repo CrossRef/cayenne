@@ -5,7 +5,7 @@
             [clojure.data.json :as json]
             [clojure.java.io :as io]
             [taoensso.timbre :as timbre :refer [info error]])
-  (:import [org.apache.solr.client.solrj SolrQuery]))
+  (:import [org.apache.solr.client.solrj SolrQuery SolrQuery$ORDER]))
 
 ;; todo complete validation of query context params
 ;; and error response on invalid params
@@ -104,7 +104,7 @@
       (doto query
         (.setStart 0)
         (.setRows (:sample query-context))
-        (.setSort (random-field) SolrQuery.ORDER/asc)))
+        (.setSort (random-field) SolrQuery$ORDER/asc)))
     (when count-only
       (doto query
         (.setRows (int 0))))
