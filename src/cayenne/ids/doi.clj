@@ -27,6 +27,9 @@
 (defn extract-long-prefix [s]
   (first (string/split (extract-long-doi s) #"/")))
 
+(defn extract-long-suffix [s]
+  (string/join "/" (rest (string/split (extract-long-doi s) #"/"))))
+
 (defn extract-short-doi
   "Attempt to extract a short DOI from the forms:
    http://doi.org/<SHORT_DOI_SUFFIX>

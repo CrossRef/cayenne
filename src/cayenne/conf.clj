@@ -112,7 +112,7 @@
   (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://localhost:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
-  (set-param! [:service :solr :insert-list-max-size] 1000)
+  (set-param! [:service :solr :insert-list-max-size] 10000)
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
@@ -140,6 +140,7 @@
   (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-registry] "http://dx.doi.org/10.13039/fundref_registry")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=kward@crossref.org&format=unixref&id=doi:")
+  (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=kward@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
 
 (set-core! :default)

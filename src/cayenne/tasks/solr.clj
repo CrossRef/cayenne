@@ -98,7 +98,7 @@
   {:given-name (:first-name contributor)
    :family-name (:last-name contributor)
    :suffix (:suffix contributor)
-   :orcid (first (get-item-ids item :orcid))
+   :orcid (first (get-item-ids contributor :orcid))
    :type type})
 
 (defn get-contributor-details*
@@ -193,7 +193,7 @@
                   (as-datetime right-particle-date))
       (t/in-days)))
 
-(defn ->license-start-date [license]
+(defn ->license-start-date [license pub-date]
   (if-let [start-date (first (get-item-rel license :start))]
     (as-datetime start-date)
     (as-datetime pub-date)))
@@ -272,7 +272,7 @@
      "archive" nil ;later
      "license_url" (map :value licenses)
      "license_version" (map :content-version licenses)
-     "license_start" (map ->license-start-date licenses)
+     "license_start" (map ->license-start-date licenses (repeat pub-date))
      "license_delay" (map ->license-delay licenses)
      "references" false ;now
      "cited_by_count" 0 ;now

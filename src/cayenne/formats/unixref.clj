@@ -213,7 +213,7 @@
   "Returns a resource link. :content-version can be any of tdm, vor, am or unspecified."
   [coll-item-loc]
   {:type :url
-   :content-version (or (xml/xselect1 content-item-loc "resource" ["content_version"])
+   :content-version (or (xml/xselect1 coll-item-loc "resource" ["content_version"])
                         "unspecified")
    :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "*/*")
    :value (xml/xselect1 coll-item-loc "resource" :text)})
