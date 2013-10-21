@@ -44,7 +44,7 @@
       (?> :delay-in-days delay-in-days)
       (?> :content-version content-version)))
 
-(defn ->citeproc-licenses
+(defn ->citeproc-licenses [solr-doc]
   (map license
        (get solr-doc "license_url")
        (get solr-doc "license_start")
@@ -74,15 +74,14 @@
           nil)))
 
 (defn ->structured-contribs [solr-doc]
-  (into 
-   {}
-   (reduce #([(get % :type) (dissoc % :type)])
-           (map #({:type %1 :ORCID %2 :suffix %3 :given %4 :family %5})
-                (get solr-doc "contributor_type")
-                (get solr-doc "contributor_orcid")
-                (get solr-doc "contributor_suffix")
-                (get solr-doc "contributor_given_name")
-                (get solr-doc "contributor_family_name")))))
+  (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
+          {}
+          (map #(hash-map :type %1 :ORCID %2 :suffix %3 :given %4 :family %5)
+               (get solr-doc "contributor_type")
+               (get solr-doc "contributor_orcid")
+               (get solr-doc "contributor_suffix")
+               (get solr-doc "contributor_given_name")
+               (get solr-doc "contributor_family_name"))))
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")

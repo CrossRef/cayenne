@@ -51,7 +51,9 @@
   (when (get params :filter)
     (into {}
           (let [filter-list (string/split (get params :filter) #",")]
-            (map #(string/split % #":") filter-list)))))
+            (map #(let [xs (string/split % #":")]
+                    (vector (first xs) (string/join ":" (rest xs))))
+                 filter-list)))))
 
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
   (if-not (nil? (get-in resource-context [:request :body]))
