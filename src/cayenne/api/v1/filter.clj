@@ -1,5 +1,7 @@
 (ns cayenne.api.v1.filter
   (:require [clojure.string :as string]
+            [cayenne.ids.fundref :as fundref]
+            [caynene.ids.prefix :as prefix]
             [cayenne.ids.orcid :as orcid]))
 
 ; build solr filters
@@ -82,7 +84,7 @@
           (#{"f" "false" "0"} (.toLowerCase val))
           (str field ":false"))))
 
-(defn equality [field & {:keys [transformer] :or [transformer identity]}]
+(defn equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val] (str field ":\"" (transformer val) "\"")))
 
 (def std-filters
@@ -98,5 +100,5 @@
    "representation" (equality "full_text_type") ;in new index
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "license" (equality "license_url") ;waiting for schema change
-   "publisher" (equality "owner_prefix") ;in new index
-   "funder" (equality "funder_doi")})
+   "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index
+   "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
