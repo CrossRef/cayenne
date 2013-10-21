@@ -1,7 +1,7 @@
 (ns cayenne.api.v1.filter
   (:require [clojure.string :as string]
             [cayenne.ids.fundref :as fundref]
-            [caynene.ids.prefix :as prefix]
+            [cayenne.ids.prefix :as prefix]
             [cayenne.ids.orcid :as orcid]))
 
 ; build solr filters
