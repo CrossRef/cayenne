@@ -88,8 +88,8 @@
                                          :sort {:level 1})
         docs (m/with-mongo (conf/get-service :mongo)
                (apply m/fetch "funders" mongo-query))]
-    (r/api-response :funder-list 
-                    (r/with-result-items (count docs) (map ->response-doc docs)))))
+    (-> (r/api-response :funder-list)
+        (r/with-result-items (count docs) (map ->response-doc docs)))))
 
 (defn fetch-descendant-ids
   "Get all descendant funder ids for a funder."
