@@ -94,7 +94,7 @@
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
-          (when (:parser service)
+          (when (and (:parser service) task-fn)
             (process-oai-xml-file (:parser service) task-fn xml-file (:split service)))
           (when-let [token (resumption-token (:body resp))]
             (recur service from until (inc count) token task-fn '())))))))
