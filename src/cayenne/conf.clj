@@ -57,9 +57,6 @@
   "Create a new named core, initializes various services."
   [name & opts]
   (with-core name
-    (set-service! :api (hs/run-server (get-param [:service :api :var])
-                                    {:join? false
-                                     :port (get-param [:service :api :port])}))
     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                             :host (get-param [:service :mongo :host])))
@@ -69,6 +66,9 @@
                        (get-param [:service :solr :update-list])))
     ;(set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
     ;(set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
+    (set-service! :api (hs/run-server (get-param [:service :api :var])
+                                    {:join? false
+                                     :port (get-param [:service :api :port])}))
     (set-param! [:status] :running)))
 
 (defn stop-core! [name]
