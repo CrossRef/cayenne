@@ -49,16 +49,15 @@
    :name (:primary_name_display funder-doc)
    :alt-names (:other_names_display funder-doc)
    :uri (:uri funder-doc)
-   :tokens (:name_tokens funder-doc)
-   :work-count (get-solr-work-count funder-doc)
-   :descendant-work-count (get-solr-descendant-work-count funder-doc)})
+   :tokens (:name_tokens funder-doc)})
 
-(defn ->hierarchy-doc [funder-doc]
-  {:id (->short-id funder-doc)
-   :uri (:uri funder-doc)
-   :descendants (:descendants funder-doc)
-   :hierarchy (:nesting funder-doc)
-   :hierarchy-names (:nesting_names funder-doc)})
+(defn ->extended-response-doc [funder-doc]
+  (merge (->response-doc funder-doc)
+         {:work-count (get-solr-work-count funder-doc)
+          :descendant-work-count (get-solr-descendant-work-count funder-doc)
+          :descendants (:descendants funder-doc)
+          :hierarchy (:nesting funder-doc)
+          :hierarchy-names (:nesting_names funder-doc)}))
 
 (defn fetch-one [query-context]
   (let [query {:id (-> query-context
@@ -68,7 +67,7 @@
                      (m/fetch-one "funders" :where query))]
     (when funder-doc
       (r/api-response :funder 
-                      :content (->response-doc funder-doc)))))
+                      :content (->extended-response-doc funder-doc)))))
 
 (defn parse-query-terms 
   "Split query terms."
@@ -99,12 +98,6 @@
          (-> "funders"
              (m/fetch-one :where {:uri (:id query-context)})
              (:descendants)))))
-
-(defn fetch-hierarchy
-  [query-context]
-  (let [funder (m/with-mongo (conf/get-service :mongo)
-                 (m/fetch-one "funders" :where {:uri (:id query-context)}))]
-    (r/api-response :funder-hierarchy :content (->hierarchy-doc funder))))
 
 (defn fetch-works 
   "Return all the works related to a funder and its sub-organizations."
