@@ -62,6 +62,12 @@
        (get solr-doc "full_text_type")
        (get solr-doc "full_text_version")))
 
+(defn ->citeproc-links [solr-doc]
+  (map #(hash-map :URL %) (get solr-doc "full_text_url")))
+
+(defn ->citeproc-licenses [solr-doc]
+  (map #(hash-map :URL %) (get solr-doc "license_url")))
+
 (defn ->citeproc-pages [solr-doc]
   (let [first-page (get solr-doc "hl_first_page")
         last-page (get solr-doc "hl_last_page")]
