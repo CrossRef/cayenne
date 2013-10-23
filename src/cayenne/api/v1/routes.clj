@@ -110,6 +110,11 @@
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
+(defresource funder-hierarchy-resource [funder-id]
+  :allowed-methods [:get]
+  :available-media-types t/json
+  :handle-ok #(funder/fetch-hierarchy (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
+
 (defresource publishers-resource [])
 
 (defresource publisher-resource [px]
@@ -132,6 +137,8 @@
        (funder-resource id))
   (ANY "/funders/:id/works" [id]
        (funder-works-resource id))
+  (ANY "/funders/:id/hierarchy" [id]
+       (funder-hierarchy-resource id))
   (ANY "/publishers" []
        publishers-resource)
   (ANY "/publishers/:prefix" [prefix]
