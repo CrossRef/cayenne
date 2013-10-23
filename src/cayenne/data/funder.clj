@@ -28,6 +28,18 @@
       (.getResults)
       (.getNumFound)))
 
+(defn get-solr-descendant-work-count
+  [funder-doc]
+  (let [ids (vec (conj (map fr-id/id-to-doi-uri (:descendants funder-doc))
+                  (:uri funder-doc)))]
+    (-> (conf/get-service :solr)
+        (.query (query/->solr-query {:id ids}
+                                    :id-field solr-funder-id-field
+                                    :paged false
+                                    :count-only true))
+        (.getResults)
+        (.getNumFound))))
+
 (defn ->short-id [funder-doc]
   (-> (:uri funder-doc) (string/split #"/") (last)))
 
@@ -38,7 +50,8 @@
    :alt-names (:other_names_display funder-doc)
    :uri (:uri funder-doc)
    :tokens (:name_tokens funder-doc)
-   :work-count (get-solr-work-count funder-doc)})
+   :work-count (get-solr-work-count funder-doc)
+   :descendant-work-count (get-solr-descendant-work-count funder-doc)})
 
 (defn fetch-one [query-context]
   (let [query {:id (-> query-context
@@ -58,7 +71,7 @@
       (string/replace #"[,\.\-\'\"]" "")
       (string/split #"\s+")))
 
-(defn fetch 
+(defn fetch
   "Search for funders by name tokens. Results are sorted by level within organizational
    hierarchy."
   [query-context]
@@ -71,12 +84,23 @@
                (apply m/fetch "funders" mongo-query))]
     (r/api-response :funder-list :content (map ->response-doc docs))))
 
+(defn fetch-descendant-ids
+  "Get all descendant funder ids for a funder."
+  [query-context]
+  (m/with-mongo (conf/get-service :mongo)
+    (map fr-id/id-to-doi-uri
+         (-> "funders"
+             (m/fetch-one :where {:uri (:id query-context)})
+             (:descendants)))))
+
 (defn fetch-works 
   "Return all the works related to a funder and its sub-organizations."
   [query-context]
-  (let [doc-list (get-solr-works query-context)]
+  (let [descendant-ids (fetch-descendant-ids query-context)
+        descendant-query (update-in query-context [:id] #(vec (conj descendant-ids %)))
+        doc-list (get-solr-works descendant-query)]
     (-> (r/api-response :work-list)
-        (r/with-query-context-info query-context)
+        (r/with-query-context-info descendant-query)
         (r/with-result-items 
           (.getNumFound doc-list)
           (map citeproc/->citeproc doc-list)))))

@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.query
   (:require [cayenne.conf :as conf]
             [cayenne.util :as util :refer [?> ?>>]]
+            [cayenne.api.v1.filter :as filter]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -55,6 +56,10 @@
                     (vector (first xs) (string/join ":" (rest xs))))
                  filter-list)))))
 
+(defn get-selectors [params]
+  (when (get params :selector)
+    (string/split (get params :selector) #",")))
+
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
   (if-not (nil? (get-in resource-context [:request :body]))
     (let [json-body (-> resource-context 
@@ -66,12 +71,14 @@
        :terms (:query json-body)
        :offset (-> json-body (:offset) (parse-offset-val))
        :rows (-> json-body (:rows) (parse-rows-val))
+       :selectors (:selector json-body)
        :filters (:filter json-body)})
     {:id id
      :sample (-> resource-context (get-in [:request :params :sample]) (parse-sample-val))
      :terms (get-in resource-context [:request :params :query])
      :offset (-> resource-context (get-in [:request :params :offset]) (parse-offset-val))
      :rows (-> resource-context (get-in [:request :params :rows]) (parse-rows-val))
+     :selectors (get-selectors (get-in resource-context [:request :params]))
      :filters (get-filters (get-in resource-context [:request :params]))}))
 
 (defn clean-terms [terms] terms)
@@ -92,8 +99,14 @@
       (doto query
         (.setQuery "*:*")))
     (when id-field
-      (doto query
-        (.addFilterQuery (into-array String [(str id-field ":\"" (:id query-context) "\"")]))))
+      (let [ids (if (vector? (:id query-context))
+                  (:id query-context)
+                  [(:id query-context)])
+            fl-str (->> ids
+                        (map #(str id-field ":\"" % "\""))
+                        (apply filter/q-or))]
+        (.addFilterQuery query
+                         (into-array String [fl-str]))))
     (doseq [[filter-name filter-val] (:filters query-context)]
       (when (filters filter-name)
         (doto query

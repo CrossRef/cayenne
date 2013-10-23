@@ -87,6 +87,18 @@
 (defn equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val] (str field ":\"" (transformer val) "\"")))
 
+(defn compound [ordering]
+  (fn [m]
+    (->> ordering
+         (filter m)
+         (map #(str % ":\"" (get m %) "\"")) ; change
+         (q-and))))
+
+;; pass vars to compounds - map of sub key and vals
+;; fix above
+;; populate dynamic fields in solr.clj
+;; reindex
+
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
    "until-update-date" (stamp-date "deposited_at" :until)
@@ -97,8 +109,8 @@
    "has-references" (bool "references") ;in new index
    "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
-   "representation" (equality "full_text_type") ;in new index
+;   "full-text" (compound "full_text" ["type" "version"])
+;   "license" (compound "license" ["url" "version" "delay"])
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
-   "license" (equality "license_url") ;waiting for schema change
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
