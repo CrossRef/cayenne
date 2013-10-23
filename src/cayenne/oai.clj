@@ -57,8 +57,14 @@
   (second (re-find #"resumptionToken=\"([^\"]+)\"" body)))
 
 (declare grab-oai-xml-file-async)
+(declare grab-oai-retry-token)
+(declare grab-oai-retry-request)
 
-(defn grab-oai-xml-file [service from until count token task-fn]
+(def max-retry-window (* 60 60 24))
+
+(defn grab-oai-xml-file [service from until count token task-fn
+                         & {:keys [last-retry-window]
+                            :or {last-retry-window 10}}]
   (let [dir-name (str (or from "all") "-" (or until "all"))
         dir-path (file (:dir service) dir-name)
         file-name (str count "-" (or token "no-token") ".xml")
@@ -76,14 +82,49 @@
                                            :throw-exceptions false
                                            :connection-manager conn-mgr})]
       (if (not (client/success? resp))
-        (throw (Exception. (str "Bad response from OAI server: " (:status resp))))
+        (cond
+         (< last-retry-window max-retry-window)
+         (do
+           (grab-oai-retry-token service from until count token task-fn last-retry-window)
+           (throw (Exception. (str "Bad response from OAI server: " (:status resp)))))
+         :else
+         (do 
+           (grab-oai-retry-request service from until task-fn)
+           (throw (Exception. (str "Bad response from OAI server: " (:status resp))))))
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
           (when (:parser service)
             (process-oai-xml-file (:parser service) task-fn xml-file (:split service)))
           (when-let [token (resumption-token (:body resp))]
-            (recur service from until (inc count) token task-fn)))))))
+            (recur service from until (inc count) token task-fn '())))))))
+
+(defn grab-oai-retry-request [service from until task-fn]
+  (let [job-func #(grab-oai-xml-file service from until 0 nil task-fn)
+        job (make-oai-job :download job-func)
+        job-meta {:service service
+                  :from from
+                  :until until 
+                  :resumption-token nil}]
+    (error 
+     (str "Retrying resumption token download failed for longer than a day."
+          "Skipping for a day. "
+          job-meta))
+    (job/put-job job-meta job :delay (* 60 60 24))))
+
+(defn grab-oai-retry-token [service from until count token task-fn last-retry-window]
+  (let [delay (* 2 last-retry-window)
+        job-func #(grab-oai-xml-file service from until count token task-fn
+                                     :last-retry-window delay)
+        job (make-oai-job :download job-func)
+        job-meta {:service service
+                  :from from
+                  :until until 
+                  :resumption-token token}]
+    (error
+     (str "Retrying a failed resumption token download in " delay " seconds. "
+          job-meta))
+    (job/put-job job-meta job :delay delay)))
 
 (defn grab-oai-xml-file-async [service from until count token task-fn]
   (let [job-func #(grab-oai-xml-file service from until count token task-fn)

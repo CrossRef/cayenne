@@ -1,5 +1,5 @@
 (ns cayenne.job
-  (:import [java.util.concurrent Executors])
+  (:import [java.util.concurrent Executors TimeUnit])
   (:import [java.util UUID])
   (:use [clojure.core.incubator])
   (:require [cayenne.conf :as conf]
@@ -14,6 +14,9 @@
     (.. Runtime getRuntime availableProcessors)
     (+ 2)
     (* processing-mul))))
+
+(def scheduled-pool
+  (Executors/newScheduledThreadPool 4))
 
 (def job-id->future (atom {}))
 
@@ -39,7 +42,7 @@
   (when-let [job-future (get @job-id->future job-id)]
     (.cancel job-future)))
 
-(defn put-job [meta job]
+(defn put-job [meta job & {:keys [delay] :or {delay nil}}]
   (let [id (.toString (UUID/randomUUID))
         job-fn (fn []
                  (try
@@ -52,6 +55,8 @@
                      ((:exception-handler job) job meta e)))
                  (forget-job id))]
     (counters/inc! waiting)
-    (swap! job-id->future assoc id (.submit processing-pool job-fn))
+    (if delay
+      (swap! job-id->future assoc id (.schedule scheduled-pool job-fn delay TimeUnit/SECONDS))
+      (swap! job-id->future assoc id (.submit processing-pool job-fn)))
     id))
 
