@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.filter
-  (:require [clojure.string :as string]
+  (:require [clj-time.core :as dt]
+            [clojure.string :as string]
             [cayenne.ids.fundref :as fundref]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.orcid :as orcid]))
@@ -47,9 +48,21 @@
      :month (Integer/parseInt (nth date-parts 1 "-1"))
      :day (Integer/parseInt (nth date-parts 2 "-1"))}))
 
+(defn obj-date [date-str]
+  (let [date-parts (split-date date-str)]
+    (cond (not= (:day date-parts) -1)
+          (dt/date-time (:year date-parts) (:month date-parts) (:day date-parts))
+          (not= (:month date-parts) -1)
+          (dt/date-time (:year date-parts) (:month date-parts))
+          :else
+          (dt/date-time (:year date-parts)))))
+        
 (defn stamp-date [date-stamp-field direction]
   (fn [val]
-    ()))
+    (let [d (obj-date val)]
+      (if (= direction :from)
+        (str date-stamp-field ":[" d " TO *]")
+        (str date-stamp-field ":[* TO " d "]")))))
 
 (defn particle-date [year-field month-field day-field end-point]
   (fn [val]
