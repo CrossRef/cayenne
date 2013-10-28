@@ -78,10 +78,11 @@
                      (?> from assoc "from" from)
                      (?> until assoc "until" until)))]
     (let [conn-mgr (conf/get-service :conn-mgr)
-          resp (client/get (:url service) {:query-params params
-                                           :throw-exceptions false
-                                           :connection-manager conn-mgr})]
-      (if (not (client/success? resp))
+          resp (try (client/get (:url service) {:query-params params
+                                                :throw-exceptions false
+                                                :connection-manager conn-mgr})
+                    (catch Exception e nil))]
+      (if (or (nil? resp) (not (client/success? resp)))
         (cond
          (< last-retry-window max-retry-window)
          (do
