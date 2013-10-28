@@ -81,17 +81,18 @@
           resp (try (client/get (:url service) {:query-params params
                                                 :throw-exceptions false
                                                 :connection-manager conn-mgr})
-                    (catch Exception e nil))]
-      (if (or (nil? resp) (not (client/success? resp)))
-        (cond
-         (< last-retry-window max-retry-window)
-         (do
-           (grab-oai-retry-token service from until count token task-fn last-retry-window)
-           (throw (Exception. (str "Bad response from OAI server: " (:status resp)))))
-         :else
-         (do 
-           (grab-oai-retry-request service from until task-fn)
-           (throw (Exception. (str "Bad response from OAI server: " (:status resp))))))
+                    (catch Exception e {:exception e}))]
+      (if (or (:exception resp) (not (client/success? resp)))
+        (let [err (or (:exception resp) (:status resp))]
+          (cond
+           (< last-retry-window max-retry-window)
+           (do
+             (grab-oai-retry-token service from until count token task-fn last-retry-window)
+             (throw (Exception. (str "Bad response from OAI server: " err))))
+           :else
+           (do 
+             (grab-oai-retry-request service from until task-fn)
+             (throw (Exception. (str "Bad response from OAI server: " err))))))
         (do
           (.mkdirs dir-path)
           (spit xml-file (:body resp))
