@@ -81,7 +81,7 @@
              (q-and (field-is year-field (:year d))
                     (field-lte-or-gte month-field (:month d) end-point)))
             (:year d)
-             (field-lte-or-gte year-field (:year d) end-point)))))
+            (field-lte-or-gte year-field (:year d) end-point)))))
 
 (defn existence [field]
   (fn [val]
@@ -115,6 +115,10 @@
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
    "until-update-date" (stamp-date "deposited_at" :until)
+   "from-index-date" (stamp-date "indexed_at" :from)
+   "until-index-date" (stamp-date "indexed_at" :until)
+   "from-deposit-date" (stamp-date "deposited_at" :from)
+   "until-deposit-date" (stamp-date "deposited_at" :until)
    "from-pub-date" (particle-date "year" "month" "day" :from)
    "until-pub-date" (particle-date "year" "month" "day" :until)
    "has-full-text" (existence "full_text_url") ;in new index

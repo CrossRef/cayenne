@@ -48,13 +48,18 @@
    :else
    (max 0 val)))
     
-(defn get-filters [params]
+(defn get-filters 
+  "Turns a filter value string such as a.b:val,c:val2 into
+   a map representation, such as {\"a\" {\"b\" val} \"c\" val2}."
+  [params]
   (when (get params :filter)
-    (into {}
-          (let [filter-list (string/split (get params :filter) #",")]
-            (map #(let [xs (string/split % #":")]
-                    (vector (first xs) (string/join ":" (rest xs))))
-                 filter-list)))))
+    (->> (string/split (get params :filter) #",")
+         (map #(let [parts (string/split % #":")
+                     k (first parts)
+                     val (string/join ":" (rest parts))
+                     path (string/split k #"\.")]
+                 [path val]))
+         (reduce #(assoc-in % path val) {}))))
 
 (defn get-selectors [params]
   (when (get params :selector)
