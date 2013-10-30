@@ -8,6 +8,7 @@
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
             [cayenne.ids :as ids]
+            [cayenne.util :as util]
             [metrics.gauges :refer [defgauge] :as gauge]
             [taoensso.timbre :as timbre :refer [error info]]))
 
@@ -213,6 +214,27 @@
                  "")))]
     (string/join " | " (for [[k v] (as-grant-map item)] (funder-info k v)))))
 
+(defn as-license-compound [license pub-date]
+  (let [license-delay (->license-delay pub-date license)
+        license-uri (util/simplify-uri (:value license))
+        license-version (:content-version license)]
+    {(str "license_version_to_delay_" license-version) [license-delay]
+     (str "license_url_to_delay_" license-uri) [license-delay]
+     (str "license_url_to_version_" license-uri) [license-version]
+     (str "license_url_and_version_to_delay_" license-uri license-version) [license-delay]}))
+
+(defn as-full-text-compound [full-text-resource]
+  {(str "full_text_type_to_version_" (:content-type full-text-resource))
+   [(:content-version full-text-resource)]})
+
+(defn as-license-compounds [licenses pub-date]
+  (let [compounds (map as-license-compound licenses (repeat pub-date))]
+    (apply merge-with #(concat %1 %2) compounds)))
+
+(defn as-full-text-compounds [full-text-resources]
+  (let [compounds (map as-full-text-compound full-text-resources)]
+    (apply merge-with #(concat %1 %2) compounds)))
+
 (defn as-solr-document [item]
   (let [grant-map (as-grant-map item)
         licenses (as-license-list item)
@@ -226,62 +248,64 @@
         deposit-date (first (get-tree-rel item :deposited))
         contrib-details (get-contributor-details item)
         doi (first (get-item-ids item :long-doi))]
-    {"source" (:source item)
-     "indexed_at" (t/now)
-     "deposited_at" (if deposit-date (as-datetime deposit-date) (t/now))
-     "prefix" (doi/extract-long-prefix doi)
-     "doi_key" doi
-     "doi" doi
-     "issn" (get-tree-ids item :issn)
-     "isbn" (get-tree-ids item :isbn)
-     "supplementary_id" (get-tree-ids item :supplementary)
-     "orcid" (get-contributor-orcids item)
-     "category" (get-categories item)
-     "funder_name" funder-names
-     "funder_doi" funder-dois
-     "type" (subtype-labels (get-item-subtype item))
-     "first_author_given" (:first-name primary-author)
-     "first_author_surname" (:last-name primary-author)
-     "content" (as-solr-content-field item)
-     "content_citation" (as-solr-citation-field item)
-     "publication" container-titles
-     "oa_status" (get-oa-status item)
-     "hl_publication" container-titles
-     "year" (:year pub-date)
-     "month" (:month pub-date)
-     "day" (:day pub-date)
-     "contributor_given_name" (map :given-name contrib-details)
-     "contributor_family_name" (map :family-name contrib-details)
-     "contributor_suffix" (map :suffix contrib-details)
-     "contributor_orcid" (map :orcid contrib-details)
-     "contributor_type" (map :type contrib-details)
-     "hl_description" (:description item)
-     "hl_year" (:year pub-date)
-     "hl_authors" (get-contributor-names item :author)
-     "hl_editors" (get-contributor-names item :editor)
-     "hl_chairs" (get-contributor-names item :chair)
-     "hl_translators" (get-contributor-names item :translator)
-     "hl_contributors" (get-contributor-names item :contributor)
-     "hl_first_page" (:first-page item)
-     "hl_last_page" (:last-page item)
-     "hl_funder_name" funder-names
-     "hl_grant" (as-solr-grant-info-field item)
-     "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
-     "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
-     "hl_title" (map :value (get-item-rel item :title))
-     "archive" nil ;later
-     "license_url" (map :value licenses)
-     "license_version" (map :content-version licenses)
-     "license_start" (map ->license-start-date licenses (repeat pub-date))
-     "license_delay" (map ->license-delay licenses)
-     "references" false ;now
-     "cited_by_count" 0 ;now
-     "full_text_type" (map :content-type full-text-resources)
-     "full_text_url" (map :value full-text-resources)
-     "full_text_version" (map :content-version full-text-resources)
-     "publisher" (:name publisher)
-     "hl_publisher" (:name publisher)
-     "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}))
+    (-> {"source" (:source item)
+         "indexed_at" (t/now)
+         "deposited_at" (if deposit-date (as-datetime deposit-date) (t/now))
+         "prefix" (doi/extract-long-prefix doi)
+         "doi_key" doi
+         "doi" doi
+         "issn" (get-tree-ids item :issn)
+         "isbn" (get-tree-ids item :isbn)
+         "supplementary_id" (get-tree-ids item :supplementary)
+         "orcid" (get-contributor-orcids item)
+         "category" (get-categories item)
+         "funder_name" funder-names
+         "funder_doi" funder-dois
+         "type" (subtype-labels (get-item-subtype item))
+         "first_author_given" (:first-name primary-author)
+         "first_author_surname" (:last-name primary-author)
+         "content" (as-solr-content-field item)
+         "content_citation" (as-solr-citation-field item)
+         "publication" container-titles
+         "oa_status" (get-oa-status item)
+         "hl_publication" container-titles
+         "year" (:year pub-date)
+         "month" (:month pub-date)
+         "day" (:day pub-date)
+         "contributor_given_name" (map :given-name contrib-details)
+         "contributor_family_name" (map :family-name contrib-details)
+         "contributor_suffix" (map :suffix contrib-details)
+         "contributor_orcid" (map :orcid contrib-details)
+         "contributor_type" (map :type contrib-details)
+         "hl_description" (:description item)
+         "hl_year" (:year pub-date)
+         "hl_authors" (get-contributor-names item :author)
+         "hl_editors" (get-contributor-names item :editor)
+         "hl_chairs" (get-contributor-names item :chair)
+         "hl_translators" (get-contributor-names item :translator)
+         "hl_contributors" (get-contributor-names item :contributor)
+         "hl_first_page" (:first-page item)
+         "hl_last_page" (:last-page item)
+         "hl_funder_name" funder-names
+         "hl_grant" (as-solr-grant-info-field item)
+         "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
+         "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
+         "hl_title" (map :value (get-item-rel item :title))
+         "archive" nil ;later
+         "license_url" (map :value licenses)
+         "license_version" (map :content-version licenses)
+         "license_start" (map ->license-start-date licenses (repeat pub-date))
+         "license_delay" (map ->license-delay licenses)
+         "references" false ;now
+         "cited_by_count" 0 ;now
+         "full_text_type" (map :content-type full-text-resources)
+         "full_text_url" (map :value full-text-resources)
+         "full_text_version" (map :content-version full-text-resources)
+         "publisher" (:name publisher)
+         "hl_publisher" (:name publisher)
+         "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}
+        (merge (as-license-compounds licenses pub-date))
+        (merge (as-full-text-compounds full-text-resources)))))
 
 ;; TODO missing - license_version, full_text_version
 

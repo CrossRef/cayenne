@@ -59,7 +59,7 @@
                      val (string/join ":" (rest parts))
                      path (string/split k #"\.")]
                  [path val]))
-         (reduce #(assoc-in % path val) {}))))
+         (reduce (fn [m [path val]] (assoc-in m path val)) {}))))
 
 (defn get-selectors [params]
   (when (get params :selector)
