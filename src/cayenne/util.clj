@@ -100,7 +100,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc
 
-(defn simplyfy-name [name]
+(defn simplify-name [name]
   (-> (.toLowerCase name)
       (.trim)
       (.replaceAll "," "")
@@ -110,4 +110,7 @@
       (.replaceAll "-" "")))
 
 (defn tokenize-name [name]
-  (string/split (simplyfy-name name) #"\s+"))
+  (string/split (simplify-name name) #"\s+"))
+
+(defn simplify-uri [uri]
+  (string/replace uri #"[^a-zA-Z0-9]" "_"))
