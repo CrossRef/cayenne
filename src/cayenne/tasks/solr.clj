@@ -218,13 +218,13 @@
   (let [license-delay (->license-delay pub-date license)
         license-uri (util/simplify-uri (:value license))
         license-version (:content-version license)]
-    {(str "license_version_to_delay_" license-version) [license-delay]
-     (str "license_url_to_delay_" license-uri) [license-delay]
-     (str "license_url_to_version_" license-uri) [license-version]
-     (str "license_url_and_version_to_delay_" license-uri license-version) [license-delay]}))
+    {(str "license_version_delay_" license-version) [license-delay]
+     (str "license_url_delay_" license-uri) [license-delay]
+     (str "license_url_version_" license-uri) [license-version]
+     (str "license_url_version_delay_" license-uri "_" license-version) [license-delay]}))
 
 (defn as-full-text-compound [full-text-resource]
-  {(str "full_text_type_to_version_" (:content-type full-text-resource))
+  {(str "full_text_type_version_" (:content-type full-text-resource))
    [(:content-version full-text-resource)]})
 
 (defn as-license-compounds [licenses pub-date]

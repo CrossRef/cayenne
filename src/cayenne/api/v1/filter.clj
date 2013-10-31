@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.filter
   (:require [clj-time.core :as dt]
             [clojure.string :as string]
+            [cayenne.util :as util]
             [cayenne.ids.fundref :as fundref]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.orcid :as orcid]))
@@ -100,17 +101,24 @@
 (defn equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val] (str field ":\"" (transformer val) "\"")))
 
-(defn compound [ordering]
+(defn compound [prefix ordering & {:keys [transformers matchers] 
+                                   :or {transformers {} matchers {}}}]
   (fn [m]
-    (->> ordering
-         (filter m)
-         (map #(str % ":\"" (get m %) "\"")) ; change
-         (q-and))))
-
-;; pass vars to compounds - map of sub key and vals
-;; fix above
-;; populate dynamic fields in solr.clj
-;; reindex
+    (let [field-names (filter m ordering)
+          field-name-parts (butlast field-names)
+          value-name-part (last field-names)]
+      (str prefix 
+           "_"
+           (apply str (interpose "_" field-names))
+           (when (not (empty? field-name-parts)) "_")
+           (apply str (->> field-name-parts
+                           (map #(if (transformers %)
+                                   ((transformers %) (get m %))
+                                   (get m %)))
+                           (interpose "_")))
+           (if (matchers value-name-part)
+             ((matchers value-name-part) (get m value-name-part))
+             (str ":\"" (get m value-name-part) "\""))))))
 
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
@@ -126,8 +134,10 @@
    "has-references" (bool "references") ;in new index
    "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
-;   "full-text" (compound "full_text" ["type" "version"])
-;   "license" (compound "license" ["url" "version" "delay"])
+   "full-text" (compound "full_text" ["type" "version"])
+   "license" (compound "license" ["url" "version" "delay"] 
+                       :transformers {"url" util/simplify-uri}
+                       :matchers {"delay" #(str ":\"[* TO " % "]")})
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
