@@ -134,9 +134,10 @@
    "has-references" (bool "references") ;in new index
    "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
-   "full-text" (compound "full_text" ["type" "version"])
+   "full-text" (compound "full_text" ["type" "version"]
+                         :transformers {"type" util/slugify})
    "license" (compound "license" ["url" "version" "delay"] 
-                       :transformers {"url" util/simplify-uri}
+                       :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":\"[* TO " % "]")})
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index

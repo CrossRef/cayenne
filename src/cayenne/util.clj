@@ -112,5 +112,5 @@
 (defn tokenize-name [name]
   (string/split (simplify-name name) #"\s+"))
 
-(defn simplify-uri [uri]
+(defn slugify [uri]
   (string/replace uri #"[^a-zA-Z0-9]" "_"))
