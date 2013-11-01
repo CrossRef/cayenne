@@ -193,9 +193,12 @@
           (t/date-time (:year converted-date)))))
 
 (defn as-day-diff [left-particle-date right-particle-date]
-  (-> (t/interval (as-datetime left-particle-date) 
-                  (as-datetime right-particle-date))
-      (t/in-days)))
+  (let [left (as-datetime left-particle-date)
+        right (as-datetime right-particle-date)]
+    (if (t/after? left right)
+      0
+      (-> (t/interval left right)
+          (t/in-days)))))
 
 (defn ->license-start-date [license pub-date]
   (if-let [start-date (first (get-item-rel license :start))]
