@@ -136,7 +136,7 @@
    "has-orcid" (existence "orcid")
    "full-text" (compound "full_text" ["type" "version"]
                          :transformers {"type" util/slugify})
-   "license" (compound "license" ["url" "version" "delay"] 
+   "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":\"[* TO " % "]")})
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)

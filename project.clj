@@ -7,7 +7,8 @@
   :main cayenne.main
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
-  :dependencies [[xml-apis "1.4.01"]
+  :dependencies [[org.clojure/clojure "1.5.1"]
+                 [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
                  [com.taoensso/timbre "2.1.2"]
@@ -24,7 +25,6 @@
                  [clj-http "0.7.2"]
                  [clj-time "0.6.0"]
                  [org.clojure/core.incubator "0.1.2"]
-                 [org.clojure/clojure "1.4.0"]
                  [org.clojure/data.json "0.2.0"]
                  [org.clojure/data.csv "0.1.2"]
                  [org.clojure/tools.trace "0.7.5"]

@@ -108,7 +108,7 @@
   [item type]
   (let [contributors (filter #(= (get-item-type %) :person) 
                              (get-item-rel item type))]
-    (map as-details contributors)))
+    (map as-details contributors (repeat type))))
 
 (defn get-contributor-details [item]
   (concat
@@ -179,15 +179,18 @@
          licenses)))
 
 (defn as-datetime [particle-date]
-  (cond (:day particle-date)
-        (t/date-time (:year particle-date)
-                     (:month particle-date)
-                     (:day particle-date))
-        (:month particle-date)
-        (t/date-time (:year particle-date)
-                     (:month particle-date))
-        :else
-        (t/date-time (:year particle-date))))
+  (let [converted-date {:year (util/parse-int-safe (:year particle-date))
+                       :month (util/parse-int-safe (:month particle-date))
+                       :day (util/parse-int-safe (:day particle-date))}]
+    (cond (:day converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date))
+          (:month converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date))
+          :else
+          (t/date-time (:year converted-date)))))
 
 (defn as-day-diff [left-particle-date right-particle-date]
   (-> (t/interval (as-datetime left-particle-date) 
@@ -199,7 +202,7 @@
     (as-datetime start-date)
     (as-datetime pub-date)))
 
-(defn ->license-delay [pub-date license]
+(defn ->license-delay [license pub-date]
   (if-let [start-date (first (get-item-rel license :start))]
     (as-day-diff pub-date start-date)
     0))
@@ -215,7 +218,7 @@
     (string/join " | " (for [[k v] (as-grant-map item)] (funder-info k v)))))
 
 (defn as-license-compound [license pub-date]
-  (let [license-delay (->license-delay pub-date license)
+  (let [license-delay (->license-delay license pub-date)
         license-uri (util/slugify (:value license))
         license-version (:content-version license)]
     {(str "license_version_delay_" license-version) [license-delay]
@@ -296,7 +299,7 @@
          "license_url" (map :value licenses)
          "license_version" (map :content-version licenses)
          "license_start" (map ->license-start-date licenses (repeat pub-date))
-         "license_delay" (map ->license-delay licenses)
+         "license_delay" (map ->license-delay licenses (repeat pub-date))
          "references" false ;now
          "cited_by_count" 0 ;now
          "full_text_type" (map :content-type full-text-resources)
@@ -307,8 +310,6 @@
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))
-
-;; TODO missing - license_version, full_text_version
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument.)]

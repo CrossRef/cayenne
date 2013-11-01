@@ -95,7 +95,14 @@
 ;; Parse utils
 
 (defn parse-int [s]
-  (Integer. (re-find #"\d+" s)))
+  (if (number? s)
+    s
+    (Integer. (re-find #"\d+" s))))
+
+(defn parse-int-safe [s]
+  (if (number? s)
+    s
+    (try (Integer. (re-find #"\d+" s)) (catch Exception e nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc

@@ -215,7 +215,7 @@
   {:type :url
    :content-version (or (xml/xselect1 coll-item-loc "resource" ["content_version"])
                         "unspecified")
-   :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "*/*")
+   :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "unspecified")
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
 (defn parse-collection [with-attribute item-loc]
@@ -494,7 +494,8 @@
 (defn parse-license-start-date [license-loc]
   (if-let [raw-date (xml/xselect1 license-loc ["start_date"])]
     (let [d (ftime/parse license-date-formatter raw-date)]
-      {:year (t/year d)
+      {:type :date
+       :year (t/year d)
        :month (t/month d)
        :day (t/day d)})))
 
