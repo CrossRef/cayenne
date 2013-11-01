@@ -138,7 +138,7 @@
                          :transformers {"type" util/slugify})
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
-                       :matchers {"delay" #(str ":\"[* TO " % "]")})
+                       :matchers {"delay" #(str ":[* TO " % "]")})
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
