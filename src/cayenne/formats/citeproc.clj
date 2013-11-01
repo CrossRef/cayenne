@@ -62,12 +62,6 @@
        (get solr-doc "full_text_type")
        (get solr-doc "full_text_version")))
 
-(defn ->citeproc-links [solr-doc]
-  (map #(hash-map :URL %) (get solr-doc "full_text_url")))
-
-(defn ->citeproc-licenses [solr-doc]
-  (map #(hash-map :URL %) (get solr-doc "license_url")))
-
 (defn ->citeproc-pages [solr-doc]
   (let [first-page (get solr-doc "hl_first_page")
         last-page (get solr-doc "hl_last_page")]
@@ -79,7 +73,7 @@
           :else
           nil)))
 
-(defn ->structured-contribs [solr-doc]
+(defn ->citeproc-contribs [solr-doc]
   (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
           {}
           (map #(hash-map :type %1 :ORCID %2 :suffix %3 :given %4 :family %5)
@@ -88,6 +82,9 @@
                (get solr-doc "contributor_suffix")
                (get solr-doc "contributor_given_name")
                (get solr-doc "contributor_family_name"))))
+
+(defn ->citeproc-funders [solr-doc]
+  (map #(hash-map :DOI (doi-id/extract-long-doi %)) (get solr-doc "funder_doi")))
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
@@ -113,4 +110,5 @@
       (?> :license (->citeproc-licenses solr-doc))
       (?> :link (->citeproc-links solr-doc))
       (?> :page (->citeproc-pages solr-doc))
-      (merge (->structured-contribs solr-doc))))
+      (?> :funder (->citeproc-funders solr-doc))
+      (merge (->citeproc-contribs solr-doc))))
