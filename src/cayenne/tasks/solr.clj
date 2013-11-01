@@ -16,7 +16,11 @@
 
 (def insert-count (agent 0))
 
-(set-error-handler! insert-count (fn [agt ex] (error (str "Solr agent failed:" ex))))
+(set-error-handler! 
+ insert-count 
+ (fn [agt ex] 
+   (error (str "Solr agent failed:" ex))
+   (restart-agent insert-count)))
 
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
@@ -203,9 +207,11 @@
           (t/in-days)))))
 
 (defn ->license-start-date [license pub-date]
-  (if-let [start-date (first (get-item-rel license :start))]
-    (as-datetime start-date)
-    (as-datetime pub-date)))
+  (let [start-date (first (get-item-rel license :start))]
+    (cond (not (nil? start-date))
+          (as-datetime start-date)
+          (not (nil? pub-date))
+          (as-datetime pub-date))))
 
 (defn ->license-delay [license pub-date]
   (if-let [start-date (first (get-item-rel license :start))]
