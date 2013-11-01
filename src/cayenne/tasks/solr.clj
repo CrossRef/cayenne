@@ -16,6 +16,8 @@
 
 (def insert-count (agent 0))
 
+(set-error-handler! insert-count (fn [agt ex] (error (str "Solr agent failed:" ex))))
+
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
 
