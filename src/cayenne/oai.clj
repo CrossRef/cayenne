@@ -100,7 +100,7 @@
             (process-oai-xml-file (:parser service) task-fn xml-file (:split service)))
           (when-let [token (resumption-token (:body resp))]
             (recur service from until (inc count) token task-fn 
-                   '(:last-retry-window last-retry-window))))))))
+                   (seq [:last-retry-window last-retry-window]))))))))
 
 (defn grab-oai-retry-request [service from until task-fn]
   (let [job-func #(grab-oai-xml-file service from until 0 nil task-fn)
