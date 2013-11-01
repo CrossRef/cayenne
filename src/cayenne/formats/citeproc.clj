@@ -73,10 +73,20 @@
           :else
           nil)))
 
+(defn contrib 
+  "Drop placeholders indicating missing data."
+  [type orcid suffix given family]
+  (-> {}
+      (?> (not= type "-") assoc :type type)
+      (?> (not= orcid "-") assoc :ORCID orcid)
+      (?> (not= suffix "-") assoc :suffix orcid)
+      (?> (not= given "-") assoc :given orcid)
+      (?> (not= family "-") assoc :family orcid)))
+
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
           {}
-          (map #(hash-map :type %1 :ORCID %2 :suffix %3 :given %4 :family %5)
+          (map contrib
                (get solr-doc "contributor_type")
                (get solr-doc "contributor_orcid")
                (get solr-doc "contributor_suffix")

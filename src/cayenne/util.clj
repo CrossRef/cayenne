@@ -121,3 +121,12 @@
 
 (defn slugify [uri]
   (string/replace uri #"[^a-zA-Z0-9]" "_"))
+
+(defn ?- 
+  "Return a fn that tries to take k out of a map, or returns
+   a placeholder string is missing."
+  [k]
+  (fn [m]
+    (if-let [v (get m k)]
+      v
+      "-")))
