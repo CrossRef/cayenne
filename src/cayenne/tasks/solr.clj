@@ -305,7 +305,12 @@
          "hl_grant" (as-solr-grant-info-field item)
          "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
          "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
-         "hl_title" (map :value (get-item-rel item :title))
+         "hl_title" (->> (get-item-rel item :title)
+                         (filter #(not= (:subtype %) :secondary))
+                         (map :value))
+         "hl_subtitle" (->> (get-item-rel item :title)
+                            (filter #(= (:subtype %) :secondary))
+                            (map :value))
          "archive" nil ;later
          "license_url" (map (util/?- :value) licenses)
          "license_version" (map (util/?- :content-version) licenses)
