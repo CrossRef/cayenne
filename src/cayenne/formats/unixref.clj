@@ -210,11 +210,11 @@
 ;; Resources
 
 (defn parse-collection-item 
-  "Returns a resource link. :content-version can be any of tdm, vor, am or unspecified."
+  "Returns a resource link. :content-version can be any of tdm, vor, am."
   [coll-item-loc]
   {:type :url
    :content-version (or (xml/xselect1 coll-item-loc "resource" ["content_version"])
-                        "unspecified")
+                        "vor")
    :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "unspecified")
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
@@ -503,7 +503,7 @@
   "Returns a license. :content-version can be any of tdm, vor, am or unspecified."
   [license-loc]
   (-> {:type :url
-       :content-version (or (xml/xselect1 license-loc ["applies_to"]) "unspecified")
+       :content-version (or (xml/xselect1 license-loc ["applies_to"]) "vor")
        :value (xml/xselect1 license-loc :text)}
       (parse-attach :start license-loc :single parse-license-start-date)))
 
