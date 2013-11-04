@@ -3,6 +3,7 @@
             [clj-time.core :as dt]
             [clj-time.coerce :as dc]
             [clojure.string :as string]
+            [cayenne.util :as util]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.isbn :as isbn-id]))
@@ -76,12 +77,17 @@
 (defn contrib 
   "Drop placeholders indicating missing data."
   [type orcid suffix given family]
-  (-> {}
-      (?> (not= type "-") (assoc :type type))
-      (?> (not= orcid "-") (assoc :ORCID orcid))
-      (?> (not= suffix "-") (assoc :suffix orcid))
-      (?> (not= given "-") (assoc :given orcid))
-      (?> (not= family "-") (assoc :family orcid))))
+  (let [has-type? (not= type "-")
+        has-orcid? (not= orcid "-")
+        has-suffix? (not= suffix "-")
+        has-given? (not= given "-")
+        has-family? (not= family "-")]
+    (-> {}
+        (util/?> has-type? assoc :type type)
+        (util/?> has-orcid? assoc :ORCID orcid)
+        (util/?> has-suffix? assoc :suffix suffix)
+        (util/?> has-given? assoc :given given)
+        (util/?> has-family? assoc :family family))))
 
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
