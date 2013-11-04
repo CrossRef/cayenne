@@ -77,11 +77,11 @@
   "Drop placeholders indicating missing data."
   [type orcid suffix given family]
   (-> {}
-      (?> (not= type "-") assoc :type type)
-      (?> (not= orcid "-") assoc :ORCID orcid)
-      (?> (not= suffix "-") assoc :suffix orcid)
-      (?> (not= given "-") assoc :given orcid)
-      (?> (not= family "-") assoc :family orcid)))
+      (?> (not= type "-") (assoc :type type))
+      (?> (not= orcid "-") (assoc :ORCID orcid))
+      (?> (not= suffix "-") (assoc :suffix orcid))
+      (?> (not= given "-") (assoc :given orcid))
+      (?> (not= family "-") (assoc :family orcid))))
 
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
