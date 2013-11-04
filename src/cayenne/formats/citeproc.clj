@@ -90,7 +90,8 @@
         (util/?> has-family? assoc :family family))))
 
 (defn ->citeproc-contribs [solr-doc]
-  (reduce #(conj %1 {(get %2 :type) (dissoc %2 :type)})
+  (reduce #(let [t (get %2 :type)]
+             (assoc %1 t (conj (or (get %1 t) []) %2)))
           {}
           (map contrib
                (get solr-doc "contributor_type")
