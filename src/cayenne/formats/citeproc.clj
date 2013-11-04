@@ -121,6 +121,7 @@
       (?> :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
       (?> :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
       (?> :title (set (get solr-doc "hl_title")))
+      (?> :subtitle (set (get solr-doc "hl_subtitle")))
       (?> :container-title (set (get solr-doc "hl_publication")))
       (?> :subject (get solr-doc "category"))
       (?> :archive (get solr-doc "archive"))
