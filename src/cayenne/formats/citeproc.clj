@@ -12,7 +12,10 @@
 ;; needs a rewrite since this differs from other formats which
 ;; go to/from item trees.
 
-(defn ?> [m key value]
+(defn assoc-exists 
+  "Like assoc except only performs the assoc if value is
+   a non-empty string, non-empty list or a non-nil value."
+  [m key value]
   (cond (= (type value) java.lang.String)
         (if (clojure.string/blank? value)
           m
@@ -41,9 +44,9 @@
         
 (defn license [url start-date delay-in-days content-version]
   (-> {:URL url}
-      (?> :start (->date-parts start-date))
-      (?> :delay-in-days delay-in-days)
-      (?> :content-version content-version)))
+      (assoc-exists :start (->date-parts start-date))
+      (assoc-exists :delay-in-days delay-in-days)
+      (assoc-exists :content-version content-version)))
 
 (defn ->citeproc-licenses [solr-doc]
   (map license
@@ -54,8 +57,8 @@
 
 (defn link [url content-type content-version]
   (-> {:URL url}
-      (?> :content-type content-type)
-      (?> :content-version content-version)))
+      (assoc-exists :content-type content-type)
+      (assoc-exists :content-version content-version)))
 
 (defn ->citeproc-links [solr-doc]
   (map link
@@ -116,17 +119,17 @@
        :publisher (get solr-doc "publisher")
        :type (get solr-doc "type")
        :score (get solr-doc "score")}
-      (?> :volume (get solr-doc "hl_volume"))
-      (?> :issue (get solr-doc "hl_issue"))
-      (?> :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
-      (?> :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
-      (?> :title (set (get solr-doc "hl_title")))
-      (?> :subtitle (set (get solr-doc "hl_subtitle")))
-      (?> :container-title (set (get solr-doc "hl_publication")))
-      (?> :subject (get solr-doc "category"))
-      (?> :archive (get solr-doc "archive"))
-      (?> :license (->citeproc-licenses solr-doc))
-      (?> :link (->citeproc-links solr-doc))
-      (?> :page (->citeproc-pages solr-doc))
-      (?> :funder (->citeproc-funders solr-doc))
+      (assoc-exists :volume (get solr-doc "hl_volume"))
+      (assoc-exists :issue (get solr-doc "hl_issue"))
+      (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
+      (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
+      (assoc-exists :title (set (get solr-doc "hl_title")))
+      (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
+      (assoc-exists :container-title (set (get solr-doc "hl_publication")))
+      (assoc-exists :subject (get solr-doc "category"))
+      (assoc-exists :archive (get solr-doc "archive"))
+      (assoc-exists :license (->citeproc-licenses solr-doc))
+      (assoc-exists :link (->citeproc-links solr-doc))
+      (assoc-exists :page (->citeproc-pages solr-doc))
+      (assoc-exists :funder (->citeproc-funders solr-doc))
       (merge (->citeproc-contribs solr-doc))))
