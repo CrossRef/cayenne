@@ -62,9 +62,11 @@
 
 (def max-retry-window (* 60 60 24))
 
+(def starting-retry-window 10)
+
 (defn grab-oai-xml-file [service from until count token task-fn
                          & {:keys [last-retry-window]
-                            :or {last-retry-window 10}}]
+                            :or {last-retry-window starting-retry-window}}]
   (let [dir-name (str (or from "all") "-" (or until "all"))
         dir-path (file (:dir service) dir-name)
         file-name (str count "-" (or token "no-token") ".xml")
@@ -100,7 +102,7 @@
             (process-oai-xml-file (:parser service) task-fn xml-file (:split service)))
           (when-let [token (resumption-token (:body resp))]
             (recur service from until (inc count) token task-fn 
-                   (seq [:last-retry-window last-retry-window]))))))))
+                   (seq [:last-retry-window starting-retry-window]))))))))
 
 (defn grab-oai-retry-request [service from until task-fn]
   (let [job-func #(grab-oai-xml-file service from until 0 nil task-fn)
