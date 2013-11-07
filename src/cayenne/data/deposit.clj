@@ -3,6 +3,7 @@
   (:require [metrics.gauges :refer [defgauge]]
             [somnium.congomongo :as m]
             [cayenne.conf :as conf]
+            [cayenne.api.v1.response :as r]
             [metrics.meters :refer [defmeter] :as meter]
             [metrics.histograms :refer [defhistogram] :as hist]))
 
@@ -38,8 +39,9 @@
 (defn fetch [id]
   (m/with-mongo (conf/get-service :mongo)
     (when-let [deposit (m/fetch-by-id :deposits (m/object-id id))]
-      (let [deposit-file (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})]
-        (-> deposit
-            (dissoc :data)
-            (assoc :length (:length deposit-file)))))))
+      (let [deposit-file (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})
+            deposit-info (-> deposit
+                             (dissoc :data)
+                             (assoc :length (:length deposit-file)))]
+        (r/api-response :deposit :content deposit-info)))))
 

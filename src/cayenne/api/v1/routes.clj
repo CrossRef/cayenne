@@ -10,6 +10,7 @@
             [cayenne.data.doi :as doi]
             [cayenne.data.funder :as funder]
             [cayenne.data.publisher :as publisher]
+            [cayenne.data.program :as program]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [clojure.data.json :as json]
@@ -125,6 +126,11 @@
   :available-media-types t/json
   :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri px))))
 
+(defresource programs-resource 
+  :allowed-methods [:get]
+  :available-media-types t/json
+  :handle-ok (->1 #(program/fetch-all)))
+
 (defroutes api-routes
   (ANY "/funders" []
        funders-resource)
@@ -151,4 +157,6 @@
   (ANY "/deposits/:id" [id]
        (deposit-resource id))
   (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id)))
+       (deposit-data-resource id))
+  (ANY "/programs" []
+       programs-resource))
