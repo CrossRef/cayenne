@@ -20,6 +20,8 @@
    (context "/v1.0" [] v1-doc/api-doc-routes)
 
    ;; legacy urls
+   (ANY "/help" []
+        (redirect "https://github.com/CrossRef/fundrefplus_doc/blob/master/funder_kpi_api.md"))
    (ANY "/funder_kpi_metadata_best_practice.html" []
         (redirect "http://fundref.crossref.org/docs/funder_kpi_metadata_best_practice.html"))
    (ANY "/" [] 
