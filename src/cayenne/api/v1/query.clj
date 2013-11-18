@@ -37,7 +37,7 @@
         (max 0 val))))
 
 (defn parse-sample-val
-  "Returns a sample count or nil, indicating that no sample
+  "Returns a sample count or 0, indicating that no sample
    is to be taken."
   [val]
   (int (cond
@@ -122,7 +122,7 @@
         (.setRows (:rows query-context))))
     (when (not= 0 (:sample query-context))
       (doto query
-        (.setStart 0)
+        (.setStart (int 0))
         (.setRows (:sample query-context))
         (.setSort (random-field) SolrQuery$ORDER/asc)))
     (when count-only
