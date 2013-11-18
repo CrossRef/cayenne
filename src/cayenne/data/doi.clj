@@ -30,5 +30,6 @@
   [doi-uri]
   (let [docs (-> (conf/get-service :solr)
                  (.query (query/->solr-query {:id doi-uri}
-                                             :id-field "doi")))]
+                                             :id-field "doi"))
+                 (.getResults))]
     (r/api-response :work :content (citeproc/->citeproc (first docs)))))
