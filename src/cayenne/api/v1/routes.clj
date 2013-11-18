@@ -146,7 +146,7 @@
        (publisher-works-resource prefix))
   (ANY "/works" []
        works-resource)
-  (ANY "/works/:doi" [doi]
+  (ANY "/works/*" {{doi :*} :params}
        (work-resource doi))
   (ANY "/cores" []
        cores-resource)
