@@ -101,13 +101,13 @@
 (defn equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val] (str field ":\"" (transformer val) "\"")))
 
-(defn compound [prefix ordering & {:keys [transformers matchers] 
+(defn compound [prefix ordering & {:keys [transformers matchers]
                                    :or {transformers {} matchers {}}}]
   (fn [m]
     (let [field-names (filter m ordering)
           field-name-parts (butlast field-names)
           value-name-part (last field-names)]
-      (str prefix 
+      (str prefix
            "_"
            (apply str (interpose "_" field-names))
            (when (not (empty? field-name-parts)) "_")
@@ -129,9 +129,9 @@
    "until-deposit-date" (stamp-date "deposited_at" :until)
    "from-pub-date" (particle-date "year" "month" "day" :from)
    "until-pub-date" (particle-date "year" "month" "day" :until)
-   "has-full-text" (existence "full_text_url") ;in new index
-   "has-license" (existence "license_url") ;in new index
-   "has-references" (bool "references") ;in new index
+   "has-full-text" (existence "full_text_url")
+   "has-license" (existence "license_url")
+   "has-references" (bool "references") ;waiting for index change
    "has-archive" (existence "archive") ;waiting for schema change
    "has-orcid" (existence "orcid")
    "full-text" (compound "full_text" ["type" "version"]
@@ -140,5 +140,5 @@
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
-   "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri) ;in new index
+   "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})

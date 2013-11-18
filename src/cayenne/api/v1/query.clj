@@ -40,13 +40,13 @@
   "Returns a sample count or nil, indicating that no sample
    is to be taken."
   [val]
-  (cond
-   (nil? val)
-   nil
-   (= (type val) java.lang.String)
-   (max 0 (Integer/parseInt val))
-   :else
-   (max 0 val)))
+  (int (cond
+        (nil? val)
+        nil
+        (= (type val) java.lang.String)
+        (max 0 (Integer/parseInt val))
+        :else
+        (max 0 val))))
     
 (defn get-filters 
   "Turns a filter value string such as a.b:val,c:val2 into
