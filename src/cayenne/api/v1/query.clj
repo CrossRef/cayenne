@@ -42,7 +42,7 @@
   [val]
   (int (cond
         (nil? val)
-        nil
+        0
         (= (type val) java.lang.String)
         (max 0 (Integer/parseInt val))
         :else
@@ -120,7 +120,7 @@
       (doto query
         (.setStart (:offset query-context))
         (.setRows (:rows query-context))))
-    (when (:sample query-context)
+    (when (not= 0 (:sample query-context))
       (doto query
         (.setStart 0)
         (.setRows (:sample query-context))
