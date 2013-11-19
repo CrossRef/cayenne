@@ -78,7 +78,7 @@
   (when funder-concept-node
     (last (string/split (rdf/->uri funder-concept-node) #"/"))))
 
-(def svf (partial rdf/get-property "http://www.elsevier.com/xml/schema/grant/grant-1.2/"))
+(def svf (partial rdf/get-property "http://data.fundref.org/xml/schema/grant/grant-1.2/"))
 
 (defn get-labels [model node kind]
   (->> (rdf/select model :subject node :predicate (rdf/skos-xl model kind))
@@ -88,14 +88,19 @@
        (map #(.getString %))))
 
 (defn get-country-literal-name [model node]
-  (-> model
-      (rdf/select :subject node
-                  :predicate (svf model "country"))
-      (rdf/objects)
-      (first)
-      (rdf/->uri)
-      (str "about.rdf")
-      (geoname/get-geoname-name-memo)))
+  (let [country-obj (-> model
+                        (rdf/select :subject node
+                                    :predicate (svf model "country"))
+                        (rdf/objects)
+                        (first))]
+    (if (nil? country-obj)
+      (do 
+        (prn "Found node with no country: " node)
+        "Unknown")
+      (-> country-obj
+       (rdf/->uri)
+       (str "about.rdf")
+       (geoname/get-geoname-name-memo)))))
       
 (defn funder-concept->map [model funder-concept-node]
   {:id (res->id funder-concept-node)
