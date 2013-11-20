@@ -14,6 +14,7 @@
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [clojure.data.json :as json]
+            [clojure.string :as string]
             [liberator.core :refer [defresource resource]]
             [compojure.core :refer [defroutes routes context ANY]]))
 
@@ -134,10 +135,10 @@
 (defroutes api-routes
   (ANY "/funders" []
        funders-resource)
-  (ANY "/funders/:id" [id]
-       (funder-resource id))
-  (ANY "/funders/:id/works" [id]
-       (funder-works-resource id))
+  (ANY "/funders/*" {{id :*} :params}
+       (if (.endsWith id "/works")
+         (funder-works-resource (string/replace id #"/works\z" ""))
+         (funder-resource id)))
   (ANY "/publishers" []
        publishers-resource)
   (ANY "/publishers/:prefix" [prefix]
