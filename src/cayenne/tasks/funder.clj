@@ -78,7 +78,8 @@
   (when funder-concept-node
     (last (string/split (rdf/->uri funder-concept-node) #"/"))))
 
-(def svf (partial rdf/get-property "http://data.fundref.org/xml/schema/grant/grant-1.2/"))
+(def svf-el (partial rdf/get-property "http://www.elsevier.com/xml/schema/grant/grant-1.2/"))
+(def svf-cr (partial rdf/get-property "http://data.fundref.org/xml/schema/grant/grant-1.2/"))
 
 (defn get-labels [model node kind]
   (->> (rdf/select model :subject node :predicate (rdf/skos-xl model kind))
@@ -87,10 +88,26 @@
        (rdf/objects)
        (map #(.getString %))))
 
+(defn select-country-stmts [model node]
+  (concat
+   (rdf/select model 
+               :subject node
+               :predicate (svf-el model "country"))
+   (rdf/select model
+               :subject node
+               :predicate (svf-cr model "country"))))
+
+(defn select-affil-with-stmts [model node]
+  (concat
+   (rdf/select model
+               :subject node
+               :predicate (svf-el model "affilWith"))
+   (rdf/select model
+               :subject node
+               :predicate (svf-cr model "affilWith"))))
+
 (defn get-country-literal-name [model node]
-  (let [country-obj (-> model
-                        (rdf/select :subject node
-                                    :predicate (svf model "country"))
+  (let [country-obj (-> (select-country-stmts model node)
                         (rdf/objects)
                         (first))]
     (if (nil? country-obj)
@@ -116,9 +133,7 @@
                                   :predicate (rdf/skos model "narrower"))
                       (rdf/objects)
                       (map res->id))
-   :affiliated-ids (->> (rdf/select model
-                                    :subject funder-concept-node
-                                    :predicate (svf model "affilWith"))
+   :affiliated-ids (->> (select-affil-with-stmts model funder-concept-node)
                         (rdf/objects)
                         (map res->id))
    :name (first (get-labels model funder-concept-node "prefLabel"))
