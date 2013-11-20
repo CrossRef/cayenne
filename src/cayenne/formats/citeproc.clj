@@ -94,7 +94,7 @@
 
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(let [t (get %2 :type)]
-             (assoc %1 t (conj (or (get %1 t) []) (dissoc %2 :type))))
+             (assoc %1 (name t) (conj (or (get %1 t) []) (dissoc %2 :type))))
           {}
           (map contrib
                (get solr-doc "contributor_type")

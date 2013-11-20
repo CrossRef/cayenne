@@ -48,4 +48,18 @@
         (r/with-result-items 
           (.getNumFound doc-list)
           (map citeproc/->citeproc doc-list)))))
+
+;; faked publisher name look up we will use for the moment until
+;; we have proper publisher ids
+(defn fetch-one [query-context]
+  (let [any-work (-> (assoc query-context :rows (int 1))
+                     (get-solr-works)
+                     (first)
+                     (citeproc/->citeproc))
+        pub-name (get any-work :publisher)]
+    (r/api-response :publisher
+                    :content
+                    {:prefix (:id query-context)
+                     :name pub-name})))
+    
           

@@ -51,6 +51,9 @@
    :uri (:uri funder-doc)
    :tokens (:name_tokens funder-doc)})
 
+(defn normalize-query-context [qc]
+  {:id (-> qc (:id) (fr-id/doi-uri-to-id))})
+
 (defn ->extended-response-doc [funder-doc]
   (merge (->response-doc funder-doc)
          {:work-count (get-solr-work-count funder-doc)
@@ -60,9 +63,7 @@
           :hierarchy-names (:nesting_names funder-doc)}))
 
 (defn fetch-one [query-context]
-  (let [query {:id (-> query-context
-                       (:id)
-                       (fr-id/doi-uri-to-id))}
+  (let [query (normalize-query-context query-context)
         funder-doc (m/with-mongo (conf/get-service :mongo)
                      (m/fetch-one "funders" :where query))]
     (when funder-doc
@@ -103,8 +104,9 @@
 (defn fetch-works 
   "Return all the works related to a funder and its sub-organizations."
   [query-context]
-  (let [descendant-ids (fetch-descendant-ids query-context)
-        descendant-query (update-in query-context [:id] #(vec (conj descendant-ids %)))
+  (let [query (normalize-query-context query-context)
+        descendant-ids (fetch-descendant-ids query)
+        descendant-query (update-in query [:id] #(vec (conj descendant-ids %)))
         doc-list (get-solr-works descendant-query)]
     (-> (r/api-response :work-list)
         (r/with-query-context-info descendant-query)
