@@ -5,6 +5,7 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.prefix :as prefix]
+            [clojure.string :as string]
             [somnium.congomongo :as m]))
 
 (def solr-publisher-id-field "owner_prefix")
@@ -54,12 +55,12 @@
 (defn fetch-one [query-context]
   (let [any-work (-> (assoc query-context :rows (int 1))
                      (get-solr-works)
-                     (first)
-                     (citeproc/->citeproc))
-        pub-name (get any-work :publisher)]
-    (r/api-response :publisher
-                    :content
-                    {:prefix (:id query-context)
-                     :name pub-name})))
-    
-          
+                     (first))
+        citeproc-doc (if-not (nil? any-work) (citeproc/->citeproc any-work) {})]
+    (if (and 
+         (not (nil? any-work))
+         (not (string/blank? (:publisher citeproc-doc))))
+      (r/api-response :publisher :content {:prefix (:id query-context)
+                                           :name (:publisher citeproc-doc)})
+      (r/api-response :publisher :content {:prefix (:id query-context)}))))
+
