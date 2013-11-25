@@ -98,7 +98,7 @@
   (m/with-mongo (conf/get-service :mongo)
     (map fr-id/id-to-doi-uri
          (-> "funders"
-             (m/fetch-one :where {:uri (:id query-context)})
+             (m/fetch-one :where {:id (:id query-context)})
              (:descendants)))))
 
 (defn fetch-works 
