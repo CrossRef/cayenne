@@ -65,7 +65,7 @@
 (defn fetch-one [query-context]
   (let [query (normalize-query-context query-context)
         funder-doc (m/with-mongo (conf/get-service :mongo)
-                     (m/fetch-one "funders" :where query))]
+                     (m/fetch-one "funders" :where {:id (:id query)}))]
     (when funder-doc
       (r/api-response :funder 
                       :content (->extended-response-doc funder-doc)))))
