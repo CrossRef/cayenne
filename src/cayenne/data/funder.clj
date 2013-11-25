@@ -52,7 +52,7 @@
    :tokens (:name_tokens funder-doc)})
 
 (defn normalize-query-context [qc]
-  {:id (-> qc (:id) (fr-id/doi-uri-to-id))})
+  (assoc qc :id (-> qc (:id) (fr-id/doi-uri-to-id))))
 
 (defn ->extended-response-doc [funder-doc]
   (merge (->response-doc funder-doc)
