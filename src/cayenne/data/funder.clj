@@ -106,7 +106,8 @@
   [query-context]
   (let [query (normalize-query-context query-context)
         descendant-ids (fetch-descendant-ids query)
-        descendant-query (update-in query [:id] #(vec (conj descendant-ids %)))
+        descendant-query (update-in query [:id] #(vec (conj descendant-ids 
+                                                            (fr-id/id-to-doi-uri %))))
         doc-list (get-solr-works descendant-query)]
     (-> (r/api-response :work-list)
         (r/with-query-context-info descendant-query)
