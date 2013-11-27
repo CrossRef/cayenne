@@ -82,7 +82,9 @@
     (let [conn-mgr (conf/get-service :conn-mgr)
           resp (try (client/get (:url service) {:query-params params
                                                 :throw-exceptions false
-                                                :connection-manager conn-mgr})
+                                                :connection-manager conn-mgr
+                                                :socket-timeout (* 10 60 1000)
+                                                :conn-timeout (* 10 60 1000)})
                     (catch Exception e {:exception e}))]
       (if (or (:exception resp) (not (client/success? resp)))
         (let [err (or (:exception resp) (:status resp))]
