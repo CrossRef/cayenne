@@ -73,7 +73,7 @@
 
 (defn stop-core! [name]
   (with-core name
-    (.stop (get-service :api))
+    ((get-service :api)) ; stop http kit
     (set-param! [:status] :stopped)))
 
 (defn set-core! [name]
