@@ -206,6 +206,19 @@
                  (:affiliated-ids %))))))
   (build-nestings :funderstest))
 
+(defn rdf->funder-names [rdf-file]
+  (let [model (rdf/document->model rdf-file)
+        funders (find-funders model)]
+    (map #(first (get-labels %1 %2 "prefLabel")) (repeat model) funders)))
+
+(defn diff-funders-rdf
+  "Returns a list of funder names found in the new RDF file but not in the old
+   RDF file."
+  [old-rdf-file new-rdf-file]
+  (let [old-funder-names (set (rdf->funder-names old-rdf-file))
+        new-funder-names (set (rdf->funder-names new-rdf-file))]
+    (clojure.set/difference new-funder-names old-funder-names)))
+
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
     (let [funder (m/fetch-one :funders :where {:uri funder-uri})]
