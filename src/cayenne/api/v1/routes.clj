@@ -48,20 +48,20 @@
     (some #{ct} cts)))
 
 (defresource deposits-resource [data]
-  :allowed-methods [:post]
+  :allowed-methods [:post :optionsx]
   :known-content-type? #(content-type-matches % t/depositable)
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
   :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data)))
 
 (defresource deposit-resource [id]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok :deposit)
 
 (defresource deposit-data-resource [id]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :media-type-available? (constantly true)
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok (->1 #(d/fetch-data id)))
@@ -71,12 +71,12 @@
 (defresource subject-resource [subject-id])
 
 (defresource works-resource
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(doi/fetch (q/->query-context %)))
 
 (defresource work-resource [doi]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(-> doi
                        (URLDecoder/decode)
@@ -84,23 +84,23 @@
                        (doi/fetch-one))))
 
 (defresource cores-resource
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(c/fetch-all)))
 
 (defresource core-resource [core-name]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
 
 (defresource funders-resource
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(funder/fetch (q/->query-context %)))
 
 (defresource funder-resource [funder-id]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [f (funder/fetch-one 
                           (q/->query-context % :id (fr-id/id-to-doi-uri funder-id)))]
@@ -108,14 +108,14 @@
   :handle-ok :funder)
 
 (defresource funder-works-resource [funder-id]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
 (defresource publishers-resource [])
 
 (defresource publisher-resource [px]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [p (publisher/fetch-one
                           (q/->query-context % :id (prefix/to-prefix-uri px)))]
@@ -123,12 +123,12 @@
   :handle-ok :publisher)
 
 (defresource publisher-works-resource [px]
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri px))))
 
 (defresource programs-resource 
-  :allowed-methods [:get]
+  :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(program/fetch-all)))
 
