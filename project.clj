@@ -34,7 +34,7 @@
                  [org.neo4j.app/neo4j-server "1.9.RC1" :classifier "static-web"]
                  [org.neo4j.app/neo4j-server "1.9.RC1"]
                  [com.novemberain/langohr "1.4.1"]
-                 [liberator "0.9.0"]
+                 [liberator "0.10.0"]
                  [compojure "1.1.5"]
                  [ring "1.1.0"]
                  [http-kit "2.1.10"]

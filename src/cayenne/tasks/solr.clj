@@ -10,6 +10,7 @@
             [cayenne.ids :as ids]
             [cayenne.util :as util]
             [metrics.gauges :refer [defgauge] :as gauge]
+            [metrics.meters :refer [defmeter] :as meter]
             [taoensso.timbre :as timbre :refer [error info]]))
 
 (def insert-list (atom []))
@@ -22,22 +23,19 @@
    (error (str "Solr agent failed:" ex))
    (restart-agent insert-count 0)))
 
+(defmeter [cayenne solr insert-events])
+
+(defgauge [cayenne solr insert-count] @insert-count)
+
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
-
-(defgauge [cayenne solr commit-waiting-list-size]
-  (let [request (doto (CoreAdminRequest.)
-                  (.setCoreName (conf/get-param [:service :solr :insert-core]))
-                  (.setAction CoreAdminParams$CoreAdminAction/STATUS))
-        response (-> (.process request (conf/get-service :solr))
-                     (.getCoreStatus))]
-    (info response)))
 
 (defn flush-insert-list [c insert-list]
   (doseq [update-server (conf/get-service :solr-update-list)]
     (try
       (.add update-server insert-list)
       (.commit update-server false false)
+      (meter/mark! insert-events)
       (catch Exception e (error e "Solr insert failed" update-server))))
   (inc c))
 
