@@ -2,8 +2,8 @@
   (:require [clj-time.core :as dt]
             [clojure.string :as string]
             [cayenne.util :as util]
-            [cayenne.data.type :as data-type]
             [cayenne.ids.fundref :as fundref]
+            [cayenne.ids.type :as type-id]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.orcid :as orcid]))
 
@@ -140,7 +140,7 @@
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
-   "type" (equality "type" :transformer data-type/->index-id)
+   "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
