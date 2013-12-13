@@ -134,13 +134,14 @@
    "has-full-text" (existence "full_text_url")
    "has-license" (existence "license_url")
    "has-references" (bool "references") ;waiting for index change
-   "has-archive" (existence "archive") ;waiting for schema change
+   "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
    "full-text" (compound "full_text" ["type" "version"]
                          :transformers {"type" util/slugify})
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
+   "archive" (equality "archive")
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
