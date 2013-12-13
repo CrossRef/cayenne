@@ -145,6 +145,11 @@
               {:data-type t})
   :handle-ok :data-type)
 
+(defresource type-works-resource [id]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
+
 (defroutes api-routes
   (ANY "/funders" []
        funders-resource)
@@ -166,6 +171,8 @@
        types-resource)
   (ANY "/types/:id" [id]
        (type-resource id))
+  (ANY "/types/:id/works" [id]
+       (type-works-resource id))
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]
