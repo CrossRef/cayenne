@@ -77,6 +77,13 @@
           :else
           nil)))
 
+(defn sanitize-type
+  "Function to sanitize type strings as some have made it
+   into the solr index with a prepended ':' due to indexing
+   bug."
+  [s]
+  (clojure.string/replace-first s #"\:" ""))
+
 (defn contrib 
   "Drop placeholders indicating missing data."
   [type orcid suffix given family]
@@ -86,7 +93,7 @@
         has-given? (not= given "-")
         has-family? (not= family "-")]
     (-> {}
-        (util/?> has-type? assoc :type type)
+        (util/?> has-type? assoc :type (sanitize-type type))
         (util/?> has-orcid? assoc :ORCID orcid)
         (util/?> has-suffix? assoc :suffix suffix)
         (util/?> has-given? assoc :given given)

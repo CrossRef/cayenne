@@ -23,7 +23,7 @@
    (error (str "Solr agent failed:" ex))
    (restart-agent insert-count 0)))
 
-(defmeter [cayenne solr insert-events])
+(defmeter [cayenne solr insert-events] "insert-events")
 
 (defgauge [cayenne solr insert-count] @insert-count)
 
