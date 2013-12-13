@@ -5,6 +5,7 @@
             [cayenne.ids.fundref :as fundref]
             [cayenne.ids.type :as type-id]
             [cayenne.ids.prefix :as prefix]
+            [cayenne.ids.issn :as issn]
             [cayenne.ids.orcid :as orcid]))
 
 ; build solr filters
@@ -140,6 +141,7 @@
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
+   "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
