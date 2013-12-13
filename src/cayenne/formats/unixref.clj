@@ -511,6 +511,16 @@
   (let [license-locs (xml/xselect item-loc :> "license_ref")]
     (map parse-license license-locs)))
 
+(defn parse-archive
+  [archive-loc]
+  {:type :org
+   :subtype :archive
+   :name (xml/xselect1 archive-loc ["name"])})
+
+(defn parse-item-archives [item-loc]
+  (let [archive-locs (xml/xselect item-loc :> "archive_locations" "archive")]
+    (map parse-archive archive-locs)))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -546,6 +556,7 @@
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
       (parse-attach :license item-loc :multi parse-item-licenses)
+      (parse-attach :archived-with item-loc :multi parse-item-archives)
       (parse-attach :title item-loc :multi parse-item-titles)
       (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
@@ -938,6 +949,7 @@
    component
    grant
    funder
+   archived-with
 
    Each item may have a list of :id structures, a list of :title structures,
    a list of :date structures, any number of flat :key value pairs, and finally, 

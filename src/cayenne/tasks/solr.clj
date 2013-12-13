@@ -309,7 +309,7 @@
          "hl_subtitle" (->> (get-item-rel item :title)
                             (filter #(= (:subtype %) :secondary))
                             (map :value))
-         "archive" nil ;later
+         "archive" (map :name (get-tree-rel item :archived-with))
          "license_url" (map (util/?- :value) licenses)
          "license_version" (map (util/?- :content-version) licenses)
          "license_start" (map ->license-start-date licenses (repeat pub-date))
