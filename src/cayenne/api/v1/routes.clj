@@ -11,6 +11,7 @@
             [cayenne.data.funder :as funder]
             [cayenne.data.publisher :as publisher]
             [cayenne.data.program :as program]
+            [cayenne.data.type :as data-types]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [clojure.data.json :as json]
@@ -132,6 +133,18 @@
   :available-media-types t/json
   :handle-ok (->1 #(program/fetch-all)))
 
+(defresource types-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (->1 #(data-types/fetch-all)))
+
+(defresource type-resource [id]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? #(when-let [t (data-types/fetch-one (q/->query-context % :id id))]
+              {:data-type t})
+  :handle-ok :data-type)
+
 (defroutes api-routes
   (ANY "/funders" []
        funders-resource)
@@ -149,6 +162,10 @@
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
        (work-resource doi))
+  (ANY "/types" []
+       types-resource)
+  (ANY "/types/:id" [id]
+       (type-resource id))
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]

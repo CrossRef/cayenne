@@ -889,6 +889,7 @@
      report
      report-series
      standard
+     standard-series
      dataset
      edited-book
      monograph
