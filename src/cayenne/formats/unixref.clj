@@ -913,6 +913,7 @@
      part
      track
      reference-entry
+     dissertation
      other
    event
      conference
