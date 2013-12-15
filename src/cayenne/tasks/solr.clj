@@ -25,7 +25,7 @@
 
 (defmeter [cayenne solr insert-events] "insert-events")
 
-(defgauge [cayenne solr insert-count] @insert-count)
+(defgauge [cayenne solr inserts-so-far] @insert-count)
 
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
