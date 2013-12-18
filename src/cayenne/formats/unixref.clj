@@ -692,7 +692,7 @@
   (-> (parse-item (xml/xselect1 book-set-meta-loc "set_metadata"))
       (parse-attach 
        :component book-set-meta-loc 
-       :single #(parse-single-book % content-item-loc book-type))
+       :single #(parse-single-book* % content-item-loc book-type))
       (conj
        {:subtype :book-set
         :part-number (xml/xselect1 book-set-meta-loc "set_metadata" "part_number" :text)})))
@@ -701,7 +701,7 @@
   (-> (parse-item (xml/xselect1 book-series-meta-loc "series_metadata"))
       (parse-attach 
        :component book-series-meta-loc 
-       :single #(parse-single-book % content-item-loc book-type))
+       :single #(parse-single-book* % content-item-loc book-type))
       (conj
        {:subtype :book-series
         :coden (xml/xselect1 book-series-meta-loc "series_metadata" "coden" :text)
