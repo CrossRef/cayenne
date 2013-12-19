@@ -110,7 +110,9 @@
   (let [country-obj (-> (select-country-stmts model node)
                         (rdf/objects)
                         (first))]
-    (if (nil? country-obj)
+    (if (or (nil? country-obj) 
+            (= (rdf/->uri country-obj) 
+               "http://sws.geonames.org//"))
       (do 
         (prn "Found node with no country: " node)
         "Unknown")
@@ -211,13 +213,34 @@
         funders (find-funders model)]
     (map #(first (get-labels %1 %2 "prefLabel")) (repeat model) funders)))
 
-(defn diff-funders-rdf
+(defn rdf->funder-ids [rdf-file]
+  (->> rdf-file
+       (rdf/document->model)
+       (find-funders)
+       (map res->id)))
+
+(defn diff-funders-rdf-names
   "Returns a list of funder names found in the new RDF file but not in the old
    RDF file."
   [old-rdf-file new-rdf-file]
   (let [old-funder-names (set (rdf->funder-names old-rdf-file))
         new-funder-names (set (rdf->funder-names new-rdf-file))]
     (clojure.set/difference new-funder-names old-funder-names)))
+
+(defn diff-funders-rdf-ids
+  "Returns a list of funder IDs found in the new RDF file but not in the old
+   RDF file."
+  [old-rdf-file new-rdf-file]
+  (let [old-funder-ids (set (rdf->funder-ids old-rdf-file))
+        new-funder-ids (set (rdf->funder-ids new-rdf-file))]
+    (clojure.set/difference new-funder-ids old-funder-ids)))
+
+(defn stat-funders-rdf
+  "Generate some statistics on funder concepts in RDF."
+  [rdf-file]
+  (let [concept-ids (rdf->funder-ids rdf-file)]
+    {:concepts (count concept-ids)
+     :unique-ids (count (set concept-ids))}))
 
 (defn get-funder-names [funder-uri]
   (m/with-mongo (conf/get-service :mongo)
