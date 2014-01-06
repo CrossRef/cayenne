@@ -6,7 +6,8 @@
             [cayenne.ids.type :as type-id]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.issn :as issn]
-            [cayenne.ids.orcid :as orcid]))
+            [cayenne.ids.orcid :as orcid]
+            [clojure.string :as string]))
 
 ; build solr filters
 
@@ -142,6 +143,8 @@
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
+   "directory" (equality "oa_status" :transformer string/upper-case)
+      ;; watch the above - oa_status field changing to directory soon
    "archive" (equality "archive")
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
