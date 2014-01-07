@@ -770,20 +770,21 @@
        {:subtype :report
         :contract-number (parse-report-contract-number report-loc)})))
 
-(defn parse-report-series* [series-meta-loc]
+(defn parse-report-series* [report-loc series-meta-loc]
   (-> (parse-item series-meta-loc)
+      (parse-attach :component report-loc :multi parse-content-items)
       (conj
        {:subtype :report-series
         :coden (xml/xselect1 series-meta-loc "coden" :text)
         :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))  
 
-(defn parse-report-series [series-meta-loc]
+(defn parse-report-series [report-loc series-meta-loc]
   (if-let [series-loc (xml/xselect1 series-meta-loc "series_metadata")]
     (-> (parse-item series-loc)
-        (parse-attach :component series-meta-loc :single parse-report-series*)
+        (parse-attach :component series-meta-loc :single #(parse-report-series* report-loc %))
         (conj
          {:subtype :report-series}))
-    (parse-report-series* series-meta-loc)))
+    (parse-report-series* report-loc series-meta-loc)))
 
 (defn parse-single-report-with-series [report-loc series-meta-loc]
   (-> (parse-report-series series-meta-loc)
@@ -800,7 +801,7 @@
      report-meta-loc
      (parse-single-report report-loc)
      report-series-meta-loc
-     (parse-report-series report-series-meta-loc))))
+     (parse-report-series report-loc report-series-meta-loc))))
 
 ;; todo parse instituion
 (defn parse-single-standard [standard-loc]
@@ -812,15 +813,16 @@
           :volume (xml/xselect1 standard-metadata-loc "volume" :text)
           :edition-number (xml/xselect1 standard-metadata-loc "edition_number" :text)}))))
 
-(defn parse-standard-series [series-meta-loc]
+(defn parse-standard-series [standard-loc series-meta-loc]
   (-> (parse-item series-meta-loc)
+      (parse-attach :component standard-loc :multi parse-content-items)
       (conj
        {:subtype :standard-series
         :coden (xml/xselect1 series-meta-loc "coden" :text)
         :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))
 
 (defn parse-single-standard-with-series [standard-loc series-meta-loc]
-  (-> (parse-standard-series series-meta-loc)
+  (-> (parse-standard-series standard-loc series-meta-loc)
       (parse-attach :component standard-loc :single parse-single-standard)))
 
 (defn parse-standard [standard-loc]
@@ -833,13 +835,14 @@
      standard-meta-loc
      (parse-single-standard standard-loc)
      standard-series-meta-loc
-     (parse-standard-series standard-series-meta-loc))))
+     (parse-standard-series standard-loc standard-series-meta-loc))))
 
 (defn parse-dissertation [dissertation-loc]
   (when dissertation-loc
     (let [person-loc (xml/xselect dissertation-loc "person_name")]
       (-> (parse-item dissertation-loc)
           (parse-attach :author person-loc :single parse-person-name)
+          (parse-attach :component dissertation-loc :multi parse-content-items)
           (conj
            {:subtype :dissertation
             :language (xml/xselect1 dissertation-loc ["language"] :text)
@@ -972,7 +975,7 @@
     (if work
       [(parse-primary-id oai-record)
        (parse-attach work :deposited oai-record :single parse-deposit-date)]
-      [(parse-primary-id oai-record) work])))
+       [(parse-primary-id oai-record) work])))
 
 ;(defmethod ->format-name "xml" :unixref)
 ;(defmethod ->format-name "unixref-xml" :unixref)
