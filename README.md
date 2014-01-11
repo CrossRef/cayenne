@@ -15,7 +15,7 @@ Install leiningen, then run lein repl and try a few commands:
 
 Run as a production service with some profiles:
 
-    lein run :api :index
+    $ lein run :api :index
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
