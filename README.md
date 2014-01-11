@@ -1,18 +1,21 @@
 # cayenne
 
-Cayenne aims to be a high performance, parallel parser of CrossRef OAI-PMH / unixref metadata.
-
-Currently cayenne can parse all CrossRef metadata, just over 50 million work records 
-(with 100 millions of citation entries) in just under 4 hours on a modest 6-core machine.
+The cayenne base codebase. Implements useful metadata transforms, ID handling, a resource API, OAI metadata
+download and ingest / indexing.
 
 ## Usage
 
 Install leiningen, then run lein repl and try a few commands:
 
     $ lein repl
-    > (use 'cayenne.core)
-    > (use 'cayenne.tasks)
-    > (process-dir (file "/some/dir/with/xml") :task (doi-record-json-writer "out.txt"))
+	> (in-ns 'cayenne.user)
+	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
 
-This prints DOI records as JSON to out.txt. Alternatively, :task can be any function that
-takes parsed DOI record data structures (Clojure maps) and processes them in some way.
+## Production
+
+Run as a production service with some profiles:
+
+    lein run :api :index
+
+- :api - Run the resource HTTP API.
+- :index - Run an OAI download and index once daily.
