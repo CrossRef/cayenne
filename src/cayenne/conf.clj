@@ -105,7 +105,7 @@
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
   (set-param! [:service :solr :update-list]
-              [{:url "http://localhost:8983/solr" :core "crmds1"}])
+              [{:url "http://144.76.35.104:8983/solr" :core "crmds1"}])
 
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
