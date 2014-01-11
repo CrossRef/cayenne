@@ -1,18 +1,25 @@
 (ns cayenne.production
+  (:gen-class)
   (:require [cayenne.conf :as conf]
             [cayenne.api.route :as route]
-            [taoensso.timbre :as timbre]))
+            [taoensso.timbre :as timbre]
+            [cayenne.api.route]
+            [cayenne.schedule]))
 
-(defn- main []
-  (timbre/set-config! [:appenders :standard-out :enabled?] false)
-  (timbre/set-config! [:appenders :spit :enabled?] true)
-  (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+(def termination (promise))
+
+(defn -main [& args]
+  (let [profiles (map #(->> % (drop 1) (apply str) keyword) args)]
+
+    (timbre/set-config! [:appenders :standard-out :enabled?] false)
+    (timbre/set-config! [:appenders :spit :enabled?] true)
+    (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+    
+    (conf/create-core-from! :production :default)
+    (conf/set-core! :production)
+    (apply (partial conf/start-core! :production) profiles)
+    
+    @termination))
   
-  (conf/create-core-from! :production :default)
-  
-  (conf/with-core :production
-    (conf/set-param! [:env] :production))
-  
-  (conf/set-core! :production)
-  
-  (conf/start-core! :production))
+(defn stop []
+  (deliver termination true))

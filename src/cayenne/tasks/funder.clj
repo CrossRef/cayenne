@@ -43,20 +43,22 @@
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
 
 (defn insert-full-funder [id name country alt-names parent-id child-ids affiliation-ids]
-  (m/with-mongo (conf/get-service :mongo)
-    (m/insert! :funderstest
-               {:id id
-                :uri (fundref/id-to-doi-uri id)
-                :country country
-                :primary_name_display name
-                :other_names_display alt-names
-                :name_tokens (concat (util/tokenize-name name)
-                                     (mapcat util/tokenize-name alt-names))
-                ; hack here since funders can appear as their own parent in
-                ; the registry. bug in the registry.
-                :parent (if (not= parent-id id) parent-id nil)
-                :children (or child-ids [])
-                :affiliated (or affiliation-ids [])})))
+  (if (nil? name)
+    (prn "no pref label for " id)
+    (m/with-mongo (conf/get-service :mongo)
+      (m/insert! :funderstest
+                 {:id id
+                  :uri (fundref/id-to-doi-uri id)
+                  :country country
+                  :primary_name_display name
+                  :other_names_display alt-names
+                  :name_tokens (concat (util/tokenize-name name)
+                                       (mapcat util/tokenize-name alt-names))
+                                        ; hack here since funders can appear as their own parent in
+                                        ; the registry. bug in the registry.
+                  :parent (if (not= parent-id id) parent-id nil)
+                  :children (or child-ids [])
+                  :affiliated (or affiliation-ids [])}))))
   
 (defn load-funders-csv []
   (ensure-funder-indexes! :funders)

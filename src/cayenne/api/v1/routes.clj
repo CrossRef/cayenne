@@ -150,7 +150,22 @@
   :available-media-types t/json
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
+(defresource resolve-resource []
+  :allowed-methods [:get :options])
+
+(defresource registry-tool-resource [path]
+  :allowed-methods [:get :options])
+
+(defresource reindex-tool-resource []
+  :allowed-methods [:get :options])
+
 (defroutes api-routes
+  (ANY "/resolve" []
+       resolve-resource)
+  (ANY "/tools/registry" {{path :path} :params}
+       (registry-tool-resource path))
+  ;; (ANY "/tools/reindex"
+  ;;      ())
   (ANY "/funders" []
        funders-resource)
   (ANY "/funders/*" {{id :*} :params}

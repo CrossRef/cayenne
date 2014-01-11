@@ -12,87 +12,49 @@
             [clojurewerkz.quartzite.triggers :as qt]
             [clojurewerkz.quartzite.jobs :as qj]
             [clojurewerkz.quartzite.schedule.daily-interval :as daily]
-            [clojurewerkz.quartzite.schedule.calendar-interval :as cal])
+            [clojurewerkz.quartzite.schedule.calendar-interval :as cal]
+            [taoensso.timbre :as timbre :refer [info error]])
    (:use [clojurewerkz.quartzite.jobs :only [defjob]]))
 
 (def crossref-oai-services [:crossref-journals :crossref-books :crossref-serials])
 
-(def daily-work-trigger 
+(def oai-date-format (timef/formatter "yyyy-MM-dd"))
+
+(def daily-work-trigger
   (qt/build
    (qt/with-identity (qt/key "daily-work"))
    (qt/with-schedule
      (daily/schedule
-      (daily/starting-daily-at (daily/time-of-day 20 0 0))))))
+      (daily/every-day)
+      (daily/with-repeat-count 1)
+      (daily/starting-daily-at (daily/time-of-day 1 0 0))))))
 
-(def weekly-work-trigger
-  (qt/build
-   (qt/with-identity (qt/key "weekly-work"))
-   (qt/with-schedule
-     (cal/schedule
-      (cal/with-interval-in-days 7)))))
-
-;; afterwards call flush-insert-list, then solr commit, then solr swap cores
-(defjob IndexCrossrefOai [ctx]
-  (let [formatter (timef/formatter "YYYY-MM-dd")
-        until (time/today-at-midnight)
-        from (time/minus until (time/days 1))]
+(defjob index-crossref-oai [ctx]
+  (let [from (time/minus (time/today-at-midnight) (time/days 2))
+        until (time/today-at-midnight)]
+    (info (str "Running index of CrossRef OAI from "
+               from " until " until))
     (doseq [oai-service crossref-oai-services]
-      (action/get-oai-records 
+      (action/get-oai-records
        (conf/get-param [:oai oai-service])
-       (timef/unparse formatter from)
-       (timef/unparse formatter until)
-       action/index-solr-docs
-       solr/flush-commit-swap))))
-
-(defjob ReindexLiveFundref [ctx]
-  (-> (conf/get-param [:upstream :fundref-dois-live])
-      (conf/remote-file)
-      (action/reindex-fundref)))
-
-(defjob ReindexDevFundref [ctx]
-  (-> (conf/get-param [:upstream :fundref-dois-dev])
-      (conf/remote-file)
-      (action/reindex-fundref)))
- 
-(defjob RefreshCategoryCache [ctx]
-  (category/clear!))
-
-(defjob RefreshDoajCache [ctx]
-  (doaj/clear!))
-
-(defjob RefreshPrefixCache [ctx]
-  (prefix/clear!))
-
-(defjob ReloadFunders [ctx]
-  (-> (conf/get-param [:upstream :fundref-registry])
-      (conf/remote-file))
-  (funder/clear!))
+       (timef/unparse oai-date-format from)
+       (timef/unparse oai-date-format until)
+       action/index-solr-docs))))
 
 (defn start []
   (qs/initialize)
-  (qs/start)
+  (qs/start))
+
+(defn start-indexing []
   (qs/schedule
    (qj/build
-    (qj/of-type IndexCrossrefOai)
+    (qj/of-type index-crossref-oai)
     (qj/with-identity (qj/key "index-crossref-oai")))
-   daily-work-trigger)
-  (qs/schedule
-   (qj/build
-    (qj/of-type RefreshCategoryCache)
-    (qj/with-identity (qj/key "refresh-category-cache")))
-   weekly-work-trigger)
-  (qs/schedule
-   (qj/build
-    (qj/of-type RefreshDoajCache)
-    (qj/with-identity (qj/key "refresh-doaj-cache")))
-   weekly-work-trigger)
-  (qs/schedule
-   (qj/build
-    (qj/of-type RefreshPrefixCache)
-    (qj/with-identity (qj/key "refresh-prefix-cache")))
-   weekly-work-trigger)
-  (qs/schedule
-   (qj/build
-    (qj/of-type ReloadFunders)
-    (qj/with-identity (qj/key "reload-funders")))
-   weekly-work-trigger))
+    daily-work-trigger))
+
+(conf/with-core :default
+  (conf/add-startup-task 
+   :index
+   (fn [profiles]
+     (start)
+     (start-indexing))))

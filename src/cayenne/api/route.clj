@@ -8,6 +8,7 @@
             [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
             [compojure.handler :as handler]
             [ring.util.response :refer [redirect]]
+            [org.httpkit.server :as hs]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (def all-routes
@@ -46,5 +47,13 @@
       ; (creates headers that are incompatible)
       (wrap-stacktrace-web)))
 
-(conf/with-core :default 
-  (conf/set-param! [:service :api :var] #'api))
+(conf/with-core :default
+  (conf/add-startup-task
+   :api
+   (fn [profiles]
+     (conf/set-service! 
+      :api 
+      (hs/run-server 
+       api
+       {:join? false
+        :port (conf/get-param [:service :api :port])})))))

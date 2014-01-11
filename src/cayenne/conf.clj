@@ -9,11 +9,14 @@
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
-            [clojurewerkz.neocons.rest :as nr]
-            [org.httpkit.server :as hs]))
+            [clojurewerkz.neocons.rest :as nr]))
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
+
+(def startup-tasks (atom {}))
+
+(def shutdown-tasks (atom {}))
 
 (defn get-param [path & default]
   (or (get-in @cores (concat [*core-name* :parameters] path) default)))
@@ -26,6 +29,9 @@
 
 (defn set-service! [key obj]
   (swap! cores assoc-in [*core-name* :services key] obj))
+
+(defn add-startup-task [key task]
+  (swap! startup-tasks assoc key task))
 
 (defn get-resource [name]
   (.getFile (clojure.java.io/resource (get-param [:res name]))))
@@ -55,21 +61,15 @@
 
 (defn start-core!
   "Create a new named core, initializes various services."
-  [name & opts]
-  (with-core name
-    (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
-    (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
-                                            :host (get-param [:service :mongo :host])))
-    (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
-    (set-service! :solr-update-list
-                  (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
-                       (get-param [:service :solr :update-list])))
-    ;(set-service! :riemann (rie/tcp-client :host (get-param [:service :riemann :host])))
-    ;(set-service! :neo4j (nr/connect! (get-param [:service :neo4j :url])))
-    (set-service! :api (hs/run-server (get-param [:service :api :var])
-                                    {:join? false
-                                     :port (get-param [:service :api :port])}))
-    (set-param! [:status] :running)))
+  [name & profiles]
+  (let [with-base-profiles (conj profiles :base)]
+    (with-core name
+      (doseq [[name task] @startup-tasks]
+        (when (some #{name} with-base-profiles)
+          (print "Starting" name "... ")
+          (task profiles)
+          (println "done.")))
+      (set-param! [:status] :running))))
 
 (defn stop-core! [name]
   (with-core name
@@ -142,6 +142,18 @@
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=kward@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=kward@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix="))
+
+(with-core :default
+  (add-startup-task 
+   :base
+   (fn [profiles]
+     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
+     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
+                                             :host (get-param [:service :mongo :host])))
+     (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
+     (set-service! :solr-update-list
+                   (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
+                        (get-param [:service :solr :update-list]))))))
 
 (set-core! :default)
 
