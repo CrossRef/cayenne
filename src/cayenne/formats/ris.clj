@@ -3,7 +3,7 @@
 
 ; Convert extended citeproc to RIS.
 
-(defn subtype->ris-type [subtype]
+(def subtype->ris-type
   {:journal "JOUR"
    :article "JOUR"
    :journal-article "JOUR"
@@ -33,7 +33,7 @@
 
 (defn make-ris-type [subtype]
   (when subtype
-    ["TY" (subtype->ris-type subtype)]))
+    ["TY" (or (subtype->ris-type subtype) "GENERIC")]))
 
 (defn make-ris-ids [doi uri]
   (concat
@@ -42,10 +42,11 @@
 
 (defn make-ris-authors [authors]
   (when authors
-    (map #(vector "AU" (str 
-                        (:family %) 
-                        (when (:given %) ", " (:given %))))
-         authors)))
+    (flatten 
+     (map #(vector "AU" (str 
+                         (:family %) 
+                         (when (:given %) (str ", " (:given %)))))
+          authors))))
 
 (defn make-ris-titles [title container-title]
   (concat
@@ -61,9 +62,9 @@
        ["PY" year])
      (cond 
       (and year month day)
-      ["DA" (str year "/" month "/" day)]
+      ["DA" (str year "/" (format "%02d" month) "/" (format "%02d" day))]
       (and year month)
-      ["DA" (str year "/" month)]))))
+      ["DA" (str year "/" (format "%02d" month))]))))
 
 (defn make-ris-pages [pages]
   (when pages

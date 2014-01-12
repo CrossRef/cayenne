@@ -6,7 +6,8 @@
             [cayenne.util :as util]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
-            [cayenne.ids.isbn :as isbn-id]))
+            [cayenne.ids.isbn :as isbn-id]
+            [cayenne.ids.type :as type-id]))
 
 ;; todo currently this goes from solr doc to citeproc.
 ;; needs a rewrite since this differs from other formats which
@@ -124,7 +125,7 @@
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
-       :type (get solr-doc "type")
+       :type (type-id/->type-id (get solr-doc "type"))
        :score (get solr-doc "score")}
       (assoc-exists :volume (get solr-doc "hl_volume"))
       (assoc-exists :issue (get solr-doc "hl_issue"))

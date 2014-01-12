@@ -47,6 +47,16 @@
                       :other {:index-id "Other"
                               :label "Other"}})
 
+(def reverse-dictionary
+  (reduce 
+   (fn [m [key value]]
+     (assoc m (:index-id value) key))
+   {}
+   type-dictionary))
+
+(defn ->type-id [index-str]
+  (get reverse-dictionary index-str))
+
 (defn ->index-id [id]
   (when-let [t (get type-dictionary (keyword id))]
     (:index-id t)))
