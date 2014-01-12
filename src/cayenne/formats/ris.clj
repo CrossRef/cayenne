@@ -33,7 +33,7 @@
 
 (defn make-ris-type [subtype]
   (when subtype
-    ["TY" (or (subtype->ris-type subtype) "GENERIC")]))
+    ["TY" (or (subtype->ris-type (keyword subtype)) "GENERIC")]))
 
 (defn make-ris-ids [doi uri]
   (concat
