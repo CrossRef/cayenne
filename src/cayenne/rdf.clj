@@ -1,5 +1,6 @@
 (ns cayenne.rdf
-  (:import [com.hp.hpl.jena.rdf.model ModelFactory SimpleSelector Model Resource])
+  (:import [com.hp.hpl.jena.rdf.model ModelFactory SimpleSelector ResourceFactory Literal]
+           [com.hp.hpl.jena.datatypes.xsd XSDDatatype])
   (:require [clojure.java.io :as io]))
 
 (defn get-property [ns model val] (.getProperty model ns val))
@@ -39,9 +40,26 @@
     (let [props (partition 2 properties)
           resource (.createResource model uri)]
       (doseq [[predicate object] props]
-        (when object
-          (.addProperty resource predicate object)))
+        (cond (and object (instance? Literal object))
+              (.addLiteral resource predicate object)
+              (and object (not (instance? Literal object)))
+              (.addProperty resource predicate object)))
       resource)))
+
+(defn make-date [year month day]
+  (cond
+   (and year month day)
+   (ResourceFactory/createTypedLiteral
+    (str year "-" month "-" day)
+    (XSDDatatype/XSDdate))
+   (and year month)
+   (ResourceFactory/createTypedLiteral
+    (str year "-" month)
+    (XSDDatatype/XSDgYearMonth))
+   year
+   (ResourceFactory/createTypedLiteral
+    year
+    (XSDDatatype/XSDgYear))))
       
 ;; Ontology namespaces
 

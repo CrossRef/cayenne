@@ -20,8 +20,8 @@
             (map #(vector (rdf/owl model "sameAs") (str "urn:issn:" %)
                           (rdf/bibo model "issn") %
                           (rdf/prism model "issn") %)
-                 (:ISSN metadata))))]
-      (rdf/make-resource model (issn-id/to-issn-uri first-issn) properties))))
+                 (set (:ISSN metadata)))))]
+      (apply rdf/make-resource model (issn-id/to-issn-uri first-issn) properties))))
 
 (defn make-rdf-isbn-container [model metadata]
   (when (first (:ISBN metadata))
@@ -49,11 +49,16 @@
   (when (:page metadata)
     (string/split (:page metadata) #"\-+")))
 
+(defn get-issued [metadata]  
+  (when-let [dateules (get-in metadata [:issued :date-parts 0])]
+    (apply rdf/make-date dateules)))
+
 (defn make-rdf-work [model metadata]
   (concat
    [(rdf/dct model "identifier") (:DOI metadata)
     (rdf/owl model "sameAs") (rdf/make-resource model (str "doi:" (:DOI metadata)))
     (rdf/owl model "sameAs") (rdf/make-resource model (str "info:doi/" (:DOI metadata)))
+    (rdf/dct model "date") (get-issued metadata)
     (rdf/prism model "doi") (:DOI metadata)
     (rdf/bibo model "doi") (:DOI metadata)
     (rdf/prism model "volume") (:volume metadata)

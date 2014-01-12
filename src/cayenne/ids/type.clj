@@ -10,6 +10,8 @@
                                 :label "Journal"}
                       :proceedings-article {:index-id "Proceedings Article" 
                                             :label "Proceedings Article"}
+                      :proceedings {:index-id "Proceedings"
+                                    :label "Proceedings"}
                       :dataset {:index-id "Dataset"
                                 :label "Dataset"}
                       :report {:index-id "Report"

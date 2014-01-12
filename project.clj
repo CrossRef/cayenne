@@ -8,6 +8,7 @@
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
   :dependencies [[org.clojure/clojure "1.5.1"]
+                 [de.undercouch/citeproc-java "0.6"]
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
