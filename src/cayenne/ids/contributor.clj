@@ -6,7 +6,7 @@
 
 ;; IDs for ambiguous contributors (these IDs embed a work ID.)
 
-(defn contributor-slug [name ordinal]
+(defn contributor-slug [name]
   (-> (Normalizer/normalize name Normalizer$Form/NFD)
       (string/lower-case)
       (string/replace #"\." " ")
@@ -27,7 +27,9 @@
     (.toString (BigInteger. shortened-digest 16) 36)))
 
 (defn contributor-id [name ordinal doi]
-  (str (contributor-slug name ordinal) "-" (work-slug doi)))
+  (if (zero? ordinal)
+    (str (contributor-slug name) "-" (work-slug doi))
+    (str (contributor-slug name) "-" (+ ordinal 1) "-" (work-slug doi))))
 
 (defn to-contributor-id-uri [name ordinal doi]
   (ids/get-id-uri :contributor (contributor-id name ordinal doi)))
