@@ -2,7 +2,8 @@
   (:import [java.io StringWriter])
   (:require [cayenne.rdf :as rdf]
             [cayenne.ids.isbn :as isbn-id]
-            [cayenne.ids.issn :as issn-id]))
+            [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.contributor :as contributor-id]))
 
 ;; TODO full-text links, funders, licenses
 
@@ -25,15 +26,16 @@
 ;; TODO for a make-rdf-doi-container would need container DOIs in solr 
 ;; and citeproc
 
-(defn make-rdf-contributor [model contributor]
-  (rdf/make-resource
-   model 
-   "http://id.crossref.org/contributor/1"
-   (rdf/rdf model "type") (rdf/foaf-type model "Person")
-   (rdf/owl model "sameAs") (rdf/make-resource model (:ORCID contributor))
-   (rdf/foaf model "givenName") (:given contributor)
-   (rdf/foaf model "familyName") (:family contributor)
-   (rdf/foaf model "name") (str (:given contributor) " " (:family contributor))))
+(defn make-rdf-contributor [model doi contributor]
+  (let [full-name (str (:given contributor) " " (:family contributor))]
+    (rdf/make-resource
+     model
+     (contributor-id/to-contributor-id-uri full-name 0 doi)
+     (rdf/rdf model "type") (rdf/foaf-type model "Person")
+     (rdf/owl model "sameAs") (rdf/make-resource model (:ORCID contributor))
+     (rdf/foaf model "givenName") (:given contributor)
+     (rdf/foaf model "familyName") (:family contributor)
+     (rdf/foaf model "name") full-name)))
 
 (defn make-rdf-work [model metadata]
   (concat
@@ -50,7 +52,7 @@
     (rdf/dct model "isPartOf") (make-rdf-isbn-container model metadata)]
    (flatten
       (map #(vector (rdf/dct model "creator")
-                    (make-rdf-contributor model %))
+                    (make-rdf-contributor model (:DOI metadata) %))
            (concat
             (:author metadata)
             (:editor metadata)

@@ -33,6 +33,8 @@
         :short-doi
         (.startsWith id-uri (conf/get-param [:id :supplementary :path]))
         :supplementary
+        (.startsWith id-uri (conf/get-param [:id :contributor :path]))
+        :contributor
         :else
         :unknown))
 
