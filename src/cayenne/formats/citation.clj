@@ -1,0 +1,58 @@
+(ns cayenne.formats.citation
+  (:import [de.undercouch.citeproc.csl 
+            CSLItemDataBuilder CSLDateBuilder CSLNameBuilder 
+            CSLName CSLItemData]
+           [de.undercouch.citeproc CSL]))
+
+(defn make-csl-issued-date [metadata]
+  (let [year (get-in metadata [:issued :date-parts 0 0])
+        month (get-in metadata [:issued :date-parts 0 1])
+        day (get-in metadata [:issued :date-parts 0 2])
+        builder (CSLDateBuilder.)]
+    (cond
+     (and year month day)
+     (.dateParts builder year month day)
+     (and year month)
+     (.dateParts builder year month)
+     year
+     (.dateParts builder year))
+    (.build builder)))
+
+(defn make-csl-contributor [contributor]
+  (-> (CSLNameBuilder.)
+      (.family (:family contributor))
+      (.given (:given contributor))
+      (.build)))
+
+(defn ->csl-item [metadata]
+  (let [builder (CSLItemDataBuilder.)]
+    (-> builder
+        (.source (:source metadata))
+        (.DOI (:DOI metadata))
+        (.URL (:URL metadata))
+        (.publisher (:publisher metadata))
+        (.issued (make-csl-issued-date metadata))
+        (.volume (:volume metadata))
+        (.issue (:issue metadata))
+        (.page (:page metadata)))
+        ;; (.author (make-array CSLName (map make-csl-contributor (:author metadata))))
+        ;; (.translator (make-array CSLName (map make-csl-contributor (:translator metadata))))
+        ;; (.editor (make-array CSLName (map make-csl-contributor (:editor metadata)))))
+    (doseq [isbn (:ISBN metadata)] (.ISBN builder isbn))
+    (doseq [issn (:ISSN metadata)] (.ISSN builder issn))
+    (doseq [title (:title metadata)] (.title builder title))
+    (doseq [container-title (:container-title metadata)] (.containerTitle builder container-title))
+    (doseq [archive (:archive metadata)] (.archive builder archive))
+    (.build builder)))
+
+(defn ->citation [metadata & {:keys [style language format]
+                              :or {style "apa"
+                                   language "en-US"
+                                   format "text"}}]
+  (prn (->csl-item metadata))
+  (CSL/makeAdhocBibliography 
+   style 
+   format 
+   (make-array CSLItemData [(->csl-item metadata)])))
+  
+

@@ -9,9 +9,8 @@
             [cayenne.ids.isbn :as isbn-id]
             [cayenne.ids.type :as type-id]))
 
-;; todo currently this goes from solr doc to citeproc.
-;; needs a rewrite since this differs from other formats which
-;; go to/from item trees.
+;; TODO Proper use of container-title vs. collection-title
+;; author vs. container-author vs. collection-author etc.
 
 (defn assoc-exists 
   "Like assoc except only performs the assoc if value is
@@ -141,3 +140,4 @@
       (assoc-exists :page (->citeproc-pages solr-doc))
       (assoc-exists :funder (->citeproc-funders solr-doc))
       (merge (->citeproc-contribs solr-doc))))
+
