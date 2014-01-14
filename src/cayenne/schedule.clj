@@ -11,8 +11,7 @@
             [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as qt]
             [clojurewerkz.quartzite.jobs :as qj]
-            [clojurewerkz.quartzite.schedule.daily-interval :as daily]
-            [clojurewerkz.quartzite.schedule.calendar-interval :as cal]
+            [clojurewerkz.quartzite.schedule.cron :as cron]
             [taoensso.timbre :as timbre :refer [info error]])
    (:use [clojurewerkz.quartzite.jobs :only [defjob]]))
 
@@ -24,10 +23,8 @@
   (qt/build
    (qt/with-identity (qt/key "daily-work"))
    (qt/with-schedule
-     (daily/schedule
-      (daily/every-day)
-      (daily/with-repeat-count 1)
-      (daily/starting-daily-at (daily/time-of-day 1 0 0))))))
+     (cron/schedule
+      (cron/cron-schedule "0 0 1 ? * *")))))
 
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 2))
