@@ -47,6 +47,7 @@
        action/index-solr-docs))))
 
 (defjob flush-solr-insert-list [ctx]
+  (info "Flushing solr insert buffer")
   (solr/force-flush-insert-list))
 
 (defn start []
