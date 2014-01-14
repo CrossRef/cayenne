@@ -6,6 +6,7 @@
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.category :as category]
+            [cayenne.tasks.solr :as solr]
             [clj-time.core :as time]
             [clj-time.format :as timef]
             [clojurewerkz.quartzite.scheduler :as qs]
@@ -26,6 +27,13 @@
      (cron/schedule
       (cron/cron-schedule "0 0 1 ? * *")))))
 
+(def hourly-work-trigger
+  (qt/build
+   (qt/with-identity (qt/key "hourly-work"))
+   (qt/with-schedule
+     (cron/schedule
+      (cron/cron-schedule "0 0 * * * ?")))))
+
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 2))
         until (time/today-at-midnight)]
@@ -38,6 +46,9 @@
        (timef/unparse oai-date-format until)
        action/index-solr-docs))))
 
+(defjob flush-solr-insert-list [ctx]
+  (solr/force-flush-insert-list))
+
 (defn start []
   (qs/initialize)
   (qs/start))
@@ -47,7 +58,12 @@
    (qj/build
     (qj/of-type index-crossref-oai)
     (qj/with-identity (qj/key "index-crossref-oai")))
-    daily-work-trigger))
+    daily-work-trigger)
+  (qs/schedule
+   (qj/build
+    (qj/of-type flush-solr-insert-list)
+    (qj/with-identity (qj/key "flush-solr-insert-list"))
+    hourly-work-trigger)))
 
 (conf/with-core :default
   (conf/add-startup-task 

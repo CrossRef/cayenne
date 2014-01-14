@@ -47,21 +47,13 @@
       [doc])
     (conj insert-list doc)))
 
-(defn clear-insert-list []
-  (dosync
-   (alter insert-list (constantly []))))
+(defn flush-and-clear-insert-list [insert-list]
+  (when (not (zero? (count insert-list)))
+    (send-off insert-count flush-insert-list insert-list))
+  [])
 
-(defn flush-commit-swap []
-  (info "Final solr insert list flush...")
-  (flush-insert-list)
-  (info "Performing a SOLR commit...")
-  (.commit (conf/get-service :solr-update) true true)
-  (info "Swapping SOLR cores...")
-  (doto (CoreAdminRequest.)
-    (.setCoreName (conf/get-param [:service :solr :insert-core]))
-    (.setOtherCoreName (conf/get-param [:service :solr :query-core]))
-    (.setAction CoreAdminParams$CoreAdminAction/SWAP)
-    (.process (conf/get-service :solr))))
+(defn force-flush-insert-list []
+   (swap! insert-list flush-and-clear-insert-list))
 
 (defn get-categories [item]
   (if-let [journal (find-item-of-subtype item :journal)]
