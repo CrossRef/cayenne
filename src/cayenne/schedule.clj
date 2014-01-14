@@ -63,8 +63,8 @@
   (qs/schedule
    (qj/build
     (qj/of-type flush-solr-insert-list)
-    (qj/with-identity (qj/key "flush-solr-insert-list"))
-    hourly-work-trigger)))
+    (qj/with-identity (qj/key "flush-solr-insert-list")))
+    hourly-work-trigger))
 
 (conf/with-core :default
   (conf/add-startup-task 
