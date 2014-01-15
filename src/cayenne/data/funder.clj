@@ -89,7 +89,7 @@
         mongo-query (query/->mongo-query query-context
                                          :where where-clause
                                          :sort {:level 1})
-        docs (if (zero? (:limit mongo-query))
+        docs (if (and (:rows query-context) (zero? (:rows query-context)))
                []
                (m/with-mongo (conf/get-service :mongo)
                  (apply m/fetch "funders" mongo-query)))
