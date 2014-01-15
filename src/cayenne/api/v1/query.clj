@@ -120,7 +120,7 @@
       (doto query
         (.setStart (:offset query-context))
         (.setRows (:rows query-context))))
-    (when (not= 0 (:sample query-context))
+    (when (and (:sample query-context) (not= 0 (:sample query-context)))
       (doto query
         (.setStart (int 0))
         (.setRows (:sample query-context))
