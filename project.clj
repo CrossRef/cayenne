@@ -7,7 +7,7 @@
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
-  :resource-paths ["csl/styles" "csl/locales"]
+  :resource-paths ["csl/styles" "csl/locales" "resources"]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.10"]
