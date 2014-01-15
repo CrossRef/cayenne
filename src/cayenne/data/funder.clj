@@ -89,8 +89,10 @@
         mongo-query (query/->mongo-query query-context
                                          :where where-clause
                                          :sort {:level 1})
-        docs (m/with-mongo (conf/get-service :mongo)
-               (apply m/fetch "funders" mongo-query))
+        docs (if (zero? (:limit mongo-query))
+               []
+               (m/with-mongo (conf/get-service :mongo)
+                 (apply m/fetch "funders" mongo-query)))
         result-count (m/with-mongo (conf/get-service :mongo)
                        (apply m/fetch-count "funders" mongo-query))]
     (-> (r/api-response :funder-list)
