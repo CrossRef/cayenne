@@ -73,16 +73,17 @@
 (defn parse-query-terms 
   "Split query terms."
   [terms]
-  (-> terms
-      (string/lower-case)
-      (string/replace #"[,\.\-\'\"]" "")
-      (string/split #"\s+")))
+  (when terms
+    (-> terms
+        (string/lower-case)
+        (string/replace #"[,\.\-\'\"]" "")
+        (string/split #"\s+"))))
 
 (defn fetch
   "Search for funders by name tokens. Results are sorted by level within organizational
    hierarchy."
   [query-context]
-  (let [parsed-terms (parse-query-terms (:terms query-context))
+  (let [parsed-terms (or (parse-query-terms (:terms query-context)) [])
         and-list (map #(hash-map "name_tokens" {"$regex" (str "^" %)}) parsed-terms)
         mongo-query (query/->mongo-query query-context
                                          :where {"$and" and-list}

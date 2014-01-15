@@ -7,8 +7,10 @@
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[codox "0.6.4"]]
+  :resource-paths ["csl/styles" "csl/locales"]
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [de.undercouch/citeproc-java "0.6"]
+                 [org.jbibtex/jbibtex "1.0.10"]
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
@@ -32,8 +34,11 @@
                  [org.clojure/core.memoize "0.5.3"]
                  [org.clojure/math.combinatorics "0.0.4"]
                  [org.neo4j/neo4j "1.9.RC1"]
-                 [org.neo4j.app/neo4j-server "1.9.RC1" :classifier "static-web"]
-                 [org.neo4j.app/neo4j-server "1.9.RC1"]
+                 [org.neo4j.app/neo4j-server "1.9.RC1" 
+                  :classifier "static-web" 
+                  :exclusions [org.mozilla/rhino]]
+                 [org.neo4j.app/neo4j-server "1.9.RC1"
+                  :exclusions [org.mozilla/rhino]]
                  [com.novemberain/langohr "1.4.1"]
                  [liberator "0.10.0"]
                  [compojure "1.1.5"]

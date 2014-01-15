@@ -1,7 +1,7 @@
 (ns cayenne.formats.citation
   (:import [de.undercouch.citeproc.csl 
             CSLItemDataBuilder CSLDateBuilder CSLNameBuilder 
-            CSLName CSLItemData]
+            CSLName CSLItemData CSLType]
            [de.undercouch.citeproc CSL]))
 
 (defn make-csl-issued-date [metadata]
@@ -27,6 +27,8 @@
 (defn ->csl-item [metadata]
   (let [builder (CSLItemDataBuilder.)]
     (-> builder
+        (.id "1")
+        (.type CSLType/ARTICLE_JOURNAL)
         (.source (:source metadata))
         (.DOI (:DOI metadata))
         (.URL (:URL metadata))
@@ -34,10 +36,10 @@
         (.issued (make-csl-issued-date metadata))
         (.volume (:volume metadata))
         (.issue (:issue metadata))
-        (.page (:page metadata)))
-        ;; (.author (make-array CSLName (map make-csl-contributor (:author metadata))))
-        ;; (.translator (make-array CSLName (map make-csl-contributor (:translator metadata))))
-        ;; (.editor (make-array CSLName (map make-csl-contributor (:editor metadata)))))
+        (.page (:page metadata))
+        (.author (into-array CSLName (map make-csl-contributor (:author metadata))))
+        (.translator (into-array CSLName (map make-csl-contributor (:translator metadata))))
+        (.editor (into-array CSLName (map make-csl-contributor (:editor metadata)))))
     (doseq [isbn (:ISBN metadata)] (.ISBN builder isbn))
     (doseq [issn (:ISSN metadata)] (.ISSN builder issn))
     (doseq [title (:title metadata)] (.title builder title))
@@ -49,10 +51,8 @@
                               :or {style "apa"
                                    language "en-US"
                                    format "text"}}]
-  (prn (->csl-item metadata))
-  (CSL/makeAdhocBibliography 
-   style 
-   format 
-   (make-array CSLItemData [(->csl-item metadata)])))
-  
-
+  (-> (CSL/makeAdhocBibliography 
+       style 
+       format
+       (into-array CSLItemData [(->csl-item metadata)]))
+      (.makeString)))
