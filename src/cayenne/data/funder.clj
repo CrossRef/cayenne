@@ -85,8 +85,9 @@
   [query-context]
   (let [parsed-terms (or (parse-query-terms (:terms query-context)) [])
         and-list (map #(hash-map "name_tokens" {"$regex" (str "^" %)}) parsed-terms)
+        where-clause (if (empty? and-list) {} {"$and" and-list})
         mongo-query (query/->mongo-query query-context
-                                         :where {"$and" and-list}
+                                         :where where-clause
                                          :sort {:level 1})
         docs (m/with-mongo (conf/get-service :mongo)
                (apply m/fetch "funders" mongo-query))
