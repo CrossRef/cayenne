@@ -1,4 +1,4 @@
-(defproject cayenne "0.1.0-SNAPSHOT"
+(defproject crossref/cayenne "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://github.com/CrossRef/cayenne"
   :license {:name "Eclipse Public License"
