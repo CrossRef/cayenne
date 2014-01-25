@@ -4,11 +4,26 @@
 
 ;; check item tree health
 
+;; check functions are backwards. they return *something* (ideally
+;; context of the failure) if the check fails, otherwise they return 
+;; *nil*
+
 (defn title-case [item]
   (filter
    #(= (string/capitalise (:value %))
        (:value %))
    (i/find-items-of-type item :title)))
+
+(defn full-publication-date [item]
+  (let [pub-dates (concat
+                   (i/get-tree-rel item :published-online)
+                   (i/get-tree-rel item :published-print))]
+    (filter
+     #(or (nil? (:day %)) (nil? (:month %)) (nil? (:year %)))
+     pub-dates)))
+
+(defn funding-information [item]
+  (not (empty? (i/get-tree-rel item :funder))))
 
 (defn journal-has-issn [item]
   (when-let [journal (i/find-item-of-subtype :journal)]
@@ -22,17 +37,6 @@
 (defn journal-has-issue [item]
   (when-let [journal (i/find-item-of-subtype :journal)]
     (not (empty? (i/find-item-of-subtype :journal-issue)))))
-
-(defn full-publication-date [item]
-  (let [pub-dates (concat
-                   (i/get-tree-rel item :published-online)
-                   (i/get-tree-rel item :published-print))]
-    (filter
-     #(or (nil? (:day %)) (nil? (:month %)) (nil? (:year %)))
-     pub-dates)))
-
-(defn funding-information [item]
-  (not (empty? (i/get-tree-rel item :funder))))
 
 (defn funders-have-ids [item]
   (let [funders (i/get-tree-rel item :funder)]
@@ -74,6 +78,26 @@
         family-names (map :last-name contributors)]
     (filter #(re-find #"\s" %) family-names)))
 
+(defn articles-have-pages [item]
+  (let [articles
+        (concat
+         (i/find-items-of-subtype item :journal-article)
+         (i/find-items-of-subtype item :proceedings-article))]
+    (filter
+     #(or (nil? (:first-page %)) (nil? (:last-page %)))
+     articles)))
+
+(defn articles-have-separate-pages [item]
+  (let [page-seperator #"-"
+        articles
+        (concat
+         (i/find-items-of-subtype item :journal-article)
+         (i/find-items-of-subtype item :proceedings-article))]
+    (filter
+     #(or (re-find page-seperator (:first-page %))
+          (re-find page-separator (:last-page %)))
+     articles)))
+
 (def checks
   [{:id :misc.funding-information
     :description "Some funding information should be listed"
@@ -81,6 +105,12 @@
    {:id :misc.standard-case-titles
     :description "Titles should not be all upper-case"
     :fn title-case}
+   {:id :article.has-pages
+    :description "Articles should have first and last page numbers"
+    :fn articles-have-pages}
+   {:id :article.has-separate-pages
+    :description "Article first and last page numbers should be separated"
+    :fn articles-have-separate-pages}
    {:id :journal.has-issn
     :description "Journals should have at least one ISSN"
     :fn journal-has-issn}
@@ -119,10 +149,11 @@
   "Returns a report of checks performed against an item tree."
   ([item check]
      (let [result ((:fn check) item)
-           pass (or (nil? result) (empty? result))]
+           pass (or (nil? result) (empty? result))
+           check-to-merge (dissoc check :fn)]
        (if pass
-         (assoc check :pass true)
-         (merge check {:pass false :failures result}))))
+         (assoc check-to-merge :pass true)
+         (merge check-to-merge {:pass false :failures result}))))
   ([item]
      (map #(check-tree item %) checks)))
   
