@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.util :as util :refer [?> ?>>]]
             [cayenne.api.v1.filter :as filter]
+            [cayenne.api.v1.parameters :as p]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -63,30 +64,29 @@
 
 (defn get-selectors [params]
   (when (get params :selector)
-    (string/split (get params :selector) #",")))
+    (string/split (get params :selector) #",")))      
 
 (defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
-  (if-not (nil? (get-in resource-context [:request :body]))
-    (let [json-body (-> resource-context 
-                        (get-in [:request :body])
-                        (io/reader)
-                        (json/read :key-fn keyword))]
-      {:id id
-       :sample (-> json-body (:sample) (parse-sample-val))
-       :terms (:query json-body)
-       :offset (-> json-body (:offset) (parse-offset-val))
-       :rows (-> json-body (:rows) (parse-rows-val))
-       :selectors (:selector json-body)
-       :filters (:filter json-body)})
+  (let [params (p/get-parameters resource-context)]
     {:id id
-     :sample (-> resource-context (get-in [:request :params :sample]) (parse-sample-val))
-     :terms (get-in resource-context [:request :params :query])
-     :offset (-> resource-context (get-in [:request :params :offset]) (parse-offset-val))
-     :rows (-> resource-context (get-in [:request :params :rows]) (parse-rows-val))
-     :selectors (get-selectors (get-in resource-context [:request :params]))
-     :filters (get-filters (get-in resource-context [:request :params]))}))
+     :sample (parse-sample-val (:sample params))
+     :terms (:query params)
+     :offset (parse-offset-val (:offset params))
+     :rows (parse-rows-val (:rows params))
+     :selectors (get-selectors params)
+     :filters (get-filters params)}))
 
-(defn clean-terms [terms] terms)
+;; todo get selectors and get filters handle json input
+
+(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
+  (if (not remove-syntax)
+    terms
+    (-> terms
+        (string/replace #"[+\-!(){}\[\]\^\"~*?:\\]+" " ")
+        (string/replace #"||" " ")
+        (string/replace #"&&" " ")
+        (string/replace #"(?i)or" " ")
+        (string/replace #"(?i)and" " "))))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

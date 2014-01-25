@@ -14,6 +14,7 @@
             [cayenne.data.type :as data-types]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
+            [cayenne.api.v1.parameters :as p]
             [clojure.data.json :as json]
             [clojure.string :as string]
             [liberator.core :refer [defresource resource]]
@@ -48,6 +49,17 @@
   (let [ct (get-in ctx [:request :headers "content-type"])]
     (some #{ct} cts)))
 
+(defresource cores-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (->1 #(c/fetch-all)))
+
+(defresource core-resource [core-name]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? (->1 #(c/exists? core-name))
+  :handle-ok (->1 #(c/fetch core-name)))
+
 (defresource deposits-resource [data]
   :allowed-methods [:post :optionsx]
   :known-content-type? #(content-type-matches % t/depositable)
@@ -67,13 +79,10 @@
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok (->1 #(d/fetch-data id)))
 
-(defresource subjects-resource)
-
-(defresource subject-resource [subject-id])
-
 (defresource works-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
+  :malformed? p/malformed-list-request?
   :handle-ok #(doi/fetch (q/->query-context %)))
 
 (defresource work-resource [doi]
@@ -84,16 +93,10 @@
                        (doi-id/to-long-doi-uri)
                        (doi/fetch-one))))
 
-(defresource cores-resource
+(defresource work-health-resource [doi]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (->1 #(c/fetch-all)))
-
-(defresource core-resource [core-name]
-  :allowed-methods [:get :options]
-  :available-media-types t/json
-  :exists? (->1 #(c/exists? core-name))
-  :handle-ok (->1 #(c/fetch core-name)))
+  :handle-ok (->1 #(doi/fetch-health doi)))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
@@ -110,6 +113,7 @@
 
 (defresource funder-works-resource [funder-id]
   :allowed-methods [:get :options]
+  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
@@ -125,13 +129,9 @@
 
 (defresource publisher-works-resource [px]
   :allowed-methods [:get :options]
+  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri px))))
-
-(defresource programs-resource 
-  :allowed-methods [:get :options]
-  :available-media-types t/json
-  :handle-ok (->1 #(program/fetch-all)))
 
 (defresource types-resource
   :allowed-methods [:get :options]
@@ -147,25 +147,11 @@
 
 (defresource type-works-resource [id]
   :allowed-methods [:get :options]
+  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
-(defresource resolve-resource []
-  :allowed-methods [:get :options])
-
-(defresource registry-tool-resource [path]
-  :allowed-methods [:get :options])
-
-(defresource reindex-tool-resource []
-  :allowed-methods [:get :options])
-
 (defroutes api-routes
-  (ANY "/resolve" []
-       resolve-resource)
-  (ANY "/tools/registry" {{path :path} :params}
-       (registry-tool-resource path))
-  ;; (ANY "/tools/reindex"
-  ;;      ())
   (ANY "/funders" []
        funders-resource)
   (ANY "/funders/*" {{id :*} :params}
@@ -181,7 +167,9 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (work-resource doi))
+       (if (.endsWith id "/health")
+         (work-health-resource doi)
+         (work-resource doi)))
   (ANY "/types" []
        types-resource)
   (ANY "/types/:id" [id]
@@ -197,6 +185,4 @@
   (ANY "/deposits/:id" [id]
        (deposit-resource id))
   (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id))
-  (ANY "/programs" []
-       programs-resource))
+       (deposit-data-resource id)))

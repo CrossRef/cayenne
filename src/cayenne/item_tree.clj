@@ -104,6 +104,9 @@
 (defn find-item-of-type [item-tree type]
   (find-item item-tree #(= (:type %) type)))
 
+(defn find-items-of-type [item-tree type]
+  (find-items item-tree #(= (:type %) type)))
+
 (defn find-item-with-id [item-tree id]
   (find-item item-tree #(in? (:id %) id)))
 

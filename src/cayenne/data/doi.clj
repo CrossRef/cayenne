@@ -3,6 +3,7 @@
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
+            [cayenne.health :as health]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
@@ -33,3 +34,8 @@
                                              :id-field "doi"))
                  (.getResults))]
     (r/api-response :work :content (citeproc/->citeproc (first docs)))))
+
+(defn fetch-health
+  [doi]
+  (r/api-response :work-health :content (health/check-doi doi)))
+  
