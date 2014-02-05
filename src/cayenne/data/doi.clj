@@ -37,5 +37,5 @@
 
 (defn fetch-health
   [doi]
-  (r/api-response :work-health :content (health/check-doi doi)))
+  (r/api-response :work-health :content (health/check-tree [])))
   

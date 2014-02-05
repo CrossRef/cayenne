@@ -10,7 +10,7 @@
 
 (defn title-case [item]
   (filter
-   #(= (string/capitalise (:value %))
+   #(= (string/upper-case (:value %))
        (:value %))
    (i/find-items-of-type item :title)))
 
@@ -88,13 +88,13 @@
      articles)))
 
 (defn articles-have-separate-pages [item]
-  (let [page-seperator #"-"
+  (let [page-separator #"-"
         articles
         (concat
          (i/find-items-of-subtype item :journal-article)
          (i/find-items-of-subtype item :proceedings-article))]
     (filter
-     #(or (re-find page-seperator (:first-page %))
+     #(or (re-find page-separator (:first-page %))
           (re-find page-separator (:last-page %)))
      articles)))
 

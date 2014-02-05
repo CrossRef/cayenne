@@ -117,7 +117,10 @@
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
-(defresource publishers-resource [])
+(defresource publishers-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok #(publisher/fetch (q/->query-context %)))
 
 (defresource publisher-resource [px]
   :allowed-methods [:get :options]
@@ -167,8 +170,8 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (if (.endsWith id "/health")
-         (work-health-resource doi)
+       (if (.endsWith doi "/health")
+         (work-health-resource (string/replace doi #"/health\z" ""))
          (work-resource doi)))
   (ANY "/types" []
        types-resource)

@@ -101,6 +101,9 @@
 (defn find-item-of-subtype [item-tree subtype]
   (find-item item-tree #(= (:subtype %) subtype)))
 
+(defn find-items-of-subtype [item-tree subtype]
+  (find-items item-tree #(= (:subtype %) subtype)))
+
 (defn find-item-of-type [item-tree type]
   (find-item item-tree #(= (:type %) type)))
 
