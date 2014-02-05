@@ -81,7 +81,6 @@
                      (?> until assoc "until" until)))]
     (let [conn-mgr (conf/get-service :conn-mgr)
           resp (try (client/get (:url service) {:query-params params
-                                                :throw-exceptions false
                                                 :connection-manager conn-mgr
                                                 :socket-timeout (* 10 60 1000)
                                                 :conn-timeout (* 10 60 1000)})
