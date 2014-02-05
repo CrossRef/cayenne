@@ -133,6 +133,8 @@
    "until-deposit-date" (stamp-date "deposited_at" :until)
    "from-pub-date" (particle-date "year" "month" "day" :from)
    "until-pub-date" (particle-date "year" "month" "day" :until)
+   "from-issued-date" (particle-date "year" "month" "day" :from)
+   "until-issued-date" (particle-date "year" "month" "day" :until)
    "has-full-text" (existence "full_text_url")
    "has-license" (existence "license_url")
    "has-references" (bool "references") ;waiting for index change
