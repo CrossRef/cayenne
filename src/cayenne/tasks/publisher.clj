@@ -28,7 +28,7 @@
                         :location (string/trim location)}
                 "$addToSet" {:prefixes prefix
                              :tokens {"$each" (util/tokenize-name name)}
-                             :names name}})))
+                             :names (string/trim name)}})))
 
 (defn load-publishers [collection]
   (ensure-publisher-indexes! collection)

@@ -1,4 +1,4 @@
-(ns cayenne.data.publisher
+(ns cayenne.data.prefix
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.query :as query]
@@ -26,22 +26,6 @@
       (.getResults)
       (.getNumFound)))
 
-(defn fetch-one [query-context]
-  (let [pub-doc (m/with-mongo (conf/get-service :mongo)
-                  (m/fetch-one "publishers"
-                               :where {:id (-> query-context
-                                               (:id))}))]
-    (when pub-doc
-      (r/api-response :publisher
-                      :content
-                      {:id (:id query-context)
-                       :name (:name pub-doc)
-                       :tokens (:tokens pub-doc)
-                       :work-count (get-solr-work-count query-context)}))))
-
-(defn fetch [query-context]
-  ())
-
 (defn fetch-works [query-context]
   (let [doc-list (get-solr-works query-context)]
     (-> (r/api-response :work-list)
@@ -50,8 +34,6 @@
           (.getNumFound doc-list)
           (map citeproc/->citeproc doc-list)))))
 
-;; faked publisher name look up we will use for the moment until
-;; we have proper publisher ids
 (defn fetch-one [query-context]
   (let [any-work (-> (assoc query-context :rows (int 1))
                      (get-solr-works)
@@ -60,7 +42,7 @@
     (if (and 
          (not (nil? any-work))
          (not (string/blank? (:publisher citeproc-doc))))
-      (r/api-response :publisher :content {:prefix (:id query-context)
+      (r/api-response :prefix :content {:prefix (:id query-context)
                                            :name (:publisher citeproc-doc)})
-      (r/api-response :publisher :content {:prefix (:id query-context)}))))
+      (r/api-response :prefix :content {:prefix (:id query-context)}))))
 

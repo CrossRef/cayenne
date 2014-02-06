@@ -3,13 +3,15 @@
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.fundref :as fr-id]
-            [cayenne.ids.prefix :as prefix]
+            [cayenne.ids.prefix :as prefix-id]
+            [cayenne.ids.member :as member-id]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
             [cayenne.data.publisher :as publisher]
+            [cayenne.data.member :as member]
             [cayenne.data.type :as data-types]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
@@ -116,24 +118,32 @@
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
-(defresource publishers-resource
-  :allowed-methods [:get :options]
-  :available-media-types t/json
-  :handle-ok #(publisher/fetch (q/->query-context %)))
-
-(defresource publisher-resource [px]
+(defresource prefix-resource [px]
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [p (publisher/fetch-one
-                          (q/->query-context % :id (prefix/to-prefix-uri px)))]
+                          (q/->query-context % :id (prefix-id/to-prefix-uri px)))]
               {:publisher p})
   :handle-ok :publisher)
 
-(defresource publisher-works-resource [px]
+(defresource prefix-works-resource [px]
   :allowed-methods [:get :options]
   :malformed? p/malformed-list-request?
   :available-media-types t/json
-  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix/to-prefix-uri px))))
+  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
+
+(defresource members-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok #(member/fetch (q/->query-context %)))
+
+(defresource member-resource [id]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? #(when-let [m (member/fetch-one
+                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+              {:member m})
+  :handle-ok :member)
 
 (defresource types-resource
   :allowed-methods [:get :options]
@@ -160,12 +170,18 @@
        (if (.endsWith id "/works")
          (funder-works-resource (string/replace id #"/works\z" ""))
          (funder-resource id)))
-  (ANY "/publishers" []
-       publishers-resource)
-  (ANY "/publishers/:prefix" [prefix]
-       (publisher-resource prefix))
-  (ANY "/publishers/:prefix/works" [prefix]
-       (publisher-works-resource prefix))
+  (ANY "/members" []
+       members-resource)
+  (ANY "/members/:id" [id]
+       (member-resource id))
+  (ANY "/members/:id/works" []
+       "Not implemented.")
+  (ANY "/prefixes" []
+       "Not implemented.")
+  (ANY "/prefixes/:prefix" [prefix]
+       (prefix-resource prefix))
+  (ANY "/prefixes/:prefix/works" [prefix]
+       (prefix-works-resource prefix))
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}

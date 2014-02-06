@@ -3,7 +3,7 @@
 
 (defn extract-member-id [s]
   (when s
-    (re-find "\d+" s)))
+    (re-find #"\d+" s)))
 
 (defn to-member-id-uri [s]
   (when s
