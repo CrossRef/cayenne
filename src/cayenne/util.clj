@@ -121,7 +121,7 @@
 (defn tokenize-name [name]
   (-> (simplify-name name)
       (string/replace #"[\(\)]" " ")
-      (string/replace #"and|&" "& and")
+      (string/replace #"&" "& and")
       (string/split #"\s+")))
 
 (defn slugify [uri]
