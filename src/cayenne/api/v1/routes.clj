@@ -10,7 +10,6 @@
             [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
             [cayenne.data.publisher :as publisher]
-            [cayenne.data.program :as program]
             [cayenne.data.type :as data-types]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
