@@ -1,9 +1,9 @@
-(ns cayenne.data.doi
+(ns cayenne.data.work
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
-            [cayenne.health :as health]
+            [cayenne.data.quality :as quality]
             [cayenne.action :as action]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
@@ -41,8 +41,8 @@
     (action/parse-doi doi (action/return-item record))
     @record))
 
-(defn fetch-health
+(defn fetch-quality
   [doi]
   (let [item-tree (get-unixsd doi)]
-    (r/api-response :work-health :content (health/check-tree item-tree))))
+    (r/api-response :work-quality :content (quality/check-tree item-tree))))
   

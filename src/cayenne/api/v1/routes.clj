@@ -7,7 +7,7 @@
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
-            [cayenne.data.doi :as doi]
+            [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
             [cayenne.data.publisher :as publisher]
             [cayenne.data.program :as program]
@@ -83,7 +83,7 @@
   :allowed-methods [:get :options]
   :available-media-types t/json
   :malformed? p/malformed-list-request?
-  :handle-ok #(doi/fetch (q/->query-context %)))
+  :handle-ok #(work/fetch (q/->query-context %)))
 
 (defresource work-resource [doi]
   :allowed-methods [:get :options]
@@ -91,12 +91,12 @@
   :handle-ok (->1 #(-> doi
                        (URLDecoder/decode)
                        (doi-id/to-long-doi-uri)
-                       (doi/fetch-one))))
+                       (work/fetch-one))))
 
 (defresource work-health-resource [doi]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (->1 #(doi/fetch-health doi)))
+  :handle-ok (->1 #(work/fetch-quality doi)))
 
 (defresource funders-resource
   :allowed-methods [:get :options]

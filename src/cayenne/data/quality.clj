@@ -1,4 +1,4 @@
-(ns cayenne.health
+(ns cayenne.data.quality
   (:require [cayenne.item-tree :as i]
             [clojure.string :as string]))
 
