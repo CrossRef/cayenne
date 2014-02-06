@@ -26,17 +26,17 @@
   (not (empty? (i/get-tree-rel item :funder))))
 
 (defn journal-has-issn [item]
-  (when-let [journal (i/find-item-of-subtype :journal)]
+  (when-let [journal (i/find-item-of-subtype item :journal)]
     (when (empty? (i/get-item-ids journal :issn))
       journal)))
 
 (defn journal-has-volume [item]
-  (when-let [journal (i/find-item-of-subtype :journal)]
-    (not (empty? (i/find-item-of-subtype :journal-volume)))))
+  (when-let [journal (i/find-item-of-subtype item :journal)]
+    (not (empty? (i/find-item-of-subtype item :journal-volume)))))
 
 (defn journal-has-issue [item]
-  (when-let [journal (i/find-item-of-subtype :journal)]
-    (not (empty? (i/find-item-of-subtype :journal-issue)))))
+  (when-let [journal (i/find-item-of-subtype item :journal)]
+    (not (empty? (i/find-item-of-subtype item :journal-issue)))))
 
 (defn funders-have-ids [item]
   (let [funders (i/get-tree-rel item :funder)]
@@ -149,7 +149,7 @@
   "Returns a report of checks performed against an item tree."
   ([item check]
      (let [result ((:fn check) item)
-           pass (or (nil? result) (empty? result))
+           pass (not result)
            check-to-merge (dissoc check :fn)]
        (if pass
          (assoc check-to-merge :pass true)
