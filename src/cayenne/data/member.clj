@@ -25,7 +25,7 @@
 (defn fetch-one [query-context]
   (let [pub-doc (m/with-mongo (conf/get-service :mongo)
                   (m/fetch-one 
-                   "publishers"
+                   "members"
                    :where {:id (-> query-context
                                    (:id)
                                    (member-id/extract-member-id)
@@ -45,9 +45,9 @@
         docs (if (and (:rows query-context) (zero? (:rows query-context)))
                []
                (m/with-mongo (conf/get-service :mongo)
-                 (apply m/fetch "publishers" mongo-query)))
+                 (apply m/fetch "members" mongo-query)))
          result-count (m/with-mongo (conf/get-service :mongo)
-                        (apply m/fetch-count "publishers" mongo-query))]
+                        (apply m/fetch-count "members" mongo-query))]
     (-> (r/api-response :member-list)
         (r/with-result-items result-count (map ->response-doc docs)))))
                         

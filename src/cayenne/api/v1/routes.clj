@@ -10,7 +10,7 @@
             [cayenne.data.core :as c]
             [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
-            [cayenne.data.publisher :as publisher]
+            [cayenne.data.prefix :as prefix]
             [cayenne.data.member :as member]
             [cayenne.data.type :as data-types]
             [cayenne.api.v1.types :as t]
@@ -121,7 +121,7 @@
 (defresource prefix-resource [px]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? #(when-let [p (publisher/fetch-one
+  :exists? #(when-let [p (prefix/fetch-one
                           (q/->query-context % :id (prefix-id/to-prefix-uri px)))]
               {:publisher p})
   :handle-ok :publisher)
@@ -130,7 +130,7 @@
   :allowed-methods [:get :options]
   :malformed? p/malformed-list-request?
   :available-media-types t/json
-  :handle-ok #(publisher/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
+  :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
 
 (defresource members-resource
   :allowed-methods [:get :options]

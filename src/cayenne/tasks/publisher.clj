@@ -34,7 +34,7 @@
   (ensure-publisher-indexes! collection)
   (doseq [prefix-number (range 1000 100000)]
     (let [prefix (str "10." prefix-number)
-          url (str 
+          url (str
                (conf/get-param [:upstream :prefix-info-url])
                prefix)
           root (try
