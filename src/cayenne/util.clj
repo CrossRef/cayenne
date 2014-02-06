@@ -116,7 +116,7 @@
       (.replaceAll "\\." "")
       (.replaceAll "'" "")
       (.replaceAll "\"" "")
-      (.replaceAll "-" "")))
+      (.replaceAll "-" " ")))
 
 (defn tokenize-name [name]
   (-> (simplify-name name)
