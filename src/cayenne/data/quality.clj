@@ -23,7 +23,7 @@
      pub-dates)))
 
 (defn funding-information [item]
-  (not (empty? (i/get-tree-rel item :funder))))
+  (empty? (i/get-tree-rel item :funder)))
 
 (defn journal-has-issn [item]
   (when-let [journal (i/find-item-of-subtype item :journal)]
@@ -32,11 +32,11 @@
 
 (defn journal-has-volume [item]
   (when-let [journal (i/find-item-of-subtype item :journal)]
-    (not (empty? (i/find-item-of-subtype item :journal-volume)))))
+    (not (i/find-item-of-subtype item :journal-volume))))
 
 (defn journal-has-issue [item]
   (when-let [journal (i/find-item-of-subtype item :journal)]
-    (not (empty? (i/find-item-of-subtype item :journal-issue)))))
+    (not (i/find-item-of-subtype item :journal-issue))))
 
 (defn funders-have-ids [item]
   (let [funders (i/get-tree-rel item :funder)]
@@ -149,11 +149,12 @@
   "Returns a report of checks performed against an item tree."
   ([item check]
      (let [result ((:fn check) item)
-           pass (not result)
+           pass (false? result)
            check-to-merge (dissoc check :fn)]
        (if pass
          (assoc check-to-merge :pass true)
          (merge check-to-merge {:pass false :failures result}))))
   ([item]
-     (map #(check-tree item %) checks)))
+     {:data item
+      :checks (map #(check-tree item %) checks)}))
   

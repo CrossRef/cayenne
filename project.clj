@@ -28,6 +28,8 @@
                  [clj-time "0.6.0"]
                  [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/data.json "0.2.0"]
+                 [org.clojure/data.xml "0.0.7"]
+                 [org.clojure/data.zip "0.1.1"]
                  [org.clojure/data.csv "0.1.2"]
                  [org.clojure/tools.trace "0.7.5"]
                  [org.clojure/core.memoize "0.5.3"]

@@ -39,7 +39,7 @@
 (defn get-unixsd [doi]
   (let [record (promise)]
     (action/parse-doi doi (action/return-item record))
-    @record))
+    (second @record)))
 
 (defn fetch-quality
   [doi]

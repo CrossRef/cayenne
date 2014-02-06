@@ -35,6 +35,8 @@
         :supplementary
         (.startsWith id-uri (conf/get-param [:id :contributor :path]))
         :contributor
+        (.startsWith id-uri (conf/get-param [:id :member :path]))
+        :member
         :else
         :unknown))
 

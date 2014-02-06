@@ -129,6 +129,7 @@
   (set-param! [:id :short-doi :path] "http://doi.org/")
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")
   (set-param! [:id :contributor :path] "http://id.crossref.org/contributor/")
+  (set-param! [:id :member :path] "http://id.crossref.org/member/")
   
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")

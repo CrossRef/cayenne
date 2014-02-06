@@ -110,6 +110,8 @@
 (defn simplify-name [name]
   (-> (.toLowerCase name)
       (.trim)
+      (.replaceAll "\\)" "")
+      (.replaceAll "\\(" "")
       (.replaceAll "," "")
       (.replaceAll "\\." "")
       (.replaceAll "'" "")
@@ -117,7 +119,10 @@
       (.replaceAll "-" "")))
 
 (defn tokenize-name [name]
-  (string/split (simplify-name name) #"\s+"))
+  (-> (simplify-name name)
+      (string/replace #"[\(\)]" " ")
+      (string/replace #"and|&" "& and")
+      (string/split #"\s+")))
 
 (defn slugify [uri]
   (string/replace uri #"[^a-zA-Z0-9]" "_"))
