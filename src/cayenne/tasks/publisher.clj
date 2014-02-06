@@ -16,7 +16,7 @@
     (m/add-index! collection-name [:id])
     (m/add-index! collection-name [:tokens])
     (m/add-index! collection-name [:prefixes])
-    (m/add-index! collection-name [:name])))
+    (m/add-index! collection-name [:names])))
 
 (defn insert-publisher! 
   "Upsert a publisher, combining multiple prefixes."
@@ -25,10 +25,10 @@
     (m/update! collection
                {:id id}
                {"$set" {:id id
-                        :tokens (util/tokenize-name name)
-                        :name (string/trim name)
                         :location (string/trim location)}
-                "$addToSet" {:prefixes prefix}})))
+                "$addToSet" {:prefixes prefix
+                             :tokens {"$each" (util/tokenize-name name)}
+                             :names name}})))
 
 (defn load-publishers [collection]
   (ensure-publisher-indexes! collection)
