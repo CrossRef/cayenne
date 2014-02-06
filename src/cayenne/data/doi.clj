@@ -4,6 +4,7 @@
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
             [cayenne.health :as health]
+            [cayenne.action :as action]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
@@ -35,7 +36,13 @@
                  (.getResults))]
     (r/api-response :work :content (citeproc/->citeproc (first docs)))))
 
+(defn get-unixsd [doi]
+  (let [record (promise)]
+    (action/parse-doi doi (action/return-item record))
+    @record))
+
 (defn fetch-health
   [doi]
-  (r/api-response :work-health :content (health/check-tree [])))
+  (let [item-tree (get-unixsd doi)]
+    (r/api-response :work-health :content (health/check-tree item-tree))))
   

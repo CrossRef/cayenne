@@ -170,8 +170,8 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (if (.endsWith doi "/health")
-         (work-health-resource (string/replace doi #"/health\z" ""))
+       (if (.endsWith doi "/quality")
+         (work-health-resource (string/replace doi #"/quality\z" ""))
          (work-resource doi)))
   (ANY "/types" []
        types-resource)

@@ -79,6 +79,9 @@
                  (URLEncoder/encode extracted-doi))]
     (remote-file url)))
 
+(defn return-item [p]
+  (fn [record] (deliver p record)))
+
 (def dump-plain-docs
   (record-json-writer "out.txt"))
 
