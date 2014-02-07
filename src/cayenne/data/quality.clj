@@ -25,6 +25,9 @@
 (defn funding-information [item]
   (empty? (i/get-tree-rel item :funder)))
 
+(defn citations [item]
+  (empty? (i/get-tree-rel item :citation)))
+
 (defn journal-has-issn [item]
   (when-let [journal (i/find-item-of-subtype item :journal)]
     (when (empty? (i/get-item-ids journal :issn))
@@ -47,7 +50,7 @@
 (defn funders-have-awards [item]
   (let [funders (i/get-tree-rel item :funder)]
     (filter
-     #(empty? (i/get-item-rel item :awarded))
+     #(empty? (i/get-item-rel % :awarded))
      funders)))
 
 (defn contributors-have-full-names [item]
@@ -102,6 +105,9 @@
   [{:id :misc.funding-information
     :description "Some funding information should be listed"
     :fn funding-information}
+   {:id :misc.citations
+    :description "Some citations should be listed"
+    :fn citations}
    {:id :misc.standard-case-titles
     :description "Titles should not be all upper-case"
     :fn title-case}
@@ -149,12 +155,11 @@
   "Returns a report of checks performed against an item tree."
   ([item check]
      (let [result ((:fn check) item)
-           pass (false? result)
+           pass (or (false? result) (empty? result))
            check-to-merge (dissoc check :fn)]
        (if pass
          (assoc check-to-merge :pass true)
          (merge check-to-merge {:pass false :failures result}))))
   ([item]
-     {:data item
-      :checks (map #(check-tree item %) checks)}))
+     (map #(check-tree item %) checks)))
   
