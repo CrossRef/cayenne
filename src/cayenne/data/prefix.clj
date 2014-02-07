@@ -43,6 +43,6 @@
          (not (nil? any-work))
          (not (string/blank? (:publisher citeproc-doc))))
       (r/api-response :prefix :content {:prefix (:id query-context)
-                                           :name (:publisher citeproc-doc)})
+                                        :name (:publisher citeproc-doc)})
       (r/api-response :prefix :content {:prefix (:id query-context)}))))
 

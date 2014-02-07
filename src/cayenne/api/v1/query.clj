@@ -88,6 +88,14 @@
         (string/replace #"(?i)or" " ")
         (string/replace #"(?i)and" " "))))
 
+(defn make-query-string [query-context]
+  (str
+   (if (:terms query-context)
+     (-> query-context :terms clean-terms)
+     "*:*")
+   (when (:raw-terms query-context)
+     (str " " (-> query-context :raw-terms)))))
+
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]
                      :or {paged true 
@@ -95,14 +103,11 @@
                           filters {}
                           count-only false}}]
   (let [query (doto (SolrQuery.)
-                (.setQuery (-> query-context (:terms) (clean-terms)))
+                (.setQuery (make-query-string query-context))
                 (.addField "*")
                 (.addField "score")
                 (.setHighlight true)
                 (.setFacet true))]
-    (when-not (:terms query-context)
-      (doto query
-        (.setQuery "*:*")))
     (when id-field
       (let [ids (if (vector? (:id query-context))
                   (:id query-context)
@@ -116,6 +121,9 @@
       (when (filters filter-name)
         (doto query
           (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
+    (when (:raw-filter query-context)
+      (doto query
+        (.addFilterQuery (into-array String [(:raw-filter query-context)]))))
     (when paged
       (doto query
         (.setStart (:offset query-context))

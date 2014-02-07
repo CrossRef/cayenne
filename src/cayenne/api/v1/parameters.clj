@@ -30,7 +30,8 @@
   "Check query parameters and JSON body top-level keywords. If any parameter 
    is not in the allowed list of valid list resource parameters return true."
   [request-context]
-  (malformed-param-names? valid-list-parameters request-context))
+  false)
+  ;(malformed-param-names? valid-list-parameters request-context))
 
 (defn malformed-singular-request?
   "Check query parameters and JSON body top-level keywords. If any parameter

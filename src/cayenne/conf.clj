@@ -110,7 +110,7 @@
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr")
+  (set-param! [:service :solr :url] "http://5.9.51.150:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 10000)
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")

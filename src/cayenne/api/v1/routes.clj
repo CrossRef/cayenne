@@ -145,6 +145,14 @@
               {:member m})
   :handle-ok :member)
 
+(defresource member-works-resource [id]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? #(when-let [m (member/fetch-one
+                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+              {:member m})
+  :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
+
 (defresource types-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -174,8 +182,8 @@
        members-resource)
   (ANY "/members/:id" [id]
        (member-resource id))
-  (ANY "/members/:id/works" []
-       "Not implemented.")
+  (ANY "/members/:id/works" [id]
+       (member-works-resource id))
   (ANY "/prefixes" []
        "Not implemented.")
   (ANY "/prefixes/:prefix" [prefix]

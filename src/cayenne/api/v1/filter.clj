@@ -14,6 +14,9 @@
 (defn field-is [field-name match]
   (str field-name ":" match))
 
+(defn field-is-esc [field-name match]
+  (str field-name ":\"" match "\""))
+
 (defn field-gt [field-name val]
   (str field-name ":[" (+ 1 val) " TO *]"))
 
