@@ -5,8 +5,11 @@
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]
-  :plugins [[codox "0.6.4"]]
+  :plugins [[codox "0.6.4"]
+            [lein-daemon "0.5.4"]]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
+  :daemon {:cayenne {:ns cayenne.production
+                     :pidfile "cayenne.pid"}}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.10"]

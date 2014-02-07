@@ -10,7 +10,7 @@ Install leiningen, then run lein repl and try a few commands:
     $ lein repl
 	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
 
-## Production
+## Run in Foreground
 
 Run as a production service with some profiles:
 
@@ -18,3 +18,18 @@ Run as a production service with some profiles:
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
+
+## Run as a Daemon
+
+Run as a daemonized production service with lein-daemon:
+
+    $ lein daemon start cayenne :api :index
+
+Accepts the same arguments as lein run. Also available are:
+
+    $ lein daemon stop cayenne
+    $ lein daemon check cayenne
+
+In daemonized mode, feature logging will still go to `log/log.txt`, however,
+standard out from the daemonized process's start up phase will be sent to
+`cayenne.log` rather than standard out.

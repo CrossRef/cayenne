@@ -71,15 +71,10 @@
 
 (defn contributors-no-bad-punctuation [item]
   (let [contributors (i/find-items-of-type item :person)
-        bad-punctuation #"[,;\:\"'><@&]"]
+        bad-punctuation #"[;\:\"><@&\^%*]"]
     (filter #(or (re-find bad-punctuation (:first-name %))
                  (re-find bad-punctuation (:last-name %)))
             contributors)))
-
-(defn contributor-family-names-no-whitespace [item]
-  (let [contributors (i/find-items-of-type item :person)
-        family-names (map :last-name contributors)]
-    (filter #(re-find #"\s" %) family-names)))
 
 (defn articles-have-pages [item]
   (let [articles
@@ -124,7 +119,7 @@
     :description "Journals should have a volume number"
     :fn journal-has-volume}
    {:id :journal.has-issue
-    :description "Journals should have an issue number"
+    :descriptio "Journals should have an issue number"
     :fn journal-has-issue}
    {:id :misc.full-publication-dates
     :description "Publication dates should have a day, month and year"
@@ -145,21 +140,25 @@
     :description "Contributors should have an affiliation"
     :fn contributors-have-affiliations}
    {:id :contributor.no-punctuation
-    :description "Contributors should have names without needless punctuation"
-    :fn contributors-no-bad-punctuation}
-   {:id :contributor.single-family-name
-    :description "Contributor family names should not contain whitespace"
-    :fn contributor-family-names-no-whitespace}])
+    :description "Contributors should have names without erroneous punctuation"
+    :fn contributors-no-bad-punctuation}])
+
+(defn passed? [result]
+  (cond
+   (true? result) false
+   (false? result) true
+   (seq result) false
+   (not (seq result)) true))
 
 (defn check-tree 
   "Returns a report of checks performed against an item tree."
   ([item check]
      (let [result ((:fn check) item)
-           pass (or (false? result) (empty? result))
+           pass (passed? result)
            check-to-merge (dissoc check :fn)]
        (if pass
          (assoc check-to-merge :pass true)
-         (merge check-to-merge {:pass false :failures result}))))
+         (merge check-to-merge {:pass false}))))
   ([item]
      (map #(check-tree item %) checks)))
   
