@@ -2,11 +2,13 @@
   (:require [clj-time.core :as dt]
             [clojure.string :as string]
             [cayenne.util :as util]
+            [cayenne.conf :as conf]
             [cayenne.ids.fundref :as fundref]
             [cayenne.ids.type :as type-id]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.issn :as issn]
             [cayenne.ids.orcid :as orcid]
+            [somnium.congomongo :as m]
             [clojure.string :as string]))
 
 ; build solr filters
@@ -126,6 +128,20 @@
              ((matchers value-name-part) (get m value-name-part))
              (str ":\"" (get m value-name-part) "\""))))))
 
+(defn generated
+  "Generate a list of filter values from a single query-provided value."
+  [field & {:keys [generator]}]
+  (fn [val]
+    (->> (generator val)
+         (map #(field-is-esc field %))
+         (apply q-or))))
+         
+(defn member-prefix-generator [value]
+  (let [member-doc (m/with-mongo (conf/get-service :mongo)
+                     (m/fetch-one "members" :where {:id value}))]
+    (if member-doc
+      (map prefix/to-prefix-uri (:prefixes member-doc))
+      [])))
 
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
@@ -154,5 +170,6 @@
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
-   "publisher" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
+   "member" (generated "owner_prefix" :generator member-prefix-generator)
+   "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
