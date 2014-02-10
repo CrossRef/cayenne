@@ -137,11 +137,12 @@
          (apply q-or))))
          
 (defn member-prefix-generator [value]
-  (let [member-doc (m/with-mongo (conf/get-service :mongo)
-                     (m/fetch-one "members" :where {:id value}))]
+  (let [val (Integer/parseInt value)
+        member-doc (m/with-mongo (conf/get-service :mongo)
+                     (m/fetch-one "members" :where {:id val}))]
     (if member-doc
       (map prefix/to-prefix-uri (:prefixes member-doc))
-      [])))
+      ["nothing"]))) ; 'nothing' forces filter to match nothing if we have no prefixes
 
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
