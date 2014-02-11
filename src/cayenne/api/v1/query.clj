@@ -118,9 +118,10 @@
         (.addFilterQuery query
                          (into-array String [fl-str]))))
     (doseq [[filter-name filter-val] (:filters query-context)]
-      (when (filters filter-name)
-        (doto query
-          (.addFilterQuery (into-array String [((filters filter-name) filter-val)])))))
+      (let [filter-name-s (name filter-name)]
+        (when (filters filter-name-s)
+          (doto query
+            (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)]))))))
     (when (:raw-filter query-context)
       (doto query
         (.addFilterQuery (into-array String [(:raw-filter query-context)]))))
