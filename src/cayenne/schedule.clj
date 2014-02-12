@@ -7,6 +7,7 @@
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.category :as category]
             [cayenne.tasks.solr :as solr]
+            [cayenne.tasks.publisher :as publisher]
             [clj-time.core :as time]
             [clj-time.format :as timef]
             [clojurewerkz.quartzite.scheduler :as qs]
@@ -20,19 +21,26 @@
 
 (def oai-date-format (timef/formatter "yyyy-MM-dd"))
 
-(def daily-work-trigger
+(def index-daily-work-trigger
   (qt/build
-   (qt/with-identity (qt/key "daily-work"))
+   (qt/with-identity (qt/key "index-daily-work"))
    (qt/with-schedule
      (cron/schedule
       (cron/cron-schedule "0 0 1 ? * *")))))
 
-(def hourly-work-trigger
+(def index-hourly-work-trigger
   (qt/build
-   (qt/with-identity (qt/key "hourly-work"))
+   (qt/with-identity (qt/key "index-hourly-work"))
    (qt/with-schedule
      (cron/schedule
       (cron/cron-schedule "0 0 * * * ?")))))
+
+(def update-members-daily-work-trigger
+  (qt/build
+   (qt/with-identity (qt/key "update-members-daily-work"))
+   (qt/with-schedule
+     (cron/schedule
+      (cron/cron-schedule "0 0 1 ? * *")))))
 
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 2))
@@ -50,6 +58,12 @@
   (info "Flushing solr insert buffer")
   (solr/force-flush-insert-list))
 
+(defjob update-members [ctx]
+  (info "Updating members collection")
+  (publisher/load-publishers "members")
+  (info "Updating member flags and coverage values")
+  (publisher/check-publishers "members"))
+
 (defn start []
   (qs/initialize)
   (qs/start))
@@ -59,16 +73,28 @@
    (qj/build
     (qj/of-type index-crossref-oai)
     (qj/with-identity (qj/key "index-crossref-oai")))
-    daily-work-trigger)
+    index-daily-work-trigger)
   (qs/schedule
    (qj/build
     (qj/of-type flush-solr-insert-list)
     (qj/with-identity (qj/key "flush-solr-insert-list")))
-    hourly-work-trigger))
+    index-hourly-work-trigger))
+
+(defn start-members-updating []
+  (qs/schedule
+   (qj/build
+    (qj/of-type update-members)
+    (qj/with-identity (qj/key "update-members")))
+   update-members-daily-work-trigger))
 
 (conf/with-core :default
   (conf/add-startup-task 
    :index
    (fn [profiles]
-     (start)
      (start-indexing))))
+
+(conf/with-core :default
+  (conf/add-startup-task
+   :update-members
+   (fn [profiles]
+     (start-members-updating))))

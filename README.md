@@ -14,16 +14,17 @@ Install leiningen, then run lein repl and try a few commands:
 
 Run as a production service with some profiles:
 
-    $ lein run :api :index
+    $ lein run :api :index :update-members
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
+- :update-members - Collect member records and update with metadata stats.
 
 ## Run as a Daemon
 
 Run as a daemonized production service with lein-daemon:
 
-    $ lein daemon start cayenne :api :index
+    $ lein daemon start cayenne :api :index :update-members
 
 Accepts the same arguments as lein run. Also available are:
 

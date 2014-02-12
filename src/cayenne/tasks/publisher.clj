@@ -13,6 +13,7 @@
             [clojure.java.io :as io]
             [clj-time.core :as dt]
             [clj-time.format :as df]
+            [clj-time.coerce :as dc]
             [somnium.congomongo :as m]))
 
 (defn ensure-publisher-indexes! [collection-name]
@@ -71,6 +72,11 @@
         (works/fetch)
         (get-in [:message :total-results]))))
 
+(defn coverage [total-count check-count]
+  (if (zero? total-count)
+    0
+    (float (/ check-count total-count))))
+
 (defn make-filter-check [check-name filter-name filter-value]
   (fn [member-id]
     (let [total-count (get-work-count member-id)
@@ -86,11 +92,6 @@
                   (coverage total-current-count filter-current-count)
                   (keyword (str check-name "-backfile"))
                   (coverage total-back-file-count filter-back-file-count)}})))
-
-(defn coverage [total-count check-count]
-  (if (zero? total-count)
-    0
-    (float (/ check-count total-count))))
 
 (defn check-deposits [member-id]
   {:flags 
@@ -116,7 +117,8 @@
 (defn check-publisher [publisher]
   (reduce (fn [rslt chk-fn] 
             (let [check-result (chk-fn (:id publisher))]
-              {:flags (merge (:flags rslt) (:flags check-result))
+              {:last-status-check-time (dc/to-long (dt/now))
+               :flags (merge (:flags rslt) (:flags check-result))
                :coverage (merge (:coverage rslt) (:coverage check-result))}))
           {} 
           checkles))
@@ -129,11 +131,4 @@
       (m/update! collection
                  publisher
                  (merge publisher (check-publisher publisher))))))
-               
-
-                           
-                  
-    
-    
-    
     

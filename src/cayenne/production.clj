@@ -4,7 +4,7 @@
             [cayenne.api.route :as route]
             [taoensso.timbre :as timbre]
             [cayenne.api.route]
-            [cayenne.schedule]))
+            [cayenne.schedule :as schedule]))
 
 (def termination (promise))
 
@@ -14,6 +14,8 @@
     (timbre/set-config! [:appenders :standard-out :enabled?] false)
     (timbre/set-config! [:appenders :spit :enabled?] true)
     (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+
+    (schedule/start)
     
     (conf/create-core-from! :production :default)
     (conf/set-core! :production)
