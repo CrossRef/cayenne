@@ -18,7 +18,7 @@ Run as a production service with some profiles:
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
-- :update-members - Collect member records and update with metadata stats.
+- :update-members - Collect member records and update with metadata stats (once a day).
 
 ## Run as a Daemon
 
