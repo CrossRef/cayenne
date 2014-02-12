@@ -5,11 +5,14 @@
             [cayenne.conf :as conf]
             [cayenne.util :as util]
             [cayenne.data.work :as works]
+            [cayenne.util :refer [?> ?>>]]
             [clojure.data.xml :as xml]
             [clojure.zip :as zip]
             [clojure.string :as string]
             [clojure.data.zip.xml :as zx]
             [clojure.java.io :as io]
+            [clj-time.core :as dt]
+            [clj-time.format :as df]
             [somnium.congomongo :as m]))
 
 (defn ensure-publisher-indexes! [collection-name]
@@ -50,32 +53,39 @@
            (zx/text (zx/xml1-> root :publisher :publisher_name))
            (zx/text (zx/xml1-> root :publisher :publisher_location))))))))
 
-;; has deposited?
-;; has deposited articles?
-;; has deposited funder info for articles?
-   ;; %, rate-100, rate-1000
-;; has deposited resource links for articles?
-   ;; %, rate-100, rate-1000
-;; has deposited licenses for articles?
-   ;; %, rate-100, rate-1000
-;; has deposited citations for articles?
-   ;; %, rate-100, rate-1000
+(def date-format (df/formatter "yyyy-MM-dd"))
 
-; {:flags {:deposits true
-;           :deposits-articles true
-;           :deposits-funders true
-;  :coverage {:fundings 0.14
-;              :resource-links 0.6
-;              :licenses 0.1} 
+(defn back-file-cut-off []
+  (df/unparse date-format (dt/minus (dt/now) (dt/years 2))))
 
-(defn get-work-count [member-id & filters]
-  (let [optional-filters (first filters)
-        fs (if optional-filters
-             (merge {:member (str member-id)} optional-filters)
-             {:member (str member-id)})]
-    (-> (assoc {:rows (int 0)} :filters fs)
+(defn get-work-count 
+  "Get a count of works for a member, with optional filters. timing
+   may be one of :current, :backfile or :all."
+  [member-id & {:keys [filters timing] :or {:timing :all}}]
+  (let [combined-filters
+        (-> {:member (str member-id)}
+            (?> filters merge filters)
+            (?> (= timing :current) assoc :from-pub-date (back-file-cut-off))
+            (?> (= timing :backfile) assoc :until-pub-date (back-file-cut-off)))]
+    (-> (assoc {:rows (int 0)} :filters combined-filters)
         (works/fetch)
         (get-in [:message :total-results]))))
+
+(defn make-filter-check [check-name filter-name filter-value]
+  (fn [member-id]
+    (let [total-count (get-work-count member-id)
+          total-back-file-count (get-work-count member-id :timing :backfile)
+          total-current-count (get-work-count member-id :timing :current)
+          filter-back-file-count (get-work-count member-id :filters {filter-name filter-value} :timing :backfile)
+          filter-current-count (get-work-count member-id :filters {filter-name filter-value} :timing :current)]
+      {:flags {(keyword (str "deposits-" check-name "-current"))
+               (not (zero? filter-current-count))
+               (keyword (str "deposits-" check-name "-backfile"))
+               (not (zero? filter-back-file-count))}
+       :coverage {(keyword (str check-name "-current"))
+                  (coverage total-current-count filter-current-count)
+                  (keyword (str check-name "-backfile"))
+                  (coverage total-back-file-count filter-back-file-count)}})))
 
 (defn coverage [total-count check-count]
   (if (zero? total-count)
@@ -92,31 +102,16 @@
 (defn check-deposits-articles [member-id]
   {:flags
    {:deposits-articles
-    (-> (get-work-count member-id {:type "journal-article"})
+    (-> (get-work-count member-id :filters {:type "journal-article"})
         (zero?)
         (not))}})
 
-(defn check-deposits-licenses [member-id]
-  (let [total-count (get-work-count member-id)
-        with-license-count (get-work-count member-id {:has-license "true"})]
-    {:flags {:deposits-licenses (not (zero? with-license-count))}
-     :coverage {:licenses (coverage total-count with-license-count)}}))
-
-(defn check-deposits-resource-links [member-id]
-  (let [total-count (get-work-count member-id)
-        with-resource-links-count (get-work-count member-id {:has-full-text "true"})]
-    {:flags {:deposits-resource-links (not (zero? with-resource-links-count))}
-     :coverage {:resource-links (coverage total-count with-resource-links-count)}}))
-
-(defn check-deposits-orcids [member-id]
-  (let [total-count (get-work-count member-id)
-        with-orcids-count (get-work-count member-id {:has-orcid "true"})]
-    {:flags {:deposits-orcids (not (zero? with-orcids-count))}
-     :coverage {:orcids (coverage total-count with-orcids-count)}}))
-
 (def checkles
-  [check-deposits check-deposits-articles check-deposits-licenses
-   check-deposits-resource-links check-deposits-orcids])
+  [check-deposits 
+   check-deposits-articles
+   (make-filter-check "licenses" :has-license "true")
+   (make-filter-check "resource-links" :has-full-text "true")
+   (make-filter-check "orcids" :has-orcid "true")])
 
 (defn check-publisher [publisher]
   (reduce (fn [rslt chk-fn] 
