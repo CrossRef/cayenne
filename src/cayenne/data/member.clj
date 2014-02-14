@@ -50,6 +50,7 @@
    :prefixes (:prefixes pub-doc)
    :flags (:flags pub-doc)
    :coverage (:coverage pub-doc)
+   :last-status-check-time (:last-status-check-time pub-doc)
    :tokens (:tokens pub-doc)})
 
 (defn parse-query-terms 

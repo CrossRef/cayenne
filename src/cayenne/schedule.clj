@@ -59,10 +59,14 @@
   (solr/force-flush-insert-list))
 
 (defjob update-members [ctx]
-  (info "Updating members collection")
-  (publisher/load-publishers "members")
-  (info "Updating member flags and coverage values")
-  (publisher/check-publishers "members"))
+  (try
+    (info "Updating members collection")
+    (publisher/load-publishers "members")
+    (catch Exception e (error e "Failed to update members collection")))
+  (try
+    (info "Updating member flags and coverage values")
+    (publisher/check-publishers "members")
+    (catch Exception e (error e "Failed to update member flags and coverage values"))))
 
 (defn start []
   (qs/initialize)

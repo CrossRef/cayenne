@@ -116,13 +116,15 @@
    (make-filter-check "funders" :has-funder "true")])
 
 (defn check-publisher [publisher]
-  (reduce (fn [rslt chk-fn] 
-            (let [check-result (chk-fn (:id publisher))]
-              {:last-status-check-time (dc/to-long (dt/now))
-               :flags (merge (:flags rslt) (:flags check-result))
-               :coverage (merge (:coverage rslt) (:coverage check-result))}))
-          {} 
-          checkles))
+  (-> {:last-status-check-time (dc/to-long (dt/now))}
+      (merge
+       (reduce (fn [rslt chk-fn] 
+                 (let [check-result (chk-fn (:id publisher))]
+                   {:last-status-check-time (dc/to-long (dt/now))
+                    :flags (merge (:flags rslt) (:flags check-result))
+                    :coverage (merge (:coverage rslt) (:coverage check-result))}))
+               {} 
+               checkles))))
 
 (defn check-publishers
   "Calculate and insert publisher/member quality metrics into a collection."
