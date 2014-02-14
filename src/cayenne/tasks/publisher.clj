@@ -112,7 +112,8 @@
    check-deposits-articles
    (make-filter-check "licenses" :has-license "true")
    (make-filter-check "resource-links" :has-full-text "true")
-   (make-filter-check "orcids" :has-orcid "true")])
+   (make-filter-check "orcids" :has-orcid "true")
+   (make-filter-check "funders" :has-funder "true")])
 
 (defn check-publisher [publisher]
   (reduce (fn [rslt chk-fn] 

@@ -160,6 +160,7 @@
    "has-references" (bool "references") ;waiting for index change
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
+   "has-funder" (existence "funder_name")
    "full-text" (compound "full_text" ["type" "version"]
                          :transformers {"type" util/slugify})
    "license" (compound "license" ["url" "version" "delay"]
