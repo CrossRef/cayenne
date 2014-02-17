@@ -14,6 +14,7 @@
             [clj-time.core :as dt]
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
+            [clj-http.client :as http]
             [somnium.congomongo :as m]))
 
 (defn ensure-publisher-indexes! [collection-name]
@@ -41,10 +42,11 @@
             url (str
                  (conf/get-param [:upstream :prefix-info-url])
                  prefix)
-            root (try 
-                   (with-open [rdr (io/reader url)]
-                     (-> rdr xml/parse zip/xml-zip))
-                   (catch Exception e nil))]
+            resp (http/get url {:connection-manager (conf/get-service :conn-mgr)
+                                :throw-exceptions false
+                                :as :byte-array})
+            root (when (= 200 (:status resp))
+                   (-> (:body resp) io/reader xml/parse zip/xml-zip))]
         (when root
           (when-let [id (zx/xml1-> root :publisher :member_id)]
             (insert-publisher!
