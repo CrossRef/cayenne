@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
+            [cayenne.api.conneg :as conneg]
             [liberator.dev :refer [wrap-trace]]
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
@@ -42,10 +43,11 @@
       (wrap-cors)
       (expose-metrics-as-json)
       (instrument)
-      ;(wrap-trace :ui)
+      ; (wrap-trace :ui)
       ; disabled due to bug in apache2 reverse proxy
       ; (creates headers that are incompatible)
-      (wrap-stacktrace-web)))
+      (wrap-stacktrace-web)
+      (conneg/wrap-accept)))
 
 (conf/with-core :default
   (conf/add-startup-task

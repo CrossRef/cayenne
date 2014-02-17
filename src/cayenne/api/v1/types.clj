@@ -12,3 +12,13 @@
 
 (def prefix "application/vnd.crossref.prefix+json")
 
+(def work-transform
+  ["application/rdf+xml"
+   "text/turtle"
+   "application/vnd.citationstyles.csl+json"
+   "text/x-bibliography"
+   "application/x-research-info-systems"
+   "application/x-bibtex"
+   "application/vnd.crossref.unixref+xml"
+   "application/vnd.crossref.unixsd+xml"])
+

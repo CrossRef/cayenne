@@ -14,7 +14,7 @@
     KEY = TOKEN
     VALUE = TOKEN
     TYPE = #\"\\w+\"
-    SUBTYPE = #\"\\w+\"
+    SUBTYPE = #\"[\\w\\+\\.\\-]+\"
     QUOTEDVALUE = <'\"'> #\"[^\\\"]+\" <'\"'>"
    :output-format :enlive))
 
@@ -50,5 +50,18 @@
         (handler (assoc req :accept (make-sorted-accept accept-value)))
         (handler req)))))
   
+;; a libertor decision function that selects a most appropriate content type,
+;; if any is available
 
-
+(defn content-type-matches
+  [cts]
+  (fn [ctx]
+    (let [client-acceptable-types (get-in ctx [:request :accept])
+          type (first
+                (filter
+                 #(some #{(str (:type %) "/" (:subtype %))} cts)
+                 client-acceptable-types))]
+      (when type
+        {:representation
+         {:media-type (str (:type type) "/" (:subtype type))
+          :parameters (:params type)}}))))

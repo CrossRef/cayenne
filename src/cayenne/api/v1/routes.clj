@@ -13,9 +13,11 @@
             [cayenne.data.prefix :as prefix]
             [cayenne.data.member :as member]
             [cayenne.data.type :as data-types]
+            [cayenne.api.transform :as transform]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
+            [cayenne.api.conneg :as conneg]
             [clojure.data.json :as json]
             [clojure.string :as string]
             [liberator.core :refer [defresource resource]]
@@ -43,13 +45,6 @@
                 (:uri request)
                 (clojure.string/join "/" paths))))
 
-(defn content-type-matches
-  "True if the content type contained in ctx matches any of those listed
-   in cts."
-  [ctx cts]
-  (let [ct (get-in ctx [:request :headers "content-type"])]
-    (some #{ct} cts)))
-
 (defresource cores-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -62,8 +57,7 @@
   :handle-ok (->1 #(c/fetch core-name)))
 
 (defresource deposits-resource [data]
-  :allowed-methods [:post :optionsx]
-  :known-content-type? #(content-type-matches % t/depositable)
+  :allowed-methods [:post :options]
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
   :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data)))
@@ -76,7 +70,7 @@
 
 (defresource deposit-data-resource [id]
   :allowed-methods [:get :options]
-  :media-type-available? (constantly true)
+  :media-type-available? (constantly true) ;; todo should return {:representation ...}
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok (->1 #(d/fetch-data id)))
 
@@ -98,6 +92,15 @@
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(work/fetch-quality doi)))
+
+(defresource work-transform-resource [doi]
+  :allowed-methods [:get :options]
+  :media-type-available? (conneg/content-type-matches t/work-transform)
+  :handle-ok #(let [metadata (-> doi
+                                 (URLDecoder/decode)
+                                 (doi-id/to-long-doi-uri)
+                                 (work/fetch-one))]
+                (transform/->format (:representation %) metadata)))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
@@ -193,9 +196,12 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (if (.endsWith doi "/quality")
-         (work-health-resource (string/replace doi #"/quality\z" ""))
-         (work-resource doi)))
+       (cond (.endsWith doi "/quality")
+             (work-health-resource (string/replace doi #"/quality\z" ""))
+             (.endsWith doi "/transform")
+             (work-transform-resource (string/replace doi #"/transform\z" ""))
+             :else
+             (work-resource doi)))
   (ANY "/types" []
        types-resource)
   (ANY "/types/:id" [id]
