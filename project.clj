@@ -49,6 +49,7 @@
                  [ring "1.1.0"]
                  [http-kit "2.1.10"]
                  [incanter "1.5.4"]
-                 [compliment "0.0.3"]])
+                 [compliment "0.0.3"]
+                 [instaparse "1.2.14"]])
 
 
