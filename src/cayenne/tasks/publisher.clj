@@ -41,9 +41,10 @@
             url (str
                  (conf/get-param [:upstream :prefix-info-url])
                  prefix)
-            root (try
-                   (-> url io/reader xml/parse zip/xml-zip)
-                   (catch Exception e nil))]
+            root (with-open [rdr (io/reader url)]
+                   (try 
+                     (-> rdr xml/parse zip/xml-zip)
+                     (catch Exception e nil)))]
         (when root
           (when-let [id (zx/xml1-> root :publisher :member_id)]
             (insert-publisher!
