@@ -24,10 +24,18 @@
       (.given (:given contributor))
       (.build)))
 
+(defn make-csl-id [metadata]
+  (let [first-author (first (:author metadata))]
+    (if (and (:family first-author)
+             (get-in metadata [:issued :date-parts 0 0]))
+      (str (:family first-author)
+           (get-in metadata [:issued :date-parts 0 0]))
+      "1")))
+
 (defn ->csl-item [metadata]
   (let [builder (CSLItemDataBuilder.)]
     (-> builder
-        (.id "1")
+        (.id (make-csl-id metadata))
         (.type CSLType/ARTICLE_JOURNAL)
         (.source (:source metadata))
         (.DOI (:DOI metadata))
@@ -58,3 +66,4 @@
               (.setOutputFormat format)
               (.registerCitationItems (into-array String [(.getId item-data)])))]
     (-> csl (.makeBibliography) (.makeString))))
+
