@@ -46,20 +46,19 @@
               (.addProperty resource predicate object)))
       resource)))
 
-(defn make-date [year month day]
-  (cond
-   (and year month day)
-   (ResourceFactory/createTypedLiteral
-    (str year "-" month "-" day)
-    (XSDDatatype/XSDdate))
-   (and year month)
-   (ResourceFactory/createTypedLiteral
-    (str year "-" month)
-    (XSDDatatype/XSDgYearMonth))
-   year
-   (ResourceFactory/createTypedLiteral
-    year
-    (XSDDatatype/XSDgYear))))
+(defn make-date 
+  ([year month day]
+     (ResourceFactory/createTypedLiteral
+      (str year "-" month "-" day)
+      (XSDDatatype/XSDdate)))
+   ([year month]
+      (ResourceFactory/createTypedLiteral
+       (str year "-" month)
+       (XSDDatatype/XSDgYearMonth)))
+   ([year]
+      (ResourceFactory/createTypedLiteral
+       (str year)
+       (XSDDatatype/XSDgYear))))
       
 ;; Ontology namespaces
 
