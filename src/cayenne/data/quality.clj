@@ -119,7 +119,7 @@
     :description "Journals should have a volume number"
     :fn journal-has-volume}
    {:id :journal.has-issue
-    :descriptio "Journals should have an issue number"
+    :description "Journals should have an issue number"
     :fn journal-has-issue}
    {:id :misc.full-publication-dates
     :description "Publication dates should have a day, month and year"
