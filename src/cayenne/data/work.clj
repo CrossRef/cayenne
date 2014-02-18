@@ -30,11 +30,12 @@
 (defn fetch-one
   "Fetch a known DOI."
   [doi-uri]
-  (let [docs (-> (conf/get-service :solr)
-                 (.query (query/->solr-query {:id doi-uri}
-                                             :id-field "doi"))
-                 (.getResults))]
-    (r/api-response :work :content (citeproc/->citeproc (first docs)))))
+  (when-let [doc (-> (conf/get-service :solr)
+                      (.query (query/->solr-query {:id doi-uri}
+                                                  :id-field "doi"))
+                      (.getResults)
+                      (first))]
+    (r/api-response :work :content (citeproc/->citeproc doc))))
 
 (defn get-unixsd [doi]
   (let [record (promise)]

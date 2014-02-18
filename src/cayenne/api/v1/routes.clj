@@ -83,10 +83,12 @@
 (defresource work-resource [doi]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (->1 #(-> doi
-                       (URLDecoder/decode)
-                       (doi-id/to-long-doi-uri)
-                       (work/fetch-one))))
+  :exists? (->1 #(when-let [work (-> doi
+                                     (URLDecoder/decode)
+                                     (doi-id/to-long-doi-uri)
+                                     (work/fetch-one))]
+                   {:work work}))
+  :handle-ok :work)
 
 (defresource work-health-resource [doi]
   :allowed-methods [:get :options]
@@ -96,11 +98,12 @@
 (defresource work-transform-resource [doi]
   :allowed-methods [:get :options]
   :media-type-available? (conneg/content-type-matches t/work-transform)
-  :handle-ok #(let [metadata (-> doi
-                                 (URLDecoder/decode)
-                                 (doi-id/to-long-doi-uri)
-                                 (work/fetch-one))]
-                (transform/->format (:representation %) metadata)))
+  :exists? (->1 #(when-let [work (-> doi
+                                     (URLDecoder/decode)
+                                     (doi-id/to-long-doi-uri)
+                                     (work/fetch-one))]
+                   {:work work}))
+  :handle-ok #(transform/->format (:representation %) (:work %)))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
