@@ -151,7 +151,7 @@
   (add-startup-task 
    :base
    (fn [profiles]
-     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 3}))
+     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))
      (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
