@@ -15,6 +15,8 @@
 (def work-transform
   ["application/rdf+xml"
    "text/turtle"
+   "text/n-triples"
+   "text/n3"
    "application/vnd.citationstyles.csl+json"
    "text/x-bibliography"
    "application/x-research-info-systems"

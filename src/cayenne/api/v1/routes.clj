@@ -95,6 +95,17 @@
   :available-media-types t/json
   :handle-ok (->1 #(work/fetch-quality doi)))
 
+(defn force-exact-request-doi
+  "Why? DOIs are case insensitive. CrossRef APIs try to always present DOIs
+   lowercases, but out in the real world they may appear mixed-case. We want
+   clients to be given RDF that describes the case-sensitive URI they requested,
+   so we avoid the canonical lower-case DOI and present metadata for the DOI
+   exactly as requested."
+  [request doi]
+  (assoc (get-in request [:work :message]) 
+    :URL 
+    (str "http://dx.doi.org/" (URLDecoder/decode doi))))
+
 (defresource work-transform-resource [doi]
   :allowed-methods [:get :options]
   :media-type-available? (conneg/content-type-matches t/work-transform)
@@ -103,7 +114,7 @@
                                      (doi-id/to-long-doi-uri)
                                      (work/fetch-one))]
                    {:work work}))
-  :handle-ok #(transform/->format (:representation %) (get-in % [:work :message])))
+  :handle-ok #(transform/->format (:representation %) (force-exact-request-doi % doi)))
 
 (defresource funders-resource
   :allowed-methods [:get :options]

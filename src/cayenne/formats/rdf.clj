@@ -55,6 +55,8 @@
 
 (defn make-rdf-work [model metadata]
   (concat
+   (when (not= (string/lower-case (:URL metadata)) (:URL metadata))
+     [(rdf/owl model "sameAs") (rdf/make-resource model (string/lower-case (:URL metadata)))])
    [(rdf/dct model "identifier") (:DOI metadata)
     (rdf/owl model "sameAs") (rdf/make-resource model (str "doi:" (:DOI metadata)))
     (rdf/owl model "sameAs") (rdf/make-resource model (str "info:doi/" (:DOI metadata)))
