@@ -1,8 +1,10 @@
 (ns cayenne.api.transform
   (:require [cayenne.util :as util]
+            [cayenne.conf :as conf]
             [cayenne.formats.rdf :as rdf]
             [cayenne.formats.ris :as ris]
-            [cayenne.formats.citation :as citation]))
+            [cayenne.formats.citation :as citation]
+            [clj-http.client :as http]))
 
 (defmulti ->format :media-type)
 
@@ -36,5 +38,20 @@
 
 (defmethod ->format "application/x-bibtex" [representation metadata]
   (citation/->citation metadata :style "bibtex"))
+
+;; for now we retrieve original unixref and unixsd, but in future perhaps we
+;; will generate from citeproc
+
+(defmethod ->format "application/vnd.crossref.unixref+xml" [representation metadata]
+  (-> (str (conf/get-param [:upstream :unixref-url]) (:DOI metadata))
+      (http/get {:connection-manager (conf/get-service :conn-mgr)
+                 :throw-exceptions false})
+      (:body)))
+
+(defmethod ->format "application/vnd.crossref.unixsd+xml" [representation metadata]
+  (-> (str (conf/get-param [:upstream :unixsd-url]) (:DOI metadata))
+      (http/get {:connection-manager (conf/get-service :conn-mgr)
+                 :throw-exceptions false})
+      (:body)))
 
 
