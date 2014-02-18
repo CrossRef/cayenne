@@ -103,7 +103,7 @@
                                      (doi-id/to-long-doi-uri)
                                      (work/fetch-one))]
                    {:work work}))
-  :handle-ok #(transform/->format (:representation %) (:work %)))
+  :handle-ok #(transform/->format (:representation %) (get-in % [:work :message])))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
