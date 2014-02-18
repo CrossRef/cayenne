@@ -82,7 +82,7 @@
    into the solr index with a prepended ':' due to indexing
    bug."
   [s]
-  (clojure.string/replace-first s #"\:" ""))
+  (keyword (clojure.string/replace-first s #"\:" "")))
 
 (defn contrib 
   "Drop placeholders indicating missing data."
@@ -101,7 +101,7 @@
 
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(let [t (get %2 :type)]
-             (assoc %1 (keyword (name t)) (conj (or (get %1 t) []) (dissoc %2 :type))))
+             (assoc %1 t (conj (or (get %1 t) []) (dissoc %2 :type))))
           {}
           (map contrib
                (get solr-doc "contributor_type")
