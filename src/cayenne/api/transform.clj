@@ -6,6 +6,10 @@
             [cayenne.formats.citation :as citation]
             [clj-http.client :as http]))
 
+(def legacy-styles
+  {"mla" "modern-language-association"
+   "harvard3" "harvard1"})
+
 (defmulti ->format :media-type)
 
 (defmethod ->format "text/turtle" [representation metadata]
@@ -32,7 +36,7 @@
 (defmethod ->format "text/x-bibliography" [representation metadata]
   (let [args (concat
               (when-let [style (get-in representation [:parameters :style])]
-                [:style style])
+                [:style (or (legacy-styles style) style)])
               (when-let [lang (get-in representation [:parameters :locale])]
                 [:language lang])
               (when-let [format (get-in representation [:parameters :format])]
