@@ -5,7 +5,11 @@ download and ingest / indexing.
 
 ## Usage
 
-Install leiningen, then run lein repl and try a few commands:
+Update git submodules to bring in CSL style and locale files:
+
+    $ git submodule update --init
+
+Install [leiningen](http://leiningen.org), then run lein repl and try a few commands:
 
     $ lein repl
 	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
