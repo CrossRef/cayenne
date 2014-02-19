@@ -13,6 +13,7 @@
             [cayenne.data.prefix :as prefix]
             [cayenne.data.member :as member]
             [cayenne.data.type :as data-types]
+            [cayenne.data.csl :as csl]
             [cayenne.api.transform :as transform]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
@@ -44,6 +45,16 @@
                 (:server-port request)
                 (:uri request)
                 (clojure.string/join "/" paths))))
+
+(defresource csl-styles-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (->1 #(csl/fetch-all-styles)))
+
+(defresource csl-locales-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (->1 #(csl/fetch-all-locales)))
 
 (defresource cores-resource
   :allowed-methods [:get :options]
@@ -189,6 +200,10 @@
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
 (defroutes api-routes
+  (ANY "/styles" []
+       csl-styles-resource)
+  (ANY "/locales" []
+       csl-locales-resource)
   (ANY "/funders" []
        funders-resource)
   (ANY "/funders/*" {{id :*} :params}
