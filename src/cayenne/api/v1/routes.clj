@@ -127,11 +127,13 @@
                                      (doi-id/to-long-doi-uri)
                                      (work/fetch-one))]
                    {:work work}))
-  :handle-ok #(ring-response 
-               {:headers {"Link" (link/make-link-headers
-                                  (get-in % [:work :message]))}
-                :body (transform/->format (:representation %)
-                                          (force-exact-request-doi % doi))}))
+  :handle-ok #(let [links (link/make-link-headers
+                           (get-in % [:work :message]))
+                    headers (if-not (string/blank? links) {"Link" links} {})]
+                (ring-response
+                 {:headers headers
+                  :body (transform/->format (:representation %)
+                                            (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
