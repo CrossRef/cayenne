@@ -4,6 +4,7 @@
             [cayenne.formats.rdf :as rdf]
             [cayenne.formats.ris :as ris]
             [cayenne.formats.citation :as citation]
+            [clojure.data.json :as json]
             [clj-http.client :as http]))
 
 (def legacy-styles
@@ -28,7 +29,7 @@
   (rdf/->xml metadata))
 
 (defmethod ->format "application/vnd.citationstyles.csl+json" [representation metadata]
-  metadata)
+  (json/write-str metadata))
 
 (defmethod ->format "application/x-research-info-systems" [representation metadata]
   (ris/->ris metadata))
