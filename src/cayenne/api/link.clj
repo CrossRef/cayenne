@@ -8,8 +8,6 @@
 (def person-rel "http://id.crossref.org/schema/person")
 (def license-rel "http://id.crossref.org/schema/license")
 
-(def full-text-data-loc "http://data.crossref.org/fulltext/")
-
 (defn make-link-header-value [uri & {:keys [rel anchor parameters] 
                                      :or {:parameters {}}}]
   (let [params (-> parameters
@@ -30,9 +28,8 @@
                    (util/?> (and type (not= type "unspecified"))
                             assoc :type type))]
     (make-link-header-value
-     (str full-text-data-loc doi)
+     (:URL link)
      :rel full-text-rel
-     :anchor (:URL link)
      :parameters params)))
 
 (defn make-full-text-link-headers [metadata]

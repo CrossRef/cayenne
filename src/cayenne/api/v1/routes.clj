@@ -15,6 +15,7 @@
             [cayenne.data.type :as data-types]
             [cayenne.data.csl :as csl]
             [cayenne.api.transform :as transform]
+            [cayenne.api.link :as link]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
@@ -22,6 +23,7 @@
             [clojure.data.json :as json]
             [clojure.string :as string]
             [liberator.core :refer [defresource resource]]
+            [liberator.representation :refer [ring-response]]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
@@ -125,7 +127,11 @@
                                      (doi-id/to-long-doi-uri)
                                      (work/fetch-one))]
                    {:work work}))
-  :handle-ok #(transform/->format (:representation %) (force-exact-request-doi % doi)))
+  :handle-ok #(ring-response 
+               {:headers {"Link" (link/make-link-headers
+                                  (get-in % [:work :message]))}
+                :body (transform/->format (:representation %)
+                                          (force-exact-request-doi % doi))}))
 
 (defresource funders-resource
   :allowed-methods [:get :options]
