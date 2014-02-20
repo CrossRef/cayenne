@@ -43,7 +43,7 @@
       (cron/cron-schedule "0 0 1 ? * *")))))
 
 (defjob index-crossref-oai [ctx]
-  (let [from (time/minus (time/today-at-midnight) (time/days 2))
+  (let [from (time/minus (time/today-at-midnight) (time/days 3))
         until (time/today-at-midnight)]
     (info (str "Running index of CrossRef OAI from "
                from " until " until))
