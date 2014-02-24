@@ -19,6 +19,7 @@
    "text/n3"
    "application/vnd.citationstyles.csl+json"
    "text/x-bibliography"
+   "text/bibliography"
    "application/x-research-info-systems"
    "application/x-bibtex"
    "application/vnd.crossref.unixref+xml"

@@ -47,6 +47,11 @@
 (defmethod ->format "application/x-bibtex" [representation metadata]
   (citation/->citation metadata :style "bibtex"))
 
+;; extra special consideration for kcite
+(defmethod ->format "text/bibliography" [representation metadata]
+  (->format (assoc representation :media-type "text/x-bibliography")
+            metadata))
+
 ;; for now we retrieve original unixref and unixsd, but in future perhaps we
 ;; will generate from citeproc
 
