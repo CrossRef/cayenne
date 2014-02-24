@@ -22,9 +22,6 @@
 (defmethod ->format "text/n-triples" [representation metadata]
   (rdf/->n-triples metadata))
 
-(defmethod ->format "text/n3" [representation metadata]
-  (rdf/->n3 metadata))
-
 (defmethod ->format "application/rdf+xml" [representation metadata]
   (rdf/->xml metadata))
 
