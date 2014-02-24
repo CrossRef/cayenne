@@ -60,6 +60,10 @@
   (->format (assoc representation :media-type "application/vnd.citationstyles.csl+json")
             metadata))
 
+(defmethod ->format "application/unixref+xml" [representation metadata]
+  (->format (assoc representation :media-type "application/vnd.crossref.unixref+xml")
+            metadata))
+
 ;; for now we retrieve original unixref and unixsd, but in future perhaps we
 ;; will generate from citeproc
 

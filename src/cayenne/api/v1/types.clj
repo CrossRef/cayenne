@@ -25,5 +25,6 @@
    "application/x-research-info-systems"
    "application/x-bibtex"
    "application/vnd.crossref.unixref+xml"
+   "application/unixref+xml"
    "application/vnd.crossref.unixsd+xml"])
 
