@@ -19,6 +19,7 @@
    "text/n3"
    "application/vnd.citationstyles.csl+json"
    "application/citeproc+json"
+   "application/json"
    "text/x-bibliography"
    "text/bibliography"
    "application/x-research-info-systems"
