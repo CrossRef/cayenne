@@ -29,7 +29,10 @@
   (rdf/->xml metadata))
 
 (defmethod ->format "application/vnd.citationstyles.csl+json" [representation metadata]
-  (json/write-str metadata))
+  (-> metadata
+      (assoc :title (first (:title metadata)))
+      (assoc :container-title (first (:container-title metadata)))
+      json/write-str))
 
 (defmethod ->format "application/x-research-info-systems" [representation metadata]
   (ris/->ris metadata))
