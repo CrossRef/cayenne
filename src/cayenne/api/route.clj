@@ -3,6 +3,7 @@
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
             [cayenne.api.conneg :as conneg]
+            [ring.middleware.logstash :as logstash]
             [liberator.dev :refer [wrap-trace]]
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
@@ -39,6 +40,9 @@
 
 (def api
   (-> all-routes
+      (logstash/wrap-logstash :host (conf/get-param [:service :logstash :host])
+                              :port (conf/get-param [:service :logstash :port])
+                              :name (conf/get-param [:service :logstash :name]))
       (handler/api)
       (wrap-cors)
       (expose-metrics-as-json)

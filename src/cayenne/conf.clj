@@ -116,6 +116,9 @@
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
+  (set-param! [:service :logstash :host] "5.9.51.2")
+  (set-param! [:service :logstash :port] 4444)
+  (set-param! [:service :logstash :name] "cayenne-api")
 
   (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
   (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
