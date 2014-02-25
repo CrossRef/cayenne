@@ -22,6 +22,7 @@
    "application/json"
    "text/x-bibliography"
    "text/bibliography"
+   "text/plain"
    "application/x-research-info-systems"
    "application/x-bibtex"
    "application/vnd.crossref.unixref+xml"

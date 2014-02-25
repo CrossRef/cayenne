@@ -47,7 +47,8 @@
 (defmethod ->format "application/x-bibtex" [representation metadata]
   (citation/->citation metadata :style "bibtex"))
 
-;; extra special consideration for kcite
+;; legacy formats 
+
 (defmethod ->format "text/bibliography" [representation metadata]
   (->format (assoc representation :media-type "text/x-bibliography")
             metadata))
@@ -62,6 +63,10 @@
 
 (defmethod ->format "application/unixref+xml" [representation metadata]
   (->format (assoc representation :media-type "application/vnd.crossref.unixref+xml")
+            metadata))
+
+(defmethod ->format "text/plain" [representation metadata]
+  (->format (assoc representation :media-type "text/x-bibliography")
             metadata))
 
 ;; for now we retrieve original unixref and unixsd, but in future perhaps we
