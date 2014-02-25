@@ -4,6 +4,8 @@
             [cayenne.api.v1.doc :as v1-doc]
             [cayenne.api.conneg :as conneg]
             [ring.middleware.logstash :as logstash]
+            [heartbeat.ring :refer [wrap-heartbeat]]
+            [heartbeat.core :refer [def-web-check]]
             [liberator.dev :refer [wrap-trace]]
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
@@ -12,6 +14,14 @@
             [ring.util.response :refer [redirect]]
             [org.httpkit.server :as hs]
             [compojure.core :refer [defroutes routes context ANY]]))
+
+(def-web-check :doi-unixref-query
+  (str (conf/get-param [:upstream :unixref-url])
+       (conf/get-param [:test :doi])))
+
+(def-web-check :doi-unixsd-query
+  (str (conf/get-param [:upstream :unixsd-url])
+       (conf/get-param [:test :doi])))
 
 (def all-routes
   (routes
@@ -47,6 +57,7 @@
       (wrap-cors)
       (expose-metrics-as-json)
       (instrument)
+      (wrap-heartbeat)
       ; (wrap-trace :ui)
       ; disabled due to bug in apache2 reverse proxy
       ; (creates headers that are incompatible)

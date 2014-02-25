@@ -140,6 +140,8 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
+  (set-param! [:test :doi] "10.5555/12345678")
+
   (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
   (set-param! [:upstream :fundref-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")

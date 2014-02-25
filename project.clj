@@ -51,6 +51,7 @@
                  [incanter "1.5.4"]
                  [compliment "0.0.3"]
                  [instaparse "1.2.14"]
-                 [kjw/ring-logstash "0.1.1"]])
+                 [kjw/ring-logstash "0.1.1"]
+                 [crossref/heartbeat "0.1.1"]])
 
 
