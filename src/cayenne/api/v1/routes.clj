@@ -14,6 +14,7 @@
             [cayenne.data.member :as member]
             [cayenne.data.type :as data-types]
             [cayenne.data.csl :as csl]
+            [cayenne.data.license :as license]
             [cayenne.api.transform :as transform]
             [cayenne.api.link :as link]
             [cayenne.api.v1.types :as t]
@@ -68,6 +69,14 @@
   :available-media-types t/json
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
+
+;; deposits todo
+;; - Auth header authentication
+;; - enforce https
+;; - accept deposit types
+;; - perform deposit for XML (as a retrying job)
+;; - perform XML validation
+;; - perform citation extraction and optional deposit XML construction
 
 (defresource deposits-resource [data]
   :allowed-methods [:post :options]
@@ -189,6 +198,11 @@
               {:member m})
   :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
 
+(defresource licenses-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok #(license/fetch-all (q/->query-context %)))
+
 (defresource types-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -208,6 +222,8 @@
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
 (defroutes api-routes
+  (ANY "/licenses" []
+       licenses-resource)
   (ANY "/styles" []
        csl-styles-resource)
   (ANY "/locales" []

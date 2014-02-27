@@ -2,7 +2,7 @@
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]))
 
-(def valid-list-parameters (set [:sample :query :offset :rows :selector :filter]))
+(def valid-list-parameters (set [:sample :query :offset :rows :selector :filter :facet]))
 (def valid-singular-parameters (set [:selector]))
 (def valid-basic-parameters (set []))
 

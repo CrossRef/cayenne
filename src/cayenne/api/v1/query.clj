@@ -62,6 +62,15 @@
                  [path val]))
          (reduce (fn [m [path val]] (assoc-in m path val)) {}))))
 
+(defn get-facets
+  [params]
+  (prn (get params :facet))
+  (if (get params :facet)
+    (-> (get params :facet)
+        (string/split #",")
+        (string/trim))
+    []))
+
 (defn get-selectors [params]
   (when (get params :selector)
     (string/split (get params :selector) #",")))      
@@ -74,6 +83,7 @@
      :offset (parse-offset-val (:offset params))
      :rows (parse-rows-val (:rows params))
      :selectors (get-selectors params)
+     :facets (get-facets params)
      :filters (get-filters params)}))
 
 ;; todo get selectors and get filters handle json input
@@ -134,6 +144,11 @@
         (.setStart (int 0))
         (.setRows (:sample query-context))
         (.setSort (random-field) SolrQuery$ORDER/asc)))
+    (when-not (empty? (:facets query-context))
+      (doto query
+        (.setFacet true)
+        (.setFacetLimit (int -1))
+        (.addFacetField (into-array String (:facets query-context)))))
     (when count-only
       (doto query
         (.setRows (int 0))))
