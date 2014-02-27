@@ -20,8 +20,8 @@
                           (filter #(not= 0 (.getCount %))))]
     (-> (r/api-response :license-list)
         (r/with-result-items
-          (map ->license-doc facet-values)
-          (count facet-values))
+          (count facet-values)
+          (map ->license-doc facet-values))
         (r/with-query-context-info query-context))))
 
   
