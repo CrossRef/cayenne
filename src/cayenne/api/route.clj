@@ -32,13 +32,10 @@
    (context "/v1.0" [] v1/api-routes)
    (context "/v1.0" [] v1-doc/api-doc-routes)
 
-   ;; legacy urls
    (ANY "/help" []
-        (redirect "https://github.com/CrossRef/fundrefplus_doc/blob/master/funder_kpi_api.md"))
-   (ANY "/funder_kpi_metadata_best_practice.html" []
-        (redirect "http://fundref.crossref.org/docs/funder_kpi_metadata_best_practice.html"))
+        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md"))
    (ANY "/" [] 
-        (redirect "http://www.crossref.org/fundref"))))
+        (redirect "/help"))))
 
 (defn wrap-cors
   [h]
