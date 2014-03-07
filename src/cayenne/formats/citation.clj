@@ -2,7 +2,8 @@
   (:import [de.undercouch.citeproc.csl 
             CSLItemDataBuilder CSLDateBuilder CSLNameBuilder 
             CSLName CSLItemData CSLType]
-           [de.undercouch.citeproc CSL ListItemDataProvider]))
+           [de.undercouch.citeproc CSL ListItemDataProvider])
+  (:require [clojure.string :as string]))
 
 (defn make-csl-issued-date [metadata]
   (let [year (get-in metadata [:issued :date-parts 0 0])
@@ -25,12 +26,24 @@
       (.build)))
 
 (defn make-csl-id [metadata]
-  (let [first-author (first (:author metadata))]
-    (if (and (:family first-author)
-             (get-in metadata [:issued :date-parts 0 0]))
-      (str (:family first-author)
-           (get-in metadata [:issued :date-parts 0 0]))
-      "1")))
+  (let [family (get-in metadata [:author 0 :family])
+        year (get-in metadata [:issued :date-parts 0 0])]
+    (cond
+         (and family year)
+         (str family "_" year)
+         family
+         family
+         year
+         year
+         :else
+         "1")))
+
+(defn make-bibtex-key-nice [metadata bibtex]
+  (let [nice-bibtex-key (-> (make-csl-id metadata)
+                            (string/replace #"[^a-zA-Z0-9_]+" "_"))]
+    (string/replace-first bibtex
+                          #"\{[^,]+,"
+                          (str "{" nice-bibtex-key ","))))
 
 (defn ->csl-item [metadata]
   (let [builder (CSLItemDataBuilder.)]
@@ -65,5 +78,9 @@
         csl (doto (CSL. item-provider style language)
               (.setOutputFormat format)
               (.registerCitationItems (into-array String [(.getId item-data)])))]
-    (-> csl (.makeBibliography) (.makeString))))
+    (if (= style "bibtex")
+      (make-bibtex-key-nice
+       metadata
+       (-> csl (.makeBibliography) (.makeString)))
+      (-> csl (.makeBibliography) (.makeString)))))
 
