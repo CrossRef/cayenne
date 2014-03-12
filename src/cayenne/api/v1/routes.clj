@@ -142,7 +142,7 @@
     (->> doi
          (URLDecoder/decode)
          (doi-id/extract-long-doi)
-         (str "http://dx.doi.org"))))
+         (str "http://dx.doi.org/"))))
 
 (defresource work-transform-resource [doi]
   :allowed-methods [:get :options]
