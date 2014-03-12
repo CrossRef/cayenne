@@ -79,6 +79,9 @@
 ;; - perform citation extraction and optional deposit XML construction
 
 (defresource deposits-resource [data]
+  :authorized? nil
+  :known-content-type? #(some #{(get-in % [:request :headers :content-type])}
+                              t/depositable)
   :allowed-methods [:post :options]
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
@@ -89,6 +92,16 @@
   :available-media-types t/json
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok :deposit)
+
+(defresource deposited-dois-resource []
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (-> #(d/fetch-dois)))
+
+(defresource deposited-doi-resource [doi]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok (-> #(d/fetch-for-doi doi)))
 
 (defresource deposit-data-resource [id]
   :allowed-methods [:get :options]
@@ -126,7 +139,10 @@
   [request doi]
   (assoc (get-in request [:work :message]) 
     :URL 
-    (str "http://dx.doi.org/" (URLDecoder/decode doi))))
+    (->> doi
+         (URLDecoder/decode)
+         (doi-id/extract-long-doi)
+         (str "http://dx.doi.org"))))
 
 (defresource work-transform-resource [doi]
   :allowed-methods [:get :options]
@@ -270,4 +286,8 @@
   (ANY "/deposits/:id" [id]
        (deposit-resource id))
   (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id)))
+       (deposit-data-resource id))
+  (ANY "/deposits/dois" []
+       deposited-dois-resource)
+  (ANY "/deposits/dois/*" {{doi :*} :params}
+       (deposited-doi-resource doi)))

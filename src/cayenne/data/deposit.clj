@@ -45,3 +45,9 @@
                              (assoc :length (:length deposit-file)))]
         (r/api-response :deposit :content deposit-info)))))
 
+(defn fetch-for-doi [doi]
+  ())
+
+(defn fetch-dois []
+  ())
+
