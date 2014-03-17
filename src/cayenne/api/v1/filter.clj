@@ -11,7 +11,8 @@
             [somnium.congomongo :as m]
             [clojure.string :as string]))
 
-; build solr filters
+;; Solr filter helpers
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defn field-is [field-name match]
   (str field-name ":" match))
@@ -65,6 +66,9 @@
           (dt/date-time (:year date-parts) (:month date-parts))
           :else
           (dt/date-time (:year date-parts)))))
+
+;; Solr filters
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         
 (defn stamp-date [date-stamp-field direction]
   (fn [val]
@@ -144,6 +148,24 @@
       (map prefix/to-prefix-uri (:prefixes member-doc))
       ["nothing"]))) ; 'nothing' forces filter to match nothing if we have no prefixes
 
+;; Mongo filters
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defn mongo-stamp-date [field direction]
+  (fn [val]
+    (let [date-val (obj-date val)]
+      (cond (= direction :from)
+            {field {"$gte" date-val}}
+            (= direction :until)
+            {field {"$lte" date-val}}))))
+
+(defn mongo-equality [field]
+  (fn [val]
+    {field val}))
+
+;; Filter definitions
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (def std-filters
   {"from-update-date" (stamp-date "deposited_at" :from)
    "until-update-date" (stamp-date "deposited_at" :until)
@@ -175,3 +197,8 @@
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
+
+(def deposit-filters
+  {"from-submission-time" (mongo-stamp-date "created-at" :from)
+   "until-submission-time" (mongo-stamp-date "created-at" :until)
+   "status" (mongo-equality "status")})
