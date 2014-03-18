@@ -8,7 +8,7 @@
                                        :label "Journal Volume"}
                       :journal {:index-id "Journal"
                                 :label "Journal"}
-                      :proceedings-article {:index-id "Proceedings Article" 
+                      :proceedings-article {:index-id "Conference Paper"
                                             :label "Proceedings Article"}
                       :proceedings {:index-id "Proceedings"
                                     :label "Proceedings"}
