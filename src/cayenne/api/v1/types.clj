@@ -1,8 +1,8 @@
 (ns cayenne.api.v1.types)
 
-(def depositable #{"application/vnd.crossref.mini+xml"
-                   "application/vnd.crossref.common+xml"
-                   "application/vnd.crossref.object+json"})
+(def depositable ["application/vnd.crossref.deposit+xml"
+                  "application/vnd.crossref.partial-deposit.xml"
+                  "application/pdf"])
 
 (def html-or-json ["application/json" "text/html"])
 
