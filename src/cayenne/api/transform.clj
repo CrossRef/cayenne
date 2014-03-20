@@ -5,7 +5,7 @@
             [cayenne.formats.ris :as ris]
             [cayenne.formats.citation :as citation]
             [clojure.data.json :as json]
-            [clj-http.client :as http]))
+            [org.httpkit.client :as hc]))
 
 (def legacy-styles
   {"mla" "modern-language-association"
@@ -74,12 +74,12 @@
 
 (defmethod ->format "application/vnd.crossref.unixref+xml" [representation metadata]
   (-> (str (conf/get-param [:upstream :unixref-url]) (:DOI metadata))
-      (http/get {:connection-manager (conf/get-service :conn-mgr)
-                 :throw-exceptions false})
+      (hc/get)
+      (deref)
       (:body)))
 
 (defmethod ->format "application/vnd.crossref.unixsd+xml" [representation metadata]
   (-> (str (conf/get-param [:upstream :unixsd-url]) (:DOI metadata))
-      (http/get {:connection-manager (conf/get-service :conn-mgr)
-                 :throw-exceptions false})
+      (hc/get)
+      (deref)
       (:body)))
