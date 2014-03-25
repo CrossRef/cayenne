@@ -10,6 +10,8 @@
 
 ;; todo why are odd license URLs appearing with 0 counts?
 
+;; todo offset, rows
+
 (defn fetch-all [query-context]
   (let [facet-field (-> (conf/get-service :solr)
                         (.query (query/->solr-query

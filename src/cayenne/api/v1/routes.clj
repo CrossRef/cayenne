@@ -75,7 +75,9 @@
 ;; - enforce https
 ;; - accept deposit types
 ;; - perform deposit for XML (as a retrying job)
-;; - perform XML validation
+;;   - change batch id to cayenne deposit id
+;;   - extract list of deposit DOIs
+;;   - perform XML validation
 ;; - perform citation extraction and optional deposit XML construction
 
 (defresource deposits-resource [data]
