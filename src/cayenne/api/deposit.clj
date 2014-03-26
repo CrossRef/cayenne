@@ -6,7 +6,8 @@
             [clojure.string :as string]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as deposit-data])
-  (:import [java.util UUID]))
+  (:import [java.util UUID]
+           [java.io StringWriter]))
 
 ;; handle deposit dispatch based on deposited content type
 
@@ -49,14 +50,14 @@
     (assoc context :xml new-xml)))
 
 (defn create-deposit [context]
-  (-> context
-      :xml
-      zip/root
-      (.getBytes "UTF-8")
-      (deposit-data/create! 
-       (:content-type context) 
-       (:batch-id context)
-       (:dois context))))
+  (let [string-writer (StringWriter.)
+        xml-content (-> context :xml zip/root)]
+    (xml/emit xml-content string-writer :encoding "UTF-8")
+    (deposit-data/create!
+     (-> string-writer (.toString) (.getBytes "UTF-8"))
+     (:content-type context)
+     (:batch-id context)
+     (:dois context))))
 
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
@@ -64,7 +65,8 @@
       parse-deposit-dois
       alter-xml-batch-id
       alter-email
-      create-deposit))
+      create-deposit)
+  (:batch-id context))
 
 (defmethod deposit! "application/vnd.crossref.partial+xml" [context]
   (-> context
@@ -72,5 +74,6 @@
       parse-partial-deposit-dois
       alter-xml-batch-id
       alter-email
-      create-deposit))
+      create-deposit)
+  (:batch-id context))
   

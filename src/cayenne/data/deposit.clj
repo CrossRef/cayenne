@@ -28,22 +28,23 @@
                               :batch-id batch-id
                               :dois dois
                               :status :submitted
-                              :created-at (Date.)})]
+                              :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))
 
-(defn fetch-data [id]
+(defn fetch-data [batch-id]
   (m/with-mongo (conf/get-service :mongo)
-    (when-let [deposit (m/fetch-by-id :deposits (m/object-id id))]
+    (when-let [deposit (m/fetch-one :deposits :where {:batch-id batch-id})]
       (m/stream-from :deposits 
                      (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})))))
 
-(defn fetch [id]
+(defn fetch [batch-id]
   (m/with-mongo (conf/get-service :mongo)
-    (when-let [deposit (m/fetch-by-id :deposits (m/object-id id))]
+    (when-let [deposit (m/fetch-one :deposits :where {:batch-id batch-id})]
       (let [deposit-file (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})
             deposit-info (-> deposit
-                             (dissoc :data)
+                             (dissoc :data-id)
+                             (dissoc :_id)
                              (assoc :length (:length deposit-file)))]
         (r/api-response :deposit :content deposit-info)))))
 

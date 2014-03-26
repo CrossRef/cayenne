@@ -199,6 +199,6 @@
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
 
 (def deposit-filters
-  {"from-submission-time" (mongo-stamp-date "created-at" :from)
-   "until-submission-time" (mongo-stamp-date "created-at" :until)
+  {"from-submission-time" (mongo-stamp-date "submitted-at" :from)
+   "until-submission-time" (mongo-stamp-date "submitted-at" :until)
    "status" (mongo-equality "status")})
