@@ -18,14 +18,16 @@
 (defn id->s [doc]
   (-> doc (:_id) (.toString)))
 
-(defn create! [type deposit-data]
+(defn create! [deposit-data type batch-id dois]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (let [new-file (m/insert-file! :deposits deposit-data)
           new-doc (m/insert! :deposits
-                             {:processed false
-                              :type type
+                             {:content-type type
                               :data-id (:_id new-file)
+                              :batch-id batch-id
+                              :dois dois
+                              :status :submitted
                               :created-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))

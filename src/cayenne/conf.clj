@@ -120,6 +120,8 @@
   (set-param! [:service :logstash :port] 4444)
   (set-param! [:service :logstash :name] "cayenne-api")
 
+  (set-param! [:deposit :email] "labs-notifications@crossref.org")
+
   (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
   (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
   (set-param! [:oai :datacite :type] "datacite")

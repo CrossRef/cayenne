@@ -3,7 +3,9 @@
             [clojure.zip :as zip]
             [clojure.data.zip :as dzip]
             [clojure.data.zip.xml :as zx]
-            [clojure.string :as string])
+            [clojure.string :as string]
+            [cayenne.conf :as conf]
+            [cayenne.data.deposit :as deposit-data])
   (:import [java.util UUID]))
 
 ;; handle deposit dispatch based on deposited content type
@@ -23,7 +25,8 @@
 
 (defn parse-deposit-dois [context]
   (assoc context :dois
-         (zx/xml-> (:xml context) dzip/descendants :doi_data :doi zx/text)))
+         (map string/trim
+          (zx/xml-> (:xml context) dzip/descendants :doi_data :doi zx/text))))
 
 (defn parse-partial-deposit-dois [context]
   (assoc context :dois
@@ -37,15 +40,37 @@
              (zip/edit batch-doi-loc
                        #(assoc % :content [(:batch-id context)])))))))
 
+(defn alter-email [context]
+  (let [email-loc (zx/xml1-> (:xml context) :head :depositor :email_address)
+        new-xml (-> email-loc 
+                    (zip/edit #(assoc % :content [(conf/get-param [:deposit :email])]))
+                    zip/root
+                    zip/xml-zip)]
+    (assoc context :xml new-xml)))
+
+(defn create-deposit [context]
+  (-> context
+      :xml
+      zip/root
+      (.getBytes "UTF-8")
+      (deposit-data/create! 
+       (:content-type context) 
+       (:batch-id context)
+       (:dois context))))
+
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
       parse-xml
       parse-deposit-dois
-      alter-xml-batch-id))
+      alter-xml-batch-id
+      alter-email
+      create-deposit))
 
 (defmethod deposit! "application/vnd.crossref.partial+xml" [context]
   (-> context
       parse-xml
       parse-partial-deposit-dois
-      alter-xml-batch-id))
+      alter-xml-batch-id
+      alter-email
+      create-deposit))
   
