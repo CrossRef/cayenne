@@ -32,6 +32,9 @@
 (extend clojure.lang.Var json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend java.lang.Object json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 
+(defn authed? [context]
+  (not (nil? (get-in context [:request :basic-authentication]))))
+
 (defn ->1
   "Helper that creates a function that calls f while itself taking one
    argument which is ignored."
@@ -71,41 +74,43 @@
   :handle-ok (->1 #(c/fetch core-name)))
 
 ;; deposits todo
-;; - Auth header authentication
 ;; - enforce https
 ;; - accept deposit types
 ;; - perform deposit for XML (as a retrying job)
-;;   - change batch id to cayenne deposit id
-;;   - extract list of deposit DOIs
-;;   - perform XML validation
 ;; - perform citation extraction and optional deposit XML construction
+;; - check that owner is valid for deposit details
 
 (defresource deposits-resource [data]
-  :authorized? nil
+  :authorized? authed?
   :known-content-type? #(some #{(get-in % [:request :headers :content-type])}
                               t/depositable)
   :allowed-methods [:post :options]
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
-  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data)))
+  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
+  :handle-ok #(d/fetch (:owner %)))
 
 (defresource deposit-resource [id]
+  :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
   :handle-ok :deposit)
 
 (defresource deposited-dois-resource []
+  :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (-> #(d/fetch-dois)))
+  :handle-ok #(d/fetch-dois (:owner %)))
 
 (defresource deposited-doi-resource [doi]
+  :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (-> #(d/fetch-for-doi doi)))
+  :handle-ok #(d/fetch-for-doi (:owner %) doi))
 
 (defresource deposit-data-resource [id]
+  :authorized? authed?
   :allowed-methods [:get :options]
   :media-type-available? (constantly true) ;; todo should return {:representation ...}
   :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
@@ -239,6 +244,18 @@
   :available-media-types t/json
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
+(defroutes restricted-api-routes
+  (ANY "/deposits" {body :body}
+       (deposits-resource body))
+  (ANY "/deposits/:id" [id]
+       (deposit-resource id))
+  (ANY "/deposits/:id/data" [id]
+       (deposit-data-resource id))
+  (ANY "/deposits/dois" []
+       deposited-dois-resource)
+  (ANY "/deposits/dois/*" {{doi :*} :params}
+       (deposited-doi-resource doi)))
+
 (defroutes api-routes
   (ANY "/licenses" []
        licenses-resource)
@@ -282,14 +299,4 @@
   (ANY "/cores" []
        cores-resource)
   (ANY "/cores/:name" [name]
-       (core-resource name))
-  (ANY "/deposits" {body :body}
-       (deposits-resource body))
-  (ANY "/deposits/:id" [id]
-       (deposit-resource id))
-  (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id))
-  (ANY "/deposits/dois" []
-       deposited-dois-resource)
-  (ANY "/deposits/dois/*" {{doi :*} :params}
-       (deposited-doi-resource doi)))
+       (core-resource name)))

@@ -15,18 +15,27 @@
   (m/with-mongo (conf/get-service :mongo)
     (m/fetch-count :deposits)))
 
+(defn ensure-deposit-indexes! [collection-name]
+  (m/add-index! collection-name [:batch-id])
+  (m/add-index! collection-name [:owner :batch-id])
+  (m/add-index! collection-name [:owner :submitted-at])
+  (m/add-index! collection-name [:owner :dois])
+  (m/add-index! collection-name [:owner :status]))
+
 (defn id->s [doc]
   (-> doc (:_id) (.toString)))
 
-(defn create! [deposit-data type batch-id dois]
+(defn create! [deposit-data type batch-id dois owner]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
+    (ensure-deposit-indexes! :deposits)
     (let [new-file (m/insert-file! :deposits deposit-data)
           new-doc (m/insert! :deposits
                              {:content-type type
                               :data-id (:_id new-file)
                               :batch-id batch-id
                               :dois dois
+                              :owner owner
                               :status :submitted
                               :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
@@ -48,8 +57,10 @@
                              (assoc :length (:length deposit-file)))]
         (r/api-response :deposit :content deposit-info)))))
 
-(defn fetch-for-doi [doi]
-  ())
+(defn fetch-for-doi [owner doi]
+  (m/with-mongo (conf/get-param :mongo)
+    ()))
+    
 
 (defn fetch-dois []
   ())

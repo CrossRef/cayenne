@@ -10,6 +10,7 @@
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
             [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
+            [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]
             [compojure.handler :as handler]
             [ring.util.response :refer [redirect]]
             [org.httpkit.server :as hs]
@@ -23,9 +24,13 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
+(defn authenticated? [user pass] user)
+
 (def all-routes
   (routes
    v1/api-routes
+   (-> v1/restricted-api-routes
+       (wrap-basic-authentication authenticated?))
    v1-doc/api-doc-routes
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)

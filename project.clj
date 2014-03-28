@@ -47,6 +47,7 @@
                  [liberator "0.10.0"]
                  [compojure "1.1.5"]
                  [ring "1.1.0"]
+                 [ring-basic-authentication "1.0.5"]
                  [http-kit "2.1.10"]
                  [incanter "1.5.4"]
                  [compliment "0.0.3"]
