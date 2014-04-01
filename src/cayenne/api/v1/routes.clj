@@ -37,6 +37,9 @@
   [context]
   (not (nil? (get-in context [:request :basic-authentication]))))
 
+(defn get-owner [context]
+  (get-in context [:request :basic-authentication]))
+
 (defn known-post-type? 
   "Does the content type submitted match a known content type, if the
    method is POST? Otherwise, if not method POST, accept the request
@@ -87,7 +90,6 @@
 
 ;; deposits todo
 ;; - enforce https
-;; - accept deposit types
 ;; - perform deposit for XML (as a retrying job)
 ;; - perform citation extraction and optional deposit XML construction
 ;; - check that owner is valid for deposit details
@@ -99,13 +101,13 @@
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
   :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
-  :handle-ok #(d/fetch (:owner %)))
+  :handle-ok #(d/fetch (get-owner %)))
 
 (defresource deposit-resource [id]
   :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
+  :exists? #(when-let [deposit (d/fetch-one (get-owner %) id)] {:deposit deposit})
   :handle-ok :deposit)
 
 (defresource deposited-dois-resource []
