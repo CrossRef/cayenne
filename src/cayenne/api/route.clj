@@ -3,6 +3,7 @@
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
             [cayenne.api.conneg :as conneg]
+            [cayenne.api.auth.crossref :as cr-auth]
             [ring.middleware.logstash :as logstash]
             [heartbeat.ring :refer [wrap-heartbeat]]
             [heartbeat.core :refer [def-web-check]]
@@ -24,13 +25,11 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
-(defn authenticated? [user pass] user)
-
 (def all-routes
   (routes
    v1/api-routes
    (-> v1/restricted-api-routes
-       (wrap-basic-authentication authenticated?))
+       (wrap-basic-authentication cr-auth/authenticated?))
    v1-doc/api-doc-routes
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)

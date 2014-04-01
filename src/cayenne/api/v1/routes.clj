@@ -32,8 +32,20 @@
 (extend clojure.lang.Var json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend java.lang.Object json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 
-(defn authed? [context]
+(defn authed?
+  "Has this request been successfully authenticated?"
+  [context]
   (not (nil? (get-in context [:request :basic-authentication]))))
+
+(defn known-post-type? 
+  "Does the content type submitted match a known content type, if the
+   method is POST? Otherwise, if not method POST, accept the request
+   regardless of content type."
+  [context post-types]
+  (let [method (get-in context [:request :method])]
+    (if (not= :post method)
+      true
+      (some #{(get-in context [:request :headers :content-type])} post-types))))
 
 (defn ->1
   "Helper that creates a function that calls f while itself taking one
@@ -82,9 +94,8 @@
 
 (defresource deposits-resource [data]
   :authorized? authed?
-  :known-content-type? #(some #{(get-in % [:request :headers :content-type])}
-                              t/depositable)
-  :allowed-methods [:post :options]
+  :known-content-type? #(known-post-type? % t/depositable)
+  :allowed-methods [:get :post :options]
   :available-media-types t/json
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
   :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
