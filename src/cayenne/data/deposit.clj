@@ -39,10 +39,6 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
-;; todo add filters
-;; todo add standard query params - rows, offset
-;; add doi filter instead of /deposits/dois
-
 (defn create! [deposit-data type batch-id dois owner]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
