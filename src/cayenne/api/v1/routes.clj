@@ -17,6 +17,7 @@
             [cayenne.data.license :as license]
             [cayenne.api.transform :as transform]
             [cayenne.api.link :as link]
+            [cayenne.api.deposit :as dc]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
@@ -99,9 +100,13 @@
   :known-content-type? #(known-post-type? % t/depositable)
   :allowed-methods [:get :post :options]
   :available-media-types t/json
+  :handle-ok #(d/fetch (get-owner %))
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
-  :post! #(hash-map :id (d/create! (get-in % [:request :headers "content-type"]) data))
-  :handle-ok #(d/fetch (get-owner %)))
+  :post! #(hash-map :id (-> (dc/make-deposit-context
+                             data
+                             (get-in % [:request :headers "content-type"])
+                             (get-owner %))
+                            (dc/deposit!))))
 
 (defresource deposit-resource [id]
   :authorized? authed?
@@ -126,8 +131,8 @@
   :authorized? authed?
   :allowed-methods [:get :options]
   :media-type-available? (constantly true) ;; todo should return {:representation ...}
-  :exists? (->1 #(when-let [deposit (d/fetch id)] {:deposit deposit}))
-  :handle-ok (->1 #(d/fetch-data id)))
+  :exists? #(when-let [deposit (d/fetch-one (get-owner %) id)] {:deposit deposit})
+  :handle-ok #(d/fetch-data (get-owner %) id))
 
 (defresource works-resource
   :allowed-methods [:get :options]

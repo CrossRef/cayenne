@@ -163,6 +163,13 @@
   (fn [val]
     {field val}))
 
+(defn mongo-bool [field]
+  (fn [val]
+    (cond (#{"t" "true" "1"} (.toLowerCase val))
+          {field true}
+          (#{"f" "false" "0"} (.toLowerCase val))
+          {field false})))
+
 ;; Filter definitions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -201,4 +208,5 @@
 (def deposit-filters
   {"from-submission-time" (mongo-stamp-date "submitted-at" :from)
    "until-submission-time" (mongo-stamp-date "submitted-at" :until)
-   "status" (mongo-equality "status")})
+   "status" (mongo-equality "status")
+   "test" (mongo-bool "test")})
