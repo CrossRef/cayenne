@@ -75,7 +75,8 @@
   (when (get params :selector)
     (string/split (get params :selector) #",")))      
 
-(defn ->query-context [resource-context & {:keys [id] :or {id nil}}]
+(defn ->query-context [resource-context & {:keys [id filters] 
+                                           :or {id nil filters {}}}]
   (let [params (p/get-parameters resource-context)]
     {:id id
      :sample (parse-sample-val (:sample params))
@@ -84,7 +85,7 @@
      :rows (parse-rows-val (:rows params))
      :selectors (get-selectors params)
      :facets (get-facets params)
-     :filters (get-filters params)}))
+     :filters (merge filters (get-filters params))}))
 
 ;; todo get selectors and get filters handle json input
 
@@ -155,8 +156,21 @@
     query))
 
 (defn ->mongo-query [query-context
-                     & {:keys [where sort] :or [where {} sort {}]}]
-  [:where where 
-   :sort sort
-   :limit (:rows query-context)
-   :skip (:offset query-context)])
+                     & {:keys [where sort filters id-field] 
+                        :or {where {} sort {} filters {} id-field nil}}]
+  (let [filter-where (into {} 
+                           (map (fn [[n v]]
+                                  ((filters (name n)) v))
+                                (:filters query-context)))]
+    (concat
+     [:where (merge
+              where
+              filter-where
+              (when id-field {id-field (:id query-context)}))]
+     (when sort
+       [:sort sort])
+     (when (:rows query-context)
+       [:limit (:rows query-context)])
+     (when (:offset query-context)
+       [:skip (:offset query-context)]))))
+                 

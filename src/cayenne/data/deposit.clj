@@ -4,6 +4,8 @@
             [somnium.congomongo :as m]
             [cayenne.conf :as conf]
             [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.query :as q]
+            [cayenne.api.v1.filter :as f]
             [metrics.meters :refer [defmeter] :as meter]
             [metrics.histograms :refer [defhistogram] :as hist]))
 
@@ -37,6 +39,10 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
+;; todo add filters
+;; todo add standard query params - rows, offset
+;; add doi filter instead of /deposits/dois
+
 (defn create! [deposit-data type batch-id dois owner]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
@@ -53,34 +59,36 @@
       (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))
 
-(defn fetch-data [owner batch-id]
+(defn fetch-data [query-context]
   (m/with-mongo (conf/get-service :mongo)
-    (when-let [deposit (m/fetch-one :deposits :where {:batch-id batch-id :owner owner})]
-      (m/stream-from :deposits 
-                     (m/fetch-one-file :deposits :where {:_id (:data-id deposit)})))))
+    (let [where-clause (-> query-context
+                           (q/->mongo-query
+                            :filters f/deposit-filters
+                            :id-field :batch-id)
+                           :where)]
+      (when-let [deposit (m/fetch-one :deposits :where where-clause)]
+        (m/stream-from :deposits 
+                       (m/fetch-one-file :deposits :where {:_id (:data-id deposit)}))))))
 
-(defn fetch-one [owner batch-id]
+(defn fetch-one [query-context]
   (m/with-mongo (conf/get-service :mongo)
-    (when-let [deposit (m/fetch-one :deposits 
-                                    :where {:batch-id batch-id
-                                            :owner owner})]
-      (r/api-response
-       :deposit
-       :content (->response-doc deposit :length true)))))
+    (let [where-clause (-> query-context
+                           (q/->mongo-query
+                            :filters f/deposit-filters
+                            :id-field :batch-id)
+                           :where)]
+      (when-let [deposit (m/fetch-one :deposits :where where-clause)]
+        (r/api-response
+         :deposit
+         :content (->response-doc deposit :length true))))))
 
-(defn fetch [owner]
+(defn fetch [query-context]
   (m/with-mongo (conf/get-service :mongo)
-    (let [deposits (m/fetch :deposits :where {:owner owner})]
+    (let [deposits (apply m/fetch :deposits (q/->mongo-query 
+                                             query-context 
+                                             :filters f/deposit-filters))]
       (-> (r/api-response :deposit-list)
           (r/with-result-items 
             (count deposits) 
             (map #(->response-doc % :length true) deposits))))))
-
-(defn fetch-for-doi [owner doi]
-  (m/with-mongo (conf/get-service :mongo)
-    ()))
-    
-
-(defn fetch-dois [owner]
-  ())
 

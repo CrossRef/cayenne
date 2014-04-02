@@ -100,7 +100,7 @@
   :known-content-type? #(known-post-type? % t/depositable)
   :allowed-methods [:get :post :options]
   :available-media-types t/json
-  :handle-ok #(d/fetch (get-owner %))
+  :handle-ok #(d/fetch (q/->query-context % :filters {:owner (get-owner %)}))
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
   :post! #(hash-map :id (-> (dc/make-deposit-context
                              data
@@ -112,27 +112,28 @@
   :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? #(when-let [deposit (d/fetch-one (get-owner %) id)] {:deposit deposit})
+  :exists? #(when-let [deposit (d/fetch-one 
+                                (q/->query-context 
+                                 % 
+                                 :filters {:owner (get-owner %)} 
+                                 :id id))]
+              {:deposit deposit})
   :handle-ok :deposit)
-
-(defresource deposited-dois-resource []
-  :authorized? authed?
-  :allowed-methods [:get :options]
-  :available-media-types t/json
-  :handle-ok #(d/fetch-dois (:owner %)))
-
-(defresource deposited-doi-resource [doi]
-  :authorized? authed?
-  :allowed-methods [:get :options]
-  :available-media-types t/json
-  :handle-ok #(d/fetch-for-doi (:owner %) doi))
 
 (defresource deposit-data-resource [id]
   :authorized? authed?
   :allowed-methods [:get :options]
   :media-type-available? (constantly true) ;; todo should return {:representation ...}
-  :exists? #(when-let [deposit (d/fetch-one (get-owner %) id)] {:deposit deposit})
-  :handle-ok #(d/fetch-data (get-owner %) id))
+  :exists? #(when-let [deposit (d/fetch-one 
+                                (q/->query-context 
+                                 % 
+                                 :filters {:owner (get-owner %)} 
+                                 :id id))] 
+              {:deposit deposit})
+  :handle-ok #(d/fetch-data (q/->query-context
+                             %
+                             :filters {:owner (get-owner %)} 
+                             :id id)))
 
 (defresource works-resource
   :allowed-methods [:get :options]
@@ -268,11 +269,7 @@
   (ANY "/deposits/:id" [id]
        (deposit-resource id))
   (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id))
-  (ANY "/deposits/dois" []
-       deposited-dois-resource)
-  (ANY "/deposits/dois/*" {{doi :*} :params}
-       (deposited-doi-resource doi)))
+       (deposit-data-resource id)))
 
 (defroutes api-routes
   (ANY "/licenses" []

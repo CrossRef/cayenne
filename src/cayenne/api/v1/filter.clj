@@ -8,6 +8,7 @@
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.issn :as issn]
             [cayenne.ids.orcid :as orcid]
+            [cayenne.ids.doi :as doi-id]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
 
@@ -159,9 +160,9 @@
             (= direction :until)
             {field {"$lte" date-val}}))))
 
-(defn mongo-equality [field]
+(defn mongo-equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val]
-    {field val}))
+    {field (transformer val)}))
 
 (defn mongo-bool [field]
   (fn [val]
@@ -201,6 +202,7 @@
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
+   "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
@@ -209,4 +211,6 @@
   {"from-submission-time" (mongo-stamp-date "submitted-at" :from)
    "until-submission-time" (mongo-stamp-date "submitted-at" :until)
    "status" (mongo-equality "status")
+   "owner" (mongo-equality "owner")
+   "doi" (mongo-equality "dois" :transformer doi-id/normalize-long-doi)
    "test" (mongo-bool "test")})

@@ -5,6 +5,7 @@
             [clojure.data.zip.xml :as zx]
             [clojure.string :as string]
             [cayenne.conf :as conf]
+            [cayenne.ids.doi :as doi-id]
             [cayenne.data.deposit :as deposit-data])
   (:import [java.util UUID]
            [java.io StringWriter]))
@@ -27,7 +28,7 @@
 
 (defn parse-deposit-dois [context]
   (assoc context :dois
-         (map string/trim
+         (map (comp string/trim doi-id/normalize-long-doi)
           (zx/xml-> (:xml context) dzip/descendants :doi_data :doi zx/text))))
 
 (defn parse-partial-deposit-dois [context]
