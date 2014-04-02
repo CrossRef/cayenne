@@ -68,6 +68,13 @@
                 (:uri request)
                 (clojure.string/join "/" paths))))
 
+(defn truth-param [context param-name]
+  (if (#{"t" "true" "1"} (-> context
+                             (get-in [:request :params param-name])
+                             (or "false")))
+    true
+    false))                     
+
 (defresource csl-styles-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -105,7 +112,8 @@
   :post! #(hash-map :id (-> (dc/make-deposit-context
                              data
                              (get-in % [:request :headers "content-type"])
-                             (get-owner %))
+                             (get-owner %)
+                             (truth-param % :test))
                             (dc/deposit!))))
 
 (defresource deposit-resource [id]

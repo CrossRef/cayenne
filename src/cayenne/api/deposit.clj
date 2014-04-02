@@ -12,13 +12,14 @@
 
 ;; handle deposit dispatch based on deposited content type
 
-(defrecord DepositContext [owner content-type object batch-id])
+(defrecord DepositContext [owner content-type object test batch-id])
 
-(defn make-deposit-context [object content-type owner]
+(defn make-deposit-context [object content-type owner test?]
   (DepositContext.
    owner
    content-type
    object
+   test?
    (.toString (UUID/randomUUID))))
 
 (defmulti deposit! :content-type)
@@ -60,7 +61,8 @@
      (:content-type context)
      (:batch-id context)
      (:dois context)
-     (:owner context))))
+     (:owner context)
+     (:test context))))
 
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context

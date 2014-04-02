@@ -39,7 +39,7 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
-(defn create! [deposit-data type batch-id dois owner]
+(defn create! [deposit-data type batch-id dois owner test]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (ensure-deposit-indexes! :deposits)
@@ -50,6 +50,7 @@
                               :batch-id batch-id
                               :dois dois
                               :owner owner
+                              :test test
                               :status :submitted
                               :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))

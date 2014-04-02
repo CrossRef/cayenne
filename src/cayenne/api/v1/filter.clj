@@ -212,5 +212,6 @@
    "until-submission-time" (mongo-stamp-date "submitted-at" :until)
    "status" (mongo-equality "status")
    "owner" (mongo-equality "owner")
+   "type" (mongo-equality "content-type")
    "doi" (mongo-equality "dois" :transformer doi-id/normalize-long-doi)
    "test" (mongo-bool "test")})
