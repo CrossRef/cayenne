@@ -80,11 +80,15 @@
 
 (defn fetch [query-context]
   (m/with-mongo (conf/get-service :mongo)
-    (let [deposits (apply m/fetch :deposits (q/->mongo-query 
-                                             query-context 
-                                             :filters f/deposit-filters))]
+    (let [query (q/->mongo-query 
+                 query-context 
+                 :filters f/deposit-filters)
+          deposits (if (and (:rows query-context) (zero? (:rows query-context)))
+                     []
+                     (apply m/fetch :deposits query))
+          deposits-count (apply m/fetch-count :deposits query)]
       (-> (r/api-response :deposit-list)
           (r/with-result-items 
-            (count deposits) 
+            deposits-count
             (map #(->response-doc % :length true) deposits))))))
 
