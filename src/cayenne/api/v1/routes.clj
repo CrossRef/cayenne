@@ -69,11 +69,15 @@
                 (clojure.string/join "/" paths))))
 
 (defn truth-param [context param-name]
-  (if (#{"t" "true" "1"} (-> context
-                             (get-in [:request :params param-name])
-                             (or "false")))
+  (if (#{"t" "true" "1"}
+       (-> context
+           (get-in [:request :params param-name])
+           (or "false")))
     true
-    false))                     
+    false))
+
+(defn param [context param-name]
+  (get-in context [:request :params param-name]))
 
 (defresource csl-styles-resource
   :allowed-methods [:get :options]
@@ -113,18 +117,20 @@
                              data
                              (get-in % [:request :headers "content-type"])
                              (get-owner %)
-                             (truth-param % :test))
+                             (truth-param % :test)
+                             (param % :pingback))
                             (dc/deposit!))))
 
 (defresource deposit-resource [id]
   :authorized? authed?
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? #(when-let [deposit (d/fetch-one 
-                                (q/->query-context 
-                                 % 
-                                 :filters {:owner (get-owner %)} 
-                                 :id id))]
+  :exists? #(when-let [deposit 
+                       (-> % 
+                           (q/->query-context 
+                            :filters {:owner (get-owner %)}
+                            :id id)
+                           (d/fetch-one))]
               {:deposit deposit})
   :handle-ok :deposit)
 

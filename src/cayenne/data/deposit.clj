@@ -39,7 +39,7 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
-(defn create! [deposit-data type batch-id dois owner test]
+(defn create! [deposit-data type batch-id dois owner test pingback-url]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (ensure-deposit-indexes! :deposits)
@@ -51,6 +51,7 @@
                               :dois dois
                               :owner owner
                               :test test
+                              :pingback-url pingback-url
                               :status :submitted
                               :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
@@ -62,7 +63,7 @@
                            (q/->mongo-query
                             :filters f/deposit-filters
                             :id-field :batch-id)
-                           :where)]
+                           second)]
       (when-let [deposit (m/fetch-one :deposits :where where-clause)]
         (m/stream-from :deposits 
                        (m/fetch-one-file :deposits :where {:_id (:data-id deposit)}))))))
@@ -73,7 +74,7 @@
                            (q/->mongo-query
                             :filters f/deposit-filters
                             :id-field :batch-id)
-                           :where)]
+                           second)]
       (when-let [deposit (m/fetch-one :deposits :where where-clause)]
         (r/api-response
          :deposit
