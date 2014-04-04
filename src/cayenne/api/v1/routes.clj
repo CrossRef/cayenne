@@ -104,8 +104,10 @@
 ;; - enforce https
 ;; - perform deposit for XML (as a retrying job)
 ;; - perform citation extraction and optional deposit XML construction
-;; - check that owner is valid for deposit details
 
+;; This resource looks a little odd because we are trying to handle
+;; any exception that comes about due to the post! action. If there
+;; is an exception, we return a 400.
 (defresource deposits-resource [data]
   :authorized? authed?
   :known-content-type? #(known-post-type? % t/depositable)
@@ -113,13 +115,23 @@
   :available-media-types t/json
   :handle-ok #(d/fetch (q/->query-context % :filters {:owner (get-owner %)}))
   :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
-  :post! #(hash-map :id (-> (dc/make-deposit-context
-                             data
-                             (get-in % [:request :headers "content-type"])
-                             (get-owner %)
-                             (truth-param % :test)
-                             (param % :pingback))
-                            (dc/deposit!))))
+  :handle-see-other #(if (:id %)
+                       (ring-response
+                        {:status 303
+                         :headers {"Location"
+                                   (abs-url (:request %) (:id %))}})
+                       (ring-response
+                        {:status 400
+                         :body (.toString (:ex %))}))
+  :post! #(try (hash-map :id (-> (dc/make-deposit-context
+                               data
+                               (get-in % [:request :headers "content-type"])
+                               (get-owner %)
+                               (truth-param % :test)
+                               (param % :pingback))
+                              (dc/deposit!)))
+               (catch Exception e
+                 (hash-map :ex e))))
 
 (defresource deposit-resource [id]
   :authorized? authed?

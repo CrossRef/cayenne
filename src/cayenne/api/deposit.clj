@@ -3,7 +3,8 @@
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi-id]
             [cayenne.data.deposit :as deposit-data]
-            [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:attrs $x:attrs* $x:node
+            [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:text+ $x:attrs 
+                                    $x:attrs* $x:node
                                     xml->doc node->xml with-namespace-context
                                     xmlnsmap-from-root-node]])
   (:import [java.util UUID]
@@ -43,7 +44,7 @@
       :dois
       (->> context 
            :xml 
-           ($x:text* "//doi_data/doi")
+           ($x:text+ "//doi_data/doi")
            (map (comp string/trim doi-id/normalize-long-doi))))))
 
 (defn parse-partial-deposit-dois [context]
@@ -51,7 +52,7 @@
     :dois
     (->> context
          :xml
-         ($x:text* "//body/*/doi")
+         ($x:text+ "//body/*/doi")
          (map (comp string/trim doi-id/normalize-long-doi)))))
 
 (defn alter-xml-batch-id [context]
