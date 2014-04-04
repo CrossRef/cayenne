@@ -4,7 +4,8 @@
             [cayenne.ids.doi :as doi-id]
             [cayenne.data.deposit :as deposit-data]
             [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:attrs $x:attrs* $x:node
-                                    xml->doc]])
+                                    xml->doc node->xml with-namespace-context
+                                    xmlnsmap-from-root-node]])
   (:import [java.util UUID]
            [java.io StringWriter]))
 
@@ -23,16 +24,27 @@
 
 (defmulti deposit! :content-type)
 
+(defn remove-children [node]
+  (while (.hasChildNodes node)
+    (.removeChild node (.getFirstChild node))))
+
+(defn add-text [node doc text]
+  (.appendChild node (.createTextNode doc text)))
+
 (defn parse-xml [context]
-  (assoc context :xml (-> context :object xml->doc)))
+  (let [root-node (-> context :object xml->doc)]
+    (merge context
+           {:xml root-node
+            :namespaces (xmlnsmap-from-root-node root-node)})))
 
 (defn parse-deposit-dois [context]
-  (assoc context 
-    :dois
-    (->> context 
-         :xml 
-         ($x:text* "//doi_data/doi")
-         (map (comp string/trim doi-id/normalize-long-doi)))))
+  (with-namespace-context (:namespaces context)
+    (assoc context 
+      :dois
+      (->> context 
+           :xml 
+           ($x:text* "//doi_data/doi")
+           (map (comp string/trim doi-id/normalize-long-doi))))))
 
 (defn parse-partial-deposit-dois [context]
   (assoc context
@@ -43,16 +55,22 @@
          (map (comp string/trim doi-id/normalize-long-doi)))))
 
 (defn alter-xml-batch-id [context]
-  (doto ($x:node "//head/doi_batch_id/text()[0]" (:xml context))
-    (.setNodeValue (:batch-id context))))
+  (with-namespace-context (:namespaces context)
+    (doto ($x:node "//doi_batch_id" (:xml context))
+      (remove-children)
+      (add-text (:xml context) (:batch-id context))))
+  context)
 
 (defn alter-email [context]
-  (doto ($x:node "//head/depositor/email_address/text()[0]" (:xml context))
-    (.setNodeValue (conf/get-param [:deposit :email]))))
+  (with-namespace-context (:namespaces context)
+    (doto ($x:node "//depositor/email_address" (:xml context))
+      (remove-children)
+      (add-text (:xml context) (conf/get-param [:deposit :email]))))
+  context)
 
 (defn create-deposit [context]
   (deposit-data/create!
-   (.toString (:xml context))
+   (-> context :xml node->xml (.getBytes "UTF-8"))
    (:content-type context)
    (:batch-id context)
    (:dois context)
@@ -63,9 +81,9 @@
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
       parse-xml
-    ;  parse-deposit-dois
-    ;  alter-xml-batch-id
-    ;  alter-email
+      parse-deposit-dois
+      alter-xml-batch-id
+      alter-email
       create-deposit)
   (:batch-id context))
 
