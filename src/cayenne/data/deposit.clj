@@ -90,6 +90,7 @@
                      (apply m/fetch :deposits query))
           deposits-count (apply m/fetch-count :deposits query)]
       (-> (r/api-response :deposit-list)
+          (r/with-query-context-info query-context)
           (r/with-result-items 
             deposits-count
             (map #(->response-doc % :length true) deposits))))))

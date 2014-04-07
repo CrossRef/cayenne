@@ -96,6 +96,7 @@
         result-count (m/with-mongo (conf/get-service :mongo)
                        (apply m/fetch-count "funders" mongo-query))]
     (-> (r/api-response :funder-list)
+        (r/with-query-context-info query-context)
         (r/with-result-items result-count (map ->response-doc docs)))))
 
 (defn fetch-descendant-ids
