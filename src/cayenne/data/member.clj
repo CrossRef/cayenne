@@ -48,6 +48,7 @@
   {:id (:id pub-doc)
    :names (:names pub-doc)
    :prefixes (:prefixes pub-doc)
+   :location (:location pub-doc)
    :flags (:flags pub-doc)
    :coverage (:coverage pub-doc)
    :last-status-check-time (:last-status-check-time pub-doc)
