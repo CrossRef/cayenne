@@ -6,17 +6,19 @@
             [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:text+ $x:attrs 
                                     $x:attrs* $x:node
                                     xml->doc node->xml with-namespace-context
-                                    xmlnsmap-from-root-node]])
+                                    xmlnsmap-from-root-node]]
+            [org.httpkit.client :as hc])
   (:import [java.util UUID]
            [java.io StringWriter]))
 
 ;; handle deposit dispatch based on deposited content type
 
-(defrecord DepositContext [owner content-type object test pingback-url batch-id])
+(defrecord DepositContext [owner passwd content-type object test pingback-url batch-id])
 
 (defn make-deposit-context [object content-type owner test? pingback-url]
   (DepositContext.
    owner
+   passwd
    content-type
    object
    test?
@@ -79,13 +81,36 @@
    (:test context)
    (:pingback-url context)))
 
+(def type->deposit-operation 
+  {"application/vnd.crossref.deposit+xml" "doMDUpload"
+   "application/vnd.crossref.partial+xml" "doDOICitUpload"})
+
+(defn perform-deposit [context]
+  (doto (conf/get-service :executor)
+    (.execute
+     (fn []
+       (let [post-url (if (:test? context) 
+                        "http://test.crossref.org/servlet/deposit" 
+                        "http://doi.crossref.org/servlet/deposit")
+             operation (-> context :content-type type->deposit-operation)]
+         (hc/post post-url
+                  {:query-params {"operation" operation
+                                  "login_id" (:owner context)
+                                  "login_password" (:passwd context)}
+                   :timeout 10000
+                   :keepalive 10000
+                   :multipart [{:name "fname"
+                                :content (deposit-data/fetch-data {:id (:batch-id context)})
+                                :filename (str (:batch-id context) ".xml")}]}))))))
+
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
       parse-xml
       parse-deposit-dois
       alter-xml-batch-id
       alter-email
-      create-deposit)
+      create-deposit
+      perform-deposit)
   (:batch-id context))
 
 (defmethod deposit! "application/vnd.crossref.partial+xml" [context]
@@ -94,6 +119,6 @@
       parse-partial-deposit-dois
       alter-xml-batch-id
       alter-email
-      create-deposit)
+      create-deposit
+      perform-deposit)
   (:batch-id context))
-  
