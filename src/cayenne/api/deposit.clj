@@ -9,13 +9,14 @@
                                     xmlnsmap-from-root-node]]
             [org.httpkit.client :as hc])
   (:import [java.util UUID]
-           [java.io StringWriter]))
+           [java.io StringWriter]
+           [java.util.concurrent TimeUnit]))
 
 ;; handle deposit dispatch based on deposited content type
 
 (defrecord DepositContext [owner passwd content-type object test pingback-url batch-id])
 
-(defn make-deposit-context [object content-type owner test? pingback-url]
+(defn make-deposit-context [object content-type owner passwd test? pingback-url]
   (DepositContext.
    owner
    passwd
@@ -40,7 +41,7 @@
            {:xml root-node
             :namespaces (xmlnsmap-from-root-node root-node)})))
 
-(defn parse-deposit-dois [context]
+(defn parse-xml-deposit-dois [context]
   (with-namespace-context (:namespaces context)
     (assoc context 
       :dois
@@ -49,7 +50,7 @@
            ($x:text+ "//doi_data/doi")
            (map (comp string/trim doi-id/normalize-long-doi))))))
 
-(defn parse-partial-deposit-dois [context]
+(defn parse-xml-partial-deposit-dois [context]
   (assoc context
     :dois
     (->> context
@@ -64,7 +65,7 @@
       (add-text (:xml context) (:batch-id context))))
   context)
 
-(defn alter-email [context]
+(defn alter-xml-email [context]
   (with-namespace-context (:namespaces context)
     (doto ($x:node "//depositor/email_address" (:xml context))
       (remove-children)
@@ -78,47 +79,77 @@
    (:batch-id context)
    (:dois context)
    (:owner context)
+   (:passwd context)
    (:test context)
-   (:pingback-url context)))
+   (:pingback-url context))
+  context)
 
 (def type->deposit-operation 
   {"application/vnd.crossref.deposit+xml" "doMDUpload"
    "application/vnd.crossref.partial+xml" "doDOICitUpload"})
 
-(defn perform-deposit [context]
-  (doto (conf/get-service :executor)
-    (.execute
-     (fn []
-       (let [post-url (if (:test? context) 
-                        "http://test.crossref.org/servlet/deposit" 
-                        "http://doi.crossref.org/servlet/deposit")
-             operation (-> context :content-type type->deposit-operation)]
-         (hc/post post-url
-                  {:query-params {"operation" operation
-                                  "login_id" (:owner context)
-                                  "login_password" (:passwd context)}
-                   :timeout 10000
-                   :keepalive 10000
-                   :multipart [{:name "fname"
-                                :content (deposit-data/fetch-data {:id (:batch-id context)})
-                                :filename (str (:batch-id context) ".xml")}]}))))))
+(defn expo-seconds-delay [_ x]
+  (if (> x 10)
+    :never
+    (* (Math/exp x) 1000)))
 
+(defn perform-xml-deposit-handoff 
+  "Either successfully hands off a deposit to the DS or throws an
+   exception."
+  [context]
+  (let [post-url (if (:test? context)
+                   "http://test.crossref.org/servlet/deposit" 
+                   "http://doi.crossref.org/servlet/deposit")
+        operation (-> context :content-type type->deposit-operation)
+        query-params {"operation" operation
+                      "login_id" (:owner context)
+                      "login_password" (:passwd context)}
+        multipart  [{:name "fname"
+                     :content (deposit-data/fetch-data {:id (:batch-id context)})
+                     :filename (str (:batch-id context) ".xml")}]
+        params {:query-params query-params
+                :timeout 10000
+                :keepalive 10000
+                :multipart multipart}
+        {:keys [status headers body error]} @(hc/post post-url params)]
+    (when (or (not= status 200) error) (do (prn status) (prn error) (throw (Exception.))))))
+
+(declare perform-xml-deposit)
+
+(defn perform-xml-deposit [context & with-delay]
+  (let [delay-on-fail (deposit-data/begin-handoff! 
+                       (:batch-id context)
+                       :delay-fn expo-seconds-delay)]
+    (doto (conf/get-service :executor)
+      (.schedule
+       (fn []
+         (try
+           (perform-xml-deposit-handoff context)
+           (deposit-data/end-handoff! (:batch-id context))
+           (catch Exception e
+             (if (= delay-on-fail :never)
+               (deposit-data/failed! (:batch-id context))
+                 (perform-xml-deposit context delay-on-fail)))))
+       (if with-delay (long (first with-delay)) 0)
+       TimeUnit/MILLISECONDS)))
+  context)
+         
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
       parse-xml
-      parse-deposit-dois
+      parse-xml-deposit-dois
       alter-xml-batch-id
-      alter-email
+      alter-xml-email
       create-deposit
-      perform-deposit)
+      perform-xml-deposit)
   (:batch-id context))
 
 (defmethod deposit! "application/vnd.crossref.partial+xml" [context]
   (-> context
       parse-xml
-      parse-partial-deposit-dois
+      parse-xml-partial-deposit-dois
       alter-xml-batch-id
-      alter-email
+      alter-xml-email
       create-deposit
-      perform-deposit)
+      perform-xml-deposit)
   (:batch-id context))

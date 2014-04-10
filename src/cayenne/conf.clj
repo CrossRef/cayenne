@@ -1,7 +1,8 @@
 (ns cayenne.conf
   (:import [org.apache.solr.client.solrj.impl HttpSolrServer]
            [java.net URI]
-           [java.util UUID])
+           [java.util UUID]
+           [java.util.concurrent Executors])
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -159,6 +160,7 @@
   (add-startup-task 
    :base
    (fn [profiles]
+     (set-service! :executor (Executors/newScheduledThreadPool 20))
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))

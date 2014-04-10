@@ -1,13 +1,21 @@
 (ns cayenne.ids.type)
 
+(defn bibo-type [clss]
+  (str "http://purl.org/ontology/bibo/" clss))
+
 (def type-dictionary {:journal-article {:index-id "Journal Article" 
-                                        :label "Journal Article"}
+                                        :bibo-type (bibo-type "Article")
+                                        :csl-type "article-journal"
+                                        :rpp-type "Journal Articles"}
                       :journal-issue {:index-id "Journal Issue"
-                                      :label "Journal Issue"}
+                                      :label "Journal Issue"
+                                      :bibo-type (bibo-type "Issue")}
                       :journal-volume {:index-id "Journal Volume" 
-                                       :label "Journal Volume"}
+                                       :label "Journal Volume"
+                                       :bibo-type (bibo-type "Collection")}
                       :journal {:index-id "Journal"
-                                :label "Journal"}
+                                :label "Journal"
+                                :bibo-type (bibo-type "Journal")}
                       :proceedings-article {:index-id "Conference Paper"
                                             :label "Proceedings Article"}
                       :proceedings {:index-id "Proceedings"
@@ -15,7 +23,8 @@
                       :dataset {:index-id "Dataset"
                                 :label "Dataset"}
                       :report {:index-id "Report"
-                               :label "Report"}
+                               :label "Report"
+                               :bibo-type (bibo-type "Report")}
                       :report-series {:index-id "Report Series"
                                       :label "Report Series"}
                       :standard {:index-id "Standard"

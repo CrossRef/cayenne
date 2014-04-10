@@ -82,6 +82,8 @@
           (.getNumFound doc-list)
           (map citeproc/->citeproc doc-list)))))
 
+;; todo handle rows and offset propery (not using either of them)
+
 (defn fetch [query-context]
   (let [parsed-terms (or (parse-query-terms (:terms query-context)) [])
         and-list (map #(hash-map "tokens" {"$regex" (str "^" %)}) parsed-terms)

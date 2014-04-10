@@ -30,6 +30,8 @@
 (defn ->response-doc [deposit-doc & {:keys [length] :or {:length false}}]
   (let [clean-doc (-> deposit-doc
                       (dissoc :data-id)
+                      (dissoc :passwd)
+                      (dissoc :handoff)
                       (dissoc :_id))]
     (if length
       (m/with-mongo (conf/get-service :mongo)
@@ -39,7 +41,7 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
-(defn create! [deposit-data type batch-id dois owner test pingback-url]
+(defn create! [deposit-data type batch-id dois owner passwd test pingback-url]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (ensure-deposit-indexes! :deposits)
@@ -50,12 +52,45 @@
                               :batch-id batch-id
                               :dois dois
                               :owner owner
+                              :passwd passwd
                               :test test
                               :pingback-url pingback-url
                               :status :submitted
+                              :handoff {:status :incomplete
+                                        :timestamp 0
+                                        :try-count 0
+                                        :delay-millis 0}
                               :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))
+
+(defn begin-handoff! 
+  "Call to begin hand-off or a hand-off try."
+  [batch-id & {:keys [delay-fn] :or {delay-fn (fn [_ x] x)}}]
+  (m/with-mongo (conf/get-service :mongo)
+    (let [deposit-data (m/fetch-one :deposits :where {:batch-id batch-id})
+          curr-try-count (get-in deposit-data [:handoff :try-count])
+          curr-delay-millis (get-in deposit-data [:handoff :delay-millis])
+          next-delay-millis (delay-fn curr-delay-millis (inc curr-try-count))]
+      (m/update! :deposits
+                 deposit-data
+                 (-> deposit-data
+                     (assoc-in [:handoff :timestamp] (System/currentTimeMillis))
+                     (assoc-in [:handoff :try-count] (inc curr-try-count))
+                     (assoc-in [:handoff :delay-millis] next-delay-millis)))
+      next-delay-millis)))
+
+(defn end-handoff!
+  "Call to indicate successful hand-off process."
+  [batch-id]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits
+               {:batch-id batch-id}
+               {"$set" {"handoff.status" :complete}})))
+
+(defn failed! [batch-id]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits {:batch-id batch-id} {"$set" {:status :failed}})))
 
 (defn fetch-data [query-context]
   (m/with-mongo (conf/get-service :mongo)
