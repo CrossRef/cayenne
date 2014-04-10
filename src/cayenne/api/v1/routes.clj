@@ -39,17 +39,20 @@
   (not (nil? (get-in context [:request :basic-authentication]))))
 
 (defn get-owner [context]
-  (get-in context [:request :basic-authentication]))
+  (get-in context [:request :basic-authentication 0]))
+
+(defn get-passwd [context]
+  (get-in context [:request :basic-authentication 1]))
 
 (defn known-post-type? 
   "Does the content type submitted match a known content type, if the
    method is POST? Otherwise, if not method POST, accept the request
    regardless of content type."
   [context post-types]
-  (let [method (get-in context [:request :method])]
+  (let [method (get-in context [:request :request-method])]
     (if (not= :post method)
       true
-      (some #{(get-in context [:request :headers :content-type])} post-types))))
+      (some #{(get-in context [:request :headers "content-type"])} post-types))))
 
 (defn ->1
   "Helper that creates a function that calls f while itself taking one
@@ -67,6 +70,10 @@
                 (:server-port request)
                 (:uri request)
                 (clojure.string/join "/" paths))))
+
+(defn rel-url
+  [& paths]
+  (str "/" (clojure.string/join "/" paths)))
 
 (defn truth-param [context param-name]
   (if (#{"t" "true" "1"}
@@ -100,26 +107,23 @@
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
 
-;; deposits todo
-;; - enforce https
-;; - perform deposit for XML (as a retrying job)
-;; - perform citation extraction and optional deposit XML construction
-
 ;; This resource looks a little odd because we are trying to handle
 ;; any exception that comes about due to the post! action. If there
 ;; is an exception, we return a 400.
+
 (defresource deposits-resource [data]
   :authorized? authed?
   :known-content-type? #(known-post-type? % t/depositable)
   :allowed-methods [:get :post :options]
   :available-media-types t/json
   :handle-ok #(d/fetch (q/->query-context % :filters {:owner (get-owner %)}))
-  :post-redirect? #(hash-map :location (abs-url (:request %) (:id %)))
+  :post-redirect? #(hash-map :location (rel-url "deposits" (:id %)))
   :handle-see-other #(if (:id %)
                        (ring-response
                         {:status 303
+                         :body ""
                          :headers {"Location"
-                                   (abs-url (:request %) (:id %))}})
+                                   (rel-url "deposits" (:id %))}})
                        (ring-response
                         {:status 400
                          :body (.toString (:ex %))}))
@@ -127,11 +131,13 @@
                                data
                                (get-in % [:request :headers "content-type"])
                                (get-owner %)
+                               (get-passwd %)
                                (truth-param % :test)
                                (param % :pingback))
                               (dc/deposit!)))
                (catch Exception e
-                 (hash-map :ex e))))
+                 (throw e))))
+                 ;(hash-map :ex e))))
 
 (defresource deposit-resource [id]
   :authorized? authed?
@@ -210,6 +216,22 @@
                 (ring-response
                  {:headers headers
                   :body (transform/->format (:representation %)
+                                            (force-exact-request-doi % doi))})))
+
+(defresource explicit-work-transform-resource [doi content-type]
+  :allowed-methods [:get :options]
+  :media-type-available? (fn [_] (some #{content-type} t/work-transform))
+  :exists? (->1 #(when-let [work (-> doi
+                                     (URLDecoder/decode)
+                                     (doi-id/to-long-doi-uri)
+                                     (work/fetch-one))]
+                   {:work work}))
+  :handle-ok #(let [links (link/make-link-headers
+                           (get-in % [:work :message]))
+                    headers (if-not (string/blank? links) {"Link" links} {})]
+                (ring-response
+                 {:headers headers
+                  :body (transform/->format content-type
                                             (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
@@ -329,6 +351,10 @@
              (work-health-resource (string/replace doi #"/quality\z" ""))
              (.endsWith doi "/transform")
              (work-transform-resource (string/replace doi #"/transform\z" ""))
+             (re-matches #"/transform/.*^" doi)
+             (work-transform-resource
+              (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
+              (second (re-matches #"/transform/(.+)^" doi)))
              :else
              (work-resource doi)))
   (ANY "/types" []
