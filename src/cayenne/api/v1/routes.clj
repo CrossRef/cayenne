@@ -352,7 +352,7 @@
              (.endsWith doi "/transform")
              (work-transform-resource (string/replace doi #"/transform\z" ""))
              (re-matches #"/transform/.*^" doi)
-             (work-transform-resource
+             (explicit-work-transform-resource
               (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
               (second (re-matches #"/transform/(.+)^" doi)))
              :else
