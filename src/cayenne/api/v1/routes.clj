@@ -351,7 +351,7 @@
              (work-health-resource (string/replace doi #"/quality\z" ""))
              (.endsWith doi "/transform")
              (work-transform-resource (string/replace doi #"/transform\z" ""))
-             (re-matches #"/transform/.*\z" doi)
+             (re-matches #".*/transform/.+\z" doi)
              (explicit-work-transform-resource
               (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
               (second (re-matches #".*/transform/(.+)\z" doi)))
