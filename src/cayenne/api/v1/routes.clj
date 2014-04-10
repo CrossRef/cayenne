@@ -231,7 +231,8 @@
                     headers (if-not (string/blank? links) {"Link" links} {})]
                 (ring-response
                  {:headers headers
-                  :body (transform/->format content-type
+                  :body (transform/->format {:media-type content-type
+                                             :parameters {}}
                                             (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
