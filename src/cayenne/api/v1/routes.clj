@@ -351,10 +351,10 @@
              (work-health-resource (string/replace doi #"/quality\z" ""))
              (.endsWith doi "/transform")
              (work-transform-resource (string/replace doi #"/transform\z" ""))
-             (re-matches #"/transform/.*^" doi)
+             (re-matches #"/transform/.*\z" doi)
              (explicit-work-transform-resource
               (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
-              (second (re-matches #"/transform/(.+)^" doi)))
+              (second (re-matches #".*/transform/(.+)\z" doi)))
              :else
              (work-resource doi)))
   (ANY "/types" []
