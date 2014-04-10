@@ -41,6 +41,8 @@
    (context "/v1" [] v1-doc/api-doc-routes)
    (context "/v1.0" [] v1/api-routes)
    (context "/v1.0" [] v1-doc/api-doc-routes)
+   (ANY "/help/bestpractice" []
+        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md"))
    (ANY "/help" []
         (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md"))
    (ANY "/" [] 
