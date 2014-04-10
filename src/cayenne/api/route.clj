@@ -25,21 +25,29 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
-(def all-routes
+(def protected-routes
+  (wrap-basic-authentication
+   (routes
+    v1/restricted-api-routes
+    (context "/v1" [] v1/restricted-api-routes)
+     (context "/v1.0" [] v1/restricted-api-routes))
+   cr-auth/authenticated?))
+
+(def unprotected-routes
   (routes
    v1/api-routes
-   (-> v1/restricted-api-routes
-       (wrap-basic-authentication cr-auth/authenticated?))
    v1-doc/api-doc-routes
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)
    (context "/v1.0" [] v1/api-routes)
    (context "/v1.0" [] v1-doc/api-doc-routes)
-
    (ANY "/help" []
         (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md"))
    (ANY "/" [] 
         (redirect "/help"))))
+
+(def all-routes
+  (routes unprotected-routes protected-routes))
 
 (defn wrap-cors
   [h]
