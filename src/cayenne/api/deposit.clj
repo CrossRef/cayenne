@@ -95,24 +95,28 @@
 
 (defn perform-xml-deposit-handoff 
   "Either successfully hands off a deposit to the DS or throws an
-   exception."
-  [context]
-  (let [post-url (if (:test? context)
+   exception. data-source is either :remote - get data stored in mongo,
+   or a key that keys data in the context."
+  [context & {:keys [data-source] :or {data-source :remote}}]
+  (let [data-object (if (= data-source :remote)
+                      (deposit-data/fetch-data {:id (:batch-id context)})
+                      (get context data-source))
+        post-url (if (:test context)
                    "http://test.crossref.org/servlet/deposit" 
                    "http://doi.crossref.org/servlet/deposit")
         operation (-> context :content-type type->deposit-operation)
         query-params {"operation" operation
                       "login_id" (:owner context)
-                      "login_password" (:passwd context)}
+                      "login_passwd" (:passwd context)}
         multipart  [{:name "fname"
-                     :content (deposit-data/fetch-data {:id (:batch-id context)})
+                     :content data-object
                      :filename (str (:batch-id context) ".xml")}]
         params {:query-params query-params
-                :timeout 10000
-                :keepalive 10000
+                :timeout 20000
+                :keepalive 30000
                 :multipart multipart}
         {:keys [status headers body error]} @(hc/post post-url params)]
-    (when (or (not= status 200) error) (do (prn status) (prn error) (throw (Exception.))))))
+    (when (or (not= status 200) error) (do (prn status) (prn error) (prn body) (throw (Exception.))))))
 
 (declare perform-xml-deposit)
 
