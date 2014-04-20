@@ -85,7 +85,7 @@
   (m/with-mongo (conf/get-service :mongo)
     (m/update! :deposits
                {:batch-id batch-id}
-               {"$set" {"handoff.status" :complete}})))
+               {"$set" {"handoff.status" :completed}})))
 
 (defn failed! [batch-id]
   (m/with-mongo (conf/get-service :mongo)
