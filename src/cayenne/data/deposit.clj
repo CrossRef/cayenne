@@ -31,7 +31,6 @@
   (let [clean-doc (-> deposit-doc
                       (dissoc :data-id)
                       (dissoc :passwd)
-                      (dissoc :handoff)
                       (dissoc :_id))]
     (if length
       (m/with-mongo (conf/get-service :mongo)

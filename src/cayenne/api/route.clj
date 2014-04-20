@@ -30,7 +30,7 @@
    (routes
     v1/restricted-api-routes
     (context "/v1" [] v1/restricted-api-routes)
-     (context "/v1.0" [] v1/restricted-api-routes))
+    (context "/v1.0" [] v1/restricted-api-routes))
    cr-auth/authenticated?))
 
 (def unprotected-routes

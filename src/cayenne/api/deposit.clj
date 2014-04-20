@@ -116,7 +116,7 @@
                 :keepalive 30000
                 :multipart multipart}
         {:keys [status headers body error]} @(hc/post post-url params)]
-    (when (or (not= status 200) error) (do (prn status) (prn error) (prn body) (throw (Exception.))))))
+    (when (or (not= status 200) error) (throw (Exception.)))))
 
 (declare perform-xml-deposit)
 
