@@ -29,14 +29,14 @@
   (let [family (get-in metadata [:author 0 :family])
         year (get-in metadata [:issued :date-parts 0 0])]
     (cond
-         (and family year)
-         (str family "_" year)
-         family
-         family
-         year
-         (str year)
-         :else
-         "1")))
+     (and family year)
+     (str family "_" year)
+     family
+     family
+     year
+     (str year)
+     :else
+     "1")))
 
 (defn make-bibtex-key-nice [metadata bibtex]
   (let [nice-bibtex-key (-> (make-csl-id metadata)

@@ -29,7 +29,8 @@
   (m/update! collection
              {:id id}
              {"$set" {:id id
-                      :location (string/trim location)}
+                      :location (string/trim location)
+                      :primary-name (string/trim name)}
               "$addToSet" {:prefixes prefix
                            :tokens {"$each" (util/tokenize-name name)}
                            :names (string/trim name)}}))
