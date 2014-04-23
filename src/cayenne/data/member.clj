@@ -46,6 +46,7 @@
 
 (defn ->response-doc [pub-doc]
   {:id (:id pub-doc)
+   :primary-name (:primary-name pub-doc)
    :names (:names pub-doc)
    :prefixes (:prefixes pub-doc)
    :location (:location pub-doc)
