@@ -22,6 +22,8 @@
                                     :label "Proceedings"}
                       :dataset {:index-id "Dataset"
                                 :label "Dataset"}
+                      :component {:index-id "Component"
+                                  :label "Component"}
                       :report {:index-id "Report"
                                :label "Report"
                                :bibo-type (bibo-type "Report")}
