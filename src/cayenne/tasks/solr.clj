@@ -128,6 +128,13 @@
   (let [journal (find-item-of-subtype item :journal)]
     (or (:oa-status journal) "Other")))
 
+(defn get-update-policy [item]
+  (when-let [policy (first (get-tree-rel item :update-policy))]
+    (:value policy)))
+
+(defn get-updates [item]
+  (find-items-of-type item :update))
+
 (defn as-solr-base-field [item]
   (string/join 
    " "
@@ -252,6 +259,7 @@
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
         contrib-details (get-contributor-details item)
+        updates (get-updates item)
         doi (first (get-item-ids item :long-doi))]
     (-> {"source" (:source item)
          "indexed_at" (t/now)
@@ -313,7 +321,12 @@
          "full_text_version" (map (util/?- :content-version) full-text-resources)
          "publisher" (:name publisher)
          "hl_publisher" (:name publisher)
-         "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")}
+         "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
+         "update_policy" (get-update-policy item)
+         "update_doi" (map :value updates)
+         "update_type" (map :subtype updates)
+         "update_label" (map :label updates)
+         "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)}
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))
 
