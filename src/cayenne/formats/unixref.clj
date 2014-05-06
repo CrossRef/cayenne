@@ -521,6 +521,36 @@
   (let [archive-locs (xml/xselect item-loc :> "archive_locations" "archive")]
     (map parse-archive archive-locs)))
 
+(defn parse-update-policy [item-loc]
+  (when-let [policy-doi (xml/xselect1 item-loc :> "crossmark" "crossmark_policy" :text)]
+    {:type :id
+     :subtype :doi
+     :value (to-long-doi-uri policy-doi)
+     :original policy-doi}))
+
+(def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
+
+(defn parse-update-date [update-loc]
+  (let [update-date (ftime/parse update-date-formatter
+                                 (xml/xselect1 update-loc ["date"]))]
+    {:type :date
+     :day (t/day update-date)
+     :month (t/month update-date)
+     :year (t/year update-date)}))
+
+(defn parse-update [update-loc]
+  (let [update-to-doi (xml/xselect1 update-loc :text)]
+    (-> {:type :update
+         :subtype (xml/xselect1 update-loc ["type"])
+         :label (xml/xselect1 update-loc ["label"])
+         :value (to-long-doi-uri update-to-doi)
+         :original update-to-doi}
+        (parse-attach :updated update-loc :single parse-update-date))))
+
+(defn parse-updates [item-loc]
+  (when-let [updates (xml/xselect item-loc :> "crossmark" "updates" "update")]
+    (map parse-update updates)))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -544,6 +574,8 @@
   [item-loc]
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
+      (parse-attach :update-policy item-loc :single parse-update-policy)
+      (parse-attach :updates item-loc :multi parse-updates)
       (parse-attach :component item-loc :multi parse-component-list)
       (parse-attach :institution item-loc :multi parse-institutions)
       (parse-attach :funder item-loc :multi parse-item-funders)
