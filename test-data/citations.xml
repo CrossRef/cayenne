@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_records>
+  <doi_record owner="10.5555" timestamp="2012-12-04 08:42:23">
+    <crossref>
+      <journal>
+        <journal_metadata language="en">
+          <full_title>Journal of Psychoceramics</full_title>
+          <abbrev_title>Journal of Psychoceramics</abbrev_title>
+          <issn media_type="electronic">0264-3561</issn>
+        </journal_metadata>
+        <journal_issue>
+          <publication_date media_type="online">
+            <month>08</month>
+            <day>13</day>
+            <year>2008</year>
+          </publication_date>
+          <publication_date media_type="print">
+            <month>08</month>
+            <day>14</day>
+            <year>2008</year>
+          </publication_date>
+          <journal_volume>
+            <volume>5</volume>
+          </journal_volume>
+          <issue>11</issue>
+        </journal_issue>
+        <journal_article publication_type="full_text">
+          <titles>
+            <title>Toward a Unified Theory of High-Energy Metaphysics: Silly String Theory</title>
+          </titles>
+          <contributors>
+            <person_name sequence="first" contributor_role="author">
+              <given_name>Josiah</given_name>
+              <surname>Carberry</surname>
+              <ORCID authenticated="true">https://orcid.org/0000-0002-1825-0097</ORCID>
+            </person_name>
+          </contributors>
+          <publication_date media_type="online">
+            <month>08</month>
+            <day>13</day>
+            <year>2008</year>
+          </publication_date>
+          <publication_date media_type="print">
+            <month>08</month>
+            <day>14</day>
+            <year>2008</year>
+          </publication_date>
+          <pages>
+            <first_page>1</first_page>
+            <last_page>3</last_page>
+          </pages>
+          <publisher_item>
+            <item_number item_number_type="sequence-number">1</item_number>
+          </publisher_item>
+          <crossmark>
+            <crossmark_version>1</crossmark_version>
+            <crossmark_policy>10.5555/crossmark_policy</crossmark_policy>
+            <crossmark_domains>
+              <crossmark_domain>
+                <domain>psychoceramics.labs.crossref.org</domain>
+              </crossmark_domain>
+            </crossmark_domains>
+            <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+            <custom_metadata>
+              <assertion name="orcid" label="ORCID" group_name="identifiers" group_label="Identifiers" order="0" href="http://orcid.org/0000-0002-1825-0097">http://orcid.org/0000-0002-1825-0097</assertion>
+              <assertion name="received" label="Received" group_name="publication_history" group_label="Publication History" order="0">2012-07-24</assertion>
+              <assertion name="accepted" label="Accepted" group_name="publication_history" group_label="Publication History" order="1">2012-08-29</assertion>
+              <assertion name="published" label="Published" group_name="publication_history" group_label="Publication History" order="2">2012-09-10</assertion>
+              <program name="fundref">
+                <assertion name="fundgroup">
+                  <assertion name="funder_name">
+                    National Science Foundation
+                    <assertion name="funder_identifier">100000001</assertion>
+                  </assertion>
+                  <assertion name="funding_identifier">CHE-1152342</assertion>
+                </assertion>
+                <assertion name="fundgroup">
+                  <assertion name="funder_name">
+                    Basic Energy Sciences, Office of Science, U.S. Department of Energy
+                    <assertion name="funder_identifier">100006151</assertion>
+                  </assertion>
+                  <assertion name="funding_identifier">DE-SC0001091</assertion>
+                </assertion>
+              </program>
+            </custom_metadata>
+          </crossmark>
+          <doi_data>
+            <doi>10.5555/12345678</doi>
+            <timestamp>20121025161509</timestamp>
+            <resource>http://psychoceramics.labs.crossref.org/10.5555-12345678.html</resource>
+          </doi_data>
+          <citation_list>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-0">
+              <unstructured_citation>1 Kauffman, S. &amp; Levin, S. 1987 Towards a general theory of adaptive walks on rugged landscapes. J. Theor. Biol. 128, 11–45. (doi:10.1016/S0022-5193(87)80029-2)</unstructured_citation>
+              <doi>10.1016/S0022-5193(87)80029-2</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-1">
+              <unstructured_citation>gdfgfdgfdg</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-2">
+              <unstructured_citation>2 Gillespie, J. H. 1984 Molecular evolution over the mutational landscape. Evolution 38, 1116–1129. (doi:10. 2307/2408444)</unstructured_citation>
+              <doi>10.2307/2408444</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-3">
+              <unstructured_citation>hbudfdsfdsf</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-4">
+              <unstructured_citation>3 Orr, H. A. 2005 The genetic theory of adaptation: a brief history. Nat. Rev. Genet. 6, 119–127. (doi:10.1038/ nrg1523)</unstructured_citation>
+              <doi>10.1038/nrg1523</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-5">
+              <unstructured_citation>4 Orr, H. A. 2009 Fitness and its role in evolutionary genetics. Nat. Rev. Genet. 10, 531–539. (doi:10.1038/ nrg2603)</unstructured_citation>
+              <doi>10.1038/nrg2603</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-6">
+              <unstructured_citation>S. Kryazhimskiy, G. Tkacik, J. B. Plotkin, 2009, 'The dynamics of adaptation on correlated fitness landscapes', Proceedings of the National Academy of Sciences, vol. 106, no. 44, pp. 18638-18643</unstructured_citation>
+              <doi>10.1073/pnas.0905497106</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-7">
+              <unstructured_citation>6 Maynard Smith, J. 1970 Natural selection and the concept of a protein space. Nature 225, 563–564. (doi:10.10.1038/225563a0)</unstructured_citation>
+              <doi>10.1038/225563a0</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-8">
+              <unstructured_citation>7 Romero, P. A. &amp; Arnold, F. H. 2009 Exploring protein fitness landscapes by directed evolution. Nat. Rev. Mol. Cell Biol. 10, 866 –876. (doi:10.1038/nrm2805)</unstructured_citation>
+              <doi>10.1038/nrm2805</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-9">
+              <unstructured_citation>8 Gillespie, J. H. 1994 The causes of molecular evolution. Oxford, UK: Oxford University Press.</unstructured_citation>
+              <doi>10.1017/S001667230003158X</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-10">
+              <unstructured_citation>9 Orr, H. A. 2003 A minimum on the mean number of steps taken in adaptive walks. J. Theor. Biol. 220, 241–247. (doi:10.1006/jtbi.2003.3161)</unstructured_citation>
+              <doi>10.1006/jtbi.2003.3161</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-11">
+              <unstructured_citation>10 Orr, H. A. 2006 The population genetics of adaptation on correlated fitness landscapes: the block model. Evolution 60, 1113–1124.</unstructured_citation>
+              <doi>10.1111/j.0014-3820.2006.tb01191.x</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-12">
+              <unstructured_citation>11 Meer, M. V., Kondrashov, A. S., Artzy-Randrup, Y. &amp; Kondrashov, F. A. 2010 Compensatory evolution in mitochondrial tRNAs navigates valleys of low fitness. Nature 464, 279–282. (doi:10.1038/nature08691)</unstructured_citation>
+              <doi>10.1038/nature08691</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-13">
+              <unstructured_citation>12 Weinreich, D. M., Delaney, N. F., Depristo, M. A. &amp; Hartl, D. L. 2006 Darwinian evolution can follow only very few mutational paths to fitter proteins. Science 312, 111 –114. (doi:10.1126/science.1123539)</unstructured_citation>
+              <doi>10.1126/science.1123539</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-14">
+              <unstructured_citation>13 Wolf, J. B., Brodie III, E. D. &amp; Wade, M. J. 2000 Epistasis and the evolutionary process, 1st edn. Oxford, UK: Oxford University Press.</unstructured_citation>
+              <doi>10.1046/j.1439-0388.2001.0185b.x</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-15">
+              <unstructured_citation>14 McDonald, J. H. &amp; Kreitman, M. 1991 Adaptive protein evolution at the Adh locus in Drosophila. Nature 351, 652 –654. (doi:10.1038/351652a0)</unstructured_citation>
+              <doi>10.1038/351652a0</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-16">
+              <unstructured_citation>15 Smith, N. G. C. &amp; Eyre-Walker, A. 2002 Adaptive protein evolution in Drosophila. Nature 415, 1022–1024. (doi:10. 1038/4151022a)</unstructured_citation>
+              <doi>10.1038/4151022a</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-17">
+              <unstructured_citation>16 Tian, D. et al. 2008 Single-nucleotide mutation rate increases close to insertions/deletions in eukaryotes. Nature 455, 105 –108. (doi:10.1038/nature07175)</unstructured_citation>
+              <doi>10.1038/nature07175</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-18">
+              <unstructured_citation>17 Zhang, Z., Huang, J., Wang, Z., Wang, L. &amp; Gao, P. 2011 Impact of indels on the flanking regions in struc- tural domains. Mol. Biol. Evol. 28, 291 –301. (doi:10. 1093/molbev/msq196)</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-19">
+              <unstructured_citation>18 McDonald, M. J., Wang, W.-C., Huang, H.-D. &amp; Leu, J.-Y. 2011 Clusters of nucleotide substitutions and insertion/deletion mutations are associated with repeat sequences. PLoS Biol. 9, e1000622. (doi:10.1371/ journal.pbio.1000622)</unstructured_citation>
+              <doi>10.1371/journal.pbio.1000622</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-20">
+              <unstructured_citation>19 Sawyer, S. A. &amp; Hartl, D. L. 1992 Population genetics of polymorphism and divergence. Genetics 132, 1161–1176.</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-21">
+              <unstructured_citation>20 Tajima, F. 1989 Statistical method for testing the neutral mutation hypothesis by DNA polymorphism. Genetics 123, 585 –595.</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-22">
+              <unstructured_citation>21 Brandstr ̈ m, M. &amp; Ellegren, H. 2007 The genomic landscape of short insertion and deletion polymorphisms in the chicken (Gallus gallus) genome: a high frequency of</unstructured_citation>
+              <doi>10.1534/genetics.107.070805</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-23">
+              <unstructured_citation>deletions in tandem duplicates. Genetics 176, 1691– 1701. (doi:10.1534/genetics.107.070805)</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-24">
+              <unstructured_citation>22 Bazykin, G. A., Kondrashov, F. A., Ogurtsov, A. Y., Sunyaev, S. &amp; Kondrashov, A. S. 2004 Positive selection at sites of multiple amino acid replacements since rat- mouse divergence. Nature 429, 558–562. (doi:10.1038/ nature02601)</unstructured_citation>
+              <doi>10.1038/nature02601</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-25">
+              <unstructured_citation>23 Callahan, B., Neher, R. A., Bachtrog, D., Andolfatto, P. &amp; Shraiman, B. I. 2011 Correlated evolution of nearby residues in Drosophilid proteins. PLoS Genet. 7, e1001315. (doi:10.1371/journal.pgen.1001315)</unstructured_citation>
+              <doi>10.1371/journal.pgen.1001315</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-26">
+              <unstructured_citation>24 Heger, A. &amp; Ponting, C. P. 2007 Evolutionary rate analyses of orthologs and paralogs from 12 Drosophila genomes. Genome Res. 17, 1837–1849. (doi:10.1101/gr.6249707)</unstructured_citation>
+              <doi>10.1101/gr.6249707</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-27">
+              <unstructured_citation>25 Li, H., Handsaker, B., Wysoker, A., Fennell, T., Ruan, J., Homer, N., Marth, G., Abecasis, G. &amp; Durbin, R. 2009 The sequence alignment/map format and SAMtools. Bioinformatics 25, 2078 –2079. (doi:10.1093/bioinfor matics/btp352)</unstructured_citation>
+              <doi>10.1093/bioinformatics/btp352</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-28">
+              <unstructured_citation>26 Mackay, T. F. C. et al. 2012 The Drosophila melanogaster genetic reference panel. Nature 482, 173 –178. (doi:10. 1038/nature10811)</unstructured_citation>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-29">
+              <unstructured_citation>27 Charlesworth, J. &amp; Eyre-Walker, A. 2008 The McDonald –Kreitman test and slightly deleterious mutations. Mol. Biol. Evol. 25, 1007–1015. (doi:10. 1093/molbev/msn005)</unstructured_citation>
+              <doi>10.1093/molbev/msn005</doi>
+            </citation>
+            <citation key="1aec4c8b-d1fb-4caf-bd54-6c67b8ef8181-30">
+              <unstructured_citation>28 Messer, P. W. 2009 Measuring the rates of spontaneous mutation from deep and large-scale polymorphism data. Genetics 182, 1219– 1232. (doi:10.1534/genetics.109. 105692)</unstructured_citation>
+              <doi>10.1534/genetics.109.105692</doi>
+            </citation>
+          </citation_list>
+        </journal_article>
+      </journal>
+    </crossref>
+  </doi_record>
+</doi_records>

@@ -316,6 +316,7 @@
          "license_delay" (map ->license-delay licenses (repeat pub-date))
          "references" false ;now
          "cited_by_count" 0 ;now
+         "citation_count" (count (get-tree-rel item :citation))
          "full_text_type" (map (util/?- :content-type) full-text-resources)
          "full_text_url" (map (util/?- :value) full-text-resources)
          "full_text_version" (map (util/?- :content-version) full-text-resources)
