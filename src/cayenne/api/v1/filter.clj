@@ -99,7 +99,10 @@
 
 (defn greater-than-zero [field]
   (fn [val]
-    (str field ":[1 TO *]")))
+    (cond (#{"t" "true" "1"} (.toLowerCase val))
+          (str field ":[1 TO *]")
+          (#{"f" "false" "0"} (.toLowerCase val))
+          (str field ":0"))))
 
 (defn existence [field]
   (fn [val]
