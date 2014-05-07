@@ -116,10 +116,10 @@
 (defn ->citeproc-updates-to [solr-doc]
   (map 
    #(hash-map
-     :DOI (doi-id/extract-long-doi doi)
-     :type type
-     :label label
-     :updated (->date-parts date))
+     :DOI (doi-id/extract-long-doi %1)
+     :type %2
+     :label %3
+     :updated (->date-parts %4))
    (get solr-doc "update_doi")
    (get solr-doc "update_type")
    (get solr-doc "update_label")

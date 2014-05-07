@@ -143,6 +143,9 @@
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
 
+  (set-param! [:location :cr-titles-csv] "http://www.crossref.org/titlelist/titleFile.csv")
+  (set-param! [:location :cr-funders-rdf] "http://dx.doi.org/10.13039/fundref_registry")
+
   (set-param! [:test :doi] "10.5555/12345678")
 
   (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
