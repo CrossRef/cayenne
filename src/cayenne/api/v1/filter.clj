@@ -97,6 +97,10 @@
             (:year d)
             (field-lte-or-gte year-field (:year d) end-point)))))
 
+(defn greater-than-zero [field]
+  (fn [val]
+    (str field ":[1 TO *]")))
+
 (defn existence [field]
   (fn [val]
     (cond (#{"t" "true" "1"} (.toLowerCase val))
@@ -185,9 +189,12 @@
    "until-pub-date" (particle-date "year" "month" "day" :until)
    "from-issued-date" (particle-date "year" "month" "day" :from)
    "until-issued-date" (particle-date "year" "month" "day" :until)
+   "is-update" (existence "update_doi")
+   "updates" (equality "update_doi" :transformer doi-id/to-long-doi-uri)
    "has-full-text" (existence "full_text_url")
    "has-license" (existence "license_url")
-   "has-references" (bool "references") ;waiting for index change
+   "has-references" (greater-than-zero "citation_count")
+   "has-update-policy" (existence "update_policy")
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
    "has-funder" (existence "funder_name")
