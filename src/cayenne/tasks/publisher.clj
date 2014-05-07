@@ -80,16 +80,16 @@
     0
     (float (/ check-count total-count))))
 
-(defn make-filter-check [check-name filter-name filter-value]
+(defn make-filter-check [member-action check-name filter-name filter-value]
   (fn [member-id]
     (let [total-count (get-work-count member-id)
           total-back-file-count (get-work-count member-id :timing :backfile)
           total-current-count (get-work-count member-id :timing :current)
           filter-back-file-count (get-work-count member-id :filters {filter-name filter-value} :timing :backfile)
           filter-current-count (get-work-count member-id :filters {filter-name filter-value} :timing :current)]
-      {:flags {(keyword (str "deposits-" check-name "-current"))
+      {:flags {(keyword (str member-action "-" check-name "-current"))
                (not (zero? filter-current-count))
-               (keyword (str "deposits-" check-name "-backfile"))
+               (keyword (str member-action "-" check-name "-backfile"))
                (not (zero? filter-back-file-count))}
        :coverage {(keyword (str check-name "-current"))
                   (coverage total-current-count filter-current-count)
@@ -113,10 +113,12 @@
 (def checkles
   [check-deposits 
    check-deposits-articles
-   (make-filter-check "licenses" :has-license "true")
-   (make-filter-check "resource-links" :has-full-text "true")
-   (make-filter-check "orcids" :has-orcid "true")
-   (make-filter-check "funders" :has-funder "true")])
+   (make-filter-check "deposits" "update-policies" :has-update-policy "true")
+   (make-filter-check "deposits" "references" :has-references "true")
+   (make-filter-check "deposits" "licenses" :has-license "true")
+   (make-filter-check "deposits" "resource-links" :has-full-text "true")
+   (make-filter-check "deposits" "orcids" :has-orcid "true")
+   (make-filter-check "deposits" "funders" :has-funder "true")])
 
 (defn check-publisher [publisher]
   (-> {:last-status-check-time (dc/to-long (dt/now))}
