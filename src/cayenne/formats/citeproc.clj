@@ -113,6 +113,20 @@
 (defn ->citeproc-funders [solr-doc]
   (map #(hash-map :DOI (doi-id/extract-long-doi %)) (get solr-doc "funder_doi")))
 
+(defn ->citeproc-updates-to [solr-doc]
+  (map 
+   #(hash-map
+     :DOI (doi-id/extract-long-doi doi)
+     :type type
+     :label label
+     :updated (->date-parts date))
+   (get solr-doc "update_doi")
+   (get solr-doc "update_type")
+   (get solr-doc "update_label")
+   (get solr-doc "update_date")))
+
+;; todo need opposite of update-to - update
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -124,6 +138,7 @@
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
+       :reference-count (get solr-doc "citation_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :score (get solr-doc "score")}
       (assoc-exists :volume (get solr-doc "hl_volume"))
@@ -135,6 +150,8 @@
       (assoc-exists :container-title (set (get solr-doc "hl_publication")))
       (assoc-exists :subject (get solr-doc "category"))
       (assoc-exists :archive (get solr-doc "archive"))
+      (assoc-exists :update-policy (get solr-doc "update_policy"))
+      (assoc-exists :update-to (->citeproc-updates-to solr-doc))
       (assoc-exists :license (->citeproc-licenses solr-doc))
       (assoc-exists :link (->citeproc-links solr-doc))
       (assoc-exists :page (->citeproc-pages solr-doc))
