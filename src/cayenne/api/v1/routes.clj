@@ -5,6 +5,7 @@
             [cayenne.ids.fundref :as fr-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
+            [cayenne.ids.issn :as issn-id]
             [cayenne.conf :as conf]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
@@ -12,6 +13,7 @@
             [cayenne.data.funder :as funder]
             [cayenne.data.prefix :as prefix]
             [cayenne.data.member :as member]
+            [cayenne.data.journal :as journal]
             [cayenne.data.type :as data-types]
             [cayenne.data.csl :as csl]
             [cayenne.data.license :as license]
@@ -289,6 +291,27 @@
               {:member m})
   :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
 
+(defresource journals-resource
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :handle-ok #(journal/fetch (q/->query-context %)))
+
+(defresource journal-resource [issn]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? #(when-let [j (journal/fetch-one
+                          (q/->query-context % :id (issn-id/normalize-issn issn)))]
+              {:journal j})
+  :handle-ok :journal)
+
+(defresource journal-works-resource [issn]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? #(when-let [j (journal/fetch-one
+                          (q/->query-context % :id (issn-id/normalize-issn issn)))]
+              {:journal j})
+  :handle-ok #(journal/fetch-works (q/->query-context % :id (issn-id/normalize-issn issn))))
+
 (defresource licenses-resource
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -339,6 +362,12 @@
        (member-resource id))
   (ANY "/members/:id/works" [id]
        (member-works-resource id))
+  (ANY "/journals" []
+       journals-resource)
+  (ANY "/journals/:issn" [issn]
+       (journal-resource issn))
+  (ANY "/journals/:issn/works" [issn]
+       (journal-works-resource issn))
   (ANY "/prefixes" []
        "Not implemented.")
   (ANY "/prefixes/:prefix" [prefix]
