@@ -8,9 +8,9 @@
             [somnium.congomongo :as m]))
 
 (defn ->response-doc [journal-doc]
-  {:name (:title journal-doc)
+  {:title (:title journal-doc)
    :publisher (:publisher journal-doc)
-   :issn (:issn journal-doc)})
+   :ISSN (:issn journal-doc)})
 
 (defn fetch-one [query-context]
   (when-let [journal-doc (m/with-mongo (conf/get-service :mongo)
@@ -39,5 +39,5 @@
 
 (defn fetch-works [query-context]
   (-> query-context
-      (assoc :filter {:issn (issn-id/to-issn-uri (:id query-context))})
+      (assoc-in [:filters :issn] (issn-id/to-issn-uri (:id query-context)))
       work/fetch))
