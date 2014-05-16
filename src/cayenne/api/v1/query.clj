@@ -131,8 +131,15 @@
     (doseq [[filter-name filter-val] (:filters query-context)]
       (let [filter-name-s (name filter-name)]
         (when (filters filter-name-s)
-          (doto query
-            (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)]))))))
+          (if (not (sequential? filter-val))
+            (doto query
+              (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)])))
+            (let [filter-fn (filters filter-name-s)
+                  filter-query-str (->> filter-val 
+                                        (map filter-fn)
+                                        (string/join " OR "))] 
+              (doto query
+                (.addFilterQuery (into-array String [filter-query-str]))))))))
     (when (:raw-filter query-context)
       (doto query
         (.addFilterQuery (into-array String [(:raw-filter query-context)]))))
