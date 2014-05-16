@@ -10,7 +10,10 @@
 (defn ->response-doc [journal-doc]
   {:title (:title journal-doc)
    :publisher (:publisher journal-doc)
-   :ISSN (:issn journal-doc)})
+   :ISSN (:issn journal-doc)
+   :flags (:flags journal-doc)
+   :coverage (:coverage journal-doc)
+   :last-status-check-time (:last-status-check-time journal-doc)})
 
 (defn fetch-one [query-context]
   (when-let [journal-doc (m/with-mongo (conf/get-service :mongo)
