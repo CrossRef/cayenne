@@ -8,6 +8,8 @@
             [cayenne.tasks.category :as category]
             [cayenne.tasks.solr :as solr]
             [cayenne.tasks.publisher :as publisher]
+            [cayenne.tasks.coverage :as coverage]
+            [cayenne.tasks.journal :as journal]
             [clj-time.core :as time]
             [clj-time.format :as timef]
             [clojurewerkz.quartzite.scheduler :as qs]
@@ -42,6 +44,13 @@
      (cron/schedule
       (cron/cron-schedule "0 0 1 ? * *")))))
 
+(def update-journals-daily-work-trigger
+  (qt/build
+   (qt/with-identity (qt/key "update-journals-daily-work"))
+   (qt/with-schedule
+     (cron/schedule
+      (cron/cron-schedule "0 0 2 ? * *")))))
+
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 3))
         until (time/today-at-midnight)]
@@ -65,8 +74,18 @@
     (catch Exception e (error e "Failed to update members collection")))
   (try
     (info "Updating member flags and coverage values")
-    (publisher/check-publishers "members")
+    (coverage/check-members "members")
     (catch Exception e (error e "Failed to update member flags and coverage values"))))
+
+(defjob update-journals [ctx]
+  (try
+    (info "Updating journals collection")
+    (journal/load-journals-from-cr-title-list-csv "journals")
+    (catch Exception e (error e "Failed to update journals collection")))
+  (try
+    (info "Updating journal flags and coverage values")
+    (coverage/check-journals "journals")
+    (catch Exception e (error e "Failed to update journal flags and coverage values"))))
 
 (defn start []
   (qs/initialize)
@@ -91,6 +110,13 @@
     (qj/with-identity (qj/key "update-members")))
    update-members-daily-work-trigger))
 
+(defn start-journals-updating []
+  (qs/schedule
+   (qj/build
+    (qj/of-type update-journals)
+    (qj/with-identity (qj/key "update-journals")))
+   update-journals-daily-work-trigger))
+
 (conf/with-core :default
   (conf/add-startup-task 
    :index
@@ -102,4 +128,10 @@
    :update-members
    (fn [profiles]
      (start-members-updating))))
+
+(conf/with-core :default
+  (conf/add-startup-task
+   :update-journals
+   (fn [profiles]
+     (start-journals-updating))))
 
