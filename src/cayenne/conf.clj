@@ -10,6 +10,7 @@
             [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
+            [clojure.tools.nrepl.server :as nrepl]
             [clojurewerkz.neocons.rest :as nr]))
 
 (def cores (atom {}))
@@ -111,7 +112,7 @@
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr")
+  (set-param! [:service :solr :url] "http://144.76.35.104:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 10000)
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
@@ -164,6 +165,7 @@
   (add-startup-task 
    :base
    (fn [profiles]
+     (set-service! :nrepl (nrepl/start-server :port 7888))
      (set-service! :executor (Executors/newScheduledThreadPool 20))
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
