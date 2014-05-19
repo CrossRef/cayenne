@@ -3,6 +3,7 @@
             [cayenne.util :as util :refer [?> ?>>]]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.parameters :as p]
+            [cayenne.api.v1.facet :as facet]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -182,17 +183,14 @@
         (.setStart (int 0))
         (.setRows (:sample query-context))
         (.setSort (random-field) SolrQuery$ORDER/asc)))
-    (when-not (empty? (:facets query-context))
-      (doto query
-        (.setFacet true)
-        (.setFacetLimit (int -1))
-        (.addFacetField (into-array String (:facets query-context)))))
     (when (:sort query-context)
       (doseq [sort-field (:sort query-context)]
         (let [sort-order (if (= (:order query-context) :desc)
                            SolrQuery$ORDER/desc
                            SolrQuery$ORDER/asc)]
           (.addSort query sort-field sort-order))))
+    (when-not (empty? (:facets query-context))
+      (facet/apply-facets query))
     (when count-only
       (doto query
         (.setRows (int 0))))

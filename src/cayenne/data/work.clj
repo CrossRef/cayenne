@@ -3,6 +3,7 @@
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
+            [cayenne.api.v1.facet :as facet]
             [cayenne.data.quality :as quality]
             [cayenne.action :as action]
             [cayenne.formats.citeproc :as citeproc]
@@ -19,11 +20,12 @@
 ;; where a DOI is known, citeproc for search results.
 
 (defn fetch [query-context]
-  (let [doc-list (-> (conf/get-service :solr)
+  (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context 
-                                                 :filters filter/std-filters))
-                     (.getResults))]
+                                                 :filters filter/std-filters)))
+        doc-list (.getResults response)]
     (-> (r/api-response :work-list)
+        (r/with-result-facets (facet/->response-facets response))
         (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list))
         (r/with-query-context-info query-context))))
 

@@ -19,6 +19,10 @@
       (assoc-in [:message :total-results] total)
       (assoc-in [:message :items] items)))
 
+(defn with-result-facets [response facet-info]
+  (-> response
+      (assoc-in [:message :facets] facet-info)))
+
 (defn api-response [type & {:keys [content] :or {:content {}}}]
   {:status :ok
    :message-type type
