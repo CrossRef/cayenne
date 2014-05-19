@@ -64,13 +64,41 @@
 
 (defn get-facets
   [params]
-  (prn (get params :facet))
   (if (get params :facet)
     (-> (get params :facet)
         (string/split #",")
         (string/trim))
     []))
 
+(defn parse-sort-order [params]
+  (if (get params :order)
+    (let [val (-> (get params :order)
+                  string/trim
+                  string/lower-case)]
+      (cond (some #{val} ["1" "asc"])
+            :asc
+            (some #{val} ["-1" "desc"])
+            :desc
+            :else
+            :desc))
+    :desc))
+
+;; todo this should be passed in to ->query-context
+(def sort-fields
+  {"score" ["score"]
+   "relevance" ["score"]
+   "updated" ["deposited_at"]
+   "deposited" ["deposited_at"]
+   "indexed" ["indexed_at"]
+   "published" ["year" "month" "day"]})
+
+(defn parse-sort [params]
+  (when (get params :sort)
+    (-> (get params :sort)
+        string/trim
+        string/lower-case
+        sort-fields)))
+    
 (defn get-selectors [params]
   (when (get params :selector)
     (string/split (get params :selector) #",")))      
@@ -85,6 +113,8 @@
      :rows (parse-rows-val (:rows params))
      :selectors (get-selectors params)
      :facets (get-facets params)
+     :order (parse-sort-order params)
+     :sort (parse-sort params)
      :filters (merge filters (get-filters params))}))
 
 ;; todo get selectors and get filters handle json input
@@ -157,6 +187,12 @@
         (.setFacet true)
         (.setFacetLimit (int -1))
         (.addFacetField (into-array String (:facets query-context)))))
+    (when (:sort query-context)
+      (doseq [sort-field (:sort query-context)]
+        (let [sort-order (if (= (:order query-context) :desc)
+                           SolrQuery$ORDER/desc
+                           SolrQuery$ORDER/asc)]
+          (.addSort query sort-field sort-order))))
     (when count-only
       (doto query
         (.setRows (int 0))))
