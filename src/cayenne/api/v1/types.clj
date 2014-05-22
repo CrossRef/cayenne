@@ -1,8 +1,12 @@
 (ns cayenne.api.v1.types)
 
 (def depositable ["application/vnd.crossref.deposit+xml"
-                  "application/vnd.crossref.partial-deposit.xml"
-                  "application/pdf"])
+                  "application/vnd.crossref.partial+xml"
+                  "application/pdf"
+                  "application/vnd.crossref.patent-citations+csv"x
+                  "application/vnd.crossref.patent-citations+csv+g-zip"
+                  "application/vnd.crossref.patent-citations+tab-separated-values"
+                  "application/vnd.crossref.patent-citations+tab-separated-values+g-zip"])
 
 (def html-or-json ["application/json" "text/html"])
 
