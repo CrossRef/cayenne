@@ -92,7 +92,7 @@
   "Calculate and insert member metadata coverage metrics into a collection."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [member (m/fetch collection)]
+    (doseq [member (m/fetch collection :options [:notimeout])]
       (m/update! collection
                  member
                  (merge member (check-record member :type :member :id-field :id))))))
@@ -101,7 +101,7 @@
   "Calculate and insert journal metadata coverage metrics into a collection."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [journal (m/fetch collection)]
+    (doseq [journal (m/fetch collection :options [:notimeout])]
       (m/update! collection 
                  journal 
                  (merge journal (check-record journal :type :issn :id-field :issn))))))
