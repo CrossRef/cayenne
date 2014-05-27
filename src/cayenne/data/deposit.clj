@@ -87,9 +87,18 @@
                {:batch-id batch-id}
                {"$set" {"handoff.status" :completed}})))
 
-(defn failed! [batch-id]
+(defn complete! [batch-id]
   (m/with-mongo (conf/get-service :mongo)
-    (m/update! :deposits {:batch-id batch-id} {"$set" {:status :failed}})))
+    (m/update! :deposits
+               {:batch-id batch-id}
+               {"$set" {:status :completed}})))
+
+(defn failed! [batch-id & {:keys [exception] :or {exception nil}}]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits 
+               {:batch-id batch-id} 
+               {"$set" {:status :failed 
+                        :exception (if exception (.toString exception) nil)}})))
 
 (defn fetch-data [query-context]
   (m/with-mongo (conf/get-service :mongo)

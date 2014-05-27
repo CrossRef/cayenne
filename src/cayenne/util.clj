@@ -97,12 +97,22 @@
 (defn parse-int [s]
   (if (number? s)
     s
-    (Integer. (re-find #"\d+" s))))
+    (Integer. (re-find #"-?\d+" s))))
 
 (defn parse-int-safe [s]
   (if (number? s)
     s
-    (try (Integer. (re-find #"\d+" s)) (catch Exception e nil))))
+    (try (Integer. (re-find #"-?\d+" s)) (catch Exception e nil))))
+
+(defn parse-float [s]
+  (if (number? s)
+    s
+    (Float. (re-find #"-?[\d.]+" s))))
+
+(defn parse-float-safe [s]
+  (if (number? s)
+    s
+    (try (Float. (re-find #"-?[\d.]+" s)) (catch Exception e nil))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Misc
