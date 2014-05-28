@@ -77,7 +77,7 @@
    (make-filter-check "deposits" "orcids" :has-orcid "true")
    (make-filter-check "deposits" "funders" :has-funder "true")])
 
-(defn check-record [record & {:keys [type id-field]}]
+(defn check-record-coverage [record & {:keys [type id-field]}]
   (-> {:last-status-check-time (dc/to-long (dt/now))}
       (merge
        (reduce (fn [rslt chk-fn] 
@@ -88,20 +88,41 @@
                {} 
                checkles))))
 
+;; (defn check-participation [record & {:keys [type id-field]}]
+;;   (let [record-id (get record id-field)
+;;         works (works/fetch (merge {:rows 0 :facets ["t"]} (make-id-filter type record-id)))]
+;;     {:participation
+;;      {:by-deposit-year {}
+;;       :by-publication-year {}}}))
+
+(defn check-record-counts [record & {:keys [type id-field]}]
+  (let [record-id (get record id-field)
+        backfile-count (get-work-count type record-id :timing :backfile)
+        current-count (get-work-count type record-id :timing :current)]
+    {:counts
+     {:backfile-dois backfile-count
+      :current-dois current-count}}))
+
 (defn check-members
   "Calculate and insert member metadata coverage metrics into a collection."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [member (m/fetch collection :options [:notimeout])]
-      (m/update! collection
-                 member
-                 (merge member (check-record member :type :member :id-field :id))))))
+      (m/update! 
+       collection
+       member
+       (merge member
+              (check-record-coverage member :type :member :id-field :id)
+              (check-record-counts member :type :member :id-field :id))))))
 
 (defn check-journals
   "Calculate and insert journal metadata coverage metrics into a collection."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [journal (m/fetch collection :options [:notimeout])]
-      (m/update! collection 
-                 journal 
-                 (merge journal (check-record journal :type :issn :id-field :issn))))))
+      (m/update! 
+       collection 
+       journal 
+       (merge journal 
+              (check-record-coverage journal :type :issn :id-field :issn)
+              (check-record-counts journal :type :issn :id-field :issn))))))
