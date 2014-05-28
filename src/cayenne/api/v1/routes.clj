@@ -190,6 +190,12 @@
   :available-media-types t/json
   :handle-ok (->1 #(work/fetch-quality doi)))
 
+(defresource work-agency-resource [doi]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? (->1 #(when-let [agency (work/get-agency doi)] {:agency agency}))
+  :handle-ok #(work/->agency-response doi (:agency %)))
+
 (defn force-exact-request-doi
   "Why? DOIs are case insensitive. CrossRef APIs try to always present DOIs
    lowercases, but out in the real world they may appear mixed-case. We want
@@ -377,7 +383,9 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (cond (.endsWith doi "/quality")
+       (cond (.endsWith doi "/agency")
+             (work-agency-resource (string/replace doi #"/agency\z" ""))
+             (.endsWith doi "/quality")
              (work-health-resource (string/replace doi #"/quality\z" ""))
              (.endsWith doi "/transform")
              (work-transform-resource (string/replace doi #"/transform\z" ""))

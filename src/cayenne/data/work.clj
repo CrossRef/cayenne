@@ -5,10 +5,13 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.quality :as quality]
+            [cayenne.ids.doi :as doi-id]
             [cayenne.action :as action]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
-            [clojure.string :as string]))
+            [org.httpkit.client :as http]
+            [clojure.string :as string]
+            [clojure.data.json :as json]))
 
 ;; todo eventually produce citeproc from more detailed data stored in mongo
 ;; for each DOI that comes back from solr. For now, covert the solr fields
@@ -48,4 +51,31 @@
   [doi]
   (let [item-tree (get-unixsd doi)]
     (r/api-response :work-quality :content (quality/check-tree item-tree))))
-  
+
+(def agency-label
+  {:crossref "CrossRef"
+   :datacite "DataCite"
+   :medra "mEDRA"})
+
+(defn get-agency [doi]
+  (let [extracted-doi (doi-id/normalize-long-doi doi)
+        {:keys [status headers body error]}
+        @(http/get (str (conf/get-param [:upstream :ra-url]) extracted-doi))]
+    (when-not error
+      (let [agency (-> body json/read-str first (get "RA"))]
+        (when (not= agency "DOI does not exist")
+          (-> agency
+              string/lower-case
+              (string/replace #"\s+" "")
+              keyword))))))
+
+(defn ->agency-response [doi agency]
+  (r/api-response 
+   :work-agency
+   :content {:DOI (doi-id/normalize-long-doi doi)
+             :agency {:id agency :label (or (agency-label agency) agency)}}))
+
+(defn fetch-agency [doi]
+  (let [extracted-doi (doi-id/normalize-long-doi doi)
+        agency (get-agency extracted-doi)]
+    (->agency-response doi agency)))
