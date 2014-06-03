@@ -1,4 +1,5 @@
-(ns cayenne.api.v1.facet)
+(ns cayenne.api.v1.facet
+  (:require [clojure.string :as string]))
 
 (def std-facets
   {"type" {:external-field "type"}
@@ -9,9 +10,13 @@
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher"}})
 
-(defn apply-facets [solr-query]
+(defn apply-facets [solr-query facets]
+  (doseq [facet-field facets]
+    (prn facet-field)
+    (if (some #{(string/lower-case facet-field)} ["t" "true" "1"])
+      (.addFacetField solr-query (into-array String (keys std-facets)))
+      (.addFacetField solr-query (into-array String [facet-field]))))
   (doto solr-query
-    (.addFacetField (into-array String (keys std-facets)))
     (.setFacet true)
     (.setFacetLimit (int 10))))
 

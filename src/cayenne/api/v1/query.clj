@@ -67,8 +67,8 @@
   [params]
   (if (get params :facet)
     (-> (get params :facet)
-        (string/split #",")
-        (string/trim))
+        string/trim
+        (string/split #","))
     []))
 
 (defn parse-sort-order [params]
@@ -190,7 +190,7 @@
                            SolrQuery$ORDER/asc)]
           (.addSort query sort-field sort-order))))
     (when-not (empty? (:facets query-context))
-      (facet/apply-facets query))
+      (facet/apply-facets query (:facets query-context)))
     (when count-only
       (doto query
         (.setRows (int 0))))
