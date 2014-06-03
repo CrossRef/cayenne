@@ -38,9 +38,11 @@
            :else
            {:date-parts [[year]]}))
   ([date-obj]
-     (let [d (dc/from-date date-obj)]
-       {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
-        :timestamp (dc/to-long d)})))
+     (if (nil? date-obj)
+       nil
+       (let [d (dc/from-date date-obj)]
+         {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
+          :timestamp (dc/to-long d)}))))
         
 (defn license [url start-date delay-in-days content-version]
   (-> {:URL url}
@@ -48,12 +50,22 @@
       (assoc-exists :delay-in-days delay-in-days)
       (assoc-exists :content-version content-version)))
 
+;; todo In some circumstances a record may not have a publication date.
+;; When a license also does not specify a start date, this leaves its
+;; implied start date null. This should be fixed in the unixref parser,
+;; rather than padding the start dates here.
 (defn ->citeproc-licenses [solr-doc]
-  (map license
-       (get solr-doc "license_url")
-       (get solr-doc "license_start")
-       (get solr-doc "license_delay")
-       (get solr-doc "license_version")))
+  (let [padded-start-dates
+        (concat
+         (get solr-doc "license_start")
+         (repeat (- (count (get solr-doc "license_url"))
+                    (count (get solr-doc "license_start")))
+                 nil))]
+    (map license
+         (get solr-doc "license_url")
+         padded-start-dates
+         (get solr-doc "license_delay")
+         (get solr-doc "license_version"))))
 
 (defn link [url content-type content-version]
   (-> {:URL url}
