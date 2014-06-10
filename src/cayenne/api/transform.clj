@@ -4,6 +4,7 @@
             [cayenne.formats.rdf :as rdf]
             [cayenne.formats.ris :as ris]
             [cayenne.formats.citation :as citation]
+            [cayenne.formats.bibtex :as bibtex]
             [clojure.data.json :as json]
             [org.httpkit.client :as hc]))
 
@@ -45,7 +46,7 @@
     (apply citation/->citation metadata args)))
 
 (defmethod ->format "application/x-bibtex" [representation metadata]
-  (citation/->citation metadata :style "bibtex"))
+  (bibtex/->bibtex metadata))
 
 ;; legacy formats 
 

@@ -12,7 +12,7 @@
                      :pidfile "cayenne.pid"}}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [de.undercouch/citeproc-java "0.6"]
-                 [org.jbibtex/jbibtex "1.0.10"]
+                 [org.jbibtex/jbibtex "1.0.13"]
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
