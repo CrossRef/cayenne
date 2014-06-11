@@ -1,8 +1,10 @@
 (ns cayenne.formats.bibtex
   (:require [cayenne.ids.doi :as doi-id]
             [cayenne.ids.type :as type-id]
+            [cayenne.latex :as latex]
             [clojure.string :as string])
-  (:import [org.jbibtex BibTeXEntry BibTeXFormatter BibTeXDatabase Key DigitStringValue StringValue StringValue$Style]
+  (:import [org.jbibtex BibTeXEntry BibTeXFormatter BibTeXDatabase Key DigitStringValue StringValue 
+            StringValue$Style LaTeXString LaTeXPrinter]
            [java.io StringWriter]))
 
 (def bibtex-entry-type
@@ -51,10 +53,18 @@
          (str year)
          :else
          "1")
-        (string/replace #"[^a-zA-Z0-9_]+" "_")
+        (string/replace #"[^\+a-zA-Z0-9_]+" "_")
         (Key.))))
 
+(defn braced-str [s]
+  (StringValue. (latex/->latex-str (str s)) StringValue$Style/BRACED))
+
 (defn add-field [entry metadata key metadata-lookup-fn]
+  (when-let [metadata-value (metadata-lookup-fn metadata)]
+    (.addField entry key (braced-str metadata-value)))
+  entry)
+
+(defn add-clean-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
     (.addField entry key (StringValue. (str metadata-value) StringValue$Style/BRACED)))
   entry)
@@ -68,7 +78,7 @@
 
 (defn add-month [entry metadata]
   (when-let [month (-> metadata :issued :date-parts first second)]
-    (.addField entry BibTeXEntry/KEY_MONTH (StringValue. (get bibtex-month (- month 1)) StringValue$Style/BRACED)))
+    (.addField entry BibTeXEntry/KEY_MONTH (braced-str (get bibtex-month (dec month)))))
   entry)
 
 ;; todo add 'series' field, book container-title, when available
@@ -101,14 +111,14 @@
                      (string/join " and ")
                      string/trim)]
     (when-not (string/blank? contribs)
-      (.addField entry entry-key (StringValue. contribs StringValue$Style/BRACED)))
+      (.addField entry entry-key (braced-str contribs)))
     entry))
 
 (defn ->bibtex-entry [metadata]
   (let [entry (BibTeXEntry. (->bibtex-type metadata) (->bibtex-key metadata))]
     (-> entry
-        (add-field metadata BibTeXEntry/KEY_DOI :DOI)
-        (add-field metadata BibTeXEntry/KEY_URL :URL)
+        (add-clean-field metadata BibTeXEntry/KEY_DOI :DOI)
+        (add-clean-field metadata BibTeXEntry/KEY_URL :URL)
         (add-int-field metadata BibTeXEntry/KEY_YEAR #(-> % :issued :date-parts first first))
         (add-month metadata)
         (add-field metadata BibTeXEntry/KEY_PUBLISHER :publisher)
