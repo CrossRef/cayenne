@@ -70,6 +70,8 @@
    \{ "\\{"
    \} "\\}"
    \~ "\\~"
+   \u2019 "'" ; closing single quote
+   \u2018 "`" ; opening single quote
    \u00c5 "\\AA" ; begin non-ASCII letters
    \u00c6 "\\AE"
    \u00d8 "\\O"
