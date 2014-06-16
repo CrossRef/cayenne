@@ -135,4 +135,3 @@
         writer (StringWriter.)]
     (.format formatter db writer)
     (.toString writer)))
-
