@@ -201,8 +201,9 @@
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
    "has-funder" (existence "funder_name")
-   "full-text" (compound "full_text" ["type" "version"]
-                         :transformers {"type" util/slugify})
+   "full-text" (compound "full_text" ["type" "application" "version"]
+                         :transformers {"type" util/slugify
+                                        "application" util/slugify})
    "license" (compound "license" ["url" "version" "delay"]
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
