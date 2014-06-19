@@ -71,7 +71,7 @@
   (-> {:URL url}
       (assoc-exists :content-type content-type)
       (assoc-exists :content-version content-version)
-      (assoc-exists intended-application)))
+      (assoc-exists :intended-application intended-application)))
 
 (defn ->citeproc-links [solr-doc]
   (let [padded-ia
