@@ -211,10 +211,11 @@
 
 (defn parse-collection-item 
   "Returns a resource link. :content-version can be any of tdm, vor, am."
-  [coll-item-loc]
+  [intended-application coll-item-loc]
   {:type :url
    :content-version (or (xml/xselect1 coll-item-loc "resource" ["content_version"])
                         "vor")
+   :intended-application intended-application
    :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "unspecified")
    :value (xml/xselect1 coll-item-loc "resource" :text)})
 
@@ -222,7 +223,7 @@
   (let [items (xml/xselect item-loc 
                            "doi_data" :> "collection"
                            [:= "property" with-attribute] "item")]
-    (map parse-collection-item items)))
+    (map (partial parse-collection-item with-attribute) items)))
 
 (defn parse-resource [item-loc]
   (when-let [value (xml/xselect1 item-loc "doi_data" "resource" :text)]
@@ -586,7 +587,8 @@
       (parse-attach :publisher item-loc :single parse-item-publisher)
       (parse-attach :resource-resolution item-loc :single parse-resource)
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
-      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "crawler"))
+      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "unspecified"))
+      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "syndication"))
       (parse-attach :license item-loc :multi parse-item-licenses)
       (parse-attach :archived-with item-loc :multi parse-item-archives)
       (parse-attach :title item-loc :multi parse-item-titles)

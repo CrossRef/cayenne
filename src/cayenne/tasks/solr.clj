@@ -235,9 +235,12 @@
      (str "license_url_version_delay_" license-uri "_" license-version) [license-delay]}))
 
 (defn as-full-text-compound [full-text-resource]
-  (let [content-type (-> full-text-resource (:content-type) (util/slugify))]
-    {(str "full_text_type_version_" content-type)
-     [(:content-version full-text-resource)]}))
+  (let [content-type (-> full-text-resource (:content-type) (util/slugify))
+        intended-application (-> full-text-resource :intended-application util/slugify)]
+    {(str "full_text_type_version_" content-type) [(:content-version full-text-resource)]
+     (str "full_text_type_application_" content-type) [(:intended-application full-text-resource)]
+     (str "full_text_application_version_" intended-application) [(:content-version full-text-resource)]
+     (str "full_text_type_application_version_" content-type "_" intended-application) [(:content-version full-text-resource)]}))
 
 (defn as-license-compounds [licenses pub-date]
   (let [compounds (map as-license-compound licenses (repeat pub-date))]
@@ -320,6 +323,7 @@
          "full_text_type" (map (util/?- :content-type) full-text-resources)
          "full_text_url" (map (util/?- :value) full-text-resources)
          "full_text_version" (map (util/?- :content-version) full-text-resources)
+         "full_text_application" (map (util/?- :intended-application) full-text-resources)
          "publisher" (:name publisher)
          "hl_publisher" (:name publisher)
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
