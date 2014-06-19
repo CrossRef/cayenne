@@ -84,7 +84,7 @@
          (get solr-doc "full_text_url")
          (get solr-doc "full_text_type")
          (get solr-doc "full_text_version")
-         (get solr-doc "full_text_application"))))
+         padded-ia)))
 
 (defn ->citeproc-pages [solr-doc]
   (let [first-page (get solr-doc "hl_first_page")
