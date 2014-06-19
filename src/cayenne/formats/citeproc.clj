@@ -67,18 +67,24 @@
          (get solr-doc "license_delay")
          (get solr-doc "license_version"))))
 
-(defn link [url content-type content-version]
+(defn link [url content-type content-version intended-application]
   (-> {:URL url}
       (assoc-exists :content-type content-type)
       (assoc-exists :content-version content-version)
-      (assoc-exists :intended-application content-version)))
+      (assoc-exists intended-application)))
 
 (defn ->citeproc-links [solr-doc]
-  (map link
-       (get solr-doc "full_text_url")
-       (get solr-doc "full_text_type")
-       (get solr-doc "full_text_version")
-       (get solr-doc "full_text_application")))
+  (let [padded-ia
+        (concat
+         (get solr-doc "full_text_application")
+         (repeat (- (count (get solr-doc "full_text_url"))
+                    (count (get solr-doc "full_text_application")))
+                 nil))]
+    (map link
+         (get solr-doc "full_text_url")
+         (get solr-doc "full_text_type")
+         (get solr-doc "full_text_version")
+         (get solr-doc "full_text_application"))))
 
 (defn ->citeproc-pages [solr-doc]
   (let [first-page (get solr-doc "hl_first_page")
