@@ -193,6 +193,7 @@
    "from-issued-date" (particle-date "year" "month" "day" :from)
    "until-issued-date" (particle-date "year" "month" "day" :until)
    "is-update" (existence "update_doi")
+   "has-update" (existence "update_by_doi")
    "updates" (equality "update_doi" :transformer doi-id/to-long-doi-uri)
    "has-full-text" (existence "full_text_url")
    "has-license" (existence "license_url")

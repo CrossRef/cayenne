@@ -27,7 +27,7 @@
 
 (defn write-all-updates! [& {:keys [offset] :or {offset 0}}]
   (let [rows 1000
-        update-docs-response (work/fetch {:filter {:is-update "true"} 
+        update-docs-response (work/fetch {:filters {:is-update "true"} 
                                           :rows (int rows)
                                           :offset (int offset)})
         update-docs (-> update-docs-response :message :items)]
