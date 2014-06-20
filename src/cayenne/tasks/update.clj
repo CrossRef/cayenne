@@ -7,7 +7,7 @@
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
 (defn update-solr-doc-with-update-by [solr-doc update from-doi]
-  (-> solr-doc
+  (doto solr-doc
       (.addField "update_by_doi" (doi-id/to-long-doi-uri from-doi))
       (.addField "update_by_type" (:type update))
       (.addField "update_by_label" (:label update))
