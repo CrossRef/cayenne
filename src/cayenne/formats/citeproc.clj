@@ -145,7 +145,17 @@
    (get solr-doc "update_label")
    (get solr-doc "update_date")))
 
-;; todo need opposite of update-to - update
+(defn ->citeproc-updated-by [solr-doc]
+  (map 
+   #(hash-map
+     :DOI (doi-id/extract-long-doi %1)
+     :type %2
+     :label %3
+     :updated (->date-parts %4))
+   (get solr-doc "update_by_doi")
+   (get solr-doc "update_by_type")
+   (get solr-doc "update_by_label")
+   (get solr-doc "update_by_date")))
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
@@ -172,6 +182,7 @@
       (assoc-exists :archive (get solr-doc "archive"))
       (assoc-exists :update-policy (get solr-doc "update_policy"))
       (assoc-exists :update-to (->citeproc-updates-to solr-doc))
+      (assoc-exists :updated-by (->citeproc-updated-by solr-doc))
       (assoc-exists :license (->citeproc-licenses solr-doc))
       (assoc-exists :link (->citeproc-links solr-doc))
       (assoc-exists :page (->citeproc-pages solr-doc))

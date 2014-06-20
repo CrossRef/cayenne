@@ -348,4 +348,7 @@
       (let [solr-doc (as-solr-input-document solr-map)]
         (swap! insert-list add-to-insert-list solr-doc)))))
 
+(defn insert-solr-doc [solr-doc]
+  (swap! insert-list add-to-insert-list solr-doc))
+
   
