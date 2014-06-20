@@ -11,7 +11,7 @@
       (.addField "update_by_doi" (doi-id/to-long-doi-uri from-doi))
       (.addField "update_by_type" (:type update))
       (.addField "update_by_label" (:label update))
-      (.addField "update_by_date" (-> update :updated first solr/as-datetime))))
+      (.addField "update_by_date" (-> update :updated :date-parts first solr/as-datetime))))
 
 (defn write-update! [update from-doi]
   (-> (conf/get-service :solr)
