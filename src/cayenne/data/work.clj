@@ -6,8 +6,9 @@
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.quality :as quality]
             [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.prefix :as prefix-id]
+            [cayenne.ids.member :as member-id]
             [cayenne.action :as action]
-            [cayenne.tasks.publisher :as publisher]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [org.httpkit.client :as http]
@@ -24,8 +25,15 @@
 ;; where a DOI is known, citeproc for search results.
 
 ;; todo should be included in solr data
+(defn get-id-for-prefix [collection prefix]
+  (m/with-mongo (conf/get-service :mongo)
+    (-> collection 
+        (m/fetch-one :where {:prefixes (prefix-id/extract-prefix prefix)})
+        :id
+        member-id/to-member-id-uri)))
+
 (defn with-member-id [metadata]
-  (assoc metadata :member (publisher/get-id-for-prefix "members" (:prefix metadata))))
+  (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata))))
 
 (defn fetch [query-context]
   (let [response (-> (conf/get-service :solr)
