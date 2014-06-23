@@ -215,6 +215,8 @@
    "type" (equality "type" :transformer type-id/->index-id)
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
+   "container-title" (equality "publication")
+   "publisher-name" (equality "publisher")
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
