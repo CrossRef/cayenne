@@ -5,7 +5,7 @@
   {"type" {:external-field "type"}
    "year" {:external-field "published"}
    "publication" {:external-field "container-title"}
-   "category" {:external-field "category"}
+   "category" {:external-field "category-name"}
    "funder_name" {:external-field "funder-name"}
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}})

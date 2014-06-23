@@ -217,6 +217,7 @@
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
    "container-title" (equality "publication")
    "publisher-name" (equality "publisher")
+   "category-name" (equality "category")
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
