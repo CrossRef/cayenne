@@ -3,6 +3,7 @@
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.filter :as filter]
+            [cayenne.api.v1.facet :as facet]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.prefix :as prefix]
             [clojure.string :as string]
@@ -14,8 +15,7 @@
   (-> (conf/get-service :solr)
       (.query (query/->solr-query query-context 
                                   :id-field solr-publisher-id-field
-                                  :filters filter/std-filters))
-      (.getResults)))
+                                  :filters filter/std-filters))))
 
 (defn get-solr-work-count [query-context]
   (-> (conf/get-service :solr)
@@ -27,8 +27,10 @@
       (.getNumFound)))
 
 (defn fetch-works [query-context]
-  (let [doc-list (get-solr-works query-context)]
+  (let [response (get-solr-works query-context)
+        doc-list (.getResults response)]
     (-> (r/api-response :work-list)
+        (r/with-result-facets (facet/->response-facets response))
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list)

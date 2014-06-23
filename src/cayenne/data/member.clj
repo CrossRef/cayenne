@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.facet :as facet]
             [cayenne.api.v1.filter :as filter]
             [cayenne.data.prefix :as prefix]
             [cayenne.ids.member :as member-id]
@@ -15,8 +16,7 @@
 (defn get-solr-works [query-context]
   (-> (conf/get-service :solr)
       (.query (query/->solr-query query-context
-                                  :filters filter/std-filters))
-      (.getResults)))
+                                  :filters filter/std-filters))))
 
 (defn get-solr-work-count [query-context]
   (-> (conf/get-service :solr)
@@ -77,8 +77,10 @@
 
 (defn fetch-works [query-context]
   (let [expanded-qc (expand-context-for-prefixes query-context)
-        doc-list (get-solr-works expanded-qc)]
+        response (get-solr-works expanded-qc)
+        doc-list (.getResults response)]
     (-> (r/api-response :work-list)
+        (r/with-result-facets (facet/->response-facets response))
         (r/with-query-context-info query-context)
         (r/with-result-items
           (.getNumFound doc-list)

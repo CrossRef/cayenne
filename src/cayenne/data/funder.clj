@@ -3,6 +3,7 @@
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
+            [cayenne.api.v1.facet :as facet]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.fundref :as fr-id]
             [somnium.congomongo :as m]
@@ -14,8 +15,7 @@
   (-> (conf/get-service :solr)
       (.query (query/->solr-query query-context 
                                   :id-field solr-funder-id-field
-                                  :filters filter/std-filters))
-      (.getResults)))
+                                  :filters filter/std-filters))))
 
 (defn get-solr-work-count 
   "Get work count from solr for a mongo funder doc."
@@ -115,8 +115,10 @@
         descendant-ids (fetch-descendant-ids query)
         descendant-query (update-in query [:id] #(vec (conj descendant-ids 
                                                             (fr-id/id-to-doi-uri %))))
-        doc-list (get-solr-works descendant-query)]
+        response (get-solr-works descendant-query)
+        doc-list (.getResults response)]
     (-> (r/api-response :work-list)
+        (r/with-result-facets (facet/->response-facets response))
         (r/with-query-context-info descendant-query)
         (r/with-result-items 
           (.getNumFound doc-list)
