@@ -5,6 +5,7 @@
             [cayenne.api.v1.facet :as facet]
             [cayenne.api.v1.filter :as filter]
             [cayenne.data.prefix :as prefix]
+            [cayenne.data.work :as work]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.formats.citeproc :as citeproc]
@@ -84,7 +85,7 @@
         (r/with-query-context-info query-context)
         (r/with-result-items
           (.getNumFound doc-list)
-          (map citeproc/->citeproc doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
 
 ;; todo handle rows and offset propery (not using either of them)
 

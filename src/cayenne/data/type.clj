@@ -3,6 +3,7 @@
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
+            [cayenne.data.work :as work]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.type :as type-id]
             [cayenne.conf :as conf]))
@@ -44,4 +45,4 @@
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list)
-          (map citeproc/->citeproc doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))

@@ -2,6 +2,8 @@
   (:import [java.net URI]
            [java.io FileNotFoundException])
   (:require [cayenne.item-tree :as itree]
+            [cayenne.ids.prefix :as prefix-id]
+            [cayenne.ids.member :as member-id]
             [cayenne.conf :as conf]
             [cayenne.util :as util]
             [cayenne.data.work :as works]
@@ -56,4 +58,12 @@
              prefix
              (zx/text (zx/xml1-> root :publisher :publisher_name))
              (zx/text (zx/xml1-> root :publisher :publisher_location)))))))))
+
+(defn get-id-for-prefix [collection prefix]
+  (m/with-mongo (conf/get-service :mongo)
+    (-> collection 
+        (m/fetch-one :where {:prefixes (prefix-id/extract-prefix prefix)})
+        :id
+        member-id/to-member-id-uri)))
+        
  

@@ -7,6 +7,7 @@
             [cayenne.data.quality :as quality]
             [cayenne.ids.doi :as doi-id]
             [cayenne.action :as action]
+            [cayenne.tasks.publisher :as publisher]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [org.httpkit.client :as http]
@@ -22,6 +23,10 @@
 ;; todo conneg. currently returning two different formats - item-tree
 ;; where a DOI is known, citeproc for search results.
 
+;; todo should be included in solr data
+(defn with-member-id [metadata]
+  (assoc metadata :member (publisher/get-id-for-prefix "members" (:prefix metadata))))
+
 (defn fetch [query-context]
   (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context 
@@ -29,7 +34,9 @@
         doc-list (.getResults response)]
     (-> (r/api-response :work-list)
         (r/with-result-facets (facet/->response-facets response))
-        (r/with-result-items (.getNumFound doc-list) (map citeproc/->citeproc doc-list))
+        (r/with-result-items 
+          (.getNumFound doc-list) 
+          (map (comp with-member-id citeproc/->citeproc) doc-list))
         (r/with-query-context-info query-context))))
 
 (defn fetch-one
@@ -40,7 +47,7 @@
                                                   :id-field "doi"))
                       (.getResults)
                       (first))]
-    (r/api-response :work :content (citeproc/->citeproc doc))))
+    (r/api-response :work :content (-> (citeproc/->citeproc doc) with-member-id))))
 
 (defn get-unixsd [doi]
   (let [record (promise)]

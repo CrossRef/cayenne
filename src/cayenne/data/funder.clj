@@ -5,6 +5,7 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.formats.citeproc :as citeproc]
+            [cayenne.data.work :as work]
             [cayenne.ids.fundref :as fr-id]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
@@ -122,5 +123,5 @@
         (r/with-query-context-info descendant-query)
         (r/with-result-items 
           (.getNumFound doc-list)
-          (map citeproc/->citeproc doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
 

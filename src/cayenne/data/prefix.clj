@@ -4,6 +4,7 @@
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
+            [cayenne.data.work :as work]
             [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.prefix :as prefix]
             [clojure.string :as string]
@@ -34,7 +35,7 @@
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list)
-          (map citeproc/->citeproc doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
 
 (defn fetch-one [query-context]
   (let [any-work (-> (assoc query-context :rows (int 1))
