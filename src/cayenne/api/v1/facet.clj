@@ -2,7 +2,7 @@
   (:require [clojure.string :as string]))
 
 (def std-facets
-  {"type" {:external-field "type"}
+  {"type" {:external-field "type-name"}
    "year" {:external-field "published"}
    "publication" {:external-field "container-title"}
    "category" {:external-field "category-name"}

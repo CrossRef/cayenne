@@ -61,7 +61,7 @@
                      val (string/join ":" (rest parts))
                      path (string/split k #"\.")]
                  [path val]))
-         (reduce (fn [m [path val]] (assoc-in m path val)) {}))))
+         (reduce (fn [m [path val]] (update-in m path #(conj %1 val))) {}))))
 
 (defn get-facets
   [params]
@@ -170,7 +170,7 @@
                                         (map filter-fn)
                                         (string/join " OR "))] 
               (doto query
-                (.addFilterQuery (into-array String [filter-query-str]))))))))
+                (.addFilterQuery (into-array String [(str "(" filter-query-str ")")]))))))))
     (when (:raw-filter query-context)
       (doto query
         (.addFilterQuery (into-array String [(:raw-filter query-context)]))))

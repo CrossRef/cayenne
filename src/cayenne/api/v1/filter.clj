@@ -213,6 +213,7 @@
    "archive" (equality "archive")
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
+   "type-name" (equality "type")
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
    "container-title" (equality "publication")
