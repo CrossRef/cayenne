@@ -1,5 +1,6 @@
 (ns cayenne.api.conneg
   (:require [instaparse.core :as insta]
+            [clojure.string :as string]
             [net.cgrand.enlive-html :as enlive]))
 
 ;; a simple accept header parser
@@ -7,9 +8,9 @@
 (def accept-header-parser
   (insta/parser
    "ACCEPT = ENTRY+
-    ENTRY = MEDIARANGE PARAM* <[#\",\\s*\"]>
+    ENTRY = MEDIARANGE PARAM* <[#\"\\s*,\\s*\"]>
     <MEDIARANGE> = '*' <'/'> '*' | (TYPE <'/'> '*') | (TYPE <'/'> SUBTYPE)
-    PARAM = <#\";\\s*\"> KEY <'='> (VALUE | QUOTEDVALUE)
+    PARAM = <#\"\\s*;\\s*\"> KEY <#\"\\s*=\\s*\"> (VALUE | QUOTEDVALUE)
     <TOKEN> = #\"[\\w\\.\\-]+\"
     KEY = TOKEN
     VALUE = TOKEN
@@ -19,7 +20,7 @@
    :output-format :enlive))
 
 (defn make-accept [accept-value]
-  (let [t (accept-header-parser accept-value)]
+  (let [t (-> accept-value string/trim accept-header-parser)]
     (map #(hash-map
            :params (reduce
                     (fn [m pair]
