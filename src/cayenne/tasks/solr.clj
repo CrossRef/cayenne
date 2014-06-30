@@ -242,12 +242,30 @@
      (str "full_text_application_version_" intended-application) [(:content-version full-text-resource)]
      (str "full_text_type_application_version_" content-type "_" intended-application) [(:content-version full-text-resource)]}))
 
+(defn as-award-compound [funder award]
+  (let [funder-name (or (:name funder) "-")
+        funder-doi (or (-> funder get-item-ids first) "-")
+        award-number (or (-> award get-item-ids first) "-")
+        slug-doi (or (-> funder get-item-ids first util/slugify) "-")]
+    {(str "award_funder_doi_number_" slug-doi) [award-number]
+     "award_number" [award-number]
+     "award_funder_name" [funder-name]
+     "award_funder_doi" [funder-doi]}))
+
+(defn as-funder-award-compounds [funder]
+  (let [awards (map as-award-compound (repeat funder) (get-item-rel funder :awarded))]
+    (apply merge-with #(concat %1 %2) awards)))
+
 (defn as-license-compounds [licenses pub-date]
   (let [compounds (map as-license-compound licenses (repeat pub-date))]
     (apply merge-with #(concat %1 %2) compounds)))
 
 (defn as-full-text-compounds [full-text-resources]
   (let [compounds (map as-full-text-compound full-text-resources)]
+    (apply merge-with #(concat %1 %2) compounds)))
+
+(defn as-award-compounds [funders]
+  (let [compounds (map as-funder-award-compounds funders)]
     (apply merge-with #(concat %1 %2) compounds)))
 
 (defn as-solr-document [item]
@@ -257,6 +275,7 @@
         funder-dois (set (mapcat :id (get-tree-rel item :funder)))
         publisher (first (get-tree-rel item :publisher))
         full-text-resources (get-item-rel item :resource-fulltext)
+        funders (get-tree-rel item :funder)
         pub-date (get-preferred-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
@@ -331,7 +350,10 @@
          "update_doi" (map :value updates)
          "update_type" (map :subtype updates)
          "update_label" (map :label updates)
-         "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)}
+         "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
+         "funder_record_name" (map (util/?- :name) funders)
+         "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)}
+        (merge (as-award-compounds funders))
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))
 
