@@ -202,6 +202,7 @@
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
    "has-funder" (existence "funder_name")
+   "has-award" (existence "award_number")
    "full-text" (compound "full_text" ["type" "application" "version"]
                          :transformers {"type" util/slugify
                                         "application" util/slugify})
@@ -219,6 +220,8 @@
    "container-title" (equality "publication")
    "publisher-name" (equality "publisher")
    "category-name" (equality "category")
+   "funder-name" (equality "funder_name")
+   "award" (equality "award_number" :transformer #(-> % string/lower-case (string/replace #"[\s_\-]+" "")))
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})

@@ -246,9 +246,11 @@
   (let [funder-name (or (:name funder) "-")
         funder-doi (or (-> funder get-item-ids first) "-")
         award-number (or (-> award get-item-ids first) "-")
+        normalized-award-number (-> award-number string/lower-case (string/replace #"[\s_\-]+" ""))
         slug-doi (or (-> funder get-item-ids first util/slugify) "-")]
-    {(str "award_funder_doi_number_" slug-doi) [award-number]
-     "award_number" [award-number]
+    {(str "award_funder_doi_number_" slug-doi) [normalized-award-number]
+     "award_number" [normalized-award-number]
+     "award_number_display" [award-number]
      "award_funder_name" [funder-name]
      "award_funder_doi" [funder-doi]}))
 
