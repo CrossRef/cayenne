@@ -130,8 +130,24 @@
                (get solr-doc "contributor_given_name")
                (get solr-doc "contributor_family_name"))))
 
+(defn ->citeproc-awards [solr-doc]
+  (map
+   #(hash-map :number %1
+              :DOI %2
+              :name %3)
+   (get solr-doc "award_number_display")
+   (get solr-doc "award_funder_doi")
+   (get solr-doc "award_funder_name")))
+
 (defn ->citeproc-funders [solr-doc]
-  (map #(hash-map :DOI (doi-id/extract-long-doi %)) (get solr-doc "funder_doi")))
+  (let [awards (->citeproc-awards solr-doc)]
+    (map
+     #(hash-map :DOI (doi-id/extract-long-doi %1)
+                :name %2
+                :awards (or (->> awards (filter (fn [a] (= (:DOI a) %1)) first :number))
+                            (->> awards (filter (fn [a] (= (:name a) %2)) first :number))))
+     (get solr-doc "funder_record_doi")
+     (get solr-doc "funder_record_name"))))
 
 (defn ->citeproc-updates-to [solr-doc]
   (map 
