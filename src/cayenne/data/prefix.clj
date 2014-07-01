@@ -6,7 +6,8 @@
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.work :as work]
             [cayenne.formats.citeproc :as citeproc]
-            [cayenne.ids.prefix :as prefix]
+            [cayenne.ids.member :as member-id]
+            [cayenne.ids.prefix :as prefix-id]
             [clojure.string :as string]
             [somnium.congomongo :as m]))
 
@@ -38,14 +39,10 @@
           (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
 
 (defn fetch-one [query-context]
-  (let [any-work (-> (assoc query-context :rows (int 1))
-                     (get-solr-works)
-                     (first))
-        citeproc-doc (if-not (nil? any-work) (citeproc/->citeproc any-work) {})]
-    (if (and 
-         (not (nil? any-work))
-         (not (string/blank? (:publisher citeproc-doc))))
-      (r/api-response :prefix :content {:prefix (:id query-context)
-                                        :name (:publisher citeproc-doc)})
-      (r/api-response :prefix :content {:prefix (:id query-context)}))))
-
+  (let [member-doc (m/with-mongo (conf/get-service :mongo)
+                     (m/fetch-one
+                      "members"
+                      :where {:prefixes (prefix-id/extract-prefix (:id query-context))}))]
+    (r/api-response :prefix :content {:member (member-id/to-member-id-uri (:id member-doc))
+                                      :name (:primary-name member-doc)
+                                      :prefix (prefix-id/to-prefix-uri (:id query-context))})))
