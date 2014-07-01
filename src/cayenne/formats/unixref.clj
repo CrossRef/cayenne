@@ -453,7 +453,6 @@
 (defn parse-funder [funder-group-loc]
   (let [funder-id-val (xml/xselect1 funder-group-loc 
                                     "assertion" 
-                                    "assertion" 
                                     [:= "name" "funder_identifier"] 
                                     :plain)
         funder-uri (normalize-funder-id-val funder-id-val)]
