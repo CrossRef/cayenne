@@ -145,10 +145,11 @@
      #(-> {}
           (util/?> (not= %1 "-") assoc :DOI (doi-id/extract-long-doi %1))
           (util/?> (not= %2 "-") assoc :name %2)
-          (assoc :award (concat (when (not= %1 "-") 
+          (assoc :award (set 
+                         (concat (when (not= %1 "-") 
                                    (->> awards (filter (fn [a] (= (:DOI a) %1))) (map :number)))
                                  (when (not= %2 "-")
-                                   (->> awards (filter (fn [a] (= (:name a) %2))) (map :number))))))
+                                   (->> awards (filter (fn [a] (= (:name a) %2))) (map :number)))))))
      (get solr-doc "funder_record_doi")
      (get solr-doc "funder_record_name"))))
 

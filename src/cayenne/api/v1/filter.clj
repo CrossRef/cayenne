@@ -226,8 +226,9 @@
    "category-name" (equality "category")
    "funder-name" (equality "funder_name")
    "award" (compound "award" ["funder_doi" "number"]
-                     :transformers {"funder_doi" (comp util/slugify fundref/id-to-doi-uri)}
-                     :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")}
+                     :transformers {"funder_doi" (comp util/slugify fundref/normalize-to-doi-uri)}
+                     :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")
+                                "funder_doi" #(str ":\"" (fundref/normalize-to-doi-uri %) "\"")}
                      :aliases {"funder" "funder_doi"})
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)

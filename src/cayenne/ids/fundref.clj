@@ -16,3 +16,7 @@
 (defn doi-uri-to-id
   [doi]
   (last (string/split doi #"/")))
+
+(defn normalize-to-doi-uri [s]
+  (when s
+    (-> s (string/split #"/") last id-to-doi-uri)))
