@@ -121,10 +121,14 @@
 (defn equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val] (str field ":\"" (transformer val) "\"")))
 
-(defn compound [prefix ordering & {:keys [transformers matchers]
-                                   :or {transformers {} matchers {}}}]
+(defn replace-keys [m kr]
+  (into {} (map (fn [[k v]] (if-let [replacement (get kr k)] [replacement v] [k v])) m)))
+
+(defn compound [prefix ordering & {:keys [transformers matchers aliases]
+                                   :or {transformers {} matchers {} aliases {}}}]
   (fn [m]
-    (let [field-names (filter m ordering)
+    (let [mr (replace-keys m aliases)
+          field-names (filter mr ordering)
           field-name-parts (butlast field-names)
           value-name-part (last field-names)]
       (str prefix
@@ -133,12 +137,12 @@
            (when (not (empty? field-name-parts)) "_")
            (apply str (->> field-name-parts
                            (map #(if (transformers %)
-                                   ((transformers %) (get m %))
-                                   (get m %)))
+                                   ((transformers %) (first (get mr %)))
+                                   (first (get mr %))))
                            (interpose "_")))
            (if (matchers value-name-part)
-             ((matchers value-name-part) (get m value-name-part))
-             (str ":\"" (get m value-name-part) "\""))))))
+             ((matchers value-name-part) (first (get mr value-name-part)))
+             (str ":\"" (first (get mr value-name-part)) "\""))))))
 
 (defn generated
   "Generate a list of filter values from a single query-provided value."
@@ -221,7 +225,10 @@
    "publisher-name" (equality "publisher")
    "category-name" (equality "category")
    "funder-name" (equality "funder_name")
-   "award" (equality "award_number" :transformer #(-> % string/lower-case (string/replace #"[\s_\-]+" "")))
+   "award" (compound "award" ["funder_doi" "number"]
+                     :transformers {"funder_doi" (comp util/slugify fundref/id-to-doi-uri)}
+                     :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")}
+                     :aliases {"funder" "funder_doi"})
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
