@@ -75,6 +75,7 @@
    (make-filter-check "deposits" "licenses" :has-license "true")
    (make-filter-check "deposits" "resource-links" :has-full-text "true")
    (make-filter-check "deposits" "orcids" :has-orcid "true")
+   (make-filter-check "deposits" "award-numbers" :has-award "true")
    (make-filter-check "deposits" "funders" :has-funder "true")])
 
 (defn check-record-coverage [record & {:keys [type id-field]}]
