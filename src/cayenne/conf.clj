@@ -94,7 +94,7 @@
 (defn remote-file [url]
   (rb/try-try-again
    {:tries 10
-    :error-hook #(prn "Failed to retrieve url " url)}
+    :error-hook #(prn "Failed to retrieve url " url " - " %)}
    #(let [content (slurp (URI. url))
           path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
       (spit (io/file path) content)
