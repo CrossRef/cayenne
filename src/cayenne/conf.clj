@@ -11,7 +11,8 @@
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
-            [clojurewerkz.neocons.rest :as nr]))
+            [clojurewerkz.neocons.rest :as nr]
+            [robert.bruce :as rb]))
 
 (def cores (atom {}))
 (def ^:dynamic *core-name*)
@@ -91,10 +92,13 @@
   (io/file (str (get-param [:dir :test-data]) "/" name "-" test-name ".out")))
 
 (defn remote-file [url]
-  (let [content (slurp (URI. url))
-        path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
-    (spit (io/file path) content)
-    (io/file path)))
+  (rb/try-try-again
+   {:tries 10
+    :error-hook #(prn "Failed to retrieve url " url)}
+   #(let [content (slurp (URI. url))
+          path (str (get-param [:dir :tmp]) "/remote-" (UUID/randomUUID) ".tmp")]
+      (spit (io/file path) content)
+      (io/file path))))
 
 ;; todo move default service config to the files that maintain maintan the service.
 
@@ -112,7 +116,7 @@
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "5.9.51.150")
   (set-param! [:service :riemann :host] "127.0.0.1")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr")
+  (set-param! [:service :solr :url] "http://144.76.35.104:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 10000)
   (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
