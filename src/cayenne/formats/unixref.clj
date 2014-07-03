@@ -451,10 +451,17 @@
       (to-long-doi-uri funder-id-val))))
 
 (defn parse-funder [funder-group-loc]
-  (let [funder-id-val (xml/xselect1 funder-group-loc 
-                                    "assertion" 
-                                    [:= "name" "funder_identifier"] 
-                                    :plain)
+  (let [funder-id-val (or 
+                       (xml/xselect1 funder-group-loc 
+                                     "assertion" 
+                                     [:= "name" "funder_identifier"] 
+                                     :plain)
+                       (xml/xselect1 funder-group-loc    ;; account for members that are unable
+                                     "assertion"         ;; to provide sane deposits
+                                     [:= "name" "funder_name"]
+                                     "assertion"
+                                     [:= "name" "funder_identifier"]
+                                     :plain))
         funder-uri (normalize-funder-id-val funder-id-val)]
     (-> {:type :org
          :name (xml/xselect1 funder-group-loc 
