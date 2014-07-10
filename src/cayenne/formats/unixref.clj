@@ -123,8 +123,11 @@
 ;; --------------------------------------------------------------------
 ;; Dates
 
-(defn find-pub-dates [work-loc kind]
-  (xml/xselect work-loc "publication_date" [:= "media_type" kind]))
+(defn find-pub-dates 
+  ([work-loc kind]
+     (xml/xselect work-loc "publication_date" [:= "media_type" kind]))
+  ([work-loc]
+     (xml/xselect work-loc "publication_date" [:has-not "media_type"])))
 
 (defn find-approval-dates [work-loc kind]
   (xml/xselect work-loc "approval_date" [:= "media_type" kind]))
@@ -414,8 +417,11 @@
 (defn parse-item-citations [item-loc]
   (map parse-citation (find-citations item-loc)))
 
-(defn parse-item-pub-dates [kind item-loc]
-  (map parse-date (find-pub-dates item-loc kind)))
+(defn parse-item-pub-dates 
+  ([kind item-loc]
+     (map parse-date (find-pub-dates item-loc kind)))
+  ([item-loc]
+     (map parse-date (find-pub-dates item-loc))))
 
 (defn parse-item-approval-dates [kind item-loc]
   (map parse-date (find-approval-dates item-loc kind)))
@@ -601,6 +607,7 @@
       (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
+      (parse-attach :published item-loc :multi parse-item-pub-dates)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 

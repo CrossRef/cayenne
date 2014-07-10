@@ -94,6 +94,10 @@
          (filter 
           #(= (-> % (.getAttribute (second selector)) (attribute->str)) (nth selector 2)) nodes)
          false)
+        (= :has-not f)
+        (->SelectorContext
+         (filter #(= (.getAttribute % (second selector)) nil) nodes)
+         false)
         :else
         (map #(-> % (.getAttribute f) (attribute->str)) nodes)))
 
