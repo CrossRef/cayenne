@@ -60,10 +60,23 @@
     (or (:category journal) [])
     []))
 
-(defn get-preferred-pub-date [item]
+(defn particle->date-time [particle]
+  (t/date-time (or (:year particle) 0)
+               (or (:month particle) 0)
+               (or (:day particle) 0)))
+
+(defn get-earliest-pub-date [item]
+  (->> (concat 
+        (get-tree-rel item :published-print)
+        (get-tree-rel item :published-online)
+        (get-tree-rel item :published))
+       (sort-by particle->date-time)
+       first))
+
+(defn get-print-or-earliest-pub-date [item]
   (or
    (first (get-tree-rel item :published-print))
-   (first (get-tree-rel item :published-online))))
+   (get-earliest-pub-date item)))
 
 (defn get-contributor-orcids [item]
   (let [contributors (mapcat #(get-item-rel item %) contributor-rels)]
@@ -139,7 +152,7 @@
   (string/join 
    " "
    (-> []
-       (conj (:year (get-preferred-pub-date item))) ; year
+       (conj (:year (get-print-or-earliest-pub-date item))) ; year
        (conj (:issue (find-item-of-subtype item :journal-issue))) ; issue
        (conj (:volume (find-item-of-subtype item :journal-volume))) ; volume
        (conj (:first-page item)) ; pages
@@ -176,7 +189,7 @@
    explicit start date it is assumed to have a start date equal to
    the preferred published date of the item."
   [item]
-  (let [pub-date (get-preferred-pub-date item)
+  (let [pub-date (get-earliest-pub-date item)
         licenses (get-tree-rel item :license)]
     (map #(if (:start %) % (assoc % :start pub-date))
          licenses)))
@@ -278,7 +291,7 @@
         publisher (first (get-tree-rel item :publisher))
         full-text-resources (get-item-rel item :resource-fulltext)
         funders (get-tree-rel item :funder)
-        pub-date (get-preferred-pub-date item)
+        pub-date (get-earliest-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
