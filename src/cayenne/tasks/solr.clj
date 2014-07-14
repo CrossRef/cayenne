@@ -61,9 +61,9 @@
     []))
 
 (defn particle->date-time [particle]
-  (t/date-time (or (:year particle) 0)
-               (or (:month particle) 0)
-               (or (:day particle) 0)))
+  (t/date-time (or (util/parse-int-safe (:year particle)) 0)
+               (or (util/parse-int-safe (:month particle)) 0)
+               (or (util/parse-int-safe (:day particle)) 1)))
 
 (defn get-earliest-pub-date [item]
   (->> (concat 
