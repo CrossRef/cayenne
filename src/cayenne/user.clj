@@ -1,10 +1,12 @@
 (ns cayenne.user
   (:require [cayenne.conf :as conf]
+            [cayenne.ids.doi :as doi-id]
             [cayenne.schedule :as schedule]
             [cayenne.api.route :as route]
             [cayenne.action :as action]
             [taoensso.timbre.appenders.irc :as irc-appender]
-            [taoensso.timbre :as timbre]))
+            [taoensso.timbre :as timbre])
+  (:import [org.apache.solr.client.solrj SolrQuery]))
 
 (timbre/set-config! [:appenders :standard-out :enabled?] false)
 (timbre/set-config! [:appenders :spit :enabled?] true)
@@ -15,4 +17,14 @@
 (conf/create-core-from! :user :default)
 (conf/set-core! :user)
 (conf/start-core! :user :api)
+
+(defn print-solr-doi [doi]
+  (-> (conf/get-service :solr)
+      (.query 
+       (doto (SolrQuery.)
+         (.setQuery (str "doi_key:\"" (doi-id/to-long-doi-uri doi) "\""))))
+      (.getResults)
+      first
+      prn)
+  nil)
 
