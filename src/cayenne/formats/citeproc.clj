@@ -153,6 +153,20 @@
      (get solr-doc "funder_record_doi")
      (get solr-doc "funder_record_name"))))
 
+(defn ->citeproc-funders-merged 
+  "Where the underlying metadata is such that there are multiple funder records
+   for the same funder, we should merge them where the funder IDs match. We cannot
+   however merge where only names match - these could legitimately be separate
+   funding organisations."
+  [solr-doc]
+  (let [funders (->citeproc-funders solr-doc)]
+    (concat 
+     (->> funders
+          (filter #(not= (:DOI %) nil))
+          (reduce #(merge %1 {(:DOI %2) %2}) {})
+          vals)
+     (filter #(= (:DOI %) nil) funders))))
+
 (defn ->citeproc-updates-to [solr-doc]
   (map 
    #(hash-map
@@ -206,6 +220,6 @@
       (assoc-exists :license (->citeproc-licenses solr-doc))
       (assoc-exists :link (->citeproc-links solr-doc))
       (assoc-exists :page (->citeproc-pages solr-doc))
-      (assoc-exists :funder (->citeproc-funders solr-doc))
+      (assoc-exists :funder (->citeproc-funders-merged solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 
