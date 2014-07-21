@@ -44,7 +44,7 @@
    (ANY "/help/bestpractice" []
         (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md"))
    (ANY "/help" []
-        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_api.md"))
+        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md"))
    (ANY "/" [] 
         (redirect "/help"))))
 
