@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.filter
   (:require [clj-time.core :as dt]
+            [clj-time.coerce :as dc]
             [clojure.string :as string]
             [cayenne.util :as util]
             [cayenne.conf :as conf]
@@ -165,7 +166,8 @@
 
 (defn mongo-stamp-date [field direction]
   (fn [val]
-    (let [date-val (obj-date val)]
+    (let [fval (if (sequential? val) (first val) val)
+          date-val (-> fval obj-date dc/to-date)]
       (cond (= direction :from)
             {field {"$gte" date-val}}
             (= direction :until)
@@ -173,14 +175,17 @@
 
 (defn mongo-equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val]
-    {field (transformer val)}))
+    (if (sequential? val)
+      {field {"$in" (map transformer val)}}
+      {field (transformer val)})))
 
 (defn mongo-bool [field]
   (fn [val]
-    (cond (#{"t" "true" "1"} (.toLowerCase val))
-          {field true}
-          (#{"f" "false" "0"} (.toLowerCase val))
-          {field false})))
+    (let [fval (if (sequential? val) (first val) val)]
+      (cond (#{"t" "true" "1"} (.toLowerCase fval))
+            {field true}
+            (#{"f" "false" "0"} (.toLowerCase fval))
+            {field false}))))
 
 ;; Filter definitions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

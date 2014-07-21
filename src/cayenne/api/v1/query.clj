@@ -201,7 +201,7 @@
                         :or {where {} sort {} filters {} id-field nil}}]
   (let [filter-where (into {} 
                            (map (fn [[n v]]
-                                  ((filters (name n)) v))
+                                    ((filters (name n)) v))
                                 (:filters query-context)))]
     (concat
      [:where (merge
