@@ -478,7 +478,8 @@
         (?> funder-uri attach-id funder-uri))))
 
 (defn parse-single-funder [item-loc]
-  (let [program-loc (xml/xselect item-loc "program")
+  (let [program-loc (or (xml/xselect1 item-loc "program" [:= "name" "fundref"])
+                        (xml/xselect1 item-loc "crossmark" "custom_metadata" "program" [:= "name" "fundref"]))
         single-funder (parse-funder program-loc)]
     (if (or (:name single-funder) (not (empty? (:id single-funder))))
       [single-funder]
@@ -488,7 +489,7 @@
   (let [funder-groups-loc (concat 
                            (xml/xselect item-loc 
                                         "program" 
-                                        ;[:= "name" "fundref"]
+                                        [:= "name" "fundref"]
                                         "assertion" 
                                         [:= "name" "fundgroup"])
                            (xml/xselect item-loc
