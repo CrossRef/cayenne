@@ -59,9 +59,14 @@
 (defn braced-str [s]
   (StringValue. (latex/->latex-str (str s)) StringValue$Style/BRACED))
 
+;; Protect case by enclosing a word in braces if it contains an uppercase
+;; char in non leading position
+(defn protect-case [s]
+  (string/replace (str s) #"\b\p{L}+\p{Lu}\p{L}*" "{$0}"))
+
 (defn add-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
-    (.addField entry key (braced-str metadata-value)))
+    (.addField entry key (braced-str (protect-case metadata-value))))
   entry)
 
 (defn add-clean-field [entry metadata key metadata-lookup-fn]
