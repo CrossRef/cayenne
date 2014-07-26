@@ -81,6 +81,11 @@
     (.addField entry BibTeXEntry/KEY_MONTH (LiteralValue. (get bibtex-month (dec month)))))
   entry)
 
+(defn add-pages [entry metadata]
+  (when-let [pages (-> metadata :page)]
+    (.addField entry BibTeXEntry/KEY_PAGES (braced-str (string/replace pages #"\-+" "--"))))
+  entry)
+
 ;; todo add 'series' field, book container-title, when available
 (defn add-titles [entry metadata]
   (cond
@@ -124,7 +129,7 @@
         (add-field metadata BibTeXEntry/KEY_PUBLISHER :publisher)
         (add-field metadata BibTeXEntry/KEY_VOLUME :volume)
         (add-field metadata BibTeXEntry/KEY_NUMBER :issue)
-        (add-field metadata BibTeXEntry/KEY_PAGES :page)
+        (add-pages metadata)
         (add-contributors metadata BibTeXEntry/KEY_AUTHOR :author)
         (add-contributors metadata BibTeXEntry/KEY_EDITOR :editor)
         (add-titles metadata))))
