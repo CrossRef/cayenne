@@ -4,7 +4,7 @@
             [cayenne.latex :as latex]
             [clojure.string :as string])
   (:import [org.jbibtex BibTeXEntry BibTeXFormatter BibTeXDatabase Key DigitStringValue StringValue 
-            StringValue$Style LaTeXString LaTeXPrinter]
+            StringValue$Style LaTeXString LaTeXPrinter LiteralValue]
            [java.io StringWriter]))
 
 (def bibtex-entry-type
@@ -74,11 +74,11 @@
     (.addField entry key (DigitStringValue. (str metadata-value))))
   entry)
 
-(def bibtex-month ["Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"])
+(def bibtex-month ["jan" "feb" "mar" "apr" "may" "jun" "jul" "aug" "sep" "oct" "nov" "dec"])
 
 (defn add-month [entry metadata]
   (when-let [month (-> metadata :issued :date-parts first second)]
-    (.addField entry BibTeXEntry/KEY_MONTH (braced-str (get bibtex-month (dec month)))))
+    (.addField entry BibTeXEntry/KEY_MONTH (LiteralValue. (get bibtex-month (dec month)))))
   entry)
 
 ;; todo add 'series' field, book container-title, when available
