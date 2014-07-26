@@ -16,7 +16,7 @@
    :proceedings BibTeXEntry/TYPE_MISC
    :dataset BibTeXEntry/TYPE_MISC
    :component BibTeXEntry/TYPE_MISC
-   :report BibTeXEntry/TYPE_MISC
+   :report BibTeXEntry/TYPE_TECHREPORT
    :report-series BibTeXEntry/TYPE_MISC
    :standard BibTeXEntry/TYPE_MISC
    :standard-series BibTeXEntry/TYPE_MISC
