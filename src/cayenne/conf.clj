@@ -114,7 +114,7 @@
               [{:url "http://144.76.35.104:8983/solr" :core "crmds1"}])
 
   (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "5.9.51.150")
+  (set-param! [:service :mongo :host] "148.251.10.165")
   (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://144.76.35.104:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
