@@ -505,9 +505,14 @@
 
 (def license-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
+;; some publishers are depositing dates as a date time in an unknown
+;; format. temporarily get around that by taking the first 10 chars -
+;; what should be the yyyy-MM-dd date.
+
 (defn parse-license-start-date [license-loc]
   (if-let [raw-date (xml/xselect1 license-loc ["start_date"])]
-    (let [d (ftime/parse license-date-formatter raw-date)]
+    (let [concat-date (apply str (take 10 raw-date))
+          d (ftime/parse license-date-formatter concat-date)]
       {:type :date
        :year (t/year d)
        :month (t/month d)
