@@ -28,6 +28,7 @@
             [clojure.string :as string]
             [liberator.core :refer [defresource resource]]
             [liberator.representation :refer [ring-response]]
+            [ring.util.response :refer [redirect]]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
@@ -383,7 +384,11 @@
   (ANY "/works" []
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (cond (.endsWith doi "/agency")
+       (cond (.endsWith doi ".xml")
+             (redirect "/works/"
+                       (string/replace doi #".xml" "")
+                       "/transform/application/vnd.crossref.unixsd+xml")
+             (.endsWith doi "/agency")
              (work-agency-resource (string/replace doi #"/agency\z" ""))
              (.endsWith doi "/quality")
              (work-health-resource (string/replace doi #"/quality\z" ""))
