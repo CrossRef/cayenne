@@ -385,9 +385,10 @@
        works-resource)
   (ANY "/works/*" {{doi :*} :params}
        (cond (.endsWith doi ".xml")
-             (redirect "/works/"
-                       (string/replace doi #".xml" "")
-                       "/transform/application/vnd.crossref.unixsd+xml")
+             (redirect (str 
+                        "/works/"
+                        (string/replace doi #".xml" "")
+                        "/transform/application/vnd.crossref.unixsd+xml"))
              (.endsWith doi "/agency")
              (work-agency-resource (string/replace doi #"/agency\z" ""))
              (.endsWith doi "/quality")
