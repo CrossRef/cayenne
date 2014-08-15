@@ -66,7 +66,7 @@
 
 (defn add-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
-    (.addField entry key (braced-str (protect-case metadata-value))))
+    (.addField entry key (-> metadata-value protect-case braced-str)))
   entry)
 
 (defn add-clean-field [entry metadata key metadata-lookup-fn]
@@ -83,12 +83,14 @@
 
 (defn add-month [entry metadata]
   (when-let [month (-> metadata :issued :date-parts first second)]
-    (.addField entry BibTeXEntry/KEY_MONTH (LiteralValue. (get bibtex-month (dec month)))))
+    (.addField entry BibTeXEntry/KEY_MONTH 
+               (->> month dec (get bibtex-month) (LiteralValue.))))
   entry)
 
 (defn add-pages [entry metadata]
   (when-let [pages (-> metadata :page)]
-    (.addField entry BibTeXEntry/KEY_PAGES (braced-str (string/replace pages #"\-+" "--"))))
+    (.addField entry BibTeXEntry/KEY_PAGES 
+               (braced-str (string/replace pages #"\-+" "--"))))
   entry)
 
 ;; todo add 'series' field, book container-title, when available
