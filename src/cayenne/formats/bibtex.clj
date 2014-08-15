@@ -4,7 +4,7 @@
             [cayenne.latex :as latex]
             [clojure.string :as string])
   (:import [org.jbibtex BibTeXEntry BibTeXFormatter BibTeXDatabase Key DigitStringValue StringValue 
-            StringValue$Style LaTeXString LaTeXPrinter]
+            StringValue$Style LaTeXString LaTeXPrinter LiteralValue]
            [java.io StringWriter]))
 
 (def bibtex-entry-type
@@ -16,7 +16,7 @@
    :proceedings BibTeXEntry/TYPE_MISC
    :dataset BibTeXEntry/TYPE_MISC
    :component BibTeXEntry/TYPE_MISC
-   :report BibTeXEntry/TYPE_MISC
+   :report BibTeXEntry/TYPE_TECHREPORT
    :report-series BibTeXEntry/TYPE_MISC
    :standard BibTeXEntry/TYPE_MISC
    :standard-series BibTeXEntry/TYPE_MISC
@@ -59,9 +59,14 @@
 (defn braced-str [s]
   (StringValue. (latex/->latex-str (str s)) StringValue$Style/BRACED))
 
+;; Protect case by enclosing a word in braces if it contains an uppercase
+;; char in non leading position
+(defn protect-case [s]
+  (string/replace (str s) #"\b\p{L}+\p{Lu}\p{L}*" "{$0}"))
+
 (defn add-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
-    (.addField entry key (braced-str metadata-value)))
+    (.addField entry key (braced-str (protect-case metadata-value))))
   entry)
 
 (defn add-clean-field [entry metadata key metadata-lookup-fn]
@@ -74,11 +79,16 @@
     (.addField entry key (DigitStringValue. (str metadata-value))))
   entry)
 
-(def bibtex-month ["Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec"])
+(def bibtex-month ["jan" "feb" "mar" "apr" "may" "jun" "jul" "aug" "sep" "oct" "nov" "dec"])
 
 (defn add-month [entry metadata]
   (when-let [month (-> metadata :issued :date-parts first second)]
-    (.addField entry BibTeXEntry/KEY_MONTH (braced-str (get bibtex-month (dec month)))))
+    (.addField entry BibTeXEntry/KEY_MONTH (LiteralValue. (get bibtex-month (dec month)))))
+  entry)
+
+(defn add-pages [entry metadata]
+  (when-let [pages (-> metadata :page)]
+    (.addField entry BibTeXEntry/KEY_PAGES (braced-str (string/replace pages #"\-+" "--"))))
   entry)
 
 ;; todo add 'series' field, book container-title, when available
@@ -124,7 +134,7 @@
         (add-field metadata BibTeXEntry/KEY_PUBLISHER :publisher)
         (add-field metadata BibTeXEntry/KEY_VOLUME :volume)
         (add-field metadata BibTeXEntry/KEY_NUMBER :issue)
-        (add-field metadata BibTeXEntry/KEY_PAGES :page)
+        (add-pages metadata)
         (add-contributors metadata BibTeXEntry/KEY_AUTHOR :author)
         (add-contributors metadata BibTeXEntry/KEY_EDITOR :editor)
         (add-titles metadata))))
