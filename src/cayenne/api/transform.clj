@@ -75,12 +75,12 @@
 
 (defmethod ->format "application/vnd.crossref.unixref+xml" [representation metadata]
   (-> (str (conf/get-param [:upstream :unixref-url]) (:DOI metadata))
-      (hc/get)
+      (hc/get {:timeout 4000})
       (deref)
       (:body)))
 
 (defmethod ->format "application/vnd.crossref.unixsd+xml" [representation metadata]
   (-> (str (conf/get-param [:upstream :unixsd-url]) (:DOI metadata))
-      (hc/get)
+      (hc/get {:timeout 4000})
       (deref)
       (:body)))
