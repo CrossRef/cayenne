@@ -42,11 +42,11 @@
         an embedded quote and if unicode codepoint is long (composed char)-->
    <xsl:if test="string-length(@id) = 6 and (string-length(latex)&gt;1 or (string-length(latex)=1 and not(starts-with(@id, 'U000') and substring(@id, 5, 1)=translate(substring(@id, 5, 1), 'ABCDEF', '') and @mode='text'))) and not(contains(latex, '&quot;'))">
       <xsl:variable name="codepoint" select="substring(@id, 3)"/>
-      <xsl:text>   "\u</xsl:text>
+      <xsl:text>   \u</xsl:text>
       <xsl:choose>
          <xsl:when test="string-length(mathlatex)!=0 and @mode='math'">
             <xsl:value-of select="$codepoint" />
-            <xsl:text>" "$</xsl:text>
+            <xsl:text> "$</xsl:text>
             <xsl:call-template name="replace-string">
                <xsl:with-param name="text" select="mathlatex"/>
                <xsl:with-param name="replace" select="'\'"/>
@@ -56,7 +56,7 @@
          </xsl:when>
          <xsl:otherwise>
             <xsl:value-of select="$codepoint" />
-            <xsl:text>" "</xsl:text>
+            <xsl:text> "</xsl:text>
             <xsl:choose>
                <xsl:when test="starts-with(latex, '\math')">
                   <xsl:text>$</xsl:text>
