@@ -3,8 +3,10 @@
             [cayenne.ids.type :as type-id]
             [cayenne.latex :as latex]
             [clojure.string :as string])
-  (:import [org.jbibtex BibTeXEntry BibTeXFormatter BibTeXDatabase Key DigitStringValue StringValue 
-            StringValue$Style LaTeXString LaTeXPrinter LiteralValue]
+  (:import [org.jbibtex 
+            BibTeXEntry BibTeXFormatter BibTeXDatabase Key 
+            DigitStringValue StringValue StringValue$Style 
+            LaTeXString LaTeXPrinter LiteralValue]
            [java.io StringWriter]))
 
 (def bibtex-entry-type
@@ -84,7 +86,7 @@
 (defn add-month [entry metadata]
   (when-let [month (-> metadata :issued :date-parts first second)]
     (.addField entry BibTeXEntry/KEY_MONTH 
-               (->> month dec (get bibtex-month) (LiteralValue.))))
+               (->> month dec (get bibtex-month) braced-str)))
   entry)
 
 (defn add-pages [entry metadata]
