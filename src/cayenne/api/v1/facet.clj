@@ -10,15 +10,25 @@
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}})
 
+(def external->internal-name
+  (into {}
+        (map (fn [[key val]] [(get val :external-field) key]) std-facets)))
+
 (defn apply-facets [solr-query facets]
-  (doseq [facet-field facets]
-    (prn facet-field)
-    (if (some #{(string/lower-case facet-field)} ["t" "true" "1"])
-      (.addFacetField solr-query (into-array String (keys std-facets)))
-      (.addFacetField solr-query (into-array String [facet-field]))))
+  (doseq [{:keys [field count]} facets]
+    (let [internal-field-name (external->internal-name field)]
+      (if (some #{(string/lower-case field)} ["*" "t" "true" "1"])
+        (do
+          (.setFacetLimit solr-query (int count))
+          (.addFacetField solr-query (into-array String (keys std-facets))))
+        (do
+          (.addFacetField solr-query (into-array String [internal-field-name]))
+          (.setParam solr-query 
+                     (str "f." internal-field-name ".facet.limit") 
+                     (into-array String [(str count)]))))))
   (doto solr-query
     (.setFacet true)
-    (.setFacetLimit (int 10))))
+    (.setFacetMinCount (int 1))))
 
 (defn remove-zero-values [facet-map]
   (->> facet-map

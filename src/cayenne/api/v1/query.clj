@@ -16,6 +16,8 @@
 (def default-offset 0)
 (def default-rows 20)
 (def max-rows 1000)
+(def default-facet-rows 20)
+(def max-facet-rows 100)
 
 (defn random-field []
   (str "random_" (rand-int Integer/MAX_VALUE)))
@@ -25,7 +27,7 @@
         (nil? val)
         default-rows
         (= (type val) java.lang.String)
-        (min (max 0 (Integer/parseInt val)) max-rows)
+        (min (max 0 (util/parse-int-safe val)) max-rows)
         :else
         (min (max 0 val) max-rows))))
 
@@ -34,7 +36,7 @@
         (nil? val)
         default-offset
         (= (type val) java.lang.String)
-        (max 0 (Integer/parseInt val))
+        (max 0 (util/parse-int-safe val))
         :else
         (max 0 val))))
 
@@ -46,7 +48,7 @@
         (nil? val)
         0
         (= (type val) java.lang.String)
-        (max 0 (Integer/parseInt val))
+        (max 0 (util/parse-int-safe val))
         :else
         (max 0 val))))
     
@@ -63,12 +65,20 @@
                  [path val]))
          (reduce (fn [m [path val]] (update-in m path #(conj %1 val))) {}))))
 
+;; facet spec is
+;; field1:count1,...fieldn:countn
+;; *, t, T, 1 all signify 'all fields'
 (defn get-facets
   [params]
-  (if (get params :facet)
-    (-> (get params :facet)
-        string/trim
-        (string/split #","))
+  (if-let [facet-params (get params :facet)]
+    (map 
+     #(let [[field count] (string/split % #":")]
+        {:field field
+         :count (max 1
+                     (min (or (util/parse-int-safe count) 
+                              default-facet-rows) 
+                          max-facet-rows))})
+     (string/split facet-params #","))
     []))
 
 (defn parse-sort-order [params]
@@ -94,15 +104,15 @@
    "published" ["year" "month" "day"]})
 
 (defn parse-sort [params]
-  (when (get params :sort)
-    (-> (get params :sort)
+  (when-let [sort-params (get params :sort)]
+    (-> sort-params
         string/trim
         string/lower-case
         sort-fields)))
     
 (defn get-selectors [params]
   (when (get params :selector)
-    (string/split (get params :selector) #",")))      
+    (string/split (get params :selector) #",")))
 
 (defn ->query-context [resource-context & {:keys [id filters] 
                                            :or {id nil filters {}}}]
