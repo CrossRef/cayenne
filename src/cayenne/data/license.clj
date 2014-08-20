@@ -13,10 +13,11 @@
 ;; todo offset, rows
 
 (defn fetch-all [query-context]
-  (let [facet-field (-> (conf/get-service :solr)
-                        (.query (query/->solr-query
-                                 (assoc query-context :facets ["license_url"])
-                                 :filters filter/std-filters))
+  (let [q (-> query-context
+              (assoc :facets [{:field "license" :count -1}])
+              (query/->solr-query :filters filter/std-filters))
+        facet-field (-> (conf/get-service :solr)
+                        (.query q)
                         (.getFacetField "license_url"))
         facet-values (->> (.getValues facet-field)
                           (filter #(not= 0 (.getCount %))))]
@@ -25,5 +26,4 @@
           (count facet-values)
           (map ->license-doc facet-values))
         (r/with-query-context-info query-context))))
-
-  
+              
