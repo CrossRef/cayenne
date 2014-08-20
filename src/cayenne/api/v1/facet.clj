@@ -8,7 +8,8 @@
    "category" {:external-field "category-name"}
    "funder_name" {:external-field "funder-name"}
    "source" {:external-field "source"}
-   "publisher" {:external-field "publisher-name"}})
+   "publisher" {:external-field "publisher-name"}
+   "license_url" {:external-field "license"}})
 
 (def external->internal-name
   (into {}
