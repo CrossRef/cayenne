@@ -75,8 +75,8 @@
         xml-file (file dir-path file-name)
         params (if token
                  {"resumptionToken" token
-                  "verb" "ListRecords"
-                  "metadataPrefix" (:type service)}
+                  "verb" "ListRecords"}
+                  ;"metadataPrefix" (:type service)}
                  (-> {"metadataPrefix" (:type service)
                       "verb" "ListRecords"}
                      (?> #(:set-spec service) assoc "set" (:set-spec service))

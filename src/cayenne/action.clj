@@ -58,6 +58,7 @@
   (conf/set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
   (conf/set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
   (conf/set-param! [:oai :datacite :type] "datacite")
+  (conf/set-param! [:oai :datacite :interval] 7)
   (conf/set-param! [:oai :datacite :split] "resource")
   (conf/set-param! [:oai :datacite :parser] cayenne.formats.datacite/datacite-record-parser))
 
@@ -129,7 +130,7 @@
    #(apply cat/apply-to %)))
 
 (def graph-datacite-item
-  #(-> (itree/centre-on %1 %2)
+  #(-> (itree/centre-on (first %) (second %))
        ;funder/apply-to
        (datomic/add-work-centered-tree! :urn.source/datacite)))
        
@@ -171,7 +172,7 @@
 
 (defn parse-datacite-records [file-or-dir using]
   (oai/process file-or-dir
-               :async true
+               :async false
                :split "resource"
                :parser datacite-record-parser
                :task using))
