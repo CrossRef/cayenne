@@ -29,12 +29,17 @@
         :else
         (assoc m key value)))
 
+;; We check number-of-days-in-the-month because some dates in CrossRef
+;; metadata have a day that is not in the valid range for the given
+;; month, e.g. 31st Feb. In these cases we drop the day.
 (defn ->date-parts
   ([year month day]
      (cond (and year month day)
-           {:date-parts [[year, month, day]]}
+           (if (< (dt/number-of-days-in-the-month year month) day)
+             {:date-parts [[year month]]}
+             {:date-parts [[year month day]]})
            (and year month)
-           {:date-parts [[year, month]]}
+           {:date-parts [[year month]]}
            :else
            {:date-parts [[year]]}))
   ([date-obj]
