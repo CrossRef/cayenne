@@ -17,8 +17,8 @@
             [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
-            [cayenne.tasks.neo4j :as neo4j]
             [cayenne.tasks.mongo :as mongo]
+            [cayenne.tasks.datomic :as datomic]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
@@ -119,12 +119,6 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
-(def dump-triples
-  (comp
-   (record-json-writer "out.txt")
-   neo4j/as-triples
-   second))
-
 (def index-solr-docs
   (comp 
    solr/insert-item
@@ -134,10 +128,15 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
-(def graph-triples
-  (comp
-   neo4j/insert-item
-   second))
+(def graph-datacite-item
+  #(-> (itree/centre-on %1 %2)
+       ;funder/apply-to
+       (datomic/add-work-centered-tree! :urn.source/datacite)))
+       
+(def graph-crossref-item
+  #(-> (itree/centre-on (first %) (second %))
+       ;funder/apply-to
+       (datomic/add-work-centered-tree! :urn.source/crossref)))
 
 (def store-item
   (comp
@@ -150,7 +149,7 @@
 
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
-               :async true
+               :async false
                :split "record"
                :parser unixref-record-parser 
                :task using))
@@ -201,7 +200,7 @@
 
 (defn parse-doi [doi using]
   (oai/process (doi-file doi)
-               :async true
+               :async false
                :kind ".tmp"
                :split "crossref_result"
                :parser unixsd-record-parser

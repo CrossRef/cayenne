@@ -116,6 +116,9 @@
 (defn find-item-with-id-type [item-tree id-type]
   (find-item item-tree #(in? (map ids/id-uri-type (:id %)) id-type)))
 
+(defn find-items-with-id-type [item-tree id-type]
+  (find-items item-tree #(in? (map ids/id-uri-type (:id %)) id-type)))
+
 (defn get-item-ids [item-tree & more]
   (let [id-type (first more)]
     (if id-type

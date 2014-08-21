@@ -7,11 +7,10 @@
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.tools.trace :as trace]
-            [riemann.client :as rie]
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
-            [clojurewerkz.neocons.rest :as nr]
+            [datomic.api :as datomic]
             [robert.bruce :as rb]))
 
 (def cores (atom {}))
@@ -115,11 +114,10 @@
 
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "78.46.67.131")
-  (set-param! [:service :riemann :host] "127.0.0.1")
   (set-param! [:service :solr :url] "http://localhost:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 10000)
-  (set-param! [:service :neo4j :url] "http://localhost:7474/db/data")
+  (set-param! [:service :datomic :url] "datomic:mem://test")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
   (set-param! [:service :logstash :host] "5.9.51.2")
@@ -175,6 +173,7 @@
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))
+     (set-service! :datomic (datomic/connect (get-param [:service :datomic :url])))
      (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
      (set-service! :solr-update-list
                    (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
