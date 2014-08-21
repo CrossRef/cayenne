@@ -296,6 +296,15 @@
          :where [_ :urn/value ?urn]]
        (d/db (conf/get-service :datomic))))
 
+(defn find-all-urns-from-source [source]
+  (d/q '[:find ?urn
+         :in $ ?source
+         :where 
+         [?something :urn/value ?urn]
+         [?something :urn/source ?source]]
+       (d/db (conf/get-service :datomic))
+       source))
+
 (defn describe-urn [urn]
   (d/q '[:find ?prop-name ?val
          :in $ ?urn

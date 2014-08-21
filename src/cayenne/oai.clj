@@ -54,7 +54,9 @@
 (defn resumption-token
   "Cheap and cheerful grab of resumption token."
   [body]
-  (second (re-find #"resumptionToken=\"([^\"]+)\"" body)))
+  (or
+   (second (re-find #"resumptionToken=\"([^\"]+)\"" body))
+   (second (re-find #"resumptionToken[^>]*>([^<]+)<" body))))
 
 (declare grab-oai-xml-file-async)
 (declare grab-oai-retry-token)
@@ -73,6 +75,7 @@
         xml-file (file dir-path file-name)
         params (if token
                  {"resumptionToken" token
+                  "verb" "ListRecords"
                   "metadataPrefix" (:type service)}
                  (-> {"metadataPrefix" (:type service)
                       "verb" "ListRecords"}
