@@ -136,7 +136,7 @@
        
 (def graph-crossref-item
   #(-> (itree/centre-on (first %) (second %))
-       ;funder/apply-to
+       funder/apply-to
        (datomic/add-work-centered-tree! :urn.source/crossref)))
 
 (def store-item

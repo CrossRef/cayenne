@@ -241,7 +241,6 @@
 (defn add-work-centered-tree! 
   "Add a work-centered item tree to datomic."
   [item-tree source]
-  (prn item-tree)
   @(d/transact
     (conf/get-service :datomic)
     (work-item->urn-datums item-tree source)))
