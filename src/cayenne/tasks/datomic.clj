@@ -31,6 +31,24 @@
    :edited
    :sameAs])
 
+(def relation-antonyms
+  (let [one-way 
+        {:isCitedBy :cites
+         :isSupplementTo :isSupplementedBy
+         :isContinuedBy :continues
+         :isNewVersionOf :isPreviousVersionOf
+         :isPartOf :hasPart
+         :isReferencedBy :references
+         :isDocumentedBy :documents
+         :isCompiledBy :compiles
+         :isVariantFormOf :isOriginalFormOf
+         :isFundedBy :funds
+         :isCreatedBy :created
+         :isEditedBy :edited
+         :sameAs :sameAs}
+        t-other (into {} (map vector (vals one-way) (keys one-way)))]
+    (merge one-way t-other)))
+
 (def urn-schema
   [{:db/id #db/id[:db.part/db]
     :db/ident :urn/name
@@ -103,6 +121,12 @@
      :db.install/_attribute :db.part/db)
    relation-types))
 
+(defn ->rel [untidy-rel-name]
+  (keyword
+   (str
+    (string/lower-case (apply str (take 1 untidy-rel-name)))
+    (apply str (drop 1 untidy-rel-name)))))
+    
 (defn person-name [person]
   (cond 
    (:name person)
@@ -184,6 +208,14 @@
        {:db/id work-tempid
         :cites cited-work-tempid}])))
 
+(defn work-relation->urn-datums [work-tempid relation]
+  (when-let [doi (-> relation :value)]
+    (let [related-work-tempid (d/tempid :db.part/user)]
+      [{:db/id work-tempid
+        (-> relation :rel-type ->rel) related-work-tempid}
+       {:db/id related-work-tempid
+        (-> relation :rel-type ->rel relation-antonyms) work-tempid}])))
+
 (defn work-item->urn-datums [item source]
   (let [work-tempid (d/tempid :db.part/user)]
     (concat
@@ -201,6 +233,8 @@
              (t/get-item-rel item :editor))
      (mapcat (partial work-citation->urn-datums work-tempid)
              (t/get-item-rel item :citation))
+     (mapcat (partial work-relation->urn-datums work-tempid)
+             (t/get-item-rel item :rel))
      (mapcat (partial journal->urn-datums work-tempid)
              (t/find-item-of-subtype item :journal)))))
 
@@ -256,5 +290,23 @@
          [_ :created ?authored-work]
          [?authored-work :urn/value ?authored-value]]
        (d/db (conf/get-service :datomic))))
+
+(defn find-all-urns []
+  (d/q '[:find ?urn
+         :where [_ :urn/value ?urn]]
+       (d/db (conf/get-service :datomic))))
+
+(defn describe-urn [urn]
+  (d/q '[:find ?prop-name ?val
+         :in $ ?urn
+         :where 
+         [?something :urn/value ?urn]
+         [?something ?prop ?val]
+         [?prop :db/ident ?prop-name]]
+       (d/db (conf/get-service :datomic))
+       urn))
+
+
+  
          
 
