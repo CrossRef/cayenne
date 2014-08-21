@@ -198,3 +198,46 @@
     (conf/get-service :datomic)
     (work-item->urn-datums item-tree source)))
 
+(defn find-all-citing-works []
+  (d/q '[:find ?citing-urn ?citing-value
+         :where 
+         [_ :isCitedBy ?citing-urn]
+         [?citing-urn :urn/value ?citing-value]]
+       (d/db (conf/get-service :datomic))))
+
+(defn find-all-cited-works []
+  (d/q '[:find ?cited-urn ?cited-value
+         :where
+         [_ :cites ?cited-urn]
+         [?cited-urn :urn/value ?cited-value]]
+       (d/db (conf/get-service :datomic))))
+
+(defn find-all-funding-orgs []
+  (d/q '[:find ?funding-org ?funding-value
+         :where
+         [_ :isFundedBy ?funding-org]
+         [?funding-org :urn/value ?funding-value]]
+       (d/db (conf/get-service :datomic))))
+
+(defn find-all-funded-works []
+  (d/q '[:find ?funded-work ?funded-value
+         :where
+         [_ :funds ?funded-work]
+         [?funded-work :urn/value ?funded-value]]
+       (d/db (conf/get-service :datomic))))
+
+(defn find-all-authoring-people []
+  (d/q '[:find ?authoring-person ?authoring-value
+         :where
+         [_ :isCreatedBy ?authoring-person]
+         [?authoring-person :urn/value ?authoring-value]]
+       (d/db (conf/get-service :datomic))))
+
+(defn find-all-authored-works []
+  (d/q '[:find ?authored-work ?authored-value
+         :where
+         [_ :created ?authored-work]
+         [?authored-work :urn/value ?authored-value]]
+       (d/db (conf/get-service :datomic))))
+         
+
