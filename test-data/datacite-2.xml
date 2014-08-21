@@ -6,6 +6,7 @@
 		</creator>
 		<creator>
 			<creatorName>Smith, Jane</creatorName>
+			<nameIdentifier nameIdentifierScheme="ORCID">1234123412341234</nameIdentifier>
 			<nameIdentifier nameIdentifierScheme="ISNI">1422 4586 3573 0476</nameIdentifier>
 		</creator>
 	</creators>

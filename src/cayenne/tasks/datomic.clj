@@ -1,7 +1,8 @@
 (ns cayenne.tasks.datomic
   (:require [cayenne.conf :as conf]
             [cayenne.item-tree :as t]
-            [datomic.api :as d]))
+            [datomic.api :as d]
+            [clojure.string :as string]))
 
 (def relation-types
   [:isCitedBy
@@ -36,6 +37,7 @@
     :db/valueType :db.type/string
     :db/cardinality :db.cardinality/many
     :db/index true
+    :db/fulltext true
     :db.install/_attribute :db.part/db}
    {:db/id #db/id[:db.part/db]
     :db/ident :urn/value
@@ -101,6 +103,15 @@
      :db.install/_attribute :db.part/db)
    relation-types))
 
+(defn person-name [person]
+  (cond 
+   (:name person)
+   (:name person)
+   (and (:first-name person) (:last-name person))
+   (str (:first-name person) " " (:last-name person))
+   :else
+   (:last-name person)))
+
 (defn recreate-db! []
   (let [uri (conf/get-param [:service :datomic :url])]
     (d/delete-database uri)
@@ -115,7 +126,7 @@
       [{:db/id funder-tempid
         :urn/type :urn.type/doi
         :urn/entityType :urn.entityType/org
-        ;:urn/name (:name funder)
+        :urn/name (:name funder)
         :urn/value funder-doi
         :funds work-tempid}
        {:db/id work-tempid
@@ -127,6 +138,7 @@
       [{:db/id author-tempid
         :urn/type :urn.type/orcid
         :urn/entityType :urn.entityType/person
+        :urn/name (person-name author)
         :urn/value orcid
         :created work-tempid}
        {:db/id work-tempid
@@ -138,6 +150,7 @@
       [{:db/id editor-tempid
         :urn/type :urn.type/orcid
         :urn/entityType :urn.entityType/person
+        :urn/name (person-name editor)
         :urn/value orcid
         :edited work-tempid}
        {:db/id work-tempid
@@ -153,7 +166,7 @@
         :db/id %2
         :urn/type :urn.type/issn
         :urn/entityType :urn.entityType/journal
-        :urn/value %1
+        :urn/value (-> journal (t/get-item-rel :title) first :value)
         :sameAs journal-tempids
         :hasPart work-tempid)
       issns
@@ -177,7 +190,7 @@
      [{:db/id work-tempid
        :urn/type :urn.type/doi
        :urn/entityType :urn.entityType/work
-       ;:urn/name (get-title item)
+       :urn/name (-> item (t/get-item-rel :title) first :value)
        :urn/source source
        :urn/value (-> item (t/get-item-ids :long-doi) first)}]
      (mapcat (partial funder->urn-datums work-tempid)
@@ -194,15 +207,17 @@
 (defn add-work-centered-tree! 
   "Add a work-centered item tree to datomic."
   [item-tree source]
+  (prn item-tree)
   @(d/transact
     (conf/get-service :datomic)
     (work-item->urn-datums item-tree source)))
 
 (defn find-all-citing-works []
-  (d/q '[:find ?citing-urn ?citing-value
+  (d/q '[:find ?citing-urn ?citing-value ?citing-name
          :where 
          [_ :isCitedBy ?citing-urn]
-         [?citing-urn :urn/value ?citing-value]]
+         [?citing-urn :urn/value ?citing-value]
+         [?citing-urn :urn/name ?citing-name]]
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-cited-works []
@@ -213,10 +228,11 @@
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-funding-orgs []
-  (d/q '[:find ?funding-org ?funding-value
+  (d/q '[:find ?funding-org ?funding-value ?funding-name
          :where
          [_ :isFundedBy ?funding-org]
-         [?funding-org :urn/value ?funding-value]]
+         [?funding-org :urn/value ?funding-value]
+         [?funding-org :urn/name ?funding-name]]
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-funded-works []
@@ -227,10 +243,11 @@
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-authoring-people []
-  (d/q '[:find ?authoring-person ?authoring-value
+  (d/q '[:find ?authoring-person ?authoring-value ?authoring-name
          :where
          [_ :isCreatedBy ?authoring-person]
-         [?authoring-person :urn/value ?authoring-value]]
+         [?authoring-person :urn/value ?authoring-value]
+         [?authoring-person :urn/name ?authoring-name]]
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-authored-works []

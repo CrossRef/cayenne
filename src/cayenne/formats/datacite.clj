@@ -1,12 +1,14 @@
 (ns cayenne.formats.datacite
   (:require [cayenne.xml :as xml]
             [cayenne.conf :as conf]
-            [clojure.string :as string])
-  (:use [cayenne.ids.doi :only [to-long-doi-uri]]
-        [cayenne.item-tree]))
+            [cayenne.item-tree :refer :all :as t]
+            [cayenne.util :refer [?>]]
+            [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.orcid :as orcid-id]
+            [clojure.string :as string]))
 
 (defn parse-primary-id [oai-record]
-  (xml/xselect1 oai-record "identifier" :text))
+  (doi-id/to-long-doi-uri (xml/xselect1 oai-record "identifier" :text)))
 
 (defn parse-language [oai-record]
   (xml/xselect oai-record "language" :text))
@@ -27,10 +29,11 @@
 ;; todo contributor ids
 (defn parse-contributor [contributor-loc type]
   (let [full-name (xml/xselect1 contributor-loc (str type "Name") :text)
-        name-bits (string/split full-name #"\s+")]
+        orcid (xml/xselect1 contributor-loc "nameIdentifier" 
+                            [:= "nameIdentifierScheme" "ORCID"] :text)]
     (-> (make-item :person)
-        (add-property :first-name (string/join " " (rest name-bits)))
-        (add-property :last-name (first name-bits)))))
+        (?> orcid add-id (orcid-id/to-orcid-uri orcid)) 
+        (add-property :name full-name))))
         
 (defn parse-contributors [oai-record type]
   (map parse-contributor 
@@ -60,8 +63,26 @@
      :else
      :other)))
 
+(defn parse-doi-relation [related-doi-loc]
+  (-> (make-item :rel)
+      (add-property :value (-> related-doi-loc 
+                               (xml/xselect1 :text) 
+                               doi-id/to-long-doi-uri))
+      (add-property :rel-type (-> related-doi-loc
+                                  (xml/xselect1 ["relationType"])))))
+
+(defn parse-relations [oai-record]
+  (let [related-doi-locs (xml/xselect oai-record 
+                                      "relatedIdentifiers"
+                                      "relatedIdentifier"
+                                      [:= "relatedIdentifierType" "DOI"])]
+    (map parse-doi-relation related-doi-locs)))
+
 (defn parse-record [oai-record]
   (-> (make-item :work (parse-resource-type oai-record))
+      (add-id (parse-primary-id oai-record))
+      (add-relations :rel (parse-relations oai-record))
+      (add-relations :title (parse-titles oai-record))
       (add-relations :author (parse-contributors oai-record "creator"))
       (add-relations :contributor (parse-contributors oai-record "contributor"))
       (add-relation :published-online (parse-pub-date oai-record))
@@ -69,6 +90,7 @@
 
 (defn datacite-record-parser
   [oai-record]
+  (prn (parse-record oai-record))
   [(parse-primary-id oai-record)
    (parse-record oai-record)])
 
