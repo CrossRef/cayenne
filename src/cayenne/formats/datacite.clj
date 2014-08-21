@@ -90,7 +90,6 @@
 
 (defn datacite-record-parser
   [oai-record]
-  (prn (parse-record oai-record))
   [(parse-primary-id oai-record)
    (parse-record oai-record)])
 
