@@ -37,7 +37,7 @@
                                     :label "Edited Book"}
                       :monograph {:index-id "Monograph"
                                   :label "Monograph"}
-                      :reference-book {:index-id "Reference Book"
+                      :reference-book {:index-id "Reference"
                                        :label "Reference Book"}
                       :book {:index-id "Book"
                              :label "Book"}
@@ -50,10 +50,10 @@
                       :book-section {:index-id "Section"
                                      :label "Book Section"}
                       :book-part {:index-id "Part"
-                                  :label "Book Part"}
+                                  :label "Part"}
                       :book-track {:index-id "Track"
                                    :label "Book Track"}
-                      :book-entry {:index-id "Reference Entry"
+                      :book-entry {:index-id "Entry"
                                    :label "Book Entry"}
                       :dissertation {:index-id "Dissertation"
                                      :label "Dissertation"}
