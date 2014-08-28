@@ -53,8 +53,8 @@
                                   :label "Part"}
                       :book-track {:index-id "Track"
                                    :label "Book Track"}
-                      :book-entry {:index-id "Entry"
-                                   :label "Book Entry"}
+                      :reference-entry {:index-id "Entry"
+                                   :label "Reference Entry"}
                       :dissertation {:index-id "Dissertation"
                                      :label "Dissertation"}
                       :other {:index-id "Other"
