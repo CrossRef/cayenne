@@ -173,7 +173,7 @@
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))
-     (set-service! :datomic (datomic/connect (get-param [:service :datomic :url])))
+     ;(set-service! :datomic (datomic/connect (get-param [:service :datomic :url])))
      (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
      (set-service! :solr-update-list
                    (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
