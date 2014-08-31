@@ -74,10 +74,12 @@
     (map 
      #(let [[field count] (string/split % #":")]
         {:field field
-         :count (max 1
+         :count (if (= count "*")
+                  "*"
+                  (max 1
                      (min (or (util/parse-int-safe count) 
                               default-facet-rows) 
-                          max-facet-rows))})
+                          max-facet-rows)))})
      (string/split facet-params #","))
     []))
 

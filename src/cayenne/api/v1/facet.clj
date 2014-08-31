@@ -7,8 +7,10 @@
    "publication" {:external-field "container-title"}
    "category" {:external-field "category-name"}
    "funder_name" {:external-field "funder-name"}
-   "funder_doi" {:external-field "funder-doi"}
-   "orcid" {:external-field "orcid"}
+   "funder_doi" {:external-field "funder-doi"
+                 :allow-unlimited-values true}
+   "orcid" {:external-field "orcid"
+            :allow-unlimited-values true}
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}
    "license_url" {:external-field "license"}})
@@ -17,18 +19,28 @@
   (into {}
         (map (fn [[key val]] [(get val :external-field) key]) std-facets)))
 
+(defn facet-value-limit [field specified-limit]
+  (cond (and (= specified-limit "*")
+             (get-in std-facets [field :allow-unlimited-values]))
+        -1
+        (= specified-limit "*")
+        100
+        :else
+        specified-limit))
+
 (defn apply-facets [solr-query facets]
   (doseq [{:keys [field count]} facets]
-    (let [internal-field-name (external->internal-name field)]
+    (let [internal-field-name (external->internal-name field)
+          limited-count (facet-value-limit internal-field-name count)]
       (if (some #{(string/lower-case field)} ["*" "t" "true" "1"])
         (do
-          (.setFacetLimit solr-query (int count))
+          (.setFacetLimit solr-query (int limited-count))
           (.addFacetField solr-query (into-array String (keys std-facets))))
         (do
           (.addFacetField solr-query (into-array String [internal-field-name]))
           (.setParam solr-query 
                      (str "f." internal-field-name ".facet.limit") 
-                     (into-array String [(str count)]))))))
+                     (into-array String [(str limited-count)]))))))
   (doto solr-query
     (.setFacet true)
     (.setFacetMinCount (int 1))))
