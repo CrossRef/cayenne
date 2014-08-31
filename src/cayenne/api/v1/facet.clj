@@ -7,6 +7,8 @@
    "publication" {:external-field "container-title"}
    "category" {:external-field "category-name"}
    "funder_name" {:external-field "funder-name"}
+   "funder_doi" {:external-field "funder-doi"}
+   "orcid" {:external-field "orcid"}
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}
    "license_url" {:external-field "license"}})
