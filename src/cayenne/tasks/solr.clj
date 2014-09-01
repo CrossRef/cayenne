@@ -61,9 +61,17 @@
     []))
 
 (defn particle->date-time [particle]
-  (t/date-time (or (util/parse-int-safe (:year particle)) 0)
-               (or (util/parse-int-safe (:month particle)) 1)
-               (or (util/parse-int-safe (:day particle)) 1)))
+  (let [year (-> particle :year util/parse-int-safe)
+        month (-> particle :month util/parse-int-safe)
+        day (-> particle :day util/parse-int-safe)]
+    (cond (and year month day)
+          (if (< (t/number-of-days-in-the-month year month) day)
+            (t/date-time year month)
+            (t/date-time year month day))
+          (and year month)
+          (t/date-time year month)
+          :else
+          (t/date-time year))))
 
 (defn get-earliest-pub-date [item]
   (->> (concat 
