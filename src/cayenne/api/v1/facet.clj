@@ -45,17 +45,15 @@
     (.setFacet true)
     (.setFacetMinCount (int 1))))
 
-(defn remove-zero-values [facet-map]
-  (->> facet-map
-       (filter (fn [[_ val]] (not (zero? val))))
-       (into {})))
-
 (defn ->response-facet [solr-facet]
   (let [external-name (get-in std-facets [(.getName solr-facet) :external-field])
         vals (->> (.getValues solr-facet)
                    (map #(vector (.getName %) (.getCount %)))
-                   (into {})
-                   remove-zero-values)]
+                   (filter (fn [[_ val]] (not (zero? val))))
+                   (sort-by second)
+                   reverse
+                   flatten
+                   (apply array-map))]
     [external-name
      {:value-count (count vals)
       :values vals}]))
