@@ -11,6 +11,8 @@
                  :allow-unlimited-values true}
    "orcid" {:external-field "orcid"
             :allow-unlimited-values true}
+   "issn" {:external-field "issn"
+           :allow-unlimited-values true}
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}
    "license_url" {:external-field "license"}})
