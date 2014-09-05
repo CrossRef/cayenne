@@ -11,6 +11,8 @@
    :isSupplementedBy
    :isContinuedBy
    :continues
+   :isUpdateTo
+   :isUpdatedBy
    :isNewVersionOf
    :isPreviousVersionOf
    :isPartOf
@@ -36,6 +38,7 @@
         {:isCitedBy :cites
          :isSupplementTo :isSupplementedBy
          :isContinuedBy :continues
+         :isUpdatedTo :isUpdatedBy
          :isNewVersionOf :isPreviousVersionOf
          :isPartOf :hasPart
          :isReferencedBy :references
@@ -144,6 +147,9 @@
       (d/transact conn (concat urn-schema relations-schema))
       (conf/set-service! :datomic conn))))
 
+(defn connect! []
+  (conf/set-service! :datomic (d/connect (conf/get-param [:service :datomic :url]))))
+
 (defn funder->urn-datums [work-tempid funder]
   (when-let [funder-doi (-> funder (t/get-item-ids :long-doi) first)]
     (let [funder-tempid (d/tempid :db.part/user)]
@@ -179,6 +185,16 @@
         :edited work-tempid}
        {:db/id work-tempid
         :isEditedBy editor-tempid}])))
+
+(defn update->urn-datums [work-tempid update]
+  (let [updatee-tempid (d/tempid :db.part/user)]
+    [{:db/id updatee-tempid
+      :urn/type :urn.type/doi
+      :urn/entityType :urn.entityType/work
+      :urn/value (-> update :value)
+      :isUpdatedBy work-tempid}
+     {:db/id work-tempid
+      :isUpdateTo updatee-tempid}]))
 
 (defn journal->urn-datums [work-tempid journal]
   (let [issns (t/get-item-ids journal :issn)
@@ -225,6 +241,8 @@
        :urn/name (-> item (t/get-item-rel :title) first :value)
        :urn/source source
        :urn/value (-> item (t/get-item-ids :long-doi) first)}]
+     (mapcat (partial update->urn-datums work-tempid)
+             (t/get-item-rel item :updates))
      (mapcat (partial funder->urn-datums work-tempid)
              (t/get-item-rel item :funder))
      (mapcat (partial author->urn-datums work-tempid)
