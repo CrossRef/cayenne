@@ -293,6 +293,13 @@
          [?funded-work :urn/value ?funded-value]]
        (d/db (conf/get-service :datomic))))
 
+(defn find-all-updated-works []
+  (d/q '[:find ?updated-work ?updated-value
+         :where
+         [_ :isUpdateTo ?updated-work]
+         [?updated-work :urn/value ?updated-value]]
+       (d/db (conf/get-service :datomic))))
+
 (defn find-all-authoring-people []
   (d/q '[:find ?authoring-person ?authoring-value ?authoring-name
          :where
