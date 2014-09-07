@@ -238,7 +238,7 @@
      [{:db/id work-tempid
        :urn/type :urn.type/doi
        :urn/entityType :urn.entityType/work
-       :urn/name (-> item (t/get-item-rel :title) first :value)
+       :urn/name (or (-> item (t/get-item-rel :title) first :value) "")
        :urn/source source
        :urn/value (-> item (t/get-item-ids :long-doi) first)}]
      (mapcat (partial update->urn-datums work-tempid)
@@ -338,6 +338,7 @@
          [?prop :db/ident ?prop-name]]
        (d/db (conf/get-service :datomic))
        urn))
+
 
 
   
