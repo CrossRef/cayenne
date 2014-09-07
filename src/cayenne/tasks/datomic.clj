@@ -13,6 +13,8 @@
    :continues
    :isUpdateTo
    :isUpdatedBy
+   :isUpdatePolicyOf
+   :hasUpdatePolicy
    :isNewVersionOf
    :isPreviousVersionOf
    :isPartOf
@@ -39,6 +41,7 @@
          :isSupplementTo :isSupplementedBy
          :isContinuedBy :continues
          :isUpdatedTo :isUpdatedBy
+         :isUpdatePolicyOf :hasUpdatePolicy
          :isNewVersionOf :isPreviousVersionOf
          :isPartOf :hasPart
          :isReferencedBy :references
@@ -111,7 +114,9 @@
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.entityType/work}
    {:db/id #db/id[:db.part/user]
-    :db/ident :urn.entityType/journal}])
+    :db/ident :urn.entityType/journal}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.entityType/updatePolicy}])
 
 (def relations-schema
   (map
@@ -196,6 +201,16 @@
      {:db/id work-tempid
       :isUpdateTo updatee-tempid}]))
 
+(defn update-policy->urn-datums [work-tempid update-policy]
+  (let [update-policy-tempid (d/tempid :db.part/user)]
+    [{:db/id update-policy-tempid
+      :urn/type :urn.type/doi
+      :urn/entityType :urn.entityType/updatePolicy
+      :urn/value (-> update-policy :value)
+      :isUpdatePolicyOf work-tempid}
+     {:db/id work-tempid
+      :hasUpdatePolicy update-policy-tempid}]))
+
 (defn journal->urn-datums [work-tempid journal]
   (let [issns (t/get-item-ids journal :issn)
         journal-tempids (take (count issns) 
@@ -241,6 +256,8 @@
        :urn/name (or (-> item (t/get-item-rel :title) first :value) "")
        :urn/source source
        :urn/value (-> item (t/get-item-ids :long-doi) first)}]
+     (mapcat (partial update-policy->urn-datums work-tempid)
+             (t/get-item-rel item :update-policy))
      (mapcat (partial update->urn-datums work-tempid)
              (t/get-item-rel item :updates))
      (mapcat (partial funder->urn-datums work-tempid)
