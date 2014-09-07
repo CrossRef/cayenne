@@ -8,7 +8,11 @@
             [clojure.string :as string]))
 
 (defn parse-primary-id [oai-record]
-  (doi-id/to-long-doi-uri (xml/xselect1 oai-record "identifier" :text)))
+  (doi-id/to-long-doi-uri (xml/xselect1 
+                           oai-record 
+                           "metadata" "resource" "identifier"
+                           [:= "identifierType" "DOI"]
+                           :text)))
 
 (defn parse-language [oai-record]
   (xml/xselect oai-record "language" :text))
