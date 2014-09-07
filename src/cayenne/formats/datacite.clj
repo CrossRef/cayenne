@@ -10,7 +10,7 @@
 (defn parse-primary-id [oai-record]
   (doi-id/to-long-doi-uri (xml/xselect1 
                            oai-record 
-                           "metadata" "resource" "identifier"
+                           "identifier"
                            [:= "identifierType" "DOI"]
                            :text)))
 
