@@ -55,6 +55,9 @@
         t-other (into {} (map vector (vals one-way) (keys one-way)))]
     (merge one-way t-other)))
 
+(def relation-synonyms
+  {:isIdenticalTo :sameAs})
+
 (def urn-schema
   [{:db/id #db/id[:db.part/db]
     :db/ident :urn/name
@@ -130,10 +133,11 @@
    relation-types))
 
 (defn ->rel [untidy-rel-name]
-  (keyword
-   (str
-    (string/lower-case (apply str (take 1 untidy-rel-name)))
-    (apply str (drop 1 untidy-rel-name)))))
+  (let [rel (-> (str
+                 (string/lower-case (apply str (take 1 untidy-rel-name)))
+                 (apply str (drop 1 untidy-rel-name)))
+                keyword)]
+      (or (relation-synonyms rel) rel)))
     
 (defn person-name [person]
   (cond 
@@ -337,6 +341,11 @@
          :where [_ :urn/value ?urn]]
        (d/db (conf/get-service :datomic))))
 
+(defn count-all-urns []
+  (d/q '[:find (count ?urn)
+         :where [_ :urn/value ?urn]]
+       (d/db (conf/get-service :datomic))))
+
 (defn find-all-urns-from-source [source]
   (d/q '[:find ?urn
          :in $ ?source
@@ -345,6 +354,23 @@
          [?something :urn/source ?source]]
        (d/db (conf/get-service :datomic))
        source))
+
+(defn find-all-non-datacite-related-works [relation]
+  (d/q '[:find ?relatee-urn ?relation ?related-urn
+         :in $ ?relation
+         :where
+         [?relatee ?relation ?related]
+         [?relatee :urn/type :urn.type/doi]
+         [(missing? $ ?related :urn/source)]
+         [?related :urn/value ?related-urn]
+         [?relatee :urn/value ?relatee-urn]]
+       (d/db (conf/get-service :datomic))
+       relation))
+
+(defn with-all-work-to-work-relations [finding-fn]
+  (mapcat finding-fn
+          (clojure.set/difference (set relation-types)
+                                  (set [:isCreatedBy :isEditedBy]))))
 
 (defn describe-urn [urn]
   (d/q '[:find ?prop-name ?val
@@ -360,4 +386,8 @@
 
   
          
+
+
+
+
 
