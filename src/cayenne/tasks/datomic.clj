@@ -249,6 +249,9 @@
       [{:db/id work-tempid
         (-> relation :rel-type ->rel) related-work-tempid}
        {:db/id related-work-tempid
+        :urn/value doi
+        :urn/type :urn.type/doi
+        :urn/entityType :urn.entityType/work
         (-> relation :rel-type ->rel relation-antonyms) work-tempid}])))
 
 (defn work-item->urn-datums [item source]
@@ -355,13 +358,11 @@
        (d/db (conf/get-service :datomic))
        source))
 
-(defn find-all-non-datacite-related-works [relation]
+(defn find-all-works-with-relation [relation]
   (d/q '[:find ?relatee-urn ?relation ?related-urn
          :in $ ?relation
          :where
          [?relatee ?relation ?related]
-         [?relatee :urn/type :urn.type/doi]
-         [(missing? $ ?related :urn/source)]
          [?related :urn/value ?related-urn]
          [?relatee :urn/value ?relatee-urn]]
        (d/db (conf/get-service :datomic))
@@ -370,7 +371,7 @@
 (defn with-all-work-to-work-relations [finding-fn]
   (mapcat finding-fn
           (clojure.set/difference (set relation-types)
-                                  (set [:isCreatedBy :isEditedBy]))))
+                                  (set [:created :edited :isCreatedBy :isEditedBy]))))
 
 (defn describe-urn [urn]
   (d/q '[:find ?prop-name ?val
