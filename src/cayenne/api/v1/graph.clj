@@ -181,7 +181,5 @@
        (graph-issn-resource issn))
   (ANY "/dispatch" {{query :q} :params} 
        (dispatch-resource query))
-  (ANY "/*" {{query :*} :params}
-       (dispatch-resource query))
   (ANY "/" {{query :q} :params}
        (name-search-resource query)))
