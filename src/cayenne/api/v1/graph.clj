@@ -2,10 +2,11 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.response :as r]
-            [datomic.api :as d]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.orcid :as orcid-id]
+            [cayenne.tasks.datomic :as cd]
+            [datomic.api :as d]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [defroutes ANY]]
             [ring.util.response :refer [redirect]]
@@ -13,18 +14,54 @@
 
 ;; Implements the graph API
 
+;; Handle resolution of IDs of implicit type
+
+(defn id-type [s]
+  (cond
+   (doi-id/extract-long-doi s) :doi
+   (orcid-id/extract-orcid s) :orcid
+   (issn-id/extract-issn s) :issn))
+
+(defn typed-id [s]
+  (condp = (id-type s)
+    :orcid {:type :orcid 
+            :urn (orcid-id/to-orcid-uri s)
+            :id (orcid-id/normalize-orcid s)}
+    :doi {:type :doi 
+          :urn (doi-id/to-long-doi-uri s)
+          :id (doi-id/normalize-long-doi s)}
+    :issn {:type :issn 
+           :urn (issn-id/to-issn-uri s)
+           :id (issn-id/normalize-issn s)}))
+
+(defn node-link
+  "Turn an implicit type ID/URN into a graph API node link."
+  [s]
+  (cond
+   (doi-id/is-long-doi? s) (str "/graph/doi/" (doi-id/normalize-long-doi s))
+   (orcid-id/is-orcid? s) (str "/graph/orcid/" (orcid-id/normalize-orcid s))
+   (issn-id/is-issn? s) (str "/graph/issn/" (issn-id/normalize-issn s))))
+
+;; Our query definitions
+
 (def ^:dynamic query-db
   (d/db (conf/get-service :datomic)))
 
-(defn urn-relations [urn-value]
-  (d/q '[:find (distinct ?relation) ?related-urn-value
-         :in $ ?urn-value
+(defn urn-related [urn-value relation]
+  (d/q '[:find ?related-urn-value
+         :in $ ?urn-value ?relation
          :where
          [?target-urn :urn/value ?urn-value]
          [?target-urn ?relation ?related-urn]
          [?related-urn :urn/value ?related-urn-value]]
        query-db
-       urn-value))
+       urn-value
+       relation))
+
+(defn urn-relations [urn-value]
+  (->> cd/relation-types
+       (map #(vector % (->> % (urn-related urn-value) vec flatten)))
+       (into {})))
 
 (defn urn-type [urn-value]
   (d/q '[:find ?ident
@@ -76,30 +113,11 @@
           source (-> urn-value urn-source ffirst)]
       (cond-> 
        {:type (name type)
+        :link (node-link urn-value)
         :urn urn-value}
        relations (assoc :rel (urn-relations urn-value))
        source (assoc :source (name source))
        entity-type (assoc :entity-type (name entity-type))))))
-
-;; Handle resolution of IDs of unknown type
-
-(defn id-type [s]
-  (cond
-   (doi-id/extract-long-doi s) :doi
-   (orcid-id/extract-orcid s) :orcid
-   (issn-id/extract-issn s) :issn))
-
-(defn typed-id [s]
-  (condp = (id-type s)
-    :orcid {:type :orcid 
-            :urn (orcid-id/to-orcid-uri s)
-            :id (orcid-id/normalize-orcid s)}
-    :doi {:type :doi 
-          :urn (doi-id/to-long-doi-uri s)
-          :id (doi-id/normalize-long-doi s)}
-    :issn {:type :issn 
-           :urn (issn-id/to-issn-uri s)
-           :id (issn-id/normalize-issn s)}))
          
 ;; Define our resources
 
@@ -156,6 +174,8 @@
   (ANY "/issn/*" {{issn :*} :params}
        (graph-issn-resource issn))
   (ANY "/dispatch" {{query :q} :params} 
+       (dispatch-resource query))
+  (ANY "/*" {{query :*} :params}
        (dispatch-resource query))
   (ANY "/" {{query :q} :params}
        (name-search-resource query)))
