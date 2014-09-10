@@ -94,8 +94,8 @@
        urn-value))
 
 (defn urn-name [urn-value]
-  (d/q '[:find ?ident
-         :in $ ?urn-name
+  (d/q '[:find ?urn-name
+         :in $ ?urn-value
          :where
          [?target-urn :urn/value ?urn-value]
          [?target-urn :urn/name ?urn-name]]
@@ -103,7 +103,7 @@
        urn-value))
 
 (defn lookup-name [name]
-  (d/q '[:find ?urn-value ?n
+  (d/q '[:find ?urn-value
          :in $ ?name
          :where
          [(fulltext $ :urn/name ?name) [[?e ?n]]]
@@ -125,12 +125,12 @@
     (when-let [type (-> urn-value urn-type ffirst)]
       (let [entity-type (-> urn-value urn-entity-type ffirst)
             source (-> urn-value urn-source ffirst)
-            name (-> urn-value urn-name ffirst)]
+            label (-> urn-value urn-name ffirst)]
         (cond-> 
          {:type (name type)
           :link (node-link urn-value)
           :urn urn-value
-          :label name}
+          :label label}
          relations (assoc :rel (-> urn-value urn-relations describe-relations))
          source (assoc :source (name source))
          entity-type (assoc :entity-type (name entity-type)))))))
@@ -144,7 +144,11 @@
   (r/api-response 
    :node-list 
    :content (binding [query-db (d/db (conf/get-service :datomic))]
-              (take 100 (lookup-name query)))))
+              (->> query
+                  lookup-name
+                  (take 20)
+                  flatten
+                  (map describe-urn)))))
 
 (defresource graph-doi-resource [doi]
   :allowed-methods [:get :options]
