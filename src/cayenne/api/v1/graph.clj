@@ -39,9 +39,9 @@
   "Turn an implicit type ID/URN into a graph API node link."
   [s]
   (cond
-   (doi-id/is-long-doi? s) (str "/graph/doi/" (doi-id/normalize-long-doi s))
-   (orcid-id/is-orcid? s) (str "/graph/orcid/" (orcid-id/normalize-orcid s))
-   (issn-id/is-issn? s) (str "/graph/issn/" (issn-id/normalize-issn s))))
+   (doi-id/extract-long-doi s) (str "/graph/doi/" (doi-id/normalize-long-doi s))
+   (orcid-id/extract-orcid s) (str "/graph/orcid/" (orcid-id/normalize-orcid s))
+   (issn-id/extract-issn s) (str "/graph/issn/" (issn-id/normalize-issn s))))
 
 ;; Our query definitions
 

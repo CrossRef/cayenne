@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
+            [cayenne.api.v1.graph :as v1-graph]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
             [ring.middleware.logstash :as logstash]
@@ -37,10 +38,13 @@
   (routes
    v1/api-routes
    v1-doc/api-doc-routes
+   (context "/graph" [] v1-graph/graph-api-routes)
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)
+   (context "/v1/graph" [] v1-graph/graph-api-routes)
    (context "/v1.0" [] v1/api-routes)
    (context "/v1.0" [] v1-doc/api-doc-routes)
+   (context "/v1.0" [] v1-graph/graph-api-routes)
    (ANY "/help/bestpractice" []
         (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md"))
    (ANY "/help" []
