@@ -1,0 +1,161 @@
+(ns cayenne.api.v1.graph
+  (:require [cayenne.conf :as conf]
+            [cayenne.api.v1.types :as t]
+            [cayenne.api.v1.response :as r]
+            [datomic.api :as d]
+            [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.orcid :as orcid-id]
+            [liberator.core :refer [defresource]]
+            [compojure.core :refer [defroutes ANY]]
+            [ring.util.response :refer [redirect]]
+            [clojure.string :as string]))
+
+;; Implements the graph API
+
+(def ^:dynamic query-db
+  (d/db (conf/get-service :datomic)))
+
+(defn urn-relations [urn-value]
+  (d/q '[:find (distinct ?relation) ?related-urn-value
+         :in $ ?urn-value
+         :where
+         [?target-urn :urn/value ?urn-value]
+         [?target-urn ?relation ?related-urn]
+         [?related-urn :urn/value ?related-urn-value]]
+       query-db
+       urn-value))
+
+(defn urn-type [urn-value]
+  (d/q '[:find ?ident
+         :in $ ?urn-value
+         :where
+         [?target-urn :urn/value ?urn-value]
+         [?target-urn :urn/type ?urn-type]
+         [?urn-type :db/ident ?ident]]
+       query-db
+       urn-value))
+
+(defn urn-entity-type [urn-value]
+  (d/q '[:find ?ident
+         :in $ ?urn-value
+         :where
+         [?target-urn :urn/value ?urn-value]
+         [?target-urn :urn/entityType ?urn-entity-type]
+         [?urn-entity-type :db/ident ?ident]]
+       query-db
+       urn-value))
+
+(defn urn-source [urn-value]
+  (d/q '[:find ?ident
+         :in $ ?urn-value
+         :where
+         [?target-urn :urn/value ?urn-value]
+         [?target-urn :urn/source ?urn-source]
+         [?urn-source :db/ident ?ident]]
+       query-db
+       urn-value))
+
+(defn lookup-name [name]
+  (d/q '[:find ?urn-value ?urn-name
+         :in $ ?name
+         :where
+         [?urn :urn/value ?urn-value]
+         [?urn :urn/name ?urn-name]
+         [(fulltext $ :urn/name name)]]
+       query-db
+       name))
+
+(defn describe-urn 
+  "Describe an URN, or return nil if there is no ID type associated
+   with the URN (indicates we've never seen it described, nor have
+   relations to it.)"
+  [urn-value & {:keys [relations] :or {relations true}}]
+  (when-let [type (-> urn-value urn-type ffirst)]
+    (let [entity-type (-> urn-value urn-entity-type ffirst)
+          source (-> urn-value urn-source ffirst)]
+      (cond-> 
+       {:type (name type)
+        :urn urn-value}
+       relations (assoc :rel (urn-relations urn-value))
+       source (assoc :source (name source))
+       entity-type (assoc :entity-type (name entity-type))))))
+
+;; Handle resolution of IDs of unknown type
+
+(defn id-type [s]
+  (cond
+   (doi-id/extract-long-doi s) :doi
+   (orcid-id/extract-orcid s) :orcid
+   (issn-id/extract-issn s) :issn))
+
+(defn typed-id [s]
+  (condp = (id-type s)
+    :orcid {:type :orcid 
+            :urn (orcid-id/to-orcid-uri s)
+            :id (orcid-id/normalize-orcid s)}
+    :doi {:type :doi 
+          :urn (doi-id/to-long-doi-uri s)
+          :id (doi-id/normalize-long-doi s)}
+    :issn {:type :issn 
+           :urn (issn-id/to-issn-uri s)
+           :id (issn-id/normalize-issn s)}))
+         
+;; Define our resources
+
+(defn node-response [context] 
+  (r/api-response :node :content (:urn context)))
+
+(defn name-list-response [query context]
+  (r/api-response :node-list :content (lookup-name query)))
+
+(defresource graph-doi-resource [doi]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? {:urn (-> doi doi-id/to-long-doi-uri describe-urn)}
+  :handle-ok node-response)
+
+(defresource graph-orcid-resource [orcid]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? {:urn (-> orcid orcid-id/to-orcid-uri describe-urn)}
+  :handle-ok node-response)
+
+(defresource graph-issn-resource [issn]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? {:urn (-> issn issn-id/to-issn-uri describe-urn)}
+  :handle-ok node-response)
+
+(defresource update-analysis-resource [doi depth])
+
+(defresource dispatch-resource [query]
+  :allowed-methods [:get :options]
+  :available-media-types t/json
+  :exists? {:info (typed-id query)}
+  :handle-ok #(redirect 
+               (str (name (get-in % [:info :type]))
+                    "/" 
+                    (get-in % [:info :id]))))
+
+(defresource name-search-resource [query]
+  :allowed-nethods [:get :options]
+  :available-media-types t/json
+  :handle-ok (partial name-list-response query))
+
+;; Define how we route paths to resources
+
+(defroutes graph-api-routes
+  (ANY "/doi/*" {{doi :* depth :depth} :params}
+       (if (.endsWith  doi "/updates")
+         (update-analysis-resource
+          (string/replace doi #"/updates\z" "") depth)
+         (graph-doi-resource doi)))
+  (ANY "/orcid/*" {{orcid :*} :params}
+       (graph-orcid-resource orcid))
+  (ANY "/issn/*" {{issn :*} :params}
+       (graph-issn-resource issn))
+  (ANY "/dispatch" {{query :q} :params} 
+       (dispatch-resource query))
+  (ANY "/" {{query :q} :params}
+       (name-search-resource query)))
