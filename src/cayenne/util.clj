@@ -38,11 +38,6 @@
   [record]
   (reduce (fn [m [k v]] (if (keyword? v) (assoc m k (name v)) m)) record record))
 
-(defn without-keyword-keys
-  "Convert all map keys that are keywords into Java strings."
-  [record]
-  (reduce (fn [m [k v]] (if (keyword? k) (assoc m (name k) v) m)) record record))
-
 (defn with-java-array-vals 
   "Convert all clojure vectors and seqs in a map to Java arrays."
   [record]
@@ -52,6 +47,9 @@
 
 (defn patherize [coll]
   (reduce #(conj %1 (conj (vec (last %1)) %2)) [] coll))
+
+(defn update-vals [map keys f]
+  (reduce #(update-in % [%2] f) map keys))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Control flow stuff taken from Prismatic's plumbing lib

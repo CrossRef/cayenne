@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.graph
   (:require [cayenne.conf :as conf]
+            [cayenne.util :refer [update-vals]]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.response :as r]
             [cayenne.ids.doi :as doi-id]
@@ -103,11 +104,16 @@
        query-db
        name))
 
+(declare describe-urn)
+
+(defn describe-relations [rels]
+  (update-vals rels (keys rels) #(map describe-urn %)))
+
 (defn describe-urn 
   "Describe an URN, or return nil if there is no ID type associated
    with the URN (indicates we've never seen it described, nor have
    relations to it.)"
-  [urn-value & {:keys [relations] :or {relations true}}]
+  [urn-value & {:keys [relations] :or {relations false}}]
   (when-let [type (-> urn-value urn-type ffirst)]
     (let [entity-type (-> urn-value urn-entity-type ffirst)
           source (-> urn-value urn-source ffirst)]
@@ -115,7 +121,7 @@
        {:type (name type)
         :link (node-link urn-value)
         :urn urn-value}
-       relations (assoc :rel (urn-relations urn-value))
+       relations (assoc :rel (-> urn-value urn-relations describe-relations))
        source (assoc :source (name source))
        entity-type (assoc :entity-type (name entity-type))))))
          
@@ -130,19 +136,19 @@
 (defresource graph-doi-resource [doi]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> doi doi-id/to-long-doi-uri describe-urn)}
+  :exists? {:urn (-> doi doi-id/to-long-doi-uri (describe-urn :relations true))}
   :handle-ok node-response)
 
 (defresource graph-orcid-resource [orcid]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> orcid orcid-id/to-orcid-uri describe-urn)}
+  :exists? {:urn (-> orcid orcid-id/to-orcid-uri (describe-urn :relations true))}
   :handle-ok node-response)
 
 (defresource graph-issn-resource [issn]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> issn issn-id/to-issn-uri describe-urn)}
+  :exists? {:urn (-> issn issn-id/to-issn-uri (describe-urn :relations true))}
   :handle-ok node-response)
 
 (defresource update-analysis-resource [doi depth])
