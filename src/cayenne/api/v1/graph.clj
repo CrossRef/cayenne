@@ -45,8 +45,7 @@
 
 ;; Our query definitions
 
-(def ^:dynamic query-db
-  (d/db (conf/get-service :datomic)))
+(def ^:dynamic query-db nil)
 
 (defn urn-related [urn-value relation]
   (d/q '[:find ?related-urn-value
@@ -114,16 +113,17 @@
    with the URN (indicates we've never seen it described, nor have
    relations to it.)"
   [urn-value & {:keys [relations] :or {relations false}}]
-  (when-let [type (-> urn-value urn-type ffirst)]
-    (let [entity-type (-> urn-value urn-entity-type ffirst)
-          source (-> urn-value urn-source ffirst)]
-      (cond-> 
-       {:type (name type)
-        :link (node-link urn-value)
-        :urn urn-value}
-       relations (assoc :rel (-> urn-value urn-relations describe-relations))
-       source (assoc :source (name source))
-       entity-type (assoc :entity-type (name entity-type))))))
+  (with-bindings [query-db (d/db (conf/get-service :datomic))]
+    (when-let [type (-> urn-value urn-type ffirst)]
+      (let [entity-type (-> urn-value urn-entity-type ffirst)
+            source (-> urn-value urn-source ffirst)]
+        (cond-> 
+         {:type (name type)
+          :link (node-link urn-value)
+          :urn urn-value}
+         relations (assoc :rel (-> urn-value urn-relations describe-relations))
+         source (assoc :source (name source))
+         entity-type (assoc :entity-type (name entity-type)))))))
          
 ;; Define our resources
 
