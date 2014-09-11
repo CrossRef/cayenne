@@ -225,12 +225,15 @@
         :db/id %2
         :urn/type :urn.type/issn
         :urn/entityType :urn.entityType/journal
-        :urn/value (-> journal (t/get-item-rel :title) first :value)
-        :sameAs journal-tempids
+        :urn/name (-> journal (t/get-item-rel :title) first :value)
+        :urn/value %1
+        :sameAs (clojure.set/difference (set journal-tempids) (set [%2]))
         :hasPart work-tempid)
       issns
       journal-tempids)
-     (map #(hash-map :db/id work-tempid :isPartOf %) journal-tempids))))
+     [{:db/id work-tempid
+       :isPartOf journal-tempids}])))
+;     (map #(hash-map :db/id work-tempid :isPartOf %) journal-tempids))))
 
 (defn work-citation->urn-datums [work-tempid citation]
   (when-let [doi (-> citation (t/get-item-ids :long-doi) first)]
@@ -278,7 +281,7 @@
      (mapcat (partial work-relation->urn-datums work-tempid)
              (t/get-item-rel item :rel))
      (mapcat (partial journal->urn-datums work-tempid)
-             (t/find-item-of-subtype item :journal)))))
+             (t/find-items-of-subtype item :journal)))))
 
 (defn add-work-centered-tree! 
   "Add a work-centered item tree to datomic."
@@ -358,10 +361,28 @@
        (d/db (conf/get-service :datomic))
        source))
 
+(defn find-all-journals []
+  (d/q '[:find ?urn-value
+         :where
+         [?urn :urn/type :urn.type/issn]
+         [?urn :urn/value ?urn-value]]
+       (d/db (conf/get-service :datomic))))
+
 (defn find-all-works-with-relation [relation]
   (d/q '[:find ?relatee-urn ?relation ?related-urn
          :in $ ?relation
          :where
+         [?relatee ?relation ?related]
+         [?related :urn/value ?related-urn]
+         [?relatee :urn/value ?relatee-urn]]
+       (d/db (conf/get-service :datomic))
+       relation))
+
+(defn find-all-non-source-works-with-relation [relation]
+  (d/q '[:find ?relatee-urn ?relation ?related-urn
+         :in $ ?relation
+         :where
+         [(missing? $ ?related :urn/source)]
          [?relatee ?relation ?related]
          [?related :urn/value ?related-urn]
          [?relatee :urn/value ?relatee-urn]]

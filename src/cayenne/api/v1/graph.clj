@@ -111,6 +111,9 @@
        query-db
        name))
 
+;; Take our datomic queries above and turn results into presentable 
+;; documents. Here, we bind our query database.
+
 (declare describe-urn)
 
 (defn describe-relations [rels]
@@ -129,26 +132,29 @@
         (cond-> 
          {:type (name type)
           :link (node-link urn-value)
-          :urn urn-value
-          :label label}
+          :urn urn-value}
+         label (assoc :label label)
          relations (assoc :rel (-> urn-value urn-relations describe-relations))
          source (assoc :source (name source))
          entity-type (assoc :entity-type (name entity-type)))))))
+
+(defn search-for-name [name]
+  (binding [query-db (d/db (conf/get-service :datomic))]
+    (->> name
+         lookup-name
+         (take 20)
+         flatten
+         (map describe-urn))))
          
-;; Define our resources
+;; Wrap our responses in standard response containers
 
 (defn node-response [context] 
   (r/api-response :node :content (:urn context)))
 
-(defn name-list-response [query context]
-  (r/api-response 
-   :node-list 
-   :content (binding [query-db (d/db (conf/get-service :datomic))]
-              (->> query
-                  lookup-name
-                  (take 20)
-                  flatten
-                  (map describe-urn)))))
+(defn node-list-response [query context]
+  (r/api-response :node-list :content (search-for-name query)))
+
+;; Define our resources
 
 (defresource graph-doi-resource [doi]
   :allowed-methods [:get :options]
@@ -182,7 +188,7 @@
 (defresource name-search-resource [query]
   :allowed-nethods [:get :options]
   :available-media-types t/json
-  :handle-ok (partial name-list-response query))
+  :handle-ok (partial node-list-response query))
 
 ;; Define how we route paths to resources
 
