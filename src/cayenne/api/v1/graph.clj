@@ -35,18 +35,20 @@
            :urn (issn-id/to-issn-uri s)
            :id (issn-id/normalize-issn s)}))
 
-(defn node-link
+;; TODO only working for DOIs
+(defn node-link [context-path s]
   "Turn an implicit type ID/URN into a graph API node link."
   [s]
   (cond
-   (doi-id/extract-long-doi s) (str "/graph/doi/" (doi-id/normalize-long-doi s))
-   (orcid-id/extract-orcid s) (str "/graph/orcid/" (orcid-id/normalize-orcid s))
-   (issn-id/extract-issn s) (str "/graph/issn/" (issn-id/normalize-issn s))))
+   (doi-id/extract-long-doi s) (str context-path "/doi/" (doi-id/normalize-long-doi s))
+   (orcid-id/extract-orcid s) (str context-path "/orcid/" (orcid-id/normalize-orcid s))
+   (issn-id/extract-issn s) (str context-path "/issn/" (issn-id/normalize-issn s))))
 
 ;; Our query definitions
 
 (def ^:dynamic query-db nil)
 
+;; TODO make this return related entity info rather than looking that up separately
 (defn urn-related [urn-value relation]
   (d/q '[:find ?related-urn-value
          :in $ ?urn-value ?relation
@@ -102,6 +104,7 @@
        query-db
        urn-value))
 
+;; TODO make this return urn attributes instead of looking up separately
 (defn lookup-name [name]
   (d/q '[:find ?urn-value
          :in $ ?name
@@ -123,7 +126,7 @@
   "Describe an URN, or return nil if there is no ID type associated
    with the URN (indicates we've never seen it described, nor have
    relations to it.)"
-  [urn-value & {:keys [relations] :or {relations false}}]
+  [urn-value & {:keys [relations context-path] :or {relations false context-path ""}}]
   (binding [query-db (d/db (conf/get-service :datomic))]
     (when-let [type (-> urn-value urn-type ffirst)]
       (let [entity-type (-> urn-value urn-entity-type ffirst)
@@ -131,20 +134,20 @@
             label (-> urn-value urn-name ffirst)]
         (cond-> 
          {:type (name type)
-          :link (node-link urn-value)
+          :link (node-link context-path urn-value)
           :urn urn-value}
          label (assoc :label label)
          relations (assoc :rel (-> urn-value urn-relations describe-relations))
          source (assoc :source (name source))
          entity-type (assoc :entity-type (name entity-type)))))))
 
-(defn search-for-name [name]
+(defn search-for-name [name & {:keys [context-path] :or {context-path ""}}]
   (binding [query-db (d/db (conf/get-service :datomic))]
     (->> name
          lookup-name
          (take 20)
          flatten
-         (map describe-urn))))
+         (map #(describe-urn % :context-path context-path)))))
          
 ;; Wrap our responses in standard response containers
 
@@ -156,24 +159,36 @@
 
 ;; Define our resources
 
+(defn urn-with-context-path [context urn]
+  (describe-urn 
+   :relations true
+   :context-path (get-in context [:request :context-path])))
+
 (defresource graph-doi-resource [doi]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> doi doi-id/to-long-doi-uri (describe-urn :relations true))}
+  :exists? #(hash-map 
+             :urn (->> doi doi-id/to-long-doi-uri 
+                       (urn-with-context-path %)))
   :handle-ok node-response)
 
 (defresource graph-orcid-resource [orcid]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> orcid orcid-id/to-orcid-uri (describe-urn :relations true))}
+  :exists? #(hash-map 
+             :urn (->> orcid orcid-id/to-orcid-uri 
+                       (urn-with-context-path %)))
   :handle-ok node-response)
 
 (defresource graph-issn-resource [issn]
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :exists? {:urn (-> issn issn-id/to-issn-uri (describe-urn :relations true))}
+  :exists? #(hash-map
+             :urn (->> issn issn-id/to-issn-uri 
+                      (urn-with-context-path %)))
   :handle-ok node-response)
 
+;; TODO implement this
 (defresource update-analysis-resource [doi depth])
 
 (defresource dispatch-resource [query]
