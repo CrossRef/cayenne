@@ -83,6 +83,17 @@
      (string/split facet-params #","))
     []))
 
+(defn get-rels
+  [params]
+  (if-let [rel-params (get params :rel)]
+    (map
+     #(let [[rel value] (string/split % #":" 2)]
+        {:rel (keyword rel)
+         :value value
+         :any (= value "*")})
+     (string/split rel-params #","))
+    []))
+
 (defn parse-sort-order [params]
   (if (get params :order)
     (let [val (-> (get params :order)
@@ -128,6 +139,7 @@
      :facets (get-facets params)
      :order (parse-sort-order params)
      :sort (parse-sort params)
+     :rels (get-rels params)
      :filters (merge filters (get-filters params))}))
 
 ;; todo get selectors and get filters handle json input

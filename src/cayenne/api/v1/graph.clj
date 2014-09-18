@@ -3,6 +3,7 @@
             [cayenne.util :refer [update-vals]]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.query :as q]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.orcid :as orcid-id]
@@ -11,7 +12,8 @@
             [liberator.core :refer [defresource]]
             [compojure.core :refer [defroutes ANY]]
             [ring.util.response :refer [redirect]]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [bigml.sampling.simple :as simple]))
 
 ;; Implements the graph API
 
@@ -108,15 +110,29 @@
        query-db
        urn-value))
 
-;; TODO make this return urn attributes instead of looking up separately
-(defn lookup-name [name]
-  (d/q '[:find ?urn-value
-         :in $ ?name
+;; TODO from-update-date, until-update-date
+(defn lookup-context
+  "Handles query, filters and rels."
+  [qc]
+  (let [query 
+        {:find 
+         ['?urn-value '?relation '?related-urn-value]
          :where
-         [(fulltext $ :urn/name ?name) [[?e ?n]]]
-         [?e :urn/value ?urn-value]]
-       query-db
-       name))
+         (concat
+          [['?urn :urn/value '?urn-value]
+           ['?related-urn :urn/value '?related-urn-value]
+           ['?urn '?relation '?related-urn-value]]
+          (when-let [source (get-in qc [:filters :source])]
+            [['?urn :urn/source (keyword (str "urn.source/" source))]])
+          (when-let [related-source (get-in qc [:filters :related-source])]
+            [['?related-urn :urn/source (keyword (str "urn.source/" related-source))]])
+          (map
+           #(if (:any %)
+              [['?urn (:rel %) '?related-urn]]
+              [['?urn (:rel %) '?related-urn]
+               ['?related-urn :urn/value (:value %)]])
+           (:rels qc)))}]
+    (d/q query query-db)))
 
 ;; Take our datomic queries above and turn results into presentable 
 ;; documents. Here, we bind our query database.
@@ -124,7 +140,7 @@
 (declare describe-urn)
 
 (defn describe-relations [rels context]
-  (update-vals rels (keys rels) #(map describe-urn % context)))
+  (update-vals rels (keys rels) (partial map #(describe-urn % context))))
 
 (defn describe-urn 
   "Describe an URN, or return nil if there is no ID type associated
@@ -141,25 +157,32 @@
           :link (node-link urn-value context)
           :urn urn-value}
          label (assoc :label label)
-         relations (assoc :rel (-> urn-value urn-relations describe-relations))
+         relations (assoc :rel (-> urn-value 
+                                   urn-relations 
+                                   (describe-relations context)))
          source (assoc :source (name source))
          entity-type (assoc :entity-type (name entity-type)))))))
 
-(defn search-for-name [name context]
+(defn search-relations [query-context]
   (binding [query-db (d/db (conf/get-service :datomic))]
-    (->> name
-         lookup-name
-         (take 20)
-         flatten
-         (map #(describe-urn % context)))))
-         
+    (if-let [sample-count (:sample query-context)]
+      (->> query-context
+           lookup-context
+           simple/sample
+           (take sample-count))
+      (->> query-context
+           lookup-context
+           ;;(sort-by first) ; TODO sort order
+           (drop (:offset query-context))
+           (take (:rows query-context))))))
+
 ;; Wrap our responses in standard response containers
 
 (defn node-response [context] 
   (r/api-response :node :content (:urn context)))
 
-(defn node-list-response [query context]
-  (r/api-response :node-list :content (search-for-name query)))
+(defn node-list-response [query-context]
+  (r/api-response :node-list :content (search-relations query-context)))
 
 ;; Define our resources
 
@@ -202,10 +225,10 @@
                     "/" 
                     (get-in % [:info :id]))))
 
-(defresource name-search-resource [query]
-  :allowed-nethods [:get :options]
+(defresource graph-resource []
+  :allowed-methods [:get :options]
   :available-media-types t/json
-  :handle-ok (partial node-list-response query))
+  :handle-ok #(-> % q/->query-context node-list-response))
 
 ;; Define how we route paths to resources
 
@@ -221,5 +244,7 @@
        (graph-issn-resource issn))
   (ANY "/dispatch" {{query :q} :params} 
        (dispatch-resource query))
-  (ANY "/" {{query :q} :params}
-       (name-search-resource query)))
+  (ANY "/dispatch/*" {{query :*} :params}
+       (dispatch-resource query))
+  (ANY "/"
+       graph-resource))

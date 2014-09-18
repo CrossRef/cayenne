@@ -9,8 +9,10 @@
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
+  :repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
+                                   :creds :gpg}}
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [com.datomic/datomic-free "0.9.4880.2"
+                 [com.datomic/datomic-pro "0.9.4894"
                   :exclusions [org.slf4j/log4j-over-slf4j]]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.14"]
@@ -45,6 +47,7 @@
                  [com.github.kyleburton/clj-xpath "1.4.3"]
                  [kjw/ring-logstash "0.1.3"]
                  [crossref/heartbeat "0.1.1"]
-                 [robert/bruce "0.7.1"]])
+                 [robert/bruce "0.7.1"]
+                 [bigml/sampling "3.0"]])
 
 

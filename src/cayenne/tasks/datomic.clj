@@ -35,23 +35,25 @@
    :edited
    :sameAs])
 
+(def relation-one-way-antonyms
+  {:isCitedBy :cites
+   :isSupplementTo :isSupplementedBy
+   :isContinuedBy :continues
+   :isUpdateTo :isUpdatedBy
+   :isUpdatePolicyOf :hasUpdatePolicy
+   :isNewVersionOf :isPreviousVersionOf
+   :isPartOf :hasPart
+   :isReferencedBy :references
+   :isDocumentedBy :documents
+   :isCompiledBy :compiles
+   :isVariantFormOf :isOriginalFormOf
+   :isFundedBy :funds
+   :isCreatedBy :created
+   :isEditedBy :edited
+   :sameAs :sameAs})
+
 (def relation-antonyms
-  (let [one-way 
-        {:isCitedBy :cites
-         :isSupplementTo :isSupplementedBy
-         :isContinuedBy :continues
-         :isUpdatedTo :isUpdatedBy
-         :isUpdatePolicyOf :hasUpdatePolicy
-         :isNewVersionOf :isPreviousVersionOf
-         :isPartOf :hasPart
-         :isReferencedBy :references
-         :isDocumentedBy :documents
-         :isCompiledBy :compiles
-         :isVariantFormOf :isOriginalFormOf
-         :isFundedBy :funds
-         :isCreatedBy :created
-         :isEditedBy :edited
-         :sameAs :sameAs}
+  (let [one-way relation-one-way-antonyms
         t-other (into {} (map vector (vals one-way) (keys one-way)))]
     (merge one-way t-other)))
 
@@ -389,9 +391,42 @@
        (d/db (conf/get-service :datomic))
        relation))
 
+(defn find-most-cited-works [limit]
+  (->> (d/q '[:find ?urn-value (distinct-count ?citing-urn-value)
+              :where
+              [?cited-urn :urn/value ?urn-value]
+              [?citing-urn-value :cites ?cited-urn]]
+            (d/db (conf/get-service :datomic)))
+       (take limit)
+       (sort-by second)))
+
+(defn count-no-source-rels [rel]
+  (d/q '[:find (count ?citing-urn)
+         :in $ ?relation 
+         :where
+         [?citing-urn ?relation ?citee-urn]
+         [?citing-urn :urn/source :urn.source/datacite]
+         [(missing? $ ?citee-urn :urn/source)]]
+       (d/db (conf/get-service :datomic))
+       rel))
+
+(defn count-crossref-source-rels [rel]
+  (d/q '[:find (count ?citing-urn)
+         :in $ ?relation 
+         :where
+         [?citing-urn ?relation ?citee-urn]
+         [?citing-urn :urn/source :urn.source/datacite]
+         [?cited-urn :urn/source :urn.source/crossref]]
+       (d/db (conf/get-service :datomic))
+       rel))
+
+(defn with-all-relations [finding-fn]
+  (mapcat finding-fn relation-types))
+  ;(mapcat finding-fn (keys relation-one-way-antonyms)))
+
 (defn with-all-work-to-work-relations [finding-fn]
   (mapcat finding-fn
-          (clojure.set/difference (set relation-types)
+          (clojure.set/difference (set (keys relation-one-way-antonyms))
                                   (set [:created :edited :isCreatedBy :isEditedBy]))))
 
 (defn describe-urn [urn]

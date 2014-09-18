@@ -21,7 +21,7 @@
 (defn parse-citation-count [oai-record]
   (-> oai-record 
       (xml/xselect1 :> "crm-item" [:= "name" "citedby-count"] :text)
-      (util/parse-int)))
+      (util/parse-int-safe)))
 
 (defn unixsd-record-parser
   [oai-record]
