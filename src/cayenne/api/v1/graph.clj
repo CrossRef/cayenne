@@ -116,22 +116,24 @@
   [qc]
   (let [query 
         {:find 
-         ['?urn-value '?relation '?related-urn-value]
+         '[?urn-value ?relation ?related-urn-value]
          :where
          (concat
-          [['?urn :urn/value '?urn-value]
-           ['?related-urn :urn/value '?related-urn-value]
-           ['?urn '?relation '?related-urn-value]]
-          (when-let [source (get-in qc [:filters :source])]
+          '[[?urn :urn/value ?urn-value]
+           [?related-urn :urn/value ?related-urn-value]
+           [?urn ?relation ?related-urn-value]]
+          (when-let [source (-> qc (get-in [:filters "source"]) first)]
             [['?urn :urn/source (keyword (str "urn.source/" source))]])
-          (when-let [related-source (get-in qc [:filters :related-source])]
+          (when-let [related-source (-> qc (get-in [:filters "related-source"]) first)]
             [['?related-urn :urn/source (keyword (str "urn.source/" related-source))]])
-          (map
+          (mapcat
            #(if (:any %)
               [['?urn (:rel %) '?related-urn]]
               [['?urn (:rel %) '?related-urn]
                ['?related-urn :urn/value (:value %)]])
            (:rels qc)))}]
+    (prn qc)
+    (prn query)
     (d/q query query-db)))
 
 ;; Take our datomic queries above and turn results into presentable 
@@ -163,18 +165,26 @@
          source (assoc :source (name source))
          entity-type (assoc :entity-type (name entity-type)))))))
 
+(defn ->no-cr-citations [urn]
+  (if (:source "crossref")
+    (-> urn
+        (update-in [:rel :cites] #(filter (fn [u] (not= (:source u) "datacite"))))
+        (update-in [:rel :isCitedBy] #(filter (fn [u] (not= (:source u) "datacite")))))
+    urn))
+
 (defn search-relations [query-context]
   (binding [query-db (d/db (conf/get-service :datomic))]
-    (if-let [sample-count (:sample query-context)]
-      (->> query-context
-           lookup-context
-           simple/sample
-           (take sample-count))
-      (->> query-context
-           lookup-context
-           ;;(sort-by first) ; TODO sort order
-           (drop (:offset query-context))
-           (take (:rows query-context))))))
+    (lookup-context query-context)))
+
+(defn select-relations [relations query-context]
+  (if-let [sample-count (:sample query-context)]
+    (->> relations
+         simple/sample
+         (take sample-count))
+    (->> relations
+         ;;(sort-by first) ; TODO sort order
+         (drop (:offset query-context))
+         (take (:rows query-context)))))
 
 ;; Wrap our responses in standard response containers
 
@@ -182,7 +192,12 @@
   (r/api-response :node :content (:urn context)))
 
 (defn node-list-response [query-context]
-  (r/api-response :node-list :content (search-relations query-context)))
+  (let [relations (search-relations query-context)]
+    (-> (r/api-response :node-list)
+        (r/with-result-items 
+          (select-relations relations query-context) 
+          (count relations))
+        (r/with-query-context-info query-context))))
 
 ;; Define our resources
 
@@ -190,9 +205,10 @@
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(hash-map 
-             :urn (-> doi 
-                      doi-id/to-long-doi-uri 
-                      (describe-urn % :relations true)))
+             :urn (map ->no-cr-citations
+                       (-> doi 
+                           doi-id/to-long-doi-uri 
+                           (describe-urn % :relations true))))
   :handle-ok node-response)
 
 (defresource graph-orcid-resource [orcid]
@@ -246,5 +262,5 @@
        (dispatch-resource query))
   (ANY "/dispatch/*" {{query :*} :params}
        (dispatch-resource query))
-  (ANY "/"
-       graph-resource))
+  (ANY "/" []
+       (graph-resource)))
