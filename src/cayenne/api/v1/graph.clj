@@ -169,7 +169,7 @@
   (if (:source "crossref")
     (-> urn
         (update-in [:rel :cites] filter #(not= (:source %) "datacite"))
-        (update-in [:rel :isCitedBy] #(not= (:source %) "datacite")))
+        (update-in [:rel :isCitedBy] filter #(not= (:source %) "datacite")))
     urn))
 
 (defn search-relations [query-context]
@@ -195,8 +195,8 @@
   (let [relations (search-relations query-context)]
     (-> (r/api-response :node-list)
         (r/with-result-items 
-          (select-relations relations query-context) 
-          (count relations))
+          (count relations)
+          (select-relations relations query-context))
         (r/with-query-context-info query-context))))
 
 ;; Define our resources
