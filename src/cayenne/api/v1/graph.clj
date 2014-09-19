@@ -120,18 +120,18 @@
          '[?urn-value ?related-urn-value]
          :where
          (concat
-          '[[?urn :urn/value ?urn-value]
-           [?related-urn :urn/value ?related-urn-value]]
+          (mapcat
+           #(if-not (:any %)
+              [['?urn (:rel %) '?related-urn]
+               ['?related-urn :urn/value (:value %)]]
+              [['?urn (:rel %) '?related-urn]])
+           (:rels qc))
           (when-let [source (-> qc (get-in [:filters "source"]) first)]
             [['?urn :urn/source (keyword (str "urn.source/" source))]])
           (when-let [related-source (-> qc (get-in [:filters "related-source"]) first)]
             [['?related-urn :urn/source (keyword (str "urn.source/" related-source))]])
-          (mapcat
-           #(if (:any %)
-              [['?urn (:rel %) '?related-urn]]
-              [['?urn (:rel %) '?related-urn]
-               ['?related-urn :urn/value (:value %)]])
-           (:rels qc)))}]
+          '[[?urn :urn/value ?urn-value]
+           [?related-urn :urn/value ?related-urn-value]])}]
     (prn qc)
     (prn query)
     (d/q query query-db)))
