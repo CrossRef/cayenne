@@ -111,17 +111,17 @@
        urn-value))
 
 ;; TODO from-update-date, until-update-date
+;;      handle multiple relations
 (defn lookup-context
   "Handles query, filters and rels."
   [qc]
   (let [query 
         {:find 
-         '[?urn-value ?relation ?related-urn-value]
+         '[?urn-value ?related-urn-value]
          :where
          (concat
           '[[?urn :urn/value ?urn-value]
-           [?related-urn :urn/value ?related-urn-value]
-           [?urn ?relation ?related-urn-value]]
+           [?related-urn :urn/value ?related-urn-value]]
           (when-let [source (-> qc (get-in [:filters "source"]) first)]
             [['?urn :urn/source (keyword (str "urn.source/" source))]])
           (when-let [related-source (-> qc (get-in [:filters "related-source"]) first)]
@@ -168,8 +168,8 @@
 (defn ->no-cr-citations [urn]
   (if (:source "crossref")
     (-> urn
-        (update-in [:rel :cites] #(filter (fn [u] (not= (:source u) "datacite"))))
-        (update-in [:rel :isCitedBy] #(filter (fn [u] (not= (:source u) "datacite")))))
+        (update-in [:rel :cites] filter #(not= (:source %) "datacite"))
+        (update-in [:rel :isCitedBy] #(not= (:source %) "datacite")))
     urn))
 
 (defn search-relations [query-context]
@@ -177,10 +177,10 @@
     (lookup-context query-context)))
 
 (defn select-relations [relations query-context]
-  (if-let [sample-count (:sample query-context)]
+  (if (pos? (:sample query-context))
     (->> relations
          simple/sample
-         (take sample-count))
+         (take (:sample query-context)))
     (->> relations
          ;;(sort-by first) ; TODO sort order
          (drop (:offset query-context))
@@ -205,10 +205,10 @@
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(hash-map 
-             :urn (map ->no-cr-citations
-                       (-> doi 
-                           doi-id/to-long-doi-uri 
-                           (describe-urn % :relations true))))
+             :urn (-> doi 
+                      doi-id/to-long-doi-uri 
+                      (describe-urn % :relations true)
+                      ->no-cr-citations))
   :handle-ok node-response)
 
 (defresource graph-orcid-resource [orcid]
