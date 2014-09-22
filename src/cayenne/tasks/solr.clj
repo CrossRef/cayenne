@@ -142,7 +142,8 @@
   (mapcat (partial get-item-rel item) contributor-rels)) ;; todo deal with orgs
 
 (defn get-container-titles [item]
-  (let [titles (get-descendant-rel item :title)]
+  (let [titles (mapcat #(get-item-rel % :title)
+                       (get-item-rel item :ancestor))]
     (map :value titles)))
 
 (defn get-oa-status [item]
