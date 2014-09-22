@@ -127,9 +127,13 @@
               [['?urn (:rel %) '?related-urn]])
            (:rels qc))
           (when-let [source (-> qc (get-in [:filters "source"]) first)]
-            [['?urn :urn/source (keyword (str "urn.source/" source))]])
+            (if (= "none" source)
+              [['(missing? $ ?urn :urn/source)]]
+              [['?urn :urn/source (keyword (str "urn.source/" source))]]))
           (when-let [related-source (-> qc (get-in [:filters "related-source"]) first)]
-            [['?related-urn :urn/source (keyword (str "urn.source/" related-source))]])
+            (if (= "none" related-source)
+              [['(missing? $ ?related-urn :urn/source)]]
+              [['?related-urn :urn/source (keyword (str "urn.source/" related-source))]]))
           '[[?urn :urn/value ?urn-value]
            [?related-urn :urn/value ?related-urn-value]])}]
     (prn qc)
