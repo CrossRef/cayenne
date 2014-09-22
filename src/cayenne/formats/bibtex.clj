@@ -68,7 +68,7 @@
 
 (defn add-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
-    (.addField entry key (-> metadata-value protect-case braced-str)))
+    (.addField entry key (-> metadata-value braced-str protect-case)))
   entry)
 
 (defn add-clean-field [entry metadata key metadata-lookup-fn]
