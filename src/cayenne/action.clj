@@ -136,7 +136,7 @@
        
 (def graph-crossref-item
   #(-> (itree/centre-on (first %) (second %))
-       funder/apply-to
+       ;funder/apply-to
        (datomic/add-work-centered-tree! :urn.source/crossref)))
 
 (def store-item
@@ -157,7 +157,7 @@
 
 (defn parse-unixsd-records [file-or-dir using]
   (oai/process file-or-dir
-               :async true
+               :async false
                :split "record"
                :parser unixsd-record-parser
                :task using))
@@ -306,3 +306,21 @@
   (let [patt #"(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
     (find-citations-like file-or-dir patt)))
 
+(defn update-member-solr-docs [id offset to-be-updated?]
+  (let [data (-> (java.net.URL. (str "http://api.crossref.org/members/" 
+                                     id 
+                                     "/works?rows=1000&offset=" 
+                                     offset))
+                 slurp
+                 json/read-str
+                 (get-in ["message" "items"]))]
+    (doseq [record data]
+      (when (to-be-updated? record)
+          (prn (str "Running on " (get record "DOI")))
+          (parse-doi (get record "DOI") index-solr-docs)))
+    (when (pos? (count data))
+      (prn (str "Requesting from " (+ offset 1000)))
+      (recur id (+ offset 1000) to-be-updated?))))
+
+(defn elife-bad-container-title? [record]
+  (> (count (get record "container-title")) 1))
