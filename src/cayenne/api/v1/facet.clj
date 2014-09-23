@@ -2,10 +2,12 @@
   (:require [clojure.string :as string]))
 
 (def std-facets
-  {"type" {:external-field "type-name"}
+  {"type" {:external-field "type-name"
+           :allow-unlimited-values true}
    "year" {:external-field "published"}
    "publication" {:external-field "container-title"}
-   "category" {:external-field "category-name"}
+   "category" {:external-field "category-name"
+               :allow-unlimited-values true}
    "funder_name" {:external-field "funder-name"}
    "funder_doi" {:external-field "funder-doi"
                  :allow-unlimited-values true}
@@ -15,7 +17,10 @@
            :allow-unlimited-values true}
    "source" {:external-field "source"}
    "publisher" {:external-field "publisher-name"}
-   "license_url" {:external-field "license"}})
+   "license_url" {:external-field "license"
+                  :allow-unlimited-values true}
+   "archive" {:external-field "archive"
+              :allow-unlimited-values true}})
 
 (def external->internal-name
   (into {}
