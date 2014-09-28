@@ -1,9 +1,10 @@
 (ns cayenne.api.v1.graph
   (:require [cayenne.conf :as conf]
-            [cayenne.util :refer [update-vals]]
+            [cayenne.util :refer [update-vals parse-int-safe]]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.query :as q]
+            [cayenne.data.work :as work]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.orcid :as orcid-id]
@@ -148,11 +149,6 @@
            query-db urn)
       ffirst))
 
-(defn get-urn-for-eid [eid]
-  (-> (d/datoms query-db :eavt eid :urn/value)
-      first
-      :v))
-
 (defn find-paths [eid depth neighbors target? path located]
   (if (zero? depth)
     located
@@ -219,13 +215,29 @@
          (drop (:offset query-context))
          (take (:rows query-context)))))
 
+(defn get-urn-for-eid [eid]
+  (-> (d/datoms (d/db (conf/get-service :datomic)) :eavt eid :urn/value)
+      first
+      :v))
+
+(defn get-updates-for-eid [eid]
+  (map
+   #(-> % :v get-urn-for-eid work/fetch-one :message)
+   (d/datoms (d/db (conf/get-service :datomic)) :eavt eid :isUpdatedBy)))
+
 (defn describe-updates [doi depth context]
   (binding [query-db (d/db (conf/get-service :datomic))]
     (->> (find-updates doi depth)
-         (map #(map (fn [eid] (-> eid 
-                                  get-urn-for-eid
-                                  (describe-urn context)))
-                    %)))))
+         (map 
+          #(hash-map
+            :citation-path
+            (map (fn [eid] 
+                   (-> eid 
+                       get-urn-for-eid
+                       (describe-urn context)))
+                 %)
+            :update
+            (-> % last get-updates-for-eid))))))
 
 ;; Wrap our responses in standard response containers
 
@@ -272,11 +284,11 @@
 
 (defresource update-analysis-resource [doi depth]
   :allowed-methods [:get :options]
-  :avaialble-media-types t/json
+  :available-media-types t/json
   :exists? #(hash-map
              :report (-> doi
                          doi-id/to-long-doi-uri
-                         (describe-updates depth %)))
+                         (describe-updates (parse-int-safe depth) %)))
   :handle-ok #(r/api-response :update-report :content (:report %)))
 
 (defresource dispatch-resource [query]
