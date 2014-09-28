@@ -307,6 +307,14 @@
          [?cited-urn :urn/value ?cited-value]]
        (d/db (conf/get-service :datomic))))
 
+(defn find-all-cited-updated-works []
+  (d/q '[:find ?cited-urn ?cited-value
+         :where
+         [?cited-urn :isUpdatedBy _]
+         [_ :cites ?cited-urn]
+         [?cited-urn :urn/value ?cited-value]]
+       (d/db (conf/get-service :datomic))))
+
 (defn find-all-funding-orgs []
   (d/q '[:find ?funding-org ?funding-value ?funding-name
          :where

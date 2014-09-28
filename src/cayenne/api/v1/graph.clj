@@ -140,6 +140,35 @@
     (prn query)
     (d/q query query-db)))
 
+(defn get-urn-id [urn]
+  (-> (d/q '[:find ?urn
+             :in $ ?urn-value
+             :where
+             [?urn :urn/value ?urn-value]]
+           query-db urn)
+      ffirst))
+
+(defn get-urn-for-eid [eid]
+  (-> (d/datoms query-db :eavt eid :urn/value)
+      first
+      :v))
+
+(defn find-paths [eid depth neighbors target? path located]
+  (if (zero? depth)
+    located
+    (reduce #(find-paths %2 (dec depth) neighbors target? (conj path eid) %1)
+            (if (target? eid)
+              (conj located (conj path eid))
+              located)
+            (neighbors eid))))
+
+(defn find-updates [doi depth]
+  (letfn [(updated? [eid]
+            (not (empty? (d/datoms query-db :eavt eid :isUpdatedBy))))
+          (cites [eid]
+            (map :v (d/datoms query-db :eavt eid :cites)))]            
+    (find-paths (get-urn-id doi) depth cites updated? [] [])))
+
 ;; Take our datomic queries above and turn results into presentable 
 ;; documents. Here, we bind our query database.
 
@@ -170,10 +199,10 @@
          entity-type (assoc :entity-type (name entity-type)))))))
 
 (defn ->no-cr-citations [urn]
-  (if (:source "crossref")
+  (if (= "crossref" (:source urn))
     (-> urn
-        (update-in [:rel :cites] filter #(not= (:source %) "datacite"))
-        (update-in [:rel :isCitedBy] filter #(not= (:source %) "datacite")))
+        (update-in [:rel :cites] (fn [urns] (filter #(= (:source %) "datacite") urns)))
+        (update-in [:rel :isCitedBy] (fn [urns] (filter #(= (:source %) "datacite") urns))))
     urn))
 
 (defn search-relations [query-context]
@@ -189,6 +218,14 @@
          ;;(sort-by first) ; TODO sort order
          (drop (:offset query-context))
          (take (:rows query-context)))))
+
+(defn describe-updates [doi depth context]
+  (binding [query-db (d/db (conf/get-service :datomic))]
+    (->> (find-updates doi depth)
+         (map #(map (fn [eid] (-> eid 
+                                  get-urn-for-eid
+                                  (describe-urn context)))
+                    %)))))
 
 ;; Wrap our responses in standard response containers
 
@@ -233,8 +270,14 @@
                       (describe-urn % :relations true)))
   :handle-ok node-response)
 
-;; TODO implement this
-(defresource update-analysis-resource [doi depth])
+(defresource update-analysis-resource [doi depth]
+  :allowed-methods [:get :options]
+  :avaialble-media-types t/json
+  :exists? #(hash-map
+             :report (-> doi
+                         doi-id/to-long-doi-uri
+                         (describe-updates depth %)))
+  :handle-ok #(r/api-response :update-report :content (:report %)))
 
 (defresource dispatch-resource [query]
   :allowed-methods [:get :options]
