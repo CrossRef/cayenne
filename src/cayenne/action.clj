@@ -4,6 +4,7 @@
         [cayenne.sources.wok]
         [cayenne.tasks.dump]
         [cayenne.tasks.citation]
+        [cayenne.data.work :as work]
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
         [cayenne.formats.unixsd :only [unixsd-record-parser]]
@@ -316,11 +317,41 @@
                  (get-in ["message" "items"]))]
     (doseq [record data]
       (when (to-be-updated? record)
-          (prn (str "Running on " (get record "DOI")))
+          (println (str "Running on " (get record "DOI")))
           (parse-doi (get record "DOI") index-solr-docs)))
     (when (pos? (count data))
-      (prn (str "Requesting from " (+ offset 1000)))
+      (println (str "Requesting from " (+ offset 1000)))
       (recur id (+ offset 1000) to-be-updated?))))
 
 (defn elife-bad-container-title? [record]
   (> (count (get record "container-title")) 1))
+
+(defn update-solr-docs-for-query [query]
+  (let [dois (->> (work/fetch query)
+                  :message
+                  :items
+                  (map :DOI))]
+    (println "Updating " (count dois) " DOIs")
+    (doall (map #(parse-doi % index-solr-docs) dois))
+    (println "Committing changes")
+    (solr/force-flush-insert-list)
+    (println "Done")))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
