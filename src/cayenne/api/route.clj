@@ -59,13 +59,13 @@
      (context "/graph" [] graph-v1/graph-api-routes)
      (context "/v1/graph" [] graph-v1/graph-api-routes)
      (context "/v1.0/graph" [] graph-v1/graph-api-routes)
-     (create-protected-api-routes)
-     (create-docs-routes))
+     (create-docs-routes)
+     (create-protected-api-routes))
     ; or
     (routes
      (create-unprotected-api-routes)
-     (create-protected-api-routes)
-     (create-docs-routes))))
+     (create-docs-routes)
+     (create-protected-api-routes))))
 
 (defn wrap-cors
   [h]
