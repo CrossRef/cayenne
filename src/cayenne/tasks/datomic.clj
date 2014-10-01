@@ -235,7 +235,6 @@
       journal-tempids)
      [{:db/id work-tempid
        :isPartOf journal-tempids}])))
-;     (map #(hash-map :db/id work-tempid :isPartOf %) journal-tempids))))
 
 (defn work-citation->urn-datums [work-tempid citation]
   (when-let [doi (-> citation (t/get-item-ids :long-doi) first)]
@@ -292,6 +291,17 @@
     (conf/get-service :datomic)
     (work-item->urn-datums item-tree source)))
 
+(def graph-datacite-item
+  #(-> (t/centre-on (first %) (second %))
+       (add-work-centered-tree! :urn.source/datacite)))
+       
+(def graph-crossref-item
+  #(-> (t/centre-on (first %) (second %))
+       (add-work-centered-tree! :urn.source/crossref)))
+
+;; Debug queries
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defn find-all-citing-works []
   (d/q '[:find ?citing-urn ?citing-value ?citing-name
          :where 
@@ -308,11 +318,14 @@
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-cited-updated-works []
-  (d/q '[:find ?cited-urn ?cited-value
+  (d/q '[:find ?cited-urn-5 ?cited-value
          :where
          [?cited-urn :isUpdatedBy _]
-         [_ :cites ?cited-urn]
-         [?cited-urn :urn/value ?cited-value]]
+         [?cited-urn :isCitedBy ?cited-urn-2]
+         [?cited-urn-2 :isCitedBy ?cited-urn-3]
+         [?cited-urn-3 :isCitedBy ?cited-urn-4]
+         [?cited-urn-4 :isCitedBy ?cited-urn-5]
+         [?cited-urn-5 :urn/value ?cited-value]]
        (d/db (conf/get-service :datomic))))
 
 (defn find-all-funding-orgs []
@@ -446,13 +459,4 @@
          [?prop :db/ident ?prop-name]]
        (d/db (conf/get-service :datomic))
        urn))
-
-
-
-  
-         
-
-
-
-
 

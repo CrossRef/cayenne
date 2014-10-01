@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
+            [cayenne.api.v1.graph :as graph-v1]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
             [ring.middleware.logstash :as logstash]
@@ -40,8 +41,7 @@
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)
    (context "/v1.0" [] v1/api-routes)
-   (context "/v1.0" [] v1-doc/api-doc-routes)
-   (context "/v1.0" [] v1-graph/graph-api-routes)))
+   (context "/v1.0" [] v1-doc/api-doc-routes)))
 
 (defn create-docs-routes []
   (routes 
@@ -54,14 +54,13 @@
 
 (defn create-all-routes [& {:keys [graph-api] :or {graph-api false}}]
   (if graph-api
-    (do 
-      (require 'cayenne.api.v1.graph)
-      (routes
-       (create-unprotected-api-routes)
-       (create-protected-api-routes)
-       (context "/graph" [] cayenne.api.v1.graph/graph-api-routes)
-       (context "/v1/graph" [] cayenne.api.v1.graph/graph-api-routes)
-       (create-docs-routes)))
+    (routes
+     (create-unprotected-api-routes)
+     (context "/graph" [] graph-v1/graph-api-routes)
+     (context "/v1/graph" [] graph-v1/graph-api-routes)
+     (context "/v1.0/graph" [] graph-v1/graph-api-routes)
+     (create-protected-api-routes)
+     (create-docs-routes))
     ; or
     (routes
      (create-unprotected-api-routes)

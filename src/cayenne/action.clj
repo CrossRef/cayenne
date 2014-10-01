@@ -4,7 +4,6 @@
         [cayenne.sources.wok]
         [cayenne.tasks.dump]
         [cayenne.tasks.citation]
-        [cayenne.data.work :as work]
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
         [cayenne.formats.unixsd :only [unixsd-record-parser]]
@@ -19,7 +18,6 @@
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.mongo :as mongo]
-            [cayenne.tasks.datomic :as datomic]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
@@ -129,16 +127,6 @@
    #(apply funder/apply-to %)
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
-
-(def graph-datacite-item
-  #(-> (itree/centre-on (first %) (second %))
-       ;funder/apply-to
-       (datomic/add-work-centered-tree! :urn.source/datacite)))
-       
-(def graph-crossref-item
-  #(-> (itree/centre-on (first %) (second %))
-       ;funder/apply-to
-       (datomic/add-work-centered-tree! :urn.source/crossref)))
 
 (def store-item
   (comp
@@ -308,7 +296,7 @@
     (find-citations-like file-or-dir patt)))
 
 (defn update-member-solr-docs [id offset to-be-updated?]
-  (let [data (-> (java.net.URL. (str "http://api.crossref.org/members/" 
+  (let [data (-> (java.net.URL. (str "http://api.crossref.org/v1/members/" 
                                      id 
                                      "/works?rows=1000&offset=" 
                                      offset))
@@ -327,12 +315,15 @@
   (> (count (get record "container-title")) 1))
 
 (defn update-solr-docs-for-query [query]
-  (let [dois (->> (work/fetch query)
-                  :message
-                  :items
-                  (map :DOI))]
-    (println "Updating " (count dois) " DOIs")
-    (doall (map #(parse-doi % index-solr-docs) dois))
+  (let [dois (map 
+              #(get % "DOI")
+              (-> (java.net.URL. (str "http://api.crossref.org/v1/works?"
+                                      query))
+                  slurp
+                  json/read-str
+                  (get-in ["message" "items"])))]
+    (println "Updating" (count dois) "DOIs")
+    (doall (map #(do (println %) (parse-doi % index-solr-docs)) dois))
     (println "Committing changes")
     (solr/force-flush-insert-list)
     (println "Done")))

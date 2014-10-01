@@ -9,15 +9,14 @@
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
-  :repositories 
   :profiles {:datomic
-             {:repositories 
-              {"my.datomic.com" {:url "https://my.datomic.com/repo"
-                                 :creds :gpg}}
-              :dependencies
-              [[com.datomic/datomic-pro "0.9.4894"
-                :exclusions [org.slf4j/log4j-over-slf4j]]]}}
-  :dependencies [[org.clojure/clojure "1.5.1"]
+             {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
+                                               :creds :gpg}}
+              :dependencies [[com.datomic/datomic-pro "0.9.4894"
+                              :exclusions [org.slf4j/log4j-over-slf4j]]]}}
+  :dependencies [[com.datomic/datomic-free "0.9.4880.2"
+                  :exclusions [org.slf4j/log4j-over-slf4j]]
+                 [org.clojure/clojure "1.5.1"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.14"]
                  [xml-apis "1.4.01"]
