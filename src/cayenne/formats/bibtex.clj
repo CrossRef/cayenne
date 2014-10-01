@@ -68,11 +68,10 @@
 
 (defn add-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
-    (.addField entry key (-> metadata-value 
-                             str
-                             latex/->latex-str
-                             protect-case
-                             (StringValue. StringValue$Style/BRACED)))))
+    (.addField entry key (StringValue. 
+                          (-> metadata-value latex/->latex-str protect-case)
+                          StringValue$Style/BRACED)))
+  entry)
 
 (defn add-clean-field [entry metadata key metadata-lookup-fn]
   (when-let [metadata-value (metadata-lookup-fn metadata)]
