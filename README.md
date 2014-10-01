@@ -24,6 +24,8 @@ Run as a production service with some profiles:
 - :index - Run an OAI download and index once daily.
 - :update-members - Collect member records and update with metadata coverage stats (once a day).
 - :update-journals - Collect journal records and update with metadata coverage stats (once a day).
+- :graph - Enables a connection to the graph database backend, datomic.
+- :graph-api - Must be specified along with :api and :graph. Enables the graph API. Requires datomic leiningen profile.
 
 ## Run as a Daemon
 

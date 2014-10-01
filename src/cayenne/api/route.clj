@@ -2,7 +2,6 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
-            [cayenne.api.v1.graph :as v1-graph]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
             [ring.middleware.logstash :as logstash]
@@ -26,7 +25,7 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
-(def protected-routes
+(defn create-protected-api-routes []
   (wrap-basic-authentication
    (routes
     v1/restricted-api-routes
@@ -34,17 +33,18 @@
     (context "/v1.0" [] v1/restricted-api-routes))
    cr-auth/authenticated?))
 
-(def unprotected-routes
+(defn create-unprotected-api-routes []
   (routes
    v1/api-routes
    v1-doc/api-doc-routes
-   (context "/graph" [] v1-graph/graph-api-routes)
    (context "/v1" [] v1/api-routes)
    (context "/v1" [] v1-doc/api-doc-routes)
-   (context "/v1/graph" [] v1-graph/graph-api-routes)
    (context "/v1.0" [] v1/api-routes)
    (context "/v1.0" [] v1-doc/api-doc-routes)
-   (context "/v1.0" [] v1-graph/graph-api-routes)
+   (context "/v1.0" [] v1-graph/graph-api-routes)))
+
+(defn create-docs-routes []
+  (routes 
    (ANY "/help/bestpractice" []
         (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md"))
    (ANY "/help" []
@@ -52,8 +52,21 @@
    (ANY "/" [] 
         (redirect "/help"))))
 
-(def all-routes
-  (routes unprotected-routes protected-routes))
+(defn create-all-routes [& {:keys [graph-api] :or {graph-api false}}]
+  (if graph-api
+    (do 
+      (require 'cayenne.api.v1.graph)
+      (routes
+       (create-unprotected-api-routes)
+       (create-protected-api-routes)
+       (context "/graph" [] cayenne.api.v1.graph/graph-api-routes)
+       (context "/v1/graph" [] cayenne.api.v1.graph/graph-api-routes)
+       (create-docs-routes)))
+    ; or
+    (routes
+     (create-unprotected-api-routes)
+     (create-protected-api-routes)
+     (create-docs-routes))))
 
 (defn wrap-cors
   [h]
@@ -63,8 +76,8 @@
         (assoc-in [:headers "Access-Control-Allow-Headers"]
                   "X-Requested-With"))))
 
-(def api
-  (-> all-routes
+(defn create-handler [& {:keys [graph-api] :or {graph-api false}}]
+  (-> (create-all-routes :graph-api graph-api)
       (logstash/wrap-logstash :host (conf/get-param [:service :logstash :host])
                               :port (conf/get-param [:service :logstash :port])
                               :name (conf/get-param [:service :logstash :name]))
@@ -83,9 +96,12 @@
   (conf/add-startup-task
    :api
    (fn [profiles]
+     (when (some #{:graph} profiles)
+       (require 'cayenne.tasks.datomic)
+       (cayenne.tasks.datomic/connect!))
      (conf/set-service! 
       :api 
       (hs/run-server 
-       api
+       (create-handler :graph-api (some #{:graph-api} profiles))
        {:join? false
         :port (conf/get-param [:service :api :port])})))))
