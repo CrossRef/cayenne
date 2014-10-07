@@ -247,3 +247,6 @@
    "type" (mongo-equality "content-type")
    "doi" (mongo-equality "dois" :transformer doi-id/normalize-long-doi)
    "test" (mongo-bool "test")})
+                              
+(def member-filters
+  {"prefix" (mongo-equality "prefixes")})
