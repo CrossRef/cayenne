@@ -180,7 +180,6 @@
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(when-let [work (-> doi
-                                     (URLDecoder/decode)
                                      (doi-id/to-long-doi-uri)
                                      (work/fetch-one))]
                    {:work work}))
