@@ -348,6 +348,7 @@
   (let [person {:type :person
                 :first-name (xml/xselect1 person-loc "given_name" :text)
                 :last-name (xml/xselect1 person-loc "surname" :text)
+                :sequence (or (xml/xselect1 person-loc ["sequence"]) "additional")
                 :suffix (xml/xselect1 person-loc "suffix" :text)}
         parse-fn #(map parse-affiliation (find-affiliations %))]
     (-> person
@@ -356,6 +357,7 @@
 
 (defn parse-organization [org-loc]
   {:type :org
+   :sequence (or (xml/xselect1 org-loc ["sequence"]) "additional")
    :name (xml/xselect1 org-loc :text)})
 
 (defn find-person-names [item-loc kind]
@@ -436,9 +438,13 @@
       (if-conj (parse-language-title item-loc))))
 
 (defn parse-item-contributors [kind item-loc]
-  (-> []
-      (concat (map parse-person-name (find-person-names item-loc kind)))
-      (concat (map parse-organization (find-organizations item-loc kind)))))
+  (let [by-sequence
+        (-> []
+            (concat (map parse-person-name (find-person-names item-loc kind)))
+            (concat (map parse-organization (find-organizations item-loc kind)))
+            ((partial group-by :sequence)))]
+    (concat
+     (get by-sequence "first") (get by-sequence "additional"))))
 
 (defn parse-grant [funding-identifier-loc]
   (-> {:type :grant}
