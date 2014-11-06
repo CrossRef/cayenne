@@ -63,6 +63,12 @@
       (hist/update! deposit-size (:length new-file))
       (id->s new-doc))))
 
+(defn set! [batch-id k v]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits
+               {:batch-id batch-id}
+               {"$set" {(name k) v}})))
+
 (defn begin-handoff! 
   "Call to begin hand-off or a hand-off try."
   [batch-id & {:keys [delay-fn] :or {delay-fn (fn [_ x] x)}}]

@@ -10,7 +10,6 @@
             [somnium.congomongo :as m]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
-            [datomic.api :as datomic]
             [robert.bruce :as rb]))
 
 (def cores (atom {}))
@@ -151,6 +150,7 @@
 
   (set-param! [:test :doi] "10.5555/12345678")
 
+  (set-param! [:upstream :pdf-service] "http://46.4.83.72:3000/pdf")
   (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
   (set-param! [:upstream :fundref-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
@@ -173,7 +173,6 @@
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))
-     ;(set-service! :datomic (datomic/connect (get-param [:service :datomic :url])))
      (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
      (set-service! :solr-update-list
                    (map #(HttpSolrServer. (str (:url %) "/" (:core %)))

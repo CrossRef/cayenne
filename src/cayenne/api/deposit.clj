@@ -1,5 +1,6 @@
 (ns cayenne.api.deposit
   (:require [clojure.string :as string]
+            [clojure.data.json :as json]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi-id]
             [cayenne.tasks.patent :as patent]
@@ -97,6 +98,13 @@
     :never
     (* (Math/exp x) 1000)))
 
+(defn expo-seconds-delay-short [_ x]
+  (if (> x 5)
+    :never
+    (* (Math/exp x) 1000)))
+
+(defn no-repeat-delay [_ _] :never)
+
 (defn perform-xml-deposit-handoff 
   "Either successfully hands off a deposit to the DS or throws an
    exception. data-source is either :remote - get data stored in mongo,
@@ -137,7 +145,7 @@
            (catch Exception e
              (if (= delay-on-fail :never)
                (deposit-data/failed! (:batch-id context))
-                 (perform-xml-deposit context delay-on-fail)))))
+               (perform-xml-deposit context delay-on-fail)))))
        (if with-delay (long (first with-delay)) 0)
        TimeUnit/MILLISECONDS)))
   context)
@@ -159,6 +167,32 @@
         (deposit-data/complete! batch-id))
       (catch Exception e
         (deposit-data/failed! batch-id :exception e)))))
+
+(defn perform-pdf-citation-extraction [{batch-id :batch-id :as context} & with-delay]
+  (let [delay-on-fail (deposit-data/begin-handoff!
+                       batch-id :delay-fn expo-seconds-delay-short)]
+    (doto (conf/get-service :executor)
+      (.schedule
+       (fn []
+         (try
+           (let [citations
+                 (-> (conf/get-param [:upstream :pdf-service])
+                     (hc/post {:headers {"Content-Type" "application/pdf"}
+                               :query-params {:id batch-id}
+                               :body (deposit-data/fetch-data {:id batch-id})})
+                     deref
+                     :body
+                     json/read-str)]
+             (deposit-data/set! batch-id :citations citations))
+           (deposit-data/end-handoff! batch-id)
+           (deposit-data/complete! batch-id)
+           (catch Exception e
+             (if (= delay-on-fail :never)
+               (deposit-data/failed! batch-id :exception e)
+               (perform-pdf-citation-extraction context delay-on-fail)))))
+       (if with-delay (long (first with-delay)) 0)
+       TimeUnit/MILLISECONDS))
+    context))
 
 (defn deflate-object [context] (assoc context :deflate? true))
          
@@ -207,3 +241,10 @@
       deflate-object
       (perform-patent-citation-deposit \tab))
   (:batch-id context))
+
+(defmethod deposit! "application/pdf" [context]
+  (-> context
+      create-deposit
+      perform-pdf-citation-extraction)
+  (:batch-id context))
+     
