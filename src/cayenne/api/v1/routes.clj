@@ -136,7 +136,8 @@
                                (get-owner %)
                                (get-passwd %)
                                (truth-param % :test)
-                               (param % :pingback))
+                               (param % :pingback)
+                               (param % :url))
                               (dc/deposit!)))
                (catch Exception e
                  (throw e))))

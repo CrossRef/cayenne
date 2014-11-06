@@ -17,9 +17,9 @@
 
 ;; handle deposit dispatch based on deposited content type
 
-(defrecord DepositContext [owner passwd content-type object test pingback-url batch-id])
+(defrecord DepositContext [owner passwd content-type object test pingback-url download-url batch-id])
 
-(defn make-deposit-context [object content-type owner passwd test? pingback-url]
+(defn make-deposit-context [object content-type owner passwd test? pingback-url download-url]
   (DepositContext.
    owner
    passwd
@@ -27,6 +27,7 @@
    object
    test?
    pingback-url
+   download-url
    (.toString (UUID/randomUUID))))
 
 (defmulti deposit! :content-type)
@@ -74,6 +75,11 @@
       (remove-children)
       (add-text (:xml context) (conf/get-param [:deposit :email]))))
   context)
+
+(defn download-object [context]
+  (if (:download-url context)
+    (assoc context :object (-> context :download-url hc/get deref :body))
+    context))
 
 (defn create-deposit [context]
   (deposit-data/create!
@@ -244,6 +250,7 @@
 
 (defmethod deposit! "application/pdf" [context]
   (-> context
+      download-object
       create-deposit
       perform-pdf-citation-extraction)
   (:batch-id context))
