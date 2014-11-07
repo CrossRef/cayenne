@@ -190,7 +190,7 @@
   (> (count (string/split (:text match) #"\s+"))) 3)
 
 (defn match-allow-score? [match]
-  (>= (get-in match [:match :score]) 1))
+  (>= (get-in match [:match :score]) 2))
 
 (defn allowed-matches [matches]
   (map
