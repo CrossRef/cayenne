@@ -191,7 +191,7 @@
   (> (count (string/split (:citation match) #"\s+"))) 3)
 
 (defn match-allow-score? [match]
-  (> (get-in match [:match :score]) 2))
+  (>= (get-in match [:match :score]) 1))
 
 (defn allowed-matches [matches]
   (map
