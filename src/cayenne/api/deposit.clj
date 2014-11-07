@@ -183,12 +183,11 @@
                     work/fetch
                     (get-in [:message :items])
                     first)]
-      {:citation % :match match})
+      {:text % :match match})
    citations))
 
-
 (defn match-allow-token-count? [match]
-  (> (count (string/split (:citation match) #"\s+"))) 3)
+  (> (count (string/split (:text match) #"\s+"))) 3)
 
 (defn match-allow-score? [match]
   (>= (get-in match [:match :score]) 1))
