@@ -179,11 +179,13 @@
 (defn matched-citations [citations]
   (map
    #(let [clean-text (string/replace % #"(?U)[^\w]+" " ")
-          match (-> {:request {:params {:query clean-text :rows 1}}}
-                    q/->query-context
-                    work/fetch
-                    (get-in [:message :items])
-                    first)]
+          match (try
+                  (-> {:request {:params {:query clean-text :rows 1}}}
+                      q/->query-context
+                      work/fetch
+                      (get-in [:message :items])
+                      first)
+                  (catch Exception e nil))]
       {:text % :match match})
    citations))
 
