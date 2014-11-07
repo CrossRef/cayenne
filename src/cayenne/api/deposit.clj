@@ -5,6 +5,8 @@
             [cayenne.ids.doi :as doi-id]
             [cayenne.tasks.patent :as patent]
             [cayenne.data.deposit :as deposit-data]
+            [cayenne.data.work :as work]
+            [cayenne.api.v1.query :as q]
             [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:text+ $x:attrs 
                                     $x:attrs* $x:node
                                     xml->doc node->xml with-namespace-context
@@ -174,6 +176,31 @@
       (catch Exception e
         (deposit-data/failed! batch-id :exception e)))))
 
+(defn matched-citations [citations]
+  (map
+   #(let [match (-> {:query %}
+                    q/->query-context
+                    work/fetch
+                    (get-in [:message :items])
+                    first)]
+      {:citation % :match match})
+   citations))
+
+
+(defn match-allow-token-count? [match]
+  (> (count (string/split (:citation match) #"\s+"))) 3)
+
+(defn match-allow-score? [match]
+  (> (get-in match [:match :score]) 2))
+
+(defn allowed-matches [matches]
+  (map
+   #(if (and (match-allow-score? %)
+             (match-allow-token-count? %))
+      %
+      (dissoc % :match))
+   matches))
+
 (defn perform-pdf-citation-extraction [{batch-id :batch-id :as context} & with-delay]
   (let [delay-on-fail (deposit-data/begin-handoff!
                        batch-id :delay-fn expo-seconds-delay-short)]
@@ -189,7 +216,9 @@
                      deref
                      :body
                      json/read-str)]
-             (deposit-data/set! batch-id :citations citations))
+             (deposit-data/set! batch-id
+                                :citations
+                                (-> citations matched-citations allowed-matches)))
            (deposit-data/end-handoff! batch-id)
            (deposit-data/complete! batch-id)
            (catch Exception e
@@ -204,6 +233,7 @@
          
 (defmethod deposit! "application/vnd.crossref.deposit+xml" [context]
   (-> context
+      download-object
       parse-xml
       parse-xml-deposit-dois
       alter-xml-batch-id
@@ -214,6 +244,7 @@
 
 (defmethod deposit! "application/vnd.crossref.partial+xml" [context]
   (-> context
+      download-object
       parse-xml
       parse-xml-partial-deposit-dois
       alter-xml-batch-id
@@ -224,12 +255,14 @@
 
 (defmethod deposit! "application/vnd.crossref.patent-citations+csv" [context]
   (-> context
+      download-object
       create-deposit
       (perform-patent-citation-deposit \,))
   (:batch-id context))
 
 (defmethod deposit! "application/vnd.crossref.patent-citations+csv+g-zip" [context]
   (-> context
+      download-object
       create-deposit
       deflate-object
       (perform-patent-citation-deposit \,))
@@ -237,12 +270,14 @@
 
 (defmethod deposit! "application/vnd.crossref.patent-citations+tab-separated-values" [context]
   (-> context
+      download-object
       create-deposit
       (perform-patent-citation-deposit \tab))
   (:batch-id context))
 
 (defmethod deposit! "application/vnd.crossref.patent-citations+tab-separated-values+g-zip" [context]
   (-> context
+      download-object
       create-deposit
       deflate-object
       (perform-patent-citation-deposit \tab))
