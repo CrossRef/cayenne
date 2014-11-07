@@ -188,7 +188,7 @@
    citations))
 
 (defn match-allow-token-count? [match]
-  (> (count (string/split (:text match) #"\s+"))) 3)
+  (> (count (string/split (:text match) #"\s+")) 3))
 
 (defn match-allow-score? [match]
   (>= (get-in match [:match :score]) 2))
