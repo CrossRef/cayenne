@@ -178,7 +178,7 @@
 
 (defn matched-citations [citations]
   (map
-   #(let [match (-> {:query %}
+   #(let [match (-> {:request {:params {:query % :rows 1}}}
                     q/->query-context
                     work/fetch
                     (get-in [:message :items])
