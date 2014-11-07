@@ -186,7 +186,9 @@
                       (get-in [:message :items])
                       first)
                   (catch Exception e nil))]
-      {:text % :match match})
+      (if (nil? match)
+        {:text %}
+        {:text % :match match}))
    citations))
 
 (defn match-allow-token-count? [match]
