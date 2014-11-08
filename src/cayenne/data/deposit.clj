@@ -40,7 +40,8 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
-(defn create! [deposit-data type batch-id dois owner passwd test pingback-url]
+(defn create! [deposit-data type batch-id dois owner passwd test
+               pingback-url filename]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (ensure-deposit-indexes! :deposits)
@@ -54,6 +55,7 @@
                               :passwd passwd
                               :test test
                               :pingback-url pingback-url
+                              :filename filename
                               :status :submitted
                               :handoff {:status :incomplete
                                         :timestamp 0

@@ -137,7 +137,8 @@
                                (get-passwd %)
                                (truth-param % :test)
                                (param % :pingback)
-                               (param % :url))
+                               (param % :url)
+                               (param % :filename))
                               (dc/deposit!)))
                (catch Exception e
                  (throw e))))

@@ -19,9 +19,11 @@
 
 ;; handle deposit dispatch based on deposited content type
 
-(defrecord DepositContext [owner passwd content-type object test pingback-url download-url batch-id])
+(defrecord DepositContext [owner passwd content-type object test pingback-url
+                           download-url filename batch-id])
 
-(defn make-deposit-context [object content-type owner passwd test? pingback-url download-url]
+(defn make-deposit-context [object content-type owner passwd test?
+                            pingback-url download-url filename]
   (DepositContext.
    owner
    passwd
@@ -30,6 +32,7 @@
    test?
    pingback-url
    download-url
+   filename
    (.toString (UUID/randomUUID))))
 
 (defmulti deposit! :content-type)
@@ -94,7 +97,8 @@
    (:owner context)
    (:passwd context)
    (:test context)
-   (:pingback-url context))
+   (:pingback-url context)
+   (:filename context))
   context)
 
 (def type->deposit-operation 
@@ -178,7 +182,7 @@
 
 (defn matched-citations [citations]
   (map
-   #(let [clean-text (string/replace % #"(?U)[^\w]+" " ")
+   #(let [clean-text (string/replace (:text %) #"(?U)[^\w]+" " ")
           match (try
                   (-> {:request {:params {:query clean-text :rows 1}}}
                       q/->query-context
@@ -187,8 +191,8 @@
                       first)
                   (catch Exception e nil))]
       (if (nil? match)
-        {:text %}
-        {:text % :match match}))
+        {:text (:text %) :number (:number %)}
+        {:text (:text %) :number (:number %) :match match}))
    citations))
 
 (defn match-allow-token-count? [match]
@@ -212,17 +216,21 @@
       (.schedule
        (fn []
          (try
-           (let [citations
+           (let [article
                  (-> (conf/get-param [:upstream :pdf-service])
                      (hc/post {:headers {"Content-Type" "application/pdf"}
                                :query-params {:id batch-id}
                                :body (deposit-data/fetch-data {:id batch-id})})
                      deref
                      :body
-                     json/read-str)]
+                     (json/read-str :key-fn keyword))]
+             (deposit-data/set! batch-id :title (:title article))
              (deposit-data/set! batch-id
                                 :citations
-                                (-> citations matched-citations allowed-matches)))
+                                (-> article
+                                    :citations
+                                    matched-citations
+                                    allowed-matches)))
            (deposit-data/end-handoff! batch-id)
            (deposit-data/complete! batch-id)
            (catch Exception e
