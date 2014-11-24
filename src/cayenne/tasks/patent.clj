@@ -4,6 +4,8 @@
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi-id]
             [cayenne.util :as util]
+            [cayenne.data.work :as work]
+            [cayenne.ids.doi :as doi-id]
             [clojure.java.io :as io]
             [clojure.data.csv :as csv]
             [clojure.data.json :as json]
@@ -42,20 +44,19 @@
   (m/with-mongo (conf/get-service :mongo)
     (with-open [out-file (io/writer "patent-citations.csv")]
       (doseq [citation (m/fetch :citations)]
-        (let [{:keys [body error]} (->> (get-in citation [:to :id])
-                                        (str "http://api.crossref.org/v1/works/")
-                                        hc/get
-                                        deref)]
-          (when-not error
-            (try
-              (let [doi-info (-> body (json/read-str :key-fn keyword) :message)]
-                (when (and (:member doi-info)
-                           (= mid (last (string/split (:member doi-info) #"/"))))
-                  (csv/write-csv out-file
-                                 [[(:DOI doi-info)
-                                   (get-in citation [:from :id])
-                                   (:citation citation)]])))
-              (catch Exception e nil))))))))
+        (let [doi-info (-> citation
+                           (get-in [:to :id])
+                           doi-id/to-long-doi-uri
+                           work/fetch-one
+                           :message)]
+          (println doi-info)
+          (when (and (:member doi-info)
+                     (= mid (last (string/split (:member doi-info) #"/"))))
+            (csv/write-csv out-file
+                           [[(:DOI doi-info)
+                             (get-in citation [:from :id])
+                             (:citation citation)]])))))))
+
 
 
 
