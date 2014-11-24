@@ -115,7 +115,9 @@
    "deposited" ["deposited_at"]
    "indexed" ["indexed_at"]
    "published" ["year" "month" "day"]
-   "submitted" "submitted-at"})
+
+   ;; for deposits (todo separate these out)
+   "submitted" :submitted-at})
 
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
