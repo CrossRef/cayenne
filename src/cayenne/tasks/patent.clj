@@ -49,7 +49,6 @@
                            doi-id/to-long-doi-uri
                            work/fetch-one
                            :message)]
-          (println doi-info)
           (when (and (:member doi-info)
                      (= mid (last (string/split (:member doi-info) #"/"))))
             (csv/write-csv out-file
