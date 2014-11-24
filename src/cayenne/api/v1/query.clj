@@ -224,8 +224,8 @@
     query))
 
 (defn ->mongo-query [query-context
-                     & {:keys [where sort order filters id-field] 
-                        :or {where {} sort nil filters {} id-field nil}}]
+                     & {:keys [where filters id-field] 
+                        :or {where {} filters {} id-field nil}}]
   (let [filter-where (into {} 
                            (map (fn [[n v]]
                                     ((filters (name n)) v))
@@ -235,8 +235,9 @@
               where
               filter-where
               (when id-field {id-field (:id query-context)}))]
-     (when sort
-       [:sort {sort (if (= order :asc) 1 -1)}])
+     (when (:sort query-context)
+       [:sort {(:sort query-context)
+               (if (= (:order query-context) :asc) 1 -1)}])
      (when (:rows query-context)
        [:limit (:rows query-context)])
      (when (:offset query-context)
