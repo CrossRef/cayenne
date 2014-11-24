@@ -114,7 +114,8 @@
    "updated" ["deposited_at"]
    "deposited" ["deposited_at"]
    "indexed" ["indexed_at"]
-   "published" ["year" "month" "day"]})
+   "published" ["year" "month" "day"]
+   "submitted" "submitted-at"})
 
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
@@ -221,8 +222,8 @@
     query))
 
 (defn ->mongo-query [query-context
-                     & {:keys [where sort filters id-field] 
-                        :or {where {} sort {} filters {} id-field nil}}]
+                     & {:keys [where sort order filters id-field] 
+                        :or {where {} sort nil filters {} id-field nil}}]
   (let [filter-where (into {} 
                            (map (fn [[n v]]
                                     ((filters (name n)) v))
@@ -233,9 +234,19 @@
               filter-where
               (when id-field {id-field (:id query-context)}))]
      (when sort
-       [:sort sort])
+       [:sort {sort (if (= order :asc) 1 -1)}])
      (when (:rows query-context)
        [:limit (:rows query-context)])
      (when (:offset query-context)
        [:skip (:offset query-context)]))))
                  
+
+
+
+
+
+
+
+
+
+
