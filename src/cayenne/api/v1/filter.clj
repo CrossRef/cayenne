@@ -249,4 +249,8 @@
    "test" (mongo-bool "test")})
                               
 (def member-filters
-  {"prefix" (mongo-equality "prefixes")})
+  {"prefix" (mongo-equality "prefixes")
+   "backfile-doi-count" (mongo-equality "counts.backfile-dois"
+                                        :transformer util/parse-int-safe)
+   "current-doi-count" (mongo-equality "counts.current-dois"
+                                       :transformer util/parse-int-safe)})
