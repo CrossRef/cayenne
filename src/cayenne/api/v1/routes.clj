@@ -138,7 +138,8 @@
                                (truth-param % :test)
                                (param % :pingback)
                                (param % :url)
-                               (param % :filename))
+                               (param % :filename)
+                               (param % :parent))
                               (dc/deposit!)))
                (catch Exception e
                  (throw e))))

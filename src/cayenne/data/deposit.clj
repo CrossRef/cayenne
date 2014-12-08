@@ -40,8 +40,20 @@
           (assoc clean-doc :length (:length deposit-file))))
       clean-doc)))
 
+(defn set! [batch-id k v]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits
+               {:batch-id batch-id}
+               {"$set" {(name k) v}})))
+
+(defn append! [batch-id k v]
+    (m/with-mongo (conf/get-service :mongo)
+    (m/update! :deposits
+               {:batch-id batch-id}
+               {"$push" {(name k) v}})))
+
 (defn create! [deposit-data type batch-id dois owner passwd test
-               pingback-url filename]
+               pingback-url filename parent]
   (meter/mark! deposits-received)
   (m/with-mongo (conf/get-service :mongo)
     (ensure-deposit-indexes! :deposits)
@@ -50,6 +62,7 @@
                              {:content-type type
                               :data-id (:_id new-file)
                               :batch-id batch-id
+                              :parent parent
                               :dois dois
                               :owner owner
                               :passwd passwd
@@ -63,13 +76,9 @@
                                         :delay-millis 0}
                               :submitted-at (Date.)})]
       (hist/update! deposit-size (:length new-file))
-      (id->s new-doc))))
-
-(defn set! [batch-id k v]
-  (m/with-mongo (conf/get-service :mongo)
-    (m/update! :deposits
-               {:batch-id batch-id}
-               {"$set" {(name k) v}})))
+      (let [new-doc-id (id->s new-doc)]
+        (when parent (append! parent :children batch-id))
+        new-doc-id))))
 
 (defn begin-handoff! 
   "Call to begin hand-off or a hand-off try."

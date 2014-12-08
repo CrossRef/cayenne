@@ -20,10 +20,10 @@
 ;; handle deposit dispatch based on deposited content type
 
 (defrecord DepositContext [owner passwd content-type object test pingback-url
-                           download-url filename batch-id])
+                           download-url filename parent batch-id])
 
 (defn make-deposit-context [object content-type owner passwd test?
-                            pingback-url download-url filename]
+                            pingback-url download-url filename parent]
   (DepositContext.
    owner
    passwd
@@ -33,6 +33,7 @@
    pingback-url
    download-url
    filename
+   parent
    (.toString (UUID/randomUUID))))
 
 (defmulti deposit! :content-type)
@@ -98,7 +99,8 @@
    (:passwd context)
    (:test context)
    (:pingback-url context)
-   (:filename context))
+   (:filename context)
+   (:parent context))
   context)
 
 (def type->deposit-operation 
