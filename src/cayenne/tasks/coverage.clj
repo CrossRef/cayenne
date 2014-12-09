@@ -97,8 +97,11 @@
                             :filters (make-id-filter type record-id)})]
     {:breakdowns
      {:dois-by-issued-year
-      (-> works
-          (get-in [:message :facets "published" :values]))}}))
+      (reduce
+              (fn [a [k v]] (conj a [(util/parse-int k) v]))
+              []
+              (-> works
+                  (get-in [:message :facets "published" :values])))}}))
 
 (defn check-record-counts [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
