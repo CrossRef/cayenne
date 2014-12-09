@@ -27,18 +27,27 @@
 (defn id->s [doc]
   (-> doc (:_id) (.toString)))
 
-(defn ->response-doc [deposit-doc & {:keys [length] :or {:length false}}]
+(defn ->response-doc [deposit-doc & {:keys [length summary] :or {length false summary false}}]
   (let [clean-doc (-> deposit-doc
                       (dissoc :data-id)
                       (dissoc :passwd)
-                      (dissoc :_id))]
-    (if length
-      (m/with-mongo (conf/get-service :mongo)
-        (let [deposit-file (m/fetch-one-file 
-                            :deposits 
-                            :where {:_id (:data-id deposit-doc)})]
-          (assoc clean-doc :length (:length deposit-file))))
-      clean-doc)))
+                      (dissoc :_id))
+        with-length-doc (if length
+                          (m/with-mongo (conf/get-service :mongo)
+                            (let [deposit-file (m/fetch-one-file 
+                                                :deposits 
+                                                :where {:_id (:data-id deposit-doc)})]
+                              (assoc clean-doc :length (:length deposit-file))))
+                          clean-doc)]
+    (if summary
+      (-> with-length-doc
+          (dissoc :citations)
+          (assoc :citation-count (-> with-length-doc :citations count))
+          (assoc :matched-citation-count (->> with-length-doc
+                                              :citations
+                                              (filter #(-> % :match nil? not))
+                                              count)))
+      with-length-doc)))
 
 (defn set! [batch-id k v]
   (m/with-mongo (conf/get-service :mongo)
@@ -153,5 +162,5 @@
           (r/with-query-context-info query-context)
           (r/with-result-items 
             deposits-count
-            (map #(->response-doc % :length true) deposits))))))
+            (map #(->response-doc % :length true :summary true) deposits))))))
 
