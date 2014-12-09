@@ -3,6 +3,7 @@
             [cayenne.conf :as conf]
             [cayenne.util :refer [?> ?>>]]
             [cayenne.data.work :as works]
+            [cayenne.util :as util]
             [clj-time.core :as dt]
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
@@ -89,12 +90,15 @@
                {} 
                checkles))))
 
-;; (defn check-participation [record & {:keys [type id-field]}]
-;;   (let [record-id (get record id-field)
-;;         works (works/fetch (merge {:rows 0 :facets ["t"]} (make-id-filter type record-id)))]
-;;     {:participation
-;;      {:by-deposit-year {}
-;;       :by-publication-year {}}}))
+(defn check-breakdowns [record & {:keys [type id-field]}]
+  (let [record-id (get record id-field)
+        works (works/fetch {:rows (int 0)
+                            :facets [{:field "published" :count "*"}]
+                            :filters (make-id-filter type record-id)})]
+    {:breakdowns
+     {:dois-by-issued-year
+      (-> works
+          (get-in [:message :facets "published" :values]))}}))
 
 (defn check-record-counts [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
@@ -102,7 +106,8 @@
         current-count (get-work-count type record-id :timing :current)]
     {:counts
      {:backfile-dois backfile-count
-      :current-dois current-count}}))
+      :current-dois current-count
+      :total-dois (+ backfile-count current-count)}}))
 
 (defn check-members
   "Calculate and insert member metadata coverage metrics into a collection."
@@ -113,6 +118,7 @@
        collection
        member
        (merge member
+              (check-breakdowns member :type :member :id-field :id)
               (check-record-coverage member :type :member :id-field :id)
               (check-record-counts member :type :member :id-field :id))))))
 
@@ -124,6 +130,7 @@
       (m/update! 
        collection 
        journal 
-       (merge journal 
+       (merge journal
+              (check-breakdowns journal :type :issn :id-field :issn)
               (check-record-coverage journal :type :issn :id-field :issn)
               (check-record-counts journal :type :issn :id-field :issn))))))
