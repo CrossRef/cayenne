@@ -211,6 +211,7 @@
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
    "has-funder" (existence "funder_name")
+   "has-funder-doi" (existence "funder_doi")
    "has-award" (existence "award_number")
    "full-text" (compound "full_text" ["type" "application" "version"]
                          :transformers {"type" util/slugify
