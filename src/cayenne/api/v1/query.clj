@@ -17,7 +17,7 @@
 (def default-rows 20)
 (def max-rows 1000)
 (def default-facet-rows 20)
-(def max-facet-rows 100)
+(def max-facet-rows 1000)
 
 (defn random-field []
   (str "random_" (rand-int Integer/MAX_VALUE)))
