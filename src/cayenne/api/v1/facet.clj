@@ -9,7 +9,8 @@
    "publication" {:external-field "container-title"}
    "category" {:external-field "category-name"
                :allow-unlimited-values true}
-   "funder_name" {:external-field "funder-name"}
+   "funder_name" {:external-field "funder-name"
+                  :allow-unlimited-values true}
    "funder_doi" {:external-field "funder-doi"
                  :allow-unlimited-values true}
    "orcid" {:external-field "orcid"
