@@ -33,7 +33,7 @@
              (get-in std-facets [field :allow-unlimited-values]))
         -1
         (= specified-limit "*")
-        100
+        1000
         :else
         specified-limit))
 
