@@ -1,6 +1,7 @@
 (ns cayenne.data.deposit
   (:import [java.util Date])
-  (:require [metrics.gauges :refer [defgauge]]
+  (:require [clojure.data.json :as json]
+            [metrics.gauges :refer [defgauge]]
             [somnium.congomongo :as m]
             [cayenne.conf :as conf]
             [cayenne.api.v1.response :as r]
@@ -60,6 +61,15 @@
     (m/update! :deposits
                {:batch-id batch-id}
                {"$push" {(name k) v}})))
+
+;; for now there is only one modification operation - altering
+;; citations of a pdf deposit
+(defn modify! [batch-id data]
+  (let [citations (json/read-str data :key-fn keyword)]
+    (m/with-mongo (conf/get-service :mongo)
+      (m/update! :deposits
+                 {:batch-id batch-id}
+                 {"$set" {"citations" citations}}))))
 
 (defn create! [deposit-data type batch-id dois owner passwd test
                pingback-url filename parent]

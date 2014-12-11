@@ -147,7 +147,7 @@
 
 (defresource deposit-resource [id]
   :authorized? authed?
-  :allowed-methods [:get :options]
+  :allowed-methods [:get :post :options]
   :available-media-types t/json
   :exists? #(when-let [deposit 
                        (-> % 
@@ -156,7 +156,12 @@
                             :id id)
                            (d/fetch-one))]
               {:deposit deposit})
-  :handle-ok :deposit)
+  :handle-ok :deposit
+  :post! #(do
+            (->> (get-in % [:request :body])
+                 (.bytes)
+                 slurp
+                 (d/modify! id))))
 
 (defresource deposit-data-resource [id]
   :authorized? authed?
