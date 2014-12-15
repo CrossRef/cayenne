@@ -22,7 +22,9 @@
    "license_url" {:external-field "license"
                   :allow-unlimited-values true}
    "archive" {:external-field "archive"
-              :allow-unlimited-values true}})
+              :allow-unlimited-values true}
+   "update_type" {:external-field "update-type"
+                  :allow-unlimited-values true}})
 
 (def external->internal-name
   (into {}
