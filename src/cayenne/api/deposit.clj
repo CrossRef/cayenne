@@ -8,7 +8,7 @@
             [cayenne.data.work :as work]
             [cayenne.api.v1.query :as q]
             [clj-xpath.core :refer [$x $x:tag $x:text $x:text* $x:text+ $x:attrs 
-                                    $x:attrs* $x:node
+                                    $x:attrs* $x:node $x:node?
                                     xml->doc node->xml with-namespace-context
                                     xmlnsmap-from-root-node]]
             [org.httpkit.client :as hc])
@@ -51,6 +51,19 @@
            {:xml root-node
             :namespaces (xmlnsmap-from-root-node root-node)})))
 
+(defn parse-xml-content-type [context]
+  (if (some
+       (complement nil?)
+       ((juxt
+         (partial $x:node? "//doi_citations")
+         (partial $x:node? "//doi_resources")
+         (partial $x:node? "//crossmark_data")
+         (partial $x:node? "//fundref_data")
+         (partial $x:node? "//lic_ref_data"))
+        (:xml context)))
+    (assoc context :content-type "application/vnd.crossref.partial+xml")
+    (assoc context :content-type "application/vnd.crossref.deposit+xml")))
+
 (defn parse-xml-deposit-dois [context]
   (with-namespace-context (:namespaces context)
     (assoc context 
@@ -67,6 +80,13 @@
          :xml
          ($x:text+ "//body/*/doi")
          (map (comp string/trim doi-id/normalize-long-doi)))))
+
+(defn parse-xml-any-deposit-dois [context]
+  (condp = (:content-type context)
+    "application/vnd.crossref.deposit+xml"
+    (parse-xml-deposit-dois context)
+    "application/vnd.crossref.partial+xml"
+    (parse-xml-partial-deposit-dois context)))
 
 (defn alter-xml-batch-id [context]
   (with-namespace-context (:namespaces context)
@@ -261,6 +281,18 @@
       download-object
       parse-xml
       parse-xml-partial-deposit-dois
+      alter-xml-batch-id
+      alter-xml-email
+      create-deposit
+      perform-xml-deposit)
+  (:batch-id context))
+
+(defmethod deposit! "application/vnd.crossref.any+xml" [context]
+  (-> context
+      download-object
+      parse-xml
+      parse-xml-content-type
+      parse-xml-any-deposit-dois
       alter-xml-batch-id
       alter-xml-email
       create-deposit

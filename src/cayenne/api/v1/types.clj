@@ -2,6 +2,7 @@
 
 (def depositable ["application/vnd.crossref.deposit+xml"
                   "application/vnd.crossref.partial+xml"
+                  "application/vnd.crossref.any+xml"
                   "application/pdf"
                   "application/vnd.crossref.patent-citations+csv"
                   "application/vnd.crossref.patent-citations+csv+g-zip"
