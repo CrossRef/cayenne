@@ -149,7 +149,7 @@
                       (get context data-source))
         post-url (if (:test context)
                    "http://test.crossref.org/servlet/deposit" 
-                   "http://doi.crossref.org/servlet/deposit")
+                   "https://doi.crossref.org/servlet/deposit")
         operation (-> context :content-type type->deposit-operation)
         query-params {"operation" operation
                       "login_id" (:owner context)

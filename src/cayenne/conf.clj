@@ -161,7 +161,7 @@
   (set-param! [:upstream :unixsd-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://www.crossref.org/getPrefixPublisher/?prefix=")
   (set-param! [:upstream :ra-url] "http://doi.crossref.org/doiRA/")
-  (set-param! [:upstream :crossref-auth] "http://doi.crossref.org/info")
+  (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 
 (with-core :default
