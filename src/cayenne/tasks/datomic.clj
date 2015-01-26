@@ -1,6 +1,8 @@
 (ns cayenne.tasks.datomic
   (:require [cayenne.conf :as conf]
+            [clj-time.core :as dt]
             [cayenne.item-tree :as t]
+            [cayenne.util :as util]
             [datomic.api :as d]
             [clojure.string :as string]))
 
@@ -33,7 +35,11 @@
    :created
    :isEditedBy
    :edited
-   :sameAs])
+   :hasLicense
+   :isLicenseOf
+   :sameAs
+   :hasFullText
+   :isFullTextOf])
 
 (def relation-one-way-antonyms
   {:isCitedBy :cites
@@ -50,6 +56,8 @@
    :isFundedBy :funds
    :isCreatedBy :created
    :isEditedBy :edited
+   :isLicenseOf :hasLicense
+   :isFullTextOf :hasFullText
    :sameAs :sameAs})
 
 (def relation-antonyms
@@ -63,6 +71,7 @@
 (def urn-schema
   [{:db/id #db/id[:db.part/db]
     :db/ident :urn/name
+    :db/doc "Friendly / display name of an entity URN."
     :db/valueType :db.type/string
     :db/cardinality :db.cardinality/many
     :db/index true
@@ -70,40 +79,91 @@
     :db.install/_attribute :db.part/db}
    {:db/id #db/id[:db.part/db]
     :db/ident :urn/value
+    :db/doc "Value of the URN - the literal value of the identifier."
     :db/valueType :db.type/string
     :db/cardinality :db.cardinality/one
-    :db/unique :db.unique/identity ; inserts for an existing URN value will merge related attributes
+    ;; inserts for an existing URN value will merge related attributes
+    :db/unique :db.unique/identity
     :db.install/_attribute :db.part/db}
    {:db/id #db/id[:db.part/db]
     :db/ident :urn/type
+    :db/doc "The type of the URN, doi, issn, etc."
     :db/valueType :db.type/ref
     :db/cardinality :db.cardinality/one
     :db/index true
     :db.install/_attribute :db.part/db}
    {:db/id #db/id[:db.part/db]
     :db/ident :urn/entityType
+    :db/doc "The type of the entity identified by the URN, work, person, org, etc."
     :db/valueType :db.type/ref
-    :db/cardinality :db.cardinality/one
-    :db/index true
-    :db.install/_attribute :db.part/db}
-   {:db/id #db/id[:db.part/db]
-    :db/ident :urn/availableFrom
-    :db/valueType :db.type/instant
     :db/cardinality :db.cardinality/one
     :db/index true
     :db.install/_attribute :db.part/db}
    {:db/id #db/id[:db.part/db]
     :db/ident :urn/source
+    :db/doc "Issuing or responsible party of the URN - e.g. crossref, datacite, medra, orcid."
     :db/valueType :db.type/ref
     :db/cardinality :db.cardinality/one
     :db/index true
     :db.install/_attribute :db.part/db}
+
+   ;; Componentized availability date
+   {:db/id #db/id[:db.part/db]
+    :db/ident :urn/availableFromDay
+    :db/valueType :db.type/long
+    :db/cardinality :db.cardinality/one
+    :db/index true
+    :db.install/_attribute :db.part/db}
+   {:db/id #db/id[:db.part/db]
+    :db/ident :urn/availableFromMonth
+    :db/valueType :db.type/long
+    :db/cardinality :db.cardinality/one
+    :db/index true
+    :db.install/_attribute :db.part/db}
+   {:db/id #db/id[:db.part/db]
+    :db/ident :urn/availableFromYear
+    :db/valueType :db.type/long
+    :db/cardinality :db.cardinality/one
+    :db/index true
+    :db.install/_attribute :db.part/db}
+   {:db/id #db/id[:db.part/db]
+    :db/ident :urn/availableFromPartOfYear
+    :db/valueType :db.type/long
+    :db/cardinality :db.cardinality/one
+    :db/index true
+    :db.install/_attribute :db.part/db}
+
+   ;; Componentized date enum types
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/spring}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/summer}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/autumn}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/winter}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/first-quarter}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/second-quarter}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/third-quarter}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/forth-quarter}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/first-half}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.availableFromPartOfYear/second-half}
 
    ;; enum types
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.source/crossref}
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.source/datacite}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.source/orcid}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.source/cambia}
    
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.type/orcid}
@@ -111,6 +171,8 @@
     :db/ident :urn.type/doi}
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.type/issn}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.type/uri}
 
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.entityType/person}
@@ -121,7 +183,11 @@
    {:db/id #db/id[:db.part/user]
     :db/ident :urn.entityType/journal}
    {:db/id #db/id[:db.part/user]
-    :db/ident :urn.entityType/updatePolicy}])
+    :db/ident :urn.entityType/updatePolicy}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.entityType/license}
+   {:db/id #db/id[:db.part/user]
+    :db/ident :urn.entityType/file}])
 
 (def relations-schema
   (map
@@ -217,6 +283,26 @@
      {:db/id work-tempid
       :hasUpdatePolicy update-policy-tempid}]))
 
+(defn license->urn-datums [work-tempid license]
+  (let [license-tempid (d/tempid :db.part/user)]
+    [{:db/id license-tempid
+      :urn/type :urn.type/uri
+      :urn/entityType :urn.entityType/license
+      :urn/value (-> license :value)
+      :isLicenseOf work-tempid}
+     {:db/id work-tempid
+      :hasLicense license-tempid}]))
+
+(defn fulltext-resource->urn-datums [work-tempid fulltext-resource]
+  (let [fulltext-tempid (d/tempid :db.part/user)]
+    [{:db/id fulltext-tempid
+      :urn/type :urn.type/uri
+      :urn/entityType :urn.entityType/file
+      :urn/value (-> fulltext-resource :value)
+      :isFullTextOf work-tempid}
+     {:db/id work-tempid
+      :hasFullText fulltext-tempid}]))
+
 (defn journal->urn-datums [work-tempid journal]
   (let [issns (t/get-item-ids journal :issn)
         journal-tempids (take (count issns) 
@@ -258,6 +344,41 @@
         :urn/entityType :urn.entityType/work
         (-> relation :rel-type ->rel relation-antonyms) work-tempid}])))
 
+;; todo move to item-tree?
+(defn particle->date-time [particle]
+  (let [year (-> particle :year util/parse-int-safe)
+        month (-> particle :month util/parse-int-safe)
+        day (-> particle :day util/parse-int-safe)]
+    (cond (and year month day)
+          (if (< (dt/number-of-days-in-the-month year month) day)
+            (dt/date-time year month)
+            (dt/date-time year month day))
+          (and year month)
+          (dt/date-time year month)
+          :else
+          (dt/date-time year))))
+
+;; todo move to item-tree?
+(defn get-earliest-pub-date [item]
+  (->> (concat 
+        (t/get-tree-rel item :published-print)
+        (t/get-tree-rel item :published-online)
+        (t/get-tree-rel item :published))
+       (sort-by particle->date-time)
+       first))
+
+(defn work-item->availability-datums [item]
+  (let [pub-date (get-earliest-pub-date item)]
+    (merge
+     (when (:day pub-date) {:urn/availableFromDay (-> pub-date :day long)})
+     (when (:month pub-date) {:urn/availableFromMonth (-> pub-date :month long)})
+     (when (:year pub-date) {:urn/availableFromYear (-> pub-date :year long)})
+     (when (:time-of-year pub-date)
+       {:urn/availableFromTimeOfYear (->> pub-date
+                                          :time-of-year
+                                          (str "urn.availableFromPartOfYear/")
+                                          keyword)}))))
+
 (defn work-item->urn-datums [item source]
   (let [work-tempid (d/tempid :db.part/user)]
     (concat
@@ -267,12 +388,17 @@
        :urn/name (or (-> item (t/get-item-rel :title) first :value) "")
        :urn/source source
        :urn/value (-> item (t/get-item-ids :long-doi) first)}]
+     (work-item->availability-datums item)
      (mapcat (partial update-policy->urn-datums work-tempid)
              (t/get-item-rel item :update-policy))
      (mapcat (partial update->urn-datums work-tempid)
              (t/get-item-rel item :updates))
      (mapcat (partial funder->urn-datums work-tempid)
              (t/get-item-rel item :funder))
+     (mapcat (partial license->urn-datums work-tempid)
+             (t/get-item-rel item :license))
+     (mapcat (partial fulltext-resource->urn-datums work-tempid)
+             (t/get-item-rel item :resource-fulltext))
      (mapcat (partial author->urn-datums work-tempid)
              (t/get-item-rel item :author))
      (mapcat (partial editor->urn-datums work-tempid)
