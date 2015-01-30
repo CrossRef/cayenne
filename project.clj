@@ -4,6 +4,7 @@
   :signing {:gpg-key "labs@crossref.org"}
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
+  :aot :all
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[lein-daemon "0.5.4"]]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
@@ -17,6 +18,7 @@
   :dependencies [[com.datomic/datomic-free "0.9.4880.2"
                   :exclusions [org.slf4j/log4j-over-slf4j]]
                  [org.clojure/clojure "1.5.1"]
+                 [org.clojure/tools.nrepl "0.2.3"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.14"]
                  [xml-apis "1.4.01"]
@@ -45,7 +47,7 @@
                  [compojure "1.1.5"]
                  [ring "1.1.0"]
                  [ring-basic-authentication "1.0.5"]
-                 [http-kit "2.1.16"]
+                 [http-kit "2.1.19"]
                  [instaparse "1.2.14"]
                  [com.github.kyleburton/clj-xpath "1.4.3"]
                  [kjw/ring-logstash "0.1.3"]

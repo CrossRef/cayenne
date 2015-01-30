@@ -8,15 +8,16 @@
             [taoensso.timbre :as timbre])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
-(timbre/set-config! [:appenders :standard-out :enabled?] false)
-(timbre/set-config! [:appenders :spit :enabled?] true)
-(timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
+(defn begin []
+  (timbre/set-config! [:appenders :standard-out :enabled?] false)
+  (timbre/set-config! [:appenders :spit :enabled?] true)
+  (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
 
-(schedule/start)
-
-(conf/create-core-from! :user :default)
-(conf/set-core! :user)
-(conf/start-core! :user :api)
+  (schedule/start)
+  
+  (conf/create-core-from! :user :default)
+  (conf/set-core! :user)
+  (conf/start-core! :user :api))
 
 (defn print-solr-doi [doi]
   (-> (conf/get-service :solr)

@@ -284,7 +284,7 @@
 (defn find-citations-like [file-or-dir patt]
   (oai/process
    file-or-dir
-   :parser unixref-citation-parser 
+   :parser unixref-citation-parser
    :task (matching-citation-finder "match.log.txt" patt)))
 
 (defn find-standards-citations [file-or-dir]
@@ -328,21 +328,28 @@
     (solr/force-flush-insert-list)
     (println "Done")))
 
+(defn find-funder-entries-no-id* [member-id offset]
+  (let [data (-> (java.net.URL.
+                  (str "http://api.crossref.org/v1/members/"
+                       member-id
+                       "/works?rows=1000&filter=has-funder:true&offset="
+                       offset))
+                 slurp
+                 (json/read-str :key-fn keyword)
+                 (get-in [:message :items]))]
+    (concat
+     (mapcat
+      (fn [record]
+        (let [doi (:DOI record)
+              funding (:funder record)]
+          (->> funding
+               (filter #(nil? (:DOI %)))
+               (map #(vector doi (:name %))))))
+      data)
+     (if (zero? (count data))
+       []
+       (find-funder-entries-no-id* member-id (+ offset 1000))))))
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(defn find-funder-entries-no-id [member-id]
+  (filter (complement empty?) (find-funder-entries-no-id* member-id 0)))
 

@@ -1,5 +1,5 @@
 (ns cayenne.production
-  (:gen-class)
+  (:gen-class :main true)
   (:require [cayenne.conf :as conf]
             [cayenne.api.route :as route]
             [taoensso.timbre :as timbre]
