@@ -50,6 +50,8 @@
    :name (:primary_name_display funder-doc)
    :alt-names (:other_names_display funder-doc)
    :uri (:uri funder-doc)
+   :replaces (:replaces funder-doc)
+   :replaced-by (:replaced-by funder-doc)
    :tokens (:name_tokens funder-doc)})
 
 (defn normalize-query-context [qc]

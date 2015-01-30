@@ -42,7 +42,8 @@
       (m/update! :funders existing-doc (add-name existing-doc name name-type))
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
 
-(defn insert-full-funder [id name country alt-names parent-id child-ids affiliation-ids]
+(defn insert-full-funder [id name country alt-names parent-id child-ids
+                          affiliation-ids replaced-by-ids replaces-ids]
   (if (nil? name)
     (prn "no pref label for " id)
     (m/with-mongo (conf/get-service :mongo)
@@ -58,6 +59,8 @@
                                         ; the registry. bug in the registry.
                   :parent (if (not= parent-id id) parent-id nil)
                   :children (or child-ids [])
+                  :replaces (or replaces-ids [])
+                  :replaced-by (or replaced-by-ids [])
                   :affiliated (or affiliation-ids [])}))))
   
 (defn load-funders-csv []
@@ -140,6 +143,16 @@
    :affiliated-ids (->> (select-affil-with-stmts model funder-concept-node)
                         (rdf/objects)
                         (map res->id))
+   :replaced-by-ids (->> (rdf/select model
+                                     :subject funder-concept-node
+                                     :predicate (rdf/dct model "isReplacedBy"))
+                         (rdf/objects)
+                         (map res->id))
+   :replaces-ids (->> (rdf/select model
+                                  :subject funder-concept-node
+                                  :predicate (rdf/dct model "replaces"))
+                      (rdf/objects)
+                      (map res->id))
    :name (first (get-labels model funder-concept-node "prefLabel"))
    :alternative-names (get-labels model funder-concept-node "altLabel")})
 
