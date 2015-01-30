@@ -220,7 +220,9 @@
                  (:alternative-names %)
                  (:broader-id %)
                  (:narrower-ids %)
-                 (:affiliated-ids %))))))
+                 (:affiliated-ids %)
+                 (:replaced-by-ids %)
+                 (:replaces-ids %))))))
   (build-nestings :funderstest))
 
 (defn rdf->funder-names [rdf-file]
