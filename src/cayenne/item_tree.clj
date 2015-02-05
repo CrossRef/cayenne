@@ -57,6 +57,9 @@
   (let [existing-items (or (get-in item [:rel rel-type]) [])]
     (assoc-in item [:rel rel-type] (concat existing-items rel-items))))
 
+(defn delete-relation [item rel-type]
+  (assoc-in item [:rel rel-type] []))
+
 (defn make-item 
   ([type subtype]
      {:type type :subtype subtype})

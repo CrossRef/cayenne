@@ -30,6 +30,7 @@
         primary-id (first result)]
     [primary-id
      (-> work
+         (itree/delete-relation :publisher)
          (itree/add-relation :publisher (parse-publisher oai-record))
          (itree/add-property :citation-count (parse-citation-count oai-record)))]))
       
