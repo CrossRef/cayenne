@@ -4,24 +4,18 @@
             [cayenne.api.v1.response :as r]))
 
 (def locale-cache
-  (->> "locales-en-GB.xml"
-       io/resource
-       io/file
-       (.getParentFile)
-       (.list)
-       (filter #(.startsWith % "locales-"))
-       (map #(-> % 
-                 (string/replace-first #"locales-" "")
-                 (string/replace-first #"\.xml" "")))))
+  (-> "locales.edn"
+      io/resource
+      io/file
+      slurp
+      read-string))
 
 (def style-cache
-  (->> "apa.csl"
-       io/resource
-       io/file
-       (.getParentFile)
-       (.list)
-       (filter #(.endsWith % ".csl"))
-       (map #(string/replace-first % #"\.csl" ""))))
+  (-> "styles.edn"
+      io/resource
+      io/file
+      slurp
+      read-string))
 
 (defn fetch-all-styles []
   (-> (r/api-response :style-list)

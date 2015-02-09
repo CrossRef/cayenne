@@ -4,13 +4,13 @@
   :signing {:gpg-key "labs@crossref.org"}
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
-  :aot :all
   :jvm-opts ["-XX:+UseG1GC"]
   :plugins [[lein-daemon "0.5.4"]]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
-  :profiles {:datomic
+  :profiles {:uberjar {:aot :all}
+             :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                                :creds :gpg}}
               :dependencies [[com.datomic/datomic-pro "0.9.4894"
