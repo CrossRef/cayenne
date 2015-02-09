@@ -5,7 +5,8 @@
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]
-  :plugins [[lein-daemon "0.5.4"]]
+  :plugins [[lein-daemon "0.5.4"]
+            [com.palletops/uberimage "0.4.1"]]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}

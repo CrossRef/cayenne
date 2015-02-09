@@ -3,15 +3,38 @@
 The cayenne base codebase. Implements useful metadata transforms, ID handling, a resource API, OAI metadata
 download and ingest / indexing.
 
-## Usage
+## Quick Start
+
+Make sure you have these dependencies installed within your development environment:
+
+- Java 7
+- Leiningen
+
+Plus, if you wish to build the docker container for deployment:
+
+- Docker
+
+### Preparing CSL Resources
+
+Before running cayenne, building an uberjar or building a docker docker image, CSL resources
+must be pulled into the local repository via git submodules. Manifest files must then be
+created for CSL style files and locale files.
 
 Update git submodules to bring in CSL style and locale files:
 
     $ git submodule update --init
 
-Install [leiningen](http://leiningen.org), then run lein repl and try a few commands:
+Refresh `resources/styles.edn` and `resources/locales.edn`:
+
+    $ lein csl
+
+### Running in a REPL
+
+Call `lein repl`, `(begin)` then try a few commands, for example, parse some XML downloaded from
+OAI-PMH:
 
     $ lein repl
+    > (begin)
 	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
 
 ## Run in Foreground
@@ -41,3 +64,9 @@ Accepts the same arguments as lein run. Also available are:
 In daemonized mode, feature logging will still go to `log/log.txt`, however,
 standard out from the daemonized process's start up phase will be sent to
 `cayenne.log` rather than standard out.
+
+## Run within a Docker Container
+
+Create a docker image:
+
+    $ lein uberimage

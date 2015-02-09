@@ -35,9 +35,7 @@
   (swap! startup-tasks assoc key task))
 
 (defn get-resource [name]
-  (-> (get-param [:res name])
-      io/resource))
-      ;io/file))
+  (-> (get-param [:res name]) io/resource))
 
 (defn file-writer [file-name]
   (let [wrtr (io/writer file-name)]
