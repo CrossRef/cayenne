@@ -1,7 +1,7 @@
 (ns cayenne.url
   (:import [java.net URI])
-  (:use [cayenne.util :only [?>]])
-  (:require [clj-http.client :as client]
+  (:require [cayenne.util :refer [?>]]
+            [clj-http.client :as client]
             [cayenne.conf :as conf]
             [clojure.string :as string]))
 

@@ -35,7 +35,9 @@
   (swap! startup-tasks assoc key task))
 
 (defn get-resource [name]
-  (.getFile (clojure.java.io/resource (get-param [:res name]))))
+  (-> (get-param [:res name])
+      io/resource))
+      ;io/file))
 
 (defn file-writer [file-name]
   (let [wrtr (io/writer file-name)]
@@ -144,6 +146,8 @@
 
   (set-param! [:res :tld-list] "tlds.txt")
   (set-param! [:res :funders] "funders.csv")
+  (set-param! [:res :locales] "locales.edn")
+  (set-param! [:res :styles] "styles.edn")
 
   (set-param! [:location :cr-titles-csv] "http://www.crossref.org/titlelist/titleFile.csv")
   (set-param! [:location :cr-funders-rdf] "http://dx.doi.org/10.13039/fundref_registry")

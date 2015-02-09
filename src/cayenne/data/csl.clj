@@ -1,19 +1,16 @@
 (ns cayenne.data.csl
   (:require [clojure.java.io :as io]
             [clojure.string :as string]
+            [cayenne.conf :as conf]
             [cayenne.api.v1.response :as r]))
 
 (def locale-cache
-  (-> "locales.edn"
-      io/resource
-      io/file
+  (-> (conf/get-resource :locales)
       slurp
       read-string))
 
 (def style-cache
-  (-> "styles.edn"
-      io/resource
-      io/file
+  (-> (conf/get-resource :styles)
       slurp
       read-string))
 
