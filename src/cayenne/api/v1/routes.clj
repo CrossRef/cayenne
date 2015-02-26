@@ -23,6 +23,7 @@
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
+            [cayenne.api.v1.validate :as v]
             [cayenne.api.conneg :as conneg]
             [clojure.data.json :as json]
             [clojure.string :as string]
@@ -90,21 +91,29 @@
   (get-in context [:request :params param-name]))
 
 (defresource csl-styles-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(csl/fetch-all-styles)))
 
 (defresource csl-locales-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(csl/fetch-all-locales)))
 
 (defresource cores-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(c/fetch-all)))
 
 (defresource core-resource [core-name]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(c/exists? core-name))
@@ -115,6 +124,8 @@
 ;; is an exception, we return a 400.
 
 (defresource deposits-resource [data]
+  :malformed? (v/malformed? :filter-validator v/validate-deposit-filters)
+  :handle-malformed :validation-result
   :authorized? authed?
   :known-content-type? #(known-post-type? % t/depositable)
   :allowed-methods [:get :post :options]
@@ -146,6 +157,8 @@
                  ;(hash-map :ex e))))
 
 (defresource deposit-resource [id]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :authorized? authed?
   :allowed-methods [:get :post :options]
   :available-media-types t/json
@@ -164,6 +177,8 @@
                  (d/modify! id))))
 
 (defresource deposit-data-resource [id]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :authorized? authed?
   :allowed-methods [:get :options]
   :media-type-available? (constantly true) ;; todo should return {:representation ...}
@@ -179,12 +194,16 @@
                              :id id)))
 
 (defresource works-resource
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
-  :malformed? p/malformed-list-request?
   :handle-ok #(work/fetch (q/->query-context %)))
 
 (defresource work-resource [doi]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(when-let [work (-> doi
@@ -194,11 +213,15 @@
   :handle-ok :work)
 
 (defresource work-health-resource [doi]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(work/fetch-quality doi)))
 
 (defresource work-agency-resource [doi]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? (->1 #(when-let [agency (work/get-agency doi)] {:agency agency}))
@@ -219,6 +242,8 @@
          (str "http://dx.doi.org/"))))
 
 (defresource work-transform-resource [doi]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :media-type-available? (conneg/content-type-matches t/work-transform)
   :exists? (->1 #(when-let [work (-> doi
@@ -235,6 +260,8 @@
                                             (force-exact-request-doi % doi))})))
 
 (defresource explicit-work-transform-resource [doi content-type]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :media-type-available? (fn [_] (some #{content-type} t/work-transform))
   :exists? (->1 #(when-let [work (-> doi
@@ -252,11 +279,15 @@
                                             (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(funder/fetch (q/->query-context %)))
 
 (defresource funder-resource [funder-id]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [f (funder/fetch-one 
@@ -265,12 +296,17 @@
   :handle-ok :funder)
 
 (defresource funder-works-resource [funder-id]
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
 (defresource prefix-resource [px]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [p (prefix/fetch-one
@@ -279,17 +315,24 @@
   :handle-ok :publisher)
 
 (defresource prefix-works-resource [px]
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
 
 (defresource members-resource
+  :malformed? (v/malformed? :filter-validator v/validate-member-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(member/fetch (q/->query-context %)))
 
 (defresource member-resource [id]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
@@ -298,6 +341,9 @@
   :handle-ok :member)
 
 (defresource member-works-resource [id]
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
@@ -306,11 +352,15 @@
   :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
 
 (defresource journals-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(journal/fetch (q/->query-context %)))
 
 (defresource journal-resource [issn]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [j (journal/fetch-one
@@ -319,6 +369,9 @@
   :handle-ok :journal)
 
 (defresource journal-works-resource [issn]
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [j (journal/fetch-one
@@ -327,16 +380,22 @@
   :handle-ok #(journal/fetch-works (q/->query-context % :id (issn-id/normalize-issn issn))))
 
 (defresource licenses-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok #(license/fetch-all (q/->query-context %)))
 
 (defresource types-resource
+  :malformed? (v/malformed?)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(data-types/fetch-all)))
 
 (defresource type-resource [id]
+  :malformed? (v/malformed? :singleton true)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :exists? #(when-let [t (data-types/fetch-one (q/->query-context % :id id))]
@@ -344,6 +403,9 @@
   :handle-ok :data-type)
 
 (defresource type-works-resource [id]
+  :malformed? (v/malformed? :facet-validator v/validate-work-facets
+                            :filter-validator v/validate-work-filters)
+  :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :malformed? p/malformed-list-request?
   :available-media-types t/json

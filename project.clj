@@ -44,7 +44,7 @@
                  [org.clojure/core.memoize "0.5.3"]
                  [org.clojure/math.combinatorics "0.0.4"]
                  [com.novemberain/langohr "1.4.1"]
-                 [liberator "0.10.0"]
+                 [liberator "0.12.2"]
                  [compojure "1.1.5"]
                  [ring "1.1.0"]
                  [ring-basic-authentication "1.0.5"]
