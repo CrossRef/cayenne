@@ -293,14 +293,32 @@
 
 (defn validate-ordering-params [context params]
   (-> context
-      (util/?> (:order params) (sort-order-validator (:order params)))
-      (util/?> (:sort params) (sort-field-validator (:sort params)))))
+      (util/?> (:order params) sort-order-validator (:order params))
+      (util/?> (:sort params) sort-field-validator (:sort params))))
 
-;; TODO implement
+;; TODO implement, although covered by 404s in some cases
 (defn validate-id [context rc]
   (if (:id-validator context)
     (pass context)
     (pass context)))
+
+(defn validate-pair-list-form [context s]
+  (try
+    (let [parsed (->> (string/split s #",")
+                      (map #(string/split % #":"))
+                      (into {}))]
+      (pass context))
+    (catch Exception e
+      (fail context s :pair-list-form-invalid
+            (str "Pair list form specified as '" s "' but should be of"
+                 " the form: key:val,...,keyN:valN")))))
+
+(defn validate-pair-list-forms [context params]
+  (-> context
+      (util/?> (:facet params)
+               validate-pair-list-form (:facet params))
+      (util/?> (:filter params)
+               validate-pair-list-form (:filter params))))
 
 (defn validate-facet-param [context params]
   (if (or (:singleton context)
@@ -315,10 +333,12 @@
           (some #{(:facet params)} ["*" "t" "T" "1"])
           context
           :else
-          (let [facets (into {}
-                             (map #(string/split % #":")
-                                  (-> (:facet params)
-                                      (string/split #","))))]
+          (let [facets (try
+                         (into {}
+                               (map #(string/split % #":")
+                                    (-> (:facet params)
+                                        (string/split #","))))
+                         (catch Exception e {}))]
             ((:facet-validator context) context facets)))))
 
 (defn validate-filter-param [context params]
@@ -331,10 +351,12 @@
                   "filter"))
     (if-not (:filter params)
       context
-      (let [filters (into {}
-                          (map #(string/split % #":")
-                               (-> (:filter params)
-                                   (string/split #","))))]
+      (let [filters (try
+                      (into {}
+                            (map #(string/split % #":")
+                                 (-> (:filter params)
+                                     (string/split #","))))
+                      (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
 ;; TODO validate format of filter and facet strings
@@ -362,7 +384,7 @@
       (pass context)
       (reduce #(fail %1 %2 :unknown-parameter
                      (str "Parameter " (name %2) " specified but there is no such"
-                          " parameter available on any route in this API"))
+                          " parameter available on any route"))
                 context
                 unknown-params))))
 
@@ -370,6 +392,7 @@
   (let [params (p/get-parameters resource-context)]
     (-> context
         (validate-params params)
+        (validate-pair-list-forms params)
         (validate-paging-params params)
         (validate-ordering-params params)
         (validate-facet-param params)
@@ -393,13 +416,4 @@
           :message-type :validation-failure
           :message (:failures result)}}
         false))))
-
-
-
-
-
-
-
-
-
 
