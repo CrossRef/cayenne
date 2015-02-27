@@ -114,7 +114,7 @@
           (str "Content type specified as " s " but must be "
                " a valid MIME type without wildcards"))))
 
-(defn issn-validator [context s] (pass s)
+(defn issn-validator [context s]
   (if (-> s issn-id/normalize-issn issn-id/is-issn?)
     (pass context)
     (fail context s :issn-not-valid
