@@ -296,7 +296,7 @@
       (util/?> (:order params) (sort-order-validator (:order params)))
       (util/?> (:sort params) (sort-field-validator (:sort params)))))
 
-;; todo
+;; TODO implement
 (defn validate-id [context rc]
   (if (:id-validator context)
     (pass context)
@@ -337,6 +337,8 @@
                                    (string/split #","))))]
         ((:filter-validator context) context filters)))))
 
+;; TODO validate format of filter and facet strings
+
 (defn validate-query-param [context params]
   (validate context
             #(not (and (:singleton context) (:query params)))
@@ -344,18 +346,36 @@
             "This route does not support query"
             "query"))
 
+(def available-params [:query :rows :offset :sample :facet :filter
+                       :pingback :url :filename :parent :test])
+
+;; TODO Expand validate-params and use it to replace other param checks.
+;; TODO Check that deposit params only specified on POST, and not
+;;      with default route params.
+
+(defn validate-params
+  "Check for unknown parameters"
+  [context params]
+  (println (keys params))
+  (let [unknown-params (cset/difference (set (keys params)) (set available-params))]
+    (if (empty? unknown-params)
+      (pass context)
+      (reduce #(fail %1 %2 :unknown-parameter
+                     (str "Parameter " (name %2) " specified but there is no such"
+                          " parameter available on any route in this API"))
+                context
+                unknown-params))))
+
 (defn validate-resource-context [context resource-context]
   (let [params (p/get-parameters resource-context)]
     (-> context
+        (validate-params params)
         (validate-paging-params params)
         (validate-ordering-params params)
         (validate-facet-param params)
         (validate-filter-param params)
         (validate-query-param params)
         (validate-id resource-context))))
-
-;; TODO completely unknown parameters beyond rows, offset, sample
-;; facet, filter, query, (test, callback, others for deposits)
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator singleton]
                      :or {singleton false}}]
