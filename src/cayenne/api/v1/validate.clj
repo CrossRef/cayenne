@@ -359,8 +359,6 @@
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
-;; TODO validate format of filter and facet strings
-
 (defn validate-query-param [context params]
   (validate context
             #(not (and (:singleton context) (:query params)))
