@@ -369,7 +369,7 @@
             "This route does not support query"
             "query"))
 
-(def available-params [:query :rows :offset :sample :facet :filter
+(def available-params [:id :query :rows :offset :sample :facet :filter
                        :pingback :url :filename :parent :test])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
