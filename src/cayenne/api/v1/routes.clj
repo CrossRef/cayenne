@@ -300,7 +300,6 @@
                             :filter-validator v/validate-work-filters)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
-  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
 
@@ -319,7 +318,6 @@
                             :filter-validator v/validate-work-filters)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
-  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
 
@@ -407,7 +405,6 @@
                             :filter-validator v/validate-work-filters)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
-  :malformed? p/malformed-list-request?
   :available-media-types t/json
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
