@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.parameters
   (:require [clojure.data.json :as json]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [cayenne.util :as util]))
 
 (def valid-list-parameters (set [:sample :query :offset :rows :selector 
                                  :filter :facet :sort :order]))
@@ -10,7 +11,8 @@
 (defn get-parameters [request-context]
   (if (nil? (get-in request-context [:request :body]))
     (-> request-context
-        (get-in [:request :params]))
+        (get-in [:request :query-params])
+        (util/update-keys keyword))
     (-> request-context
         (get-in [:request :body])
         (io/reader)

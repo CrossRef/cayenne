@@ -48,8 +48,11 @@
 (defn patherize [coll]
   (reduce #(conj %1 (conj (vec (last %1)) %2)) [] coll))
 
-(defn update-vals [map keys f]
-  (reduce #(update-in % [%2] f) map keys))
+(defn update-vals [m keys f]
+  (reduce #(update-in % [%2] f) m keys))
+
+(defn update-keys [m f]
+  (zipmap (map f (keys m)) (vals m)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Control flow stuff taken from Prismatic's plumbing lib
