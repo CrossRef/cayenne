@@ -379,7 +379,6 @@
 (defn validate-params
   "Check for unknown parameters"
   [context params]
-  (println (keys params))
   (let [unknown-params (cset/difference (set (keys params)) (set available-params))]
     (if (empty? unknown-params)
       (pass context)
