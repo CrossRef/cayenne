@@ -108,11 +108,11 @@
   (date-validator context s))
 
 (defn content-type-validator [context s]
-  (if (re-matches #"[\s-]+/[\s-+.]+" s)
+  (if (re-matches #"[\w\-]+\/[\w\-+\.]+" s)
     (pass context)
     (fail context s :content-type-not-valid
           (str "Content type specified as " s " but must be "
-               " a valid MIME type without wildcards"))))
+               "a valid MIME type without wildcards"))))
 
 (defn issn-validator [context s]
   (if (-> s issn-id/normalize-issn issn-id/is-issn?)
