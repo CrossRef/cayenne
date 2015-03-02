@@ -214,10 +214,10 @@
    :backfile-doi-count integer-validator
    :currnet-doi-count integer-validator})
 
-(defn validate-filters [filter-definitions filter-validators context filters]
+(defn validate-filters [filter-validators context filters]
   (let [unknown-filters (cset/difference
                          (set (map first filters))
-                         (set (keys filter-definitions)))
+                         (set (map name (keys filter-validators))))
         existence-chk-context 
         (if (empty? unknown-filters)
           (pass context)
@@ -225,7 +225,7 @@
                          (str "Filter " %2 " specified but there "
                               "is no such filter for this route."
                               " Valid filters for this route are: "
-                              (string/join ", " (keys filter-definitions))))
+                              (string/join ", " (map name (keys filter-validators)))))
                   context
                   unknown-filters))]
     (reduce
@@ -237,13 +237,10 @@
      filters)))
     
 (def validate-deposit-filters (partial validate-filters
-                                       f/deposit-filters
                                        deposit-filter-validators))
 (def validate-work-filters (partial validate-filters
-                                    f/std-filters
                                     work-filter-validators))
 (def validate-member-filters (partial validate-filters
-                                      f/member-filters
                                       member-filter-validators))
 
 (def wildcard-facet-forms ["*" "t" "T" "1"])
