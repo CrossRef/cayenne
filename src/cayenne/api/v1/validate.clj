@@ -216,7 +216,7 @@
 
 (defn validate-filters [filter-definitions filter-validators context filters]
   (let [unknown-filters (cset/difference
-                         (set (keys filters))
+                         (set (map first filters))
                          (set (keys filter-definitions)))
         existence-chk-context 
         (if (empty? unknown-filters)
@@ -246,10 +246,12 @@
                                       f/member-filters
                                       member-filter-validators))
 
+(def wildcard-facet-forms ["*" "t" "T" "1"])
+
 ;; TODO check * only for allow unlimited values, number is up to q/max-facet-rows
 (defn validate-facets [facet-definitions context facets]
-  (let [facet-names (->> facet-definitions vals (map :external-field))
-        unknown-facets (cset/difference (set (keys facets)) (set facet-names))]
+  (let [facet-names (conj (->> facet-definitions vals (map :external-field)) "*")
+        unknown-facets (cset/difference (set (map first facets)) (set facet-names))]
     (if (empty? unknown-facets)
       (pass context)
       (reduce #(fail %1 %2 :facet-not-available
@@ -302,21 +304,23 @@
     (pass context)
     (pass context)))
 
-(defn validate-pair-list-form [context s]
-  (try
-    (let [parsed (->> (string/split s #",")
-                      (map #(string/split % #":"))
-                      (into {}))]
-      (pass context))
-    (catch Exception e
-      (fail context s :pair-list-form-invalid
-            (str "Pair list form specified as '" s "' but should be of"
-                 " the form: key:val,...,keyN:valN")))))
+(defn validate-pair-list-form [context s & {:keys [also]}]
+  (if (and also (some #{s} also))
+    (pass context)
+    (try
+      (let [parsed (->> (string/split s #",")
+                        (map #(string/split % #":"))
+                        (into {}))]
+        (pass context))
+      (catch Exception e
+        (fail context s :pair-list-form-invalid
+              (str "Pair list form specified as '" s "' but should be of"
+                   " the form: key:val,...,keyN:valN"))))))
 
 (defn validate-pair-list-forms [context params]
   (-> context
       (util/?> (:facet params)
-               validate-pair-list-form (:facet params))
+               validate-pair-list-form (:facet params) :also wildcard-facet-forms)
       (util/?> (:filter params)
                validate-pair-list-form (:filter params))))
 
@@ -330,14 +334,13 @@
                   "facet"))
     (cond (not (:facet params))
           context
-          (some #{(:facet params)} ["*" "t" "T" "1"])
+          (some #{(:facet params)} wildcard-facet-forms)
           context
           :else
           (let [facets (try
-                         (into {}
-                               (map #(string/split % #":")
-                                    (-> (:facet params)
-                                        (string/split #","))))
+                         (map #(string/split % #":")
+                              (-> (:facet params)
+                                  (string/split #",")))
                          (catch Exception e {}))]
             ((:facet-validator context) context facets)))))
 
@@ -352,10 +355,9 @@
     (if-not (:filter params)
       context
       (let [filters (try
-                      (into {}
-                            (map #(string/split % #":")
-                                 (-> (:filter params)
-                                     (string/split #","))))
+                      (map #(string/split % #":")
+                           (-> (:filter params)
+                               (string/split #",")))
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
@@ -372,6 +374,9 @@
 ;; TODO Expand validate-params and use it to replace other param checks.
 ;; TODO Check that deposit params only specified on POST, and not
 ;;      with default route params.
+
+;; TODO Why does /works?filter:*&rows=0 not result in filter:* marked as unknown param?
+;;      check p/get-parameters
 
 (defn validate-params
   "Check for unknown parameters"
