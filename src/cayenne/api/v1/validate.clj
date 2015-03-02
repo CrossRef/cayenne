@@ -249,6 +249,7 @@
 (def wildcard-facet-forms ["*" "t" "T" "1"])
 
 ;; TODO check * only for allow unlimited values, number is up to q/max-facet-rows
+
 (defn validate-facets [facet-definitions context facets]
   (let [facet-names (conj (->> facet-definitions vals (map :external-field)) "*")
         unknown-facets (cset/difference (set (map first facets)) (set facet-names))]
@@ -374,9 +375,6 @@
 ;; TODO Expand validate-params and use it to replace other param checks.
 ;; TODO Check that deposit params only specified on POST, and not
 ;;      with default route params.
-
-;; TODO Why does /works?filter:*&rows=0 not result in filter:* marked as unknown param?
-;;      check p/get-parameters
 
 (defn validate-params
   "Check for unknown parameters"
