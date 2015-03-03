@@ -303,7 +303,7 @@
     (pass context)
     (try
       (let [parsed (->> (string/split s #",")
-                        (map #(string/split % #":"))
+                        (map #(string/split % #":" 2))
                         (into {}))]
         (pass context))
       (catch Exception e
@@ -314,7 +314,8 @@
 (defn validate-pair-list-forms [context params]
   (-> context
       (util/?> (:facet params)
-               validate-pair-list-form (:facet params) :also wildcard-facet-forms)
+               validate-pair-list-form (:facet params)
+               :also wildcard-facet-forms)
       (util/?> (:filter params)
                validate-pair-list-form (:filter params))))
 
@@ -332,7 +333,7 @@
           context
           :else
           (let [facets (try
-                         (map #(string/split % #":")
+                         (map #(string/split % #":" 2)
                               (-> (:facet params)
                                   (string/split #",")))
                          (catch Exception e {}))]
@@ -349,7 +350,7 @@
     (if-not (:filter params)
       context
       (let [filters (try
-                      (map #(string/split % #":")
+                      (map #(string/split % #":" 2)
                            (-> (:filter params)
                                (string/split #",")))
                       (catch Exception e {}))]
@@ -373,11 +374,13 @@
 (defn validate-params
   "Check for unknown parameters"
   [context params]
-  (let [unknown-params (cset/difference (set (keys params)) (set available-params))]
+  (let [unknown-params (cset/difference (set (keys params))
+                                        (set available-params))]
     (if (empty? unknown-params)
       (pass context)
       (reduce #(fail %1 %2 :unknown-parameter
-                     (str "Parameter " (name %2) " specified but there is no such"
+                     (str "Parameter " (name %2)
+                          " specified but there is no such"
                           " parameter available on any route"))
                 context
                 unknown-params))))
@@ -394,7 +397,8 @@
         (validate-query-param params)
         (validate-id resource-context))))
 
-(defn malformed? [& {:keys [id-validator facet-validator filter-validator singleton]
+(defn malformed? [& {:keys [id-validator facet-validator filter-validator
+                            singleton]
                      :or {singleton false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
