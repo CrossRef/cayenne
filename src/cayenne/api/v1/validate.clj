@@ -103,10 +103,6 @@
           (str "Date specified as " s " but must be of the form: "
                "yyyy or yyyy-MM or yyyy-MM-dd"))))
 
-;; TODO date time
-(defn datetime-validator [context s]
-  (date-validator context s))
-
 (defn content-type-validator [context s]
   (if (re-matches #"[\w\-]+\/[\w\-+\.]+" s)
     (pass context)
@@ -201,8 +197,8 @@
    :award.number string-validator})
 
 (def deposit-filter-validators
-  {:from-submission-time datetime-validator
-   :until-submission-time datetime-validator
+  {:from-submission-time date-validator
+   :until-submission-time date-validator
    :status deposit-status-validator
    :owner string-validator
    :type content-type-validator
@@ -367,6 +363,7 @@
             "query"))
 
 (def available-params [:query :rows :offset :sample :facet :filter
+                       :sort :order
                        :pingback :url :filename :parent :test])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
