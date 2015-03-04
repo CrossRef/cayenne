@@ -300,7 +300,11 @@
 
 (defn parse-pair-list-form [s]
   (->> (string/split s #",")
-       (filter #(not (.startsWith % " "))) ;; temp fix for category-name
+       ;; temp fix for category names containing ','
+       ;; TODO clean up category names
+       (filter #(if (.startsWith % " ")
+                  (nil? (re-find #":" s))
+                  true))
        (map #(string/split % #":" 2))))
 
 (defn validate-pair-list-form [context s & {:keys [also]}]
