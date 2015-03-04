@@ -298,12 +298,16 @@
     (pass context)
     (pass context)))
 
+(defn parse-pair-list-form [s]
+  (->> (string/split s #",")
+       (filter #(not (.startsWith % " "))) ;; temp fix for category-name
+       (map #(string/split % #":" 2))))
+
 (defn validate-pair-list-form [context s & {:keys [also]}]
   (if (and also (some #{s} also))
     (pass context)
     (try
-      (let [parsed (->> (string/split s #",")
-                        (map #(string/split % #":" 2))
+      (let [parsed (->> (parse-pair-list-form s)
                         (into {}))]
         (pass context))
       (catch Exception e
@@ -333,9 +337,7 @@
           context
           :else
           (let [facets (try
-                         (map #(string/split % #":" 2)
-                              (-> (:facet params)
-                                  (string/split #",")))
+                         (parse-pair-list-form (:facet params))
                          (catch Exception e {}))]
             ((:facet-validator context) context facets)))))
 
@@ -350,9 +352,7 @@
     (if-not (:filter params)
       context
       (let [filters (try
-                      (map #(string/split % #":" 2)
-                           (-> (:filter params)
-                               (string/split #",")))
+                      (parse-pair-list-form (:filter params))
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
