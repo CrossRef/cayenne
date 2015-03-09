@@ -8,15 +8,21 @@
 (def valid-singular-parameters (set [:selector]))
 (def valid-basic-parameters (set []))
 
-(defn get-parameters [request-context]
-  (if (nil? (get-in request-context [:request :body]))
-    (-> request-context
-        (get-in [:request :query-params])
-        (util/update-keys keyword))
+(defn get-parameters [request-context & {:keys [body-params query-params]
+                                         :or {body-params true query-params true}}]
+  (cond 
+    (and body-params 
+         (not (nil? (get-in request-context [:request :body]))))
     (-> request-context
         (get-in [:request :body])
         (io/reader)
-        (json/read :key-fn keyword))))
+        (json/read :key-fn keyword))
+    query-params
+    (-> request-context
+        (get-in [:request :query-params])
+        (util/update-keys keyword))
+    :else
+    {}))
 
 (defn malformed-param-names? [valid-parameter-set request-context]
   (let [params (-> request-context get-parameters keys set)]
