@@ -392,7 +392,8 @@
 (defn validate-resource-context [context resource-context]
   (let [params (p/get-parameters resource-context
                                  :query-params true 
-                                 :body-params (not= :post (get-in [:request :request-method])))]
+                                 :body-params (not= :post (get-in resource-context 
+                                                                  [:request :request-method])))]
     (-> context
         (validate-params params)
         (validate-pair-list-forms params)
