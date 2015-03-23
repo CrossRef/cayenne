@@ -4,9 +4,15 @@
 
 ;; generate http link headers for work metadata
 
-(def full-text-rel "http://id.crossref.org/schema/fulltext")
-(def person-rel "http://id.crossref.org/schema/person")
-(def license-rel "http://id.crossref.org/schema/license")
+;; TODO include item link to resolution url
+;; TODO Common license labels?
+;; TODO from dx.doi.org - shortlink, describedby
+
+(def full-text-rel "item")
+(def landing-page-rel "item")
+(def person-rel "author")
+(def license-rel "license")
+(def id-rel "canonical")
 
 (defn make-link-header-value [uri & {:keys [rel anchor parameters] 
                                      :or {:parameters {}}}]
@@ -37,6 +43,11 @@
     (map (partial make-full-text-link-header (:DOI metadata))
          (:link metadata))))
 
+(defn person-title [p]
+  (if (:given p)
+    (str (:given p) " " (:family p))
+    (:family p)))
+
 (defn make-person-link-headers [metadata]
   (let [persons-with-orcids 
         (filter :ORCID
@@ -46,23 +57,31 @@
                  (:editor metadata)
                  (:chair metadata)
                  (:contributor metadata)))]
-    (map #(make-link-header-value (:ORCID %) :rel person-rel)
+    (map #(make-link-header-value (:ORCID %)
+                                  :rel person-rel
+                                  :parameters {:title (person-title %)})
          persons-with-orcids)))
 
 (defn make-license-link-header [license]
   (let [version (:content-version license)
         params (if (and version (not= version "unspecified"))
                  {:version version} {})]
-    (make-link-header-value (:URL license) :rel license-rel :parameters params)))
+    (make-link-header-value (:URL license)
+                            :rel license-rel
+                            :parameters params)))
 
 (defn make-license-link-headers [metadata]
   (when (:license metadata)
     (map make-license-link-header (:license metadata))))
 
+(def make-id-link-header [metadata]
+  (make-link-header-value (:URL metadata) :rel id-rel))
+
 (defn make-link-headers [metadata]
   (string/join 
    ", "
    (concat
+    (make-id-link-header metadata)
     (make-full-text-link-headers metadata)
     (make-license-link-headers metadata)
     (make-person-link-headers metadata))))
