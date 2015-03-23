@@ -74,14 +74,14 @@
   (when (:license metadata)
     (map make-license-link-header (:license metadata))))
 
-(def make-id-link-header [metadata]
-  (make-link-header-value (:URL metadata) :rel id-rel))
+(defn make-id-link-headers [metadata]
+  [(make-link-header-value (:URL metadata) :rel id-rel)])
 
 (defn make-link-headers [metadata]
   (string/join 
    ", "
    (concat
-    (make-id-link-header metadata)
+    (make-id-link-headers metadata)
     (make-full-text-link-headers metadata)
     (make-license-link-headers metadata)
     (make-person-link-headers metadata))))
