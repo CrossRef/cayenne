@@ -208,7 +208,7 @@
 (def member-filter-validators
   {:prefix prefix-validator
    :backfile-doi-count integer-validator
-   :currnet-doi-count integer-validator})
+   :current-doi-count integer-validator})
 
 (defn validate-filters [filter-validators context filters]
   (let [unknown-filters (cset/difference
