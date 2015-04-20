@@ -58,6 +58,10 @@
   [params]
   (when (get params :filter)
     (->> (string/split (get params :filter) #",")
+         (reduce #(if (re-find #":" %2)
+                    (conj %1 %2)
+                    (conj (drop-last %1) (apply str (last %1) "," %2)))
+                 [])
          (map #(let [parts (string/split % #":")
                      k (first parts)
                      val (string/join ":" (rest parts))
