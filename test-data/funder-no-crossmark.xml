@@ -61,11 +61,19 @@
           <publisher_item>
             <identifier id_type="other">2006-03253-005</identifier>
           </publisher_item>
-          <program>
-            <assertion name="fundgroup">
-              <assertion name="funder_name">National Institute on Alcohol Abuse and Alcoholism</assertion>
-              <assertion name="funding_identifier">R01AA122202</assertion>
-            </assertion>
+	  <!-- <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      California Breast Cancer Research Program
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100004802</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">12FB-0053</fr:assertion>
+                  </fr:assertion>
+          <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+            <fr:assertion name="fundgroup">
+              <fr:assertion name="funder_name">National Institute on Alcohol Abuse and Alcoholism</fr:assertion>
+              <fr:assertion name="funding_identifier">R01AA122202</fr:assertion>
+            </fr:assertion>
             <assertion name="fundgroup">
               <assertion name="funder_name">Substance Abuse and Mental Health Services Administration</assertion>
             </assertion>
@@ -77,7 +85,34 @@
               <assertion name="funder_name">Agency for Healthcare Research and Quality</assertion>
               <assertion name="funding_identifier">P01HS10871</assertion>
             </assertion>
-          </program>
+          </fr:program>-->
+	  <program>
+                <assertion name="fundgroup">
+                  <assertion name="funder_name">
+                    National Institutes of Health
+                    <assertion name="funder_identifier">100000002</assertion>
+                  </assertion>
+                  <assertion name="funding_identifier">5R21HL108272</assertion>
+		  <assertion name="award_number">Another award</assertion>
+                </assertion>
+		<assertion name="fundgroup">
+		  <assertion name="funder_name">All within group</assertion>
+		  <assertion name="funder_identifier">1001</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF
+		  <assertion name="funder_identifier">10000005</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF2
+		  <assertion name="funder_identifier">10000010</assertion>
+		</assertion>
+		<assertion name="funder_identifier">1000001</assertion>
+		<assertion name="funder_identifier">1000009</assertion>
+
+		<assertion name="award_number">Invalid award number</assertion>
+		<assertion name="funding_identifier">Invalid old-style funding identifier</assertion>
+              </program>
           <doi_data>
             <doi>10.1037/0022-006X.74.1.42</doi>
             <timestamp>20130410045813</timestamp>

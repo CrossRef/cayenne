@@ -54,14 +54,32 @@
               <assertion name="received" label="Received" group_name="publication_history" group_label="Publication History" order="0">2012-04-17</assertion>
               <assertion name="accepted" label="Accepted" group_name="publication_history" group_label="Publication History" order="1">2012-07-19</assertion>
               <assertion name="published" label="Published" group_name="publication_history" group_label="Publication History" order="2">2012-08-10</assertion>
-              <program name="fundref">
+              <program>
                 <assertion name="fundgroup">
                   <assertion name="funder_name">
                     National Institutes of Health
                     <assertion name="funder_identifier">100000002</assertion>
                   </assertion>
                   <assertion name="funding_identifier">5R21HL108272</assertion>
+		  <assertion name="award_number">Another award</assertion>
                 </assertion>
+		<assertion name="fundgroup">
+		  <assertion name="funder_name">All within group</assertion>
+		  <assertion name="funder_identifier">1001</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF
+		  <assertion name="funder_identifier">10000005</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF2
+		  <assertion name="funder_identifier">10000010</assertion>
+		</assertion>
+		<assertion name="funder_identifier">1000001</assertion>
+		<assertion name="funder_identifier">1000009</assertion>
+
+		<assertion name="award_number">Invalid award number</assertion>
+		<assertion name="funding_identifier">Invalid old-style funding identifier</assertion>
               </program>
             </custom_metadata>
           </crossmark>

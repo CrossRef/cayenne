@@ -469,51 +469,80 @@
       (to-long-doi-uri funder-id-val))))
 
 (defn parse-funder [funder-group-loc]
-  (let [funder-id-val (or 
+  (let [funder-id-val (or
+                       (xml/xselect1 funder-group-loc
+                                     [:= "name" "funder_identifier"]
+                                     :plain)
                        (xml/xselect1 funder-group-loc 
                                      "assertion" 
                                      [:= "name" "funder_identifier"] 
                                      :plain)
-                       (xml/xselect1 funder-group-loc    ;; account for members that are unable
-                                     "assertion"         ;; to provide sane deposits
+                       (xml/xselect1 funder-group-loc
+                                     "assertion"
                                      [:= "name" "funder_name"]
                                      "assertion"
                                      [:= "name" "funder_identifier"]
                                      :plain))
+        funder-name-val (or
+                         (xml/xselect1 funder-group-loc
+                                       [:= "name" "funder_name"]
+                                       :plain)
+                         (xml/xselect1 funder-group-loc
+                                       "assertion"
+                                       [:= "name" "funder_name"]
+                                       :plain))
         funder-uri (normalize-funder-id-val funder-id-val)]
-    (-> {:type :org
-         :name (xml/xselect1 funder-group-loc 
-                             "assertion" 
-                             [:= "name" "funder_name"] 
-                             :plain)}
+    (-> {:type :org :name funder-name-val}
         (parse-attach :awarded funder-group-loc :multi parse-grants)
         (?> funder-uri attach-id funder-uri))))
 
-(defn parse-single-funder [item-loc]
-  (let [program-loc (or (xml/xselect1 item-loc "program" [:= "name" "fundref"])
-                        (xml/xselect1 item-loc "crossmark" "custom_metadata" "program" [:= "name" "fundref"]))
-        single-funder (parse-funder program-loc)]
-    (if (or (:name single-funder) (not (empty? (:id single-funder))))
-      [single-funder]
-      [])))
+(defn parse-item-funders-funder-name-direct [item-loc]
+  (let [funder-names-loc (concat
+                          (xml/xselect item-loc
+                                       "program"
+                                       "assertion"
+                                       [:= "name" "funder_name"])
+                          (xml/xselect item-loc
+                                       "crossmark"
+                                       "custom_metadata"
+                                       "program"
+                                       "assertion"
+                                       [:= "name" "funder_name"]))]
+    (map parse-funder funder-names-loc)))
 
-(defn parse-item-funders [item-loc]
+(defn parse-item-funders-funder-id-direct [item-loc]
+  (let [funder-ids-loc (concat
+                          (xml/xselect item-loc
+                                       "program"
+                                       "assertion"
+                                       [:= "name" "funder_identifier"])
+                          (xml/xselect item-loc
+                                       "crossmark"
+                                       "custom_metadata"
+                                       "program"
+                                       "assertion"
+                                       [:= "name" "funder_identifier"]))]
+    (map parse-funder funder-ids-loc)))
+
+(defn parse-item-funders-with-fundgroup [item-loc]
   (let [funder-groups-loc (concat 
                            (xml/xselect item-loc 
                                         "program" 
-                                        [:= "name" "fundref"]
                                         "assertion" 
                                         [:= "name" "fundgroup"])
                            (xml/xselect item-loc
                                         "crossmark" 
                                         "custom_metadata" 
                                         "program" 
-                                        [:= "name" "fundref"]
                                         "assertion"
                                         [:= "name" "fundgroup"]))]
-    (concat
-     (parse-single-funder item-loc)
-     (map parse-funder funder-groups-loc))))
+    (map parse-funder funder-groups-loc)))
+
+(defn parse-item-funders [item-loc]
+  (concat
+   (parse-item-funders-funder-name-direct item-loc)
+   (parse-item-funders-funder-id-direct item-loc)
+   (parse-item-funders-with-fundgroup item-loc)))
 
 (def license-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
