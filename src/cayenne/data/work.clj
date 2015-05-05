@@ -47,6 +47,24 @@
           (map (comp with-member-id citeproc/->citeproc) doc-list))
         (r/with-query-context-info query-context))))
 
+(defn ->clean-query [citation]
+  (-> citation
+      (string/replace #"AND|OR|NOT" " ")
+      (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]" " ")))
+
+(defn fetch-reverse [query-context]
+  (let [terms (->clean-query (:terms query-context))
+        response (-> (conf/get-service :solr)
+                     (.query (query/->solr-query {:terms terms
+                                                  :rows (int 1)})))
+        doc-list (.getResults response)]
+    (if (zero? (.getNumFound doc-list))
+      (r/api-response :nothing)
+      (let [doc (-> doc-list first citeproc/->citeproc with-member-id)]
+        (if (or (< (count (string/split terms #"\s")) 4) (< (:score doc) 2))
+          (r/api-response :nothing)
+          (r/api-response :work :content doc))))))
+
 (defn fetch-one
   "Fetch a known DOI."
   [doi-uri]

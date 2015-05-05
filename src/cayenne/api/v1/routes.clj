@@ -408,6 +408,17 @@
   :available-media-types t/json
   :handle-ok #(data-types/fetch-works (q/->query-context % :id id)))
 
+(defresource reverse-lookup-resource
+  :malformed? (v/malformed? :singleton true)
+  :new? false
+  :respond-with-entity? true
+  :handle-malformed :validation-result
+  :allowed-methods [:post :options]
+  :available-media-types t/json
+  :handle-ok #(work/fetch-reverse {:terms (-> (get-in % [:request :body])
+                                              (.bytes)
+                                              slurp)}))
+
 (defroutes restricted-api-routes
   (ANY "/deposits" {body :body}
        (deposits-resource body))
@@ -417,6 +428,8 @@
        (deposit-data-resource id)))
 
 (defroutes api-routes
+  (ANY "/reverse" []
+       reverse-lookup-resource)
   (ANY "/licenses" []
        licenses-resource)
   (ANY "/styles" []
