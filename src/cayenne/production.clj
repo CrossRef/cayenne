@@ -6,6 +6,7 @@
             [cayenne.api.route]
             [cayenne.schedule :as schedule]
             [clojure.data.json :as json]
+            [clojure.pprint :refer [pprint]]
             [org.httpkit.client :as http]))
 
 (defn slack-format
@@ -13,7 +14,9 @@
   (format "_%s_ `%s` %s%s"
           (-> level name)
           ns
-          (or message "")
+          (if message
+            (with-out-str (pprint message))
+            "")
           (if throwable
             (str "\n" (.toString throwable))
             "")))
