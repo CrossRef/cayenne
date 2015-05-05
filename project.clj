@@ -26,7 +26,7 @@
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
-                 [com.taoensso/timbre "2.1.2"]
+                 [com.taoensso/timbre "3.4.0"]
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "4.3.0"]
                  [clojurewerkz/quartzite "1.0.1"]
