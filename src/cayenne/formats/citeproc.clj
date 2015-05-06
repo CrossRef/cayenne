@@ -4,6 +4,7 @@
             [clj-time.coerce :as dc]
             [clojure.string :as string]
             [cayenne.util :as util]
+            [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.isbn :as isbn-id]
@@ -214,6 +215,8 @@
       (assoc-exists :issue (get solr-doc "hl_issue"))
       (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
       (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
+      (assoc-exists :alternate-id (map ids/extract-supplementary-id
+                                       (get solr-doc "supplementary_id")))
       (assoc-exists :title (set (get solr-doc "hl_title")))
       (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
       (assoc-exists :container-title (set (get solr-doc "hl_publication")))

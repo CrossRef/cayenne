@@ -187,6 +187,7 @@
    :member integer-validator
    :prefix prefix-validator
    :funder funder-id-validator
+   :alternate-id string-validator
    :full-text.type content-type-validator
    :full-text.application intended-application-validator
    :full-text.version version-validator
