@@ -152,22 +152,28 @@
 ;; todo get selectors and get filters handle json input
 
 (defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
-  (if (not remove-syntax)
+  (if-not remove-syntax
     terms
     (-> terms
-        (string/replace #"[+\-!(){}\[\]\^\"~*?:\\]+" " ")
-        (string/replace #"||" " ")
+        (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
+        (string/replace #"\|\|" " ")
         (string/replace #"&&" " ")
+        (string/replace #"(?i)not" " ")
         (string/replace #"(?i)or" " ")
         (string/replace #"(?i)and" " "))))
 
 (defn make-query-string [query-context]
-  (str
-   (if (:terms query-context)
-     (-> query-context :terms clean-terms)
-     "*:*")
-   (when (:raw-terms query-context)
-     (str " " (-> query-context :raw-terms)))))
+  (cond (and (:terms query-context)
+             (:raw-terms query-context))
+        (str (-> query-context :terms (clean-terms :remove-syntax true))
+             " "
+             (-> query-context :raw-terms))
+        (:terms query-context)
+        (-> query-context :terms (clean-terms :remove-syntax true))
+        (:raw-terms query-context)
+        (-> query-context :raw-terms)
+        :else
+        "*:*"))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]
@@ -179,7 +185,7 @@
                 (.setQuery (make-query-string query-context))
                 (.addField "*")
                 (.addField "score")
-                (.setHighlight true)
+                (.setHighlight false)
                 (.setFacet true))]
     (when id-field
       (let [ids (if (vector? (:id query-context))
@@ -199,7 +205,7 @@
             (let [filter-fn (filters filter-name-s)
                   filter-query-str (->> filter-val 
                                         (map filter-fn)
-                                        (string/join " OR "))] 
+                                        (string/join " OR "))]
               (doto query
                 (.addFilterQuery (into-array String [(str "(" filter-query-str ")")]))))))))
     (when (:raw-filter query-context)

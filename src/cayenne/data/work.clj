@@ -47,15 +47,11 @@
           (map (comp with-member-id citeproc/->citeproc) doc-list))
         (r/with-query-context-info query-context))))
 
-(defn ->clean-query [citation]
-  (-> citation
-      (string/replace #"AND|OR|NOT" " ")
-      (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]" " ")))
-
 (defn fetch-reverse [query-context]
-  (let [terms (->clean-query (:terms query-context))
+  (let [terms (query/clean-terms (:terms query-context) :remove-syntax true)
+        q (str "content_citation:\"" terms "\"")
         response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query {:terms terms
+                     (.query (query/->solr-query {:raw-terms q
                                                   :rows (int 1)})))
         doc-list (.getResults response)]
     (if (zero? (.getNumFound doc-list))
@@ -69,10 +65,10 @@
   "Fetch a known DOI."
   [doi-uri]
   (when-let [doc (-> (conf/get-service :solr)
-                      (.query (query/->solr-query {:id doi-uri}
-                                                  :id-field "doi"))
-                      (.getResults)
-                      (first))]
+                     (.query (query/->solr-query {:id doi-uri}
+                                                 :id-field "doi"))
+                     (.getResults)
+                     (first))]
     (r/api-response :work :content (-> (citeproc/->citeproc doc) with-member-id))))
 
 (defn get-unixsd [doi]
