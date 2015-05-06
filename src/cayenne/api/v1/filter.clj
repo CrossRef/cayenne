@@ -233,7 +233,7 @@
    "publisher-name" (equality "publisher")
    "category-name" (equality "category")
    "funder-name" (equality "funder_name")
-   "alternate-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
+   "alternative-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
    "award" (compound "award" ["funder_doi" "number"]
                      :transformers {"funder_doi" (comp util/slugify fundref/normalize-to-doi-uri)}
                      :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")
