@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.validate
   (:require [clojure.string :as string]
             [clojure.set :as cset]
+            [clj-time.format :as tf]
             [cayenne.util :as util]
             [cayenne.api.v1.filter :as f]
             [cayenne.api.v1.parameters :as p]
@@ -96,9 +97,17 @@
                (when (not= max :infinite)
                  (str " less than or equal to " max))))))
 
+(def date-formatter (tf/formatter "yyyy-MM-dd"))
+
 (defn date-validator [context s]
   (if (re-matches #"(\d{4})|(\d{4}-\d{2})|(\d{4}-\d{2}-\d{2})" s)
-    (pass context)
+    (try
+      (let [d (tf/parse (:date-parser tf/formatters) (.trim s))]
+        (pass context))
+      (catch Exception e
+        (fail context s :date-not-legitimate
+              (str "Date " s " specified in the correct format but represents an"
+                   " illegitimate date."))))
     (fail context s :date-not-valid
           (str "Date specified as " s " but must be of the form: "
                "yyyy or yyyy-MM or yyyy-MM-dd"))))
