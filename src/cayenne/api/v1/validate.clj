@@ -97,8 +97,6 @@
                (when (not= max :infinite)
                  (str " less than or equal to " max))))))
 
-(def date-formatter (tf/formatter "yyyy-MM-dd"))
-
 (defn date-validator [context s]
   (if (re-matches #"(\d{4})|(\d{4}-\d{2})|(\d{4}-\d{2}-\d{2})" s)
     (try

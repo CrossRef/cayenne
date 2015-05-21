@@ -61,21 +61,32 @@
      :month (Integer/parseInt (nth date-parts 1 "-1"))
      :day (Integer/parseInt (nth date-parts 2 "-1"))}))
 
-(defn obj-date [date-str]
-  (let [date-parts (split-date date-str)]
-    (cond (not= (:day date-parts) -1)
-          (dt/date-time (:year date-parts) (:month date-parts) (:day date-parts))
-          (not= (:month date-parts) -1)
-          (dt/date-time (:year date-parts) (:month date-parts))
-          :else
-          (dt/date-time (:year date-parts)))))
+(defn obj-date [date-str & {:keys [direction]}]
+  (let [date-parts (split-date date-str)
+        d (cond (not= (:day date-parts) -1)
+                (dt/date-time (:year date-parts) (:month date-parts) (:day date-parts))
+                (not= (:month date-parts) -1)
+                (dt/date-time (:year date-parts) (:month date-parts))
+                :else
+                (dt/date-time (:year date-parts)))]
+    (if (not= direction :until)
+      d
+      (cond (not= (:day date-parts) -1)
+            ;; end of day
+            (dt/plus d (dt/days 1))
+            (not= (:month date-parts) -1)
+            ;; end of month
+            (dt/plus d (dt/months 1))
+            :else
+            ;; end of year
+            (dt/plus d (dt/years 1))))))
 
 ;; Solr filters
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
         
 (defn stamp-date [date-stamp-field direction]
   (fn [val]
-    (let [d (obj-date val)]
+    (let [d (obj-date val :direction direction)]
       (if (= direction :from)
         (str date-stamp-field ":[" d " TO *]")
         (str date-stamp-field ":[* TO " d "]")))))
@@ -168,7 +179,7 @@
 (defn mongo-stamp-date [field direction]
   (fn [val]
     (let [fval (if (sequential? val) (first val) val)
-          date-val (-> fval obj-date dc/to-date)]
+          date-val (-> fval (obj-date :direction direction) dc/to-date)]
       (cond (= direction :from)
             {field {"$gte" date-val}}
             (= direction :until)
