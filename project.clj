@@ -36,7 +36,7 @@
                  [org.apache.jena/jena-core "2.10.1"]
                  [xom "1.2.5"]
                  [clj-http "0.7.2"]
-                 [clj-time "0.6.0"]
+                 [clj-time "0.8.0"]
                  [org.clojure/core.incubator "0.1.2"]
                  [org.clojure/data.json "0.2.0"]
                  [org.clojure/data.xml "0.0.7"]

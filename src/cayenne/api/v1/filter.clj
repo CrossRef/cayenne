@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.filter
   (:require [clj-time.core :as dt]
             [clj-time.coerce :as dc]
+            [clj-time.predicates :as dp]
             [clojure.string :as string]
             [cayenne.util :as util]
             [cayenne.conf :as conf]
@@ -91,9 +92,45 @@
         (str date-stamp-field ":[" d " TO *]")
         (str date-stamp-field ":[* TO " d "]")))))
 
+;; if year-month and month==12 and :until drop month
+;; if year-month and month==1 and :from drop month
+;; if year-month-day and day==ldom and :until drop day
+;; if year-month-day and day==0 and :from drop day
+
+(defn alias-date
+  "Alias some split dates depending on whether this is an interval
+   start or end date. For example, the first day of a month, when
+   a start date, can drop the day of month. Allows us to, for example,
+   include a date specified as only yyyy-MM when filter specified as 
+   yyyy-MM-last-day-of-MM."
+  [sd val direction]
+  (let [d (obj-date val)
+        sd-after-day
+        (cond (and (= (:day sd) 1)
+                   (= direction :from))
+              (assoc sd :day -1)
+              
+              (and (not= (:day sd) -1)
+                   (dp/last-day-of-month? d)
+                   (= direction :until))
+              (assoc sd :day -1)
+
+              :else
+              sd)]
+    (cond (and (= (:month sd-after-day) 1)
+               (= direction :from))
+          (assoc sd-after-day :month -1)
+          
+          (and (= (:month sd-after-day) 12)
+               (= direction :until))
+          (assoc sd-after-day :month -1)
+          
+          :else
+          sd-after-day)))
+
 (defn particle-date [year-field month-field day-field end-point]
   (fn [val]
-    (let [d (split-date val)]
+    (let [d (-> val split-date (alias-date val end-point))]
       (cond (not= (:day d) -1)
             (q-or
              (field-lt-or-gt year-field (:year d) end-point)
