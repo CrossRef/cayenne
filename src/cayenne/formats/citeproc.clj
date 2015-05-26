@@ -125,16 +125,24 @@
         (util/?> has-given? assoc :given given)
         (util/?> has-family? assoc :family family))))
 
+(defn contrib-affiliations [affiliations]
+  (map #(hash-map :name %) affiliations))
+
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(let [t (get %2 :type)]
              (assoc %1 t (conj (or (get %1 t) []) (dissoc %2 :type))))
           {}
-          (map contrib
-               (get solr-doc "contributor_type")
-               (get solr-doc "contributor_orcid")
-               (get solr-doc "contributor_suffix")
-               (get solr-doc "contributor_given_name")
-               (get solr-doc "contributor_family_name"))))
+          (map-indexed #(let [affils
+                              (-> solr-doc
+                                  (get (str "contributor_affiliations_" %1))
+                                  contrib-affiliations)]
+                          (assoc %2 :affiliation affils))
+                       (map contrib
+                            (get solr-doc "contributor_type")
+                            (get solr-doc "contributor_orcid")
+                            (get solr-doc "contributor_suffix")
+                            (get solr-doc "contributor_given_name")
+                            (get solr-doc "contributor_family_name")))))
 
 (defn ->citeproc-awards [solr-doc]
   (map

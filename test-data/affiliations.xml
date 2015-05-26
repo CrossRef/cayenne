@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <header>
+    <identifier>info:doi/10.1037/0022-006x.74.1.42</identifier>
+  </header>
+  <metadata>
+    <crossref>
+      <journal>
+        <journal_metadata language="en">
+          <full_title>Journal of Consulting and Clinical Psychology</full_title>
+          <abbrev_title>Journal of Consulting and Clinical Psychology</abbrev_title>
+          <issn media_type="electronic">1939-2117</issn>
+          <issn media_type="print">0022-006X</issn>
+        </journal_metadata>
+        <journal_issue>
+          <publication_date media_type="online">
+            <year>2006</year>
+          </publication_date>
+          <journal_volume>
+            <volume>74</volume>
+          </journal_volume>
+          <issue>1</issue>
+        </journal_issue>
+        <journal_article>
+          <titles>
+            <title>Juvenile drug court: Enhancing outcomes by integrating evidence-based treatments.</title>
+          </titles>
+          <contributors>
+            <person_name sequence="first" contributor_role="author">
+              <given_name>Scott W.</given_name>
+              <surname>Henggeler</surname>
+	      <affiliation>Scott first affiliation</affiliation>
+	      <affiliation>Scott second affiliation</affiliation>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Colleen A.</given_name>
+              <surname>Halliday-Boykins</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Phillippe B.</given_name>
+              <surname>Cunningham</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Jeff</given_name>
+              <surname>Randall</surname>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Steven B.</given_name>
+              <surname>Shapiro</surname>
+	      <affiliation>Steven first affiliation</affiliation>
+	      <affiliation>Steven second affiliation</affiliation>
+            </person_name>
+            <person_name sequence="additional" contributor_role="author">
+              <given_name>Jason E.</given_name>
+              <surname>Chapman</surname>
+	      <affiliation>Jason first affiliation</affiliation>
+            </person_name>
+          </contributors>
+          <publication_date media_type="online">
+            <year>2006</year>
+          </publication_date>
+          <pages>
+            <first_page>42</first_page>
+            <last_page>54</last_page>
+          </pages>
+          <publisher_item>
+            <identifier id_type="other">2006-03253-005</identifier>
+          </publisher_item>
+	  <!-- <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      California Breast Cancer Research Program
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100004802</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">12FB-0053</fr:assertion>
+                  </fr:assertion>
+          <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+            <fr:assertion name="fundgroup">
+              <fr:assertion name="funder_name">National Institute on Alcohol Abuse and Alcoholism</fr:assertion>
+              <fr:assertion name="funding_identifier">R01AA122202</fr:assertion>
+            </fr:assertion>
+            <assertion name="fundgroup">
+              <assertion name="funder_name">Substance Abuse and Mental Health Services Administration</assertion>
+            </assertion>
+            <assertion name="fundgroup">
+              <assertion name="funder_name">National Institute on Drug Abuse</assertion>
+              <assertion name="funding_identifier">R01ZDA</assertion>
+            </assertion>
+            <assertion name="fundgroup">
+              <assertion name="funder_name">Agency for Healthcare Research and Quality</assertion>
+              <assertion name="funding_identifier">P01HS10871</assertion>
+            </assertion>
+          </fr:program>-->
+	  <program>
+                <assertion name="fundgroup">
+                  <assertion name="funder_name">
+                    National Institutes of Health
+                    <assertion name="funder_identifier">100000002</assertion>
+                  </assertion>
+                  <assertion name="funding_identifier">5R21HL108272</assertion>
+		  <assertion name="award_number">Another award</assertion>
+                </assertion>
+		<assertion name="fundgroup">
+		  <assertion name="funder_name">All within group</assertion>
+		  <assertion name="funder_identifier">1001</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF
+		  <assertion name="funder_identifier">10000005</assertion>
+		</assertion>
+		<assertion name="funder_name">
+		  NSF2
+		  <assertion name="funder_identifier">10000010</assertion>
+		</assertion>
+		<assertion name="funder_identifier">1000001</assertion>
+		<assertion name="funder_identifier">1000009</assertion>
+
+		<assertion name="award_number">Invalid award number</assertion>
+		<assertion name="funding_identifier">Invalid old-style funding identifier</assertion>
+              </program>
+          <doi_data>
+            <doi>10.1037/0022-006X.74.1.42</doi>
+            <timestamp>20130410045813</timestamp>
+            <resource>http://doi.apa.org/getdoi.cfm?doi=10.1037/0022-006X.74.1.42</resource>
+          </doi_data>
+        </journal_article>
+      </journal>
+    </crossref>
+  </metadata>
+</record>

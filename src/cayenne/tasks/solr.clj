@@ -90,6 +90,12 @@
   (let [contributors (mapcat #(get-item-rel item %) contributor-rels)]
     (filter (complement nil?) (mapcat :id contributors))))
 
+(defn get-contributor-affiliations [item]
+  (->> contributor-rels
+       (mapcat #(get-item-rel item %))
+       (mapcat #(get-item-rel % :affiliation))
+       (map :name)))
+
 (defn initials [first-name]
   (when first-name
     (string/join " " (map first (string/split first-name #"[\s\-]+")))))
@@ -116,6 +122,7 @@
   {:given-name (:first-name contributor)
    :family-name (:last-name contributor)
    :suffix (:suffix contributor)
+   :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
    :type type})
 
@@ -292,6 +299,12 @@
   (let [compounds (map as-funder-award-compounds funders)]
     (apply merge-with #(concat %1 %2) compounds)))
 
+(defn as-contributor-affiliation-lists [contrib-details]
+  (into {}
+        (map-indexed #(vector (str "contributor_affiliations_" %1)
+                              (:affiliations %2))
+                     contrib-details)))
+
 (defn as-solr-document [item]
   (let [grant-map (as-grant-map item)
         licenses (as-license-list item)
@@ -317,6 +330,7 @@
          "isbn" (get-tree-ids item :isbn)
          "supplementary_id" (get-tree-ids item :supplementary)
          "orcid" (get-contributor-orcids item)
+         "affiliation" (get-contributor-affiliations item)
          "category" (get-categories item)
          "funder_name" funder-names
          "funder_doi" funder-dois
@@ -377,6 +391,7 @@
          "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)}
+        (merge (as-contributor-affiliation-lists contrib-details))
         (merge (as-award-compounds funders))
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))
