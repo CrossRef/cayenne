@@ -177,6 +177,7 @@
    :has-update-policy boolean-validator
    :has-archive boolean-validator
    :has-orcid boolean-validator
+   :has-affiliation boolean-validator
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
    :has-award boolean-validator
@@ -186,6 +187,7 @@
    :type type-validator
    :type-name string-validator
    :orcid orcid-validator
+   :affiliation string-validator
    :doi doi-validator
    :container-title string-validator
    :publisher-name string-validator
