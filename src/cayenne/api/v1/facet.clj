@@ -24,6 +24,8 @@
    "archive" {:external-field "archive"
               :allow-unlimited-values true}
    "update_type" {:external-field "update-type"
+                  :allow-unlimited-values true}
+   "affiliation" {:external-field "affiliation"
                   :allow-unlimited-values true}})
 
 (def external->internal-name
