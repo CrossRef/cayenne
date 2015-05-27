@@ -48,7 +48,6 @@
       (-> response :body (json/read-str :key-fn keyword)))))
 
 (defn get-prefix-info [prefix]
-  (println "getting info for prefix" prefix)
   (let [url (str
              (conf/get-param [:upstream :prefix-info-url])
              prefix)
