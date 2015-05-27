@@ -10,6 +10,7 @@
             [clojure.zip :as zip]
             [clojure.string :as string]
             [clojure.data.zip.xml :as zx]
+            [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clj-time.core :as dt]
             [clj-time.format :as df]
@@ -23,37 +24,59 @@
   (m/add-index! collection-name [:prefixes])
   (m/add-index! collection-name [:names]))
 
-(defn insert-publisher!
+(defn update-publisher!
   "Upsert a publisher, combining multiple prefixes."
-  [collection id prefix name location]
+  [collection id prefixes name location prefix-names prefix-infos]
   (m/update! collection
              {:id id}
              {"$set" {:id id
                       :location (string/trim location)
-                      :primary-name (string/trim name)}
-              "$addToSet" {:prefixes prefix
-                           :tokens {"$each" (util/tokenize-name name)}
-                           :names (string/trim name)}}))
+                      :primary-name (string/trim name)
+                      :prefixes prefixes
+                      :tokens (util/tokenize-name name)
+                      :prefix prefix-infos
+                      :names (set (conj (map string/trim prefix-names)
+                                        (string/trim name)))}}))
+
+(defn get-member-list []
+  (let [url (str (conf/get-param [:upstream :prefix-info-url]) "all")
+        response (http/get url
+                           {:connection-manager (conf/get-service :conn-mgr)
+                            :throw-exceptions false
+                            :as :string})]
+    (when (= 200 (:status response))
+      (-> response :body (json/read-str :key-fn keyword)))))
+
+(defn get-prefix-info [prefix]
+  (println "getting info for prefix" prefix)
+  (let [url (str
+             (conf/get-param [:upstream :prefix-info-url])
+             prefix)
+        response (http/get url {:connection-manager (conf/get-service :conn-mgr)
+                                :throw-exceptions false
+                                :as :byte-array})
+        root (when (= 200 (:status response))
+               (-> (:body response) io/reader xml/parse zip/xml-zip))]
+    (when root
+      {:value prefix
+       :name (zx/text (zx/xml1-> root :publisher :prefix_name))
+       :location (zx/text (zx/xml1-> root :publisher :publisher_location))
+       :public-references (= "true" (zx/text (zx/xml1-> root :publisher :allows_public_access_to_refs)))})))
 
 (defn load-publishers [collection]
   (m/with-mongo (conf/get-service :mongo)
     (ensure-publisher-indexes! collection)
-    (doseq [prefix-number (range 1000 100000)]
-      (let [prefix (str "10." prefix-number)
-            url (str
-                 (conf/get-param [:upstream :prefix-info-url])
-                 prefix)
-            resp (http/get url {:connection-manager (conf/get-service :conn-mgr)
-                                :throw-exceptions false
-                                :as :byte-array})
-            root (when (= 200 (:status resp))
-                   (-> (:body resp) io/reader xml/parse zip/xml-zip))]
-        (when root
-          (when-let [id (zx/xml1-> root :publisher :member_id)]
-            (insert-publisher!
-             collection
-             (-> id zx/text (Integer/parseInt))
-             prefix
-             (zx/text (zx/xml1-> root :publisher :publisher_name))
-             (zx/text (zx/xml1-> root :publisher :publisher_location)))))))))
- 
+    (doseq [member (get-member-list)]
+      (let [prefixes (filter (complement string/blank?) (:prefixes member))
+            prefix-infos (map get-prefix-info prefixes)
+            prefix-names (map :name prefix-infos)
+            publisher-location (first (filter (complement nil?)
+                                              (map :location prefix-infos)))]
+        (update-publisher!
+         collection
+         (:memberId member)
+         prefixes
+         (:name member)
+         publisher-location
+         prefix-names
+         (map #(dissoc % :location) prefix-infos))))))

@@ -50,6 +50,7 @@
    :primary-name (:primary-name pub-doc)
    :names (:names pub-doc)
    :prefixes (:prefixes pub-doc)
+   :prefix (:prefix pub-doc)
    :location (:location pub-doc)
    :flags (:flags pub-doc)
    :coverage (:coverage pub-doc)
