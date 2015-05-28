@@ -304,6 +304,7 @@
                               
 (def member-filters
   {"prefix" (mongo-equality "prefixes")
+   "has-public-references" (mongo-bool "public-references")
    "backfile-doi-count" (mongo-equality "counts.backfile-dois"
                                         :transformer util/parse-int-safe)
    "current-doi-count" (mongo-equality "counts.current-dois"

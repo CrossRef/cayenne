@@ -217,6 +217,7 @@
 
 (def member-filter-validators
   {:prefix prefix-validator
+   :has-public-references boolean-validator
    :backfile-doi-count integer-validator
    :current-doi-count integer-validator})
 

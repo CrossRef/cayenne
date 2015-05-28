@@ -22,7 +22,8 @@
   (m/add-index! collection-name [:id])
   (m/add-index! collection-name [:tokens])
   (m/add-index! collection-name [:prefixes])
-  (m/add-index! collection-name [:names]))
+  (m/add-index! collection-name [:names])
+  (m/add-index! collection-name [:public-references]))
 
 (defn update-publisher!
   "Upsert a publisher, combining multiple prefixes."
@@ -35,6 +36,9 @@
                       :prefixes prefixes
                       :tokens (util/tokenize-name name)
                       :prefix prefix-infos
+                      :public-references (not (nil?
+                                               (some true?
+                                                     (map :public-references prefix-infos))))
                       :names (set (conj (map string/trim prefix-names)
                                         (string/trim name)))}}))
 
