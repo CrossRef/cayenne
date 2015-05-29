@@ -117,16 +117,18 @@
 
               :else
               sd)]
-    (cond (and (= (:month sd-after-day) 1)
-               (= direction :from))
-          (assoc sd-after-day :month -1)
-          
-          (and (= (:month sd-after-day) 12)
-               (= direction :until))
-          (assoc sd-after-day :month -1)
-          
-          :else
-          sd-after-day)))
+    (if (not= (:day sd-after-day) -1)
+      sd-after-day
+      (cond (and (= (:month sd-after-day) 1)
+                 (= direction :from))
+            (assoc sd-after-day :month -1)
+            
+            (and (= (:month sd-after-day) 12)
+                 (= direction :until))
+            (assoc sd-after-day :month -1)
+            
+            :else
+            sd-after-day))))
 
 (defn particle-date [year-field month-field day-field end-point]
   (fn [val]
