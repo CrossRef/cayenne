@@ -62,7 +62,57 @@
      nil
      nil]))
 
-(defn url-citation-checker
+(defn to-short-csv-line [citing-doi url]
+  (if (:url url)
+    [citing-doi             ;; Citing DOI
+     (:year url)            ;; Citing DOI year of publication
+     true                   ;; Has unstructured text?
+     true                   ;; Has URI?
+     (:valid url)           ;; Has valid URI?
+     (:root url)            ;; URI root
+     (:tld url)             ;; URI tld
+     (:url url)             ;; URI
+     (:original-text url)]  ;; Original citation text
+    [citing-doi                            ;; Citing DOI
+     (:year url)                           ;; Citing DOI year of publication
+     (if (:original-text url) true false)  ;; Has unstructured text?
+     false                                 ;; Has URI?
+     false                                 ;; Has valid URI?
+     nil                                   ;; URI root
+     nil                                   ;; URI tld
+     nil                                   ;; URI
+     (:original-text url)]))               ;; Original citation text
+
+(defn simple-url-citation-checker
+  "Like the full url citation checker, except does not try to resolve
+   URL and does not consider citing DOI's ISSN and science categories."
+  [out-file]
+  (reset! citations-scanned 0)
+  (reset! records-scanned 0)
+  (let [wrtr (conf/file-writer out-file)]
+    (fn [item]
+      (swap! records-scanned inc) 
+      (let [article (itree/find-item-of-subtype (second item) :journal-article)
+            citations (itree/get-item-rel article :citation)
+            doi (first (itree/get-item-ids article :long-doi))
+            year (-> (concat (get-in article [:rel :published-online])
+                             (get-in article [:rel :published-print]))
+                     first
+                     :year)]
+        (when citations
+          (swap! citations-scanned + (count citations))
+          (let [lines (->> citations
+                           (map :unstructured)
+                           (map #(merge {:original-text % :year year}
+                                        (if %
+                                          (url/locate-without-resolve %)
+                                          {})))
+                           (map (partial to-short-csv-line doi)))]
+            (with-open [str-wrtr (StringWriter.)]
+              (csv/write-csv str-wrtr lines)
+              (conf/write-to wrtr (.toString str-wrtr)))))))))
+  
+(defn full-url-citation-checker
   "Finds URLs in citations. Will pull out year and science categories
    of the citing work if available. Finally will try to resolve
    any extracted URLs."
@@ -86,7 +136,5 @@
         (with-open [str-wrtr (StringWriter.)]
           (csv/write-csv str-wrtr (map (partial to-csv-line categories year) citation-texts urls))
           (conf/write-to wrtr (.toString str-wrtr)))))))
-;        (conf/update-result! :records-scannned inc)
-;        (conf/update-result! :citations-scanned + (count citation-texts))))))
 
 

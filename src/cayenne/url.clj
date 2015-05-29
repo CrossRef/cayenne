@@ -70,3 +70,16 @@
          :valid valid
          :resolves false}))))
 
+(defn locate-without-resolve
+  "Like locate, but does not resolve a found url."
+  [text]
+    (when-let [clean-url (extract-one text)]
+      (let [valid (valid? clean-url)]
+        (if valid
+          {:url clean-url
+           :valid valid
+           :root (extract-root clean-url)
+           :tld (extract-tld clean-url)}
+          {:url clean-url
+           :valid valid}))))
+
