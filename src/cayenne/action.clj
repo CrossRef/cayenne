@@ -279,7 +279,7 @@
   (oai/process
    file-or-dir
    :parser unixref-record-parser
-   :task (url-citation-checker "check.log.txt")))
+   :task (full-url-citation-checker "check.log.txt")))
 
 (defn find-citations-like [file-or-dir patt]
   (oai/process
