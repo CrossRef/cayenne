@@ -213,6 +213,23 @@
   {:doi (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text))})
 
 ;; ---------------------------------------------------------------------
+;; Assertions
+
+(defn find-assertions [work-loc]
+  (xml/xselect work-loc :> "custom_metadata" "assertion"))
+
+(defn parse-assertion [assertion-loc]
+  {:type :assertion
+   :order (xml/xselect1 assertion-loc ["order"])
+   :url (xml/xselect1 assertion-loc ["href"])
+   :explanation-url (xml/xselect1 assertion-loc ["explanation"])
+   :value (xml/xselect1 assertion-loc :text)
+   :name (xml/xselect1 assertion-loc ["name"])
+   :label (xml/xselect1 assertion-loc ["label"])
+   :group-label (xml/xselect1 assertion-loc ["group_label"])
+   :group-name (xml/xselect1 assertion-loc ["group_name"])})
+
+;; ---------------------------------------------------------------------
 ;; Resources
 
 (defn parse-collection-item 
@@ -421,6 +438,9 @@
 
 (defn parse-item-citations [item-loc]
   (map parse-citation (find-citations item-loc)))
+
+(defn parse-item-assertions [item-loc]
+  (map parse-assertion (find-assertions item-loc)))
 
 (defn parse-item-pub-dates 
   ([kind item-loc]
@@ -655,6 +675,7 @@
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
       (parse-attach :published item-loc :multi parse-item-pub-dates)
+      (parse-attach :assertion item-loc :multi parse-item-assertions)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 

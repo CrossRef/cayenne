@@ -305,6 +305,20 @@
                               (:affiliations %2))
                      contrib-details)))
 
+(defn as-assertion-list [assertions]
+  (->> assertions
+       (map-indexed
+        #(-> {}
+             (util/assoc-str (str "assertion_name_" %1) (:name %2))
+             (util/assoc-str (str "assertion_label_" %1) (:label %2))
+             (util/assoc-str (str "assertion_group_name_" %1) (:group-name %2))
+             (util/assoc-str (str "assertion_group_label_" %1) (:group-label %2))
+             (util/assoc-str (str "assertion_url_" %1) (:url %2))
+             (util/assoc-str (str "assertion_explanation_url_" %1) (:explanation-url %2))
+             (util/assoc-str (str "assertion_value_" %1) (:value %2))
+             (util/assoc-int (str "assertion_order_" %1) (:order %2))))
+       (apply merge)))
+
 (defn as-solr-document [item]
   (let [grant-map (as-grant-map item)
         licenses (as-license-list item)
@@ -313,6 +327,7 @@
         publisher (first (get-tree-rel item :publisher))
         full-text-resources (get-item-rel item :resource-fulltext)
         funders (get-tree-rel item :funder)
+        assertions (get-tree-rel item :assertion)
         pub-date (get-earliest-pub-date item)
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
@@ -391,6 +406,7 @@
          "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)}
+        (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
         (merge (as-award-compounds funders))
         (merge (as-license-compounds licenses pub-date))

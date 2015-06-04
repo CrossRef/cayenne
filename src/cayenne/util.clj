@@ -8,7 +8,29 @@
   (into m
         (for [[k v] (partition 2 kvs)
          :when v]
-     [k v])))
+          [k v])))
+
+(defn assoc-str
+  "Like assoc but only assocs when value is a non-blank string. Value is assoced
+   as a trimmed string."
+  [m & kvs]
+  (assert (even? (count kvs)))
+  (into m
+        (for [[k v] (partition 2 kvs)
+         :when (not (string/blank? v))]
+          [k (string/trim v)])))
+
+(declare parse-int-safe)
+
+(defn assoc-int
+  "Like assoc but only assocs when value is not nil. Value is assoced
+   as a parsed int."
+  [m & kvs]
+  (assert (even? (count kvs)))
+  (into m
+        (for [[k v] (partition 2 kvs)
+         :when (not (nil? (parse-int-safe v)))]
+          [k (parse-int-safe v)])))
 
 (defn keys-in
   "Return all keys in nested maps."
