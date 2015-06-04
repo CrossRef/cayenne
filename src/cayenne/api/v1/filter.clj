@@ -266,6 +266,7 @@
    "has-funder" (existence "funder_name")
    "has-funder-doi" (existence "funder_doi")
    "has-award" (existence "award_number")
+   "has-assertion" (existence "assertion_name")
    "full-text" (compound "full_text" ["type" "application" "version"]
                          :transformers {"type" util/slugify
                                         "application" util/slugify})
@@ -280,6 +281,8 @@
    "type-name" (equality "type")
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
    "affiliation" (equality "affiliation")
+   "assertion" (equality "assertion_name")
+   "assertion-group" (equality "assertion_group_name")
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
    "container-title" (equality "publication")
    "publisher-name" (equality "publisher")

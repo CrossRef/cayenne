@@ -164,6 +164,18 @@
 (defn get-updates [item]
   (find-items-of-type item :update))
 
+(defn get-assertion-names [item]
+  (->> (find-items-of-type item :assertion)
+       (filter :name)
+       (map :name)
+       set))
+
+(defn get-assertion-group-names [item]
+  (->> (find-items-of-type item :assertion)
+       (filter :group-name)
+       (map :group-name)
+       set))
+
 (defn as-solr-base-field [item]
   (string/join 
    " "
@@ -346,6 +358,8 @@
          "supplementary_id" (get-tree-ids item :supplementary)
          "orcid" (get-contributor-orcids item)
          "affiliation" (get-contributor-affiliations item)
+         "assertion_name" (get-assertion-names item)
+         "assertion_group_name" (get-assertion-group-names item)
          "category" (get-categories item)
          "funder_name" funder-names
          "funder_doi" funder-dois

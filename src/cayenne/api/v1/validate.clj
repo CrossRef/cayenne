@@ -181,6 +181,7 @@
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
    :has-award boolean-validator
+   :has-assertion boolean-validator
    :directory directory-validator
    :archive archive-validator
    :issn issn-validator
@@ -188,6 +189,8 @@
    :type-name string-validator
    :orcid orcid-validator
    :affiliation string-validator
+   :assertion string-validator
+   :assertion-group string-validator
    :doi doi-validator
    :container-title string-validator
    :publisher-name string-validator

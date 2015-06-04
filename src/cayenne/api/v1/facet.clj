@@ -26,7 +26,11 @@
    "update_type" {:external-field "update-type"
                   :allow-unlimited-values true}
    "affiliation" {:external-field "affiliation"
-                  :allow-unlimited-values true}})
+                  :allow-unlimited-values true}
+   "assertion_name" {:external-field "assertion"
+                     :allow-unlimited-values true}
+   "assertion_group_name" {:external-field "assertion-group"
+                           :allow-unlimited-values true}})
 
 (def external->internal-name
   (into {}
