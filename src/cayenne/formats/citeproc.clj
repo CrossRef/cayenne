@@ -205,6 +205,28 @@
    (get solr-doc "update_by_label")
    (get solr-doc "update_by_date")))
 
+(defn ->citeproc-assertion-group [group-name group-label]
+  (-> {}
+      (util/?> group-name assoc :name group-name)
+      (util/?> group-label assoc :label group-label)))
+
+(defn ->citeproc-assertions [solr-doc]
+  (->> (range)
+       (take-while #(get solr-doc (str "assertion_name_" %)))
+       (map
+        #(let [explanation-url (first (get solr-doc (str "assertion_explanation_url_" %)))
+               group-name (first (get solr-doc (str "assertion_group_name_" %)))
+               group-label (first (get solr-doc (str "assertion_group_label_" %)))]
+           (-> {}
+               (assoc-exists :value (first (get solr-doc (str "assertion_value_" %))))
+               (assoc-exists :URL   (first (get solr-doc (str "assertion_url_" %))))
+               (assoc-exists :order (first (get solr-doc (str "assertion_order_" %))))
+               (assoc-exists :name  (first (get solr-doc (str "assertion_name_" %))))
+               (assoc-exists :label (first (get solr-doc (str "assertion_label_" %))))
+               (util/?> explanation-url assoc :explanation {:URL explanation-url})
+               (util/?> (or group-name group-label)
+                        assoc :group (->citeproc-assertion-group group-name group-label)))))))
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -237,5 +259,6 @@
       (assoc-exists :link (->citeproc-links solr-doc))
       (assoc-exists :page (->citeproc-pages solr-doc))
       (assoc-exists :funder (->citeproc-funders-merged solr-doc))
+      (assoc-exists :assertion (->citeproc-assertions solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 
