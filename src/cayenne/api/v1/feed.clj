@@ -42,14 +42,19 @@
        "-" id
        ".body"))
 
+;; crossref-unixsd-761f5341-6d7c-48b2-9abd-8ee29c9be241.body
+
 (defn parse-feed-filename [filename]
-  (let [[provider content-type id] (-> filename
-                                       (string/split #"/")
-                                       last
-                                       (string/split #"-"))]
+  (let [[provider content-type & rest] (-> filename
+                                           (string/split #"/")
+                                           last
+                                           (string/split #"-"))
+        id (-> (string/join "-" rest)
+               (string/split #"\.")
+               first)]
     {:content-type (content-type-mnemonics-reverse content-type)
      :provider provider
-     :id (first (string/split id #"\."))}))
+     :id id}))
 
 (defn incoming-file [feed-context]
   (feed-filename "in"
