@@ -3,6 +3,7 @@
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
             [cayenne.api.v1.graph :as graph-v1]
+            [cayenne.api.v1.feed :as feed-v1]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
             [ring.middleware.logstash :as logstash]
@@ -52,20 +53,27 @@
    (ANY "/" [] 
         (redirect "/help"))))
 
-(defn create-all-routes [& {:keys [graph-api] :or {graph-api false}}]
-  (if graph-api
-    (routes
-     (create-unprotected-api-routes)
-     (context "/graph" [] graph-v1/graph-api-routes)
-     (context "/v1/graph" [] graph-v1/graph-api-routes)
-     (context "/v1.0/graph" [] graph-v1/graph-api-routes)
-     (create-docs-routes)
-     (create-protected-api-routes))
-    ; or
-    (routes
-     (create-unprotected-api-routes)
-     (create-docs-routes)
-     (create-protected-api-routes))))
+(defn create-graph-routes []
+  (routes
+   (context "/graph" [] graph-v1/graph-api-routes)
+   (context "/v1/graph" [] graph-v1/graph-api-routes)
+   (context "/v1.0/graph" [] graph-v1/graph-api-routes)))
+
+(defn create-feed-routes []
+  (routes
+   (context "/feeds" [] feed-v1/feed-api-routes)
+   (context "/v1/feeds" [] feed-v1/feed-api-routes)
+   (context "/v1.0/feeds" [] feed-v1/feed-api-routes)))
+
+(defn create-all-routes [& {:keys [graph-api feed-api]
+                            :or {graph-api false
+                                 feed-api false}}]
+  (apply routes
+         (cond-> [(create-unprotected-api-routes)
+                  (create-docs-routes)]
+           graph-api (conj (create-graph-routes))
+           feed-api (conj (create-feed-routes))
+           true (conj (create-protected-api-routes)))))
 
 (defn wrap-cors
   [h]
@@ -75,8 +83,9 @@
         (assoc-in [:headers "Access-Control-Allow-Headers"]
                   "X-Requested-With"))))
 
-(defn create-handler [& {:keys [graph-api] :or {graph-api false}}]
-  (-> (create-all-routes :graph-api graph-api)
+(defn create-handler [& {:keys [graph-api feed-api] :or {graph-api false
+                                                         feed-api false}}]
+  (-> (create-all-routes :graph-api graph-api :feed-api feed-api)
       (logstash/wrap-logstash :host (conf/get-param [:service :logstash :host])
                               :port (conf/get-param [:service :logstash :port])
                               :name (conf/get-param [:service :logstash :name]))
@@ -101,6 +110,7 @@
      (conf/set-service! 
       :api 
       (hs/run-server 
-       (create-handler :graph-api (some #{:graph-api} profiles))
+       (create-handler :graph-api (some #{:graph-api} profiles)
+                       :feed-api (some #{:feed-api} profiles))
        {:join? false
         :port (conf/get-param [:service :api :port])})))))
