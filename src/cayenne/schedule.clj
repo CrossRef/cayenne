@@ -10,12 +10,14 @@
             [cayenne.tasks.publisher :as publisher]
             [cayenne.tasks.coverage :as coverage]
             [cayenne.tasks.journal :as journal]
+            [cayenne.api.v1.feed :as feed]
             [clj-time.core :as time]
             [clj-time.format :as timef]
             [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as qt]
             [clojurewerkz.quartzite.jobs :as qj]
             [clojurewerkz.quartzite.schedule.cron :as cron]
+            [clojurewerkz.quartzite.schedule.simple :as simple]
             [taoensso.timbre :as timbre :refer [info error]])
    (:use [clojurewerkz.quartzite.jobs :only [defjob]]))
 
@@ -50,6 +52,13 @@
    (qt/with-schedule
      (cron/schedule
       (cron/cron-schedule "0 0 2 ? * *")))))
+
+(def process-feed-files-trigger
+  (qt/build
+   (qt/with-identity (qt/key "process-feed-files"))
+   (qt/with-schedule
+     (simple/schedule
+      (simple/with-interval-in-milliseconds 500)))))
 
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 3))
@@ -87,6 +96,11 @@
     (coverage/check-journals "journals")
     (catch Exception e (error e "Failed to update journal flags and coverage values"))))
 
+(defjob process-feed-files [ctx]
+  (try
+    (feed/process-feed-files!)
+    (catch Exception e (error e "Failed to process feed files"))))
+
 (defn start []
   (qs/initialize)
   (qs/start))
@@ -117,6 +131,13 @@
     (qj/with-identity (qj/key "update-journals")))
    update-journals-daily-work-trigger))
 
+(defn start-processing-feed-files []
+  (qs/schedule
+   (qj/build
+    (qj/of-type process-feed-files)
+    (qj/with-identity (qj/key "process-feed-files")))
+   process-feed-files-trigger))
+
 (conf/with-core :default
   (conf/add-startup-task 
    :index
@@ -134,4 +155,10 @@
    :update-journals
    (fn [profiles]
      (start-journals-updating))))
+
+(conf/with-core :default
+  (conf/add-startup-task
+   :process-feed-files
+   (fn [profiles]
+     (start-processing-feed-files))))
 

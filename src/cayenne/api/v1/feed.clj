@@ -34,6 +34,9 @@
 
 (defn new-id [] (UUID/randomUUID))
 
+(defn feed-in-dir []
+  (str (conf/get-param [:dir :data]) "/feed-in"))
+
 (defn feed-filename [copy-name content-type provider id]
   (str (conf/get-param [:dir :data])
        "/feed-" copy-name
@@ -41,8 +44,6 @@
        "-" (content-type-mnemonics content-type)
        "-" id
        ".body"))
-
-;; crossref-unixsd-761f5341-6d7c-48b2-9abd-8ee29c9be241.body
 
 (defn parse-feed-filename [filename]
   (let [[provider content-type & rest] (-> filename
@@ -77,8 +78,8 @@
 (defn move-file! [from to]
   (let [from-file (File. from)
         to-file (File. to)]
-    (.mkdirs (.getParentFile to))
-    (.renameTo from to)))
+    (.mkdirs (.getParentFile to-file))
+    (.renameTo from-file to-file)))
 
 (defn make-feed-context
   ([content-type provider]
@@ -104,6 +105,7 @@
         (move-file! (:incoming-file feed-context)
                     (:processed-file feed-context)))
       (catch Exception e
+        (println e)
         (move-file! (:incoming-file feed-context)
                     (:failed-file feed-context))))))
   
@@ -127,6 +129,10 @@
                          (apply itree/centre-on))]
        (assoc metadata :source (-> feed-context :provider provider-names))))
    feed-context))
+
+(defn process-feed-files! []
+  (doseq [f (-> (feed-in-dir) io/file .listFiles)]
+    (-> f .getAbsolutePath make-feed-context process!)))
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
