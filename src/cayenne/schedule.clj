@@ -58,6 +58,7 @@
    (qt/with-identity (qt/key "process-feed-files"))
    (qt/with-schedule
      (simple/schedule
+      (simple/repeat-forever)
       (simple/with-interval-in-milliseconds 500)))))
 
 (defjob index-crossref-oai [ctx]
