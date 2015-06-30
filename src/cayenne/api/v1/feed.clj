@@ -105,7 +105,6 @@
         (move-file! (:incoming-file feed-context)
                     (:processed-file feed-context)))
       (catch Exception e
-        (println e)
         (move-file! (:incoming-file feed-context)
                     (:failed-file feed-context))))))
   

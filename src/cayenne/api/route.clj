@@ -6,6 +6,7 @@
             [cayenne.api.v1.feed :as feed-v1]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
+            [cayenne.api.auth.token :as token-auth]
             [ring.middleware.logstash :as logstash]
             [heartbeat.ring :refer [wrap-heartbeat]]
             [heartbeat.core :refer [def-web-check]]
@@ -60,10 +61,12 @@
    (context "/v1.0/graph" [] graph-v1/graph-api-routes)))
 
 (defn create-feed-routes []
-  (routes
-   (context "/feeds" [] feed-v1/feed-api-routes)
-   (context "/v1/feeds" [] feed-v1/feed-api-routes)
-   (context "/v1.0/feeds" [] feed-v1/feed-api-routes)))
+  (wrap-basic-authentication
+   (routes
+    (context "/feeds" [] feed-v1/feed-api-routes)
+    (context "/v1/feeds" [] feed-v1/feed-api-routes)
+    (context "/v1.0/feeds" [] feed-v1/feed-api-routes))
+   token-auth/authenticated?))
 
 (defn create-all-routes [& {:keys [graph-api feed-api]
                             :or {graph-api false
