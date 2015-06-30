@@ -12,7 +12,8 @@
             [compojure.core :refer [defroutes ANY]]
             [liberator.core :refer [defresource]]
             [clojure.string :as string]
-            [clojure.java.io :refer [reader] :as io])
+            [clojure.java.io :refer [reader] :as io]
+            [metrics.meters :refer [defmeter] :as meter])
   (:import [java.util UUID]
            [java.io File]))
 
@@ -31,6 +32,8 @@
 
 (def provider-names {"crossref" "CrossRef"
                      "datacite" "DataCite"})
+
+(defmeter [cayenne feed files-received] "files-received")
 
 (defn new-id [] (UUID/randomUUID))
 
@@ -146,7 +149,8 @@
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
     (.mkdirs (.getParentFile incoming-file))
-    (io/copy body incoming-file)))
+    (io/copy body incoming-file)
+    (meter/mark! files-received)))
 
 (defresource feed-resource [provider]
   :allowed-methods [:post :options]
