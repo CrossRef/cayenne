@@ -101,7 +101,7 @@
   (with-open [rdr (reader (:incoming-file feed-context))]
     (try 
       (do
-        (-> rdr process-fn solr/insert-item)
+        (process-fn rdr)
         (move-file! (:incoming-file feed-context)
                     (:processed-file feed-context)))
       (catch Exception e
@@ -114,20 +114,30 @@
 (defmethod process! "application/vnd.datacite.datacite+xml" [feed-context]
   (process-with
    (fn [rdr]
-     (-> (xml/process-xml rdr "record" datacite/datacite-record-parser)
-         ;; itree centre on?
-         (assoc :source (provider-names (:provider feed-context)))))
+     (let [f #(let [parsed (->> %
+                                datacite/datacite-record-parser
+                                (apply itree/centre-on))
+                    with-source (assoc parsed
+                                       :source
+                                       (-> feed-context :provider provider-names))]
+                (solr/insert-item with-source))]
+       (xml/process-xml rdr "record" f)))
    feed-context))
 
 (defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context]
   (process-with
    (fn [rdr]
-     (let [metadata (->> (xml/process-xml rdr "" unixsd/unixsd-record-parser)
-                         (apply category/apply-to)
-                         (apply doaj/apply-to)
-                         (apply funder/apply-to)
-                         (apply itree/centre-on))]
-       (assoc metadata :source (-> feed-context :provider provider-names))))
+     (let [f #(let [parsed (->> %
+                                unixsd/unixsd-record-parser
+                                (apply category/apply-to)
+                                (apply doaj/apply-to)
+                                (apply funder/apply-to)
+                                (apply itree/centre-on))
+                    with-source (assoc parsed
+                                       :source
+                                       (-> feed-context :provider provider-names))]
+                   (solr/insert-item with-source))]
+       (xml/process-xml rdr "crossref_result" f)))
    feed-context))
 
 (defn process-feed-files! []

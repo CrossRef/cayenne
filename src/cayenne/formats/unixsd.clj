@@ -4,6 +4,7 @@
             [cayenne.item-tree :as itree]
             [cayenne.util :as util]
             [cayenne.xml :as xml]
+            [cayenne.ids.doi :as doi-id]
             [taoensso.timbre :as timbre :refer [error info]]))
 
 (defn parse-publisher [oai-record]
@@ -23,12 +24,19 @@
       (xml/xselect1 :> "crm-item" [:= "name" "citedby-count"] :text)
       (util/parse-int-safe)))
 
+(defn parse-doi [oai-record]
+  (-> oai-record
+      (xml/xselect1 :> "query" "doi" :text)
+      (doi-id/to-long-doi-uri)))
+
 (defn unixsd-record-parser
   [oai-record]
   (let [result (unixref/unixref-record-parser oai-record)
         work (second result)
         primary-id (first result)]
-    [primary-id
+    [(if primary-id
+       primary-id
+       (parse-doi oai-record))
      (-> work
          (itree/delete-relation :publisher)
          (itree/add-relation :publisher (parse-publisher oai-record))
