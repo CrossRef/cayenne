@@ -32,12 +32,12 @@
      (cron/schedule
       (cron/cron-schedule "0 0 1 ? * *")))))
 
-(def index-hourly-work-trigger
+(def index-regularly-work-trigger
   (qt/build
    (qt/with-identity (qt/key "index-hourly-work"))
    (qt/with-schedule
      (cron/schedule
-      (cron/cron-schedule "0 0 * * * ?")))))
+      (cron/cron-schedule "0 * * * * ?")))))
 
 (def update-members-daily-work-trigger
   (qt/build
@@ -116,7 +116,7 @@
    (qj/build
     (qj/of-type flush-solr-insert-list)
     (qj/with-identity (qj/key "flush-solr-insert-list")))
-    index-hourly-work-trigger))
+    index-regularly-work-trigger))
 
 (defn start-members-updating []
   (qs/schedule
