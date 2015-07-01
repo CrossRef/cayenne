@@ -74,8 +74,9 @@
        action/index-solr-docs))))
 
 (defjob flush-solr-insert-list [ctx]
-  (info "Flushing solr insert buffer")
-  (solr/force-flush-insert-list))
+  (try
+    (solr/force-flush-insert-list)
+    (catch Exception e (error e "Failed to flush solr insert list"))))
 
 (defjob update-members [ctx]
   (try
