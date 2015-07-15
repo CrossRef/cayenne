@@ -37,7 +37,7 @@
    (qt/with-identity (qt/key "index-hourly-work"))
    (qt/with-schedule
      (cron/schedule
-      (cron/cron-schedule "0 * * * * ?")))))
+      (cron/cron-schedule "0 0 * * * ?")))))
 
 (def update-members-daily-work-trigger
   (qt/build
