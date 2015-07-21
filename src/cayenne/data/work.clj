@@ -92,7 +92,7 @@
         @(http/get (str (conf/get-param [:upstream :ra-url]) extracted-doi))]
     (when-not error
       (let [agency (-> body json/read-str first (get "RA"))]
-        (when (not= agency "DOI does not exist")
+        (when-not (nil? agency)
           (-> agency
               string/lower-case
               (string/replace #"\s+" "")
