@@ -279,7 +279,7 @@
                                             (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :filter-validator v/validate-funder-filters)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json

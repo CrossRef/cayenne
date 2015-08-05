@@ -224,6 +224,9 @@
    :backfile-doi-count integer-validator
    :current-doi-count integer-validator})
 
+(def funder-filter-validators
+  {:location string-validator})
+
 (defn validate-filters [filter-validators context filters]
   (let [unknown-filters (cset/difference
                          (set (map first filters))
@@ -252,6 +255,8 @@
                                     work-filter-validators))
 (def validate-member-filters (partial validate-filters
                                       member-filter-validators))
+(def validate-funder-filters (partial validate-filters
+                                      funder-filter-validators))
 
 (def wildcard-facet-forms ["*" "t" "T" "1"])
 

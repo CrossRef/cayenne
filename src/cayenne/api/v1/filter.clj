@@ -314,3 +314,6 @@
                                         :transformer util/parse-int-safe)
    "current-doi-count" (mongo-equality "counts.current-dois"
                                        :transformer util/parse-int-safe)})
+
+(def funder-filters
+  {"location" (mongo-equality "country")})
