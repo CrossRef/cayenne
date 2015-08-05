@@ -90,6 +90,7 @@
         and-list (map #(hash-map "name_tokens" {"$regex" (str "^" %)}) parsed-terms)
         where-clause (if (empty? and-list) {} {"$and" and-list})
         mongo-query (query/->mongo-query query-context
+                                         :filters filter/funder-filters
                                          :where where-clause
                                          :sort {:level 1})
         docs (if (and (:rows query-context) (zero? (:rows query-context)))
