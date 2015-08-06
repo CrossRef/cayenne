@@ -49,7 +49,7 @@
 
 (defn fetch-reverse [query-context]
   (let [terms (query/clean-terms (:terms query-context) :remove-syntax true)
-        q (str "content_citation:\"" terms "\"")
+        q (str "content_citation:(" terms ")")
         response (-> (conf/get-service :solr)
                      (.query (query/->solr-query {:raw-terms q
                                                   :rows (int 1)})))
