@@ -224,15 +224,41 @@
 
 (defn as-datetime [particle-date]
   (let [converted-date {:year (util/parse-int-safe (:year particle-date))
-                       :month (util/parse-int-safe (:month particle-date))
-                       :day (util/parse-int-safe (:day particle-date))}]
-    (cond (:day converted-date)
+                        :month (util/parse-int-safe (:month particle-date))
+                        :day (util/parse-int-safe (:day particle-date))
+                        :hour (util/parse-int-safe (:hour particle-date))
+                        :minute (util/parse-int-safe (:minute particle-date))
+                        :second (util/parse-int-safe (:second particle-date))}]
+    (cond (:second converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date)
+                       (:hour converted-date)
+                       (:minute converted-date)
+                       (:second converted-date))
+
+          (:minute converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date)
+                       (:hour converted-date)
+                       (:minute converted-date))
+
+          (:hour converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date)
+                       (:hour converted-date))
+
+          (:day converted-date)
           (t/date-time (:year converted-date)
                        (:month converted-date)
                        (:day converted-date))
+          
           (:month converted-date)
           (t/date-time (:year converted-date)
                        (:month converted-date))
+          
           :else
           (t/date-time (:year converted-date)))))
 

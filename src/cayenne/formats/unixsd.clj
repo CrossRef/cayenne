@@ -5,7 +5,23 @@
             [cayenne.util :as util]
             [cayenne.xml :as xml]
             [cayenne.ids.doi :as doi-id]
+            [clj-time.core :as t]
+            [clj-time.format :as tf]
             [taoensso.timbre :as timbre :refer [error info]]))
+
+;; TODO Parse timezone once available in crm-item dates
+(def crm-item-date-format (tf/formatter "yyyy-MM-dd HH:mm:ss.SSS"))
+
+;; TODO Add timezone once available in crm-item dates
+(defn parse-crm-item-date [s]
+  (let [d (tf/parse crm-item-date-format s)]
+    {:type :date
+     :year (t/year d)
+     :month (t/month d)
+     :day (t/day d)
+     :hour (t/hour d)
+     :minute (t/minute d)
+     :second (t/second d)}))
 
 (defn parse-publisher [oai-record]
   (let [meta-loc (xml/xselect1 oai-record :> "crossref_metadata")]
@@ -29,6 +45,11 @@
       (xml/xselect1 :> "crm-item" [:= "name" "created"] :text)
       parse-crm-item-date))
 
+(defn parse-updated-date [oai-record]
+  (-> oai-record
+      (xml/xselect1 :> "crm-item" [:= "name" "last-update"] :text)
+      parse-crm-item-date))
+
 (defn parse-doi [oai-record]
   (-> oai-record
       (xml/xselect1 :> "query" "doi" :text)
@@ -44,7 +65,9 @@
        (parse-doi oai-record))
      (-> work
          (itree/delete-relation :publisher)
+         (itree/delete-relation :deposited)
          (itree/add-relation :publisher (parse-publisher oai-record))
+         (itree/add-relation :deposited (parse-updated-date oai-record))
          (itree/add-relation :first-deposited (parse-created-date oai-record))
          (itree/add-property :citation-count (parse-citation-count oai-record)))]))
       
