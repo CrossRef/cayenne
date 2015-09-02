@@ -235,6 +235,7 @@
        :issued (->date-parts (get solr-doc "year")
                              (get solr-doc "month")
                              (get solr-doc "day"))
+       :created (->date-parts (get solr-doc "first_deposited_at"))
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")

@@ -24,6 +24,11 @@
       (xml/xselect1 :> "crm-item" [:= "name" "citedby-count"] :text)
       (util/parse-int-safe)))
 
+(defn parse-created-date [oai-record]
+  (-> oai-record
+      (xml/xselect1 :> "crm-item" [:= "name" "created"] :text)
+      parse-crm-item-date))
+
 (defn parse-doi [oai-record]
   (-> oai-record
       (xml/xselect1 :> "query" "doi" :text)
@@ -40,6 +45,7 @@
      (-> work
          (itree/delete-relation :publisher)
          (itree/add-relation :publisher (parse-publisher oai-record))
+         (itree/add-relation :first-deposited (parse-created-date oai-record))
          (itree/add-property :citation-count (parse-citation-count oai-record)))]))
       
 ;; todo citation-count should be attached to item with primary-id, not tree root.

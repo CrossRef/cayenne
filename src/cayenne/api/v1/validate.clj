@@ -167,6 +167,8 @@
    :until-pub-date date-validator
    :from-issued-date date-validator
    :until-issued-date date-validator
+   :from-created-date date-validator
+   :until-created-date date-validator
    :is-update boolean-validator
    :has-update boolean-validator
    :updates doi-validator

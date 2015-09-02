@@ -248,6 +248,8 @@
    "until-index-date" (stamp-date "indexed_at" :until)
    "from-deposit-date" (stamp-date "deposited_at" :from)
    "until-deposit-date" (stamp-date "deposited_at" :until)
+   "from-created-date" (stamp-date "first_deposited_at" :from)
+   "until-created-date" (stamp-date "first_deposited_at" :until)
    "from-pub-date" (particle-date "year" "month" "day" :from)
    "until-pub-date" (particle-date "year" "month" "day" :until)
    "from-issued-date" (particle-date "year" "month" "day" :from)

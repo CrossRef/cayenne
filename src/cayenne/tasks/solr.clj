@@ -344,12 +344,17 @@
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
+        first-deposit-date (first (get-tree-rel item :first-deposited))
         contrib-details (get-contributor-details item)
         updates (get-updates item)
         doi (first (get-item-ids item :long-doi))]
     (-> {"source" (:source item)
          "indexed_at" (t/now)
          "deposited_at" (if deposit-date (as-datetime deposit-date) (t/now))
+         "first_deposited_at"
+         (or (when first-deposit-date (as-datetime first-deposit-date))
+             (when deposit-date (as-datetime deposit-date))
+             (t/now))
          "prefix" (doi/extract-long-prefix doi)
          "doi_key" doi
          "doi" doi

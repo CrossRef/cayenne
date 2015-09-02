@@ -894,7 +894,7 @@
       (conj
        {:subtype :report-series
         :coden (xml/xselect1 series-meta-loc "coden" :text)
-        :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))  
+        :series-number (xml/xselect1 series-meta-loc "series_number" :text)})))
 
 (defn parse-report-series [report-loc series-meta-loc]
   (if-let [series-loc (xml/xselect1 series-meta-loc "series_metadata")]
@@ -1054,6 +1054,7 @@
    published-online
    published-print
    deposited
+   first-deposited
    start
    end
    citation
