@@ -161,6 +161,11 @@
   (when-let [policy (first (get-tree-rel item :update-policy))]
     (:value policy)))
 
+(defn get-article-numbers [item]
+  (->> (get-tree-rel item :number)
+       (filter #(= "article-number" (:kind %)))
+       (map :value)))
+
 (defn get-updates [item]
   (find-items-of-type item :update))
 
@@ -388,6 +393,7 @@
          "isbn" (get-tree-ids item :isbn)
          "supplementary_id" (get-tree-ids item :supplementary)
          "orcid" (get-contributor-orcids item)
+         "article_number" (get-article-numbers item)
          "affiliation" (get-contributor-affiliations item)
          "assertion_name" (get-assertion-names item)
          "assertion_group_name" (get-assertion-group-names item)

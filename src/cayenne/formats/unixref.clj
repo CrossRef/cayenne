@@ -340,6 +340,9 @@
 (defn find-supplementary-ids [item-loc]
   (xml/xselect item-loc "publisher_item" "identifier"))
 
+(defn find-item-numbers [item-loc]
+  (xml/xselect item-loc "publisher_item" "item_number"))
+
 ;; ---------------------------------------------------------------
 ;; Contributors
 
@@ -441,6 +444,14 @@
 
 (defn parse-item-assertions [item-loc]
   (map parse-assertion (find-assertions item-loc)))
+
+(defn parse-item-number [item-number-loc]
+  {:type :number
+   :kind (xml/xselect1 item-number-loc ["item_number_type"])
+   :value (xml/xselect1 item-number-loc :text)})
+
+(defn parse-item-numbers [item-loc]
+  (map parse-item-number (find-item-numbers item-loc)))
 
 (defn parse-item-pub-dates 
   ([kind item-loc]
@@ -676,6 +687,7 @@
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
       (parse-attach :published item-loc :multi parse-item-pub-dates)
       (parse-attach :assertion item-loc :multi parse-item-assertions)
+      (parse-attach :number item-loc :multi parse-item-numbers)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 
@@ -1070,6 +1082,7 @@
    affiliation
    publisher
    component
+   number
    grant
    funder
    archived-with
