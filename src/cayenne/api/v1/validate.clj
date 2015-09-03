@@ -186,6 +186,7 @@
    :has-assertion boolean-validator
    :directory directory-validator
    :archive archive-validator
+   :article-number string-validator
    :issn issn-validator
    :type type-validator
    :type-name string-validator

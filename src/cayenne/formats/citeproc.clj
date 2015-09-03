@@ -243,6 +243,7 @@
        :reference-count (get solr-doc "citation_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :score (get solr-doc "score")}
+      (assoc-exists :article-number (get solr-doc "article_number"))
       (assoc-exists :volume (get solr-doc "hl_volume"))
       (assoc-exists :issue (get solr-doc "hl_issue"))
       (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))

@@ -9,12 +9,8 @@
             [clj-time.format :as tf]
             [taoensso.timbre :as timbre :refer [error info]]))
 
-;; TODO Parse timezone once available in crm-item dates
-(def crm-item-date-format (tf/formatter "yyyy-MM-dd HH:mm:ss.SSS"))
-
-;; TODO Add timezone once available in crm-item dates
 (defn parse-crm-item-date [s]
-  (let [d (tf/parse crm-item-date-format s)]
+  (let [d (tf/parse (tf/formatters :date-time-no-ms) s)]
     {:type :date
      :year (t/year d)
      :month (t/month d)

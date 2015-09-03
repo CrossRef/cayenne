@@ -278,6 +278,7 @@
    "directory" (equality "oa_status" :transformer string/upper-case)
       ;; watch the above - oa_status field changing to directory soon
    "archive" (equality "archive")
+   "article-number" (equality "article_number")
    "issn" (equality "issn" :transformer issn/to-issn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "type-name" (equality "type")

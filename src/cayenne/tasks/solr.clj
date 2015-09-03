@@ -161,10 +161,11 @@
   (when-let [policy (first (get-tree-rel item :update-policy))]
     (:value policy)))
 
-(defn get-article-numbers [item]
+(defn get-article-number [item]
   (->> (get-tree-rel item :number)
        (filter #(= "article-number" (:kind %)))
-       (map :value)))
+       (map :value)
+       first))
 
 (defn get-updates [item]
   (find-items-of-type item :update))
@@ -241,19 +242,6 @@
                        (:hour converted-date)
                        (:minute converted-date)
                        (:second converted-date))
-
-          (:minute converted-date)
-          (t/date-time (:year converted-date)
-                       (:month converted-date)
-                       (:day converted-date)
-                       (:hour converted-date)
-                       (:minute converted-date))
-
-          (:hour converted-date)
-          (t/date-time (:year converted-date)
-                       (:month converted-date)
-                       (:day converted-date)
-                       (:hour converted-date))
 
           (:day converted-date)
           (t/date-time (:year converted-date)
@@ -393,7 +381,7 @@
          "isbn" (get-tree-ids item :isbn)
          "supplementary_id" (get-tree-ids item :supplementary)
          "orcid" (get-contributor-orcids item)
-         "article_number" (get-article-numbers item)
+         "article_number" (get-article-number item)
          "affiliation" (get-contributor-affiliations item)
          "assertion_name" (get-assertion-names item)
          "assertion_group_name" (get-assertion-group-names item)
