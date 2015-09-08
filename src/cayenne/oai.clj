@@ -54,9 +54,7 @@
 (defn resumption-token
   "Cheap and cheerful grab of resumption token."
   [body]
-  (or
-   (second (re-find #"resumptionToken=\"([^,\"]+)\"" body))
-   (second (re-find #"<resumptionToken[^>]*>([^<]+)<" body))))
+  (second (re-find #"<resumptionToken[^>]*>([^<]+)<" body)))
 
 (declare grab-oai-xml-file-async)
 (declare grab-oai-retry-token)
