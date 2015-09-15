@@ -7,17 +7,19 @@
             [cayenne.ids.doi :as doi-id]
             [clj-time.core :as t]
             [clj-time.format :as tf]
+            [clojure.string :as str]
             [taoensso.timbre :as timbre :refer [error info]]))
 
 (defn parse-crm-item-date [s]
-  (let [d (tf/parse (tf/formatters :date-time-no-ms) s)]
-    {:type :date
-     :year (t/year d)
-     :month (t/month d)
-     :day (t/day d)
-     :hour (t/hour d)
-     :minute (t/minute d)
-     :second (t/second d)}))
+  (when-not (str/blank? s)
+    (let [d (tf/parse (tf/formatters :date-time-no-ms) s)]
+      {:type :date
+       :year (t/year d)
+       :month (t/month d)
+       :day (t/day d)
+       :hour (t/hour d)
+       :minute (t/minute d)
+       :second (t/second d)})))
 
 (defn parse-publisher [oai-record]
   (let [meta-loc (xml/xselect1 oai-record :> "crossref_metadata")]
