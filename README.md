@@ -68,6 +68,11 @@ In daemonized mode, feature logging will still go to `log/log.txt`, however,
 standard out from the daemonized process's start up phase will be sent to
 `cayenne.log` rather than standard out.
 
+When running as a daemon it is sometimes useful to start an nrepl server
+to later connect a repl:
+
+    $ lein daemon start cayenne :api :nrepl
+
 ## Run within a Docker Container
 
 Create a docker image:

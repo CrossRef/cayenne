@@ -8,7 +8,7 @@
             [taoensso.timbre :as timbre])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
-(defn begin []
+(defn begin [& profiles]
   (timbre/set-config! [:appenders :standard-out :enabled?] false)
   (timbre/set-config! [:appenders :spit :enabled?] true)
   (timbre/set-config! [:shared-appender-config :spit-filename] "log/log.txt")
@@ -17,7 +17,7 @@
   
   (conf/create-core-from! :user :default)
   (conf/set-core! :user)
-  (conf/start-core! :user :api))
+  (apply conf/start-core! :user profiles))
 
 (defn print-solr-doi [doi]
   (-> (conf/get-service :solr)

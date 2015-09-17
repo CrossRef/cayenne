@@ -171,7 +171,6 @@
   (add-startup-task 
    :base
    (fn [profiles]
-     (set-service! :nrepl (nrepl/start-server :port 7888))
      (set-service! :executor (Executors/newScheduledThreadPool 20))
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
@@ -180,6 +179,12 @@
      (set-service! :solr-update-list
                    (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
                         (get-param [:service :solr :update-list]))))))
+
+(with-core :default
+  (add-startup-task
+   :nrepl
+   (fn [profiles]
+     (set-service! :nrepl (nrepl/start-server :port 7888)))))
 
 (set-core! :default)
 
