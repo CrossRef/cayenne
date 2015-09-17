@@ -41,12 +41,13 @@ OAI-PMH:
 
 Run as a production service with some profiles:
 
-    $ lein run :api :index :update-members
+    $ lein run :api :index :update-members :update-journals :update-funders
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
 - :update-members - Collect member records and update with metadata coverage stats (once a day).
 - :update-journals - Collect journal records and update with metadata coverage stats (once a day).
+- :update-funders - Load new funder registry RDF when available. Checks for new RDF once an hour.
 - :graph - Enables a connection to the graph database backend, datomic.
 - :graph-api - Must be specified along with :api and :graph. Enables the graph API. Requires datomic leiningen profile.
 - :feed-api - Must be specified along with :api. Enables the feed API for real-time metadata ingest.

@@ -47,7 +47,7 @@
   (if (nil? name)
     (prn "no pref label for " id)
     (m/with-mongo (conf/get-service :mongo)
-      (m/insert! :funderstest
+      (m/insert! :fundersloading
                  {:id id
                   :uri (fundref/id-to-doi-uri id)
                   :country country
@@ -208,7 +208,7 @@
                   :nesting_names nesting-names}})))))
 
 (defn load-funders-rdf [rdf-file]
-  (ensure-funder-indexes! :funderstest)
+  (ensure-funder-indexes! :fundersloading)
   (let [model (rdf/document->model rdf-file)]
     (doall
      (->> (find-funders model)
@@ -223,7 +223,7 @@
                  (:affiliated-ids %)
                  (:replaced-by-ids %)
                  (:replaces-ids %))))))
-  (build-nestings :funderstest))
+  (build-nestings :fundersloading))
 
 (defn rdf->funder-names [rdf-file]
   (let [model (rdf/document->model rdf-file)
@@ -319,6 +319,19 @@
     (if-let [canonical-name (get-funder-primary-name-memo funder-uri)]
       (merge funder-item {:name canonical-name :canonical true})
       funder-item)))
+
+(defn drop-loading-collection []
+  (m/with-mongo (conf/get-service :mongo)
+    (m/drop-coll! :funderslast)
+    (m/drop-coll! :fundersloading)))
+
+(defn swapin-loading-collection
+  []
+  (let [db-api-layer (:db (conf/get-service :mongo))
+        current-collection (.getCollection db-api-layer "funders")
+        new-collection (.getCollection db-api-layer "fundersloading")]
+    (.rename current-collection "funderslast")
+    (.rename new-collection "funders")))
 
 (defn apply-to 
   "If a funder specifies an ID, replace its publisher-provided name with our

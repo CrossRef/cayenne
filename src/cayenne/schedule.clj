@@ -10,6 +10,7 @@
             [cayenne.tasks.publisher :as publisher]
             [cayenne.tasks.coverage :as coverage]
             [cayenne.tasks.journal :as journal]
+            [cayenne.tasks.funder :as funder]
             [cayenne.api.v1.feed :as feed]
             [clj-time.core :as time]
             [clj-time.format :as timef]
@@ -52,6 +53,13 @@
    (qt/with-schedule
      (cron/schedule
       (cron/cron-schedule "0 0 2 ? * *")))))
+
+(def update-funders-hourly-work-trigger
+  (qt/build
+   (qt/with-identity (qt/key "update-funders-hourly-work"))
+   (qt/with-schedule
+     (cron/schedule
+      (cron/cron-schedule "0 0 * * * ?")))))
 
 (def process-feed-files-trigger
   (qt/build
@@ -98,6 +106,14 @@
     (coverage/check-journals "journals")
     (catch Exception e (error e "Failed to update journal flags and coverage values"))))
 
+(defjob update-funders [ctx]
+  (try
+    (funder/clear!)
+    (funder/drop-loading-collection)
+    (funder/load-funders-rdf (java.net.URL. (conf/get-param [:upstream :funder-registry])))
+    (funder/swapin-loading-collection)
+    (catch Exception e (error e "Failed to update funders from RDF"))))
+
 (defjob process-feed-files [ctx]
   (try
     (feed/process-feed-files!)
@@ -133,6 +149,13 @@
     (qj/with-identity (qj/key "update-journals")))
    update-journals-daily-work-trigger))
 
+(defn start-funders-updating []
+  (qs/schedule
+   (qj/build
+    (qj/of-type update-funders)
+    (qj/with-identity (qj/key "update-funders")))
+   update-funders-hourly-work-trigger))
+
 (defn start-processing-feed-files []
   (qs/schedule
    (qj/build
@@ -157,6 +180,12 @@
    :update-journals
    (fn [profiles]
      (start-journals-updating))))
+
+(conf/with-core :default
+  (conf/add-startup-task
+   :update-funders
+   (fn [profiles]
+     (start-funders-updating))))
 
 (conf/with-core :default
   (conf/add-startup-task

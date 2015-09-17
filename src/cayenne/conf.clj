@@ -155,9 +155,9 @@
 
   (set-param! [:upstream :pdf-service] "http://46.4.83.72:3000/pdf")
   (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
-  (set-param! [:upstream :fundref-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :fundref-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :fundref-registry] "http://dx.doi.org/10.13039/fundref_registry")
+  (set-param! [:upstream :funder-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
+  (set-param! [:upstream :funder-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
+  (set-param! [:upstream :funder-registry] "http://dx.doi.org/10.13039/fundref_registry")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=cnproxy@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :unixref-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixref&doi=")
