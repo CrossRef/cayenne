@@ -9,10 +9,12 @@
             [cayenne.tasks.category :as category]
             [cayenne.tasks.solr :as solr]
             [cayenne.api.v1.types :as types]
+            [cayenne.api.v1.response :as r]
             [compojure.core :refer [defroutes ANY]]
             [liberator.core :refer [defresource]]
             [clojure.string :as string]
             [clojure.java.io :refer [reader] :as io]
+            [digest :as digest]
             [metrics.meters :refer [defmeter] :as meter])
   (:import [java.util UUID]
            [java.io File]))
@@ -150,7 +152,8 @@
   (let [incoming-file (-> feed-context :incoming-file io/file)]
     (.mkdirs (.getParentFile incoming-file))
     (io/copy body incoming-file)
-    (meter/mark! files-received)))
+    (meter/mark! files-received)
+    (assoc feed-context :digest (digest/md5 incoming-file))))
 
 (defresource feed-resource [provider]
   :allowed-methods [:post :options]
@@ -158,9 +161,12 @@
   :known-content-type? #(some #{(get-in % [:request :headers "content-type"])}
                               feed-content-types)
   :exists? (fn [_] (some #{provider} feed-providers))
-  :post! #(-> (get-in % [:request :headers "content-type"])
-              (make-feed-context provider)
-              (record! (get-in % [:request :body]))))
+  :new? true
+  :post! #(let [result (-> (get-in % [:request :headers "content-type"])
+                           (make-feed-context provider)
+                           (record! (get-in % [:request :body])))]
+            (assoc % :digest (:digest result)))
+  :handle-created #(r/api-response :feed-file-creation :content {:digest (:digest %)}))
 
 (defroutes feed-api-routes
   (ANY "/:provider" [provider]

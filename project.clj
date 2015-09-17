@@ -55,6 +55,7 @@
                  [kjw/ring-logstash "0.1.3"]
                  [crossref/heartbeat "0.1.1"]
                  [robert/bruce "0.7.1"]
-                 [bigml/sampling "3.0"]])
+                 [bigml/sampling "3.0"]
+                 [digest "1.4.4"]])
 
 
