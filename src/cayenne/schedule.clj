@@ -125,14 +125,16 @@
   (try
     (info "Updating funders from new RDF")
     (let [time-of-this-update (time/now)
+          time-of-previous-update (get-last-funder-update)
           last-modified-header (-> @(http/head (conf/get-param [:upstream :funder-registry]))
                                    :headers :last-modified)
           funders-last-modified (timef/parse last-modified-format last-modified-header)]
-      (funder/clear!)
-      (funder/drop-loading-collection)
-      (funder/load-funders-rdf (java.net.URL. (conf/get-param [:upstream :funder-registry])))
-      (funder/swapin-loading-collection)
-      (write-last-funder-update time-of-this-update))
+      (when (time/after? funders-last-modified time-of-previous-update)
+        (funder/clear!)
+        (funder/drop-loading-collection)
+        (funder/load-funders-rdf (java.net.URL. (conf/get-param [:upstream :funder-registry])))
+        (funder/swapin-loading-collection)
+        (write-last-funder-update time-of-this-update)))
     (catch Exception e (error e "Failed to update funders from RDF"))))
 
 (defjob process-feed-files [ctx]
