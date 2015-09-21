@@ -14,6 +14,7 @@
             [cayenne.api.v1.feed :as feed]
             [clj-time.core :as time]
             [clj-time.format :as timef]
+            [org.httpkit.client :as http]
             [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as qt]
             [clojurewerkz.quartzite.jobs :as qj]
@@ -106,12 +107,32 @@
     (coverage/check-journals "journals")
     (catch Exception e (error e "Failed to update journal flags and coverage values"))))
 
+;; Thu, 17 Sep 2015 20:59:19 GMT
+(def last-modified-format (timef/formatter "EEE, dd MMM YYYY HH:mm:ss zz"))
+
+(defn get-last-funder-update []
+  (try
+    (->> (conf/get-param [:res :funder-update])
+         slurp
+         (timef/parse last-modified-format))
+    (catch java.io.FileNotFoundException e nil)))
+
+(defn write-last-funder-update [dt]
+  (-> (conf/get-param [:res :funder-update])
+      (spit (timef/unparse last-modified-format dt))))
+
 (defjob update-funders [ctx]
   (try
-    (funder/clear!)
-    (funder/drop-loading-collection)
-    (funder/load-funders-rdf (java.net.URL. (conf/get-param [:upstream :funder-registry])))
-    (funder/swapin-loading-collection)
+    (info "Updating funders from new RDF")
+    (let [time-of-this-update (time/now)
+          last-modified-header (-> @(http/head (conf/get-param [:upstream :funder-registry]))
+                                   :headers :last-modified)
+          funders-last-modified (timef/parse last-modified-format last-modified-header)]
+      (funder/clear!)
+      (funder/drop-loading-collection)
+      (funder/load-funders-rdf (java.net.URL. (conf/get-param [:upstream :funder-registry])))
+      (funder/swapin-loading-collection)
+      (write-last-funder-update time-of-this-update))
     (catch Exception e (error e "Failed to update funders from RDF"))))
 
 (defjob process-feed-files [ctx]
