@@ -119,7 +119,7 @@
     (doseq [member (m/fetch collection :options [:notimeout])]
       (m/update! 
        collection
-       member
+       {:id (:id member)}
        (merge member
               (check-breakdowns member :type :member :id-field :id)
               (check-record-coverage member :type :member :id-field :id)
@@ -132,7 +132,7 @@
     (doseq [journal (m/fetch collection :options [:notimeout])]
       (m/update! 
        collection 
-       journal 
+       {:issn (:issn journal)}
        (merge journal
               (check-breakdowns journal :type :issn :id-field :issn)
               (check-record-coverage journal :type :issn :id-field :issn)
