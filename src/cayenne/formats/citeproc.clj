@@ -48,7 +48,7 @@
        nil
        (let [d (dc/from-date date-obj)]
          {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
-          :date-time (df/unparse :date-time-no-ms d)
+          :date-time (df/unparse (df/formatters :date-time-no-ms) d)
           :timestamp (dc/to-long d)}))))
         
 (defn license [url start-date delay-in-days content-version]
