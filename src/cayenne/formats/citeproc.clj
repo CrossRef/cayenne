@@ -44,12 +44,18 @@
            :else
            {:date-parts [[year]]}))
   ([date-obj]
-     (if (nil? date-obj)
-       nil
-       (let [d (dc/from-date date-obj)]
-         {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
-          :date-time (df/unparse (df/formatters :date-time-no-ms) d)
-          :timestamp (dc/to-long d)}))))
+   (cond (nil? date-obj)
+         nil
+         (string? date-obj)
+         (let [d (dc/from-long (Long/parseLong date-obj))]
+           {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
+            :date-time (df/unparse (df/formatters :date-time-no-ms) d)
+            :timestamp (dc/to-long d)})
+         :else
+         (let [d (dc/from-date date-obj)]
+           {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
+            :date-time (df/unparse (df/formatters :date-time-no-ms) d)
+            :timestamp (dc/to-long d)}))))
         
 (defn license [url start-date delay-in-days content-version]
   (-> {:URL url}
