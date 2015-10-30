@@ -87,7 +87,8 @@
         (r/with-query-context-info query-context)
         (r/with-result-items
           (.getNumFound doc-list)
-          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)
+          :next-cursor (.getNextCursorMark response)))))
 
 ;; todo handle rows and offset propery (not using either of them)
 

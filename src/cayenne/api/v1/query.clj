@@ -140,6 +140,7 @@
     {:id id
      :sample (parse-sample-val (:sample params))
      :terms (:query params)
+     :cursor (:cursor params)
      :offset (parse-offset-val (:offset params))
      :rows (parse-rows-val (:rows params))
      :selectors (get-selectors params)
@@ -226,6 +227,11 @@
                            SolrQuery$ORDER/desc
                            SolrQuery$ORDER/asc)]
           (.addSort query sort-field sort-order))))
+    (when (:cursor query-context)
+      (doto query
+        (.setStart (int 0))
+        (.addSort "doi_key" SolrQuery$ORDER/asc)
+        (.setParam "cursorMark" (into-array [(:cursor query-context)]))))
     (when-not (empty? (:facets query-context))
       (facet/apply-facets query (:facets query-context)))
     (when count-only

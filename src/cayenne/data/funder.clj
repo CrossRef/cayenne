@@ -126,5 +126,6 @@
         (r/with-query-context-info descendant-query)
         (r/with-result-items 
           (.getNumFound doc-list)
-          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)
+          :next-cursor (.getNextCursorMark response)))))
 

@@ -123,6 +123,14 @@
 ;; any exception that comes about due to the post! action. If there
 ;; is an exception, we return a 400.
 
+(defn deposit-failure [exception]
+  (ring-response
+   {:status 400
+    :body 
+    {:status :failed
+     :message-type :entity-parsing-failure
+     :message {:exception (.toString exception)}}}))
+
 (defresource deposits-resource [data]
   :malformed? (v/malformed? :filter-validator v/validate-deposit-filters)
   :handle-malformed :validation-result
@@ -138,9 +146,7 @@
                          :body ""
                          :headers {"Location"
                                    (rel-url "deposits" (:id %))}})
-                       (ring-response
-                        {:status 400
-                         :body (.toString (:ex %))}))
+                       (deposit-failure (:ex %)))
   :post! #(try (hash-map :id (-> (dc/make-deposit-context
                                data
                                (get-in % [:request :headers "content-type"])
@@ -152,9 +158,7 @@
                                (param % :filename)
                                (param % :parent))
                               (dc/deposit!)))
-               (catch Exception e
-                 (throw e))))
-                 ;(hash-map :ex e))))
+               (catch Exception e {:ex e})))
 
 (defresource deposit-resource [id]
   :malformed? (v/malformed? :singleton true)
@@ -195,7 +199,8 @@
 
 (defresource works-resource
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -297,7 +302,8 @@
 
 (defresource funder-works-resource [funder-id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -315,7 +321,8 @@
 
 (defresource prefix-works-resource [px]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -340,7 +347,8 @@
 
 (defresource member-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -368,7 +376,8 @@
 
 (defresource journal-works-resource [issn]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -402,7 +411,8 @@
 
 (defresource type-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json

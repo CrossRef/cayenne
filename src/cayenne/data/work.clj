@@ -43,8 +43,9 @@
     (-> (r/api-response :work-list)
         (r/with-result-facets (facet/->response-facets response))
         (r/with-result-items 
-          (.getNumFound doc-list) 
-          (map (comp with-member-id citeproc/->citeproc) doc-list))
+          (.getNumFound doc-list)
+          (map (comp with-member-id citeproc/->citeproc) doc-list)
+          :next-cursor (.getNextCursorMark response))
         (r/with-query-context-info query-context))))
 
 (defn fetch-reverse [query-context]

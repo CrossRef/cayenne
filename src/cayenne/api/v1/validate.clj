@@ -309,6 +309,20 @@
         (integer-validator (:sample params))
         (integer-validator (:offset params)))))
 
+(defn validate-cursor-params [context params]
+  (if-not (:deep-pagable context)
+    (validate context #(not (:cursor params))
+              :parameter-not-allowed
+              "This route does not support cursor"
+              "cursor")
+    (validate context
+              #(if (:cursor params)
+                 (not (or (:offset params) (:sample params)))
+                 true)
+              :cursor-with-offset-or-sample
+              "Cursor cannot be combined with offset or sample"
+              "cursor")))
+
 (defn validate-ordering-params [context params]
   (-> context
       (util/?> (:order params) sort-order-validator (:order params))
@@ -390,7 +404,7 @@
             "query"))
 
 (def available-params [:query :rows :offset :sample :facet :filter
-                       :sort :order
+                       :sort :order :cursor
                        :pingback :url :filename :parent :test])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
@@ -420,6 +434,7 @@
         (validate-params params)
         (validate-pair-list-forms params)
         (validate-paging-params params)
+        (validate-cursor-params params)
         (validate-ordering-params params)
         (validate-facet-param params)
         (validate-filter-param params)
@@ -427,13 +442,14 @@
         (validate-id resource-context))))
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
-                            singleton]
-                     :or {singleton false}}]
+                            singleton deep-pagable]
+                     :or {singleton false deep-pagable false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
                               :filter-validator filter-validator
-                              :singleton singleton}
+                              :singleton singleton
+                              :deep-pagable deep-pagable}
           result (validate-resource-context validation-context
                                             resource-context)]
       (if (:failures result)
