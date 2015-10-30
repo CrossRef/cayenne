@@ -195,7 +195,8 @@
 
 (defresource works-resource
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -297,7 +298,8 @@
 
 (defresource funder-works-resource [funder-id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -315,7 +317,8 @@
 
 (defresource prefix-works-resource [px]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -340,7 +343,8 @@
 
 (defresource member-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -368,7 +372,8 @@
 
 (defresource journal-works-resource [issn]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -402,7 +407,8 @@
 
 (defresource type-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
-                            :filter-validator v/validate-work-filters)
+                            :filter-validator v/validate-work-filters
+                            :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json

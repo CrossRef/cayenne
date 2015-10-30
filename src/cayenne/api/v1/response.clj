@@ -1,4 +1,6 @@
-(ns cayenne.api.v1.response)
+(ns cayenne.api.v1.response
+  (:require [clojure.string :as str]
+            [cayenne.util :refer [?>]]))
 
 (defn with-page-info [response offset per-page]
   (-> response
@@ -14,8 +16,10 @@
       (with-page-info (:offset context) (:rows context))
       (with-query-terms-info (:terms context))))
 
-(defn with-result-items [response total items]
+(defn with-result-items [response total items & {:keys [next-cursor]}]
   (-> response
+      (?> (not (str/blank? next-cursor))
+          assoc-in [:message :next-cursor] next-cursor)
       (assoc-in [:message :total-results] total)
       (assoc-in [:message :items] items)))
 

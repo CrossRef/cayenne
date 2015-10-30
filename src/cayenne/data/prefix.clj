@@ -36,7 +36,8 @@
         (r/with-query-context-info query-context)
         (r/with-result-items 
           (.getNumFound doc-list)
-          (map (comp work/with-member-id citeproc/->citeproc) doc-list)))))
+          (map (comp work/with-member-id citeproc/->citeproc) doc-list)
+          :next-cursor (.getNextCursorMark response)))))
 
 (defn fetch-one [query-context]
   (let [member-doc (m/with-mongo (conf/get-service :mongo)
