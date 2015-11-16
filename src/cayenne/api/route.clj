@@ -9,7 +9,7 @@
             [cayenne.api.auth.token :as token-auth]
             [ring.middleware.logstash :as logstash]
             [heartbeat.ring :refer [wrap-heartbeat]]
-            [heartbeat.core :refer [def-web-check]]
+            [heartbeat.core :refer [def-web-check def-version]]
             [liberator.dev :refer [wrap-trace]]
             [metrics.ring.expose :refer [expose-metrics-as-json]]
             [metrics.ring.instrument :refer [instrument]]
@@ -19,6 +19,8 @@
             [ring.util.response :refer [redirect]]
             [org.httpkit.server :as hs]
             [compojure.core :refer [defroutes routes context ANY]]))
+
+(def-version cayenne.version/version)
 
 (def-web-check :doi-unixref-query
   (str (conf/get-param [:upstream :unixref-url])

@@ -1,4 +1,4 @@
-(defproject crossref/cayenne "0.1.0"
+(defproject crossref/cayenne "1.0.0"
   :description "Index and serve CrossRef metadata"
   :url "http://github.com/CrossRef/cayenne"
   :signing {:gpg-key "labs@crossref.org"}
@@ -53,7 +53,7 @@
                  [instaparse "1.2.14"]
                  [com.github.kyleburton/clj-xpath "1.4.3"]
                  [kjw/ring-logstash "0.1.3"]
-                 [crossref/heartbeat "0.1.1"]
+                 [crossref/heartbeat "0.1.3"]
                  [robert/bruce "0.7.1"]
                  [bigml/sampling "3.0"]
                  [digest "1.4.4"]])
