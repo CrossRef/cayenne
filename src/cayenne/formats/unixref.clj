@@ -500,20 +500,19 @@
       (to-long-doi-uri funder-id-val))))
 
 (defn parse-funder [funder-group-loc]
-  (let [funder-id-val (or
+  (let [funder-id-loc (or
                        (xml/xselect1 funder-group-loc
-                                     [:= "name" "funder_identifier"]
-                                     :plain)
+                                     [:= "name" "funder_identifier"])
                        (xml/xselect1 funder-group-loc 
                                      "assertion" 
-                                     [:= "name" "funder_identifier"] 
-                                     :plain)
+                                     [:= "name" "funder_identifier"])
                        (xml/xselect1 funder-group-loc
                                      "assertion"
                                      [:= "name" "funder_name"]
                                      "assertion"
-                                     [:= "name" "funder_identifier"]
-                                     :plain))
+                                     [:= "name" "funder_identifier"]))
+        funder-id-val (xml/xselect1 funder-id-loc :plain)
+        funder-id-source (or (xml/xselect1 funder-id-loc ["provider"]) "publisher")
         funder-name-val (or
                          (xml/xselect1 funder-group-loc
                                        [:= "name" "funder_name"]
@@ -525,6 +524,7 @@
         funder-uri (normalize-funder-id-val funder-id-val)]
     (-> {:type :org :name funder-name-val}
         (parse-attach :awarded funder-group-loc :multi parse-grants)
+        (?> (and funder-uri funder-id-source) assoc :id-asserted-by funder-id-source)
         (?> funder-uri attach-id funder-uri))))
 
 (defn parse-item-funders-funder-name-direct [item-loc]

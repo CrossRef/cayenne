@@ -166,25 +166,27 @@
      #(-> {}
           (util/?> (not= %1 "-") assoc :DOI (doi-id/extract-long-doi %1))
           (util/?> (not= %2 "-") assoc :name %2)
+          (util/?> (not= %3 "-") assoc :id-asserted-by %3)
           (assoc :award (set 
                          (concat (when (not= %1 "-") 
                                    (->> awards (filter (fn [a] (= (:DOI a) %1))) (map :number)))
                                  (when (not= %2 "-")
                                    (->> awards (filter (fn [a] (= (:name a) %2))) (map :number)))))))
      (get solr-doc "funder_record_doi")
-     (get solr-doc "funder_record_name"))))
+     (get solr-doc "funder_record_name")
+     (get solr-doc "funder_record_doi_asserted_by"))))
 
 (defn ->citeproc-funders-merged 
   "Where the underlying metadata is such that there are multiple funder records
-   for the same funder, we should merge them where the funder IDs match. We cannot
-   however merge where only names match - these could legitimately be separate
+   for the same funder, we should merge them where the funder IDs and id provider match. 
+   We cannot however merge where only names match - these could legitimately be separate
    funding organisations."
   [solr-doc]
   (let [funders (->citeproc-funders solr-doc)]
     (concat 
      (->> funders
           (filter #(not= (:DOI %) nil))
-          (reduce #(merge %1 {(:DOI %2) %2}) {})
+          (reduce #(merge %1 {(str (:DOI %2) (:id-asserted-by %2)) %2}) {})
           vals)
      (filter #(= (:DOI %) nil) funders))))
 
