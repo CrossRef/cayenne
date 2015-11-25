@@ -4,7 +4,8 @@
            [java.util UUID]
            [java.util.concurrent Executors])
   (:use [clojure.core.incubator :only [dissoc-in]])
-  (:require [clojure.data.json :as json]
+  (:require [cayenne.version]
+            [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.tools.trace :as trace]
             [somnium.congomongo :as m]
@@ -103,6 +104,7 @@
 (with-core :default
   (set-param! [:env] :none)
   (set-param! [:status] :stopped)
+  (set-param! [:version] cayenne.version/version)
   (set-param! [:dir :home] (System/getProperty "user.dir"))
   (set-param! [:dir :data] (str (get-param [:dir :home]) "/data"))
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
@@ -112,7 +114,7 @@
               [{:url "http://144.76.35.104:8983/solr" :core "crmds1"}])
 
   (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "78.46.67.131")
+  (set-param! [:service :mongo :host] "localhost")
   (set-param! [:service :solr :url] "http://localhost:8983/solr")
   (set-param! [:service :solr :query-core] "crmds1")                
   (set-param! [:service :solr :insert-list-max-size] 10000)
