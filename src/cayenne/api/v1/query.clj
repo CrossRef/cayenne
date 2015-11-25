@@ -118,6 +118,7 @@
    "updated" ["deposited_at"]
    "deposited" ["deposited_at"]
    "indexed" ["indexed_at"]
+   "created" ["first_deposited_at"]
    "published" ["year" "month" "day"]
 
    ;; for deposits (todo separate these out)
