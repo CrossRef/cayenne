@@ -87,6 +87,11 @@
                   "Deposit status"
                   ["completed" "failed" "submitted"]))
 
+(def funder-doi-asserted-by-validator
+  (enum-validator :funder-doi-asserted-by-not-valid
+                  "Funder DOI asserted by party"
+                  ["crossref" "publisher"]))
+
 (defn integer-validator [context s & {:keys [max] :or {max :infinite}}]
   (if (or (not s)
           (and (re-matches #"\d+" s)
@@ -186,6 +191,7 @@
    :has-affiliation boolean-validator
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
+   :has-funder-doi-asserted-by funder-doi-asserted-by-validator
    :has-award boolean-validator
    :has-assertion boolean-validator
    :directory directory-validator

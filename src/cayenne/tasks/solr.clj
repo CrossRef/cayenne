@@ -452,7 +452,7 @@
          "update_label" (map :label updates)
          "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
          "funder_record_name" (map (util/?- :name) funders)
-         "funder_record_doi_asserted_by" (map (util/?- :id-asserted-by) funders)
+         "funder_record_doi_asserted_by" (map (util/?- :doi-asserted-by) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)}
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))

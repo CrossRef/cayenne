@@ -524,7 +524,7 @@
         funder-uri (normalize-funder-id-val funder-id-val)]
     (-> {:type :org :name funder-name-val}
         (parse-attach :awarded funder-group-loc :multi parse-grants)
-        (?> (and funder-uri funder-id-source) assoc :id-asserted-by funder-id-source)
+        (?> (and funder-uri funder-id-source) assoc :doi-asserted-by funder-id-source)
         (?> funder-uri attach-id funder-uri))))
 
 (defn parse-item-funders-funder-name-direct [item-loc]

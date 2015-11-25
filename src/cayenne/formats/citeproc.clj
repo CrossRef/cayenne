@@ -168,7 +168,7 @@
      #(-> {}
           (util/?> (not= %1 "-") assoc :DOI (doi-id/extract-long-doi %1))
           (util/?> (not= %2 "-") assoc :name %2)
-          (util/?> (not= %3 "-") assoc :id-asserted-by %3)
+          (util/?> (not= %3 "-") assoc :doi-asserted-by %3)
           (assoc :award (set 
                          (concat (when (not= %1 "-") 
                                    (->> awards (filter (fn [a] (= (:DOI a) %1))) (map :number)))
@@ -188,7 +188,7 @@
     (concat 
      (->> funders
           (filter #(not= (:DOI %) nil))
-          (reduce #(merge %1 {(str (:DOI %2) (:id-asserted-by %2)) %2}) {})
+          (reduce #(merge %1 {(str (:DOI %2) (:doi-asserted-by %2)) %2}) {})
           vals)
      (filter #(= (:DOI %) nil) funders))))
 
