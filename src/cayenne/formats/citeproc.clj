@@ -16,19 +16,21 @@
 (defn assoc-exists 
   "Like assoc except only performs the assoc if value is
    a non-empty string, non-empty list or a non-nil value."
-  [m key value]
-  (cond (= (type value) java.lang.String)
-        (if (clojure.string/blank? value)
-          m
-          (assoc m key value))
-        (seq? value)
-        (if (empty? value)
-          m
-          (assoc m key value))
-        (nil? value)
-        m
-        :else
-        (assoc m key value)))
+  ([m key value]
+   (assoc-exists m key value value))
+  ([m key value assoc-value]
+   (cond (= (type value) java.lang.String)
+         (if (clojure.string/blank? value)
+           m
+           (assoc m key assoc-value))
+         (seq? value)
+         (if (empty? value)
+           m
+           (assoc m key assoc-value))
+         (nil? value)
+         m
+         :else
+         (assoc m key assoc-value))))
 
 ;; We check number-of-days-in-the-month because some dates in CrossRef
 ;; metadata have a day that is not in the valid range for the given
@@ -251,6 +253,16 @@
        :reference-count (get solr-doc "citation_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :score (get solr-doc "score")}
+      (assoc-exists :published-online
+                    (get solr-doc "online_year")
+                    (->date-parts (get solr-doc "online_year")
+                                  (get solr-doc "online_month")
+                                  (get solr-doc "online_day")))
+      (assoc-exists :published-print
+                    (get solr-doc "print_year")
+                    (->date-parts (get solr-doc "print_year")
+                                  (get solr-doc "print_month")
+                                  (get solr-doc "print_day")))
       (assoc-exists :article-number (get solr-doc "article_number"))
       (assoc-exists :volume (get solr-doc "hl_volume"))
       (assoc-exists :issue (get solr-doc "hl_issue"))

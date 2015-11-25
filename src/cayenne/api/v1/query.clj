@@ -119,7 +119,10 @@
    "deposited" ["deposited_at"]
    "indexed" ["indexed_at"]
    "created" ["first_deposited_at"]
+   "published-print" ["print_year" "print_month" "print_day"]
+   "published-online" ["online_year" "online_month" "online_day"]
    "published" ["year" "month" "day"]
+   "issued" ["year" "month" "day"]
 
    ;; for deposits (todo separate these out)
    "submitted" :submitted-at})
