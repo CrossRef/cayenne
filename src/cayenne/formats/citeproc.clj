@@ -13,6 +13,15 @@
 ;; TODO Proper use of container-title vs. collection-title
 ;; author vs. container-author vs. collection-author etc.
 
+(defn padded-solr-vals [solr-doc field-name co-cardinal-field-names]
+  (concat
+   (get solr-doc field-name)
+   (repeat (- (apply max 
+                     (map #(-> solr-doc (get %) count)
+                          co-cardinal-field-names))
+              (count (get solr-doc field-name)))
+           "-")))
+
 (defn assoc-exists 
   "Like assoc except only performs the assoc if value is
    a non-empty string, non-empty list or a non-nil value."
@@ -163,7 +172,9 @@
    (get solr-doc "award_funder_name")))
 
 (defn ->citeproc-funders [solr-doc]
-  (let [awards (->citeproc-awards solr-doc)]
+  (let [awards (->citeproc-awards solr-doc)
+        co-cardinal-fields ["funder_record_doi" "funder_record_name"
+                            "funder_record_doi_asserted_by"]]
     (map
      #(-> {}
           (util/?> (not= %1 "-") assoc :DOI (doi-id/extract-long-doi %1))
@@ -174,9 +185,9 @@
                                    (->> awards (filter (fn [a] (= (:DOI a) %1))) (map :number)))
                                  (when (not= %2 "-")
                                    (->> awards (filter (fn [a] (= (:name a) %2))) (map :number)))))))
-     (get solr-doc "funder_record_doi")
-     (get solr-doc "funder_record_name")
-     (get solr-doc "funder_record_doi_asserted_by"))))
+     (padded-solr-vals solr-doc "funder_record_doi" co-cardinal-fields)
+     (padded-solr-vals solr-doc "funder_record_name" co-cardinal-fields)
+     (padded-solr-vals solr-doc "funder_record_doi_asserted_by" co-cardinal-fields))))
 
 (defn ->citeproc-funders-merged 
   "Where the underlying metadata is such that there are multiple funder records
