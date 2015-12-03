@@ -191,7 +191,7 @@
    :has-affiliation boolean-validator
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
-   :has-funder-doi-asserted-by funder-doi-asserted-by-validator
+   :funder-doi-asserted-by funder-doi-asserted-by-validator
    :has-award boolean-validator
    :has-assertion boolean-validator
    :directory directory-validator

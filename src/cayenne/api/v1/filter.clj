@@ -272,7 +272,7 @@
    "has-funder" (existence "funder_name")
    "has-funder-doi" (existence "funder_doi")
    "has-award" (existence "award_number")
-   "has-funder-doi-asserted-by" (equality "funder_record_doi_asserted_by")
+   "funder-doi-asserted-by" (equality "funder_record_doi_asserted_by")
    "has-assertion" (existence "assertion_name")
    "full-text" (compound "full_text" ["type" "application" "version"]
                          :transformers {"type" util/slugify
