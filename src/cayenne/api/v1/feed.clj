@@ -155,14 +155,24 @@
     (meter/mark! files-received)
     (assoc feed-context :digest (digest/md5 incoming-file))))
 
+(defn strip-content-type-params [ct]
+  (-> ct
+      (string/split #";")
+      first
+      string/trim))
+
 (defresource feed-resource [provider]
   :allowed-methods [:post :options]
   :available-media-types types/json
-  :known-content-type? #(some #{(get-in % [:request :headers "content-type"])}
+  :known-content-type? #(some #{(-> %
+                                    (get-in [:request :headers "content-type"])
+                                    strip-content-type-params)}
                               feed-content-types)
   :exists? (fn [_] (some #{provider} feed-providers))
   :new? true
-  :post! #(let [result (-> (get-in % [:request :headers "content-type"])
+  :post! #(let [result (-> %
+                           (get-in [:request :headers "content-type"])
+                           strip-content-type-params
                            (make-feed-context provider)
                            (record! (get-in % [:request :body])))]
             (assoc % :digest (:digest result)))
