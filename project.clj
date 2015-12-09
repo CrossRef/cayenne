@@ -53,7 +53,7 @@
                  [instaparse "1.2.14"]
                  [com.github.kyleburton/clj-xpath "1.4.3"]
                  [kjw/ring-logstash "0.1.3"]
-                 [crossref/heartbeat "0.1.3"]
+                 [crossref/heartbeat "0.1.4"]
                  [robert/bruce "0.7.1"]
                  [bigml/sampling "3.0"]
                  [digest "1.4.4"]])
