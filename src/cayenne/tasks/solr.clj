@@ -75,9 +75,9 @@
 
 (defn get-earliest-pub-date [item]
   (->> (concat 
-        (get-tree-rel item :published-print)
-        (get-tree-rel item :published-online)
-        (get-tree-rel item :published))
+        (get-item-rel item :published-print)
+        (get-item-rel item :published-online)
+        (get-item-rel item :published))
        (sort-by particle->date-time)
        first))
 
@@ -186,7 +186,8 @@
   (string/join 
    " "
    (-> []
-       (conj (:year (get-print-or-earliest-pub-date item))) ; year
+       (conj (:year (get-earliest-pub-date item))) ; earliest pub year
+       (conj (:year (get-item-rel item :published-print))) ; print pub year
        (conj (:issue (find-item-of-subtype item :journal-issue))) ; issue
        (conj (:volume (find-item-of-subtype item :journal-volume))) ; volume
        (conj (:first-page item)) ; pages
@@ -360,8 +361,12 @@
         funders (get-tree-rel item :funder)
         assertions (get-tree-rel item :assertion)
         pub-date (get-earliest-pub-date item)
-        print-pub-date (get-tree-rel item :published-print)
-        online-pub-date (get-tree-rel item :published-online)
+
+        ;; print pub date is explicit or default
+        print-pub-date (or (first (get-item-rel item :published-print))
+                           (first (get-item-rel item :published)))
+        
+        online-pub-date (first (get-item-rel item :published-online))
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
