@@ -187,7 +187,7 @@
    " "
    (-> []
        (conj (:year (get-earliest-pub-date item))) ; earliest pub year
-       (conj (:year (get-item-rel item :published-print))) ; print pub year
+       (conj (:year (first (get-item-rel item :published-print)))) ; print pub year
        (conj (:issue (find-item-of-subtype item :journal-issue))) ; issue
        (conj (:volume (find-item-of-subtype item :journal-volume))) ; volume
        (conj (:first-page item)) ; pages
