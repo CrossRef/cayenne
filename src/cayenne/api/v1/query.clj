@@ -190,8 +190,7 @@
                 (.setQuery (make-query-string query-context))
                 (.addField "*")
                 (.addField "score")
-                (.setHighlight false)
-                (.setFacet true))]
+                (.setHighlight false))]
     (when id-field
       (let [ids (if (vector? (:id query-context))
                   (:id query-context)
@@ -237,6 +236,7 @@
         (.addSort "doi_key" SolrQuery$ORDER/asc)
         (.setParam "cursorMark" (into-array [(:cursor query-context)]))))
     (when-not (empty? (:facets query-context))
+      (.setFacet query true)
       (facet/apply-facets query (:facets query-context)))
     (when count-only
       (doto query
