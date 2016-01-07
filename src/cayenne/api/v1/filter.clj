@@ -12,6 +12,7 @@
             [cayenne.ids.issn :as issn]
             [cayenne.ids.orcid :as orcid]
             [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.ctn :as ctn]
             [somnium.congomongo :as m]
             [clojure.string :as string]))
 
@@ -274,6 +275,7 @@
    "has-award" (existence "award_number")
    "funder-doi-asserted-by" (equality "funder_record_doi_asserted_by")
    "has-assertion" (existence "assertion_name")
+   "has-clinical-trial-number" (existence "clinical_trial_number_ctn")
    "full-text" (compound "full_text" ["type" "application" "version"]
                          :transformers {"type" util/slugify
                                         "application" util/slugify})
@@ -296,6 +298,7 @@
    "publisher-name" (equality "publisher")
    "category-name" (equality "category")
    "funder-name" (equality "funder_name")
+   "clinical-trial-number" (equality "clinical_trial_number_proxy" :transformer ctn/ctn-proxy)
    "alternative-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
    "award" (compound "award" ["funder_doi" "number"]
                      :transformers {"funder_doi" (comp util/slugify fundref/normalize-to-doi-uri)}

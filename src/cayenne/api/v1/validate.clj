@@ -220,7 +220,9 @@
    :license.version version-validator
    :license.delay integer-validator
    :award.funder funder-id-validator
-   :award.number string-validator})
+   :award.number string-validator
+   :has-clinical-trial-number boolean-validator
+   :clinical-trial-number string-validator})
 
 (def deposit-filter-validators
   {:from-submission-time date-validator
