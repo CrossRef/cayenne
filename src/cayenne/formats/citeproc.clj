@@ -249,6 +249,15 @@
                (util/?> (or group-name group-label)
                         assoc :group (->citeproc-assertion-group group-name group-label)))))))
 
+(defn ->clinical-trial-numbers [solr-doc]
+  (let [ctns (get solr-doc "clinical_trial_number_ctn")
+        registries (get solr-doc "clinical_trial_number_registry")
+        types (get solr-doc "clinical_trial_number_type")]
+    (map (fn [ctn registry type]
+      (merge
+        {:clinical-trial-number ctn :registry registry}
+        (when (and type (not= type "-")) {:type type}))) ctns registries types)))
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -294,5 +303,6 @@
       (assoc-exists :page (->citeproc-pages solr-doc))
       (assoc-exists :funder (->citeproc-funders-merged solr-doc))
       (assoc-exists :assertion (->citeproc-assertions solr-doc))
+      (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 

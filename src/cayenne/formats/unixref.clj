@@ -7,7 +7,8 @@
             [cayenne.ids.fundref :as fundref]
             [cayenne.item-tree :as itree]
             [clojure.tools.trace :as trace]
-            [taoensso.timbre :as timbre :refer [info error]])
+            [taoensso.timbre :as timbre :refer [info error]]
+            [cayenne.ids.ctn :refer [normalize-ctn]])
   (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
@@ -575,6 +576,23 @@
    (parse-item-funders-funder-id-direct item-loc)
    (parse-item-funders-with-fundgroup item-loc)))
 
+(defn parse-clinical-trial-number [clinical-trial-number-loc]
+  (let [registry-id (xml/xselect1 clinical-trial-number-loc ["registry" :plain])
+        ctn-type (xml/xselect1 clinical-trial-number-loc ["type" :plain])
+        ctn-val (normalize-ctn (xml/xselect1 clinical-trial-number-loc :plain))]
+    {:type :ctn :registry registry-id :ctn-type ctn-type :ctn ctn-val}))
+
+(defn parse-item-clinical-trial-numbers
+  [item-loc]
+  (let [ctns (concat 
+               (xml/xselect item-loc 
+                            "crossmark" 
+                            "custom_metadata" 
+                            "program" 
+                            "clinical-trial-number"))
+      parsed (map parse-clinical-trial-number ctns)]
+  parsed))
+
 (def license-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
 ;; some publishers are depositing dates as a date time in an unknown
@@ -670,6 +688,7 @@
       (parse-attach :component item-loc :multi parse-component-list)
       (parse-attach :institution item-loc :multi parse-institutions)
       (parse-attach :funder item-loc :multi parse-item-funders)
+      (parse-attach :clinical-trial-number item-loc :multi parse-item-clinical-trial-numbers)
       (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
       (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
       (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))

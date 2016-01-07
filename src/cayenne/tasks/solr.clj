@@ -360,6 +360,7 @@
         full-text-resources (get-item-rel item :resource-fulltext)
         funders (get-tree-rel item :funder)
         assertions (get-tree-rel item :assertion)
+        clinical-trial-numbers (get-tree-rel item :clinical-trial-number)
         pub-date (get-earliest-pub-date item)
 
         ;; print pub date is explicit or default
@@ -458,7 +459,13 @@
          "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi_asserted_by" (map (util/?- :doi-asserted-by) funders)
-         "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)}
+         "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)
+         "clinical_trial_number_ctn" (map :ctn clinical-trial-numbers)
+         "clinical_trial_number_registry" (map :registry clinical-trial-numbers)
+         "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
+         "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)
+       }
+
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
         (merge (as-award-compounds funders))
