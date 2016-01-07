@@ -303,6 +303,6 @@
       (assoc-exists :page (->citeproc-pages solr-doc))
       (assoc-exists :funder (->citeproc-funders-merged solr-doc))
       (assoc-exists :assertion (->citeproc-assertions solr-doc))
-      (assoc-exists :clinical-trial-numbers (->clinical-trial-numbers solr-doc))
+      (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 

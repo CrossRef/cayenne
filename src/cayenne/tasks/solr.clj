@@ -462,7 +462,7 @@
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)
          "clinical_trial_number_ctn" (map :ctn clinical-trial-numbers)
          "clinical_trial_number_registry" (map :registry clinical-trial-numbers)
-         "clinical_trial_number_type" (map :ctn-type clinical-trial-numbers)
+         "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
          "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)
        }
 

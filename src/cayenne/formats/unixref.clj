@@ -577,9 +577,9 @@
    (parse-item-funders-with-fundgroup item-loc)))
 
 (defn parse-clinical-trial-number [clinical-trial-number-loc]
-  (let [registry-id (or (xml/xselect1 clinical-trial-number-loc ["registry" :plain]) "-")
-        ctn-type (or (xml/xselect1 clinical-trial-number-loc ["type" :plain]) "-")
-        ctn-val (or (normalize-ctn (xml/xselect1 clinical-trial-number-loc :plain)) "-")]
+  (let [registry-id (xml/xselect1 clinical-trial-number-loc ["registry" :plain])
+        ctn-type (xml/xselect1 clinical-trial-number-loc ["type" :plain])
+        ctn-val (normalize-ctn (xml/xselect1 clinical-trial-number-loc :plain))]
     {:type :ctn :registry registry-id :ctn-type ctn-type :ctn ctn-val}))
 
 (defn parse-item-clinical-trial-numbers
