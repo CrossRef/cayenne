@@ -307,7 +307,7 @@
                      :aliases {"funder" "funder_doi"})
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
-   "funder" (equality "funder_doi" :transformer fundref/id-to-doi-uri)})
+   "funder" (equality "funder_doi" :transformer fundref/normalize-to-doi-uri)})
 
 (def deposit-filters
   {"from-submission-time" (mongo-stamp-date "submitted-at" :from)
