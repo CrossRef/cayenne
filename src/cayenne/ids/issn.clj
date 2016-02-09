@@ -22,7 +22,9 @@
   [s]
   (let [digits (filter digit-set (extract-issn s))
         parts (map #(apply str %) (partition 4 digits))]
-    (.toUpperCase (string/join "-" parts))))
+    (if (string/blank? (apply str digits))
+      nil
+      (.toUpperCase (string/join "-" parts)))))
 
 (defn to-issn-uri 
   "Find anything in s that looks like it may be an ISSN and return it

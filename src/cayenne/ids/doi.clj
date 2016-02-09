@@ -53,9 +53,11 @@
   "Ensure a long DOI is in a normalized URI form."
   [s]
   (when s
-    (->> (.replaceAll s "[^\\p{Print}]" "")
-         (normalize-long-doi)
-         (ids/get-id-uri :long-doi))))
+    (let [normalized-doi (-> (.replaceAll s "[^\\p{Print}]" "")
+                             (normalize-long-doi))]
+      (if (string/blank? normalized-doi)
+        nil
+        (ids/get-id-uri :long-doi normalized-doi)))))
  
 (defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."

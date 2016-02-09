@@ -40,10 +40,10 @@
           :next-cursor (.getNextCursorMark response)))))
 
 (defn fetch-one [query-context]
-  (let [member-doc (m/with-mongo (conf/get-service :mongo)
-                     (m/fetch-one
-                      "members"
-                      :where {:prefixes (prefix-id/extract-prefix (:id query-context))}))]
+  (when-let [member-doc (m/with-mongo (conf/get-service :mongo)
+                          (m/fetch-one
+                           "members"
+                           :where {:prefixes (prefix-id/extract-prefix (:id query-context))}))]
     (r/api-response :prefix :content {:member (member-id/to-member-id-uri (:id member-doc))
                                       :name (:primary-name member-doc)
                                       :prefix (prefix-id/to-prefix-uri (:id query-context))})))
