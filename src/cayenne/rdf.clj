@@ -49,11 +49,11 @@
 (defn make-date 
   ([year month day]
      (ResourceFactory/createTypedLiteral
-      (str year "-" month "-" day)
+      (str year "-" (format "%02d" month) "-" (format "%02d" day))
       (XSDDatatype/XSDdate)))
    ([year month]
       (ResourceFactory/createTypedLiteral
-       (str year "-" month)
+       (str year "-" (format "%02d" month))
        (XSDDatatype/XSDgYearMonth)))
    ([year]
       (ResourceFactory/createTypedLiteral
