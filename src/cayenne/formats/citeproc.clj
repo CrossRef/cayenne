@@ -6,6 +6,7 @@
             [cayenne.util :as util]
             [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
+            [cayenne.ids.update-type :as update-type-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.isbn :as isbn-id]
             [cayenne.ids.type :as type-id]))
@@ -208,11 +209,10 @@
    #(hash-map
      :DOI (doi-id/extract-long-doi %1)
      :type %2
-     :label %3
-     :updated (->date-parts %4))
+     :label (or (update-type-id/update-label %2) %2)
+     :updated (->date-parts %3))
    (get solr-doc "update_doi")
    (get solr-doc "update_type")
-   (get solr-doc "update_label")
    (get solr-doc "update_date")))
 
 (defn ->citeproc-updated-by [solr-doc]
