@@ -464,8 +464,6 @@
        (journal-resource issn))
   (ANY "/journals/:issn/works" [issn]
        (journal-works-resource issn))
-  (ANY "/prefixes" []
-       "Not implemented.")
   (ANY "/prefixes/:prefix" [prefix]
        (prefix-resource prefix))
   (ANY "/prefixes/:prefix/works" [prefix]
