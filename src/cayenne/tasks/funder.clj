@@ -84,7 +84,7 @@
     (last (string/split (rdf/->uri funder-concept-node) #"/"))))
 
 (def svf-el (partial rdf/get-property "http://www.elsevier.com/xml/schema/grant/grant-1.2/"))
-(def svf-cr (partial rdf/get-property "http://data.fundref.org/xml/schema/grant/grant-1.2/"))
+(def svf-cr (partial rdf/get-property "http://data.crossref.org/fundingdata/xml/schema/grant/grant-1.2/"))
 
 (defn get-labels [model node kind]
   (->> (rdf/select model :subject node :predicate (rdf/skos-xl model kind))
