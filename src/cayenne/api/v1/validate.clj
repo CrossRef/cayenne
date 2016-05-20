@@ -318,7 +318,7 @@
                         "sample")))]
     (-> existence-checks-context
         (integer-validator (:rows params) :max q/max-rows)
-        (integer-validator (:sample params))
+        (integer-validator (:sample params) :max q/max-sample)
         (integer-validator (:offset params)))))
 
 (defn validate-cursor-params [context params]
