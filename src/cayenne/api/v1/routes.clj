@@ -200,6 +200,7 @@
 (defresource works-resource
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
@@ -303,6 +304,7 @@
 (defresource funder-works-resource [funder-id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
@@ -322,6 +324,7 @@
 (defresource prefix-works-resource [px]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
@@ -348,6 +351,7 @@
 (defresource member-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
@@ -377,6 +381,7 @@
 (defresource journal-works-resource [issn]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
@@ -412,6 +417,7 @@
 (defresource type-works-resource [id]
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
+                            :query-field-validator v/validate-work-query-fields
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]

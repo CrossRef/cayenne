@@ -7,6 +7,7 @@
             [cayenne.api.v1.parameters :as p]
             [cayenne.api.v1.facet :as fac]
             [cayenne.api.v1.query :as q]
+            [cayenne.api.v1.fields :as qf]
             [cayenne.ids.type :as type-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.doi :as doi-id]
@@ -292,6 +293,22 @@
 
 (def validate-work-facets (partial validate-facets fac/std-facets))
 
+(defn validate-query-fields [query-field-definitions context query-fields]
+  (let [available-query-fields (keys query-field-definitions)
+        unknown-query-fields (cset/difference (set (keys query-fields))
+                                              (set available-query-fields))]
+    (if (empty? unknown-query-fields)
+      (pass context)
+      (reduce #(fail %1 %2 :query-field-not-available
+                     (str "Query field " %2 " specified byt there is no "
+                          "such query field for this route. Valid query "
+                          "fields for this route are: "
+                          (string/join ", " available-query-fields)))
+              context
+              unknown-query-fields))))
+
+(def validate-work-query-fields (partial validate-query-fields qf/work-fields))
+
 (defn validate-paging-params
   [context params]
   (let [existence-checks-context
@@ -408,6 +425,19 @@
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
+(defn validate-query-field-params [context params]
+  (if (or (:singleton context)
+          (not (:query-field-validator context)))
+    (-> context
+        (validate #(not (empty? (:field-terms params)))
+                  :parameter-not-allowed
+                  "This route does not support field query parameters"))
+    (if (empty? (:field-terms params))
+      context
+      ((:query-field-validator context)
+       context
+       (:field-terms params)))))
+
 (defn validate-query-param [context params]
   (validate context
             #(not (and (:singleton context) (:query params)))
@@ -426,7 +456,9 @@
 (defn validate-params
   "Check for unknown parameters"
   [context params]
-  (let [unknown-params (cset/difference (set (keys params))
+  (let [without-query-params (->> params keys set
+                                  (filter #(not (.startsWith (name %) "query."))))
+        unknown-params (cset/difference without-query-params
                                         (set available-params))]
     (if (empty? unknown-params)
       (pass context)
@@ -451,15 +483,17 @@
         (validate-facet-param params)
         (validate-filter-param params)
         (validate-query-param params)
+        (validate-query-field-params params)
         (validate-id resource-context))))
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
-                            singleton deep-pagable]
+                            query-field-validator singleton deep-pagable]
                      :or {singleton false deep-pagable false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
                               :filter-validator filter-validator
+                              :query-field-validator query-field-validator
                               :singleton singleton
                               :deep-pagable deep-pagable}
           result (validate-resource-context validation-context

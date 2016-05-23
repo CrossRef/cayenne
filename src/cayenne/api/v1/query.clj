@@ -139,12 +139,19 @@
   (when (get params :selector)
     (string/split (get params :selector) #",")))
 
+(defn get-field-queries [params]
+  (->> params
+       (filter #(.startsWith (-> % first name) "query."))
+       (map #(vector (-> % first name (string/replace #"query." ""))
+                    (second %)))))
+
 (defn ->query-context [resource-context & {:keys [id filters] 
                                            :or {id nil filters {}}}]
   (let [params (p/get-parameters resource-context)]
     {:id id
      :sample (parse-sample-val (:sample params))
      :terms (:query params)
+     :field-terms (get-field-queries params)
      :cursor (:cursor params)
      :offset (parse-offset-val (:offset params))
      :rows (parse-rows-val (:rows params))
@@ -263,14 +270,4 @@
        [:limit (:rows query-context)])
      (when (:offset query-context)
        [:skip (:offset query-context)]))))
-                 
-
-
-
-
-
-
-
-
-
 
