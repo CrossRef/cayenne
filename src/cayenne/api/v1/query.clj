@@ -171,9 +171,9 @@
         (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
         (string/replace #"\|\|" " ")
         (string/replace #"&&" " ")
-        (string/replace #"(?i)not" " ")
-        (string/replace #"(?i)or" " ")
-        (string/replace #"(?i)and" " "))))
+        (string/replace #"\s(?i)not\s" " ")
+        (string/replace #"\s(?i)or\s" " ")
+        (string/replace #"\s(?i)and\s" " "))))
 
 (defn make-query-string [query-context]
   (cond (and (:terms query-context)
