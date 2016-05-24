@@ -1,5 +1,6 @@
 (ns cayenne.user
-  (:require [cayenne.conf :as conf]
+  (:require [clojure.string :as str]
+            [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi-id]
             [cayenne.schedule :as schedule]
             [cayenne.api.route :as route]
@@ -18,6 +19,15 @@
   (conf/create-core-from! :user :default)
   (conf/set-core! :user)
   (apply conf/start-core! :user profiles))
+
+(defn status []
+  (println
+   (str "Status = " (conf/get-param [:status])))
+  (println
+   (str "Running services = "
+        (str/join ", " (-> @conf/cores
+                           (get-in [conf/*core-name* :services])
+                           keys)))))
 
 (defn print-solr-doi [doi]
   (-> (conf/get-service :solr)
