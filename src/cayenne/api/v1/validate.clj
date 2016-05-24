@@ -295,14 +295,14 @@
 
 (defn validate-query-fields [query-field-definitions context query-fields]
   (let [available-query-fields (keys query-field-definitions)
-        unknown-query-fields (cset/difference (set (keys query-fields))
+        unknown-query-fields (cset/difference (set query-fields)
                                               (set available-query-fields))]
     (if (empty? unknown-query-fields)
       (pass context)
-      (reduce #(fail %1 %2 :query-field-not-available
-                     (str "Query field " %2 " specified byt there is no "
-                          "such query field for this route. Valid query "
-                          "fields for this route are: "
+      (reduce #(fail %1 %2 :field-query-not-available
+                     (str "Field query " %2 " specified byt there is no "
+                          "such field query for this route. Valid field "
+                          "queries for this route are: "
                           (string/join ", " available-query-fields)))
               context
               unknown-query-fields))))
@@ -425,18 +425,26 @@
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
-(defn validate-query-field-params [context params]
-  (if (or (:singleton context)
-          (not (:query-field-validator context)))
-    (-> context
-        (validate #(not (empty? (:field-terms params)))
-                  :parameter-not-allowed
-                  "This route does not support field query parameters"))
-    (if (empty? (:field-terms params))
-      context
-      ((:query-field-validator context)
-       context
-       (:field-terms params)))))
+(defn validate-field-query-params [context params]
+  (let [field-queries (q/get-field-queries params)
+        allows-field-queries (and (not (:singleton context))
+                                  (:query-field-validator context))
+        has-field-queries (-> field-queries empty? not)]
+    (cond (and allows-field-queries has-field-queries)
+
+          ;; Field queries are allowed and provided, so validate them
+          ((:query-field-validator context)
+           context
+           (map first field-queries))
+          
+          (and (not allows-field-queries) has-field-queries)
+
+          ;; Field queries are not allowed but are provided, raise error
+          (fail context "query.*" :parameter-not-allowed
+                "This route does not support field query parameters")
+
+          :else
+          (pass context))))
 
 (defn validate-query-param [context params]
   (validate context
@@ -456,8 +464,10 @@
 (defn validate-params
   "Check for unknown parameters"
   [context params]
-  (let [without-query-params (->> params keys set
-                                  (filter #(not (.startsWith (name %) "query."))))
+  (let [without-query-params (->> params
+                                  keys
+                                  (filter #(not (.startsWith (name %) "query.")))
+                                  set)
         unknown-params (cset/difference without-query-params
                                         (set available-params))]
     (if (empty? unknown-params)
@@ -483,7 +493,7 @@
         (validate-facet-param params)
         (validate-filter-param params)
         (validate-query-param params)
-        (validate-query-field-params params)
+        (validate-field-query-params params)
         (validate-id resource-context))))
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
