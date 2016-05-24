@@ -4,6 +4,7 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.parameters :as p]
             [cayenne.api.v1.facet :as facet]
+            [cayenne.api.v1.fields :as fields]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
@@ -143,7 +144,7 @@
   (->> params
        (filter #(.startsWith (-> % first name) "query."))
        (map #(vector (-> % first name (string/replace #"query." ""))
-                    (second %)))))
+                    (-> % second (clean-terms :remove-syntax true))))))
 
 (defn ->query-context [resource-context & {:keys [id filters] 
                                            :or {id nil filters {}}}]
@@ -195,7 +196,9 @@
                           filters {}
                           count-only false}}]
   (let [query (doto (SolrQuery.)
-                (.setQuery (make-query-string query-context))
+                (.setQuery (-> query-context
+                               make-query-string
+                               (fields/apply-field-queries (:field-terms query-context))))
                 (.addField "*")
                 (.addField "score")
                 (.setHighlight false))]
