@@ -21,6 +21,17 @@
 (def default-facet-rows 20)
 (def max-facet-rows 1000)
 
+(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
+  (if-not remove-syntax
+    terms
+    (-> terms
+        (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
+        (string/replace #"\|\|" " ")
+        (string/replace #"&&" " ")
+        (string/replace #"\s(?i)not\s" " ")
+        (string/replace #"\s(?i)or\s" " ")
+        (string/replace #"\s(?i)and\s" " "))))
+
 (defn random-field []
   (str "random_" (rand-int Integer/MAX_VALUE)))
 
@@ -164,17 +175,6 @@
      :filters (merge filters (get-filters params))}))
 
 ;; todo get selectors and get filters handle json input
-
-(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
-  (if-not remove-syntax
-    terms
-    (-> terms
-        (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
-        (string/replace #"\|\|" " ")
-        (string/replace #"&&" " ")
-        (string/replace #"\s(?i)not\s" " ")
-        (string/replace #"\s(?i)or\s" " ")
-        (string/replace #"\s(?i)and\s" " "))))
 
 (defn make-query-string [query-context]
   (cond (and (:terms query-context)
