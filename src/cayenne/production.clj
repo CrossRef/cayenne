@@ -7,7 +7,8 @@
             [cayenne.schedule :as schedule]
             [clojure.data.json :as json]
             [clojure.pprint :refer [pprint]]
-            [org.httpkit.client :as http]))
+            [org.httpkit.client :as http]
+            [environ.core :refer [env]]))
 
 (defn slack-format
   [{:keys [level ns throwable message]}]
@@ -34,6 +35,20 @@
    :async? true
    :fn send-to-slack})
 
+(defn apply-env-overrides
+  "Take some config values from environment variables. Overrides
+   some parameter values in the given core."
+  [core-name]
+  (conf/with-core core-name
+    (when (env :mongo-host)
+      (conf/set-param! [:service :mongo :host] (env :mongo-host)))
+    (when (env :solr-host)
+      (conf/set-param! [:service :solr :url]
+                       (str "http://" (env :solr-host) ":8983/solr"))
+      (conf/set-param! [:service :solr :update-list]
+                       [{:url (str "http://" (env :solr-host) ":8983/solr")
+                         :core "crmds1"}]))))
+
 (def termination (promise))
 
 (defn -main [& args]
@@ -50,6 +65,9 @@
     
     (conf/create-core-from! :production :default)
     (conf/set-core! :production)
+
+    (apply-env-overrides :production)
+    
     (apply (partial conf/start-core! :production) profiles)
     
     @termination))
