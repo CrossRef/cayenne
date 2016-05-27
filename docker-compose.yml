@@ -1,0 +1,22 @@
+api:
+  build: .
+  command: lein run :nrepl :api
+  expose:
+    - "3000"
+indexer:
+  build: .
+  command: lein run :nrepl :index
+updater:
+  build: .
+  command: lein run :nrepl :update-members :update-journals :update-funders
+feeder:
+  build: .
+  command: lein run :nrepl :api :feed-api :process-feed-files
+  expose:
+    - "3000"
+  tmpfs:
+    - /tmp
+mongo:
+  image: mongo
+solr:
+  image: solr

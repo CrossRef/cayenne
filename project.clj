@@ -18,9 +18,10 @@
                               :exclusions [org.slf4j/log4j-over-slf4j]]]}}
   :dependencies [[com.datomic/datomic-free "0.9.4880.2"
                   :exclusions [org.slf4j/log4j-over-slf4j]]
-                 [org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojure "1.8.0"]
                  [org.clojure/tools.nrepl "0.2.3"]
                  [org.clojure/tools.trace "0.7.8"]
+                 [org.mozilla/rhino "1.7.7.1"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.14"]
                  [xml-apis "1.4.01"]
@@ -50,7 +51,7 @@
                  [ring "1.1.0"]
                  [ring-basic-authentication "1.0.5"]
                  [http-kit "2.1.19"]
-                 [instaparse "1.2.14"]
+                 [instaparse "1.4.1"]
                  [com.github.kyleburton/clj-xpath "1.4.3"]
                  [kjw/ring-logstash "0.1.3"]
                  [crossref/heartbeat "0.1.4"]
