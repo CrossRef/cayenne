@@ -1,22 +1,56 @@
 api:
   build: .
-  command: lein run :nrepl :api
+  command: lein run :nrepl :api :deposit-api
+  links:
+    - mongo
+    - solr
+  environment:
+    MONGO_HOST: mongo
+    SOLR_HOST: solr
   expose:
-    - "3000"
+    - 3000
+    - 7888
 indexer:
   build: .
   command: lein run :nrepl :index
+  environment:
+    MONGO_HOST: mongo
+    SOLR_HOST: solr
+  links:
+    - mongo
+    - solr
+  expose:
+    - 7888
 updater:
   build: .
   command: lein run :nrepl :update-members :update-journals :update-funders
+  environment:
+    MONGO_HOST: mongo
+    SOLR_HOST: solr
+  links:
+    - mongo
+    - solr
+  expose:
+    - 7888
 feeder:
   build: .
   command: lein run :nrepl :api :feed-api :process-feed-files
+  environment:
+    MONGO_HOST: mongo
+    SOLR_HOST: solr
+  links:
+    - mongo
+    - solr
   expose:
-    - "3000"
+    - 3000
+    - 7888
   tmpfs:
     - /tmp
 mongo:
   image: mongo
+  expose:
+    - 27017
 solr:
   image: solr
+  expose:
+    - 8983
