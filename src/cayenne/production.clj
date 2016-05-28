@@ -47,7 +47,13 @@
                        (str "http://" (env :solr-host) ":8983/solr"))
       (conf/set-param! [:service :solr :update-list]
                        [{:url (str "http://" (env :solr-host) ":8983/solr")
-                         :core "crmds1"}]))))
+                         :core "crmds1"}]))
+    (when (env :api-port)
+      (conf/set-param! [:service :api :port]
+                       (Integer/parseInt (env :api-port))))
+    (when (env :nrepl-port)
+      (conf/set-param! [:service :nrepl :port]
+                       (Integer/parseInt (env :nrepl-port))))))
 
 (def termination (promise))
 
