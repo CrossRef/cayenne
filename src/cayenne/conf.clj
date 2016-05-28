@@ -124,6 +124,7 @@
   (set-param! [:service :logstash :host] "5.9.51.2")
   (set-param! [:service :logstash :port] 4444)
   (set-param! [:service :logstash :name] "cayenne-api")
+  (set-param! [:service :nrepl :port] 7888)
 
   (set-param! [:deposit :email] "crlabs@fastmail.fm")
 
@@ -186,7 +187,7 @@
   (add-startup-task
    :nrepl
    (fn [profiles]
-     (set-service! :nrepl (nrepl/start-server :port 7888)))))
+     (set-service! :nrepl (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
 
