@@ -5,52 +5,58 @@ api:
     - mongo
     - solr
   environment:
-    MONGO_HOST: mongo
-    SOLR_HOST: solr
-  expose:
-    - 3000
-    - 7888
+    - MONGO_HOST
+    - SOLR_HOST
+    - NREPL_PORT=7880
+    - API_PORT=3000
+  ports:
+    - 80:3000
+    - 7880
 indexer:
   build: .
   command: lein run :nrepl :index
   environment:
-    MONGO_HOST: mongo
-    SOLR_HOST: solr
+    - MONGO_HOST
+    - SOLR_HOST
+    - NREPL_PORT=7881
   links:
     - mongo
     - solr
-  expose:
-    - 7888
+  ports:
+    - 7881
 updater:
   build: .
   command: lein run :nrepl :update-members :update-journals :update-funders
   environment:
-    MONGO_HOST: mongo
-    SOLR_HOST: solr
+    - MONGO_HOST
+    - SOLR_HOST
+    - NREPL_PORT=7882
   links:
     - mongo
     - solr
-  expose:
-    - 7888
+  ports:
+    - 7882
 feeder:
   build: .
   command: lein run :nrepl :api :feed-api :process-feed-files
   environment:
-    MONGO_HOST: mongo
-    SOLR_HOST: solr
+    - MONGO_HOST
+    - SOLR_HOST
+    - NREPL_PORT=7883
+    - API_PORT=3001
   links:
     - mongo
     - solr
-  expose:
-    - 3000
-    - 7888
+  ports:
+    - 80:3001
+    - 7883
   tmpfs:
     - /tmp
 mongo:
   image: mongo
-  expose:
+  ports:
     - 27017
 solr:
   image: solr
-  expose:
+  ports:
     - 8983
