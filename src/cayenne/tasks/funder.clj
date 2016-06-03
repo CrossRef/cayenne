@@ -330,7 +330,9 @@
   (let [db-api-layer (:db (conf/get-service :mongo))
         current-collection (.getCollection db-api-layer "funders")
         new-collection (.getCollection db-api-layer "fundersloading")]
-    (.rename current-collection "funderslast")
+    (try
+      (.rename current-collection "funderslast")
+      (catch Exception e nil))
     (.rename new-collection "funders")))
 
 (defn apply-to 
