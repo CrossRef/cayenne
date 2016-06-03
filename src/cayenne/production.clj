@@ -44,7 +44,7 @@
       (conf/set-param! [:service :mongo :host] (env :mongo-host)))
     (when (env :solr-host)
       (conf/set-param! [:service :solr :url]
-                       (str "http://" (env :solr-host) ":8983/solr"))
+                       (str "http://" (env :solr-host) ":8983/solr/crmds1"))
       (conf/set-param! [:service :solr :update-list]
                        [{:url (str "http://" (env :solr-host) ":8983/solr")
                          :core "crmds1"}]))

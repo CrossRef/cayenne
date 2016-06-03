@@ -1,5 +1,5 @@
 (ns cayenne.conf
-  (:import [org.apache.solr.client.solrj.impl HttpSolrServer]
+  (:import [org.apache.solr.client.solrj.impl HttpSolrClient]
            [java.net URI]
            [java.util UUID]
            [java.util.concurrent Executors])
@@ -115,8 +115,7 @@
 
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "localhost")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr")
-  (set-param! [:service :solr :query-core] "crmds1")                
+  (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
   (set-param! [:service :solr :insert-list-max-size] 10000)
   (set-param! [:service :datomic :url] "datomic:mem://test")
   (set-param! [:service :api :port] 3000)
@@ -178,9 +177,9 @@
      (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
      (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
                                              :host (get-param [:service :mongo :host])))
-     (set-service! :solr (HttpSolrServer. (get-param [:service :solr :url])))
+     (set-service! :solr (HttpSolrClient. (get-param [:service :solr :url])))
      (set-service! :solr-update-list
-                   (map #(HttpSolrServer. (str (:url %) "/" (:core %)))
+                   (map #(HttpSolrClient. (str (:url %) "/" (:core %)))
                         (get-param [:service :solr :update-list]))))))
 
 (with-core :default
