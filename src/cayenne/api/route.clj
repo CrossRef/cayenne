@@ -118,4 +118,5 @@
        (create-handler :graph-api (some #{:graph-api} profiles)
                        :feed-api (some #{:feed-api} profiles))
        {:join? false
+        :thread 128
         :port (conf/get-param [:service :api :port])})))))
