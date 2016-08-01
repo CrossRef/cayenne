@@ -637,6 +637,14 @@
      :value (to-long-doi-uri policy-doi)
      :original policy-doi}))
 
+(defn parse-domain-exclusive-status [item-loc]
+  (when-let [exclusive (xml/xselect1 item-loc :> "crossmark" "crossmark_domain_exclusive" :text)]
+    (= (string/lower-case exclusive "true"))))
+
+(defn parse-domains [item-loc]
+  (let [domains (xml/xselect item-loc :> "crossmark" "crossmark_domains" "crossmark_domain")]
+    (map (xml/xselect1 % :text) domains)))
+
 (def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
 (defn parse-update-date [update-loc]
@@ -684,6 +692,8 @@
   (-> {:type :work}
       (attach-ids (parse-item-id-uris item-loc))
       (parse-attach :update-policy item-loc :single parse-update-policy)
+      (parse-attach :domain-exclusive item-loc :single parse-domain-exclusive-status)
+      (parse-attach :domains item-loc :multi parse-domains)
       (parse-attach :updates item-loc :multi parse-updates)
       (parse-attach :component item-loc :multi parse-component-list)
       (parse-attach :institution item-loc :multi parse-institutions)

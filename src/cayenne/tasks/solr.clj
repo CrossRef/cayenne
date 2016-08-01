@@ -460,6 +460,8 @@
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi_asserted_by" (map (util/?- :doi-asserted-by) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)
+         "domain_exclusive" (or (:domain-exclusive item) false)
+         "domains" (:domains item)
          "clinical_trial_number_ctn" (map :ctn clinical-trial-numbers)
          "clinical_trial_number_registry" (map :registry clinical-trial-numbers)
          "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
