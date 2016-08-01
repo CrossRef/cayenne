@@ -528,33 +528,14 @@
         (?> (and funder-uri funder-id-source) assoc :doi-asserted-by funder-id-source)
         (?> funder-uri attach-id funder-uri))))
 
-(defn parse-item-funders-funder-name-direct [item-loc]
-  (let [funder-names-loc (concat
-                          (xml/xselect item-loc
-                                       "program"
-                                       "assertion"
-                                       [:= "name" "funder_name"])
-                          (xml/xselect item-loc
-                                       "crossmark"
-                                       "custom_metadata"
-                                       "program"
-                                       "assertion"
-                                       [:= "name" "funder_name"]))]
-    (map parse-funder funder-names-loc)))
-
-(defn parse-item-funders-funder-id-direct [item-loc]
-  (let [funder-ids-loc (concat
-                          (xml/xselect item-loc
-                                       "program"
-                                       "assertion"
-                                       [:= "name" "funder_identifier"])
-                          (xml/xselect item-loc
-                                       "crossmark"
-                                       "custom_metadata"
-                                       "program"
-                                       "assertion"
-                                       [:= "name" "funder_identifier"]))]
-    (map parse-funder funder-ids-loc)))
+(defn parse-item-funders-without-fundgroup
+  (let [funder-group-locs (concat
+                           (xml/xselect item-loc "program")
+                           (xml/xselect item-loc "crossmark" "custom_metadata" "program"))]
+    (->> funder-group-locs
+         (filter #(or (xml/xselect1 % "assertion" [:= "name" "funder_name"])
+                      (xml/xselect1 % "assertion" [:= "name" "funder_identifier"])))
+         (map parse-funder))))          
 
 (defn parse-item-funders-with-fundgroup [item-loc]
   (let [funder-groups-loc (concat 
