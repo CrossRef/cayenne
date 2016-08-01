@@ -258,6 +258,10 @@
         {:clinical-trial-number ctn :registry registry}
         (when (and type (not= type "-")) {:type type}))) ctns registries types)))
 
+(defn ->content-domains [solr-doc]
+  {:domains (or (get solr-doc "domains") [])
+   :crossmark-restriction (or (get solr-doc "domain_exclusive") false)})
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -272,6 +276,7 @@
        :publisher (get solr-doc "publisher")
        :reference-count (get solr-doc "citation_count")
        :type (type-id/->type-id (get solr-doc "type"))
+       :content-domains (->content-domains solr-doc)
        :score (get solr-doc "score")}
       (assoc-exists :published-online
                     (get solr-doc "online_year")
