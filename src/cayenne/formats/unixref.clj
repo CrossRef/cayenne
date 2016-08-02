@@ -624,7 +624,7 @@
 
 (defn parse-domains [item-loc]
   (let [domains (xml/xselect item-loc :> "crossmark" "crossmark_domains" "crossmark_domain")]
-    (map #(xml/xselect1 % :text) domains)))
+    (map #(string/trim (xml/xselect1 % :text)) domains)))
 
 (def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
