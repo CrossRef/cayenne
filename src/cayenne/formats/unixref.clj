@@ -8,7 +8,8 @@
             [cayenne.item-tree :as itree]
             [clojure.tools.trace :as trace]
             [taoensso.timbre :as timbre :refer [info error]]
-            [cayenne.ids.ctn :refer [normalize-ctn]])
+            [cayenne.ids.ctn :refer [normalize-ctn]]
+            [clojure.string :as string])
   (:use [cayenne.util :only [?> ?>>]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
@@ -528,14 +529,14 @@
         (?> (and funder-uri funder-id-source) assoc :doi-asserted-by funder-id-source)
         (?> funder-uri attach-id funder-uri))))
 
-(defn parse-item-funders-without-fundgroup
+(defn parse-item-funders-without-fundgroup [item-loc]
   (let [funder-group-locs (concat
                            (xml/xselect item-loc "program")
                            (xml/xselect item-loc "crossmark" "custom_metadata" "program"))]
     (->> funder-group-locs
          (filter #(or (xml/xselect1 % "assertion" [:= "name" "funder_name"])
                       (xml/xselect1 % "assertion" [:= "name" "funder_identifier"])))
-         (map parse-funder))))          
+         (map parse-funder))))      
 
 (defn parse-item-funders-with-fundgroup [item-loc]
   (let [funder-groups-loc (concat 
@@ -553,8 +554,7 @@
 
 (defn parse-item-funders [item-loc]
   (concat
-   (parse-item-funders-funder-name-direct item-loc)
-   (parse-item-funders-funder-id-direct item-loc)
+   (parse-item-funders-without-fundgroup item-loc)
    (parse-item-funders-with-fundgroup item-loc)))
 
 (defn parse-clinical-trial-number [clinical-trial-number-loc]
@@ -620,11 +620,11 @@
 
 (defn parse-domain-exclusive-status [item-loc]
   (when-let [exclusive (xml/xselect1 item-loc :> "crossmark" "crossmark_domain_exclusive" :text)]
-    (= (string/lower-case exclusive "true"))))
+    (= (string/lower-case exclusive) "true")))
 
 (defn parse-domains [item-loc]
   (let [domains (xml/xselect item-loc :> "crossmark" "crossmark_domains" "crossmark_domain")]
-    (map (xml/xselect1 % :text) domains)))
+    (map #(xml/xselect1 % :text) domains)))
 
 (def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
