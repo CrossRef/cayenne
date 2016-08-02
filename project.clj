@@ -18,7 +18,7 @@
                               :exclusions [org.slf4j/log4j-over-slf4j]]]}}
   :dependencies [[com.datomic/datomic-free "0.9.4880.2"
                   :exclusions [org.slf4j/log4j-over-slf4j]]
-                 [org.clojure/clojure "1.6.0"]
+                 [org.clojure/clojure "1.7.0"]
                  [org.clojure/tools.nrepl "0.2.3"]
                  [org.clojure/tools.trace "0.7.8"]
                  [de.undercouch/citeproc-java "0.6"]
