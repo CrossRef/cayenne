@@ -4,6 +4,7 @@
            [org.apache.solr.client.solrj.request CoreAdminRequest]
            [org.apache.solr.common.params CoreAdminParams$CoreAdminAction])
   (:require [clj-time.core :as t]
+            [clj-time.format :as df]
             [clojure.string :as string]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
@@ -236,26 +237,28 @@
                         :hour (util/parse-int-safe (:hour particle-date))
                         :minute (util/parse-int-safe (:minute particle-date))
                         :second (util/parse-int-safe (:second particle-date))}]
-    (cond (:second converted-date)
-          (t/date-time (:year converted-date)
-                       (:month converted-date)
-                       (:day converted-date)
-                       (:hour converted-date)
-                       (:minute converted-date)
-                       (:second converted-date))
-
-          (:day converted-date)
-          (t/date-time (:year converted-date)
-                       (:month converted-date)
-                       (:day converted-date))
-          
-          (:month converted-date)
-          (t/date-time (:year converted-date)
-                       (:month converted-date))
-          
-          :else
-          (t/date-time (:year converted-date)))))
-
+    (->>
+     (cond (:second converted-date)
+           (t/date-time (:year converted-date)
+                        (:month converted-date)
+                        (:day converted-date)
+                        (:hour converted-date)
+                        (:minute converted-date)
+                        (:second converted-date))
+           
+           (:day converted-date)
+           (t/date-time (:year converted-date)
+                        (:month converted-date)
+                        (:day converted-date))
+           
+           (:month converted-date)
+           (t/date-time (:year converted-date)
+                        (:month converted-date))
+           
+           :else
+           (t/date-time (:year converted-date)))
+     (df/unparse (df/formatters :date-time)))))
+  
 (defn as-day-diff [left-particle-date right-particle-date]
   (let [left (as-datetime left-particle-date)
         right (as-datetime right-particle-date)]
@@ -351,6 +354,9 @@
              (util/assoc-int (str "assertion_order_" %1) (:order %2))))
        (apply merge)))
 
+(defn formatted-now []
+  (df/unparse (df/formatters :date-time) (t/now)))
+
 (defn as-solr-document [item]
   (let [grant-map (as-grant-map item)
         licenses (as-license-list item)
@@ -376,12 +382,12 @@
         updates (get-updates item)
         doi (first (get-item-ids item :long-doi))]
     (-> {"source" (:source item)
-         "indexed_at" (t/now)
-         "deposited_at" (if deposit-date (as-datetime deposit-date) (t/now))
+         "indexed_at" (formatted-now)
+         "deposited_at" (if deposit-date (as-datetime deposit-date) (formatted-now))
          "first_deposited_at"
          (or (when first-deposit-date (as-datetime first-deposit-date))
              (when deposit-date (as-datetime deposit-date))
-             (t/now))
+             (formatted-now))
          "prefix" (doi/extract-long-prefix doi)
          "doi_key" doi
          "doi" doi
