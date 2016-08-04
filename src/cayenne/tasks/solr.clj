@@ -125,7 +125,7 @@
    :suffix (:suffix contributor)
    :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
-   :type type})
+   :type (name type)})
 
 (defn get-contributor-details*
   "For each person contributor, return a map of name, ORCID and
