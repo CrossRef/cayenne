@@ -74,7 +74,8 @@
           (t/date-time year))))
 
 (defn get-earliest-pub-date [item]
-  (->> (concat 
+  (->> (concat
+        (get-item-rel item :posted)
         (get-item-rel item :published-print)
         (get-item-rel item :published-online)
         (get-item-rel item :published))
@@ -413,6 +414,12 @@
          "online_year" (:year online-pub-date)
          "online_month" (:month online-pub-date)
          "online_day" (:day online-pub-date)
+         "posted_year" (:year posted-date)
+         "posted_month" (:month posted-date)
+         "posted_day" (:day posted-date)
+         "accepted_year" (:year acceptance-date)
+         "accepted_month" (:month acceptance-date)
+         "accepted_day" (:day acceptance-date)
          "contributor_given_name" (map (util/?- :given-name) contrib-details)
          "contributor_family_name" (map (util/?- :family-name) contrib-details)
          "contributor_suffix" (map (util/?- :suffix) contrib-details)
