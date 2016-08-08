@@ -57,6 +57,8 @@
                                    :label "Reference Entry"}
                       :dissertation {:index-id "Dissertation"
                                      :label "Dissertation"}
+                      :preprint {:index-id "Preprint"
+                                 :label "Preprint"}
                       :other {:index-id "Other"
                               :label "Other"}})
 

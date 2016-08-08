@@ -88,6 +88,9 @@
 (defn find-journal-volume [journal-loc]
   (xml/xselect1 journal-loc "journal_issue" "journal_volume"))
 
+(defn find-preprint [record-loc]
+  (xml/xselect1 record-loc :> "preprint"))
+
 (defn find-conf [record-loc]
   (xml/xselect1 record-loc :> "conference"))
 
@@ -714,6 +717,11 @@
 ;; -----------------------------------------------------------------
 ;; Specific item parsing
 
+(defn parse-preprint [item-loc]
+  (when item-loc
+    (conj (parse-item item-loc)
+          {:subtype :preprint})))
+
 (defn parse-journal-article [article-loc]
   (when article-loc
     (conj (parse-item article-loc)
@@ -1120,6 +1128,7 @@
               (parse-report (find-report oai-record))
               (parse-database (find-database oai-record))
               (parse-journal (find-journal oai-record))
+              (parse-preprint (find-preprint oai-record))
               (parse-book (find-book oai-record))
               (parse-conf (find-conf oai-record)))]
     (if work
