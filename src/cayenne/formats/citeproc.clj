@@ -264,9 +264,9 @@
 
 (defn assoc-date [citeproc-doc solr-doc field prefix]
   (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
-                (get solr-doc (str prefix "_year"))
-                (get solr-doc (str prefix "_month"))
-                (get solr-doc (str prefix "_day"))))
+                (->date-parts (get solr-doc (str prefix "_year"))
+                              (get solr-doc (str prefix "_month"))
+                              (get solr-doc (str prefix "_day")))))
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
