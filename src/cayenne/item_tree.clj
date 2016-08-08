@@ -35,6 +35,7 @@
                      :image "Image"
                      :model "Model"
                      :film "Film"
+                     :preprint "Preprint"
                      :other "Other"})
 
 ;; todo are section part track only for books or for article figures etc too?
