@@ -3,7 +3,8 @@
 (defn bibo-type [clss]
   (str "http://purl.org/ontology/bibo/" clss))
 
-(def type-dictionary {:journal-article {:index-id "Journal Article" 
+(def type-dictionary {:journal-article {:index-id "Journal Article"
+                                        :label "Journal Article"
                                         :bibo-type (bibo-type "Article")
                                         :csl-type "article-journal"
                                         :rpp-type "Journal Articles"}
