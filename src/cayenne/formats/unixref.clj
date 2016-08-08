@@ -706,7 +706,6 @@
       (parse-attach :accepted item-loc :single parse-item-accepted-date)
       (parse-attach :assertion item-loc :multi parse-item-assertions)
       (parse-attach :number item-loc :multi parse-item-numbers)
-      (parse-attach :relation item-loc :multi parse-relations)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 
