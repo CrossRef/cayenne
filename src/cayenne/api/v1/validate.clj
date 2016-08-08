@@ -179,10 +179,16 @@
    :until-print-pub-date date-validator
    :from-created-date date-validator
    :until-created-date date-validator
+   :from-posted-date date-validator
+   :until-posted-date date-validator
+   :from-accepted-date date-validator
+   :until-accepted-date date-validator
    :is-update boolean-validator
    :has-update boolean-validator
    :updates doi-validator
    :update-type string-validator
+   :has-content-domain boolean-validator
+   :content-domain string-validator
    :has-full-text boolean-validator
    :has-license boolean-validator
    :has-references boolean-validator
