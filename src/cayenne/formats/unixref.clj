@@ -467,6 +467,12 @@
 (defn parse-item-approval-dates [kind item-loc]
   (map parse-date (find-approval-dates item-loc kind)))
 
+(defn parse-item-posted-date [item-loc]
+  (parse-date (xml/xselect1 item-loc "posted_date")))
+
+(defn parse-item-accepted-date [item-loc]
+  (parse-date (xml/xselect1 item-loc "acceptance_date")))
+
 (defn parse-item-titles [item-loc]
   (-> []
       (concat (parse-full-titles item-loc))
@@ -696,8 +702,11 @@
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
       (parse-attach :published item-loc :multi parse-item-pub-dates)
+      (parse-attach :posted item-loc :single parse-item-posted-date)
+      (parse-attach :accepted item-loc :single parse-item-accepted-date)
       (parse-attach :assertion item-loc :multi parse-item-assertions)
       (parse-attach :number item-loc :multi parse-item-numbers)
+      (parse-attach :relation item-loc :multi parse-relations)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 

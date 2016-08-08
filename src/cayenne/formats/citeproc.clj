@@ -262,6 +262,12 @@
   {:domain (or (get solr-doc "domains") [])
    :crossmark-restriction (or (get solr-doc "domain_exclusive") false)})
 
+(defn assoc-date [citeproc-doc solr-doc field prefix]
+  (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
+                (get solr-doc (str prefix "_year"))
+                (get solr-doc (str prefix "_month"))
+                (get solr-doc (str prefix "_day"))))
+
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
@@ -278,16 +284,10 @@
        :type (type-id/->type-id (get solr-doc "type"))
        :content-domain (->content-domains solr-doc)
        :score (get solr-doc "score")}
-      (assoc-exists :published-online
-                    (get solr-doc "online_year")
-                    (->date-parts (get solr-doc "online_year")
-                                  (get solr-doc "online_month")
-                                  (get solr-doc "online_day")))
-      (assoc-exists :published-print
-                    (get solr-doc "print_year")
-                    (->date-parts (get solr-doc "print_year")
-                                  (get solr-doc "print_month")
-                                  (get solr-doc "print_day")))
+      (assoc-date solr-doc :published-online "online")
+      (assoc-date solr-doc :published-print "print")
+      (assoc-date solr-doc :posted "posted")
+      (assoc-date solr-doc :accepted "accepted")
       (assoc-exists :article-number (get solr-doc "article_number"))
       (assoc-exists :volume (get solr-doc "hl_volume"))
       (assoc-exists :issue (get solr-doc "hl_issue"))
