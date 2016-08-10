@@ -16,14 +16,23 @@
   (m/add-index! collection [:token]))
 
 (defn insert-journal! [collection name publisher issns]
-  (let [normalized-issns (map issn-id/normalize-issn issns)
+  (let [normalized-issns (->> issns
+                              (map issn-id/normalize-issn)
+                              (filter (complement nil?)))
         doc {:title name
              :token (util/tokenize-name name)
              :publisher publisher
              :issn normalized-issns}]
-    (m/update! collection
-               {:issn normalized-issns}
-               doc)))
+    (if (empty? normalized-issns)
+      ;; some journals in the Crossref title list do not have ISSNs
+      ;; so instead of updating any record matching an ISSN, we use
+      ;; the title
+      (m/update! collection
+                 {:title name}
+                 doc)
+      (m/update! collection
+                 {:issn normalized-issns}
+                 doc))))
 
 (defn load-journals-from-cr-title-list-csv [collection]
   (m/with-mongo (conf/get-service :mongo)
