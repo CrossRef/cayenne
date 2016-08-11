@@ -471,10 +471,12 @@
   (map parse-date (find-approval-dates item-loc kind)))
 
 (defn parse-item-posted-date [item-loc]
-  (parse-date (xml/xselect1 item-loc "posted_date")))
+  (when-let [posted-date-loc (xml/xselect1 item-loc "posted_date")]
+    (parse-date posted-date-loc)))
 
 (defn parse-item-accepted-date [item-loc]
-  (parse-date (xml/xselect1 item-loc "acceptance_date")))
+  (when-let [accepted-date-loc (xml/xselect1 item-loc "acceptance_date")]
+    (parse-date accepted-date-loc)))
 
 (defn parse-item-titles [item-loc]
   (-> []
