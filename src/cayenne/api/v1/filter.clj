@@ -269,6 +269,7 @@
    "has-content-domain" (existence "domains")
    "updates" (equality "update_doi" :transformer doi-id/to-long-doi-uri)
    "update-type" (equality "update_type")
+   "has-abstract" (existence "abstract")
    "has-full-text" (existence "full_text_url")
    "has-license" (existence "license_url")
    "has-references" (greater-than-zero "citation_count")

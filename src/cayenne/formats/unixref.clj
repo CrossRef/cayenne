@@ -660,6 +660,8 @@
   (when-let [updates (xml/xselect item-loc :> "crossmark" "updates" "update")]
     (map parse-update updates)))
 
+(defn parse-abstract [item-loc] (xml/xselect1 item-loc :> "abstract" :xml))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -710,6 +712,7 @@
       (parse-attach :posted item-loc :single parse-item-posted-date)
       (parse-attach :accepted item-loc :single parse-item-accepted-date)
       (parse-attach :assertion item-loc :multi parse-item-assertions)
+      (parse-attach :abstract item-loc :single parse-item-abstract)
       (parse-attach :number item-loc :multi parse-item-numbers)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))

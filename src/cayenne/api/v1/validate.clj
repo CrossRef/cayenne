@@ -189,6 +189,7 @@
    :update-type string-validator
    :has-content-domain boolean-validator
    :content-domain string-validator
+   :has-abstract boolean-validator
    :has-full-text boolean-validator
    :has-license boolean-validator
    :has-references boolean-validator
