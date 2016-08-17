@@ -660,7 +660,7 @@
   (when-let [updates (xml/xselect item-loc :> "crossmark" "updates" "update")]
     (map parse-update updates)))
 
-(defn parse-abstract [item-loc] (xml/xselect1 item-loc :> "abstract" :xml))
+(defn parse-item-abstract [item-loc] (xml/xselect1 item-loc :> "abstract" :xml))
 
 (declare parse-item)
 
