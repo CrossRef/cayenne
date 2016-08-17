@@ -71,6 +71,8 @@
 (def checkles
   [check-deposits 
    check-deposits-articles
+   (make-filter-check "deposits" "affiliations" :has-affiliation "true")
+   (make-filter-check "deposits" "abstracts" :has-abstract "true")
    (make-filter-check "deposits" "update-policies" :has-update-policy "true")
    (make-filter-check "deposits" "references" :has-references "true")
    (make-filter-check "deposits" "licenses" :has-license "true")
