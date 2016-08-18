@@ -288,7 +288,7 @@
       (assoc-date solr-doc :published-print "print")
       (assoc-date solr-doc :posted "posted")
       (assoc-date solr-doc :accepted "accepted")
-      (assoc-exists :abstract (get solr-doc "abstract"))
+      (assoc-exists :abstract (get solr-doc "abstract_xml"))
       (assoc-exists :article-number (get solr-doc "article_number"))
       (assoc-exists :volume (get solr-doc "hl_volume"))
       (assoc-exists :issue (get solr-doc "hl_issue"))

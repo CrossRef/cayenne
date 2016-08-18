@@ -661,8 +661,10 @@
     (map parse-update updates)))
 
 (defn parse-item-abstract [item-loc]
-  (when-let [abstract (xml/xselect1 item-loc :> "abstract" :xml)]
-    (string/trim abstract)))
+  (when-let [abstract-loc (xml/xselect1 item-loc :> "abstract")]
+    {:type :abstract
+     :plain (-> (xml/xselect1 abstract-loc :plain) string/trim)
+     :xml (-> (xml/xselect1 abstract-loc :xml) string/trim)}))
 
 (declare parse-item)
 
