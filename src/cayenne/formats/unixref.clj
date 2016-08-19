@@ -663,7 +663,7 @@
 (defn parse-item-abstract [item-loc]
   (when-let [abstract-loc (xml/xselect1 item-loc :> "abstract")]
     {:type :abstract
-     :plain (-> (xml/xselect1 abstract-loc :plain) string/trim)
+     :plain (-> (xml/xselect1 abstract-loc :text) string/trim)
      :xml (-> (xml/xselect1 abstract-loc :xml) string/trim)}))
 
 (declare parse-item)
