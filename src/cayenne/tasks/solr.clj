@@ -151,9 +151,7 @@
   (mapcat (partial get-item-rel item) contributor-rels)) ;; todo deal with orgs
 
 (defn get-container-titles [item]
-  (let [titles (mapcat #(get-item-rel % :title)
-                       (get-item-rel item :ancestor))]
-    (map :value titles)))
+  (mapcat #(get-item-rel % :title) (get-item-rel item :ancestor)))
 
 (defn get-oa-status [item]
   (let [journal (find-item-of-subtype item :journal)]
@@ -195,7 +193,7 @@
        (conj (:first-page item)) ; pages
        (conj (:last-page item)) ; pages
        (concat (map :value (get-item-rel item :title))) ; work titles
-       (concat (get-container-titles item))))) ; publication titles
+       (concat (map :value (get-container-titles item)))))) ; publication titles
 
 (defn as-solr-citation-field [item]
   (string/join
@@ -410,9 +408,16 @@
          "first_author_surname" (:last-name primary-author)
          "content" (as-solr-content-field item)
          "content_citation" (as-solr-citation-field item)
-         "publication" container-titles
+         "publication" (-> container-titles
+                           (filter #(= (:subtype %) :long))
+                           (map :value))
          "oa_status" (get-oa-status item)
-         "hl_publication" container-titles
+         "hl_publication" (-> container-titles
+                              (filter #(= (:subtype %) :long))
+                              (map :value))
+         "hl_short_publication" (-> container-titles
+                                    (filter #(= (:subtype %) :short))
+                                    (map :value))
          "year" (:year pub-date)
          "month" (:month pub-date)
          "day" (:day pub-date)
@@ -447,8 +452,14 @@
          "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
          "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
          "hl_title" (->> (get-item-rel item :title)
-                         (filter #(not= (:subtype %) :secondary))
+                         (filter #(= (:subtype %) :long))
                          (map :value))
+         "hl_short_title" (->> (get-item-rel item :title)
+                               (filter #(= (:subtype %) :short))
+                               (map :value))
+         "hl_original_title" (->> (get-item-rel item :title)
+                                  (filter #(= (:subtype %) :original))
+                                  (map :value))
          "hl_subtitle" (->> (get-item-rel item :title)
                             (filter #(= (:subtype %) :secondary))
                             (map :value))

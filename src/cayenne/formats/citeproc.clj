@@ -297,8 +297,11 @@
       (assoc-exists :alternative-id (map ids/extract-supplementary-id
                                          (get solr-doc "supplementary_id")))
       (assoc-exists :title (set (get solr-doc "hl_title")))
+      (assoc-exists :short-title (set (get solr-doc "hl_short_title")))
+      (assoc-exists :original-title (set (get solr-doc "hl_original_title")))
       (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
       (assoc-exists :container-title (set (get solr-doc "hl_publication")))
+      (assoc-exists :short-container-title (set (get solr-doc "hl_short_publication")))
       (assoc-exists :subject (get solr-doc "category"))
       (assoc-exists :archive (get solr-doc "archive"))
       (assoc-exists :update-policy (get solr-doc "update_policy"))
