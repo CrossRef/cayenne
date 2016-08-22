@@ -408,16 +408,16 @@
          "first_author_surname" (:last-name primary-author)
          "content" (as-solr-content-field item)
          "content_citation" (as-solr-citation-field item)
-         "publication" (-> container-titles
-                           (filter #(= (:subtype %) :long))
-                           (map :value))
+         "publication" (->> container-titles
+                            (filter #(= (:subtype %) :long))
+                            (map :value))
          "oa_status" (get-oa-status item)
-         "hl_publication" (-> container-titles
-                              (filter #(= (:subtype %) :long))
-                              (map :value))
-         "hl_short_publication" (-> container-titles
-                                    (filter #(= (:subtype %) :short))
-                                    (map :value))
+         "hl_publication" (->> container-titles
+                               (filter #(= (:subtype %) :long))
+                               (map :value))
+         "hl_short_publication" (->> container-titles
+                                     (filter #(= (:subtype %) :short))
+                                     (map :value))
          "year" (:year pub-date)
          "month" (:month pub-date)
          "day" (:day pub-date)
