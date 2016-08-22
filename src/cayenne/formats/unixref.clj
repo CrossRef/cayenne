@@ -285,7 +285,7 @@
 (defn parse-language-title [item-loc]
   (if-let [title-loc (xml/xselect1 item-loc "titles" "original_language_title")]
     {:type :title
-     :subtype :long
+     :subtype :original
      :language (xml/xselect1 title-loc ["language"])
      :value (xml/xselect1 title-loc :text)}))
 
