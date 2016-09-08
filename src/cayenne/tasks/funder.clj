@@ -121,10 +121,12 @@
       (do 
         (prn "Found node with no country: " node)
         "Unknown")
-      (-> country-obj
-       (rdf/->uri)
-       (str "about.rdf")
-       (geoname/get-geoname-name-memo)))))
+      (try
+        (-> country-obj
+            (rdf/->uri)
+            (str "about.rdf")
+            (geoname/get-geoname-name-memo))
+        (catch Exception e nil)))))
       
 (defn funder-concept->map [model funder-concept-node]
   {:id (res->id funder-concept-node)
@@ -295,18 +297,21 @@
 (def get-funder-names-memo (memoize/memo-lru get-funder-names))
 (def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
 
-(defn get-funder-descendants [collection-name id]
-  (let [children (get-funder-children-memo collection-name id)]
-    (concat
-     children
-     (mapcat
-      (partial get-funder-children-memo collection-name)
-      children))))
+(defn get-funder-descendants
+  ([collection-name id]
+   (get-funder-descendants collection-name 4 id))
+  ([collection-name level-cap id]
+   (let [children (get-funder-children-memo collection-name id)]
+     (concat
+      children
+      (if (= level-cap 0)
+        []
+        (mapcat (partial get-funder-descendants collection-name (dec level-cap)) children))))))
 
 (def get-funder-descendants-memo (memoize/memo-lru get-funder-descendants))
 
 (defn clear! []
-  (memoize/memo-clear! get-funder-descendants)
+  (memoize/memo-clear! get-funder-descendants-memo)
   (memoize/memo-clear! get-funder-children-memo)
   (memoize/memo-clear! get-funder-siblings-memo)
   (memoize/memo-clear! get-funder-ancestors-memo)
