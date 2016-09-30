@@ -58,8 +58,8 @@
                                    :label "Reference Entry"}
                       :dissertation {:index-id "Dissertation"
                                      :label "Dissertation"}
-                      :preprint {:index-id "Preprint"
-                                 :label "Preprint"}
+                      :posted-content {:index-id "Posted Content"
+                                       :label "Posted Content"}
                       :other {:index-id "Other"
                               :label "Other"}})
 
