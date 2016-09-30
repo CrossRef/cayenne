@@ -301,6 +301,7 @@
    "assertion" (equality "assertion_name")
    "assertion-group" (equality "assertion_group_name")
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
+   "group-title" (equality "hl_group_title")
    "container-title" (equality "publication")
    "publisher-name" (equality "publisher")
    "category-name" (equality "category")
