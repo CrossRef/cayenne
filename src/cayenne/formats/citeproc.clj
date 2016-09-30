@@ -302,6 +302,7 @@
       (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
       (assoc-exists :container-title (set (get solr-doc "hl_publication")))
       (assoc-exists :short-container-title (set (get solr-doc "hl_short_publication")))
+      (assoc-exists :group-title (get solr-doc "hl_group_title"))
       (assoc-exists :subject (get solr-doc "category"))
       (assoc-exists :archive (get solr-doc "archive"))
       (assoc-exists :update-policy (get solr-doc "update_policy"))

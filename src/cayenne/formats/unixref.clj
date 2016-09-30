@@ -274,6 +274,10 @@
   (if-let [title (xml/xselect1 item-loc "proceedings_title" :text)]
     {:type :title :subtype :long :value title}))
 
+(defn parse-group-title [item-loc]
+  (when-let [group-title (xml/xselect1 item-loc "group_title" :text)]
+    {:type :title :subtype :group :value title}))
+
 (defn parse-title [item-loc]
   (when-let [title (xml/xselect1 item-loc "titles" "title" :text)]
     {:type :title :subtype :long :value title}))
@@ -482,6 +486,7 @@
   (-> []
       (concat (parse-full-titles item-loc))
       (concat (parse-abbrev-titles item-loc))
+      (if-conj (parse-group-title item-loc))
       (if-conj (parse-proceedings-title item-loc))
       (if-conj (parse-title item-loc))
       (if-conj (parse-subtitle item-loc))

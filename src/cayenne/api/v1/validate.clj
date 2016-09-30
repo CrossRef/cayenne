@@ -213,6 +213,7 @@
    :assertion string-validator
    :assertion-group string-validator
    :doi doi-validator
+   :group-title string-validator
    :container-title string-validator
    :publisher-name string-validator
    :category-name string-validator
