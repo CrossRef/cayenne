@@ -275,7 +275,7 @@
     {:type :title :subtype :long :value title}))
 
 (defn parse-group-title [item-loc]
-  (when-let [group-title (xml/xselect1 item-loc "group_title" :text)]
+  (when-let [title (xml/xselect1 item-loc "group_title" :text)]
     {:type :title :subtype :group :value title}))
 
 (defn parse-title [item-loc]
