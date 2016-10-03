@@ -89,7 +89,7 @@
   (xml/xselect1 journal-loc "journal_issue" "journal_volume"))
 
 (defn find-posted-content [record-loc]
-  (xml/xselect1 record-loc :> "posted-content"))
+  (xml/xselect1 record-loc :> "posted_content"))
 
 (defn find-conf [record-loc]
   (xml/xselect1 record-loc :> "conference"))
