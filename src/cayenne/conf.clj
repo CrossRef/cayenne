@@ -64,14 +64,13 @@
 (defn start-core!
   "Create a new named core, initializes various services."
   [name & profiles]
-  (let [with-base-profiles (conj profiles :base)]
-    (with-core name
-      (doseq [[name task] @startup-tasks]
-        (when (some #{name} with-base-profiles)
-          (print "Starting" name "... ")
-          (task profiles)
-          (println "done.")))
-      (set-param! [:status] :running))))
+  (doseq [p-name (concat [:base] profiles)]
+    (when-let [task (get @startup-tasks p-name)]
+      (print "Starting" p-name "... ")
+      (task profiles)
+      (println "done.")))
+  (with-core name
+    (set-param! [:status] :running)))
 
 (defn stop-core! [name]
   (with-core name
