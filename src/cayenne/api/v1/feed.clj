@@ -13,11 +13,13 @@
             [compojure.core :refer [defroutes ANY]]
             [liberator.core :refer [defresource]]
             [clojure.string :as string]
-            [clojure.java.io :refer [reader] :as io]
+            [clojure.java.io :refer [reader writer] :as io]
+            [taoensso.timbre :as timbre :refer [info error]]
             [digest :as digest]
             [metrics.meters :refer [defmeter] :as meter])
   (:import [java.util UUID]
-           [java.io File]))
+           [java.io File]
+           [java.util.concurrent TimeUnit]))
 
 (def feed-content-types #{"application/vnd.crossref.unixsd+xml"
                           "application/vnd.datacite.datacite+xml"})
@@ -34,6 +36,11 @@
 
 (def provider-names {"crossref" "CrossRef"
                      "datacite" "DataCite"})
+
+(defn feed-log [f state]
+  (spit (str (conf/get-param [:dir :data]) "/feed.log")
+        (str f " - " state "\n")
+        :append true))
 
 (defmeter [cayenne feed files-received] "files-received")
 
@@ -144,9 +151,15 @@
        (xml/process-xml rdr "crossref_result" f)))
    feed-context))
 
-(defn process-feed-files! []
-  (doseq [f (-> (feed-in-dir) io/file .listFiles)]
-    (-> f .getAbsolutePath make-feed-context process!)))
+(defn process-feed-files! [file-seq]
+  (doseq [f file-seq]
+    (try
+      (feed-log (.getName f) "Seen")
+      (-> f .getAbsolutePath make-feed-context process!)
+      (feed-log (.getName f) "Processed")
+      (catch Exception e
+        (feed-log (.getName f) "Failed")
+        (error e (str "Failed to process feed file " f))))))
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
@@ -181,4 +194,21 @@
 (defroutes feed-api-routes
   (ANY "/:provider" [provider]
        (feed-resource provider)))
-  
+
+(defn start-feed-processing []
+  (doto (conf/get-service :executor)
+    (.scheduleWithFixedDelay
+     (fn []
+       (let [files (->> (feed-in-dir) io/file .listFiles)]
+         (doseq [fs (partition-all (/ (count files) 8) files)]
+           (doto (conf/get-service :executor)
+             (.schedule #(process-feed-files! fs) 0 TimeUnit/MILLISECONDS)))))
+     0
+     5000
+     TimeUnit/MILLISECONDS)))
+
+(conf/with-core :default
+  (conf/add-startup-task
+   :process-feed-files
+   (fn [profiles]
+     (start-feed-processing))))

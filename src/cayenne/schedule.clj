@@ -62,14 +62,6 @@
      (cron/schedule
       (cron/cron-schedule "0 0 * * * ?")))))
 
-(def process-feed-files-trigger
-  (qt/build
-   (qt/with-identity (qt/key "process-feed-files"))
-   (qt/with-schedule
-     (simple/schedule
-      (simple/repeat-forever)
-      (simple/with-interval-in-milliseconds 500)))))
-
 (defjob index-crossref-oai [ctx]
   (let [from (time/minus (time/today-at-midnight) (time/days 3))
         until (time/today-at-midnight)]
@@ -137,11 +129,6 @@
         (write-last-funder-update time-of-this-update)))
     (catch Exception e (error e "Failed to update funders from RDF"))))
 
-(defjob process-feed-files [ctx]
-  (try
-    (feed/process-feed-files!)
-    (catch Exception e (error e "Failed to process feed files"))))
-
 (defn start []
   (qs/initialize)
   (qs/start))
@@ -179,13 +166,6 @@
     (qj/with-identity (qj/key "update-funders")))
    update-funders-hourly-work-trigger))
 
-(defn start-processing-feed-files []
-  (qs/schedule
-   (qj/build
-    (qj/of-type process-feed-files)
-    (qj/with-identity (qj/key "process-feed-files")))
-   process-feed-files-trigger))
-
 (conf/with-core :default
   (conf/add-startup-task 
    :index
@@ -210,9 +190,4 @@
    (fn [profiles]
      (start-funders-updating))))
 
-(conf/with-core :default
-  (conf/add-startup-task
-   :process-feed-files
-   (fn [profiles]
-     (start-processing-feed-files))))
 
