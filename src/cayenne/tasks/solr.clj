@@ -123,6 +123,7 @@
 (defn as-details [contributor type]
   {:given-name (:first-name contributor)
    :family-name (:last-name contributor)
+   :org-name (:name contributor)
    :suffix (:suffix contributor)
    :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
@@ -132,8 +133,7 @@
   "For each person contributor, return a map of name, ORCID and
    type of contribution."
   [item type]
-  (let [contributors (filter #(= (get-item-type %) :person) 
-                             (get-item-rel item type))]
+  (let [contributors (get-item-rel item type)]
     (map as-details contributors (repeat type))))
 
 (defn get-contributor-details [item]
@@ -435,6 +435,7 @@
          "accepted_day" (:day accepted-date)
          "contributor_given_name" (map (util/?- :given-name) contrib-details)
          "contributor_family_name" (map (util/?- :family-name) contrib-details)
+         "contributor_org_name" (map (util/?- :org-name) contrib-details)
          "contributor_suffix" (map (util/?- :suffix) contrib-details)
          "contributor_orcid" (map (util/?- :orcid) contrib-details)
          "contributor_type" (map (util/?- :type) contrib-details)

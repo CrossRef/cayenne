@@ -131,16 +131,18 @@
 
 (defn contrib 
   "Drop placeholders indicating missing data."
-  [type orcid suffix given family]
+  [type orcid suffix given family org-name]
   (let [has-type? (not= type "-")
         has-orcid? (not= orcid "-")
         has-suffix? (not= suffix "-")
         has-given? (not= given "-")
-        has-family? (not= family "-")]
+        has-family? (not= family "-")
+        has-org-name? (not= org-name "-")]
     (-> {}
         (util/?> has-type? assoc :type (sanitize-type type))
         (util/?> has-orcid? assoc :ORCID orcid)
         (util/?> has-suffix? assoc :suffix suffix)
+        (util/?> has-org-name? assoc :name org-name)
         (util/?> has-given? assoc :given given)
         (util/?> has-family? assoc :family family))))
 
@@ -161,7 +163,8 @@
                             (get solr-doc "contributor_orcid")
                             (get solr-doc "contributor_suffix")
                             (get solr-doc "contributor_given_name")
-                            (get solr-doc "contributor_family_name")))))
+                            (get solr-doc "contributor_family_name")
+                            (get solr-doc "contributor_org_name")))))
 
 (defn ->citeproc-awards [solr-doc]
   (map
