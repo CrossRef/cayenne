@@ -53,7 +53,12 @@
                        (Integer/parseInt (env :api-port))))
     (when (env :nrepl-port)
       (conf/set-param! [:service :nrepl :port]
-                       (Integer/parseInt (env :nrepl-port))))))
+                       (Integer/parseInt (env :nrepl-port))))
+    (when (env :oai-path)
+      (conf/set-param! [:oai :crossref-test :url] (env :oai-path))
+      (conf/set-param! [:oai :crossref-journals :url] (env :oai-path))
+      (conf/set-param! [:oai :crossref-books :url] (env :oai-path))
+      (conf/set-param! [:oai :crossref-serials :url] (env :oai-path)))))
 
 (def termination (promise))
 
