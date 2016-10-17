@@ -54,7 +54,8 @@
 (defn resumption-token
   "Cheap and cheerful grab of resumption token."
   [body]
-  (second (re-find #"<resumptionToken[^>]*>([^<]+)<" body)))
+  (let [extraction (second (re-find #"<resumptionToken[^>]*>([^<]+)<" body))]
+    (if (string/blank? extraction) nil extraction)))
 
 (declare grab-oai-xml-file-async)
 (declare grab-oai-retry-token)
