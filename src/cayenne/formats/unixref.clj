@@ -586,6 +586,9 @@
                             "crossmark" 
                             "custom_metadata" 
                             "program" 
+                            "clinical-trial-number")
+               (xml/xselect item-loc
+                            "program"
                             "clinical-trial-number"))
       parsed (map parse-clinical-trial-number ctns)]
   parsed))
