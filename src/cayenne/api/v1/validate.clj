@@ -188,6 +188,7 @@
    :updates doi-validator
    :update-type string-validator
    :has-content-domain boolean-validator
+   :is-domain-exclusive boolean-validator
    :content-domain string-validator
    :has-abstract boolean-validator
    :has-full-text boolean-validator

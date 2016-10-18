@@ -267,6 +267,7 @@
    "has-update" (existence "update_by_doi")
    "content-domain" (equality "domains")
    "has-content-domain" (existence "domains")
+   "is-domain-exclusive" (bool "domain_exclusive")
    "updates" (equality "update_doi" :transformer doi-id/to-long-doi-uri)
    "update-type" (equality "update_type")
    "has-abstract" (existence "abstract")
