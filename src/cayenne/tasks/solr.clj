@@ -236,27 +236,32 @@
                         :hour (util/parse-int-safe (:hour particle-date))
                         :minute (util/parse-int-safe (:minute particle-date))
                         :second (util/parse-int-safe (:second particle-date))}]
-    (->>
-     (cond (:second converted-date)
-           (t/date-time (:year converted-date)
-                        (:month converted-date)
-                        (:day converted-date)
-                        (:hour converted-date)
-                        (:minute converted-date)
-                        (:second converted-date))
+    (cond (:second converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date)
+                       (:hour converted-date)
+                       (:minute converted-date)
+                       (:second converted-date))
+          
+          (:day converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date)
+                       (:day converted-date))
            
-           (:day converted-date)
-           (t/date-time (:year converted-date)
-                        (:month converted-date)
-                        (:day converted-date))
-           
-           (:month converted-date)
-           (t/date-time (:year converted-date)
-                        (:month converted-date))
-           
-           :else
-           (t/date-time (:year converted-date)))
-     (df/unparse (df/formatters :date-time)))))
+          (:month converted-date)
+          (t/date-time (:year converted-date)
+                       (:month converted-date))
+          
+          (:year converted-date)
+          (t/date-time (:year converted-date))
+
+          :else
+          nil)))
+
+(defn as-datetime-string [particle-date]
+  (when-let [dt (as-datetime particle-date)]
+    (df/unparse (df/formatters :date-time) dt)))
   
 (defn as-day-diff [left-particle-date right-particle-date]
   (let [left (as-datetime left-particle-date)
@@ -269,9 +274,9 @@
 (defn ->license-start-date [license pub-date]
   (let [start-date (first (get-item-rel license :start))]
     (cond (not (nil? start-date))
-          (as-datetime start-date)
+          (as-datetime-string start-date)
           (not (nil? pub-date))
-          (as-datetime pub-date))))
+          (as-datetime-string pub-date))))
 
 (defn ->license-delay [license pub-date]
   (if-let [start-date (first (get-item-rel license :start))]
@@ -384,10 +389,10 @@
         doi (first (get-item-ids item :long-doi))]
     (-> {"source" (:source item)
          "indexed_at" (formatted-now)
-         "deposited_at" (if deposit-date (as-datetime deposit-date) (formatted-now))
+         "deposited_at" (if deposit-date (as-datetime-string deposit-date) (formatted-now))
          "first_deposited_at"
-         (or (when first-deposit-date (as-datetime first-deposit-date))
-             (when deposit-date (as-datetime deposit-date))
+         (or (when first-deposit-date (as-datetime-string first-deposit-date))
+             (when deposit-date (as-datetime-string deposit-date))
              (formatted-now))
          "prefix" (doi/extract-long-prefix doi)
          "doi_key" doi
@@ -487,7 +492,7 @@
          "update_doi" (map :value updates)
          "update_type" (map :subtype updates)
          "update_label" (map :label updates)
-         "update_date" (map #(-> (get-item-rel % :updated) first as-datetime) updates)
+         "update_date" (map #(-> (get-item-rel % :updated) first as-datetime-string) updates)
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi_asserted_by" (map (util/?- :doi-asserted-by) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)
