@@ -17,6 +17,7 @@
 (def default-offset 0)
 (def default-rows 20)
 (def max-rows 1000)
+(def max-offset 10000)
 (def max-sample 100)
 (def default-facet-rows 20)
 (def max-facet-rows 1000)
@@ -49,9 +50,9 @@
         (nil? val)
         default-offset
         (= (type val) java.lang.String)
-        (max 0 (util/parse-int-safe val))
+        (min (max 0 (util/parse-int-safe val)) max-offset)
         :else
-        (max 0 val))))
+        (min (max 0 val) max-offset))))
 
 (defn parse-sample-val
   "Returns a sample count or 0, indicating that no sample
