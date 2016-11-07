@@ -93,7 +93,7 @@
                   "Funder DOI asserted by party"
                   ["crossref" "publisher"]))
 
-(defn integer-validator [context s & {:keys [max] :or {max :infinite}}]
+(defn integer-validator [context s & {:keys [max message] :or {max :infinite message nil}}]
   (if (or (not s)
           (and (re-matches #"\d+" s)
                (if (= max :infinite) true (<= (util/parse-int-safe s) max))))
@@ -101,7 +101,9 @@
     (fail context s :integer-not-valid
           (str "Integer specified as " s " but must be a positive integer"
                (when (not= max :infinite)
-                 (str " less than or equal to " max))))))
+                 (str " less than or equal to " max))
+               ". "
+               message))))
 
 (defn date-validator [context s]
   (if (re-matches #"(\d{4})|(\d{4}-\d{2})|(\d{4}-\d{2}-\d{2})" s)
@@ -342,10 +344,17 @@
                         :sample-with-rows-or-offset
                         "Sample cannot be combined with rows or offset"
                         "sample")))]
-    (-> existence-checks-context
-        (integer-validator (:rows params) :max q/max-rows)
-        (integer-validator (:sample params) :max q/max-sample)
-        (integer-validator (:offset params)))))
+    (if (:deep-pagable context)
+      (-> existence-checks-context
+          (integer-validator (:rows params) :max q/max-rows)
+          (integer-validator (:sample params) :max q/max-sample)
+          (integer-validator (:offset params)
+                             :max q/max-offset
+                             :message " Use the cursor parameter to page further into result sets."))
+      (-> existence-checks-context
+          (integer-validator (:rows params) :max q/max-rows)
+          (integer-validator (:sample params) :max q/max-sample)
+          (integer-validator (:offset params))))))
 
 (defn validate-cursor-params [context params]
   (if-not (:deep-pagable context)
@@ -507,7 +516,7 @@
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
                             query-field-validator singleton deep-pagable]
-                     :or {singleton false deep-pagable false}}]
+                     :or {singleton false deep-pagable false limited-offset false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
