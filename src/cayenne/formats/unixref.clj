@@ -143,6 +143,9 @@
 (defn find-database-dates [work-loc]
   (xml/xselect work-loc "dataset" "database_date" "publication_date"))
 
+(defn find-database-created-dates [work-loc]
+  (xml/xselect work-loc "dataset" "database_date" "creation_date"))
+
 (defn parse-month [month]
   (if-let [month-val (try (Integer/parseInt month) (catch Exception _ nil))]
     (if (and (>= month-val 1) (<= month-val 12))
@@ -470,6 +473,9 @@
 
 (defn parse-database-pub-dates [item-loc]
   (map parse-date (find-database-dates item-loc)))
+
+(defn parse-database-created-dates [item-loc]
+  (map parse-date (find-database-created-dates item-loc)))
 
 (defn parse-item-approval-dates [kind item-loc]
   (map parse-date (find-approval-dates item-loc kind)))
@@ -932,6 +938,7 @@
       (-> (parse-item metadata-loc)
           (parse-attach :component database-loc :multi parse-datasets)
           (parse-attach :published database-loc :multi parse-database-pub-dates)
+          (parse-attach :content-created database-loc :multi parse-database-created-dates)
           (conj
            {:subtype :dataset
             :language (xml/xselect1 metadata-loc ["language"] :text)

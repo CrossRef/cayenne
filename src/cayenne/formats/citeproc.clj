@@ -300,6 +300,7 @@
       (assoc-date solr-doc :published-print "print")
       (assoc-date solr-doc :posted "posted")
       (assoc-date solr-doc :accepted "accepted")
+      (assoc-date solr-doc :content-created "content_created")
       (assoc-exists :abstract (get solr-doc "abstract_xml"))
       (assoc-exists :article-number (get solr-doc "article_number"))
       (assoc-exists :volume (get solr-doc "hl_volume"))
