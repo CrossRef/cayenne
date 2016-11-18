@@ -674,6 +674,9 @@
      :plain (-> (xml/xselect1 abstract-loc :text) string/trim)
      :xml (-> (xml/xselect1 abstract-loc :xml) string/trim)}))
 
+(defn parse-item-issn-details [item-loc]
+  (map parse-issn (find-issns item-loc)))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -726,6 +729,7 @@
       (parse-attach :assertion item-loc :multi parse-item-assertions)
       (parse-attach :abstract item-loc :single parse-item-abstract)
       (parse-attach :number item-loc :multi parse-item-numbers)
+      (parse-attach :issn item-loc :multi parse-item-issn-details)
       (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
       (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
 

@@ -358,6 +358,12 @@
              (util/assoc-int (str "assertion_order_" %1) (:order %2))))
        (apply merge)))
 
+(defn as-issn-types [item]
+  (->> (get-tree-rel item :issn)
+       (map #(hash-map (str "issn_type" (-> % :kind name))
+                       (:value name)))
+       (apply merge)))
+
 (defn formatted-now []
   (df/unparse (df/formatters :date-time) (t/now)))
 
@@ -506,6 +512,7 @@
          "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)
        }
 
+        (merge (as-issn-types item))
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
         (merge (as-award-compounds funders))

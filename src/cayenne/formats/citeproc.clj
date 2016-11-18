@@ -265,6 +265,15 @@
   {:domain (or (get solr-doc "domains") [])
    :crossmark-restriction (or (get solr-doc "domain_exclusive") false)})
 
+(defn ->issn-types [solr-doc]
+  (concat
+   (when-let [issn (get solr-doc "issn_type_print")]
+     (map #(hash-map :value % :type :print) issn))
+   (when-let [issn (get solr-doc "issn_type_electronic")]
+     (map #(hash-map :value % :type :electronic) issn))
+   (when-let [issn (get solr-doc "issn_type_link")]
+     (map #(hash-map :value % :type :link) issn))))
+
 (defn assoc-date [citeproc-doc solr-doc field prefix]
   (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
                 (->date-parts (get solr-doc (str prefix "_year"))
@@ -317,5 +326,6 @@
       (assoc-exists :funder (->citeproc-funders-merged solr-doc))
       (assoc-exists :assertion (->citeproc-assertions solr-doc))
       (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
+      (assoc-exists :issn-type (->issn-types solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 
