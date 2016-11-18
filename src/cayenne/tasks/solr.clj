@@ -360,7 +360,7 @@
 
 (defn as-issn-types [item]
   (->> (get-tree-rel item :issn)
-       (map #(hash-map (str "issn_type" (-> % :kind name))
+       (map #(hash-map (str "issn_type_" (-> % :kind name))
                        (:value name)))
        (apply merge)))
 

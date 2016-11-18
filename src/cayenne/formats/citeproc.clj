@@ -268,11 +268,11 @@
 (defn ->issn-types [solr-doc]
   (concat
    (when-let [issn (get solr-doc "issn_type_print")]
-     (map #(hash-map :value % :type :print) issn))
+     (map #(hash-map :value (issn-id/extract-issn %) :type :print) issn))
    (when-let [issn (get solr-doc "issn_type_electronic")]
-     (map #(hash-map :value % :type :electronic) issn))
+     (map #(hash-map :value (issn-id/extract-issn %) :type :electronic) issn))
    (when-let [issn (get solr-doc "issn_type_link")]
-     (map #(hash-map :value % :type :link) issn))))
+     (map #(hash-map :value (issn-id/extract-issn %) :type :link) issn))))
 
 (defn assoc-date [citeproc-doc solr-doc field prefix]
   (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
