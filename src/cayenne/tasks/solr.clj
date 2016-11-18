@@ -80,7 +80,7 @@
         (get-item-rel item :published-print)
         (get-item-rel item :published-online)
         (get-item-rel item :published)
-        (get-item-rel item :content-created))
+        (get-tree-rel item :content-created))
        (sort-by particle->date-time)
        first))
 
@@ -387,7 +387,7 @@
         online-pub-date (first (get-item-rel item :published-online))
         accepted-date (first (get-item-rel item :accepted))
         posted-date (first (get-item-rel item :posted))
-        content-created-date (first (get-item-rel item :content-created))
+        content-created-date (first (get-tree-rel item :content-created))
         primary-author (get-primary-author item)
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
