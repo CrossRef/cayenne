@@ -16,8 +16,9 @@
             [ring.middleware.stacktrace :refer [wrap-stacktrace-web]]
             [ring.middleware.basic-authentication :refer [wrap-basic-authentication]]
             [compojure.handler :as handler]
-            [ring.util.response :refer [redirect]]
+            [ring.util.response :refer [redirect] :as response]
             [org.httpkit.server :as hs]
+            [clojure.data.json :as json]
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (def-version cayenne.version/version)
@@ -88,6 +89,29 @@
         (assoc-in [:headers "Access-Control-Allow-Headers"]
                   "X-Requested-With"))))
 
+(defn wrap-exception-handler
+  [h]
+  (fn [request]
+    (try
+      (h request)
+      (catch Exception e
+        (-> (response/response
+             (json/write-str
+              {:status :error
+               :message-type :exception
+               :message-version "1.0.0"
+               :message
+               {:name (type e)
+                :description (.toString e)
+                :message (.getMessage e)
+                :cause
+                (when-let [cause (.getCause e)]
+                  {:name (type cause)
+                   :description (.toString cause)
+                   :message (.getMessage cause)})}}))
+            (response/status 500)
+            (response/header "Exception-Name" (type e)))))))
+
 (defn create-handler [& {:keys [graph-api feed-api] :or {graph-api false
                                                          feed-api false}}]
   (-> (create-all-routes :graph-api graph-api :feed-api feed-api)
@@ -102,8 +126,9 @@
       ; (wrap-trace :ui)
       ; disabled due to bug in apache2 reverse proxy
       ; (creates headers that are incompatible)
-      (wrap-stacktrace-web)
-      (conneg/wrap-accept)))
+      ; (wrap-stacktrace-web)
+      (conneg/wrap-accept)
+      (wrap-exception-handler)))
 
 (conf/with-core :default
   (conf/add-startup-task
