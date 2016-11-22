@@ -13,7 +13,8 @@
             [somnium.congomongo :as m]
             [org.httpkit.client :as http]
             [clojure.string :as string]
-            [clojure.data.json :as json]))
+            [clojure.data.json :as json])
+  (:import [java.lang RuntimeException]))
 
 ;; todo eventually produce citeproc from more detailed data stored in mongo
 ;; for each DOI that comes back from solr. For now, covert the solr fields
@@ -35,18 +36,23 @@
 (defn with-member-id [metadata]
   (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata))))
 
+(defn partial-response? [query-response]
+  (.. query-response (getResponseHeader) (get "partialResults")))
+
 (defn fetch [query-context]
   (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context 
                                                  :filters filter/std-filters)))
         doc-list (.getResults response)]
-    (-> (r/api-response :work-list)
-        (r/with-result-facets (facet/->response-facets response))
-        (r/with-result-items 
-          (.getNumFound doc-list)
-          (map (comp with-member-id citeproc/->citeproc) doc-list)
-          :next-cursor (.getNextCursorMark response))
-        (r/with-query-context-info query-context))))
+    (if (partial-response? response)
+      (throw (RuntimeException. "Solr returned a partial result set"))
+      (-> (r/api-response :work-list)
+          (r/with-result-facets (facet/->response-facets response))
+          (r/with-result-items 
+            (.getNumFound doc-list)
+            (map (comp with-member-id citeproc/->citeproc) doc-list)
+            :next-cursor (.getNextCursorMark response))
+          (r/with-query-context-info query-context)))))
 
 (defn fetch-reverse [query-context]
   (let [terms (query/clean-terms (:terms query-context) :remove-syntax true)
@@ -55,22 +61,25 @@
                      (.query (query/->solr-query {:raw-terms q
                                                   :rows (int 1)})))
         doc-list (.getResults response)]
-    (if (zero? (.getNumFound doc-list))
-      (r/api-response :nothing)
-      (let [doc (-> doc-list first citeproc/->citeproc with-member-id)]
-        (if (or (< (count (string/split terms #"\s")) 4) (< (:score doc) 2))
-          (r/api-response :nothing)
-          (r/api-response :work :content doc))))))
+    (if (partial-response? response)
+      (throw (RuntimeException. "Solr returned a partial result set"))
+      (if (zero? (.getNumFound doc-list))
+        (r/api-response :nothing)
+        (let [doc (-> doc-list first citeproc/->citeproc with-member-id)]
+          (if (or (< (count (string/split terms #"\s")) 4) (< (:score doc) 2))
+            (r/api-response :nothing)
+            (r/api-response :work :content doc)))))))
 
 (defn fetch-one
   "Fetch a known DOI."
   [doi-uri]
-  (when-let [doc (-> (conf/get-service :solr)
+  (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query {:id doi-uri}
-                                                 :id-field "doi"))
-                     (.getResults)
-                     (first))]
-    (r/api-response :work :content (-> (citeproc/->citeproc doc) with-member-id))))
+                                                 :id-field "doi")))]
+    (if (partial-response? response)
+      (throw (RuntimeException. "Solr returned a partail result set"))
+      (when-let [doc (-> response (.getResults) first)]
+        (r/api-response :work :content (-> (citeproc/->citeproc doc) with-member-id))))))
 
 (defn get-unixsd [doi]
   (let [record (promise)]
