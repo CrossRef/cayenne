@@ -26,7 +26,7 @@
   (if-not remove-syntax
     terms
     (-> terms
-        (string/replace #"[\\+!{}*\"\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
+        (string/replace #"[\\+!{}*\"\'\.\[\]\(\)\-:;\/%^&?=_,]+" " ")
         (string/replace #"\|\|" " ")
         (string/replace #"&&" " ")
         (string/replace #"\s(?i)not\s" " ")
