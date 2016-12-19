@@ -50,7 +50,7 @@
                                               count)))
       with-length-doc)))
 
-(defn set! [batch-id k v]
+(defn set-on-deposit! [batch-id k v]
   (m/with-mongo (conf/get-service :mongo)
     (m/update! :deposits
                {:batch-id batch-id}
@@ -107,12 +107,9 @@
           curr-try-count (get-in deposit-data [:handoff :try-count])
           curr-delay-millis (get-in deposit-data [:handoff :delay-millis])
           next-delay-millis (delay-fn curr-delay-millis (inc curr-try-count))]
-      (m/update! :deposits
-                 deposit-data
-                 (-> deposit-data
-                     (assoc-in [:handoff :timestamp] (System/currentTimeMillis))
-                     (assoc-in [:handoff :try-count] (inc curr-try-count))
-                     (assoc-in [:handoff :delay-millis] next-delay-millis)))
+      (set-on-deposit! batch-id :handoff {:timestamp (System/currentTimeMillis)
+                                          :try-count (inc curr-try-count)
+                                          :delay-millis next-delay-millis})
       next-delay-millis)))
 
 (defn end-handoff!
