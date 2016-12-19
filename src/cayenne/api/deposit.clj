@@ -246,8 +246,8 @@
                      deref
                      :body
                      (json/read-str :key-fn keyword))]
-             (deposit-data/set! batch-id :title (:title article))
-             (deposit-data/set! batch-id
+             (deposit-data/set-on-deposit! batch-id :title (:title article))
+             (deposit-data/set-on-deposit! batch-id
                                 :citations
                                 (-> article
                                     :citations
