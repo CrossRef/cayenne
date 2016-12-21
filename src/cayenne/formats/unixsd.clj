@@ -67,7 +67,7 @@
          (itree/add-relation :publisher (parse-publisher oai-record))
          (itree/add-relation :deposited (parse-updated-date oai-record))
          (itree/add-relation :first-deposited (parse-created-date oai-record))
-         (itree/add-property :citation-count (parse-citation-count oai-record)))]))
+         (itree/add-property :cited-count (parse-citation-count oai-record)))]))
       
 ;; todo citation-count should be attached to item with primary-id, not tree root.
 
