@@ -7,7 +7,8 @@
             BibTeXEntry BibTeXFormatter BibTeXDatabase Key 
             DigitStringValue StringValue StringValue$Style 
             LaTeXString LaTeXPrinter LiteralValue]
-           [java.io StringWriter]))
+           [java.io StringWriter]
+           [java.net URLEncoder]))
 
 (def bibtex-entry-type
   {:journal-article BibTeXEntry/TYPE_ARTICLE
@@ -134,7 +135,7 @@
   (let [entry (BibTeXEntry. (->bibtex-type metadata) (->bibtex-key metadata))]
     (-> entry
         (add-clean-field metadata BibTeXEntry/KEY_DOI :DOI)
-        (add-clean-field metadata BibTeXEntry/KEY_URL :URL)
+        (add-clean-field metadata BibTeXEntry/KEY_URL #(str "https://doi.org/" (-> % :DOI (URLEncoder/encode))))
         (add-int-field metadata BibTeXEntry/KEY_YEAR #(-> % :issued :date-parts first first))
         (add-month metadata)
         (add-field metadata BibTeXEntry/KEY_PUBLISHER :publisher)
