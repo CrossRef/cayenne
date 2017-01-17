@@ -157,10 +157,10 @@
 
 (defmethod process! "application/vnd.crossref.update+json" [feed-context]
   (process-with
-   #(->> %
-         read-updates-message
-         (map update-as-solr-doc)
-         (map solr/insert-item))
+   #(doseq [update-doc (->> %
+                            read-updates-message
+                            (map update-as-solr-doc))]
+      (solr/insert-solr-doc update-doc))
    feed-context))
 
 (defn process-feed-files! [file-seq]
