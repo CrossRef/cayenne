@@ -161,7 +161,6 @@
          read-updates-message
          (map update-as-solr-doc)
          (map solr/insert-item))
-   identity
    feed-context))
 
 (defn process-feed-files! [file-seq]
