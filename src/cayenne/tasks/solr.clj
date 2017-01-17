@@ -529,6 +529,15 @@
     (doseq [[k v] solr-map]
       (.addField doc k v))
     doc))
+
+(defn as-cited-count-set-document [subject-doi cited-count]
+  (let [doc (SolrInputDocument.)]
+    (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
+    (.addField doc "cited_by_count" {"set" cited-count})
+    doc))
+
+(defn as-citation-doi-set-document [subject-doi subject-citation-id object-doi]
+  ())
      
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]

@@ -10,6 +10,7 @@
             [cayenne.tasks.solr :as solr]
             [cayenne.api.v1.types :as types]
             [cayenne.api.v1.response :as r]
+            [cayenne.api.v1.update :refer [read-updates-message update-as-solr-doc]]
             [compojure.core :refer [defroutes ANY]]
             [liberator.core :refer [defresource]]
             [clojure.string :as string]
@@ -22,19 +23,22 @@
            [java.util.concurrent TimeUnit]))
 
 (def feed-content-types #{"application/vnd.crossref.unixsd+xml"
-                          "application/vnd.datacite.datacite+xml"})
+                          "application/vnd.datacite.datacite+xml"
+                          "application/vnd.crossref.update+json"})
 
 (def content-type-mnemonics
   {"application/vnd.crossref.unixsd+xml" "unixsd"
-   "application/vnd.datacite.datacite+xml" "datacite"})
+   "application/vnd.datacite.datacite+xml" "datacite"
+   "application/vnd.crossref.update+json" "update"})
 
 (def content-type-mnemonics-reverse
   {"unixsd" "application/vnd.crossref.unixsd+xml"
-   "datacite" "application/vnd.datacite.datacite+xml"})
+   "datacite" "application/vnd.datacite.datacite+xml"
+   "update" "application/vnd.crossref.update+json"})
 
 (def feed-providers #{"crossref" "datacite"})
 
-(def provider-names {"crossref" "CrossRef"
+(def provider-names {"crossref" "Crossref"
                      "datacite" "DataCite"})
 
 (defn feed-log [f state]
@@ -149,6 +153,15 @@
                                        (-> feed-context :provider provider-names))]
                    (solr/insert-item with-source))]
        (xml/process-xml rdr "crossref_result" f)))
+   feed-context))
+
+(defmethod process! "application/vnd.crossref.update+json" [feed-context]
+  (process-with
+   #(->> %
+         read-updates-message
+         (map update-as-solr-doc)
+         (map solr/insert-item))
+   identity
    feed-context))
 
 (defn process-feed-files! [file-seq]

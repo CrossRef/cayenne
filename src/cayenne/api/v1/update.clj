@@ -1,5 +1,6 @@
 (ns cayenne.api.v1.update
-  (:require [clojure.data.json :as json]))
+  (:require [cayenne.tasks.solr :as solr]
+            [clojure.data.json :as json]))
 
 (defn parse-update
   "Parse a vector representing a change to the index. Change vectors
@@ -29,6 +30,14 @@
   [rdr]
   (let [message-doc (-> rdr
                         (json/read :key-fn keyword))]
-    (map parse-change (:message message-doc))))
+    (map parse-update (:message message-doc))))
   
-  
+(defn update-as-solr-doc [update-map]
+  (cond
+    (and (= :set (:action update-map))
+         (= :cited-count (:predicate update-map)))
+    (solr/as-cited-count-set-document (:subject-doi update-map)
+                                      (:subject-citation-id update-map)
+                                      (:object update-map))
+    :else
+    (throw (Exception. "Unsupported action / predicate combination"))))
