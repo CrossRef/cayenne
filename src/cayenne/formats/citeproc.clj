@@ -42,6 +42,12 @@
          :else
          (assoc m key assoc-value))))
 
+(defn assoc-date [citeproc-doc solr-doc field prefix]
+  (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
+                (->date-parts (get solr-doc (str prefix "_year"))
+                              (get solr-doc (str prefix "_month"))
+                              (get solr-doc (str prefix "_day")))))
+
 ;; We check number-of-days-in-the-month because some dates in CrossRef
 ;; metadata have a day that is not in the valid range for the given
 ;; month, e.g. 31st Feb. In these cases we drop the day.
@@ -274,11 +280,16 @@
    (when-let [issn (get solr-doc "issn_type_link")]
      (map #(hash-map :value (issn-id/extract-issn %) :type :link) issn))))
 
-(defn assoc-date [citeproc-doc solr-doc field prefix]
-  (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
-                (->date-parts (get solr-doc (str prefix "_year"))
-                              (get solr-doc (str prefix "_month"))
-                              (get solr-doc (str prefix "_day")))))
+(defn ->event [solr-doc]
+  (when-let [event-name (get solr-doc "event_name")]
+    (-> {:name event-name}
+        (assoc-exists :theme (get solr-doc "event_theme"))
+        (assoc-exists :location (get solr-doc "event_location"))
+        (assoc-exists :sponsor (get solr-doc "event_sponsor"))
+        (assoc-exists :acronym (get solr-doc "event_acronym"))
+        (assoc-exists :number (get solr-doc "event_number"))
+        (assoc-date solr-doc :start "event_start")
+        (assoc-date solr-doc :end "event_end"))))
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
@@ -330,5 +341,6 @@
       (assoc-exists :assertion (->citeproc-assertions solr-doc))
       (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
       (assoc-exists :issn-type (->issn-types solr-doc))
+      (assoc-exists :event (->event solr-doc)
       (merge (->citeproc-contribs solr-doc))))
 
