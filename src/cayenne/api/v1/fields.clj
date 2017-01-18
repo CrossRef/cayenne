@@ -9,6 +9,11 @@
 (def work-fields
   {"title" (any-of "hl_title" "hl_subtitle")
    "container-title" (any-of "hl_publication")
+   "event-name" (any-of "event_name")
+   "event-theme" (any-of "event_theme")
+   "event-location" (any-of "event_location")
+   "event-sponsor" (any-of "event_sponsor")
+   "event-acronym" (any-of "event_acronym")
    "author" (any-of "hl_authors")
    "editor" (any-of "hl_editors")
    "chair" (any-of "hl_chairs")

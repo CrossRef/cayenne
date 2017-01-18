@@ -809,7 +809,7 @@
           :name (xml/xselect1 event-loc "conference_name" :text)
           :theme (xml/xselect1 event-loc "conference_theme" :text)
           :location (xml/xselect1 event-loc "conference_location" :text)
-          :sponsor (xml/xselect1 event-loc "conference_sponsor" :text)
+          :sponsor (xml/xselect event-loc "conference_sponsor" :text)
           :acronym (xml/xselect1 event-loc "conference_acronym" :text)
           :number (xml/xselect1 event-loc "conference_number" :text)}))))
 

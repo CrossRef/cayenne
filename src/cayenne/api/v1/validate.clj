@@ -185,6 +185,11 @@
    :until-posted-date date-validator
    :from-accepted-date date-validator
    :until-accepted-date date-validator
+   :from-event-start-date date-validator
+   :until-event-start-date date-validator
+   :from-event-end-date date-validator
+   :until-event-end-date date-validator
+   :has-event boolean-validator
    :is-update boolean-validator
    :has-update boolean-validator
    :updates doi-validator
