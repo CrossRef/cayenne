@@ -533,6 +533,10 @@
 (defn as-cited-count-set-document [subject-doi cited-count]
   (let [doc (SolrInputDocument.)]
     (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
+
+    ;; only apply update if doi_key already exists in index
+    (.addField doc "_version_" 1)
+    
     (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
     (.addField doc "cited_by_count" (java.util.HashMap. {"set" cited-count}))
     doc))
