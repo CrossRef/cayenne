@@ -365,6 +365,24 @@
                        (:value %)))
        (apply merge)))
 
+(defn as-event [item]
+  (when-let [event (-> item (get-tree-rel :about) first)]
+    (let [start-date (-> event (get-item-rel :start) first)
+          end-date (-> event (get-item-rel :end) first)
+          event (-> {"event_sponsor" (:sponsor event)}
+                    (util/assoc-str "event_name" (:name event))
+                    (util/assoc-str "event_theme" (:theme event))
+                    (util/assoc-str "event_location" (:location event))
+                    (util/assoc-str "event_acronym" (:acronym event))
+                    (util/assoc-str "event_number" (:number event)))]
+      (cond-> event
+        start-date (assoc "event_start_year" (:year start-date))
+        start-date (assoc "event_start_month" (:month start-date))
+        start-date (assoc "event_start_day" (:day start-date))
+        end-date (assoc "event_end_year" (:year end-date))
+        end-date (assoc "event_end_month" (:month end-date))
+        end-date (assoc "event_end_day" (:day end-date))))))
+
 (defn formatted-now []
   (df/unparse (df/formatters :date-time) (t/now)))
 
@@ -514,9 +532,9 @@
          "clinical_trial_number_ctn" (map :ctn clinical-trial-numbers)
          "clinical_trial_number_registry" (map :registry clinical-trial-numbers)
          "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
-         "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)
-       }
+         "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)}
 
+        (merge (as-event item))
         (merge (as-issn-types item))
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
