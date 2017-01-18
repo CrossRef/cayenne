@@ -178,19 +178,19 @@
      :time-of-year (parse-time-of-year month-val)}))
 
 (defn parse-start-date [start-date-loc]
-  (let [month-val (xml/xselect1 start-date-loc "start_month" :text)]
+  (let [month-val (xml/xselect1 start-date-loc ["start_month"])]
     {:type :date
-     :day (xml/xselect1 start-date-loc "start_day" :text)
+     :day (xml/xselect1 start-date-loc ["start_day"])
      :month (parse-month month-val)
-     :year (xml/xselect1 start-date-loc "start_year" :text)
+     :year (xml/xselect1 start-date-loc ["start_year"])
      :time-of-year (parse-time-of-year month-val)}))
 
 (defn parse-end-date [end-date-loc]
-  (let [month-val (xml/xselect1 end-date-loc "end_month" :text)]
+  (let [month-val (xml/xselect1 end-date-loc ["end_month"])]
     {:type :date
-     :day (xml/xselect1 end-date-loc "end_day" :text)
+     :day (xml/xselect1 end-date-loc ["end_day"])
      :month (parse-month month-val)
-     :year (xml/xselect1 end-date-loc "end_year" :text)
+     :year (xml/xselect1 end-date-loc ["end_year"])
      :time-of-year (parse-time-of-year month-val)}))
 
 ;; --------------------------------------------------------------

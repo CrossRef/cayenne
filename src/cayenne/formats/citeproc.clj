@@ -42,12 +42,6 @@
          :else
          (assoc m key assoc-value))))
 
-(defn assoc-date [citeproc-doc solr-doc field prefix]
-  (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
-                (->date-parts (get solr-doc (str prefix "_year"))
-                              (get solr-doc (str prefix "_month"))
-                              (get solr-doc (str prefix "_day")))))
-
 ;; We check number-of-days-in-the-month because some dates in CrossRef
 ;; metadata have a day that is not in the valid range for the given
 ;; month, e.g. 31st Feb. In these cases we drop the day.
@@ -74,6 +68,12 @@
            {:date-parts [[(dt/year d) (dt/month d) (dt/day d)]]
             :date-time (df/unparse (df/formatters :date-time-no-ms) d)
             :timestamp (dc/to-long d)}))))
+
+(defn assoc-date [citeproc-doc solr-doc field prefix]
+  (assoc-exists citeproc-doc field (get solr-doc (str prefix "_year"))
+                (->date-parts (get solr-doc (str prefix "_year"))
+                              (get solr-doc (str prefix "_month"))
+                              (get solr-doc (str prefix "_day")))))
         
 (defn license [url start-date delay-in-days content-version]
   (-> {:URL url}
@@ -341,6 +341,6 @@
       (assoc-exists :assertion (->citeproc-assertions solr-doc))
       (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
       (assoc-exists :issn-type (->issn-types solr-doc))
-      (assoc-exists :event (->event solr-doc)
+      (assoc-exists :event (->event solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 
