@@ -53,6 +53,14 @@
       (xml/xselect1 :> "query" "doi" :text)
       (doi-id/to-long-doi-uri)))
 
+(defn insert-crm-publisher
+  "Insert crm item publisher only if publisher is not specified
+   in the unixref data."
+  [work oai-record]
+  (if-not (empty? (itree/get-item-rel work :publisher))
+    work
+    (itree/add-relation :publisher (parse-publisher oai-record))))
+
 (defn unixsd-record-parser
   [oai-record]
   (let [result (unixref/unixref-record-parser oai-record)
@@ -62,9 +70,8 @@
        primary-id
        (parse-doi oai-record))
      (-> work
-         (itree/delete-relation :publisher)
+         (insert-crm-publisher oai-record)
          (itree/delete-relation :deposited)
-         (itree/add-relation :publisher (parse-publisher oai-record))
          (itree/add-relation :deposited (parse-updated-date oai-record))
          (itree/add-relation :first-deposited (parse-created-date oai-record))
          (itree/add-relation :cited-count (parse-citation-count oai-record)))]))
