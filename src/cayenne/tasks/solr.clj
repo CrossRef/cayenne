@@ -384,6 +384,23 @@
         end-date (assoc "event_end_month" (:month end-date))
         end-date (assoc "event_end_day" (:day end-date))))))
 
+(defn as-citations [item]
+  (letfn [(citation-field [f]
+            (str "citation_"
+                 (-> f
+                     name
+                     (string/replace "-" "_") )))]
+  (into
+   {}
+   (map #(vector (citation-field %)
+                 (map (util/?- %) (get-tree-rel item :citation)))
+        [:key :doi :issn :issn-type :isbn :isbn-type
+         :author :volume :issue :first-page :year
+         :isbn :isbn-type :edition :component
+         :standard-designator :standards-body
+         :unstructured :article-title :series-title
+         :volume-title :journal-title]))))
+
 (defn formatted-now []
   (df/unparse (df/formatters :date-time) (t/now)))
 
@@ -538,6 +555,7 @@
          "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
          "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)}
 
+        (merge (as-citations item))
         (merge (as-event item))
         (merge (as-issn-types item))
         (merge (as-assertion-list assertions))

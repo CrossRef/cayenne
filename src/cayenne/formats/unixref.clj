@@ -200,8 +200,10 @@
   (xml/xselect work-loc "citation_list" "citation"))
 
 (defn parse-citation [citation-loc]
-  (-> {:display-doi (xml/xselect1 citation-loc "doi" :text)
+  (-> {:key (xml/xselect1 citation-loc ["key"])
+       :doi (xml/xselect1 citation-loc "doi" :text)
        :issn (to-issn-uri (xml/xselect1 citation-loc "issn" :text))
+       :issn-type (or (xml/xselect1 citation-loc "issn" ["media_type"]) "print")
        :journal-title (xml/xselect1 citation-loc "journal_title" :text)
        :author (xml/xselect1 citation-loc "author" :text)
        :volume (xml/xselect1 citation-loc "volume" :text)
@@ -209,11 +211,14 @@
        :first-page (xml/xselect1 citation-loc "first_page" :text)
        :year (xml/xselect1 citation-loc "cYear" :text)
        :isbn (to-isbn-uri (xml/xselect1 citation-loc "isbn" :text))
+       :isbn-type (or (xml/xselect1 citation-loc "isbn" ["media_type"]) "print")
        :series-title (xml/xselect1 citation-loc "series_title" :text)
        :volume-title (xml/xselect1 citation-loc "volume_title" :text)
-       :edition-number (xml/xselect1 citation-loc "edition_number" :text)
-       :component-number (xml/xselect1 citation-loc "component_number" :text)
+       :edition (xml/xselect1 citation-loc "edition_number" :text)
+       :component (xml/xselect1 citation-loc "component_number" :text)
        :article-title (xml/xselect1 citation-loc "article_title" :text)
+       :standard-designator (xml/xselect1 citation-loc "std_designator" :text)
+       :standards-body (xml/xselect1 citation-loc "standards_body" :text)
        :unstructured (xml/xselect1 citation-loc "unstructured_citation" :text)}
       (attach-id (to-long-doi-uri (xml/xselect1 citation-loc "doi" :text)))))
 
