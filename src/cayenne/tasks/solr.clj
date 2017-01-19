@@ -128,6 +128,7 @@
    :suffix (:suffix contributor)
    :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
+   :orcid-authenticated (:orcid-authenticated contributor)
    :type (name type)})
 
 (defn get-contributor-details*
@@ -472,6 +473,7 @@
          "contributor_org_name" (map (util/?- :org-name) contrib-details)
          "contributor_suffix" (map (util/?- :suffix) contrib-details)
          "contributor_orcid" (map (util/?- :orcid) contrib-details)
+         "contributor_orcid_authed" (map (util/?- :orcid-authenticated) contrib-details)
          "contributor_type" (map (util/?- :type) contrib-details)
          "hl_description" (:description item)
          "hl_year" (:year pub-date)

@@ -358,12 +358,13 @@
 ;; ---------------------------------------------------------------
 ;; Contributors
 
-;; todo authenticated should be a property of the relation
 (defn parse-orcid [person-loc]
   (when-let [orcid-loc (xml/xselect1 person-loc "ORCID")]
     {:type :id
      :subtype :orcid
-     :authenticated (or (xml/xselect1 orcid-loc ["authenticated"]) "false")
+     :authenticated (-> (xml/xselect1 orcid-loc ["authenticated"])
+                        (or "false")
+                        (Boolean/parseBoolean))
      :value (to-orcid-uri (xml/xselect1 orcid-loc :text))
      :original (xml/xselect1 orcid-loc :text)}))
 
@@ -380,15 +381,20 @@
   (xml/xselect person-loc "affiliation"))
 
 (defn parse-person-name [person-loc]
-  (let [person {:type :person
+  (let [orcid (parse-orcid person-loc)
+        person {:type :person 
                 :first-name (xml/xselect1 person-loc "given_name" :text)
                 :last-name (xml/xselect1 person-loc "surname" :text)
                 :sequence (or (xml/xselect1 person-loc ["sequence"]) "additional")
                 :suffix (xml/xselect1 person-loc "suffix" :text)}
-        parse-fn #(map parse-affiliation (find-affiliations %))]
-    (-> person
-        (attach-id (parse-orcid-uri person-loc))
-        (parse-attach :affiliation person-loc :multi parse-fn))))
+        parse-fn #(map parse-affiliation (find-affiliations %))
+        person-with-affils (-> person
+                               (parse-attach :affiliation person-loc :multi parse-fn))]
+    (if orcid
+      (-> person-with-affils
+          (assoc :orcid-authenticated (:authenticated orcid))
+          (attach-id (:value orcid)))
+      person-with-affils)))
 
 (defn parse-organization [org-loc]
   {:type :org

@@ -163,7 +163,7 @@
 
 (defn ?- 
   "Return a fn that tries to take k out of a map, or returns
-   a placeholder string is missing."
+   a placeholder string if missing."
   [k]
   (fn [m]
     (if-let [v (get m k)]
@@ -172,7 +172,7 @@
 
 (defn ?fn- 
   "Return a fn that tries to take k out of a map, or returns
-   a placeholder string is missing."
+   a placeholder string if missing."
   [k]
   (fn [m]
     (if-let [v (k m)]
