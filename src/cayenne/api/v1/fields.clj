@@ -14,6 +14,7 @@
    "event-location" (any-of "event_location")
    "event-sponsor" (any-of "event_sponsor")
    "event-acronym" (any-of "event_acronym")
+   "affiliation" (any-of "affiliation")
    "author" (any-of "hl_authors")
    "editor" (any-of "hl_editors")
    "chair" (any-of "hl_chairs")

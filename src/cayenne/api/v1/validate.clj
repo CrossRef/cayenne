@@ -218,7 +218,6 @@
    :type type-validator
    :type-name string-validator
    :orcid orcid-validator
-   :affiliation string-validator
    :assertion string-validator
    :assertion-group string-validator
    :doi doi-validator

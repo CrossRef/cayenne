@@ -304,7 +304,6 @@
    "type" (equality "type" :transformer type-id/->index-id)
    "type-name" (equality "type")
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
-   "affiliation" (equality "affiliation")
    "assertion" (equality "assertion_name")
    "assertion-group" (equality "assertion_group_name")
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
