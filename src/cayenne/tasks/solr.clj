@@ -520,6 +520,7 @@
          "hl_publisher" (:name publisher)
          "publisher_location" (:location publisher)
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
+         "member_id" (or (first (get-item-ids publisher :member)) "none")
          "update_policy" (get-update-policy item)
          "update_doi" (map :value updates)
          "update_type" (map :subtype updates)

@@ -1,6 +1,7 @@
 (ns cayenne.formats.unixsd
   (:require [cayenne.formats.unixref :as unixref]
             [cayenne.ids.prefix :as prefix]
+            [cayenne.ids.member :as member-id]
             [cayenne.item-tree :as itree]
             [cayenne.util :as util]
             [cayenne.xml :as xml]
@@ -30,6 +31,10 @@
                                                 :text))
         (itree/add-id (-> oai-record
                           (xml/xselect1 :> "crm-item"
+                                        [:= "name" "member"] :text)
+                          member-id/to-member-id-uri))
+        (itree/add-id (-> oai-record
+                          (xml/xselect1 :> "crm-item"
                                         [:= "name" "owner-prefix"] :text)
                           (prefix/to-prefix-uri))))))
 
@@ -54,12 +59,14 @@
       (doi-id/to-long-doi-uri)))
 
 (defn insert-crm-publisher
-  "Insert crm item publisher only if publisher is not specified
-   in the unixref data."
+  "Insert crm item publisher info, but do not overwrite publisher name and
+   location if they are specified in the metadata body."
   [work oai-record]
-  (if-not (empty? (itree/get-item-rel work :publisher))
-    work
-    (itree/add-relation work :publisher (parse-publisher oai-record))))
+  (let [crm-publisher-info (parse-publisher oai-record)
+        body-publisher-info (-> work (itree/get-item-rel :publisher) first)]
+    (cond-> crm-publisher-info
+      (:name body-publisher-info) (assoc :name crm-publisher-info)
+      (:location body-publisher-info) (assoc :location crm-publisher-info))))
 
 (defn unixsd-record-parser
   [oai-record]

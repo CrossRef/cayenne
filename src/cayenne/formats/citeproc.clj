@@ -299,6 +299,7 @@
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
+       :member (get solr-doc "member_id")
        :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
        :URL (get solr-doc "doi")
        :issued (->date-parts (get solr-doc "year")

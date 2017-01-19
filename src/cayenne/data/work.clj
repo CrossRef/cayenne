@@ -34,7 +34,9 @@
         member-id/to-member-id-uri)))
 
 (defn with-member-id [metadata]
-  (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata))))
+  (if (:member metadata)
+    metadata
+    (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata)))))
 
 (defn partial-response? [query-response]
   (.. query-response (getResponseHeader) (get "partialResults")))
