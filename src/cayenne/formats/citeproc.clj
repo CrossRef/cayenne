@@ -148,9 +148,10 @@
     (-> {}
         (util/?> has-type? assoc :type (sanitize-type type))
         (util/?> has-orcid? assoc :ORCID orcid)
-        (util/?> (and has-orcid?
-                      has-authenticated-orcid?)
-                 assoc :authenticated-orcid authenticated)
+        ;; for now, don't show the authenticated flag
+        ;; (util/?> (and has-orcid?
+        ;;               has-authenticated-orcid?)
+        ;;          assoc :authenticated-orcid authenticated)
         (util/?> has-suffix? assoc :suffix suffix)
         (util/?> has-org-name? assoc :name org-name)
         (util/?> has-given? assoc :given given)
