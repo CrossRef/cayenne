@@ -309,9 +309,7 @@
    "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
    "group-title" (equality "hl_group_title")
    "container-title" (equality "publication")
-   "publisher-name" (equality "publisher")
    "category-name" (equality "category")
-   "funder-name" (equality "funder_name")
    "clinical-trial-number" (equality "clinical_trial_number_proxy" :transformer ctn/ctn-proxy)
    "alternative-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
    "award" (compound "award" ["funder_doi" "number"]
