@@ -31,7 +31,7 @@
                                                 :text))
         (itree/add-id (-> oai-record
                           (xml/xselect1 :> "crm-item"
-                                        [:= "name" "member"] :text)
+                                        [:= "name" "member-id"] :text)
                           member-id/to-member-id-uri))
         (itree/add-id (-> oai-record
                           (xml/xselect1 :> "crm-item"
@@ -63,10 +63,16 @@
    location if they are specified in the metadata body."
   [work oai-record]
   (let [crm-publisher-info (parse-publisher oai-record)
-        body-publisher-info (-> work (itree/get-item-rel :publisher) first)]
-    (cond-> crm-publisher-info
-      (:name body-publisher-info) (assoc :name crm-publisher-info)
-      (:location body-publisher-info) (assoc :location crm-publisher-info))))
+        body-publisher-info (-> work (itree/get-tree-rel :publisher) first)]
+    (-> work
+        (itree/delete-relation :publisher)
+        (itree/add-relation
+         :publisher
+         (cond-> crm-publisher-info
+           (:name body-publisher-info)
+           (assoc :name (:name body-publisher-info))
+           (:location body-publisher-info)
+           (assoc :location (:location body-publisher-info)))))))
 
 (defn unixsd-record-parser
   [oai-record]
