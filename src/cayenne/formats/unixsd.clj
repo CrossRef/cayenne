@@ -59,7 +59,7 @@
   [work oai-record]
   (if-not (empty? (itree/get-item-rel work :publisher))
     work
-    (itree/add-relation :publisher (parse-publisher oai-record))))
+    (itree/add-relation work :publisher (parse-publisher oai-record))))
 
 (defn unixsd-record-parser
   [oai-record]
