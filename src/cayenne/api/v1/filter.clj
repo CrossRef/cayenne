@@ -282,6 +282,7 @@
    "has-update-policy" (existence "update_policy")
    "has-archive" (existence "archive")
    "has-orcid" (existence "orcid")
+   "has-authenticated-orcid" (bool "contributor_orcid_authed")
    "has-affiliation" (existence "affiliation")
    "has-funder" (existence "funder_name")
    "has-funder-doi" (existence "funder_doi")

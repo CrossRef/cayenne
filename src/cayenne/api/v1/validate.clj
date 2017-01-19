@@ -204,6 +204,7 @@
    :has-update-policy boolean-validator
    :has-archive boolean-validator
    :has-orcid boolean-validator
+   :has-authenticated-orcid boolean-validator
    :has-affiliation boolean-validator
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
