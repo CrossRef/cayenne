@@ -16,7 +16,7 @@
    "event-acronym" (any-of "event_acronym")
    "affiliation" (any-of "affiliation")
    "publisher-name" (any-of "publisher")
-   "publisher-place" (any-of "publisher-place")
+   "publisher-location" (any-of "publisher_location")
    "funder-name" (any-of "hl_funder_name")
    "author" (any-of "hl_authors")
    "editor" (any-of "hl_editors")

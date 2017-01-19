@@ -518,6 +518,7 @@
          "full_text_application" (map (util/?- :intended-application) full-text-resources)
          "publisher" (:name publisher)
          "hl_publisher" (:name publisher)
+         "publisher_location" (:location publisher)
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
          "update_policy" (get-update-policy item)
          "update_doi" (map :value updates)

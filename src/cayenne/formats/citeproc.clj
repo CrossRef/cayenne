@@ -308,6 +308,7 @@
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
+       :publisher-location (get solr-doc "publisher_location")
        :reference-count (get solr-doc "citation_count")
        :citing-count (get solr-doc "citation_count")
        :cited-count (get solr-doc "cited_by_count")
