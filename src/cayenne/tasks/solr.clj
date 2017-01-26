@@ -390,16 +390,20 @@
                  (-> f
                      name
                      (string/replace "-" "_") )))]
-  (into
-   {}
-   (map #(vector (citation-field %)
-                 (map (util/?- %) (get-tree-rel item :citation)))
-        [:key :doi :issn :issn-type :isbn :isbn-type
-         :author :volume :issue :first-page :year
-         :isbn :isbn-type :edition :component
-         :standard-designator :standards-body
-         :unstructured :article-title :series-title
-         :volume-title :journal-title]))))
+     (-> {}
+         (into 
+          (map #(vector (citation-field %)
+                        (map (util/?- %) (get-tree-rel item :citation)))
+               [:key :issn :issn-type :isbn :isbn-type
+                :author :volume :issue :first-page :year
+                :isbn :isbn-type :edition :component
+                :standard-designator :standards-body
+                :unstructured :article-title :series-title
+                :volume-title :journal-title]))
+         (into
+          (map #(vector (str "citation_doi_" (:key %))
+                        (:doi %))
+               (filter :doi (get-tree-rel item :citation)))))))
 
 (defn formatted-now []
   (df/unparse (df/formatters :date-time) (t/now)))
