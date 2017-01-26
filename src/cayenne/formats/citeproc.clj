@@ -9,6 +9,8 @@
             [cayenne.ids.update-type :as update-type-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.isbn :as isbn-id]
+            [cayenne.ids.member :as member-id]
+            [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.type :as type-id]))
 
 ;; TODO Proper use of container-title vs. collection-title
@@ -329,7 +331,7 @@
 
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
-       :prefix (get solr-doc "owner_prefix")
+       :prefix (prefix-id/extract-prefix (get solr-doc "owner_prefix"))
        :member (get solr-doc "member_id")
        :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
        :URL (get solr-doc "doi")
@@ -387,7 +389,7 @@
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (get solr-doc "owner_prefix")
-       :member (get solr-doc "member_id")
+       :member (member-id/extract-member-id (get solr-doc "member_id"))
        :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
        :URL (get solr-doc "doi")
        :issued (->date-parts (get solr-doc "year")
