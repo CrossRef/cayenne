@@ -35,7 +35,7 @@
 (defn update-as-solr-doc [update-map]
   (cond
     (and (= :set (:action update-map))
-         (= :cited-count (:predicate update-map)))
+         (= :is-cited-by-count (:predicate update-map)))
     (solr/as-cited-count-set-document (:subject-doi update-map)
                                       (:object update-map))
 
