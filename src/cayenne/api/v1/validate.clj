@@ -215,6 +215,7 @@
    :archive archive-validator
    :article-number string-validator
    :issn issn-validator
+   :isbn string-validator
    :type type-validator
    :type-name string-validator
    :orcid orcid-validator

@@ -301,6 +301,7 @@
    "archive" (equality "archive")
    "article-number" (equality "article_number")
    "issn" (equality "issn" :transformer issn/to-issn-uri)
+   "isbn" (equality "isbn" :transformer isbn/to-isbn-uri)
    "type" (equality "type" :transformer type-id/->index-id)
    "type-name" (equality "type")
    "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
