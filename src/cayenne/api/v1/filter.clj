@@ -10,6 +10,7 @@
             [cayenne.ids.type :as type-id]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.issn :as issn]
+            [cayenne.ids.isbn :as isbn]
             [cayenne.ids.orcid :as orcid]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.ctn :as ctn]

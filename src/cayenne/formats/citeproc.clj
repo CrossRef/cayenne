@@ -337,7 +337,8 @@
 (defn ->citeproc-cites-relations [solr-doc]
   (->> (get solr-doc "citation_key")
        (map #(first (get solr-doc (str "citation_doi_" %))))
-       (filter (complement nil?))))
+       (filter (complement nil?))
+       (map #(hash-map :id % :id-type "doi" :asserted-by "subject"))))
 
 ;; for now only :cites
 (defn ->citeproc-relations [solr-doc]
