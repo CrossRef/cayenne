@@ -586,7 +586,11 @@
     doc))
 
 (defn as-citation-doi-set-document [subject-doi subject-citation-id object-doi]
-  ())
+  (let [doc (SolrInputDocument.)]
+    (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
+    (.addField doc "_version_" 1)
+    (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
+    (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})))
      
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]

@@ -38,5 +38,12 @@
          (= :cited-count (:predicate update-map)))
     (solr/as-cited-count-set-document (:subject-doi update-map)
                                       (:object update-map))
+
+    (and (= :set (:action update-map))
+         (= :cites (:predicate update-map)))
+    (solr/as-citation-doi-set-document (:subject-doi update-map)
+                                       (:subject-citation-id update-map)
+                                       (:object update-map))
+                                                     
     :else
     (throw (Exception. "Unsupported action / predicate combination"))))
