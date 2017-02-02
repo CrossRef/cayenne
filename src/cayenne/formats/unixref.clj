@@ -630,7 +630,7 @@
   [license-loc]
   (-> {:type :url
        :content-version (or (xml/xselect1 license-loc ["applies_to"]) "vor")
-       :value (xml/xselect1 license-loc :text)}
+       :value (string/trim (xml/xselect1 license-loc :text))}
       (parse-attach :start license-loc :single parse-license-start-date)))
 
 (defn parse-item-licenses [item-loc]
