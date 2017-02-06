@@ -76,7 +76,10 @@
 
 (defn parse-relation [relation-loc]
   {:type :relation
-   :subtype (xml/xselect1 relation-loc ["claim"])
+   :subtype (-> (xml/xselect1 relation-loc ["claim"])
+                (str/replace #"([A-Z])" "-$1")
+                str/lower-case
+                keyword)
    :claimed-by :object
    :object (xml/xselect1 relation-loc :text)
    :object-type (xml/xselect1 relation-loc ["type"])
@@ -84,7 +87,7 @@
 
 (defn parse-relations [oai-record]
   (map parse-relation
-       (xml/xselect1 oai-record :> "crm-item" [:= "name" "relation"])))
+       (xml/xselect oai-record :> "crm-item" [:= "name" "relation"])))
 
 (defn unixsd-record-parser
   [oai-record]
