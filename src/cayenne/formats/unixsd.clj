@@ -74,6 +74,18 @@
            (:location body-publisher-info)
            (assoc :location (:location body-publisher-info)))))))
 
+(defn parse-relation [relation-loc]
+  {:type :relation
+   :subtype (xml/xselect1 relation-loc ["claim"])
+   :claimed-by :object
+   :object (xml/xselect1 relation-loc :text)
+   :object-type (xml/xselect1 relation-loc ["type"])
+   :object-namespace (xml/xselect1 relation-loc ["namespace"])})
+
+(defn parse-relations [oai-record]
+  (map parse-relation
+       (xml/xselect1 oai-record :> "crm-item" [:= "name" "relation"])))
+
 (defn unixsd-record-parser
   [oai-record]
   (let [result (unixref/unixref-record-parser oai-record)
@@ -85,6 +97,7 @@
      (-> work
          (insert-crm-publisher oai-record)
          (itree/delete-relation :deposited)
+         (itree/add-relations :relation (parse-relations oai-record))
          (itree/add-relation :deposited (parse-updated-date oai-record))
          (itree/add-relation :first-deposited (parse-created-date oai-record))
          (itree/add-relation :cited-count (parse-citation-count oai-record)))]))
