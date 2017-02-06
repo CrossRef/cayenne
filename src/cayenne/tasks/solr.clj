@@ -324,6 +324,24 @@
      "award_funder_name" [funder-name]
      "award_funder_doi" [funder-doi]}))
 
+(defn as-relation-compound [relation]
+  (let [relation-type (-> relation :subtype name)
+        object-type (:object-type relation)
+        object (:object relation)
+        object-namespace (or (:object-namespace relation) "-")
+        claimed-by (-> relation :claimed-by name)]
+    {"relation_type" [relation-type]
+     "relation_object" [object]
+     "relation_object_type" [object-type]
+     "relation_object_ns" [object-namespace]
+     "relation_claimed_by" [claimed-by]
+     (str "relation_type_object_" relation-type)
+     [object]
+     (str "relation_type_object_type_object_" relation-type "_" object-type)
+     [object]
+     (str "relation_type_object_type_" relation-type)
+     [object-type]}))
+
 (defn as-funder-award-compounds [funder]
   (let [awards (map as-award-compound (repeat funder) (get-item-rel funder :awarded))]
     (apply merge-with #(concat %1 %2) awards)))
@@ -339,6 +357,10 @@
 (defn as-award-compounds [funders]
   (let [compounds (map as-funder-award-compounds funders)]
     (apply merge-with #(concat %1 %2) compounds)))
+
+(defn as-relation-compounds [relations]
+  (let [relations (map as-relation-compound relations)]
+    (apply merge-with #(concat %1 %2) relations)))
 
 (defn as-contributor-affiliation-lists [contrib-details]
   (into {}
@@ -416,6 +438,7 @@
         publisher (first (get-tree-rel item :publisher))
         full-text-resources (get-item-rel item :resource-fulltext)
         funders (get-tree-rel item :funder)
+        relations (get-tree-rel item :relation)
         assertions (get-tree-rel item :assertion)
         clinical-trial-numbers (get-tree-rel item :clinical-trial-number)
         pub-date (get-earliest-pub-date item)
@@ -564,6 +587,7 @@
         (merge (as-issn-types item))
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
+        (merge (as-relation-compounds relations))
         (merge (as-award-compounds funders))
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))

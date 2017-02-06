@@ -685,6 +685,23 @@
   (when-let [updates (xml/xselect item-loc :> "crossmark" "updates" "update")]
     (map parse-update updates)))
 
+(defn parse-relation [relation-loc]
+  (let [relation-detail-loc (or (xml/xselect1 relation-loc "inter_work_relation")
+                                (xml/xselect1 relation-loc "intra_work_relation"))]
+    {:type :relation
+     :subtype (-> (xml/xselect1 relation-detail-loc ["relationship-type"])
+                  (string/replace #"([A-Z])" "-$1")
+                  string/lower-case
+                  keyword)
+     :claimed-by :subject
+     :object-type (xml/xselect1 relation-detail-loc ["identifier-type"])
+     :object-namespace (xml/xselect1 relation-detail-loc ["namespace"])
+     :object (xml/xselect1 relation-detail-loc :text)}))
+
+(defn parse-relations [item-loc]
+  (when-let [relations (xml/xselect item-loc :> "related_item")]
+    (map parse-relation relations)))
+
 (defn parse-item-abstract [item-loc]
   (when-let [abstract-loc (xml/xselect1 item-loc :> "abstract")]
     {:type :abstract
@@ -734,6 +751,7 @@
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "unspecified"))
       (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "syndication"))
+      (parse-attach :relation item-loc :multi parse-relations)
       (parse-attach :license item-loc :multi parse-item-licenses)
       (parse-attach :archived-with item-loc :multi parse-item-archives)
       (parse-attach :title item-loc :multi parse-item-titles)
