@@ -340,12 +340,23 @@
        (filter (complement nil?))
        (map #(hash-map :id % :id-type "doi" :asserted-by "subject"))))
 
-;; for now only :cites
 (defn ->citeproc-relations [solr-doc]
-  (cond-> {}
-    (get solr-doc "citation_key")
-    (assoc :cites (->citeproc-cites-relations solr-doc))))
-       
+  (let [non-cites-rels (->> (map #(hash-map
+                                   :id %1
+                                   :id-type %2
+                                   :asserted-by %3
+                                   :rel %4)
+                                 (get solr-doc "relation_object")
+                                 (get solr-doc "relation_object_type")
+                                 (get solr-doc "relation_claimed_by")
+                                 (get solr-doc "relation_type"))
+                            (group-by :rel)
+                            (map #(vector (first %) (map (fn [a] (dissoc a :rel)) (second %))))
+                            (into {}))]
+    (cond-> non-cites-rels
+      (get solr-doc "citation_key")
+      (assoc :cites (->citeproc-cites-relations solr-doc)))))
+  
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
        :prefix (prefix-id/extract-prefix (get solr-doc "owner_prefix"))
