@@ -215,7 +215,8 @@
   (dotimes [n (.. Runtime getRuntime availableProcessors)]
     (go-loop []
       (let [f (<! feed-file-chan)]
-        (process-feed-file! f))
+        (when (.exists f)
+          (process-feed-file! f)))
       (recur)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
