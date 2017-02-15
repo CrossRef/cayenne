@@ -17,7 +17,10 @@
             [clojure.java.io :refer [reader writer] :as io]
             [taoensso.timbre :as timbre :refer [info error]]
             [digest :as digest]
-            [metrics.meters :refer [defmeter] :as meter])
+            [metrics.meters :refer [defmeter] :as meter]
+            [nio2.dir-seq :refer [dir-seq-glob]]
+            [nio2.io :refer [path]]
+            [clojure.core.async :refer [chan buffer go go-loop <! >!!]])
   (:import [java.util UUID]
            [java.io File]
            [java.util.concurrent TimeUnit]))
@@ -163,15 +166,14 @@
       (solr/insert-solr-doc update-doc))
    feed-context))
 
-(defn process-feed-files! [file-seq]
-  (doseq [f file-seq]
-    (try
-      (feed-log (.getName f) "Seen")
-      (-> f .getAbsolutePath make-feed-context process!)
-      (feed-log (.getName f) "Processed")
-      (catch Exception e
-        (feed-log (.getName f) "Failed")
-        (error e (str "Failed to process feed file " f))))))
+(defn process-feed-file! [f]
+  (try
+    (feed-log (.getName f) "Seen")
+    (-> f .getAbsolutePath make-feed-context process!)
+    (feed-log (.getName f) "Processed")
+    (catch Exception e
+      (feed-log (.getName f) "Failed")
+      (error e (str "Failed to process feed file " f)))))
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
@@ -207,14 +209,19 @@
   (ANY "/:provider" [provider]
        (feed-resource provider)))
 
+(def feed-file-chan (chan (buffer 1000)))
+
 (defn start-feed-processing []
+  (dotimes [n (.. Runtime getRuntime availableProcessors)]
+    (go-loop []
+      (let [f (<! feed-file-chan)]
+        (process-feed-file! f))
+      (recur)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
      (fn []
-       (let [files (->> (feed-in-dir) io/file .listFiles)]
-         (doseq [fs (partition-all (/ (count files) 8) files)]
-           (doto (conf/get-service :executor)
-             (.schedule #(process-feed-files! fs) 0 TimeUnit/MILLISECONDS)))))
+       (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
+         (>!! feed-file-chan (.toFile p))))
      0
      5000
      TimeUnit/MILLISECONDS)))
