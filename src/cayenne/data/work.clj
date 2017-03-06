@@ -33,10 +33,34 @@
         :id
         member-id/to-member-id-uri)))
 
+(defn get-member-prefix-info [collection id]
+  (m/with-mongo (conf/get-service :mongo)
+    (-> collection
+        (m/fetch-one :where {:id (Integer/parseInt (member-id/extract-member-id id))})
+        :prefix)))
+
 (defn with-member-id [metadata]
   (if (:member metadata)
     metadata
     (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata)))))
+
+(defn display-citations? [metadata]
+  (when (:member metadata)
+    (let [prefix (prefix-id/extract-prefix (:prefix metadata))
+          member-id (member-id/extract-member-id (:member metadata))
+          member-prefix-info (get-member-prefix-info "members" member-id)]
+      (not
+       (empty?
+        (filter #(and (= (:value %) prefix)
+                      (:public-references %))
+                member-prefix-info))))))
+
+(defn with-citations [metadata]
+  (if (display-citations? metadata)
+    metadata
+    (-> metadata
+        (dissoc :citation)
+        (update-in [:relation] dissoc :cites))))
 
 (defn partial-response? [query-response]
   (.. query-response (getResponseHeader) (get "partialResults")))
@@ -52,7 +76,7 @@
           (r/with-result-facets (facet/->response-facets response))
           (r/with-result-items 
             (.getNumFound doc-list)
-            (map (comp with-member-id citeproc/->citeproc) doc-list)
+            (map (comp with-citations with-member-id citeproc/->citeproc) doc-list)
             :next-cursor (.getNextCursorMark response))
           (r/with-query-context-info query-context)))))
 
