@@ -45,9 +45,11 @@
                      "datacite" "DataCite"})
 
 (defn feed-log [f state]
-  (spit (str (conf/get-param [:dir :data]) "/feed.log")
-        (str f " - " state "\n")
-        :append true))
+  (try
+    (spit (str (conf/get-param [:dir :data]) "/feed.log")
+          (str f " - " state "\n")
+          :append true)
+    (catch Exception e (error "feed-log failed with" (.getMessage e)))))
 
 (defmeter [cayenne feed files-received] "files-received")
 
@@ -95,10 +97,12 @@
                  (:id feed-context)))
 
 (defn move-file! [from to]
-  (let [from-file (File. from)
-        to-file (File. to)]
-    (.mkdirs (.getParentFile to-file))
-    (.renameTo from-file to-file)))
+  (try
+    (let [from-file (File. from)
+          to-file (File. to)]
+      (.mkdirs (.getParentFile to-file))
+      (.renameTo from-file to-file))
+    (catch Exception e (error "move-file! failed with" (.getMessage e)))))
 
 (defn make-feed-context
   ([content-type provider]
@@ -166,19 +170,45 @@
       (solr/insert-solr-doc update-doc))
    feed-context))
 
+(def in-flight
+  "Set of filenames that are currently being processed."
+  (atom #{}))
+
+(defn in-flight!
+  "Mark a file as being in flight, so another thread shouldn't process it."
+  [file]
+  (let [file-path (.getAbsolutePath file)]
+    (swap! in-flight conj file-path)))
+
+(defn not-in-flight!
+  "Mark a file as no longer being in flight."
+  [file]
+  (let [file-path (.getAbsolutePath file)]
+    (swap! in-flight disj file-path)))
+
+(defn in-flight?
+  "Is this file in flight?"
+  [file]
+  (let [file-path (.getAbsolutePath file)]
+    (get @in-flight file-path)))
+
 (defn process-feed-file! [f]
-  (try
-    (feed-log (.getName f) "Seen")
-    (-> f .getAbsolutePath make-feed-context process!)
-    (feed-log (.getName f) "Processed")
-    (catch Exception e
-      (feed-log (.getName f) "Failed")
-      (error e (str "Failed to process feed file " f)))))
+  (if (in-flight? f)
+    (info "Skipping already in-flight" f)
+    (try
+      (in-flight! f)
+      (feed-log (.getName f) "Seen")
+      (-> f .getAbsolutePath make-feed-context process!)
+      (feed-log (.getName f) "Processed")
+      (catch Exception e
+        (feed-log (.getName f) "Failed")
+        (error e (str "Failed to process feed file " f)))
+      (finally (not-in-flight! f)))))
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
     (.mkdirs (.getParentFile incoming-file))
-    (io/copy body incoming-file)
+    (with-open [reader (io/input-stream body)] (io/copy reader incoming-file))
     (meter/mark! files-received)
     (assoc feed-context :digest (digest/md5 incoming-file))))
 
@@ -209,20 +239,26 @@
   (ANY "/:provider" [provider]
        (feed-resource provider)))
 
-(def feed-file-chan (chan (buffer 1000)))
+; Big enough to hold a batch of filenames.
+; TODO could configure to be related to commit batch size.
+(def feed-file-chan (chan (buffer 100000)))
 
 (defn start-feed-processing []
   (dotimes [n (.. Runtime getRuntime availableProcessors)]
     (go-loop []
       (let [f (<! feed-file-chan)]
-        (when (.exists f)
-          (process-feed-file! f)))
+        (try
+          (when (.exists f)
+            (process-feed-file! f))
+          (catch Exception e (error "process-feed-file goroutine failed with" (.getMessage e)))))
       (recur)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
      (fn []
-       (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
-         (>!! feed-file-chan (.toFile p))))
+       (try
+         (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
+           (>!! feed-file-chan (.toFile p)))
+         (catch Exception e (error "scheduled ingest failed with" (.getMessage e)))))
      0
      5000
      TimeUnit/MILLISECONDS)))
