@@ -45,9 +45,11 @@
                      "datacite" "DataCite"})
 
 (defn feed-log [f state]
-  (spit (str (conf/get-param [:dir :data]) "/feed.log")
-        (str f " - " state "\n")
-        :append true))
+  (try
+    (spit (str (conf/get-param [:dir :data]) "/feed.log")
+          (str f " - " state "\n")
+          :append true)
+    (catch Exception e (error "feed-log failed with" (.getMessage e)))))
 
 (defmeter [cayenne feed files-received] "files-received")
 
@@ -95,10 +97,12 @@
                  (:id feed-context)))
 
 (defn move-file! [from to]
-  (let [from-file (File. from)
-        to-file (File. to)]
-    (.mkdirs (.getParentFile to-file))
-    (.renameTo from-file to-file)))
+  (try
+    (let [from-file (File. from)
+          to-file (File. to)]
+      (.mkdirs (.getParentFile to-file))
+      (.renameTo from-file to-file))
+    (catch Exception e (error "move-file! failed with" (.getMessage e)))))
 
 (defn make-feed-context
   ([content-type provider]
@@ -209,20 +213,26 @@
   (ANY "/:provider" [provider]
        (feed-resource provider)))
 
-(def feed-file-chan (chan (buffer 1000)))
+; Big enough to hold a batch of filenames.
+; TODO could configure to be related to commit batch size.
+(def feed-file-chan (chan (buffer 100000)))
 
 (defn start-feed-processing []
   (dotimes [n (.. Runtime getRuntime availableProcessors)]
     (go-loop []
       (let [f (<! feed-file-chan)]
-        (when (.exists f)
-          (process-feed-file! f)))
+        (try
+          (when (.exists f)
+            (process-feed-file! f))
+          (catch Exception e (error "process-feed-file goroutine failed with" (.getMessage e)))))
       (recur)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
      (fn []
-       (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
-         (>!! feed-file-chan (.toFile p))))
+       (try
+         (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
+           (>!! feed-file-chan (.toFile p)))
+         (catch Exception e (error "scheduled ingest failed with" (.getMessage e)))))
      0
      5000
      TimeUnit/MILLISECONDS)))
