@@ -193,7 +193,7 @@
     (get @in-flight file-path)))
 
 (defn process-feed-file! [f]
-  (if (in-flight? f)
+  (if-not (in-flight? f)
     (info "Skipping already in-flight" f)
     (try
       (in-flight! f)
@@ -202,8 +202,8 @@
       (feed-log (.getName f) "Processed")
       (catch Exception e
         (feed-log (.getName f) "Failed")
-        (error e (str "Failed to process feed file " f)))
-      (finally (not-in-flight! f)))))
+        (not-in-flight! f)
+        (error e (str "Failed to process feed file " f))))))
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
