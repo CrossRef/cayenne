@@ -12,11 +12,14 @@
             [cayenne.util :as util]
             [metrics.gauges :refer [defgauge] :as gauge]
             [metrics.meters :refer [defmeter] :as meter]
+            [metrics.timers :refer [deftimer] :as timer]
             [taoensso.timbre :as timbre :refer [error info]]))
 
 (def insert-list (atom []))
 
 (def insert-count (agent 0))
+
+(def inserts-running-count (atom 0))
 
 (set-error-handler! 
  insert-count 
@@ -26,18 +29,33 @@
 
 (defmeter [cayenne solr insert-events] "insert-events")
 
+(defgauge [cayenne solr inserts-running] @inserts-running-count)
+
 (defgauge [cayenne solr inserts-so-far] @insert-count)
 
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
 
+(deftimer [cayenne solr add-time])
+
+(deftimer [cayenne solr commit-time])
+
 (defn flush-insert-list [c insert-list]
+  (swap! inserts-running-count inc)
+  (info "Starting insert and commit, inserts running = " @inserts-running-count)
   (doseq [update-server (conf/get-service :solr-update-list)]
     (try
-      (.add update-server insert-list)
-      (.commit update-server false false)
+      (let [start-of-update-time (System/currentTimeMillis)]
+        (timer/time! add-time (.add update-server insert-list))
+        (let [end-of-update-time (System/currentTimeMillis)]
+          (info "Solr .add took " (- end-of-update-time start-of-update-time) " milliseconds")
+          (timer/time! commit-time (.commit update-server false false))
+          (let [end-of-commit-time (System/currentTimeMillis)]
+            (info "Solr .commit took " (- end-of-commit-time end-of-update-time) " milliseconds"))))
       (meter/mark! insert-events)
       (catch Exception e (error e "Solr insert failed" update-server))))
+  (swap! inserts-running-count dec)
+  (info "Finished insert and commit, inserts running = " @inserts-running-count)
   (inc c))
 
 (defn add-to-insert-list [insert-list doc]
