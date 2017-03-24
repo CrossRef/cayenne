@@ -49,9 +49,10 @@
         (timer/time! add-time (.add update-server insert-list))
         (let [end-of-update-time (System/currentTimeMillis)]
           (info "Solr .add took " (- end-of-update-time start-of-update-time) " milliseconds")
-          (timer/time! commit-time (.commit update-server false false))
-          (let [end-of-commit-time (System/currentTimeMillis)]
-            (info "Solr .commit took " (- end-of-commit-time end-of-update-time) " milliseconds"))))
+          (when (conf/get-param [:service :solr :commit-on-add])
+            (timer/time! commit-time (.commit update-server false false))
+            (let [end-of-commit-time (System/currentTimeMillis)]
+              (info "Solr .commit took " (- end-of-commit-time end-of-update-time) " milliseconds")))))
       (meter/mark! insert-events)
       (catch Exception e (error e "Solr insert failed" update-server))))
   (swap! inserts-running-count dec)
