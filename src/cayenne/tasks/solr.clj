@@ -484,6 +484,7 @@
          (or (when first-deposit-date (as-datetime-string first-deposit-date))
              (when deposit-date (as-datetime-string deposit-date))
              (formatted-now))
+         "_version_" 0
          "prefix" (doi/extract-long-prefix doi)
          "doi_key" doi
          "doi" doi
