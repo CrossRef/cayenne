@@ -56,6 +56,7 @@
     (let [insert-list (<! inserts-waiting-chan)]
       (try
         (flush-insert-list insert-list)
+        (swap! insert-count inc)
         (catch Exception e (error e "Solr insert go loop error")))
       (recur))))
 
