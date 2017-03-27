@@ -10,6 +10,7 @@
             [cayenne.ids.doi :as doi]
             [cayenne.ids :as ids]
             [cayenne.util :as util]
+            [clojure.core.async :as async :refer [chan go-loop <! >!!]]
             [metrics.gauges :refer [defgauge] :as gauge]
             [metrics.meters :refer [defmeter] :as meter]
             [metrics.timers :refer [deftimer] :as timer]
@@ -17,32 +18,24 @@
 
 (def insert-list (atom []))
 
-(def insert-count (agent 0))
+(def insert-count (atom 0))
 
 (def inserts-running-count (atom 0))
 
-(set-error-handler! 
- insert-count 
- (fn [agt ex] 
-   (error (str "Solr agent failed:" ex))
-   (restart-agent insert-count 0)))
+(def inserts-waiting-chan (chan 10))
 
 (defmeter [cayenne solr insert-events] "insert-events")
-
 (defgauge [cayenne solr inserts-running] @inserts-running-count)
-
 (defgauge [cayenne solr inserts-so-far] @insert-count)
-
 (defgauge [cayenne solr insert-waiting-list-size]
   (count @insert-list))
-
 (deftimer [cayenne solr add-time])
-
 (deftimer [cayenne solr commit-time])
 
-(defn flush-insert-list [c insert-list]
+(defn flush-insert-list [insert-list]
   (swap! inserts-running-count inc)
   (info "Starting insert and commit, inserts running = " @inserts-running-count)
+  (info "Insert list is" (count insert-list) "items long")
   (doseq [update-server (conf/get-service :solr-update-list)]
     (try
       (let [start-of-update-time (System/currentTimeMillis)]
@@ -56,24 +49,21 @@
       (meter/mark! insert-events)
       (catch Exception e (error e "Solr insert failed" update-server))))
   (swap! inserts-running-count dec)
-  (info "Finished insert and commit, inserts running = " @inserts-running-count)
-  (inc c))
+  (info "Finished insert and commit, inserts running = " @inserts-running-count))
 
-(defn add-to-insert-list [insert-list doc]
-  (if (>= (count insert-list)
-           (conf/get-param [:service :solr :insert-list-max-size]))
-    (do
-      (send-off insert-count flush-insert-list insert-list)
-      [doc])
-    (conj insert-list doc)))
+(defn start-insert-list-processing []
+  (go-loop []
+    (let [insert-list (<! inserts-waiting-chan)]
+      (try
+        (flush-insert-list insert-list)
+        (catch Exception e (error e "Solr insert go loop error")))
+      (recur))))
 
-(defn flush-and-clear-insert-list [insert-list]
-  (when (not (zero? (count insert-list)))
-    (send-off insert-count flush-insert-list insert-list))
-  [])
-
-(defn force-flush-insert-list []
-   (swap! insert-list flush-and-clear-insert-list))
+(conf/with-core :default
+  (conf/add-startup-task
+   :solr-inserts
+   (fn [profiles]
+     (start-insert-list-processing))))
 
 (defn get-categories [item]
   (if-let [journal (find-item-of-subtype item :journal)]
@@ -635,15 +625,18 @@
     (.addField doc "_version_" 1)
     (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
     (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})))
+
+(defn insert-solr-doc [solr-doc]
+  (if (>= (count @insert-list)
+          (conf/get-param [:service :solr :insert-list-max-size]))
+    (swap! insert-list #(do (>!! inserts-waiting-chan %) []))
+    (swap! insert-list conj solr-doc)))
      
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]
     (if-not (get solr-map "doi_key")
       (throw (Exception. "No DOI in item tree when inserting into solr."))
       (let [solr-doc (as-solr-input-document solr-map)]
-        (swap! insert-list add-to-insert-list solr-doc)))))
+        (insert-solr-doc solr-doc)))))
 
-(defn insert-solr-doc [solr-doc]
-  (swap! insert-list add-to-insert-list solr-doc))
 
-  

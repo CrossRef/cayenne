@@ -52,6 +52,7 @@ Run as a production service with some profiles:
 - :graph-api - Must be specified along with :api and :graph. Enables the graph API. Requires datomic leiningen profile.
 - :feed-api - Must be specified along with :api. Enables the feed API for real-time metadata ingest.
 - :process-feed-files - Run async processing of incoming feed files. Should be enabled with :feed-api.
+- :solr-inserts - Run solr inserts. Should be enabled with :feed-api or instances perform OAI-PMH harvesting.
 
 ## Run as a Daemon
 
