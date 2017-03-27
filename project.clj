@@ -31,7 +31,7 @@
                  [metrics-clojure-ring "1.0.1"]
                  [com.taoensso/timbre "3.4.0"]
                  [irclj "0.5.0-alpha2"]
-                 [org.apache.solr/solr-solrj "6.0.1"]
+                 [org.apache.solr/solr-solrj "6.4.2"]
                  [clojurewerkz/quartzite "1.0.1"]
                  [congomongo "0.4.1"]
                  [enlive "1.1.1"]

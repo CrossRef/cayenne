@@ -604,13 +604,13 @@
         (merge (as-full-text-compounds full-text-resources)))))
 
 (defn as-solr-input-document [solr-map]
-  (let [doc (SolrInputDocument.)]
+  (let [doc (SolrInputDocument. (into-array String []))]
     (doseq [[k v] solr-map]
       (.addField doc k v))
     doc))
 
 (defn as-cited-count-set-document [subject-doi cited-count]
-  (let [doc (SolrInputDocument.)]
+  (let [doc (SolrInputDocument. (into-array String []))]
     (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
 
     ;; only apply update if doi_key already exists in index
@@ -621,11 +621,12 @@
     doc))
 
 (defn as-citation-doi-set-document [subject-doi subject-citation-id object-doi]
-  (let [doc (SolrInputDocument.)]
+  (let [doc (SolrInputDocument. (into-array String []))]
     (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
     (.addField doc "_version_" 1)
     (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
-    (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})))
+    (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})
+    doc))
 
 (defn insert-solr-doc [solr-doc]
   (swap! insert-list
