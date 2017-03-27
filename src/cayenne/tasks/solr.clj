@@ -628,10 +628,13 @@
     (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})))
 
 (defn insert-solr-doc [solr-doc]
-  (if (>= (count @insert-list)
-          (conf/get-param [:service :solr :insert-list-max-size]))
-    (swap! insert-list #(do (>!! inserts-waiting-chan %) []))
-    (swap! insert-list conj solr-doc)))
+  (swap! insert-list
+         #(if (>= (count %)
+                  (conf/get-param [:service :solr :insert-list-max-size]))
+            (do
+              (>!! inserts-waiting-chan (conj % solr-doc))
+              [])
+            (conj % solr-doc))))
      
 (defn insert-item [item]
   (let [solr-map (as-solr-document item)]
