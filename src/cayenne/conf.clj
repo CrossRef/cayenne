@@ -115,7 +115,7 @@
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "localhost")
   (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
-  (set-param! [:service :solr :insert-list-max-size] 10000)
+  (set-param! [:service :solr :insert-list-max-size] 1000)
   (set-param! [:service :solr :commit-on-add] true)
   (set-param! [:service :datomic :url] "datomic:mem://test")
   (set-param! [:service :api :port] 3000)
