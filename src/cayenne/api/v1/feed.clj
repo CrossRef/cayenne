@@ -218,6 +218,7 @@
         (when (.exists f)
           (process-feed-file! f)))
       (recur)))
+  (.mkdirs (File. (feed-in-dir)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
      (fn []
