@@ -324,8 +324,6 @@
                   (get-in ["message" "items"])))]
     (println "Updating" (count dois) "DOIs")
     (doall (map #(do (println %) (parse-doi % index-solr-docs)) dois))
-    (println "Committing changes")
-    (solr/force-flush-insert-list)
     (println "Done")))
 
 (defn find-funder-entries-no-id* [member-id offset]

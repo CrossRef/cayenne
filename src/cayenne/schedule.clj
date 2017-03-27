@@ -74,11 +74,6 @@
        (timef/unparse oai-date-format until)
        action/index-solr-docs))))
 
-(defjob flush-solr-insert-list [ctx]
-  (try
-    (solr/force-flush-insert-list)
-    (catch Exception e (error e "Failed to flush solr insert list"))))
-
 (defjob update-members [ctx]
   (try
     (info "Updating members collection")
@@ -138,12 +133,7 @@
    (qj/build
     (qj/of-type index-crossref-oai)
     (qj/with-identity (qj/key "index-crossref-oai")))
-    index-daily-work-trigger)
-  (qs/schedule
-   (qj/build
-    (qj/of-type flush-solr-insert-list)
-    (qj/with-identity (qj/key "flush-solr-insert-list")))
-    index-regularly-work-trigger))
+    index-daily-work-trigger))
 
 (defn start-members-updating []
   (qs/schedule
