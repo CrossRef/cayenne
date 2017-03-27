@@ -212,7 +212,7 @@
 (def feed-file-chan (chan (buffer 1000)))
 
 (defn start-feed-processing []
-  (dotimes [n (.. Runtime getRuntime availableProcessors)]
+  (dotimes [n (- (.. Runtime getRuntime availableProcessors) 1)]
     (go-loop []
       (let [f (<! feed-file-chan)]
         (when (.exists f)
