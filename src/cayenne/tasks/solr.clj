@@ -433,7 +433,9 @@
                 :unstructured :article-title :series-title
                 :volume-title :journal-title]))
          (into
-          (map #(vector (str "citation_doi_" (:key %))
+          (map #(vector "citation_key_doi"
+                        (str (:key %) "_" (:doi %))
+                        "citation_doi"
                         (:doi %))
                (filter :doi (get-tree-rel item :citation)))))))
 
@@ -625,7 +627,8 @@
     (.addField doc "doi_key" (doi/to-long-doi-uri subject-doi))
     (.addField doc "_version_" 1)
     (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
-    (.addField doc (str "citation_doi_" subject-citation-id) {"set" object-doi})
+    (.addField doc "citation_key_doi" {"add" (str subject-citation-id "_" object-doi)})
+    (.addField doc "citation_doi" {"add" object-doi})
     doc))
 
 (defn insert-solr-doc [solr-doc]
