@@ -433,12 +433,12 @@
                 :unstructured :article-title :series-title
                 :volume-title :journal-title]))
          (into
-          (map #(vector "citation_doi" (:doi %))
-               (filter :doi (get-tree-rel item :citation))))
+          ["citation_doi"
+           (map :doi (filter :doi (get-tree-rel item :citation)))])
          (into
-          (map #(vector "citation_key_doi"
-                        (str (:key %) "_" (:doi %)))
-               (filter :doi (get-tree-rel item :citation)))))))
+          ["citation_key_doi"
+           (map #(str (:key %) "_" (:doi %))
+                (filter :doi (get-tree-rel item :citation)))]))))
 
 (defn formatted-now []
   (df/unparse (df/formatters :date-time) (t/now)))
