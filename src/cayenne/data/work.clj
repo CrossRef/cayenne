@@ -105,7 +105,8 @@
     (if (partial-response? response)
       (throw (RuntimeException. "Solr returned a partail result set"))
       (when-let [doc (-> response (.getResults) first)]
-        (r/api-response :work :content (-> (citeproc/->citeproc doc) with-member-id))))))
+        (r/api-response :work :content (-> (citeproc/->citeproc doc)
+                                           with-member-id with-citations))))))
 
 (defn get-unixsd [doi]
   (let [record (promise)]
