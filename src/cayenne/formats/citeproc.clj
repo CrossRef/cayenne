@@ -299,40 +299,46 @@
         (assoc-date solr-doc :start "event_start")
         (assoc-date solr-doc :end "event_end"))))
 
+(defn citation-key-doi-map [solr-doc]
+  (if-let [key-dois (get solr-doc "citation_key_doi")]
+    (into {} (map #(string/split % #"_10\.") key-dois))
+    {}))
+
 (defn ->citeproc-citations [solr-doc]
-  (letfn [(hide-id-types [citation-map]
-            (cond-> citation-map
-              (not (:ISSN citation-map)) (dissoc :issn-type)
-              (not (:ISBN citation-map)) (dissoc :isbn-type)))
-          (maybe-with-doi [citation-map]
-            (if-let [doi (first (get solr-doc (str "citation_doi_" (:key citation-map))))]
-              (assoc citation-map :DOI doi)
-              citation-map))]
-    (when (get solr-doc "citation_key")
-      (let [citation-fields [:key :ISSN :issn-type :isbn :isbn-type
-                             :author :volume :issue :first-page :year
-                             :ISBN :isbn-type :edition :component
-                             :standard-designator :standards-body
-                             :unstructured :article-title :series-title
-                             :volume-title :journal-title]
-            citation-vals (map #(get solr-doc (str "citation_"
-                                                   (-> %
-                                                       name
-                                                       string/lower-case
-                                                       (string/replace "-" "_"))))
-                               citation-fields)
-            vals-transposed (vec (apply map vector citation-vals))]
-        ;; [ ["a" "b" "c"] ["-" "10." "-" ] ]
-        ;; ==> [ ["a" "10."] ["b" "-"] ["c" "-"] ]
-        (map
-         (fn [row]
-           (->> citation-fields
-                (map-indexed #(vector %2 (nth row %1)))
-                (filter #(not= "-" (second %)))
-                (into {})
-                hide-id-types
-                maybe-with-doi))
-         vals-transposed)))))
+  (let [key-doi-m (citation-key-doi-map solr-doc)]
+    (letfn [(hide-id-types [citation-map]
+              (cond-> citation-map
+                (not (:ISSN citation-map)) (dissoc :issn-type)
+                (not (:ISBN citation-map)) (dissoc :isbn-type)))
+            (maybe-with-doi [citation-map]
+              (if-let [doi (get key-doi-m (:key citation-map))]
+                (assoc citation-map :DOI (str "10." doi))
+                citation-map))]
+      (when (get solr-doc "citation_key")
+        (let [citation-fields [:key :ISSN :issn-type :isbn :isbn-type
+                               :author :volume :issue :first-page :year
+                               :ISBN :isbn-type :edition :component
+                               :standard-designator :standards-body
+                               :unstructured :article-title :series-title
+                               :volume-title :journal-title]
+              citation-vals (map #(get solr-doc (str "citation_"
+                                                     (-> %
+                                                         name
+                                                         string/lower-case
+                                                         (string/replace "-" "_"))))
+                                 citation-fields)
+              vals-transposed (vec (apply map vector citation-vals))]
+          ;; [ ["a" "b" "c"] ["-" "10." "-" ] ]
+          ;; ==> [ ["a" "10."] ["b" "-"] ["c" "-"] ]
+          (map
+           (fn [row]
+             (->> citation-fields
+                  (map-indexed #(vector %2 (nth row %1)))
+                  (filter #(not= "-" (second %)))
+                  (into {})
+                  hide-id-types
+                  maybe-with-doi))
+           vals-transposed))))))
 
 (defn ->citeproc-cites-relations [solr-doc]
   (->> (get solr-doc "citation_key")
