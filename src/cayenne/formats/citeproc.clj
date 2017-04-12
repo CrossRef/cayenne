@@ -380,7 +380,8 @@
        :is-referenced-by-count (get solr-doc "cited_by_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :content-domain (->content-domains solr-doc)
-       :relation (->citeproc-relations solr-doc)
+       ;; Disabled until data is cleaned up
+       ;; :relation (->citeproc-relations solr-doc)
        :score (get solr-doc "score")}
       (assoc-date solr-doc :published-online "online")
       (assoc-date solr-doc :published-print "print")
