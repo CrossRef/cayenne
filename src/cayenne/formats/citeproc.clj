@@ -300,7 +300,12 @@
 
 (defn citation-key-doi-map [solr-doc]
   (if-let [key-dois (get solr-doc "citation_key_doi")]
-    (into {} (map #(string/split % #"_10\.") key-dois))
+
+    ;; Deposited DOIs in references are not clean
+    (into {} (map #(let [parts (string/split % #"_10\.")]
+                     (if (= (count parts) 2) parts ["-" "-"]))
+                  key-dois))
+    
     {}))
 
 (defn ->citeproc-citations [solr-doc]
