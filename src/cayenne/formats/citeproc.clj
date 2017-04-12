@@ -375,7 +375,7 @@
        :deposited (->date-parts (get solr-doc "deposited_at"))
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
-       :reference-count (get solr-doc "citation_count")
+       :references-count (get solr-doc "citation_count")
        :is-referenced-by-count (get solr-doc "cited_by_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :content-domain (->content-domains solr-doc)
