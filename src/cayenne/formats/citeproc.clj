@@ -377,8 +377,7 @@
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
        :reference-count (get solr-doc "citation_count")
-       :cites-count (get solr-doc "citation_count")
-       :is-cited-by-count (get solr-doc "cited_by_count")
+       :is-referenced-by-count (get solr-doc "cited_by_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :content-domain (->content-domains solr-doc)
        :relation (->citeproc-relations solr-doc)
@@ -417,6 +416,6 @@
       (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
       (assoc-exists :issn-type (->issn-types solr-doc))
       (assoc-exists :event (->event solr-doc))
-      (assoc-exists :citation (->citeproc-citations solr-doc))
+      (assoc-exists :reference (->citeproc-citations solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 

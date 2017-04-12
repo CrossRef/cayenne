@@ -137,8 +137,8 @@
    "published-online" ["online_year" "online_month" "online_day"]
    "published" ["year" "month" "day"]
    "issued" ["year" "month" "day"]
-   "is-cited-by-count" ["cited_by_count"]
-   "cites-count" ["citation_count"]
+   "is-referenced-by-count" ["cited_by_count"]
+   "references-count" ["citation_count"]
 
    ;; for deposits (todo separate these out)
    "submitted" :submitted-at})
