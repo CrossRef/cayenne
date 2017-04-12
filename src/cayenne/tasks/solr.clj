@@ -574,6 +574,7 @@
          "full_text_version" (map (util/?- :content-version) full-text-resources)
          "full_text_application" (map (util/?- :intended-application) full-text-resources)
          "publisher" (:name publisher)
+         "publisher_str" (:name publisher)
          "hl_publisher" (:name publisher)
          "publisher_location" (:location publisher)
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
