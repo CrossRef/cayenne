@@ -381,6 +381,7 @@
        :indexed (->date-parts (get solr-doc "indexed_at"))
        :publisher (get solr-doc "publisher")
        :references-count (get solr-doc "citation_count")
+       :reference-count (get solr-doc "citation_count")
        :is-referenced-by-count (get solr-doc "cited_by_count")
        :type (type-id/->type-id (get solr-doc "type"))
        :content-domain (->content-domains solr-doc)

@@ -208,6 +208,7 @@
    :has-affiliation boolean-validator
    :has-funder boolean-validator
    :has-funder-doi boolean-validator
+   :has-relation boolean-validator
    :funder-doi-asserted-by funder-doi-asserted-by-validator
    :has-award boolean-validator
    :has-assertion boolean-validator
@@ -229,6 +230,9 @@
    :prefix prefix-validator
    :funder funder-id-validator
    :alternative-id string-validator
+   :relation.type string-validator
+   :relation.object string-validator
+   :relation.object-type string-validator
    :full-text.type content-type-validator
    :full-text.application intended-application-validator
    :full-text.version version-validator

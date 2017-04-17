@@ -59,7 +59,7 @@
   (if (display-citations? metadata)
     metadata
     (-> metadata
-        (dissoc :citation)
+        (dissoc :reference)
         (update-in [:relation] dissoc :cites))))
 
 (defn partial-response? [query-response]

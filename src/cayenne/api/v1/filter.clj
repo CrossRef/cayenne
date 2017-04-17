@@ -288,6 +288,7 @@
    "has-funder" (existence "funder_name")
    "has-funder-doi" (existence "funder_doi")
    "has-award" (existence "award_number")
+   "has-relation" (existence "relation_type")
    "funder-doi-asserted-by" (equality "funder_record_doi_asserted_by")
    "has-assertion" (existence "assertion_name")
    "has-clinical-trial-number" (existence "clinical_trial_number_ctn")
@@ -319,6 +320,7 @@
                      :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")
                                 "funder_doi" #(str ":\"" (fundref/normalize-to-doi-uri %) "\"")}
                      :aliases {"funder" "funder_doi"})
+   "relation" (compound "relation" ["type" "object_type" "object"])
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/normalize-to-doi-uri)})
