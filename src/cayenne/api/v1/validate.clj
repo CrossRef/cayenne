@@ -8,6 +8,7 @@
             [cayenne.api.v1.facet :as fac]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.fields :as qf]
+            [cayenne.data.relations :as relations]
             [cayenne.ids.type :as type-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.ids.doi :as doi-id]
@@ -92,6 +93,17 @@
   (enum-validator :funder-doi-asserted-by-not-valid
                   "Funder DOI asserted by party"
                   ["crossref" "publisher"]))
+
+(def relation-type-validator
+  (enum-validator :relation-type-not-valid
+                  "Relation type"
+                  (map name relations/relations)))
+
+(def relation-object-type-validator
+  (enum-validator :relation-object-type-not-valid
+                  "Relation object type"
+                  ["doi" "issn" "isbn" "uri" "pmid" "pmcid" "purl" "arxiv"
+                   "ark" "handle" "uuid" "ecli" "accession" "other"]))
 
 (defn integer-validator [context s & {:keys [max message] :or {max :infinite message nil}}]
   (if (or (not s)
@@ -230,9 +242,9 @@
    :prefix prefix-validator
    :funder funder-id-validator
    :alternative-id string-validator
-   :relation.type string-validator
+   :relation.type relation-type-validator
    :relation.object string-validator
-   :relation.object-type string-validator
+   :relation.object-type relation-object-type-validator
    :full-text.type content-type-validator
    :full-text.application intended-application-validator
    :full-text.version version-validator
