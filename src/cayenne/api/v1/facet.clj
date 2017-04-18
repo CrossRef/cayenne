@@ -25,6 +25,8 @@
               :allow-unlimited-values true}
    "update_type" {:external-field "update-type"
                   :allow-unlimited-values true}
+   "relation_type" {:external-field "relation-type"
+                    :allow-unlimited-values true}
    "affiliation" {:external-field "affiliation"
                   :allow-unlimited-values true}
    "assertion_name" {:external-field "assertion"
