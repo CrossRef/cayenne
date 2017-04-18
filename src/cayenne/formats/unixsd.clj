@@ -1,5 +1,6 @@
 (ns cayenne.formats.unixsd
   (:require [cayenne.formats.unixref :as unixref]
+            [cayenne.data.relations :as relations]
             [cayenne.ids.prefix :as prefix]
             [cayenne.ids.member :as member-id]
             [cayenne.item-tree :as itree]
@@ -79,15 +80,19 @@
    :subtype (-> (xml/xselect1 relation-loc ["claim"])
                 (str/replace #"([A-Z])" "-$1")
                 str/lower-case
-                keyword)
+                keyword
+                relations/relation-antonym)
    :claimed-by :object
    :object (xml/xselect1 relation-loc :text)
    :object-type (xml/xselect1 relation-loc ["type"])
    :object-namespace (xml/xselect1 relation-loc ["namespace"])})
 
 (defn parse-relations [oai-record]
-  (map parse-relation
-       (xml/xselect oai-record :> "crm-item" [:= "name" "relation"])))
+  (->> (xml/xselect oai-record :> "crm-item" [:= "name" "relation"])
+       (map parse-relation)
+
+       ;; remove claims that are not relations from relation.xsd
+       (filter :subtype)))
 
 (defn unixsd-record-parser
   [oai-record]
