@@ -7,7 +7,8 @@
       (str "(" (str/join " OR " field-strs) ")"))))
 
 (def work-fields
-  {"title" (any-of "hl_title" "hl_subtitle")
+  {"reference" (any-of "content_citation")
+   "title" (any-of "hl_title" "hl_subtitle")
    "container-title" (any-of "hl_publication")
    "event-name" (any-of "event_name")
    "event-theme" (any-of "event_theme")
