@@ -315,11 +315,14 @@
    "category-name" (equality "category")
    "clinical-trial-number" (equality "clinical_trial_number_proxy" :transformer ctn/ctn-proxy)
    "alternative-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
+
+   ;; todo award_funder_doi_number should place funder_doi in value
    "award" (compound "award" ["funder_doi" "number"]
                      :transformers {"funder_doi" (comp util/slugify fundref/normalize-to-doi-uri)}
                      :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")
                                 "funder_doi" #(str ":\"" (fundref/normalize-to-doi-uri %) "\"")}
                      :aliases {"funder" "funder_doi"})
+   
    "relation" (compound "relation" ["type" "object_type" "object"])
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)

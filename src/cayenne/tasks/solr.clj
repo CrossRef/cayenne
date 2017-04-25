@@ -328,7 +328,7 @@
         award-number (or (-> award get-item-ids first) "-")
         normalized-award-number (-> award-number string/lower-case (string/replace #"[\s_\-]+" ""))
         slug-doi (or (-> funder get-item-ids first util/slugify) "-")]
-    {(str "award_funder_doi_number_" slug-doi) [normalized-award-number]
+    {"award_funder_doi_number" [(str slug-doi normalized-award-number)]
      "award_number" [normalized-award-number]
      "award_number_display" [award-number]
      "award_funder_name" [funder-name]
