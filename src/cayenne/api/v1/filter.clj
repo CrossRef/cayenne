@@ -161,9 +161,9 @@
 (defn existence [field]
   (fn [val]
     (cond (#{"t" "true" "1"} (.toLowerCase val))
-          (str field ":[* TO *]")
+          (str "field_names:" field)
           (#{"f" "false" "0"} (.toLowerCase val))
-          (str "-" field ":[* TO *]"))))
+          (str "-field_names:" field))))
 
 (defn bool [field]
   (fn [val]

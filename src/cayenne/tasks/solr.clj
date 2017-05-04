@@ -610,10 +610,15 @@
         (merge (as-license-compounds licenses pub-date))
         (merge (as-full-text-compounds full-text-resources)))))
 
+(defn as-solr-field-names [solr-doc]
+  (->> (.getFieldNames solr-doc)
+       (filter #(not (.isEmpty (.getFieldValues solr-doc %))))))
+
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument. (into-array String []))]
     (doseq [[k v] solr-map]
       (.addField doc k v))
+    (.addField doc "field_names" (vec (as-solr-field-names doc)))
     doc))
 
 (defn as-cited-count-set-document [subject-doi cited-count]
