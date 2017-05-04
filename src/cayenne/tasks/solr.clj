@@ -8,6 +8,8 @@
             [clojure.string :as string]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
+            [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.isbn :as isbn-id]
             [cayenne.ids :as ids]
             [cayenne.util :as util]
             [clojure.core.async :as async :refer [chan go-loop <! >!!]]
@@ -204,6 +206,8 @@
        (conj (:volume (find-item-of-subtype item :journal-volume))) ; volume
        (conj (:first-page item)) ; pages
        (conj (:last-page item)) ; pages
+       (concat (map (comp issn-id/normalize-issn :value) (get-tree-rel item :issn)))
+       (concat (map (comp isbn-id/normalize-isbn :value) (get-tree-rel item :isbn)))
        (concat (map :value (get-item-rel item :title))) ; work titles
        (concat (map :value (get-container-titles item)))))) ; publication titles
 
