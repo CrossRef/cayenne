@@ -331,8 +331,8 @@
         funder-doi (or (-> funder get-item-ids first) "-")
         award-number (or (-> award get-item-ids first) "-")
         normalized-award-number (-> award-number string/lower-case (string/replace #"[\s_\-]+" ""))
-        normalized-doi (or (-> funder get-item-ids first doi/to-long-doi-uri) "-")]
-    {"award_funder_doi_number" [(str normalized-doi "#" normalized-award-number)]
+        slug-doi (or (-> funder get-item-ids first util/slugify) "-")]
+    {(str "award_funder_doi_number_" slug-doi) [normalized-award-number]
      "award_number" [normalized-award-number]
      "award_number_display" [award-number]
      "award_funder_name" [funder-name]
@@ -579,6 +579,7 @@
          "full_text_version" (map (util/?- :content-version) full-text-resources)
          "full_text_application" (map (util/?- :intended-application) full-text-resources)
          "publisher" (:name publisher)
+         "publisher_str" (:name publisher)
          "hl_publisher" (:name publisher)
          "publisher_location" (:location publisher)
          "owner_prefix" (or (first (get-item-ids publisher :owner-prefix)) "none")
