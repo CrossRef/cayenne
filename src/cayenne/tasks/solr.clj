@@ -612,7 +612,9 @@
 
 (defn as-solr-field-names [solr-doc]
   (->> (.getFieldNames solr-doc)
-       (filter #(not (.isEmpty (.getFieldValues solr-doc %))))))
+       (filter #(let [field-values (.getFieldValues solr-doc %)]
+                  (not (or (nil? field-values)
+                           (.isEmpty field-values)))))))
 
 (defn as-solr-input-document [solr-map]
   (let [doc (SolrInputDocument. (into-array String []))]
