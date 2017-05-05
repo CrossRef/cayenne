@@ -19,7 +19,7 @@
             [ring.util.response :refer [redirect] :as response]
             [org.httpkit.server :as hs]
             [clojure.data.json :as json]
-            [compojure.core :refer [defroutes routes context ANY]]))
+            [compojure.core :refer [wrap-routes defroutes routes context ANY]]))
 
 (def-version cayenne.version/version)
 
@@ -32,11 +32,12 @@
        (conf/get-param [:test :doi])))
 
 (defn create-protected-api-routes []
-  (wrap-basic-authentication
+  (wrap-routes
    (routes
     v1/restricted-api-routes
     (context "/v1" [] v1/restricted-api-routes)
     (context "/v1.0" [] v1/restricted-api-routes))
+   wrap-basic-authentication
    cr-auth/authenticated?))
 
 (defn create-unprotected-api-routes []
@@ -64,22 +65,23 @@
    (context "/v1.0/graph" [] graph-v1/graph-api-routes)))
 
 (defn create-feed-routes []
-  (wrap-basic-authentication
+  (wrap-routes
    (routes
     (context "/feeds" [] feed-v1/feed-api-routes)
     (context "/v1/feeds" [] feed-v1/feed-api-routes)
     (context "/v1.0/feeds" [] feed-v1/feed-api-routes))
+   wrap-basic-authentication
    token-auth/authenticated?))
 
 (defn create-all-routes [& {:keys [graph-api feed-api]
                             :or {graph-api false
                                  feed-api false}}]
   (apply routes
-         (cond-> [(create-unprotected-api-routes)
+         (cond-> [(create-protected-api-routes)
                   (create-docs-routes)]
            graph-api (conj (create-graph-routes))
            feed-api (conj (create-feed-routes))
-           true (conj (create-protected-api-routes)))))
+           true (conj (create-unprotected-api-routes)))))
 
 (defn wrap-cors
   [h]

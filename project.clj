@@ -49,7 +49,7 @@
                  [org.clojure/math.combinatorics "0.0.4"]
                  [com.novemberain/langohr "1.4.1"]
                  [liberator "0.12.2"]
-                 [compojure "1.1.5"]
+                 [compojure "1.6.0"]
                  [ring "1.1.0"]
                  [ring-basic-authentication "1.0.5"]
                  [http-kit "2.1.19"]
