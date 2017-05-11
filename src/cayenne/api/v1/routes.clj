@@ -91,21 +91,21 @@
   (get-in context [:request :params param-name]))
 
 (defresource csl-styles-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(csl/fetch-all-styles)))
 
 (defresource csl-locales-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
   :handle-ok (->1 #(csl/fetch-all-locales)))
 
 (defresource cores-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options]
   :available-media-types t/json
@@ -132,7 +132,8 @@
      :message {:exception (.toString exception)}}}))
 
 (defresource deposits-resource [data]
-  :malformed? (v/malformed? :filter-validator v/validate-deposit-filters)
+  :malformed? (v/malformed? :filter-validator v/validate-deposit-filters
+                            :unlimited-offset true)
   :handle-malformed :validation-result
   :authorized? authed?
   :known-content-type? #(known-post-type? % t/depositable)
@@ -285,7 +286,8 @@
                                             (force-exact-request-doi % doi))})))
 
 (defresource funders-resource
-  :malformed? (v/malformed? :filter-validator v/validate-funder-filters)
+  :malformed? (v/malformed? :filter-validator v/validate-funder-filters
+                            :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -332,7 +334,8 @@
   :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
 
 (defresource members-resource
-  :malformed? (v/malformed? :filter-validator v/validate-member-filters)
+  :malformed? (v/malformed? :filter-validator v/validate-member-filters
+                            :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -362,7 +365,7 @@
   :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
 
 (defresource journals-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -392,14 +395,14 @@
   :handle-ok #(journal/fetch-works (q/->query-context % :id (issn-id/normalize-issn issn))))
 
 (defresource licenses-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :handle-ok #(license/fetch-all (q/->query-context %)))
 
 (defresource types-resource
-  :malformed? (v/malformed?)
+  :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json

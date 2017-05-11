@@ -41,18 +41,14 @@
         (nil? val)
         default-rows
         (= (type val) java.lang.String)
-        (min (max 0 (util/parse-int-safe val)) max-rows)
-        :else
-        (min (max 0 val) max-rows))))
+        (util/parse-int-safe val))))
 
 (defn parse-offset-val [val]
   (int (cond
         (nil? val)
         default-offset
         (= (type val) java.lang.String)
-        (min (max 0 (util/parse-int-safe val)) max-offset)
-        :else
-        (min (max 0 val) max-offset))))
+        (util/parse-int-safe val))))
 
 (defn parse-sample-val
   "Returns a sample count or 0, indicating that no sample
@@ -62,9 +58,7 @@
         (nil? val)
         0
         (= (type val) java.lang.String)
-        (max 0 (util/parse-int-safe val))
-        :else
-        (max 0 val))))
+        (util/parse-int-safe val))))
     
 (defn get-filters 
   "Turns a filter value string such as a.b:val,c:val2 into

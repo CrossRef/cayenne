@@ -364,13 +364,22 @@
                         :sample-with-rows-or-offset
                         "Sample cannot be combined with rows or offset"
                         "sample")))]
-    (if (:deep-pagable context)
+    (cond
+      (:deep-pagable context)
       (-> existence-checks-context
           (integer-validator (:rows params) :max q/max-rows)
           (integer-validator (:sample params) :max q/max-sample)
           (integer-validator (:offset params)
                              :max q/max-offset
                              :message " Use the cursor parameter to page further into result sets."))
+
+      (:unlimited-offset context)
+      (-> existence-checks-context
+          (integer-validator (:rows params) :max q/max-rows)
+          (integer-validator (:sample params) :max q/max-sample)
+          (integer-validator (:offset params)))
+
+      :else
       (-> existence-checks-context
           (integer-validator (:rows params) :max q/max-rows)
           (integer-validator (:sample params) :max q/max-sample)
