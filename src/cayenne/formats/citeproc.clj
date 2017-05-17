@@ -324,7 +324,7 @@
                                :ISBN :isbn-type :edition :component
                                :standard-designator :standards-body
                                :unstructured :article-title :series-title
-                               :volume-title :journal-title]
+                               :volume-title :journal-title :doi-asserted-by]
               citation-vals (map #(get solr-doc (str "citation_"
                                                      (-> %
                                                          name
