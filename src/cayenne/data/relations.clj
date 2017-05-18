@@ -78,6 +78,8 @@
                   :replaces             :is-replaced-by
                   :has-version          :is-version-of
 
+                  :is-original-form-of  :is-varient-form-of
+
                   :is-same-as           :is-same-as
                   :is-identical-to      :is-identical-to}]
     (into antonyms (map #(vector (second %) (first %)) antonyms))))
