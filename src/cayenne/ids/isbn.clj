@@ -7,7 +7,9 @@
 
 (defn extract-isbn [s]
   (when s
-    (nth (re-find #"^(http\:\/\/id\.crossref\.org\/isbn\/)(.*)" s) 2)))
+    (or
+     (nth (re-find #"^(http\:\/\/id\.crossref\.org\/isbn\/)(.*)" s) 2)
+     s)))
 
 (defn normalize-isbn [s] 
   (extract-isbn s))
