@@ -237,6 +237,7 @@
    :doi doi-validator
    :group-title string-validator
    :container-title string-validator
+   :publisher-name string-validator
    :category-name string-validator
    :member integer-validator
    :prefix prefix-validator
@@ -502,7 +503,7 @@
 
 (def available-params [:query :rows :offset :sample :facet :filter
                        :sort :order :cursor
-                       :pingback :url :filename :parent :test])
+                       :pingback :url :filename :parent :test :debug])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
 ;; TODO Check that deposit params only specified on POST, and not
