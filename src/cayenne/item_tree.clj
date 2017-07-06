@@ -1,6 +1,7 @@
 (ns cayenne.item-tree
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [cayenne.ids :as ids]
+            [cayenne.util :as util]
             [clojure.zip :as zip]
             [cayenne.conf :as conf]))
 
@@ -59,7 +60,7 @@
     (assoc-in item [:rel rel-type] (concat existing-items rel-items))))
 
 (defn delete-relation [item rel-type]
-  (assoc-in item [:rel rel-type] []))
+  (util/dissoc-in item [:rel rel-type]))
 
 (defn make-item 
   ([type subtype]
@@ -168,6 +169,9 @@
 
 (defn update-tree-rel [update-fn item-tree rel-type] 
   (descend-with #(update-item-rel update-fn % rel-type) item-tree))
+
+(defn delete-tree-relation [item-tree rel-type]
+  (descend-with #(delete-relation % rel-type) item-tree))
 
 (defn get-descendant-rel
   "Like get-tree-rel except excludes rels directly from top-level item."

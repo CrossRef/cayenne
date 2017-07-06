@@ -66,7 +66,7 @@
   (let [crm-publisher-info (parse-publisher oai-record)
         body-publisher-info (-> work (itree/get-tree-rel :publisher) first)]
     (-> work
-        (itree/delete-relation :publisher)
+        (itree/delete-tree-relation :publisher)
         (itree/add-relation
          :publisher
          (cond-> crm-publisher-info
