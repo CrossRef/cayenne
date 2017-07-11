@@ -27,10 +27,19 @@
   (rdf/->xml metadata))
 
 (defmethod ->format "application/vnd.citationstyles.csl+json" [representation metadata]
-  (-> metadata
-      (assoc :title (first (:title metadata)))
-      (assoc :container-title (first (:container-title metadata)))
-      json/write-str))
+  (cond-> metadata
+    (not (empty? (:title metadata)))
+    (assoc :title (first (:title metadata)))
+
+    (not (empty? (:container-title metadata)))
+    (assoc :container-title (first (:container-title metadata)))
+
+    (not (empty? (:short-container-title metadata)))
+    (assoc :container-title-short (first (:short-container-title metadata)))
+    
+    (dissoc :short-container-title)
+    
+    json/write-str))
 
 (defmethod ->format "application/x-research-info-systems" [representation metadata]
   (ris/->ris metadata))
