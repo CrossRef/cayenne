@@ -437,7 +437,9 @@
                 :unstructured :article-title :series-title
                 :volume-title :journal-title]))
          (into
-          [["citation_doi"
+          [["citation_doi_asserted_by"
+            (map #(str (:doi %) "___" (:doi-asserted-by %)) (get-tree-rel item :citation))]
+           ["citation_doi"
             (map :doi (filter :doi (get-tree-rel item :citation)))]
            ["citation_key_doi"
             (map #(str (:key %) "_" (:doi %))
@@ -641,6 +643,7 @@
     (.addField doc "_version_" 1)
     (.addField doc "indexed_at" (java.util.HashMap. {"set" (formatted-now)}))
     (.addField doc "citation_key_doi" {"add" (str subject-citation-id "_" object-doi)})
+    (.addField doc "citation_doi_asserted_by" {"add" (str object-doi "___crossref")})
     (.addField doc "citation_doi" {"add" object-doi})
     doc))
 

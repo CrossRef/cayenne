@@ -202,6 +202,7 @@
 (defn parse-citation [citation-loc]
   (-> {:key (xml/xselect1 citation-loc ["key"])
        :doi (xml/xselect1 citation-loc "doi" :text)
+       :doi-asserted-by (or (xml/xselect1 citation-loc "doi" ["provider"]) "publisher")
        :issn (to-issn-uri (xml/xselect1 citation-loc "issn" :text))
        :issn-type (or (xml/xselect1 citation-loc "issn" ["media_type"]) "print")
        :journal-title (xml/xselect1 citation-loc "journal_title" :text)

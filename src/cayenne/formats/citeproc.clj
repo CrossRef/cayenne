@@ -308,15 +308,24 @@
     
     {}))
 
+(defn citation-doi-asserted-by-map [solr-doc]
+  (if-let [doi-asserted-bys (get solr-doc "citation_doi_asserted_by")]
+    (into {} (map #(string/split % #"___") doi-asserted-bys))
+    {}))
+
 (defn ->citeproc-citations [solr-doc]
-  (let [key-doi-m (citation-key-doi-map solr-doc)]
+  (let [key-doi-m (citation-key-doi-map solr-doc)
+        doi-asserted-by-m (citation-doi-asserted-by-map solr-doc)]
     (letfn [(hide-id-types [citation-map]
               (cond-> citation-map
                 (not (:ISSN citation-map)) (dissoc :issn-type)
                 (not (:ISBN citation-map)) (dissoc :isbn-type)))
             (maybe-with-doi [citation-map]
               (if-let [doi (get key-doi-m (:key citation-map))]
-                (assoc citation-map :DOI (str "10." doi))
+                (let [real-doi (str "10." doi)]
+                  (-> citation-map
+                      (assoc :DOI real-doi)
+                      (assoc :doi-asserted-by (doi-asserted-by-m real-doi))))
                 citation-map))]
       (when (get solr-doc "citation_key")
         (let [citation-fields [:key :ISSN :issn-type :isbn :isbn-type
