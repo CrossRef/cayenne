@@ -249,6 +249,7 @@
     (when count-only
       (doto query
         (.setRows (int 0))))
+    (.setParam query "bq" (into-array String ["(*:* -type:\"Posted Content\")"]))
     query))
 
 (defn ->mongo-query [query-context
