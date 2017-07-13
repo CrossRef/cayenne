@@ -20,11 +20,12 @@
   "Find anything in s that looks like it may be an ISSN and return it
    in a normalized form without a URI prefix."
   [s]
-  (let [digits (filter digit-set (extract-issn s))
-        parts (map #(apply str %) (partition 4 digits))]
-    (if (string/blank? (apply str digits))
-      nil
-      (.toUpperCase (string/join "-" parts)))))
+  (when s
+    (let [digits (filter digit-set (extract-issn s))
+          parts (map #(apply str %) (partition 4 digits))]
+      (if (string/blank? (apply str digits))
+        nil
+        (.toUpperCase (string/join "-" parts))))))
 
 (defn to-issn-uri 
   "Find anything in s that looks like it may be an ISSN and return it

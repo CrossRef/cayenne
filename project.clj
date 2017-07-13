@@ -60,6 +60,7 @@
                  [robert/bruce "0.7.1"]
                  [bigml/sampling "3.0"]
                  [digest "1.4.4"]
+                 [dk.ative/docjure "1.11.0"]
                  [environ "1.0.3"]])
 
 
