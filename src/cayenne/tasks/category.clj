@@ -71,26 +71,35 @@
                       (sheet/select-columns {:C :p_issn
                                              :D :e_issn
                                              :AD :categories})
-                      (drop 1)
-                      (map normalize-journal))
+                      (drop 1))
         categories (->> doc
                         (sheet/select-sheet categories-sheet-name)
                         (sheet/select-columns {:A :code :B :name})
                         (drop 1)
-                        (filter #(-> % :code nil? not))
-                        (map normalize-category))]
+                        (filter #(-> % :code nil? not)))]
 
     (m/with-mongo (conf/get-service :mongo)
       (doseq [category categories]
-        (try 
-          (m/update! :categories {:code (:code category)} category :upsert true)
+        (try
+          (let [n-category (normalize-category category)]
+            (m/update! :categories
+                       {:code (:code n-category)}
+                       n-category
+                       :upsert true))
           (catch Exception e
             (println "Exception on insert of " category)
             (println e))))
       (doseq [journal journals]
         (try
-          (m/update! :issns {:p_issn (:p_issn journal)} journal :upsert true)
-          (m/update! :issns {:e_issn (:e_issn journal)} journal :upsert true)
+          (let [n-journal (normalize-journal journal)]
+            (m/update! :issns
+                       {:p_issn (:p_issn n-journal)}
+                       n-journal
+                       :upsert true)
+            (m/update! :issns
+                       {:e_issn (:e_issn n-journal)}
+                       n-journal
+                       :upsert true))
           (catch Exception e
             (println "Exception on insert of " journal)
             (println e)))))))
