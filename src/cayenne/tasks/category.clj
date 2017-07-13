@@ -82,10 +82,18 @@
 
     (m/with-mongo (conf/get-service :mongo)
       (doseq [category categories]
-        (m/update! :categories {:code (:code category)} category :upsert true))
+        (try 
+          (m/update! :categories {:code (:code category)} category :upsert true)
+          (catch Exception e
+            (println "Exception on insert of " category)
+            (println e))))
       (doseq [journal journals]
-        (m/update! :issns {:p_issn (:p_issn journal)} journal :upsert true)
-        (m/update! :issns {:e_issn (:e_issn journal)} journal :upsert true)))))
+        (try
+          (m/update! :issns {:p_issn (:p_issn journal)} journal :upsert true)
+          (m/update! :issns {:e_issn (:e_issn journal)} journal :upsert true)
+          (catch Exception e
+            (println "Exception on insert of " journal)
+            (println e)))))))
                            
       
        
