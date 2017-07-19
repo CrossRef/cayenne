@@ -214,16 +214,22 @@
 (defn start-feed-processing []
   (dotimes [n (- (.. Runtime getRuntime availableProcessors) 1)]
     (go-loop []
-      (let [f (<! feed-file-chan)]
-        (when (.exists f)
-          (process-feed-file! f)))
+      (try
+        (let [f (<! feed-file-chan)]
+          (when (.exists f)
+            (process-feed-file! f)))
+        (catch Exception e
+          (error e "Failed to check file existence")))
       (recur)))
   (.mkdirs (File. (feed-in-dir)))
   (doto (conf/get-service :executor)
     (.scheduleWithFixedDelay
      (fn []
-       (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
-         (>!! feed-file-chan (.toFile p))))
+       (try
+         (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
+           (>!! feed-file-chan (.toFile p)))
+         (catch Exception e
+           (error e "Could not iterate feed-in files"))))
      0
      5000
      TimeUnit/MILLISECONDS)))
