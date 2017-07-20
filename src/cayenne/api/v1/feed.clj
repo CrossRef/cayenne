@@ -225,9 +225,9 @@
   (dotimes [n (- (.. Runtime getRuntime availableProcessors) 1)]
     (go-loop []
       (try
-        (feed-thread-log "Go loop iteration getting a job")
+        (feed-thread-log "Go loop #" n " iteration getting a job")
         (let [f (<! feed-file-chan)]
-          (feed-thread-log "Go loop iteration got a job")
+          (feed-thread-log "Go loop #" n " iteration got a job")
           (when (.exists f)
             (process-feed-file! f)))
         (catch Exception e
