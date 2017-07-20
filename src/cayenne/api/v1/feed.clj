@@ -238,10 +238,8 @@
     (.scheduleWithFixedDelay
      (fn []
        (try
-         (feed-thread-log "Running scheduled directorystream iteration")
          (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
            (>!! feed-file-chan (.toFile p)))
-         (feed-thread-log "Done scheduled directorystream iteration")
          (catch Exception e
            (error e "Could not iterate feed-in files"))))
      0
