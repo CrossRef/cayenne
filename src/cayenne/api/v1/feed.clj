@@ -20,6 +20,7 @@
             [metrics.meters :refer [defmeter] :as meter]
             [nio2.dir-seq :refer [dir-seq-glob]]
             [nio2.io :refer [path]]
+            [clj-time.core :as dt]
             [clojure.core.async :refer [chan buffer go go-loop <! >!!]])
   (:import [java.util UUID]
            [java.io File]
@@ -45,9 +46,16 @@
                      "datacite" "DataCite"})
 
 (defn feed-log [f state]
-  (spit (str (conf/get-param [:dir :data]) "/feed.log")
-        (str f " - " state "\n")
-        :append true))
+  (spit
+   (str (conf/get-param [:dir :data]) "/feed.log")
+   (str (dt/now) " " f " - " state "\n")
+   :append true))
+
+(defn feed-thread-log [msg]
+  (spit
+   (str (conf/get-param [:dir :data]) "/feed-thread.log")
+   (str (dt/now) " " msg "\n")
+   :append true))
 
 (defmeter [cayenne feed files-received] "files-received")
 
@@ -168,7 +176,7 @@
 
 (defn process-feed-file! [f]
   (try
-    (feed-log (.getName f) "Seen")
+    (feed-log (.getName f) "Preparing to process")
     (-> f .getAbsolutePath make-feed-context process!)
     (feed-log (.getName f) "Processed")
     (catch Exception e
@@ -177,9 +185,11 @@
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
+    (feed-log (.getName incoming-file) "Receiving")
     (.mkdirs (.getParentFile incoming-file))
     (io/copy body incoming-file)
     (meter/mark! files-received)
+    (feed-log (.getName incoming-file) "Received and stored")
     (assoc feed-context :digest (digest/md5 incoming-file))))
 
 (defn strip-content-type-params [ct]
@@ -215,7 +225,9 @@
   (dotimes [n (- (.. Runtime getRuntime availableProcessors) 1)]
     (go-loop []
       (try
+        (feed-thread-log "Go loop iteration getting a job")
         (let [f (<! feed-file-chan)]
+          (feed-thread-log "Go loop iteration got a job")
           (when (.exists f)
             (process-feed-file! f)))
         (catch Exception e
@@ -226,8 +238,10 @@
     (.scheduleWithFixedDelay
      (fn []
        (try
+         (feed-thread-log "Running scheduled directorystream iteration")
          (doseq [p (dir-seq-glob (path (feed-in-dir)) "*.body")]
            (>!! feed-file-chan (.toFile p)))
+         (feed-thread-log "Done scheduled directorystream iteration")
          (catch Exception e
            (error e "Could not iterate feed-in files"))))
      0
