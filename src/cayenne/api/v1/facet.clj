@@ -18,7 +18,8 @@
    "issn" {:external-field "issn"
            :allow-unlimited-values true}
    "source" {:external-field "source"}
-   "publisher_str" {:external-field "publisher-name"}
+   "publisher_str" {:external-field "publisher-name"
+                    :allow-unlimited-values true}
    "license_url" {:external-field "license"
                   :allow-unlimited-values true}
    "archive" {:external-field "archive"
