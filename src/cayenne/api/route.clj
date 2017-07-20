@@ -50,11 +50,9 @@
    (context "/v1.0" [] v1-doc/api-doc-routes)))
 
 (defn create-docs-routes []
-  (routes 
-   (ANY "/help/bestpractice" []
-        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/funder_kpi_metadata_best_practice.md"))
+  (routes
    (ANY "/help" []
-        (redirect "https://github.com/CrossRef/rest-api-doc/blob/master/rest_api.md"))
+        (redirect "https://github.com/CrossRef/rest-api-doc"))
    (ANY "/" [] 
         (redirect "/help"))))
 
