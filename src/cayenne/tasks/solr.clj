@@ -12,7 +12,7 @@
             [cayenne.ids.isbn :as isbn-id]
             [cayenne.ids :as ids]
             [cayenne.util :as util]
-            [clojure.core.async :as async :refer [chan go-loop <! >!!]]
+            [clojure.core.async :as async :refer [chan go-loop <! >!! put!]]
             [metrics.gauges :refer [defgauge] :as gauge]
             [metrics.meters :refer [defmeter] :as meter]
             [metrics.timers :refer [deftimer] :as timer]
@@ -438,7 +438,9 @@
                 :volume-title :journal-title]))
          (into
           [["citation_doi_asserted_by"
-            (map #(str (:doi %) "___" (:doi-asserted-by %)) (get-tree-rel item :citation))]
+            (->> (get-tree-rel item :citation)
+                 (filter :doi)
+                 (map #(str (:doi %) "___" (:doi-asserted-by %))))]
            ["citation_doi"
             (map :doi (filter :doi (get-tree-rel item :citation)))]
            ["citation_key_doi"
@@ -652,7 +654,7 @@
          #(if (>= (count %)
                   (conf/get-param [:service :solr :insert-list-max-size]))
             (do
-              (>!! inserts-waiting-chan (conj % solr-doc))
+              (put! inserts-waiting-chan (conj % solr-doc))
               [])
             (conj % solr-doc))))
      
