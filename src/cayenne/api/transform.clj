@@ -12,6 +12,12 @@
   {"mla" "modern-language-association"
    "harvard3" "harvard1"})
 
+(def csl-type
+  {:journal-article :article-journal
+   :book-chapter :chapter
+   :posted-conent :manuscript
+   :proceedings-article :paper-conference})
+
 (defmulti ->format :media-type)
 
 (defmethod ->format "text/turtle" [representation metadata]
@@ -28,6 +34,9 @@
 
 (defmethod ->format "application/vnd.citationstyles.csl+json" [representation metadata]
   (cond-> metadata
+    (-> metadata :type csl-type nil? not)
+    (assoc :type (csl-type (:type metadata)))
+        
     (not (empty? (:title metadata)))
     (assoc :title (first (:title metadata)))
 
@@ -39,9 +48,17 @@
 
     (not (empty? (:event metadata)))
     (assoc :event (get-in metadata [:event :name]))
-    
+
+    :always
     (dissoc :short-container-title)
-    
+
+    :always
+    (dissoc :archive)
+
+    :always
+    (dissoc :issn-type)
+
+    :always
     json/write-str))
 
 (defmethod ->format "application/x-research-info-systems" [representation metadata]
