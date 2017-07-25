@@ -12,6 +12,7 @@
 
 (def bibtex-entry-type
   {:journal-article BibTeXEntry/TYPE_ARTICLE
+   :posted-content BibTeXEntry/TYPE_ARTICLE
    :journal-issue BibTeXEntry/TYPE_MISC
    :journal-volume BibTeXEntry/TYPE_MISC
    :journal BibTeXEntry/TYPE_MISC
