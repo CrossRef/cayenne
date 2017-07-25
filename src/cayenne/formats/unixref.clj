@@ -759,6 +759,7 @@
       (parse-attach :citation item-loc :multi parse-item-citations)
       (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
       (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
+      (parse-attach :published-other item-loc ::multi (partial parse-item-pub-dates "other"))
       (parse-attach :published item-loc :multi parse-item-pub-dates)
       (parse-attach :posted item-loc :single parse-item-posted-date)
       (parse-attach :accepted item-loc :single parse-item-accepted-date)

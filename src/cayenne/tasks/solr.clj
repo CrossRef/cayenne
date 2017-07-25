@@ -91,6 +91,7 @@
         (get-item-rel item :posted)
         (get-item-rel item :published-print)
         (get-item-rel item :published-online)
+        (get-item-rel item :published-other)
         (get-item-rel item :published)
         (get-tree-rel item :content-created))
        (sort-by particle->date-time)
