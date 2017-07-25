@@ -104,12 +104,15 @@
                {:name (type e)
                 :description (.toString e)
                 :message (.getMessage e)
+                :stack (map #(.toString %) (.getStackTrace e))
                 :cause
                 (when-let [cause (.getCause e)]
                   {:name (type cause)
                    :description (.toString cause)
+                   :stack (map #(.toString %) (.getStackTrace e))
                    :message (.getMessage cause)})}}))
             (response/status 500)
+            (response/header "Content-Type" "application/json")
             (response/header "Exception-Name" (type e)))))))
 
 (defn create-handler [& {:keys [graph-api feed-api] :or {graph-api false
