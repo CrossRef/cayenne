@@ -36,6 +36,9 @@
 
     (not (empty? (:short-container-title metadata)))
     (assoc :container-title-short (first (:short-container-title metadata)))
+
+    (not (empty? (:event metadata)))
+    (assoc :event (get-in metadata [:event :name]))
     
     (dissoc :short-container-title)
     
