@@ -19,6 +19,8 @@
     QUOTEDVALUE = <'\"'> #\"[^\\\"]+\" <'\"'>"
    :output-format :enlive))
 
+(def default-accept-value "*/*")
+
 (defn make-accept [accept-value]
   (let [t (-> accept-value string/trim accept-header-parser)]
     (map #(hash-map
@@ -47,9 +49,11 @@
 (defn wrap-accept [handler]
   (fn [req]
     (let [accept-value (get-in req [:headers "accept"])]
-      (if accept-value
+      (if-not (string/blank? accept-value)
         (handler (assoc req :accept (make-sorted-accept accept-value)))
-        (handler req)))))
+        (handler (-> req
+                     (assoc-in [:headers "accept"] default-accept-value)
+                     (assoc :accept (make-sorted-accept default-accept-value))))))))
   
 ;; a libertor decision function that selects a most appropriate content type,
 ;; if any is available
