@@ -174,15 +174,18 @@
 ;; todo get selectors and get filters handle json input
 
 (defn make-query-string [query-context]
-  (cond (and (:terms query-context)
-             (:raw-terms query-context))
+  (cond (and (not (string/blank? (:terms query-context)))
+             (not (string/blank? (:raw-terms query-context))))
         (str (-> query-context :terms (clean-terms :remove-syntax true))
              " "
              (-> query-context :raw-terms))
-        (:terms query-context)
+        
+        (not (string/blank? (:terms query-context)))
         (-> query-context :terms (clean-terms :remove-syntax true))
-        (:raw-terms query-context)
+        
+        (not (string/blank? (:raw-terms query-context)))
         (-> query-context :raw-terms)
+        
         :else
         "*:*"))
 
