@@ -137,6 +137,10 @@
    ;; for deposits (todo separate these out)
    "submitted" :submitted-at})
 
+;; todo this should be passed in to ->query-context
+(def select-fields
+  {"DOI" ["doi_key"]})
+
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
     (-> sort-params
@@ -145,8 +149,8 @@
         sort-fields)))
     
 (defn get-selectors [params]
-  (when (get params :selector)
-    (string/split (get params :selector) #",")))
+  (when (get params :select)
+    (string/split (get params :select) #",")))
 
 (defn get-field-queries [params]
   (->> params
@@ -164,7 +168,7 @@
      :cursor (:cursor params)
      :offset (parse-offset-val (:offset params))
      :rows (parse-rows-val (:rows params))
-     :selectors (get-selectors params)
+     :select (get-selectors params)
      :facets (get-facets params)
      :order (parse-sort-order params)
      :sort (parse-sort params)
@@ -189,19 +193,29 @@
         :else
         "*:*"))
 
+(defn set-query-fields [query-context solr-query]
+  (if (empty? (:select query-context))
+    (doto solr-query
+      (.addField "*")
+      (.addField "score"))
+    (doseq [select-name (:select query-context)]
+      (doseq [field-name (select-fields select-name)]
+        (doto solr-query (.addField field-name)))))
+  solr-query)
+
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]
                      :or {paged true 
                           id-field nil 
                           filters {}
                           count-only false}}]
-  (let [query (doto (SolrQuery.)
-                (.setQuery (-> query-context
-                               make-query-string
-                               (fields/apply-field-queries (:field-terms query-context))))
-                (.addField "*")
-                (.addField "score")
-                (.setHighlight false))]
+  (let [query (set-query-fields
+               query-context
+               (doto (SolrQuery.)
+                 (.setQuery (-> query-context
+                                make-query-string
+                                (fields/apply-field-queries (:field-terms query-context))))
+                 (.setHighlight false)))]
     (when id-field
       (let [ids (if (vector? (:id query-context))
                   (:id query-context)
