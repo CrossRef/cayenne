@@ -202,6 +202,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
@@ -307,6 +308,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
@@ -327,6 +329,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
@@ -355,6 +358,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
@@ -385,6 +389,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
@@ -421,6 +426,7 @@
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
                             :query-field-validator v/validate-work-query-fields
+                            :select-validator v/validate-work-selects
                             :deep-pagable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]

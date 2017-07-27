@@ -305,6 +305,21 @@
 (def validate-funder-filters (partial validate-filters
                                       funder-filter-validators))
 
+(defn validate-selects [available-selects context selects]
+  (let [unknown-selects (cset/difference
+                         (set selects) (set (map name available-selects)))]
+    (if (empty? unknown-selects)
+      (pass context)
+      (reduce #(fail %1 %2 :select-not-available
+                     (str "Select " %2 " specified but there is no "
+                          "such select for this route. Valid selects "
+                          "for this route are: "
+                          (string/join ", " (map name available-selects))))
+                     context
+                     unknown-selects))))
+
+(def validate-work-selects (partial validate-selects [:DOI]))
+
 (def wildcard-facet-forms ["*" "t" "T" "1"])
 
 ;; TODO check * only for allow unlimited values, number is up to q/max-facet-rows
@@ -472,6 +487,18 @@
                       (catch Exception e {}))]
         ((:filter-validator context) context filters)))))
 
+(defn validate-select-param [context params]
+  (if-not (:select-validator context)
+    (-> context
+        (validate #(not (:select params))
+                  :parameter-not-allowed
+                  "This route does not support select"
+                  "select"))
+    (if-not (:select params)
+      context
+      (let [selects (string/split (:select params) #",")]
+        ((:select-validator context) context selects)))))
+
 (defn validate-field-query-params [context params]
   (let [field-queries (q/get-field-queries params)
         allows-field-queries (and (not (:singleton context))
@@ -501,7 +528,7 @@
             "query"))
 
 (def available-params [:query :rows :offset :sample :facet :filter
-                       :sort :order :cursor
+                       :sort :order :cursor :select
                        :pingback :url :filename :parent :test :debug])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
@@ -537,6 +564,7 @@
         (validate-paging-params params)
         (validate-cursor-params params)
         (validate-ordering-params params)
+        (validate-select-param params)
         (validate-facet-param params)
         (validate-filter-param params)
         (validate-query-param params)
@@ -544,13 +572,15 @@
         (validate-id resource-context))))
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
-                            query-field-validator singleton deep-pagable]
+                            query-field-validator select-validator
+                            singleton deep-pagable]
                      :or {singleton false deep-pagable false limited-offset false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
                               :filter-validator filter-validator
                               :query-field-validator query-field-validator
+                              :select-validator select-validator
                               :singleton singleton
                               :deep-pagable deep-pagable}
           result (validate-resource-context validation-context
