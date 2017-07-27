@@ -7,20 +7,38 @@
             [cayenne.api.v1.response :as r]
             [somnium.congomongo :as m]))
 
-(defn ->response-doc [journal-doc]
+(defn ->response-doc [journal-doc subject-docs]
   {:title (:title journal-doc)
    :publisher (:publisher journal-doc)
    :ISSN (:issn journal-doc)
+   :subjects (map #(hash-map :ASJC (Integer/parseInt (:code %))
+                             :name (:name %))
+                  subject-docs)
    :flags (:flags journal-doc)
    :coverage (:coverage journal-doc)
    :breakdowns (:breakdowns journal-doc)
    :counts (:counts journal-doc)
    :last-status-check-time (:last-status-check-time journal-doc)})
 
+(defn issn-doc->subjects [issn-doc]
+  (m/with-mongo (conf/get-service :mongo)
+    (m/fetch "categories" :where {:code {:$in (:categories issn-doc)}})))
+
+(defn get-subject-docs [issns]
+  (let [issn-docs (m/with-mongo (conf/get-service :mongo)
+                    (m/fetch "issns"
+                             :where {:$or [{:p_issn {:$in issns}}
+                                           {:e_issn {:$in issns}}]}))]
+    (mapcat issn-doc->subjects issn-docs)))
+
 (defn fetch-one [query-context]
   (when-let [journal-doc (m/with-mongo (conf/get-service :mongo)
-                           (m/fetch-one "journals" :where {:issn (:id query-context)}))]
-    (r/api-response :journal :content (->response-doc journal-doc))))
+                           (m/fetch-one "journals"
+                                        :where {:issn (:id query-context)}))]
+    (r/api-response
+     :journal
+     :content (->response-doc journal-doc
+                              (get-subject-docs (:issn journal-doc))))))
 
 (defn ->search-terms [query-context]
   (if (:terms query-context)
@@ -40,7 +58,9 @@
                        (apply m/fetch-count "journals" mongo-query))]
     (-> (r/api-response :journal-list)
         (r/with-query-context-info query-context)
-        (r/with-result-items result-count (map ->response-doc docs)))))
+        (r/with-result-items
+          result-count
+          (map #(->response-doc % (get-subject-docs (:issn %))) docs)))))
 
 (defn fetch-works [query-context]
   (-> query-context
