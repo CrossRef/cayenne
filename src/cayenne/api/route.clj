@@ -115,6 +115,15 @@
             (response/header "Content-Type" "application/json")
             (response/header "Exception-Name" (type e)))))))
 
+(defn wrap-ignore-trailing-slash
+  [handler]
+  (fn [request]
+    (let [uri (:uri request)]
+      (handler (assoc request :uri (if (and (not (= "/" uri))
+                                            (.endsWith uri "/"))
+                                     (subs uri 0 (dec (count uri)))
+                                     uri))))))
+
 (defn create-handler [& {:keys [graph-api feed-api] :or {graph-api false
                                                          feed-api false}}]
   (-> (create-all-routes :graph-api graph-api :feed-api feed-api)
@@ -131,7 +140,8 @@
       ; (creates headers that are incompatible)
       ; (wrap-stacktrace-web)
       (conneg/wrap-accept)
-      (wrap-exception-handler)))
+      (wrap-exception-handler)
+      (wrap-ignore-trailing-slash)))
 
 (conf/with-core :default
   (conf/add-startup-task
