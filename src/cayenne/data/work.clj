@@ -65,18 +65,30 @@
 (defn partial-response? [query-response]
   (.. query-response (getResponseHeader) (get "partialResults")))
 
+(defn render-record [query-context doc]
+  (cond
+    (some #{"DOI"} (:select query-context))
+    {:DOI (doi-id/extract-long-doi (get doc "doi"))}
+    
+    :else
+    (-> doc
+        citeproc/->citeproc
+        with-member-id
+        with-citations)))
+
 (defn fetch [query-context]
   (let [response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query query-context 
+                     (.query (query/->solr-query query-context
                                                  :filters filter/std-filters)))
         doc-list (.getResults response)]
     (if (partial-response? response)
       (throw (RuntimeException. "Solr returned a partial result set"))
       (-> (r/api-response :work-list)
+          ;; (r/with-solr-debug-info response)
           (r/with-result-facets (facet/->response-facets response))
-          (r/with-result-items 
+          (r/with-result-items
             (.getNumFound doc-list)
-            (map (comp with-citations with-member-id citeproc/->citeproc) doc-list)
+            (map render-record (repeat query-context) doc-list)
             :next-cursor (.getNextCursorMark response))
           (r/with-query-context-info query-context)))))
 
@@ -106,7 +118,8 @@
       (throw (RuntimeException. "Solr returned a partail result set"))
       (when-let [doc (-> response (.getResults) first)]
         (r/api-response :work :content (-> (citeproc/->citeproc doc)
-                                           with-member-id with-citations))))))
+                                           with-member-id
+                                           with-citations))))))
 
 (defn get-unixsd [doi]
   (let [record (promise)]

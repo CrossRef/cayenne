@@ -139,7 +139,7 @@
 
 ;; todo this should be passed in to ->query-context
 (def select-fields
-  {"DOI" ["doi_key"]})
+  {"DOI" ["doi"]})
 
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
