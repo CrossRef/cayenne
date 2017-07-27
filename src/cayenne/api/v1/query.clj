@@ -258,6 +258,7 @@
     (when (:cursor query-context)
       (doto query
         (.setStart (int 0))
+        (.addSort "indexed_at" SolrQuery$ORDER/asc)
         (.addSort "doi_key" SolrQuery$ORDER/asc)
         (.setParam "cursorMark" (into-array [(:cursor query-context)]))))
     (when-not (empty? (:facets query-context))
