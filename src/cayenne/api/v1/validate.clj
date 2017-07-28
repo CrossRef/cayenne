@@ -415,9 +415,19 @@
               "cursor")))
 
 (defn validate-ordering-params [context params]
-  (-> context
-      (util/?> (:order params) sort-order-validator (:order params))
-      (util/?> (:sort params) sort-field-validator (:sort params))))
+  (if-not (:sortable context)
+    (-> context
+        (validate #(not (:order params))
+                  :parameter-not-allowed
+                  "This route does not support order"
+                  "order")
+        (validate #(not (:sort params))
+                  :parameter-not-allowed
+                  "This route does not support sort"
+                  "sort"))
+    (-> context
+        (util/?> (:order params) sort-order-validator (:order params))
+        (util/?> (:sort params) sort-field-validator (:sort params)))))
 
 ;; TODO implement, although covered by 404s in some cases
 (defn validate-id [context rc]
@@ -573,8 +583,11 @@
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
                             query-field-validator select-validator
-                            singleton deep-pagable]
-                     :or {singleton false deep-pagable false limited-offset false}}]
+                            singleton deep-pagable sortable]
+                     :or {singleton false
+                          deep-pagable false
+                          limited-offset false
+                          sortable false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
@@ -582,7 +595,8 @@
                               :query-field-validator query-field-validator
                               :select-validator select-validator
                               :singleton singleton
-                              :deep-pagable deep-pagable}
+                              :deep-pagable deep-pagable
+                              :sortable sortable}
           result (validate-resource-context validation-context
                                             resource-context)]
       (if (:failures result)
