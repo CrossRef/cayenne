@@ -14,7 +14,7 @@
   "Find anything in s that looks like it may be an ISSN and return it
    verbatim without URI prefix."
   [s]
-  (first (re-find #"(\d[\s\-]*){7}[0-9Xx]" s)))
+  (first (re-find #"(\d[^\dxX]*){7}[0-9Xx]" s)))
 
 (defn normalize-issn 
   "Find anything in s that looks like it may be an ISSN and return it
