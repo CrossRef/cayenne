@@ -118,14 +118,5 @@
   (let [query (normalize-query-context query-context)
         descendant-ids (fetch-descendant-ids query)
         descendant-query (update-in query [:id] #(vec (conj descendant-ids 
-                                                            (fr-id/id-to-doi-uri %))))
-        response (get-solr-works descendant-query)
-        doc-list (.getResults response)]
-    (-> (r/api-response :work-list)
-        (r/with-result-facets (facet/->response-facets response))
-        (r/with-query-context-info descendant-query)
-        (r/with-result-items 
-          (.getNumFound doc-list)
-          (map (comp work/with-citations work/with-member-id citeproc/->citeproc) doc-list)
-          :next-cursor (.getNextCursorMark response)))))
-
+                                                            (fr-id/id-to-doi-uri %))))]
+    (work/fetch descendant-query :id-field solr-funder-id-field)))

@@ -79,16 +79,9 @@
                       (->response-doc pub-doc)))))
 
 (defn fetch-works [query-context]
-  (let [expanded-qc (expand-context-for-prefixes query-context)
-        response (get-solr-works expanded-qc)
-        doc-list (.getResults response)]
-    (-> (r/api-response :work-list)
-        (r/with-result-facets (facet/->response-facets response))
-        (r/with-query-context-info query-context)
-        (r/with-result-items
-          (.getNumFound doc-list)
-          (map (comp work/with-citations work/with-member-id citeproc/->citeproc) doc-list)
-          :next-cursor (.getNextCursorMark response)))))
+  (-> query-context
+      expand-context-for-prefixes
+      work/fetch))
 
 ;; todo handle rows and offset propery (not using either of them)
 

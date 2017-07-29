@@ -14,13 +14,6 @@
 
 (def solr-type-id-field "type")
 
-(defn get-solr-works [query-context]
-  (let [ctxt (update-in query-context [:id] type-id/->index-id)]
-    (-> (conf/get-service :solr)
-        (.query (query/->solr-query ctxt
-                                    :id-field solr-type-id-field
-                                    :filters filter/std-filters)))))
-
 (defn fetch-all []
   (-> (r/api-response :type-list)
       (r/with-result-items 
@@ -38,12 +31,6 @@
            (r/api-response :type :content)))))
 
 (defn fetch-works [query-context]
-  (let [response (get-solr-works query-context)
-        doc-list (.getResults response)]
-    (-> (r/api-response :work-list)
-        (r/with-result-facets (facet/->response-facets response))
-        (r/with-query-context-info query-context)
-        (r/with-result-items 
-          (.getNumFound doc-list)
-          (map (comp work/with-citations work/with-member-id citeproc/->citeproc) doc-list)
-          :next-cursor (.getNextCursorMark response)))))
+  (-> query-context
+      (update-in [:id] type-id/->index-id)
+      (work/fetch :id-field solr-type-id-field)))

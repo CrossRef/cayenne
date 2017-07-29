@@ -11,13 +11,7 @@
             [clojure.string :as string]
             [somnium.congomongo :as m]))
 
-(def solr-publisher-id-field "owner_prefix")
-
-(defn get-solr-works [query-context]
-  (-> (conf/get-service :solr)
-      (.query (query/->solr-query query-context 
-                                  :id-field solr-publisher-id-field
-                                  :filters filter/std-filters))))
+(def solr-prefix-id-field "owner_prefix")
 
 (defn get-solr-work-count [query-context]
   (-> (conf/get-service :solr)
@@ -29,15 +23,7 @@
       (.getNumFound)))
 
 (defn fetch-works [query-context]
-  (let [response (get-solr-works query-context)
-        doc-list (.getResults response)]
-    (-> (r/api-response :work-list)
-        (r/with-result-facets (facet/->response-facets response))
-        (r/with-query-context-info query-context)
-        (r/with-result-items 
-          (.getNumFound doc-list)
-          (map (comp work/with-citations work/with-member-id citeproc/->citeproc) doc-list)
-          :next-cursor (.getNextCursorMark response)))))
+  (work/fetch query-context :id-field solr-prefix-id-field))
 
 (defn fetch-one [query-context]
   (when-let [member-doc (m/with-mongo (conf/get-service :mongo)

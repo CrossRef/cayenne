@@ -76,9 +76,10 @@
         with-member-id
         with-citations)))
 
-(defn fetch [query-context]
+(defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
   (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context
+                                                 :id-field id-field
                                                  :filters filter/std-filters)))
         doc-list (.getResults response)]
     (if (partial-response? response)
