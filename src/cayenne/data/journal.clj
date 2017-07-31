@@ -22,13 +22,14 @@
 
 (defn issn-doc->subjects [issn-doc]
   (m/with-mongo (conf/get-service :mongo)
-    (m/fetch "categories" :where {:code {:$in (:categories issn-doc)}})))
+    (m/fetch "categories" :where {:code {:$in (or (:categories issn-doc) [])}})))
 
 (defn get-subject-docs [issns]
-  (let [issn-docs (m/with-mongo (conf/get-service :mongo)
+  (let [query-issns (or issns [])
+        issn-docs (m/with-mongo (conf/get-service :mongo)
                     (m/fetch "issns"
-                             :where {:$or [{:p_issn {:$in issns}}
-                                           {:e_issn {:$in issns}}]}))]
+                             :where {:$or [{:p_issn {:$in query-issns}}
+                                           {:e_issn {:$in query-issns}}]}))]
     (mapcat issn-doc->subjects issn-docs)))
 
 (defn fetch-one [query-context]
