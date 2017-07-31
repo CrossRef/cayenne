@@ -204,7 +204,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -311,7 +312,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -333,7 +335,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -363,7 +366,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -395,7 +399,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
@@ -433,7 +438,8 @@
                             :query-field-validator v/validate-work-query-fields
                             :select-validator v/validate-work-selects
                             :deep-pagable true
-                            :sortable true)
+                            :sortable true
+                            :samplable true)
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json

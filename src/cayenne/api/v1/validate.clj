@@ -358,7 +358,8 @@
 (defn validate-paging-params
   [context params]
   (let [existence-checks-context
-        (if (:singleton context)
+        (cond
+          (:singleton context)
           (-> context
               (validate #(not (:rows params))
                         :parameter-not-allowed
@@ -372,6 +373,15 @@
                         :parameter-not-allowed
                         "This route does not support offset"
                         "offset"))
+
+          (not (:samplable context))
+          (-> context
+              (validate #(not (:sample params))
+                        :parameter-not-allowed
+                        "This route does not support sample"
+                        "sample"))
+          
+          :else
           (-> context
               (validate #(if (:sample params)
                            (not (or (:rows params) (:offset params)))
@@ -583,11 +593,12 @@
 
 (defn malformed? [& {:keys [id-validator facet-validator filter-validator
                             query-field-validator select-validator
-                            singleton deep-pagable sortable]
+                            singleton deep-pagable sortable samplable]
                      :or {singleton false
                           deep-pagable false
                           limited-offset false
-                          sortable false}}]
+                          sortable false
+                          samplable false}}]
   (fn [resource-context]
     (let [validation-context {:id-validator id-validator
                               :facet-validator facet-validator
@@ -596,7 +607,8 @@
                               :select-validator select-validator
                               :singleton singleton
                               :deep-pagable deep-pagable
-                              :sortable sortable}
+                              :sortable sortable
+                              :samplable samplable}
           result (validate-resource-context validation-context
                                             resource-context)]
       (if (:failures result)
