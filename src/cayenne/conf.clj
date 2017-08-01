@@ -151,7 +151,7 @@
   (set-param! [:res :tokens] "tokens.edn")
   (set-param! [:res :funder-update] "data/funder-update.date")
 
-  (set-param! [:location :cr-titles-csv] "http://www.crossref.org/titlelist/titleFile.csv")
+  (set-param! [:location :cr-titles-csv] "http://ftp.crossref.org/titlelist/titleFile.csv")
   (set-param! [:location :cr-funder-registry] "http://dx.doi.org/10.13039/fundref_registry")
 
   (set-param! [:test :doi] "10.5555/12345678")
