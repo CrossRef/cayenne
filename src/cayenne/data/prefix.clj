@@ -16,7 +16,7 @@
 (defn get-solr-work-count [query-context]
   (-> (conf/get-service :solr)
       (.query (query/->solr-query query-context 
-                                  :id-field solr-publisher-id-field
+                                  :id-field solr-prefix-id-field
                                   :paged false
                                   :count-only true))
       (.getResults)
