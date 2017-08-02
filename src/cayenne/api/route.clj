@@ -7,6 +7,7 @@
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
             [cayenne.api.auth.token :as token-auth]
+            [cayenne.util :as util]
             [ring.middleware.logstash :as logstash]
             [heartbeat.ring :refer [wrap-heartbeat]]
             [heartbeat.core :refer [def-web-check def-version]]
@@ -71,6 +72,18 @@
    wrap-basic-authentication
    token-auth/authenticated?))
 
+(defn create-unknown-route []
+  (routes
+   (ANY "*" []
+        (-> (response/response
+             (json/write-str
+              {:status :error
+               :message-type :route-not-found
+               :message-version "1.0.0"
+               :message "Route not found"}))
+            (response/status 404)
+            (response/header "Content-Type" "application/json")))))
+
 (defn create-all-routes [& {:keys [graph-api feed-api]
                             :or {graph-api false
                                  feed-api false}}]
@@ -79,7 +92,8 @@
                   (create-docs-routes)]
            graph-api (conj (create-graph-routes))
            feed-api (conj (create-feed-routes))
-           true (conj (create-unprotected-api-routes)))))
+           true (conj (create-unprotected-api-routes))
+           true (conj (create-unknown-route)))))
 
 (defn wrap-cors
   [h]
