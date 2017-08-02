@@ -60,7 +60,7 @@
 (def intended-application-validator
   (enum-validator :intended-application-not-valid
                   "Intended application"
-                  ["unspecified" "text-mining"]))
+                  ["unspecified" "text-mining" "similarity-checking"]))
 
 (def boolean-validator
   (enum-validator :boolean-not-valid
