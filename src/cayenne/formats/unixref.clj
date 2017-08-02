@@ -250,17 +250,25 @@
   "Returns a resource link. :content-version can be any of tdm, vor, am."
   [intended-application coll-item-loc]
   {:type :url
-   :content-version (or (xml/xselect1 coll-item-loc "resource" ["content_version"])
+   :content-version (or (xml/xselect1 coll-item-loc ["content_version"])
                         "vor")
    :intended-application intended-application
-   :content-type (or (xml/xselect1 coll-item-loc "resource" ["mime_type"]) "unspecified")
-   :value (xml/xselect1 coll-item-loc "resource" :text)})
+   :content-type (or (xml/xselect1 coll-item-loc ["mime_type"]) "unspecified")
+   :value (xml/xselect1 coll-item-loc :text)})
 
-(defn parse-collection [with-attribute item-loc]
-  (let [items (xml/xselect item-loc 
-                           "doi_data" :> "collection"
-                           [:= "property" with-attribute] "item")]
-    (map (partial parse-collection-item with-attribute) items)))
+(defn parse-collection
+  ([with-attribute item-loc]
+      (let [items (xml/xselect item-loc 
+                            "doi_data" :> "collection"
+                            [:= "property" with-attribute] "item"
+                            "resource")]
+     (map (partial parse-collection-item with-attribute) items)))
+  ([with-attribute with-crawler with-application item-loc]
+   (let [items (xml/xselect item-loc 
+                            "doi_data" :> "collection"
+                            [:= "property" with-attribute] "item"
+                            "resource" [:= "crawler" with-crawler])]
+     (map (partial parse-collection-item with-application) items))))
 
 (defn parse-resource [item-loc]
   (when-let [value (xml/xselect1 item-loc "doi_data" "resource" :text)]
@@ -733,42 +741,47 @@
    resource urls, some dates, titles, ids, citations, components, crossmark assertions
    and programs."
   [item-loc]
-  (-> {:type :work}
-      (attach-ids (parse-item-id-uris item-loc))
-      (parse-attach :update-policy item-loc :single parse-update-policy)
-      (parse-attach :domain-exclusive item-loc :single parse-domain-exclusive-status)
-      (parse-attach :domains item-loc :multi parse-domains)
-      (parse-attach :updates item-loc :multi parse-updates)
-      (parse-attach :component item-loc :multi parse-component-list)
-      (parse-attach :institution item-loc :multi parse-institutions)
-      (parse-attach :funder item-loc :multi parse-item-funders)
-      (parse-attach :clinical-trial-number item-loc :multi parse-item-clinical-trial-numbers)
-      (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
-      (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
-      (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
-      (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
-      (parse-attach :publisher item-loc :single parse-item-publisher)
-      (parse-attach :resource-resolution item-loc :single parse-resource)
-      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
-      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "unspecified"))
-      (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "syndication"))
-      (parse-attach :relation item-loc :multi parse-relations)
-      (parse-attach :license item-loc :multi parse-item-licenses)
-      (parse-attach :archived-with item-loc :multi parse-item-archives)
-      (parse-attach :title item-loc :multi parse-item-titles)
-      (parse-attach :citation item-loc :multi parse-item-citations)
-      (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
-      (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
-      (parse-attach :published-other item-loc ::multi (partial parse-item-pub-dates "other"))
-      (parse-attach :published item-loc :multi parse-item-pub-dates)
-      (parse-attach :posted item-loc :single parse-item-posted-date)
-      (parse-attach :accepted item-loc :single parse-item-accepted-date)
-      (parse-attach :assertion item-loc :multi parse-item-assertions)
-      (parse-attach :abstract item-loc :single parse-item-abstract)
-      (parse-attach :number item-loc :multi parse-item-numbers)
-      (parse-attach :issn item-loc :multi parse-item-issn-details)
-      (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
-      (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online"))))
+  (let [parse-similarity-collection (partial parse-collection
+                                             "crawler-based"
+                                             "iParadigms"
+                                             "similarity-checking")]
+    (-> {:type :work}
+        (attach-ids (parse-item-id-uris item-loc))
+        (parse-attach :update-policy item-loc :single parse-update-policy)
+        (parse-attach :domain-exclusive item-loc :single parse-domain-exclusive-status)
+        (parse-attach :domains item-loc :multi parse-domains)
+        (parse-attach :updates item-loc :multi parse-updates)
+        (parse-attach :component item-loc :multi parse-component-list)
+        (parse-attach :institution item-loc :multi parse-institutions)
+        (parse-attach :funder item-loc :multi parse-item-funders)
+        (parse-attach :clinical-trial-number item-loc :multi parse-item-clinical-trial-numbers)
+        (parse-attach :author item-loc :multi (partial parse-item-contributors "author"))
+        (parse-attach :editor item-loc :multi (partial parse-item-contributors "editor"))
+        (parse-attach :translator item-loc :multi (partial parse-item-contributors "translator"))
+        (parse-attach :chair item-loc :multi (partial parse-item-contributors "chair"))
+        (parse-attach :publisher item-loc :single parse-item-publisher)
+        (parse-attach :resource-resolution item-loc :single parse-resource)
+        (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "text-mining"))
+        (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "unspecified"))
+        (parse-attach :resource-fulltext item-loc :multi (partial parse-collection "syndication"))
+        (parse-attach :resource-fulltext item-loc :multi parse-similarity-collection)
+        (parse-attach :relation item-loc :multi parse-relations)
+        (parse-attach :license item-loc :multi parse-item-licenses)
+        (parse-attach :archived-with item-loc :multi parse-item-archives)
+        (parse-attach :title item-loc :multi parse-item-titles)
+        (parse-attach :citation item-loc :multi parse-item-citations)
+        (parse-attach :published-print item-loc :multi (partial parse-item-pub-dates "print"))
+        (parse-attach :published-online item-loc :multi (partial parse-item-pub-dates "online"))
+        (parse-attach :published-other item-loc ::multi (partial parse-item-pub-dates "other"))
+        (parse-attach :published item-loc :multi parse-item-pub-dates)
+        (parse-attach :posted item-loc :single parse-item-posted-date)
+        (parse-attach :accepted item-loc :single parse-item-accepted-date)
+        (parse-attach :assertion item-loc :multi parse-item-assertions)
+        (parse-attach :abstract item-loc :single parse-item-abstract)
+        (parse-attach :number item-loc :multi parse-item-numbers)
+        (parse-attach :issn item-loc :multi parse-item-issn-details)
+        (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
+        (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online")))))
 
 ;; crawler should be 'crawler-based' - but we may not want to include those anyway
 
