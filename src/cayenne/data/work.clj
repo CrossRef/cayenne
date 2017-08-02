@@ -66,15 +66,18 @@
   (.. query-response (getResponseHeader) (get "partialResults")))
 
 (defn render-record [query-context doc]
-  (cond
-    (some #{"DOI"} (:select query-context))
-    {:DOI (doi-id/extract-long-doi (get doc "doi"))}
-    
-    :else
+  (if (-> query-context :select empty?)
     (-> doc
         citeproc/->citeproc
         with-member-id
-        with-citations)))
+        with-citations)
+    
+    (cond-> {}
+      (some #{"DOI"} (:select query-context))
+      (assoc :DOI (doi-id/extract-long-doi (get doc "doi")))
+      
+      (some #{"score"} (:select query-context))
+      (assoc :score (get doc "score")))))
 
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
   (let [response (-> (conf/get-service :solr)

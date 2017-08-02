@@ -318,7 +318,7 @@
                      context
                      unknown-selects))))
 
-(def validate-work-selects (partial validate-selects [:DOI]))
+(def validate-work-selects (partial validate-selects [:DOI :score]))
 
 (def wildcard-facet-forms ["*" "t" "T" "1"])
 
