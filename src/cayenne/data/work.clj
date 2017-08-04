@@ -13,8 +13,10 @@
             [somnium.congomongo :as m]
             [org.httpkit.client :as http]
             [clojure.string :as string]
-            [clojure.data.json :as json])
-  (:import [java.lang RuntimeException]))
+            [clojure.data.json :as json]
+            [cayenne.ids.doi :as doi])
+  (:import [java.lang RuntimeException]
+           [java.net URLEncoder]))
 
 ;; todo eventually produce citeproc from more detailed data stored in mongo
 ;; for each DOI that comes back from solr. For now, covert the solr fields
@@ -136,27 +138,40 @@
     (r/api-response :work-quality :content (quality/check-tree item-tree))))
 
 (def agency-label
-  {:crossref "CrossRef"
-   :datacite "DataCite"
-   :medra "mEDRA"})
+  {"10.SERV/DEFAULT"  "Default"
+   "10.SERV/CROSSREF" "Crossref"
+   "10.SERV/DATACITE" "DataCite"
+   "10.SERV/MEDRA"    "mEDRA"})
+
+(def agency-id
+  {"10.SERV/DEFAULT"  "default"
+   "10.SERV/CROSSREF" "crossref"
+   "10.SERV/DATACITE" "datacite"
+   "10.SERV/MEDRA"    "medra"})
 
 (defn get-agency [doi]
   (let [extracted-doi (doi-id/normalize-long-doi doi)
         {:keys [status headers body error]}
-        @(http/get (str (conf/get-param [:upstream :ra-url]) extracted-doi))]
+        @(http/get (str (conf/get-param [:upstream :ra-url])
+                        (doi-id/extract-long-prefix extracted-doi)))]
     (when-not error
-      (let [agency (-> body json/read-str first (get "RA"))]
-        (when-not (nil? agency)
-          (-> agency
-              string/lower-case
-              (string/replace #"\s+" "")
-              keyword))))))
+      (let [vals (-> body
+                     (json/read-str :key-fn keyword)
+                     :values)
+            hs-serv-index-value 1]
+        (get-in
+         (first
+          (filter
+           #(= (:index %) hs-serv-index-value)
+           vals))
+         [:data :value])))))
 
 (defn ->agency-response [doi agency]
   (r/api-response 
    :work-agency
    :content {:DOI (doi-id/normalize-long-doi doi)
-             :agency {:id agency :label (or (agency-label agency) agency)}}))
+             :agency {:id (or (agency-id agency) agency)
+                      :label (or (agency-label agency) agency)}}))
 
 (defn fetch-agency [doi]
   (let [extracted-doi (doi-id/normalize-long-doi doi)
