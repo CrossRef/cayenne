@@ -23,7 +23,7 @@
 (defn parse-attach
   "Attach a relation by running a function on an xml location."
   [item relation loc kind parse-fn]
-  (let [existing (or (get item relation) [])
+  (let [existing (or (get-in item [:rel relation]) [])
         related (parse-fn loc)]
     (cond 
      (= kind :single)
@@ -267,7 +267,8 @@
    (let [items (xml/xselect item-loc 
                             "doi_data" :> "collection"
                             [:= "property" with-attribute] "item"
-                            "resource" [:= "crawler" with-crawler])]
+                            [:= "crawler" with-crawler]
+                            "resource")]
      (map (partial parse-collection-item with-application) items))))
 
 (defn parse-resource [item-loc]
