@@ -89,7 +89,7 @@
   (for [[idx elt] (indexed coll) :when (pred elt)] idx))
 
 (defn reordered-preprints [records]
-  (let [reordering-records (take 20 records)
+  (let [reordering-records (vector (take 20 records))
         doi-positions (into {} (map-indexed #(vector (:DOI %2) %1) reordering-records))]
     (concat
      (reduce
@@ -114,7 +114,7 @@
            :else
            (conj %1 %2)))
       []
-      records)
+      reordering-records)
      (drop 20 records))))
 
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
