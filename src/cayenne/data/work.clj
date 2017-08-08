@@ -89,7 +89,7 @@
   (for [[idx elt] (indexed coll) :when (pred elt)] idx))
 
 (defn reordered-preprints [records]
-  (let [reordering-records (vector (take 20 records))
+  (let [reordering-records (take 20 records)
         doi-positions (into {} (map-indexed #(vector (:DOI %2) %1) reordering-records))]
     (concat
      (reduce
@@ -106,10 +106,11 @@
            (conj %1 %2)
 
            (not= first-preprint-pos -1)
-           (concat
-            (subvec %1 0 first-preprint-pos)
-            [%2]
-            (subvec %1 first-preprint-pos))
+           (vec
+            (concat
+             (subvec %1 0 first-preprint-pos)
+             [%2]
+             (subvec %1 first-preprint-pos)))
 
            :else
            (conj %1 %2)))
