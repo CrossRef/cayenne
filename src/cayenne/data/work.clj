@@ -81,6 +81,42 @@
       (some #{"score"} (:select query-context))
       (assoc :score (get doc "score")))))
 
+(defn indexed
+  [s]
+  (map vector (iterate inc 0) s))
+
+(defn positions [pred coll]
+  (for [[idx elt] (indexed coll) :when (pred elt)] idx))
+
+(defn reordered-preprints [records]
+  (let [reordering-records (take 20 records)
+        doi-positions (into {} (map-indexed #(vector (:DOI %2) %1) reordering-records))]
+    (concat
+     (reduce
+      #(let [has-preprint-dois (->> (get (:relation %2) "has-preprint")
+                                    (map :id))
+             preprint-positions (positions (fn [a]
+                                             (some #{(:DOI a)}
+                                                   has-preprint-dois)) %1)
+             first-preprint-pos (if (empty? preprint-positions)
+                                  -1
+                                  (apply min preprint-positions))]
+         (cond
+           (empty? has-preprint-dois)
+           (conj %1 %2)
+
+           (not= first-preprint-pos -1)
+           (concat
+            (subvec %1 0 first-preprint-pos)
+            [%2]
+            (subvec %1 first-preprint-pos))
+
+           :else
+           (conj %1 %2)))
+      []
+      records)
+     (drop 20 records))))
+
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
   (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context
@@ -94,7 +130,8 @@
           (r/with-result-facets (facet/->response-facets response))
           (r/with-result-items
             (.getNumFound doc-list)
-            (map render-record (repeat query-context) doc-list)
+            (-> (map render-record (repeat query-context) doc-list)
+                reordered-preprints)
             :next-cursor (.getNextCursorMark response))
           (r/with-query-context-info query-context)))))
 
