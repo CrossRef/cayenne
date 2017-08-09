@@ -14,6 +14,7 @@
             [cayenne.api.v1.feed :as feed]
             [clj-time.core :as time]
             [clj-time.format :as timef]
+            [clj-time.coerce :as timec]
             [org.httpkit.client :as http]
             [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as qt]
@@ -101,12 +102,13 @@
   (try
     (->> (conf/get-param [:res :funder-update])
          slurp
-         (timef/parse last-modified-format))
-    (catch java.io.FileNotFoundException e nil)))
+         (Long/parseLong)
+         timec/from-long)
+    (catch Exception e (timec/from-long 0))))
 
 (defn write-last-funder-update [dt]
   (-> (conf/get-param [:res :funder-update])
-      (spit (timef/unparse last-modified-format dt))))
+      (spit (timec/to-long dt))))
 
 (defjob update-funders [ctx]
   (try
