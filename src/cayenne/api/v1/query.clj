@@ -225,7 +225,8 @@
      :order (parse-sort-order params)
      :sort (parse-sort params)
      :rels (get-rels params)
-     :filters (merge filters (get-filters params))}))
+     :filters (merge filters (get-filters params))
+     :debug (:debug params)}))
 
 ;; todo get selectors and get filters handle json input
 

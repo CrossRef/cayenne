@@ -132,7 +132,7 @@
     (if (partial-response? response)
       (throw (RuntimeException. "Solr returned a partial result set"))
       (-> (r/api-response :work-list)
-          ;; (r/with-solr-debug-info response)
+          (r/with-debug-info response query-context)
           (r/with-result-facets (facet/->response-facets response))
           (r/with-result-items
             (.getNumFound doc-list)

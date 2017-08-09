@@ -2,6 +2,14 @@
   (:require [clojure.string :as str]
             [cayenne.util :refer [?>]]))
 
+(defn with-debug-info [response solr-response query-context]
+  (if-not (:debug query-context)
+    response
+    (-> response
+        (assoc-in [:debug :instance-hostname]
+                  (.getCanonicalHostName (java.net.InetAddress/getLocalHost)))
+        (assoc-in [:debug :solr-response-header] (.getHeader solr-response)))))
+
 (defn with-page-info [response offset per-page]
   (-> response
       ;(assoc-in [:message :start-index] (* (- start-page 1) * per-page))
