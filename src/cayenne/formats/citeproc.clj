@@ -328,7 +328,7 @@
                       (assoc :doi-asserted-by (doi-asserted-by-m real-doi))))
                 citation-map))]
       (when (get solr-doc "citation_key")
-        (let [citation-fields [:key :ISSN :issn-type :isbn :isbn-type
+        (let [citation-fields [:key :ISSN :issn-type :isbn-type
                                :author :volume :issue :first-page :year
                                :ISBN :isbn-type :edition :component
                                :standard-designator :standards-body

@@ -14,7 +14,8 @@
             [org.httpkit.client :as http]
             [clojure.string :as string]
             [clojure.data.json :as json]
-            [cayenne.ids.doi :as doi])
+            [cayenne.ids.doi :as doi]
+            [clojure.set :as set])
   (:import [java.lang RuntimeException]
            [java.net URLEncoder]))
 
@@ -68,18 +69,20 @@
   (.. query-response (getResponseHeader) (get "partialResults")))
 
 (defn render-record [query-context doc]
-  (if (-> query-context :select empty?)
-    (-> doc
-        citeproc/->citeproc
-        with-member-id
-        with-citations)
-    
-    (cond-> {}
-      (some #{"DOI"} (:select query-context))
-      (assoc :DOI (doi-id/extract-long-doi (get doc "doi")))
-      
-      (some #{"score"} (:select query-context))
-      (assoc :score (get doc "score")))))
+  (into
+   {}
+   (filter
+    #(not (if (coll? (second %)) (empty? (second %)) (nil? (second %))))
+    (if (empty? (:select query-context))
+      (-> doc
+          citeproc/->citeproc
+          with-member-id
+          with-citations)
+      (-> doc
+          citeproc/->citeproc
+          (select-keys (map keyword (:select query-context)))
+          with-member-id
+          with-citations)))))
 
 (defn indexed
   [s]
@@ -90,7 +93,9 @@
 
 (defn reordered-preprints [records]
   (let [reordering-records (take 20 records)
-        doi-positions (into {} (map-indexed #(vector (:DOI %2) %1) reordering-records))]
+        doi-positions (into {} (map-indexed
+                                #(vector (:DOI %2) %1)
+                                reordering-records))]
     (concat
      (reduce
       #(let [has-preprint-dois (->> (get (:relation %2) "has-preprint")
