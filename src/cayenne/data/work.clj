@@ -8,7 +8,6 @@
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
-            [cayenne.action :as action]
             [cayenne.formats.citeproc :as citeproc]
             [somnium.congomongo :as m]
             [org.httpkit.client :as http]
@@ -169,16 +168,6 @@
         (r/api-response :work :content (-> (citeproc/->citeproc doc)
                                            with-member-id
                                            with-citations))))))
-
-(defn get-unixsd [doi]
-  (let [record (promise)]
-    (action/parse-doi doi (action/return-item record))
-    (second @record)))
-
-(defn fetch-quality
-  [doi]
-  (let [item-tree (get-unixsd doi)]
-    (r/api-response :work-quality :content (quality/check-tree item-tree))))
 
 (def agency-label
   {"10.SERV/DEFAULT"  "Default"

@@ -1,5 +1,7 @@
 (ns cayenne.data.quality
   (:require [cayenne.item-tree :as i]
+            [cayenne.api.v1.response :as r]
+            [cayenne.action :as action]
             [clojure.string :as string]))
 
 ;; check item tree health
@@ -162,3 +164,12 @@
   ([item]
      (map #(check-tree item %) checks)))
   
+(defn get-unixsd [doi]
+  (let [record (promise)]
+    (action/parse-doi doi (action/return-item record))
+    (second @record)))
+
+(defn fetch-quality
+  [doi]
+  (let [item-tree (get-unixsd doi)]
+    (r/api-response :work-quality :content (check-tree item-tree))))

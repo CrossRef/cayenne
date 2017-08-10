@@ -3,6 +3,7 @@
             [cayenne.tasks.journal :as journal]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.coverage :as coverage]
+            [cayenne.data.work :as work]
             [cayenne.action :as action]
             [cayenne.conf :as conf]
             [cayenne.production :as production]
@@ -40,3 +41,15 @@
     (doseq [oai-service [:crossref-journals :crossref-serials :crossref-books]]
       (action/get-oai-records
        (conf/get-param [:oai oai-service]) from until action/index-solr-docs))))
+
+(defn update-old-index-docs [& args]
+  (setup)
+  (let [dois (->> {:rows (int 100000) :select ["DOI"] :filters {"until-index-date" (seq [(first args)])}}
+                  work/fetch
+                  :message
+                  :items
+                  (map :DOI))]
+    (println "Updating" (count dois) "DOIs")
+    (doseq [doi dois]
+      (action/parse-doi doi action/index-solr-docs))
+    (println "Done")))

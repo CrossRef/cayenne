@@ -7,6 +7,7 @@
             [cayenne.ids.member :as member-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.conf :as conf]
+            [cayenne.data.quality :as quality]
             [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.work :as work]
@@ -227,7 +228,7 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :handle-ok (->1 #(work/fetch-quality doi)))
+  :handle-ok (->1 #(quality/fetch-quality doi)))
 
 (defresource work-agency-resource [doi]
   :malformed? (v/malformed? :singleton true)
