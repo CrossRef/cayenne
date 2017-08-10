@@ -22,7 +22,9 @@
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
-            [taoensso.timbre :as timbre :refer [info error]]))
+            [taoensso.timbre :as timbre :refer [info error]]
+            [cayenne.data.work :as works]
+            [cayenne.api.v1.query :as query]))
 
 (conf/with-core :default
   (conf/set-param! [:oai :crossref-test :dir] (str (get-param [:dir :data]) "/oai/crossref-test"))
@@ -310,6 +312,17 @@
     (when (pos? (count data))
       (println (str "Requesting from " (+ offset 1000)))
       (recur id (+ offset 1000) to-be-updated?))))
+
+(defn update-old-index-docs [until]
+  (let [dois (->> {:rows (int 100000) :select ["DOI"] :filters {"until-index-date" (seq [until])}}
+                  works/fetch
+                  :message
+                  :items
+                  (map :DOI))]
+    (println "Updating" (count dois) "DOIs")
+    (doseq [doi dois]
+      (parse-doi doi index-solr-docs))
+    (println "Done")))
 
 (defn elife-bad-container-title? [record]
   (> (count (get record "container-title")) 1))
