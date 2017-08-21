@@ -5,7 +5,8 @@
             [somnium.congomongo :as m]
             [cayenne.conf :as conf]
             [cayenne.ids.issn :as issn-id]
-            [cayenne.util :as util]))
+            [cayenne.util :as util]
+            [cayenne.ids.doi :as doi-id]))
 
 ;; ingest journal information
 ;; currently only the CrossRef title list csv
@@ -15,24 +16,39 @@
   (m/add-index! collection [:title])
   (m/add-index! collection [:token]))
 
-(defn insert-journal! [collection name publisher issns]
-  (let [normalized-issns (->> issns
-                              (map issn-id/normalize-issn)
+(defn insert-journal! [collection name id publisher doi pissn eissn]
+  (let [normalized-pissn (issn-id/normalize-issn pissn)
+        normalized-eissn (issn-id/normalize-issn eissn)
+        normalized-issns (->> [normalized-eissn, normalized-pissn]
                               (filter (complement nil?)))
+        normalized-doi (doi-id/normalize-long-doi doi)
         doc {:title name
+             :id (Integer/parseInt id)
+             :doi normalized-doi
              :token (util/tokenize-name name)
              :publisher publisher
+             :pissn normalized-pissn
+             :eissn normalized-eissn
              :issn normalized-issns}]
     (if (empty? normalized-issns)
       ;; some journals in the Crossref title list do not have ISSNs
       ;; so instead of updating any record matching an ISSN, we use
-      ;; the title
+      ;; the journal title
       (m/update! collection
                  {:title name}
                  doc)
       (m/update! collection
                  {:issn normalized-issns}
                  doc))))
+
+(def title-column 0)
+(def id-column 1)
+(def publisher-column 2)
+(def subjects-column 3)
+(def pissn-column 4)
+(def eissn-column 5)
+(def doi-column 6)
+(def issues-column 7)
 
 (defn load-journals-from-cr-title-list-csv [collection]
   (m/with-mongo (conf/get-service :mongo)
@@ -41,6 +57,10 @@
       (let [cleaned (string/replace (slurp body) #"\\\"" "")]
         (doseq [title (drop 1 (csv/read-csv cleaned))]
           (insert-journal! collection
-                           (first title)
-                           (second title)
-                           (string/split (nth title 3) #"\|")))))))
+                           (nth title title-column)
+                           (nth title id-column)
+                           (nth title publisher-column)
+                           (nth title doi-column)
+                           (nth title pissn-column)
+                           (nth title eissn-column)))))))
+
