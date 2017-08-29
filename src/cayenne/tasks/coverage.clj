@@ -140,7 +140,7 @@
       (try
         (m/update! 
          collection 
-         {:issn (:issn journal)}
+         {:id (:id journal)}
          (merge journal
                 (check-breakdowns journal :type :issn :id-field :issn)
                 (check-record-coverage journal :type :issn :id-field :issn)
