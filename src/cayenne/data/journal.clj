@@ -7,10 +7,19 @@
             [cayenne.api.v1.response :as r]
             [somnium.congomongo :as m]))
 
+(defn ->issn-types [journal-doc]
+  (cond-> []
+    (:eissn journal-doc)
+    (conj {:value (:eissn journal-doc) :type "electronic"})
+
+    (:pissn journal-doc)
+    (conj {:value (:pissn journal-doc) :type "print"})))
+
 (defn ->response-doc [journal-doc subject-docs]
   {:title (:title journal-doc)
    :publisher (:publisher journal-doc)
    :ISSN (:issn journal-doc)
+   :issn-type (->issn-types journal-doc)
    :subjects (map #(hash-map :ASJC (Integer/parseInt (:code %))
                              :name (:name %))
                   subject-docs)
