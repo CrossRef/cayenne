@@ -7,6 +7,7 @@
             [clj-time.core :as dt]
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
+            [taoensso.timbre :as timbre :refer [error]]
             [somnium.congomongo :as m]))
 
 (def date-format (df/formatter "yyyy-MM-dd"))
@@ -119,23 +120,30 @@
   [collection]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [member (m/fetch collection :options [:notimeout])]
-      (m/update! 
-       collection
-       {:id (:id member)}
-       (merge member
-              (check-breakdowns member :type :member :id-field :id)
-              (check-record-coverage member :type :member :id-field :id)
-              (check-record-counts member :type :member :id-field :id))))))
+      (try
+        (m/update! 
+         collection
+         {:id (:id member)}
+         (merge member
+                (check-breakdowns member :type :member :id-field :id)
+                (check-record-coverage member :type :member :id-field :id)
+                (check-record-counts member :type :member :id-field :id)))
+        (catch Exception e
+          (error e "Failed to update coverage for member with ID " (:id member)))))))
 
 (defn check-journals
   "Calculate and insert journal metadata coverage metrics into a collection."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
     (doseq [journal (m/fetch collection :options [:notimeout])]
-      (m/update! 
-       collection 
-       {:issn (:issn journal)}
-       (merge journal
-              (check-breakdowns journal :type :issn :id-field :issn)
-              (check-record-coverage journal :type :issn :id-field :issn)
-              (check-record-counts journal :type :issn :id-field :issn))))))
+      (try
+        (m/update! 
+         collection 
+         {:issn (:issn journal)}
+         (merge journal
+                (check-breakdowns journal :type :issn :id-field :issn)
+                (check-record-coverage journal :type :issn :id-field :issn)
+                (check-record-counts journal :type :issn :id-field :issn)))
+        (catch Exception e
+          (error e "Failed to update coverage for journal with ID " (:id journal)))))))
+          
