@@ -24,14 +24,16 @@
   (funder/swapin-loading-collection))
 
 (defn load-journals [& args]
-  (setup)
-  (journal/load-journals-from-cr-title-list-csv "journals")
-  (coverage/check-journals "journals"))
+  (let [collection-name (or (first args) "journals")]
+    (setup)
+    (journal/load-journals-from-cr-title-list-csv collection-name)
+    (coverage/check-journals collection-name)))
 
 (defn load-members [& args]
-  (setup)
-  (publisher/load-publishers "members")
-  (coverage/check-members "members"))
+  (let [collection-name (or (first args) "members")]
+    (setup)
+    (publisher/load-publishers collection-name)
+    (coverage/check-members collection-name)))
 
 (defn load-last-day-works [& args]
   (setup)
@@ -44,7 +46,9 @@
 
 (defn update-old-index-docs [& args]
   (setup)
-  (let [dois (->> {:rows (int 100000) :select ["DOI"] :filters {"until-index-date" (seq [(first args)])}}
+  (let [dois (->> {:rows (int 10)
+                   :select ["DOI"]
+                   :filters {"until-index-date" args}}
                   work/fetch
                   :message
                   :items
