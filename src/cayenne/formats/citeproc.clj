@@ -310,7 +310,10 @@
 
 (defn citation-doi-asserted-by-map [solr-doc]
   (if-let [doi-asserted-bys (get solr-doc "citation_doi_asserted_by")]
-    (into {} (map #(string/split % #"___") doi-asserted-bys))
+    (into {} (map #(let [parts (string/split % #"___")]
+                     [(->> parts reverse (drop 1) reverse (string/join "___"))
+                      (last parts)])
+                  doi-asserted-bys))
     {}))
 
 (defn ->citeproc-citations [solr-doc]
