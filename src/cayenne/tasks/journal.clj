@@ -22,24 +22,16 @@
         normalized-issns (->> [normalized-eissn, normalized-pissn]
                               (filter (complement nil?)))
         normalized-doi (doi-id/normalize-long-doi doi)
+        journal-id (Integer/parseInt id)
         doc {:title name
-             :id (Integer/parseInt id)
+             :id journal-id
              :doi normalized-doi
              :token (util/tokenize-name name)
              :publisher publisher
              :pissn normalized-pissn
              :eissn normalized-eissn
              :issn normalized-issns}]
-    (if (empty? normalized-issns)
-      ;; some journals in the Crossref title list do not have ISSNs
-      ;; so instead of updating any record matching an ISSN, we use
-      ;; the journal title
-      (m/update! collection
-                 {:title name}
-                 doc)
-      (m/update! collection
-                 {:issn normalized-issns}
-                 doc))))
+    (m/update! collection {:id journal-id} doc)))
 
 (def title-column 0)
 (def id-column 1)
