@@ -291,11 +291,11 @@
   (m/with-mongo (conf/get-service :mongo)
     (map :id (m/fetch collection-name :where {:parent id}))))
 
-(def get-funder-children-memo (memoize/memo-lru get-funder-children))
-(def get-funder-siblings-memo (memoize/memo-lru get-funder-siblings))
-(def get-funder-ancestors-memo (memoize/memo-lru get-funder-ancestors))
-(def get-funder-names-memo (memoize/memo-lru get-funder-names))
-(def get-funder-primary-name-memo (memoize/memo-lru get-funder-primary-name))
+(def get-funder-children-memo (memoize/lru get-funder-children :lru/threshold 100))
+(def get-funder-siblings-memo (memoize/lru get-funder-siblings  :lru/threshold 100))
+(def get-funder-ancestors-memo (memoize/lru get-funder-ancestors  :lru/threshold 100))
+(def get-funder-names-memo (memoize/lru get-funder-names  :lru/threshold 100))
+(def get-funder-primary-name-memo (memoize/lru get-funder-primary-name  :lru/threshold 100))
 
 (defn get-funder-descendants
   ([collection-name id]
@@ -308,7 +308,7 @@
         []
         (mapcat (partial get-funder-descendants collection-name (dec level-cap)) children))))))
 
-(def get-funder-descendants-memo (memoize/memo-lru get-funder-descendants))
+(def get-funder-descendants-memo (memoize/lru get-funder-descendants :lru/threshold 100))
 
 (defn clear! []
   (memoize/memo-clear! get-funder-descendants-memo)

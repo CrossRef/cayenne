@@ -19,9 +19,9 @@
           (:categories)
           (map #(Integer/parseInt %))))))
 
-(def get-category-name-memo (memoize/memo-lru get-category-name))
+(def get-category-name-memo (memoize/lru get-category-name :lru/threshold 100))
 
-(def get-issn-categories-memo (memoize/memo-lru get-issn-categories))
+(def get-issn-categories-memo (memoize/lru get-issn-categories :lru/threshold 100))
 
 (defn clear! []
   (memoize/memo-clear! get-category-name-memo)

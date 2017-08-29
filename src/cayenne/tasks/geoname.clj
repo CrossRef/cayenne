@@ -13,7 +13,7 @@
         (first)
         (str))))
 
-(def get-geoname-name-memo (memoize/memo-lru get-geoname-name))
+(def get-geoname-name-memo (memoize/lru get-geoname-name))
 
 (defn clear! []
   (memoize/memo-clear! get-geoname-name-memo))

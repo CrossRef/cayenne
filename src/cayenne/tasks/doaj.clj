@@ -19,7 +19,7 @@
        (= "doaj" (:oa_info result)) "DOAJ"
        :else "Other"))))
 
-(def get-oa-status-memo (memoize/memo-lru get-oa-status))
+(def get-oa-status-memo (memoize/lru get-oa-status))
 
 (defn clear! [] (memoize/memo-clear! get-oa-status-memo))
 

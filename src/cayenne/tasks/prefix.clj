@@ -22,7 +22,7 @@
           (xml/read-xml)
           (parse-prefix-info)))))
 
-(def get-prefix-info-memo (memoize/memo-lru get-prefix-info))
+(def get-prefix-info-memo (memoize/lru get-prefix-info :lru/threshold 100))
 
 (defn clear! []
   (memoize/memo-clear! get-prefix-info-memo))
