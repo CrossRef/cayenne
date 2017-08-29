@@ -12,6 +12,7 @@
 ;; currently only the CrossRef title list csv
 
 (defn ensure-journal-indexes! [collection]
+  (m/add-index! collection [:id])
   (m/add-index! collection [:issn])
   (m/add-index! collection [:title])
   (m/add-index! collection [:token]))
