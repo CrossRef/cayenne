@@ -132,10 +132,11 @@
           (error e "Failed to update coverage for member with ID " (:id member)))))))
 
 (defn check-journals
-  "Calculate and insert journal metadata coverage metrics into a collection."
+  "Calculate and insert journal metadata coverage metrics into a collection. Only consider
+   journals that have an ISSN."
   [collection]
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [journal (m/fetch collection :options [:notimeout])]
+    (doseq [journal (m/fetch collection :where {:issn {:$exists true :$ne []}} :options [:notimeout])]
       (try
         (m/update! 
          collection 
