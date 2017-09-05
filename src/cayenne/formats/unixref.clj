@@ -639,7 +639,7 @@
   "Returns a license. :content-version can be any of tdm, vor, am or unspecified."
   [license-loc]
   (-> {:type :url
-       :content-version (or (xml/xselect1 license-loc ["applies_to"]) "vor")
+       :content-version (or (xml/xselect1 license-loc ["applies_to"]) "unspecified")
        :value (string/trim (xml/xselect1 license-loc :text))}
       (parse-attach :start license-loc :single parse-license-start-date)))
 
