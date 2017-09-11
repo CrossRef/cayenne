@@ -135,7 +135,7 @@
      (xml/xselect work-loc "publication_date" [:has-not "media_type"])))
 
 (defn find-approval-dates [work-loc kind]
-  (xml/xselect work-loc "approval_date" [:= "media_type" kind]))
+  (xml/xselect work-loc "approval_date"))
 
 (defn find-event-date [event-loc]
   (xml/xselect1 event-loc "conference_date"))
@@ -498,8 +498,8 @@
 (defn parse-database-created-dates [item-loc]
   (map parse-date (find-database-created-dates item-loc)))
 
-(defn parse-item-approval-dates [kind item-loc]
-  (map parse-date (find-approval-dates item-loc kind)))
+(defn parse-item-approval-dates [item-loc]
+  (map parse-date (find-approval-dates item-loc)))
 
 (defn parse-item-posted-date [item-loc]
   (when-let [posted-date-loc (xml/xselect1 item-loc "posted_date")]
@@ -781,8 +781,7 @@
         (parse-attach :abstract item-loc :single parse-item-abstract)
         (parse-attach :number item-loc :multi parse-item-numbers)
         (parse-attach :issn item-loc :multi parse-item-issn-details)
-        (parse-attach :approved-print item-loc :multi (partial parse-item-approval-dates "print"))
-        (parse-attach :approved-online item-loc :multi (partial parse-item-approval-dates "online")))))
+        (parse-attach :approved item-loc :multi parse-item-approval-dates))))
 
 ;; crawler should be 'crawler-based' - but we may not want to include those anyway
 
@@ -1066,16 +1065,22 @@
      standard-series-meta-loc
      (parse-standard-series standard-loc standard-series-meta-loc))))
 
+(defn parse-degree [dissertation-loc]
+  (map
+   #(hash-map :value (xml/xselect1 % :text)
+              :type :degree)
+   (xml/xselect dissertation-loc "degree")))
+
 (defn parse-dissertation [dissertation-loc]
   (when dissertation-loc
     (let [person-loc (xml/xselect dissertation-loc "person_name")]
       (-> (parse-item dissertation-loc)
           (parse-attach :author person-loc :single parse-person-name)
           (parse-attach :component dissertation-loc :multi parse-content-items)
+          (parse-attach :degree dissertation-loc :multi parse-degree)
           (conj
            {:subtype :dissertation
-            :language (xml/xselect1 dissertation-loc ["language"] :text)
-            :degree (xml/xselect1 dissertation-loc "degree" :text)})))))
+            :language (xml/xselect1 dissertation-loc ["language"] :text)})))))
 
 (defn parse-stand-alone-component [sa-component-loc]
   (when sa-component-loc
