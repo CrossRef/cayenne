@@ -268,6 +268,8 @@
    "until-event-start-date" (particle-date "event_start_year" "event_start_month" "event_start_day" :until)
    "from-event-end-date" (particle-date "event_end_year" "event_end_month" "event_end_day" :from)
    "until-event-end-date" (particle-date "event_end_year" "event_end_month" "event_end_day" :until)
+   "from-approved-date" (particle-date "approved_year" "approved_month" "approved_day" :from)
+   "until-approved-date" (particle-date "approved_year" "approved_month" "approved_day" :until)
    "has-event" (existence "event_name")
    "is-update" (existence "update_doi")
    "has-update" (existence "update_by_doi")
