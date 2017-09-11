@@ -404,6 +404,7 @@
       (assoc-date solr-doc :posted "posted")
       (assoc-date solr-doc :accepted "accepted")
       (assoc-date solr-doc :content-created "content_created")
+      (assoc-date solr-doc :content-updated "content_updated")
       (assoc-date solr-doc :approved "approved")
       (assoc-exists :publisher-location (get solr-doc "publisher_location"))
       (assoc-exists :abstract (get solr-doc "abstract_xml"))
