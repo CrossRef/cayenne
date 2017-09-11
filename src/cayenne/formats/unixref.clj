@@ -140,11 +140,14 @@
 (defn find-event-date [event-loc]
   (xml/xselect1 event-loc "conference_date"))
 
-(defn find-database-dates [work-loc]
-  (xml/xselect work-loc "dataset" "database_date" "publication_date"))
+(defn find-database-dates [metadata-loc]
+  (xml/xselect metadata-loc "database_date" "publication_date"))
 
-(defn find-database-created-dates [work-loc]
-  (xml/xselect work-loc "dataset" "database_date" "creation_date"))
+(defn find-database-created-dates [metadata-loc]
+  (xml/xselect metadata-loc "database_date" "creation_date"))
+
+(defn find-database-updated-dates [metadata-loc]
+  (xml/xselect metadata-loc "database_date" "update_date"))
 
 (defn parse-month [month]
   (if-let [month-val (try (Integer/parseInt month) (catch Exception _ nil))]
@@ -497,6 +500,9 @@
 
 (defn parse-database-created-dates [item-loc]
   (map parse-date (find-database-created-dates item-loc)))
+
+(defn parse-database-updated-dates [item-loc]
+  (map parse-date (find-database-updated-dates item-loc)))
 
 (defn parse-item-approval-dates [item-loc]
   (map parse-date (find-approval-dates item-loc)))
@@ -965,6 +971,9 @@
 ;; todo dates
 (defn parse-dataset [dataset-loc]
   (-> (parse-item dataset-loc)
+      (parse-attach :published dataset-loc :multi parse-database-pub-dates)
+      (parse-attach :content-created dataset-loc :multi parse-database-created-dates)
+      (parse-attach :content-updated dataset-loc :multi parse-database-updated-dates)
       (conj
        {:subtype :dataset
         :kind (parse-dataset-type dataset-loc)
@@ -981,10 +990,11 @@
     (let [metadata-loc (xml/xselect1 database-loc "database_metadata")]
       (-> (parse-item metadata-loc)
           (parse-attach :component database-loc :multi parse-datasets)
-          (parse-attach :published database-loc :multi parse-database-pub-dates)
-          (parse-attach :content-created database-loc :multi parse-database-created-dates)
+          (parse-attach :published metadata-loc :multi parse-database-pub-dates)
+          (parse-attach :content-created metadata-loc :multi parse-database-created-dates)
+          (parse-attach :content-updated metadata-loc :multi parse-database-updated-dates)
           (conj
-           {:subtype :dataset
+           {:subtype :database
             :language (xml/xselect1 metadata-loc ["language"] :text)
             :description (xml/xselect1 metadata-loc "description")})))))
 
