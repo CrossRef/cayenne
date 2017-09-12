@@ -478,6 +478,7 @@
         container-titles (get-container-titles item)
         deposit-date (first (get-tree-rel item :deposited))
         first-deposit-date (first (get-tree-rel item :first-deposited))
+        standards-body (first (get-tree-rel item :standards-body))
         contrib-details (get-contributor-details item)
         updates (get-updates item)
         doi (first (get-item-ids item :long-doi))]
@@ -512,6 +513,8 @@
          "publication" (->> container-titles
                             (filter #(= (:subtype %) :long))
                             (map :value))
+         "standards_body_name" (:name standards-body)
+         "standards_body_acronym" (:acronym standards-body)
          "oa_status" (get-oa-status item)
          "hl_publication" (->> container-titles
                                (filter #(= (:subtype %) :long))

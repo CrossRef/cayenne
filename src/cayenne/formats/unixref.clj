@@ -1041,11 +1041,19 @@
      report-series-meta-loc
      (parse-report-series report-loc report-series-meta-loc))))
 
-;; todo parse instituion
+(defn parse-standards-body [standards-body-loc]
+  (when standards-body-loc
+    {:type :org
+     :subtype :standards-body
+     :name (xml/xselect1 standards-body-loc "standards_body_name" :text)
+     :acronym (xml/xselect1 standards-body-loc "standards_body_acronym" :text)}))
+
 (defn parse-single-standard [standard-loc]
-  (let [standard-metadata-loc (xml/xselect1 standard-loc "standard_metadata")]
+  (let [standard-metadata-loc (xml/xselect1 standard-loc "standard_metadata")
+        standards-body-loc (xml/xselect1 standard-metadata-loc "standards_body")]
     (-> (parse-item standard-metadata-loc)
         (parse-attach :component standard-loc :multi parse-content-items)
+        (parse-attach :standards-body standards-body-loc :single parse-standards-body)
         (conj
          {:subtype :standard
           :volume (xml/xselect1 standard-metadata-loc "volume" :text)

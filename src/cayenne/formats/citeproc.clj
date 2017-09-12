@@ -378,6 +378,12 @@
     (cond-> non-cites-rels
       (get solr-doc "citation_key")
       (assoc :cites (->citeproc-cites-relations solr-doc)))))
+
+(defn ->citeproc-standards-body [solr-doc]
+  (let [body-name (get solr-doc "standards_body_name")
+        body-acronym (get solr-doc "standards_body_acronym")]
+    (when (or body-name body-acronym)
+      {:name body-name :acronym body-acronym})))
   
 (defn ->citeproc [solr-doc]
   (-> {:source (get solr-doc "source")
@@ -437,5 +443,6 @@
       (assoc-exists :issn-type (->issn-types solr-doc))
       (assoc-exists :event (->event solr-doc))
       (assoc-exists :reference (->citeproc-citations solr-doc))
+      (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
       (merge (->citeproc-contribs solr-doc))))
 
