@@ -193,7 +193,8 @@
    "author" ["contributor_*"]
    "editor" ["contributor_*"]
    "chair" ["contributor_*"]
-   "translator" ["contributor_*"]})
+   "translator" ["contributor_*"]
+   "standards-body" ["standards_body_*"]})
   
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
