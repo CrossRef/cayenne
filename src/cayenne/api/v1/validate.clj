@@ -552,7 +552,8 @@
 
 (def available-params [:query :rows :offset :sample :facet :filter
                        :sort :order :cursor :select
-                       :pingback :url :filename :parent :test :debug])
+                       :pingback :url :filename :parent :test :debug
+                       :mailto :auth-token])
 
 ;; TODO Expand validate-params and use it to replace other param checks.
 ;; TODO Check that deposit params only specified on POST, and not
