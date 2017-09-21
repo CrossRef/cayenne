@@ -33,7 +33,11 @@
    "assertion_name" {:external-field "assertion"
                      :allow-unlimited-values true}
    "assertion_group_name" {:external-field "assertion-group"
-                           :allow-unlimited-values true}})
+                           :allow-unlimited-values true}
+   "hl_volume" {:external-field "journal-volume"
+                :allow-unlimited-values true}
+   "hl_issue" {:external-field "journal-issue"
+               :allow-unlimited-values true}})
 
 (def external->internal-name
   (into {}
