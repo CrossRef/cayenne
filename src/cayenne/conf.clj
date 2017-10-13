@@ -1,6 +1,5 @@
 (ns cayenne.conf
-  (:import [org.apache.solr.client.solrj.impl HttpSolrClient]
-           [java.net URI]
+  (:import [java.net URI]
            [java.util UUID]
            [java.util.concurrent Executors])
   (:use [clojure.core.incubator :only [dissoc-in]])
@@ -9,6 +8,7 @@
             [clojure.java.io :as io]
             [clojure.tools.trace :as trace]
             [somnium.congomongo :as m]
+            [qbits.spandex :as elastic]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
             [robert.bruce :as rb]))
@@ -110,14 +110,9 @@
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
-  (set-param! [:service :solr :update-list]
-              [{:url "http://localhost:8983/solr" :core "crmds1"}])
-
+  (set-param! [:service :elastic :urls] ["http://localhost:9200"])
   (set-param! [:service :mongo :db] "crossref")
   (set-param! [:service :mongo :host] "localhost")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
-  (set-param! [:service :solr :insert-list-max-size] 1000)
-  (set-param! [:service :solr :commit-on-add] true)
   (set-param! [:service :datomic :url] "datomic:mem://test")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
@@ -174,20 +169,24 @@
   (add-startup-task 
    :base
    (fn [profiles]
-     (set-service! :executor (Executors/newScheduledThreadPool 20))
-     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
-     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
-                                             :host (get-param [:service :mongo :host])))
-     (set-service! :solr (HttpSolrClient. (get-param [:service :solr :url])))
-     (set-service! :solr-update-list
-                   (map #(HttpSolrClient. (str (:url %) "/" (:core %)))
-                        (get-param [:service :solr :update-list]))))))
+     (set-service! :executor
+                   (Executors/newScheduledThreadPool 20))
+     (set-service! :conn-mgr
+                   (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
+     (set-service! :mongo
+                   (m/make-connection
+                    (get-param [:service :mongo :db])
+                    :host (get-param [:service :mongo :host])))
+     (set-service! :elastic
+                   (elastic/client (get-param [:service :elastic :urls]))))))
 
 (with-core :default
   (add-startup-task
    :nrepl
    (fn [profiles]
-     (set-service! :nrepl (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
+     (set-service!
+      :nrepl
+      (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
 

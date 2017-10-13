@@ -5,8 +5,6 @@
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]
-  :plugins [[lein-daemon "0.5.4"]
-            [com.palletops/uberimage "0.4.1"]]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
@@ -58,6 +56,7 @@
                  [metosin/ring-swagger "0.26.0"]
                  [metosin/ring-swagger-ui "3.9.0"]
                  [ring-basic-authentication "1.0.5"]
+                 [ring-basic-authentication "1.0.5"]
                  [http-kit "2.2.0"]
                  [instaparse "1.4.1"]
                  [com.github.kyleburton/clj-xpath "1.4.3"]
@@ -66,6 +65,7 @@
                  [robert/bruce "0.7.1"]
                  [bigml/sampling "3.0"]
                  [digest "1.4.4"]
+                 [cc.qbits/spandex "0.5.2"]
                  [dk.ative/docjure "1.11.0"]
                  [environ "1.0.3"]])
 
