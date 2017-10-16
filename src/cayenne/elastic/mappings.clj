@@ -2,28 +2,28 @@
   (:require [qbits.spandex :as elastic]))
 
 (def contributor-properties
-  {:contribution        {:type "string"}
-   :given-name          {:type "string"}
-   :family-name         {:type "string"}
-   :org-name            {:type "string"}
-   :prefix              {:type "string"}
-   :suffix              {:type "string"}
-   :orcid               {:type "string"}
-   :affiliations        {:type "string"}
+  {:contribution        {:type "keyword"}
+   :given-name          {:type "text"}
+   :family-name         {:type "text"}
+   :org-name            {:type "text"}
+   :prefix              {:type "text"}
+   :suffix              {:type "text"}
+   :orcid               {:type "keyword"}
+   :affiliations        {:type "text"}
    :authenticated-orcid {:type "boolean"}})
 
 (def issn-properties
-  {:value {:type "string"}
-   :kind  {:type "string"}})
+  {:value {:type "keyword"}
+   :kind  {:type "keyword"}})
 
 (def isbn-properties
-  {:value {:type "string"}
-   :kind  {:type "string"}})
+  {:value {:type "keyword"}
+   :kind  {:type "keyword"}})
 
 (def funder-properties
-  {:funder-name {:type "string"}
-   :funder-doi  {:type "string"}
-   :awards      {:type "string"}})
+  {:funder-name {:type "text"}
+   :funder-doi  {:type "keyword"}
+   :awards      {:type "text"}})
 
 (def update-properties)
 
@@ -34,29 +34,29 @@
 (def license-properties)
 
 (def assertion-properties
-  {:name            {:type "string"}
-   :label           {:type "string"}
-   :group-name      {:type "string"}
-   :group-label     {:type "string"}
-   :url             {:type "string"}
-   :value           {:type "string"}
+  {:name            {:type "keyword"}
+   :label           {:type "text"}
+   :group-name      {:type "keyword"}
+   :group-label     {:type "text"}
+   :url             {:type "keyword"}
+   :value           {:type "text"}
    :order           {:type "integer"}
-   :explanation-url {:type "string"}})
+   :explanation-url {:type "keyword"}})
 
 (def relation-properties)
 
 (def reference-properties)
 
 (def work-properties
-  {:random          {:type "integer"}
-   :kind            {:type "string"}
-   :original-doi    {:type "string"}
-   :normalised-doi  {:type "string"}
-   :owner-prefix    {:type "string"}
+  {:random          {:type "long"}
+   :kind            {:type "keyword"}
+   :original-doi    {:type "keyword"}
+   :normalised-doi  {:type "keyword"}
+   :owner-prefix    {:type "keyword"}
    :member-id       {:type "integer"}
-   :language-title  {:type "string"}
-   :original-title  {:type "string"}
-   :container-title {:type "string"}
+   :language-title  {:type "text"}
+   :original-title  {:type "text"}
+   :container-title {:type "text"}
    :issns           {:type "nested" :properties issn-properties}
    :isbns           {:type "nested" :properties isbn-properties}
    :contribtuors    {:type "nested" :properties contributor-properties}
@@ -97,8 +97,8 @@
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
-   compatibility (which will remove multiple types per field name, making
-   multiple types per index unworkable."
+   compatibility (which will remove multi-type per fields, making
+   multiple types per index unworkable.)"
   [conn]
   (doseq [[index-name index-data] mapping-types]
     (elastic/request conn
