@@ -1,6 +1,8 @@
 (ns cayenne.elastic.mappings
   (:require [qbits.spandex :as elastic]))
 
+;; todo - particle dates
+
 (def contributor-properties
   {:contribution        {:type "keyword"}
    :given-name          {:type "text"}
@@ -9,7 +11,7 @@
    :prefix              {:type "text"}
    :suffix              {:type "text"}
    :orcid               {:type "keyword"}
-   :affiliations        {:type "text"}
+   :affiliation         {:type "text"}
    :authenticated-orcid {:type "boolean"}})
 
 (def issn-properties
@@ -23,15 +25,40 @@
 (def funder-properties
   {:funder-name {:type "text"}
    :funder-doi  {:type "keyword"}
-   :awards      {:type "text"}})
+   :award       {:type "text"}})
 
-(def update-properties)
+(def update-properties
+  {:doi   {:type "keyword"}
+   :type  {:type "keyword"}
+   :label {:type "keyword"}
+   :date  {:type "date"}})
 
-(def clinical-trial-properties)
+(def clinical-trial-properties
+  {:number   {:type "text"}
+   :registry {:type "keyword"}
+   :type     {:type "keyword"}})
 
-(def event-properties)
+(def link-properties
+  {:type        {:type "keyword"}
+   :url         {:type "keyword"}
+   :version     {:type "keyword"}
+   :application {:type "keyword"}})
 
-(def license-properties)
+(def event-properties
+  {:name     {:type "text"}
+   :theme    {:type "text"}
+   :location {:type "text"}
+   :sponsor  {:type "text"}
+   :acronym  {:type "text"}
+   :number   {:type "text"}
+   :start    {:type "date"}
+   :end      {:type "date"}})
+
+(def license-properties
+  {:version {:type "keyword"}
+   :url     {:type "keyword"}
+   :delay   {:type "integer"}
+   :start   {:type "date"}})
 
 (def assertion-properties
   {:name            {:type "keyword"}
@@ -43,9 +70,34 @@
    :order           {:type "integer"}
    :explanation-url {:type "keyword"}})
 
-(def relation-properties)
+(def relation-properties
+  {:type        {:type "keyword"}
+   :object      {:type "keyword"}
+   :object-type {:type "keyword"}
+   :object-ns   {:type "keyword"}
+   :claimed-by  {:type "keyword"}})
 
-(def reference-properties)
+(def reference-properties
+  {:key                  {:type "keyword"}
+   :issn                 {:type "keyword"}
+   :issn-type            {:type "keyword"}
+   :author               {:type "text"}
+   :issue                {:type "text"}
+   :first-page           {:type "text"}
+   :year                 {:type "integer"}
+   :isbn                 {:type "keyword"}
+   :isbn-type            {:type "keyword"}
+   :series-title         {:type "text"}
+   :volume-title         {:type "text"}
+   :edition              {:type "keyword"}
+   :component            {:type "keyword"}
+   :volume               {:type "keyword"}
+   :article-title        {:type "text"}
+   :journal-title        {:type "text"}
+   :standards-body       {:type "text"}
+   :standards-designator {:type "keyword"}
+   :doi-asserted-by      {:type "keyword"}
+   :doi                  {:type "keyword"}})
 
 (def work-properties
   {:random          {:type "long"}
@@ -57,20 +109,19 @@
    :language-title  {:type "text"}
    :original-title  {:type "text"}
    :container-title {:type "text"}
-   :issns           {:type "nested" :properties issn-properties}
-   :isbns           {:type "nested" :properties isbn-properties}
-   :contribtuors    {:type "nested" :properties contributor-properties}
-   :funders         {:type "nested" :properties funder-properties}
-   :awards          {:type "nested" :properties award-properties}
+   :issn            {:type "object" :properties issn-properties}
+   :isbn            {:type "object" :properties isbn-properties}
+   :contributor     {:type "nested" :properties contributor-properties}
+   :funder          {:type "nested" :properties funder-properties}
    :updated-by      {:type "nested" :properties update-properties}
-   :updates         {:type "nested" :properties update-properties}
-   :clinical-trials {:type "nested" :properties clinical-trial-properties}
-   :events          {:type "nested" :properties event-properties}
-   :links           {:type "nested" :properties link-properties}
-   :licenses        {:type "nested" :properties license-properties}
-   :assertions      {:type "nested" :properties assertion-properties}
-   :relations       {:type "nested" :properties relation-properties}
-   :references      {:type "nested" :properties reference-properties}})
+   :update-of       {:type "nested" :properties update-properties}
+   :clinical-trial  {:type "nested" :properties clinical-trial-properties}
+   :event           {:type "object" :properties event-properties}
+   :link            {:type "nested" :properties link-properties}
+   :license         {:type "nested" :properties license-properties}
+   :assertion       {:type "nested" :properties assertion-properties}
+   :relation        {:type "nested" :properties relation-properties}
+   :reference       {:type "object" :properties reference-properties}})
 
 (def member-properties
   {})
@@ -88,12 +139,12 @@
   {})
 
 (def mapping-types
-  {"work"    {:properties work-properties}
-   "member"  {:properties member-properties}
-   "funder"  {:properties funder-properties}
-   "prefix"  {:properties prefix-properties}
-   "subject" {:properties subject-properties}
-   "journal" {:properties journal-properties}})
+  {"work"    {:_all: {:enabled false} :properties work-properties}})
+   "member"  {:_all: {:enabled false} :properties member-properties}
+   "funder"  {:_all: {:enabled false} :properties funder-properties}
+   "prefix"  {:_all: {:enabled false} :properties prefix-properties}
+   "subject" {:_all: {:enabled false} :properties subject-properties}
+   "journal" {:_all: {:enabled false} :properties journal-properties}})
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
@@ -102,6 +153,6 @@
   [conn]
   (doseq [[index-name index-data] mapping-types]
     (elastic/request conn
-                     :url index-name
-                     :method :put
-                     :body {:mappings {"doc" index-data}})))
+                     {:url index-name
+                      :method :put
+                      :body {:mappings {"doc" index-data}}})))

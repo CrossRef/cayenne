@@ -178,7 +178,7 @@
                     (get-param [:service :mongo :db])
                     :host (get-param [:service :mongo :host])))
      (set-service! :elastic
-                   (elastic/client (get-param [:service :elastic :urls]))))))
+                   (elastic/client {:hosts (get-param [:service :elastic :urls])})))))
 
 (with-core :default
   (add-startup-task
