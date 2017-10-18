@@ -1,8 +1,6 @@
 (ns cayenne.elastic.mappings
   (:require [qbits.spandex :as elastic]))
 
-;; todo - particle dates
-
 (def contributor-properties
   {:contribution        {:type "keyword"}
    :given-name          {:type "text"}
@@ -99,60 +97,145 @@
    :doi-asserted-by      {:type "keyword"}
    :doi                  {:type "keyword"}})
 
+(def standards-body-properties
+  {:name    {:type "text"}
+   :acronym {:type "text"}})
+
+;; todo content, citation_content
 (def work-properties
-  {:random          {:type "long"}
-   :kind            {:type "keyword"}
-   :original-doi    {:type "keyword"}
-   :normalised-doi  {:type "keyword"}
-   :owner-prefix    {:type "keyword"}
-   :member-id       {:type "integer"}
-   :language-title  {:type "text"}
-   :original-title  {:type "text"}
-   :container-title {:type "text"}
-   :issn            {:type "object" :properties issn-properties}
-   :isbn            {:type "object" :properties isbn-properties}
-   :contributor     {:type "nested" :properties contributor-properties}
-   :funder          {:type "nested" :properties funder-properties}
-   :updated-by      {:type "nested" :properties update-properties}
-   :update-of       {:type "nested" :properties update-properties}
-   :clinical-trial  {:type "nested" :properties clinical-trial-properties}
-   :event           {:type "object" :properties event-properties}
-   :link            {:type "nested" :properties link-properties}
-   :license         {:type "nested" :properties license-properties}
-   :assertion       {:type "nested" :properties assertion-properties}
-   :relation        {:type "nested" :properties relation-properties}
-   :reference       {:type "object" :properties reference-properties}})
+  {:random                {:type "long"}
+   :type                  {:type "keyword"}
+   :original-doi          {:type "keyword"}
+   :normalised-doi        {:type "keyword"}
+   :prefix                {:type "keyword"}
+   :owner-prefix          {:type "keyword"}
+   :member-id             {:type "integer"}
+   :supplementary-id      {:type "keyword"}
+   :language-title        {:type "text"}
+   :original-title        {:type "text"}
+   :container-title       {:type "text"}
+   :short-container-title {:type "text"}
+   :short-title           {:type "text"}
+   :group-title           {:type "text"}
+   :subtitle              {:type "text"}
+   :volume                {:type "keyword"}
+   :issue                 {:type "keyword"}
+   :first-page            {:type "keyword"}
+   :last-page             {:type "keyword"}
+   :description           {:type "text"}
+   :referenced-by-count   {:type "long"}
+   :references-count      {:type "long"}
+   :article-number        {:type "text"}
+   :first-deposited       {:type "date"}
+   :deposited             {:type "date"}
+   :indexed               {:type "date"}
+   :published             {:type "date"}
+   :published-online      {:type "date"}
+   :published-print       {:type "date"}
+   :posted                {:type "date"}
+   :accepted              {:type "date"}
+   :content-created       {:type "date"}
+   :content-updated       {:type "date"}
+   :approved              {:type "date"}
+   :subject               {:type "keyword"}
+   :publication           {:type "text"}
+   :archive               {:type "keyword"}
+   :publisher             {:type "text"}
+   :publisher-location    {:type "text"}
+   :degree                {:type "text"}
+   :edition-number        {:type "keyword"}
+   :part-number           {:type "keyword"}
+   :component-number      {:type "keyword"}
+   :update-policy         {:type "keyword"}
+   :domain                {:type "keyword"}
+   :domain-exclusive      {:type "boolean"}
+   :abstract              {:type "text"}
+   :abstract-xml          {:type "text" :indexed false}
+   :index-context         {:type "keyword"}
+   :standards-body        {:type "object" :properties standards-body-properties}
+   :issn                  {:type "object" :properties issn-properties}
+   :isbn                  {:type "object" :properties isbn-properties}
+   :contributor           {:type "nested" :properties contributor-properties}
+   :funder                {:type "nested" :properties funder-properties}
+   :updated-by            {:type "nested" :properties update-properties}
+   :update-of             {:type "nested" :properties update-properties}
+   :clinical-trial        {:type "nested" :properties clinical-trial-properties}
+   :event                 {:type "object" :properties event-properties}
+   :link                  {:type "nested" :properties link-properties}
+   :license               {:type "nested" :properties license-properties}
+   :assertion             {:type "nested" :properties assertion-properties}
+   :relation              {:type "nested" :properties relation-properties}
+   :reference             {:type "object" :properties reference-properties :indexed false}})
 
-(def member-properties
-  {})
-
-(def funder-properties
-  {})
+;; todo metadata coverage fields
 
 (def prefix-properties
-  {})
+  {:value             {:type "keyword"}
+   :member-id         {:type "integer"}
+   :public-references {:type "boolean"}
+   :location          {:type "text"}
+   :name              {:type "text"}})
+
+(def member-properties
+  {:primary-name {:type "text"}
+   :location     {:type "text"}
+   :id           {:type "long"}
+   :token        {:type "keyword"}
+   :name         {:type "text"}
+   :prefix       {:type "object" :properties prefix-properties}})
+
+(def funder-properties
+  {:doi          {:type "keyword"}
+   :parent       {:type "keyword"}
+   :child        {:type "keyword"}
+   :affiliated   {:type "keyword"}
+   :country      {:type "keyword"}
+   :primary-name {:type "text"}
+   :name         {:type "text"}
+   :replaces     {:type "keyword"}
+   :replaced-by  {:type "keyword"}
+   :token        {:type "keyword"}})
 
 (def subject-properties
-  {})
+  {:top-code    {:type "integer"}
+   :middle-code {:type "integer"}
+   :code        {:type "integer"}
+   :top-name    {:type "text"}
+   :middle-name {:type "text"}
+   :low-name    {:type "text"}
+   :name        {:type "text"}})
 
 (def journal-properties
-  {})
+  {:title {:type "text"}
+   :token {:type "keyword"}
+   :id    {:type "long"}
+   :doi   {:type "keyword"}
+   :issn  {:type "object" :properties issn-properties}})
+   
+(def index-mappings
+  {"work"    {"_all" {:enabled false} :properties work-properties}
+   "member"  {"_all" {:enabled false} :properties member-properties}
+   "funder"  {"_all" {:enabled false} :properties funder-properties}
+   "prefix"  {"_all" {:enabled false} :properties prefix-properties}
+   "subject" {"_all" {:enabled false} :properties subject-properties}
+   "journal" {"_all" {:enabled false} :properties journal-properties}})
 
-(def mapping-types
-  {"work"    {:_all: {:enabled false} :properties work-properties}})
-   "member"  {:_all: {:enabled false} :properties member-properties}
-   "funder"  {:_all: {:enabled false} :properties funder-properties}
-   "prefix"  {:_all: {:enabled false} :properties prefix-properties}
-   "subject" {:_all: {:enabled false} :properties subject-properties}
-   "journal" {:_all: {:enabled false} :properties journal-properties}})
+(def index-settings
+  {"work"    {:number_of_shards 5 :number_of_replicas 5}
+   "member"  {:number_of_shards 1 :number_of_replicas 8}
+   "funder"  {:number_of_shards 1 :number_of_replicas 8}
+   "prefix"  {:number_of_shards 1 :number_of_replicas 8}
+   "subject" {:number_of_shards 1 :number_of_replicas 8}
+   "journal" {:number_of_shards 1 :number_of_replicas 8}})
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
    compatibility (which will remove multi-type per fields, making
    multiple types per index unworkable.)"
   [conn]
-  (doseq [[index-name index-data] mapping-types]
+  (doseq [[index-name index-data] index-mappings]
     (elastic/request conn
                      {:url index-name
                       :method :put
-                      :body {:mappings {"doc" index-data}}})))
+                      :body {:settings (index-settings index-name)
+                             :mappings {index-name index-data}}})))
