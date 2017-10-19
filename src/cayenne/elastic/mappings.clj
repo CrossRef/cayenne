@@ -21,8 +21,8 @@
    :kind  {:type "keyword"}})
 
 (def funder-properties
-  {:funder-name {:type "text"}
-   :funder-doi  {:type "keyword"}
+  {:name {:type "text"}
+   :doi  {:type "keyword"}
    :award       {:type "text"}})
 
 (def update-properties
@@ -150,7 +150,7 @@
    :domain                {:type "keyword"}
    :domain-exclusive      {:type "boolean"}
    :abstract              {:type "text"}
-   :abstract-xml          {:type "text" :indexed false}
+   :abstract-xml          {:type "text"}
    :index-context         {:type "keyword"}
    :standards-body        {:type "object" :properties standards-body-properties}
    :issn                  {:type "object" :properties issn-properties}
@@ -165,9 +165,7 @@
    :license               {:type "nested" :properties license-properties}
    :assertion             {:type "nested" :properties assertion-properties}
    :relation              {:type "nested" :properties relation-properties}
-   :reference             {:type "object" :properties reference-properties :indexed false}})
-
-;; todo metadata coverage fields
+   :reference             {:type "object" :properties reference-properties}})
 
 (def prefix-properties
   {:value             {:type "keyword"}
@@ -176,14 +174,15 @@
    :location          {:type "text"}
    :name              {:type "text"}})
 
+;; todo metadata coverage fields
 (def member-properties
   {:primary-name {:type "text"}
    :location     {:type "text"}
    :id           {:type "long"}
    :token        {:type "keyword"}
-   :name         {:type "text"}
    :prefix       {:type "object" :properties prefix-properties}})
 
+;; todo metadata coverage fields
 (def funder-properties
   {:doi          {:type "keyword"}
    :parent       {:type "keyword"}
@@ -205,12 +204,14 @@
    :low-name    {:type "text"}
    :name        {:type "text"}})
 
+;; todo metadata coverage fields
 (def journal-properties
-  {:title {:type "text"}
-   :token {:type "keyword"}
-   :id    {:type "long"}
-   :doi   {:type "keyword"}
-   :issn  {:type "object" :properties issn-properties}})
+  {:title   {:type "text"}
+   :token   {:type "keyword"}
+   :id      {:type "long"}
+   :doi     {:type "keyword"}
+   :subject {:type "object" :properties subject-properties}
+   :issn    {:type "object" :properties issn-properties}})
    
 (def index-mappings
   {"work"    {"_all" {:enabled false} :properties work-properties}
@@ -221,12 +222,12 @@
    "journal" {"_all" {:enabled false} :properties journal-properties}})
 
 (def index-settings
-  {"work"    {:number_of_shards 5 :number_of_replicas 5}
-   "member"  {:number_of_shards 1 :number_of_replicas 8}
-   "funder"  {:number_of_shards 1 :number_of_replicas 8}
-   "prefix"  {:number_of_shards 1 :number_of_replicas 8}
-   "subject" {:number_of_shards 1 :number_of_replicas 8}
-   "journal" {:number_of_shards 1 :number_of_replicas 8}})
+  {"work"    {:number_of_shards 24 :number_of_replicas 3 "index.mapper.dynamic" false}
+   "member"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
+   "funder"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
+   "prefix"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
+   "subject" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
+   "journal" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}})
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
