@@ -69,8 +69,8 @@
       :token (util/tokenize-name (:name member))
       :prefix prefixes}]))
 
-(defn index-publishers
-  "Index publishers into ES."
+(defn index-members
+  "Index members into ES."
   []
   (doseq [some-members (partition-all 100 (get-member-list))]
     (let [bulk-body (->> some-members
