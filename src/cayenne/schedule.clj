@@ -78,7 +78,7 @@
 (defjob update-members [ctx]
   (try
     (info "Updating members collection")
-    (publisher/load-publishers "members")
+    (publisher/index-members)
     (catch Exception e (error e "Failed to update members collection")))
   (try
     (info "Updating member flags and coverage values")
@@ -88,7 +88,7 @@
 (defjob update-journals [ctx]
   (try
     (info "Updating journals collection")
-    (journal/load-journals-from-cr-title-list-csv "journals")
+    (journal/index-journals)
     (catch Exception e (error e "Failed to update journals collection")))
   (try
     (info "Updating journal flags and coverage values")

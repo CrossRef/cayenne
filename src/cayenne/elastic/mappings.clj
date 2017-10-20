@@ -206,12 +206,13 @@
 
 ;; todo metadata coverage fields
 (def journal-properties
-  {:title   {:type "text"}
-   :token   {:type "keyword"}
-   :id      {:type "long"}
-   :doi     {:type "keyword"}
-   :subject {:type "object" :properties subject-properties}
-   :issn    {:type "object" :properties issn-properties}})
+  {:title     {:type "text"}
+   :token     {:type "keyword"}
+   :id        {:type "long"}
+   :doi       {:type "keyword"}
+   :publisher {:type "text"}
+   :subject   {:type "object" :properties subject-properties}
+   :issn      {:type "object" :properties issn-properties}})
    
 (def index-mappings
   {"work"    {"_all" {:enabled false} :properties work-properties}

@@ -5,6 +5,7 @@
             [cayenne.conf :as conf]
             [cayenne.util :as util]
             [cayenne.data.work :as works]
+            [cayenne.elastic.util :as elastic-util]
             [cayenne.util :refer [?> ?>>]]
             [clojure.data.xml :as xml]
             [clojure.zip :as zip]
@@ -75,17 +76,10 @@
   (doseq [some-members (partition-all 100 (get-member-list))]
     (let [bulk-body (->> some-members
                          (map index-command)
-                         flatten)
-          bulk-body-encoded (-> (apply str
-                                       (->> bulk-body
-                                            (map json/write-str)
-                                            (interpose "\n")))
-                                (str "\n")
-                                elastic/raw)]
-                                 
+                         flatten)]
       (elastic/request
        (conf/get-service :elastic)
        {:method :post
         :url "member/member/_bulk"
-        :body bulk-body-encoded}))))
+        :body (elastic-util/raw-jsons bulk-body)}))))
      
