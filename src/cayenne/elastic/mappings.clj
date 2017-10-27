@@ -196,13 +196,9 @@
    :token        {:type "keyword"}})
 
 (def subject-properties
-  {:top-code    {:type "integer"}
-   :middle-code {:type "integer"}
+  {:high-code   {:type "integer"}
    :code        {:type "integer"}
-   :top-name    {:type "text"}
-   :middle-name {:type "text"}
-   :low-name    {:type "text"}
-   :name        {:type "text"}})
+   :name        {:type "keyword"}})
 
 ;; todo metadata coverage fields
 (def journal-properties
@@ -218,7 +214,6 @@
   {"work"    {"_all" {:enabled false} :properties work-properties}
    "member"  {"_all" {:enabled false} :properties member-properties}
    "funder"  {"_all" {:enabled false} :properties funder-properties}
-   "prefix"  {"_all" {:enabled false} :properties prefix-properties}
    "subject" {"_all" {:enabled false} :properties subject-properties}
    "journal" {"_all" {:enabled false} :properties journal-properties}})
 
@@ -226,7 +221,6 @@
   {"work"    {:number_of_shards 24 :number_of_replicas 3 "index.mapper.dynamic" false}
    "member"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
    "funder"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
-   "prefix"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
    "subject" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
    "journal" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}})
   
