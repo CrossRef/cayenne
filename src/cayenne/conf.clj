@@ -149,6 +149,7 @@
 
   (set-param! [:location :cr-titles-csv] "http://ftp.crossref.org/titlelist/titleFile.csv")
   (set-param! [:location :cr-funder-registry] "http://dx.doi.org/10.13039/fundref_registry")
+  (set-param! [:location :scopus-title-list] "https://www.elsevier.com/?a=91122&origin=sbrowse&zone=TitleList&category=TitleListLink")
 
   (set-param! [:test :doi] "10.5555/12345678")
 
