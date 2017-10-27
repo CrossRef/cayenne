@@ -6,7 +6,12 @@
             [cayenne.api.route :as route]
             [cayenne.action :as action]
             [taoensso.timbre.appenders.irc :as irc-appender]
-            [taoensso.timbre :as timbre])
+            [taoensso.timbre :as timbre]
+            [cayenne.tasks.category :as category]
+            [cayenne.tasks.journal :as journal]
+            [cayenne.tasks.publisher :as publisher]
+            [cayenne.tasks.funder :as funder]
+            [cayenne.data.member :as member])
   (:import [org.apache.solr.client.solrj SolrQuery]))
 
 (defn begin [& profiles]
@@ -38,4 +43,9 @@
       first
       prn)
   nil)
+
+(defn index-ancillary []
+  (category/index-subjects)
+  (publisher/index-members)
+  (journal/index-journals))
 

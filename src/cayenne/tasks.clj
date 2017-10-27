@@ -2,6 +2,7 @@
   (:require [cayenne.tasks.publisher :as publisher]
             [cayenne.tasks.journal :as journal]
             [cayenne.tasks.funder :as funder]
+            [cayenne.tasks.category :as category]
             [cayenne.tasks.coverage :as coverage]
             [cayenne.data.work :as work]
             [cayenne.action :as action]
@@ -16,24 +17,26 @@
   (production/apply-env-overrides :task)
   (conf/start-core! :task))
 
-(defn load-funders [& args]
+;; (defn load-funders [& args]
+  ;; (setup)
+  ;; (funder/clear!)
+  ;; (funder/drop-loading-collection)
+  ;; (funder/load-funders-rdf (java.net.URL. (conf/get-param [:location :cr-funder-registry])))
+  ;; (funder/swapin-loading-collection))
+
+(defn index-journals [& args]
   (setup)
-  (funder/clear!)
-  (funder/drop-loading-collection)
-  (funder/load-funders-rdf (java.net.URL. (conf/get-param [:location :cr-funder-registry])))
-  (funder/swapin-loading-collection))
+  (journal/index-journals))
+  ;; (coverage/check-journals collection-name))
 
-(defn load-journals [& args]
-  (let [collection-name (or (first args) "journals")]
-    (setup)
-    (journal/load-journals-from-cr-title-list-csv collection-name)
-    (coverage/check-journals collection-name)))
+(defn index-members [& args]
+  (setup)
+  (publisher/index-members))
+;;    (coverage/check-members collection-name)))
 
-(defn load-members [& args]
-  (let [collection-name (or (first args) "members")]
-    (setup)
-    (publisher/load-publishers collection-name)
-    (coverage/check-members collection-name)))
+(defn index-subjects [& args]
+  (setup)
+  (category/index-subjects))
 
 (defn load-last-day-works [& args]
   (setup)
