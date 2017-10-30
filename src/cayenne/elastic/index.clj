@@ -73,7 +73,10 @@
   (-> item (itree/get-item-rel :abstract) first :xml))
 
 (defn item-standards-body [item]
-  ())
+  (when-let [standards-body (-> item
+                                (itree/get-tree-rel :standards-body)
+                                first)]
+    (select-keys standards-body [:name :acronym])))
 
 (defn item-issns [item]
   (map
@@ -123,19 +126,42 @@
    (itree/get-tree-rel item :clinical-trial-number)))
 
 (defn item-events [item]
-  ())
+  (map
+   #(-> %
+        (select-keys [:name :theme :location
+                      :acronym :number :sponsor])
+        (assoc :start (item-date % :start))
+        (assoc :end (item-date % :end)))
+   (itree/get-tree-rel item :event)))
 
 (defn item-links [item]
-  ())
+  (map
+   #(hash-map
+     :content-type    (:content-type %)         
+     :url             (:value %)
+     :version         (:content-version %)
+     :application     (:intended-application %))
+   (itree/get-tree-rel item :resource-fulltext)))
 
 (defn item-licenses [item]
   ())
 
 (defn item-assertions [item]
-  ())
+  (map
+   #(select-keys % [:name :label :group-name
+                    :group-label :url :explanation-url
+                    :value :order])
+   (itree/get-tree-rel item :assertion)))
 
 (defn item-relations [item]
-  ())
+  (map
+   #(hash-map
+     :type        (-> % :subtype name)
+     :object      (:object %)
+     :object-type (:object-type %)
+     :object-ns   (:object-namespace %)
+     :claimed-by  (-> % :claimed-by name))
+   (itree/get-tree-rel item :relation)))
 
 (defn item-references [item]
   ())
@@ -147,13 +173,14 @@
   ())
 
 (defn index-command [item]
-  (let [doi (item-doi item)]
+  (let [doi (item-doi item)
+        publisher (itree/get-tree-rel item :publisher)]
     [{:index {:_id doi}}
      {:doi              doi
       :type             (item-type item)
       :prefix           (doi-id/extract-long-prefix doi)
-      :owner-prefix     (item-owner-prefix item)
-      :member-id        (item-member-id item)
+      :owner-prefix     (item-owner-prefix publisher)
+      :member-id        (item-member-id publisher)
       :supplementary-id (itree/get-item-ids item :supplementary)
       
       :published        (item-issued-date item)
@@ -168,6 +195,12 @@
       :deposited        (item-date item :deposited)
       :first-deposited  (item-date item :first-deposited)
 
+      :is-referenced-by-count (-> item (itree/get-tree-rel :cited-count) first)
+      :references-count       (-> item (itree/get-tree-rel :citation) count)
+
+      :publisher          (:name publisher)
+      :publisher-location (:location publisher)
+
       ;; titles
 
       ;; article / journal stuff
@@ -177,8 +210,13 @@
 
       :isbn             (item-isbns item)
       :issn             (item-issns item)
+      :link             (item-links item)
+      :assertion        (item-assertions item)
+      :relation         (item-relations item)
       :contributor      (item-contributors item)
       :funder           (item-funders item)
       :clinical-trial   (item-clinical-trials item)
+      :event            (item-events item)
+      :standards-body   (item-standards-body item)
       }]))
 

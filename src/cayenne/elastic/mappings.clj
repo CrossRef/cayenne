@@ -38,10 +38,10 @@
    :type     {:type "keyword"}})
 
 (def link-properties
-  {:type        {:type "keyword"}
-   :url         {:type "keyword"}
-   :version     {:type "keyword"}
-   :application {:type "keyword"}})
+  {:content-type {:type "keyword"}
+   :url          {:type "keyword"}
+   :version      {:type "keyword"}
+   :application  {:type "keyword"}})
 
 (def event-properties
   {:name     {:type "text"}
@@ -104,69 +104,69 @@
 
 ;; todo content, citation_content
 (def work-properties
-  {:random                {:type "long"}
-   :type                  {:type "keyword"}
-   :doi                   {:type "keyword"}
-   :prefix                {:type "keyword"}
-   :owner-prefix          {:type "keyword"}
-   :member-id             {:type "integer"}
-   :supplementary-id      {:type "keyword"}
-   :language-title        {:type "text"}
-   :original-title        {:type "text"}
-   :container-title       {:type "text"}
-   :short-container-title {:type "text"}
-   :short-title           {:type "text"}
-   :group-title           {:type "text"}
-   :subtitle              {:type "text"}
-   :volume                {:type "keyword"}
-   :issue                 {:type "keyword"}
-   :first-page            {:type "keyword"}
-   :last-page             {:type "keyword"}
-   :description           {:type "text"}
-   :referenced-by-count   {:type "long"}
-   :references-count      {:type "long"}
-   :article-number        {:type "text"}
-   :first-deposited       {:type "date"}
-   :deposited             {:type "date"}
-   :indexed               {:type "date"}
-   :published             {:type "date"}
-   :published-online      {:type "date"}
-   :published-print       {:type "date"}
-   :published-other       {:type "date"}
-   :posted                {:type "date"}
-   :accepted              {:type "date"}
-   :content-created       {:type "date"}
-   :content-updated       {:type "date"}
-   :approved              {:type "date"}
-   :subject               {:type "keyword"}
-   :publication           {:type "text"}
-   :archive               {:type "keyword"}
-   :publisher             {:type "text"}
-   :publisher-location    {:type "text"}
-   :degree                {:type "text"}
-   :edition-number        {:type "keyword"}
-   :part-number           {:type "keyword"}
-   :component-number      {:type "keyword"}
-   :update-policy         {:type "keyword"}
-   :domain                {:type "keyword"}
-   :domain-exclusive      {:type "boolean"}
-   :abstract              {:type "text"}
-   :abstract-xml          {:type "text"}
-   :index-context         {:type "keyword"}
-   :standards-body        {:type "object" :properties standards-body-properties}
-   :issn                  {:type "object" :properties issn-properties}
-   :isbn                  {:type "object" :properties isbn-properties}
-   :contributor           {:type "nested" :properties contributor-properties}
-   :funder                {:type "nested" :properties funder-properties}
-   :updated-by            {:type "nested" :properties update-properties}
-   :update-of             {:type "nested" :properties update-properties}
-   :clinical-trial        {:type "nested" :properties clinical-trial-properties}
-   :event                 {:type "object" :properties event-properties}
-   :link                  {:type "nested" :properties link-properties}
-   :license               {:type "nested" :properties license-properties}
-   :assertion             {:type "nested" :properties assertion-properties}
-   :relation              {:type "nested" :properties relation-properties}
-   :reference             {:type "object" :properties reference-properties}})
+  {:random                   {:type "long"}
+   :type                     {:type "keyword"}
+   :doi                      {:type "keyword"}
+   :prefix                   {:type "keyword"}
+   :owner-prefix             {:type "keyword"}
+   :member-id                {:type "integer"}
+   :supplementary-id         {:type "keyword"}
+   :language-title           {:type "text"}
+   :original-title           {:type "text"}
+   :container-title          {:type "text"}
+   :short-container-title    {:type "text"}
+   :short-title              {:type "text"}
+   :group-title              {:type "text"}
+   :subtitle                 {:type "text"}
+   :volume                   {:type "keyword"}
+   :issue                    {:type "keyword"}
+   :first-page               {:type "keyword"}
+   :last-page                {:type "keyword"}
+   :description              {:type "text"}
+   :is-referenced-by-count   {:type "long"}
+   :references-count         {:type "long"}
+   :article-number           {:type "text"}
+   :first-deposited          {:type "date"}
+   :deposited                {:type "date"}
+   :indexed                  {:type "date"}
+   :published                {:type "date"}
+   :published-online         {:type "date"}
+   :published-print          {:type "date"}
+   :published-other          {:type "date"}
+   :posted                   {:type "date"}
+   :accepted                 {:type "date"}
+   :content-created          {:type "date"}
+   :content-updated          {:type "date"}
+   :approved                 {:type "date"}
+   :subject                  {:type "keyword"}
+   :publication              {:type "text"}
+   :archive                  {:type "keyword"}
+   :publisher                {:type "text"}
+   :publisher-location       {:type "text"}
+   :degree                   {:type "text"}
+   :edition-number           {:type "keyword"}
+   :part-number              {:type "keyword"}
+   :component-number         {:type "keyword"}
+   :update-policy            {:type "keyword"}
+   :domain                   {:type "keyword"}
+   :domain-exclusive         {:type "boolean"}
+   :abstract                 {:type "text"}
+   :abstract-xml             {:type "text"}
+   :index-context            {:type "keyword"}
+   :standards-body           {:type "object" :properties standards-body-properties}
+   :issn                     {:type "object" :properties issn-properties}
+   :isbn                     {:type "object" :properties isbn-properties}
+   :contributor              {:type "nested" :properties contributor-properties}
+   :funder                   {:type "nested" :properties funder-properties}
+   :updated-by               {:type "nested" :properties update-properties}
+   :update-of                {:type "nested" :properties update-properties}
+   :clinical-trial           {:type "nested" :properties clinical-trial-properties}
+   :event                    {:type "object" :properties event-properties}
+   :link                     {:type "nested" :properties link-properties}
+   :license                  {:type "nested" :properties license-properties}
+   :assertion                {:type "nested" :properties assertion-properties}
+   :relation                 {:type "nested" :properties relation-properties}
+   :reference                {:type "object" :properties reference-properties}})
 
 (def prefix-properties
   {:value             {:type "keyword"}
