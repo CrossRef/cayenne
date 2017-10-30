@@ -21,9 +21,10 @@
    :kind  {:type "keyword"}})
 
 (def funder-properties
-  {:name {:type "text"}
-   :doi  {:type "keyword"}
-   :award       {:type "text"}})
+  {:name            {:type "text"}
+   :doi             {:type "keyword"}
+   :doi-asserted-by {:type "keyword"}
+   :award           {:type "text"}})
 
 (def update-properties
   {:doi   {:type "keyword"}
@@ -105,8 +106,7 @@
 (def work-properties
   {:random                {:type "long"}
    :type                  {:type "keyword"}
-   :original-doi          {:type "keyword"}
-   :normalised-doi        {:type "keyword"}
+   :doi                   {:type "keyword"}
    :prefix                {:type "keyword"}
    :owner-prefix          {:type "keyword"}
    :member-id             {:type "integer"}
@@ -132,6 +132,7 @@
    :published             {:type "date"}
    :published-online      {:type "date"}
    :published-print       {:type "date"}
+   :published-other       {:type "date"}
    :posted                {:type "date"}
    :accepted              {:type "date"}
    :content-created       {:type "date"}
