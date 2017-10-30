@@ -1,7 +1,15 @@
 (ns cayenne.elastic.index
   (:require [cayenne.ids.doi :as doi-id]
             [cayenne.item-tree :as itree]
-            [cayenne.util :as util]))
+            [cayenne.util :as util]
+            [clj-time.core :as t]
+            [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.isbn :as isbn-id]
+            [cayenne.ids.prefix :as prefix-id]
+            [cayenne.ids.member :as member-id]
+            [cayenne.ids.orcid :as orcid-id]))
+
+(def contributions [:author :chair :editor :translator :contributor])
 
 (defn particle->date-time [particle]
   (let [year (-> particle :year util/parse-int-safe)
@@ -21,60 +29,98 @@
   (when-let [id (-> item (itree/get-item-ids id-type) first)]
     (converter id)))
 
+(defn item-doi [item]
+  (item-id item :long-doi :converter doi-id/extract-long-doi))
+
+(defn item-issn [item]
+  (item-id item :issn :converter issn-id/extract-issn))
+
+(defn item-isbn [item]
+  (item-id item :isbn :converter isbn-id/extract-isbn))
+
+(defn item-owner-prefix [item]
+  (item-id item :owner-prefix :converter prefix-id/extract-prefix))
+
+(defn item-member-id [item]
+  (item-id item :member-id :converter member-id/extract-member-id))
+
+(defn item-orcid [item]
+  (item-id item :orcid :converter orcid-id/extract-orcid))
+
 (defn item-type [item]
-  (-> item itree/get-item-subtype item name))
+  (-> item itree/get-item-subtype name))
 
 (defn item-issued-date [item]
   (->> (concat
-        (get-item-rel item :posted)
-        (get-item-rel item :published-print)
-        (get-item-rel item :published-online)
-        (get-item-rel item :published-other)
-        (get-item-rel item :published)
-        (get-tree-rel item :content-created))
+        (itree/get-item-rel item :posted)
+        (itree/get-item-rel item :published-print)
+        (itree/get-item-rel item :published-online)
+        (itree/get-item-rel item :published-other)
+        (itree/get-item-rel item :published)
+        (itree/get-tree-rel item :content-created))
        (sort-by particle->date-time)
        first
        particle->date-time))
 
 (defn item-date [item date-rel]
-  (-> item (get-item-rel date-rel) first particle->date-time))
+  (when-let [first-date (-> item (itree/get-item-rel date-rel) first)]
+    (particle->date-time first-date)))
 
 (defn item-plain-abstract [item]
-  (-> item (get-item-rel :abstract) first :plain))
+  (-> item (itree/get-item-rel :abstract) first :plain))
 
 (defn item-xml-abstract [item]
-  (-> item (get-item-rel :abstract) first :xml))
+  (-> item (itree/get-item-rel :abstract) first :xml))
 
 (defn item-standards-body [item]
   ())
 
 (defn item-issns [item]
-  ())
+  (map
+   #(hash-map :value (-> % :value issn-id/extract-issn)
+              :type  (:kind %))
+   (itree/get-tree-rel item :issn)))
 
 (defn item-isbns [item]
-  ())
+  (map
+   #(hash-map :value (-> % :value isbn-id/extract-isbn)
+              :type  (:kind %))
+   (itree/get-tree-rel item :isbn)))
 
 (defn item-contributors [item]
-  ())
+  (mapcat
+   (fn [contributor-rel]
+     (map
+      #(hash-map
+        :contribution        (name contributor-rel)
+        :given-name          (:first-name %)
+        :family-name         (:last-name %)
+        :org-name            (:name %)
+        :suffix              (:suffix %)
+        :prefix              (:prefix %)
+        :orcid               (item-orcid %)
+        :orcid-authenticated (:orcid-authenticated %))
+      (itree/get-tree-rel item contributor-rel)))
+   contributions))
 
 (defn item-funders [item]
-  (let [funders (get-tree-rel item :funder)]
-    (map
-     (fn [funder]
-       (let [awards (->> (get-tree-rel funder :award)
-                         (map #(item-id % :award)))]
-         {:name            (:name funder)
-          :doi             (item-id funder :long-doi)
-          :doi-asserted-by (:doi-asserted-by funder)
-          :award           awards})))))
+  (map
+   (fn [funder]
+     (let [awards (->> (itree/get-tree-rel funder :award)
+                       (map #(item-id % :award)))]
+       {:name            (:name funder)
+        :doi             (item-doi funder)
+        :doi-asserted-by (:doi-asserted-by funder)
+        :award           awards}))
+   (itree/get-tree-rel item :funder)))
 
 (defn item-clinical-trials [item]
-  (let [trials (get-tree-rel item :clinical-trial-number)]
-    (map
-     #(hash-map
-       :number   (:ctn %)
-       :registry (:registry %)
-       :type     (:ctn-type %)))))
+  (map
+   #(hash-map
+     :number   (:ctn %)
+     :registry (:registry %)
+     :type     (:ctn-type %))
+   (itree/get-tree-rel item :clinical-trial-number)))
 
 (defn item-events [item]
   ())
@@ -101,13 +147,13 @@
   ())
 
 (defn index-command [item]
-  (let [doi (item-id item :long-doi :converter doi-id/normalize-long-doi)]
+  (let [doi (item-doi item)]
     [{:index {:_id doi}}
      {:doi              doi
       :type             (item-type item)
       :prefix           (doi-id/extract-long-prefix doi)
-      :owner-prefix     (item-id item :owner-prefix)
-      :member-id        (item-id item :member-id)
+      :owner-prefix     (item-owner-prefix item)
+      :member-id        (item-member-id item)
       :supplementary-id (itree/get-item-ids item :supplementary)
       
       :published        (item-issued-date item)
@@ -122,9 +168,16 @@
       :deposited        (item-date item :deposited)
       :first-deposited  (item-date item :first-deposited)
 
+      ;; titles
+
+      ;; article / journal stuff
+
       :abstract         (item-plain-abstract item)
       :abstract-xml     (item-xml-abstract item)
 
+      :isbn             (item-isbns item)
+      :issn             (item-issns item)
+      :contributor      (item-contributors item)
       :funder           (item-funders item)
       :clinical-trial   (item-clinical-trials item)
       }]))

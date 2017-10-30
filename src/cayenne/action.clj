@@ -22,6 +22,7 @@
             [cayenne.tasks.solr :as solr]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi]
+            [cayenne.elastic.index :as es-index]
             [taoensso.timbre :as timbre :refer [info error]]))
 
 (conf/with-core :default
@@ -102,12 +103,28 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
+(def dump-plain-es-docs
+  (comp
+   (record-json-writer "out.txt")
+   es-index/index-command
+   #(apply itree/centre-on %)))
+
 (def dump-plain-solr-docs
   (comp
    (record-json-writer "out.txt")
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)))
+
+(def print-es-docs
+  (comp
+   #(info %)
+   es-index/index-command
+   #(assoc % :source "CrossRef")
+   #(apply itree/centre-on %)
+   #(apply funder/apply-to %)
+   #(apply doaj/apply-to %)
+   #(apply cat/apply-to %)))
 
 (def print-solr-docs
   (comp

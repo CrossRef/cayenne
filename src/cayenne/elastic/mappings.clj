@@ -14,11 +14,11 @@
 
 (def issn-properties
   {:value {:type "keyword"}
-   :kind  {:type "keyword"}})
+   :type  {:type "keyword"}})
 
 (def isbn-properties
   {:value {:type "keyword"}
-   :kind  {:type "keyword"}})
+   :type  {:type "keyword"}})
 
 (def funder-properties
   {:name            {:type "text"}
