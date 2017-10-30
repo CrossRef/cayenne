@@ -134,7 +134,7 @@
   ([work-loc]
      (xml/xselect work-loc "publication_date" [:has-not "media_type"])))
 
-(defn find-approval-dates [work-loc kind]
+(defn find-approval-dates [work-loc]
   (xml/xselect work-loc "approval_date"))
 
 (defn find-event-date [event-loc]
