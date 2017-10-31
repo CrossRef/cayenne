@@ -81,12 +81,21 @@
   (-> item (itree/find-item-of-subtype :journal-issue) :issue))
 
 (defn item-titles [item & {:keys [subtype]}]
-  (map :value (itree/get-item-rel item :title)))
+  (let [titles (itree/get-item-rel :title)]
+    (if subtype
+      (-> titles
+          (filter #(= subtype (itree/get-item-subtype %)))
+          (map :value))
+      (map :value))))
 
 (defn item-container-titles [item & {:keys [subtype]}]
-  (->> (itree/get-item-rel item :ancestor)
-       (mapcat #(itree/get-item-rel % :title))
-       (map :value)))
+  (let [titles (->> (itree/get-item-rel item :ancestor)
+                    (mapcat #(itree/get-item-rel % :title)))]
+    (if subtype
+      (-> titles
+          (filter #(= subtype (itree/get-item-subtype %)))
+          (map :value))
+      (map :value))))
 
 (defn item-standards-body [item]
   (when-let [standards-body (-> item
@@ -173,8 +182,20 @@
    (itree/get-tree-rel item :resource-fulltext)))
 
 (defn item-licenses [item]
-  ())
-
+  (letfn [(difference-in-days [a b]
+            (if (t/after? a b)
+              0
+              (-> (t/interval a b)
+                  (t/in-days))))]
+    (map
+     #(let [issued-date (item-issued-date item)
+            start-date (or (item-date % :start) issued-date)]
+        {:version (:content-version %)
+         :url     (:value %)
+         :delay   (difference-in-days issued-date start-date)
+         :start   start-date}
+        (itree/get-tree-rel item :license)))))
+    
 (defn item-assertions [item]
   (map
    #(select-keys % [:name :label :group-name
@@ -193,13 +214,24 @@
    (itree/get-tree-rel item :relation)))
 
 (defn item-references [item]
-  ())
-
-(defn item-updated-bys [item]
-  ())
+  (-> item
+      (itree/get-tree-rel :citation)
+      (select-keys [:doi :doi-asserted-by :key
+                    :issn :issn-type :isbn :isbn-type
+                    :author :volume :issue :first-page :year
+                    :isbn :isbn-type :edition :component
+                    :standard-designator :standards-body
+                    :unstructured :article-title :series-title
+                    :volume-title :journal-title])))
 
 (defn item-update-ofs [item]
-  ())
+  (map
+   #(hash-map
+     :doi   (:value %)
+     :type  (itree/get-item-subtype %)
+     :label (:label %)
+     :date  (item-date % :updated))
+   (itree/find-items-of-type item :update)))
 
 (defn contributor-name [contributor]
   (or
@@ -279,6 +311,7 @@
       :approved         (item-date item :approved)
       :deposited        (item-date item :deposited)
       :first-deposited  (item-date item :first-deposited)
+      :indexed          (t/now)
 
       :is-referenced-by-count (-> item (itree/get-tree-rel :cited-count) first)
       :references-count       (-> item (itree/get-tree-rel :citation) count)
@@ -317,7 +350,10 @@
 
       :isbn             (item-isbns item)
       :issn             (item-issns item)
+      :reference        (item-references item)
+      :license          (item-licenses item)
       :link             (item-links item)
+      :update-of        (item-update-ofs item)
       :assertion        (item-assertions item)
       :relation         (item-relations item)
       :contributor      (item-contributors item)
