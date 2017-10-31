@@ -95,6 +95,7 @@
    :journal-title        {:type "text"}
    :standards-body       {:type "text"}
    :standards-designator {:type "keyword"}
+   :unstructured         {:type "text"}
    :doi-asserted-by      {:type "keyword"}
    :doi                  {:type "keyword"}})
 

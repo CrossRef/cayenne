@@ -81,21 +81,21 @@
   (-> item (itree/find-item-of-subtype :journal-issue) :issue))
 
 (defn item-titles [item & {:keys [subtype]}]
-  (let [titles (itree/get-item-rel :title)]
+  (let [titles (itree/get-item-rel item :title)]
     (if subtype
-      (-> titles
-          (filter #(= subtype (itree/get-item-subtype %)))
-          (map :value))
-      (map :value))))
+      (->> titles
+           (filter #(= subtype (itree/get-item-subtype %)))
+           (map :value))
+      (map :value titles))))
 
 (defn item-container-titles [item & {:keys [subtype]}]
   (let [titles (->> (itree/get-item-rel item :ancestor)
                     (mapcat #(itree/get-item-rel % :title)))]
     (if subtype
-      (-> titles
-          (filter #(= subtype (itree/get-item-subtype %)))
-          (map :value))
-      (map :value))))
+      (->> titles
+           (filter #(= subtype (itree/get-item-subtype %)))
+           (map :value))
+      (map :value titles))))
 
 (defn item-standards-body [item]
   (when-let [standards-body (-> item
@@ -138,9 +138,9 @@
         :prefix              (:prefix %)
         :orcid               (item-orcid %)
         :orcid-authenticated (:orcid-authenticated %)
-        :affiliation         (-> %
-                                 (itree/get-item-rel :affiliation)
-                                 (map :name)))
+        :affiliation         (as-> % $
+                                 (itree/get-item-rel $ :affiliation)
+                                 (map :name $)))
       (itree/get-tree-rel item contributor-rel)))
    contributions))
 
@@ -193,8 +193,8 @@
         {:version (:content-version %)
          :url     (:value %)
          :delay   (difference-in-days issued-date start-date)
-         :start   start-date}
-        (itree/get-tree-rel item :license)))))
+         :start   start-date})
+        (itree/get-tree-rel item :license))))
     
 (defn item-assertions [item]
   (map
@@ -214,15 +214,17 @@
    (itree/get-tree-rel item :relation)))
 
 (defn item-references [item]
-  (-> item
-      (itree/get-tree-rel :citation)
-      (select-keys [:doi :doi-asserted-by :key
-                    :issn :issn-type :isbn :isbn-type
-                    :author :volume :issue :first-page :year
-                    :isbn :isbn-type :edition :component
-                    :standard-designator :standards-body
-                    :unstructured :article-title :series-title
-                    :volume-title :journal-title])))
+  (as-> item $
+    (itree/get-tree-rel $ :citation)
+    (map
+     #(select-keys % [:doi :doi-asserted-by :key
+                      :issn :issn-type :isbn :isbn-type
+                      :author :volume :issue :first-page :year
+                      :isbn :isbn-type :edition :component
+                      :standard-designator :standards-body
+                      :unstructured :article-title :series-title
+                      :volume-title :journal-title])
+     $)))
 
 (defn item-update-ofs [item]
   (map
@@ -236,7 +238,7 @@
 (defn contributor-name [contributor]
   (or
    (:org-name contributor)
-   (str (:give-name contributor) " " (:family-name contributor))))
+   (str (:given-name contributor) " " (:family-name contributor))))
 
 (defn contributor-initials [contributor]
   (letfn [(initials [first-name]
@@ -333,7 +335,7 @@
       :volume             (:volume journal-volume)
       :description        (:description item)
       ;; :article-number
-      :degree             (-> item (itree/get-item-rel :degree) (map :value))
+      :degree             (map :value (itree/get-item-rel item :degree))
       ;; :edition-number
       ;; :part-number
       ;; :component-number
@@ -341,7 +343,7 @@
       :update-policy      (item-update-policy item)
       :domain             (itree/get-item-rel item :domains)
       :domain-exclusive   (item-domain-exclusive item)
-      :archive            (-> item (itree/get-item-rel :archived-with) (map :name))
+      :archive            (map :name (itree/get-item-rel item :archived-with))
 
       :abstract              (item-plain-abstract item)
       :abstract-xml          (item-xml-abstract item)
