@@ -121,18 +121,18 @@
 
 ;; todo this should be passed in to ->query-context
 (def sort-fields
-  {"score" ["score"]
-   "relevance" ["score"]
-   "updated" ["deposited_at"]
-   "deposited" ["deposited_at"]
-   "indexed" ["indexed_at"]
-   "created" ["first_deposited_at"]
-   "published-print" ["print_year" "print_month" "print_day"]
-   "published-online" ["online_year" "online_month" "online_day"]
-   "published" ["year" "month" "day"]
-   "issued" ["year" "month" "day"]
-   "is-referenced-by-count" ["cited_by_count"]
-   "references-count" ["citation_count"]
+  {"score" [:score]
+   "relevance" [:score]
+   "updated" [:deposited]
+   "deposited" [:deposited]
+   "indexed" [:indexed]
+   "created" [:first-deposited]
+   "published-print" [:published-print]
+   "published-online" [:published-online]
+   "published" [:published]
+   "issued" [:published]
+   "is-referenced-by-count" [:is-referenced-by-count]
+   "references-count" [:references-count]
 
    ;; for deposits (todo separate these out)
    "submitted" :submitted-at})
@@ -260,6 +260,28 @@
       (doseq [field-name (select-fields select-name)]
         (doto solr-query (.addField field-name)))))
   solr-query)
+
+(defn ->es-query [query-context & {:keys [paged id-field filters count-only]
+                                   :or {paged true
+                                        id-field nil
+                                        filters {}
+                                        count-only false}}]
+  (let [metadata-query (str (:terms query-context)
+                            " "
+                            (:raw-terms query-context))]
+    (cond-> {}
+      (and (string/blank? metadata-query)
+           (nil? id-field))
+      (assoc :match_all {})
+
+      (not (string/blank? metadata-query))
+      (assoc :match {:metadata-content metadata-query})
+
+      id-field
+      (assoc-in [:bool :must :term] {id-field (:id query-context)}))))
+
+      ;; (not (empty? (:filters query-context)))
+      ;; (assoc-in [:bool :must] 
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

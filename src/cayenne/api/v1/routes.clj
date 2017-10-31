@@ -218,7 +218,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? (->1 #(when-let [work (-> doi
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok :work)
