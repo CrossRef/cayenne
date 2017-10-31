@@ -56,7 +56,7 @@
 (def license-properties
   {:version {:type "keyword"}
    :url     {:type "keyword"}
-   :delay   {:type "integer"}
+   :delay   {:type "long"}
    :start   {:type "date"}})
 
 (def assertion-properties

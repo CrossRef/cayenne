@@ -9,7 +9,10 @@
             [cayenne.ids.member :as member-id]
             [cayenne.ids.orcid :as orcid-id]
             [cayenne.ids :as ids]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [qbits.spandex :as elastic]
+            [cayenne.conf :as conf]
+            [cayenne.elastic.util :as elastic-util]))
 
 (def contributions [:author :chair :editor :translator :contributor])
 
@@ -44,7 +47,7 @@
   (item-id item :owner-prefix :converter prefix-id/extract-prefix))
 
 (defn item-member-id [item]
-  (item-id item :member-id :converter member-id/extract-member-id))
+  (item-id item :member :converter member-id/extract-member-id))
 
 (defn item-orcid [item]
   (item-id item :orcid :converter orcid-id/extract-orcid))
@@ -291,7 +294,7 @@
 
 (defn index-command [item]
   (let [doi            (item-doi item)
-        publisher      (itree/get-tree-rel item :publisher)
+        publisher      (-> item (itree/get-tree-rel :publisher) first)
         journal-issue  (itree/find-item-of-subtype item :journal-issue)
         journal-volume (itree/find-item-of-subtype item :journal-volume)]
     [{:index {:_id doi}}
@@ -363,4 +366,11 @@
       :clinical-trial   (item-clinical-trials item)
       :event            (item-events item)
       :standards-body   (item-standards-body item)}]))
+
+(defn index-item [item]
+  (elastic/request
+   (conf/get-service :elastic)
+   {:method :post :url "work/work/_bulk"
+    :body (elastic-util/raw-jsons (index-command item))}))
+                     
 

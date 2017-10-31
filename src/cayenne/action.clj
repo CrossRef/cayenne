@@ -145,6 +145,11 @@
    #(apply doaj/apply-to %)
    #(apply cat/apply-to %)))
 
+(def index-es-docs
+  (comp
+   es-index/index-item
+   #(apply itree/centre-on %)))
+
 (def store-item
   (comp
    (partial mongo/insert-item "items")
