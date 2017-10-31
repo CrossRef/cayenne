@@ -104,14 +104,15 @@
 
 ;; todo content, citation_content
 (def work-properties
-  {:random                   {:type "long"}
+  {:metadata-content         {:type "text"}
+   :bibliographic-content    {:type "text"}
    :type                     {:type "keyword"}
    :doi                      {:type "keyword"}
    :prefix                   {:type "keyword"}
    :owner-prefix             {:type "keyword"}
    :member-id                {:type "integer"}
    :supplementary-id         {:type "keyword"}
-   :language-title           {:type "text"}
+   :title                    {:type "text"}
    :original-title           {:type "text"}
    :container-title          {:type "text"}
    :short-container-title    {:type "text"}
