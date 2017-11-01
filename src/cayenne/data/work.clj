@@ -122,7 +122,7 @@
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
   (let [response (-> (conf/get-service :elastic)
                      (elastic/request
-                      {:method :post :url "work/work/_search"
+                      {:method :get :url "work/work/_search"
                        :body {:query (query/->es-query query-context
                                                        :id-field id-field
                                                        :filters filter/std-filters)}}))
@@ -158,7 +158,7 @@
   [doi]
   (let [response (-> (conf/get-service :elastic)
                      (elastic/request
-                      {:method :post :url "work/work/_search"
+                      {:method :get :url "work/work/_search"
                        :body {:query (query/->es-query {:id doi}
                                                        :id-field :doi)}}))]
     (when-let [doc (first (get-in response [:body :hits :hits]))]

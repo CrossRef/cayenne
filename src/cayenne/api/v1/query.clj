@@ -266,22 +266,26 @@
                                         id-field nil
                                         filters {}
                                         count-only false}}]
+  (println (:filters query-context))
   (let [metadata-query (str (:terms query-context)
                             " "
                             (:raw-terms query-context))]
     (cond-> {}
       (and (string/blank? metadata-query)
-           (nil? id-field))
+           (nil? id-field)
+           (empty? (:filters query-context)))
       (assoc :match_all {})
 
       (not (string/blank? metadata-query))
       (assoc :match {:metadata-content metadata-query})
 
       id-field
-      (assoc-in [:bool :must :term] {id-field (:id query-context)}))))
+      (assoc-in [:bool :must :term] {id-field (:id query-context)})
 
-      ;; (not (empty? (:filters query-context)))
-      ;; (assoc-in [:bool :must] 
+      ;; todo only considering first filter value
+      (-> query-context :filters empty? not)
+      (assoc-in [:bool :filter] (map #((-> % first name filters) (-> % second first))
+                                   (:filters query-context))))))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

@@ -370,4 +370,5 @@
                     :container-title :short-container-title :issue :volume
                     :description :degree :update-policy :archive :type :prefix
                     :owner-prefix :member-id])
+      (assoc :DOI (get-in es-doc [:_source :doi]))
       (assoc :score (:_score es-doc))))

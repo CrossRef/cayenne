@@ -154,26 +154,26 @@
 (defn greater-than-zero [field]
   (fn [val]
     (cond (#{"t" "true" "1"} (.toLowerCase val))
-          (str field ":[1 TO *]")
+          {:range {field {:gte 1}}}
           (#{"f" "false" "0"} (.toLowerCase val))
-          (str field ":0"))))
+          {:range {field {:lte 0}}})))
 
 (defn existence [field]
   (fn [val]
     (cond (#{"t" "true" "1"} (.toLowerCase val))
-          (str field ":[* TO *]")
+          {:exists {:field field}}
           (#{"f" "false" "0"} (.toLowerCase val))
-          (str "-" field ":[* TO *]"))))
+          {:missing {:field field}})))
 
 (defn bool [field]
   (fn [val]
     (cond (#{"t" "true" "1"} (.toLowerCase val))
-          (str field ":true")
+          {:term {field true}}
           (#{"f" "false" "0"} (.toLowerCase val))
-          (str field ":false"))))
+          {:term {field false}})))
 
 (defn equality [field & {:keys [transformer] :or {transformer identity}}]
-  (fn [val] (str field ":\"" (transformer val) "\"")))
+  (fn [val] {:term {field (transformer val)}}))
 
 (defn replace-keys [m kr]
   (into {} (map (fn [[k v]] (if-let [replacement (get kr k)] [replacement v] [k v])) m)))
@@ -342,7 +342,7 @@
    "content-domain" (equality "domains")
    "has-content-domain" (existence "domains")
    "has-domain-restriction" (bool "domain_exclusive")
-   "updates" (equality "update_doi" :transformer doi-id/to-long-doi-uri)
+   "updates" (equality "update_doi" :transformer doi-id/extract-long-doi)
    "update-type" (equality "update_type")
    "has-abstract" (existence "abstract")
    "has-full-text" (existence "full_text_url")
@@ -350,8 +350,8 @@
    "has-references" (greater-than-zero "citation_count")
    "has-update-policy" (existence "update_policy")
    "has-archive" (existence "archive")
-   "has-orcid" (existence "orcid")
-   "has-authenticated-orcid" (bool "contributor_orcid_authed")
+   "has-orcid" (existence "contributor.orcid")
+   "has-authenticated-orcid" (bool "contributor.authenticated-orcid")
    "has-affiliation" (existence "affiliation")
    "has-funder" (existence "funder_name")
    "has-funder-doi" (existence "funder_doi")
@@ -370,14 +370,14 @@
       ;; watch the above - oa_status field changing to directory soon
    "archive" (equality "archive")
    "article-number" (equality "article_number")
-   "issn" (equality "issn" :transformer issn/to-issn-uri)
-   "isbn" (equality "isbn" :transformer isbn/to-isbn-uri)
-   "type" (equality "type" :transformer type-id/->index-id)
+   "issn" (equality "issn" :transformer issn/extract-issn)
+   "isbn" (equality "isbn" :transformer isbn/extract-isbn)
+   "type" (equality "type")
    "type-name" (equality "type")
-   "orcid" (equality "orcid" :transformer orcid/to-orcid-uri)
+   "orcid" (equality "contributor.orcid" :transformer orcid/extract-orcid)
    "assertion" (equality "assertion_name")
    "assertion-group" (equality "assertion_group_name")
-   "doi" (equality "doi_key" :transformer doi-id/to-long-doi-uri)
+   "doi" (equality "doi" :transformer doi-id/extract-long-doi)
    "group-title" (equality "hl_group_title")
    "container-title" (equality "publication")
    "category-name" (equality "category")
