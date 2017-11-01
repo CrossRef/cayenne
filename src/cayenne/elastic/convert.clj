@@ -9,7 +9,9 @@
             [cayenne.ids.member :as member-id]
             [cayenne.ids.orcid :as orcid-id]
             [cayenne.ids :as ids]
-            [clojure.string :as string]))
+            [clojure.string :as string]
+            [clj-time.format :as tf]
+            [clj-time.coerce :as tc]))
 
 (def contributions [:author :chair :editor :translator :contributor])
 
@@ -363,12 +365,33 @@
      :event            (item-events item)
      :standards-body   (item-standards-body item)}))
 
+(defn citeproc-date [date-str]
+  (when date-str
+    (let [instant (tf/parse (tf/formatters :date-time) date-str)]
+      {:date-parts [[(t/year instant) (t/month instant) (t/day instant)]]
+       :date-time (.toString instant)
+       :timestamp (tc/to-long instant)})))
+
 (defn es-doc->citeproc [es-doc]
-  (-> es-doc
-      (get :_source)
-      (select-keys [:title :short-title :original-title :group-title :subtitle
-                    :container-title :short-container-title :issue :volume
-                    :description :degree :update-policy :archive :type :prefix
-                    :owner-prefix :member-id])
-      (assoc :DOI (get-in es-doc [:_source :doi]))
-      (assoc :score (:_score es-doc))))
+  (let [source-doc (:_source es-doc)]
+    (-> source-doc
+        (select-keys [:title :short-title :original-title :group-title :subtitle
+                      :container-title :short-container-title :issue :volume
+                      :description :degree :update-policy :archive :type :prefix
+                      :owner-prefix :member-id])
+        (assoc :DOI              (:doi source-doc))
+        (assoc :URL              (-> source-doc :doi doi-id/to-long-doi-uri))
+        (assoc :issued           (-> source-doc :published citeproc-date))
+        (assoc :published-print  (-> source-doc :published-print citeproc-date))
+        (assoc :published-online (-> source-doc :published-online citeproc-date))
+        (assoc :published-other  (-> source-doc :published-other citeproc-date))
+        (assoc :posted           (-> source-doc :posted citeproc-date))
+        (assoc :accepted         (-> source-doc :accepted citeproc-date))
+        (assoc :approved         (-> source-doc :approved citeproc-date))
+        (assoc :indexed          (-> source-doc :indexed citeproc-date))
+        (assoc :deposited        (-> source-doc :deposited citeproc-date))
+        (assoc :first-deposited  (-> source-doc :first-deposited citeproc-date))
+        (assoc :content-created  (-> source-doc :content-created citeproc-date))
+        (assoc :content-updated  (-> source-doc :content-updated citeproc-date))
+        
+        (assoc :score (:_score es-doc)))))
