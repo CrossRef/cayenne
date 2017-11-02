@@ -10,7 +10,8 @@
             [clj-time.core :as t]
             [clj-time.format :as tf]
             [clojure.string :as str]
-            [taoensso.timbre :as timbre :refer [error info]]))
+            [taoensso.timbre :as timbre :refer [error info]]
+            [clojure.string :as string]))
 
 (defn parse-crm-item-date [s]
   (when-not (str/blank? s)
@@ -30,6 +31,10 @@
                                                 :> "crm-item" 
                                                 [:= "name" "publisher-name"] 
                                                 :text))
+        (itree/add-property :journal-id (-> oai-record
+                                            (xml/xselect1 :> "crm-item"
+                                                          [:= "name" "journal-id"] :text)
+                                            string/trim))
         (itree/add-id (-> oai-record
                           (xml/xselect1 :> "crm-item"
                                         [:= "name" "member-id"] :text)

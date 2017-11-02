@@ -112,6 +112,7 @@
    :prefix                   {:type "keyword"}
    :owner-prefix             {:type "keyword"}
    :member-id                {:type "integer"}
+   :journal-id               {:type "integer"}
    :supplementary-id         {:type "keyword"}
    :title                    {:type "text"}
    :original-title           {:type "text"}

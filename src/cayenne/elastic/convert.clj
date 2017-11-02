@@ -301,6 +301,7 @@
      :prefix           (doi-id/extract-long-prefix doi)
      :owner-prefix     (item-owner-prefix publisher)
      :member-id        (item-member-id publisher)
+     :journal-id       (:journal-id publisher)
      :supplementary-id (itree/get-item-ids item :supplementary)
      
      :published        (item-issued-date item)
@@ -387,7 +388,8 @@
         (select-keys [:title :short-title :original-title :group-title :subtitle
                       :container-title :short-container-title :issue :volume
                       :description :degree :update-policy :archive :type :prefix
-                      :owner-prefix :member-id :references-count :is-referenced-by-count])
+                      :owner-prefix :member-id :journal-id
+                      :references-count :is-referenced-by-count])
 
         (assoc :ISSN             (->> source-doc :issn (map :value)))
         (assoc :ISBN             (->> source-doc :isbn (map :value)))
