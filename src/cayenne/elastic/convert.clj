@@ -372,15 +372,30 @@
        :date-time (.toString instant)
        :timestamp (tc/to-long instant)})))
 
+(defn citeproc-pages [{:keys [first-page last-page]}]
+  (cond (and (not (string/blank? last-page))
+             (not (string/blank? first-page)))
+        (str first-page "-" last-page)
+        (not (string/blank? first-page))
+        first-page
+        :else
+        nil))
+
 (defn es-doc->citeproc [es-doc]
   (let [source-doc (:_source es-doc)]
     (-> source-doc
         (select-keys [:title :short-title :original-title :group-title :subtitle
                       :container-title :short-container-title :issue :volume
                       :description :degree :update-policy :archive :type :prefix
-                      :owner-prefix :member-id])
+                      :owner-prefix :member-id :references-count :is-referenced-by-count])
+
+        (assoc :ISSN             (->> source-doc :issn (map :value)))
+        (assoc :ISBN             (->> source-doc :isbn (map :value)))
+        (assoc :issn-type        (:issn source-doc))
+        (assoc :isbn-type        (:isbn source-doc))
         (assoc :DOI              (:doi source-doc))
         (assoc :URL              (-> source-doc :doi doi-id/to-long-doi-uri))
+        (assoc :page             (citeproc-pages source-doc))
         (assoc :issued           (-> source-doc :published citeproc-date))
         (assoc :published-print  (-> source-doc :published-print citeproc-date))
         (assoc :published-online (-> source-doc :published-online citeproc-date))
