@@ -280,7 +280,7 @@
       (assoc :match {:metadata-content metadata-query})
 
       id-field
-      (assoc-in [:bool :must :term] {id-field (:id query-context)})
+      (assoc-in [:bool :filter :term] {id-field (:id query-context)})
 
       ;; todo only considering first filter value
       (-> query-context :filters empty? not)
