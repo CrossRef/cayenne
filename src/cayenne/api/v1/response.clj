@@ -1,14 +1,16 @@
 (ns cayenne.api.v1.response
-  (:require [clojure.string :as str]
-            [cayenne.util :refer [?>]]))
+  (:require [clojure.string :as string]
+            [cayenne.util :refer [?>]]
+            [cayenne.conf :as conf]))
 
-(defn with-debug-info [response solr-response query-context query-body]
+(defn with-debug-info [response solr-response query-context es-body]
   (if-not (:debug query-context)
     response
     (-> response
         (assoc-in [:debug :instance-hostname]
                   (.getCanonicalHostName (java.net.InetAddress/getLocalHost)))
-        (assoc-in [:debug :query-body] query-body)
+        (assoc-in [:debug :elastic-request-body] es-body)
+        (assoc-in [:debug :elastic-client-config] (conf/get-param [:service :elastic]))
         (assoc-in [:debug :query-context] query-context))))
 
 (defn with-page-info [response offset per-page]
@@ -27,7 +29,7 @@
 
 (defn with-result-items [response total items & {:keys [next-cursor]}]
   (-> response
-      (?> (not (str/blank? next-cursor))
+      (?> (not (string/blank? next-cursor))
           assoc-in [:message :next-cursor] next-cursor)
       (assoc-in [:message :total-results] total)
       (assoc-in [:message :items] items)))
