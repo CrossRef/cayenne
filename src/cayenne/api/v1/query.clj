@@ -226,26 +226,6 @@
      :filters (merge filters (get-filters params))
      :debug (:debug params)}))
 
-;; todo get selectors and get filters handle json input
-
-(defn make-query-string [query-context]
-  (cond (and (not (string/blank? (:terms query-context)))
-             (not (string/blank? (:raw-terms query-context))))
-        (str (-> query-context :terms (clean-terms :remove-syntax true))
-             " "
-             (-> query-context :raw-terms))
-
-        (not (string/blank? (:terms query-context)))
-        (-> query-context :terms (clean-terms :remove-syntax true))
-
-        (not (string/blank? (:raw-terms query-context)))
-        (-> query-context :raw-terms)
-
-        (> (count (:field-terms query-context)) 0) ;don't return *:* if we have field-terms
-        nil
-        :else
-        "*:*"))
-
 (defn with-source-fields [es-body query-context]
   (if (empty? (:select query-context))
     es-body
