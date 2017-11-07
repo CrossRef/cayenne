@@ -162,7 +162,7 @@
    :contributor              {:type "nested" :properties contributor-properties}
    :funder                   {:type "nested" :properties funder-properties}
    :updated-by               {:type "nested" :properties update-properties}
-   :update-of                {:type "nested" :properties update-properties}
+   :update-to                {:type "nested" :properties update-properties}
    :clinical-trial           {:type "nested" :properties clinical-trial-properties}
    :event                    {:type "object" :properties event-properties}
    :link                     {:type "nested" :properties link-properties}

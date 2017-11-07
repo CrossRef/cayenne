@@ -11,9 +11,6 @@
             [taoensso.timbre :as timbre :refer [info error]])
   (:import [org.apache.solr.client.solrj SolrQuery SolrQuery$ORDER]))
 
-;; todo complete validation of query context params
-;; and error response on invalid params
-
 (def default-offset 0)
 (def default-rows 20)
 (def max-rows 1000)
@@ -22,7 +19,82 @@
 (def default-facet-rows 20)
 (def max-facet-rows 1000)
 
-(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}]
+;; todo this should be passed in to ->query-context
+(def sort-fields
+  {"score"                  [:score]
+   "relevance"              [:score]
+   "updated"                [:deposited]
+   "deposited"              [:deposited]
+   "indexed"                [:indexed]
+   "created"                [:first-deposited]
+   "published-print"        [:published-print]
+   "published-online"       [:published-online]
+   "published"              [:published]
+   "issued"                 [:published]
+   "is-referenced-by-count" [:is-referenced-by-count]
+   "references-count"       [:references-count]
+
+   ;; for deposits (todo separate these out)
+   "submitted"              :submitted-at})
+
+;; todo this should be passed in to ->query-context
+(def select-fields
+  {"DOI"                    [:doi]
+   "member"                 [:member-id]
+   "prefix"                 [:owner-prefix]
+   "URL"                    [:doi]
+   "issued"                 [:published]
+   "created"                [:first-deposited]
+   "deposited"              [:deposited]
+   "indexed"                [:indexed]
+   "publisher"              [:publisher]
+   "references-count"       [:references-count]
+   "is-referenced-by-count" [:is-referenced-by-count]
+   "type"                   [:type]
+   "content-domain"         [:domain :domain-exclusive]
+   "relation"               [:reference.* :relation.*]
+   "published-online"       [:published-online]
+   "published-print"        [:published-print]
+   "posted"                 [:posted]
+   "accepted"               [:accepted]
+   "content-created"        [:content-created]
+   "approved"               [:approved]
+   "publisher-location"     [:publisher-location]
+   "abstract"               [:abstract-xml]
+   "article-number"         [:article-number]
+   "volume"                 [:volume]
+   "issue"                  [:issue]
+   "ISBN"                   [:isbn.*]
+   "ISSN"                   [:issn.*]
+   "degree"                 [:degree]
+   "alternative-id"         [:supplementary-id]
+   "title"                  [:title]
+   "short-title"            [:short-title]
+   "original-title"         [:original-title]
+   "subtitle"               [:subtitle]
+   "container-title"        [:container-title]
+   "short-container-title"  [:short-container-title]
+   "group-title"            [:group-title]
+   "archive"                [:archive]
+   "update-policy"          [:update-policy]
+   "update-to"              [:update-to.*]
+   "updated-by"             [:updated-by.*]
+   "license"                [:license.*]
+   "link"                   [:link.*]
+   "page"                   [:first-page :last-page]
+   "funder"                 [:funder.*]
+   "assertion"              [:assertion.*]
+   "clinical-trial-number"  [:clinical-trial.*]
+   "issn-type"              [:issn.*]
+   "event"                  [:event.*]
+   "reference"              [:refernece.*]
+   "author"                 [:contributor.*]
+   "editor"                 [:contributor.*]
+   "chair"                  [:contributor.*]
+   "translator"             [:contributor.*]
+   "standards-body"         [:standards-body.*]})
+
+(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
   (if-not remove-syntax
     terms
     (-> terms
@@ -118,84 +190,7 @@
             :else
             :desc))
     :desc))
-
-;; todo this should be passed in to ->query-context
-(def sort-fields
-  {"score" [:score]
-   "relevance" [:score]
-   "updated" [:deposited]
-   "deposited" [:deposited]
-   "indexed" [:indexed]
-   "created" [:first-deposited]
-   "published-print" [:published-print]
-   "published-online" [:published-online]
-   "published" [:published]
-   "issued" [:published]
-   "is-referenced-by-count" [:is-referenced-by-count]
-   "references-count" [:references-count]
-
-   ;; for deposits (todo separate these out)
-   "submitted" :submitted-at})
-
-;; todo this should be passed in to ->query-context
-(def select-fields
-  {"DOI" ["doi"]
-   "score" ["score"]
-   "member" ["member_id"]
-   "prefix" ["owner_prefix"]
-   "URL" ["doi"]
-   "issued" ["year" "month" "day"]
-   "created" ["first_deposited_at"]
-   "deposited" ["deposited_at"]
-   "indexed" ["indexed_at"]
-   "publisher" ["publisher"]
-   "references-count" ["citation_count"]
-   "is-referenced-by-count" ["cited_by_count"]
-   "type" ["type"]
-   "content-domain" ["domains" "domain_exclusive"]
-   "relation" ["citation_*" "relation_*"]
-   "published-online" ["online_*"]
-   "published-print" ["print_*"]
-   "posted" ["posted_*"]
-   "accepted" ["accepted_*"]
-   "content-created" ["content_created_*"]
-   "approved" ["approved_*"]
-   "publisher-location" ["publisher_location"]
-   "abstract" ["abstract_xml"]
-   "article-number" ["article_number"]
-   "volume" ["hl_volume"]
-   "issue" ["hl_issue"]
-   "ISBN" ["isbn"]
-   "ISSN" ["issn"]
-   "degree" ["degree"]
-   "alternative-id" ["supplementary_id"]
-   "title" ["hl_title"]
-   "short-title" ["hl_short_title"]
-   "original-title" ["hl_original_title"]
-   "subtitle" ["hl_subtitle"]
-   "container-title" ["hl_publication"]
-   "short-container-title" ["hl_short_publication"]
-   "group-title" ["hl_group_title"]
-   "subject" ["category"]
-   "archive" ["archive"]
-   "update-policy" ["update_policy"]
-   "update-to" ["update_*"]
-   "updated-by" ["update_by_*"]
-   "license" ["license_*"]
-   "link" ["full_text_*"]
-   "page" ["hl_first_page" "hl_last_page"]
-   "funder" ["award_*" "funder_*"]
-   "assertion" ["assertion_*"]
-   "clinical-trial-number" ["clinical_trial_number_*"]
-   "issn-type" ["issn_type_*"]
-   "event" ["event_*"]
-   "reference" ["citation_*"]
-   "author" ["contributor_*"]
-   "editor" ["contributor_*"]
-   "chair" ["contributor_*"]
-   "translator" ["contributor_*"]
-   "standards-body" ["standards_body_*"]})
-
+  
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
     (-> sort-params
@@ -251,41 +246,56 @@
         :else
         "*:*"))
 
-(defn set-query-fields [query-context solr-query]
+(defn with-source-fields [es-body query-context]
   (if (empty? (:select query-context))
-    (doto solr-query
-      (.addField "*")
-      (.addField "score"))
-    (doseq [select-name (:select query-context)]
-      (doseq [field-name (select-fields select-name)]
-        (doto solr-query (.addField field-name)))))
-  solr-query)
+    es-body
+    (assoc es-body :_source (->> (:select query-context)
+                                 (map select-fields)
+                                 (apply concat)))))
+
+(defn with-query [es-body query-context & {:keys [id-field filters]}]
+  (let [metadata-query (str (:terms query-context)
+                            " "
+                            (:raw-terms query-context))]
+    (cond-> es-body
+      (and (string/blank? metadata-query)
+           (nil? id-field)
+           (empty? (:filters query-context)))
+      (assoc-in [:query :match_all] {})
+      
+      (not (string/blank? metadata-query))
+      (assoc-in [:query :match] {:metadata-content metadata-query})
+      
+      id-field
+      (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})
+      
+      ;; todo only considering first filter value
+      (-> query-context :filters empty? not)
+      (assoc-in [:query :bool :filter] (map #((-> % first name filters) (-> % second first))
+                                     (:filters query-context))))))
+
+(defn with-paging [es-body query-context & {:keys [paged count-only]}]
+  (cond
+    paged
+    (-> es-body
+        (assoc :from (:offset query-context))
+        (assoc :size (:rows query-context)))
+    
+    count-only
+    (assoc :size 0)
+    
+    :else
+    es-body))
 
 (defn ->es-query [query-context & {:keys [paged id-field filters count-only]
                                    :or {paged true
                                         id-field nil
                                         filters {}
                                         count-only false}}]
-  (println (:filters query-context))
-  (let [metadata-query (str (:terms query-context)
-                            " "
-                            (:raw-terms query-context))]
-    (cond-> {}
-      (and (string/blank? metadata-query)
-           (nil? id-field)
-           (empty? (:filters query-context)))
-      (assoc :match_all {})
-
-      (not (string/blank? metadata-query))
-      (assoc :match {:metadata-content metadata-query})
-
-      id-field
-      (assoc-in [:bool :filter :term] {id-field (:id query-context)})
-
-      ;; todo only considering first filter value
-      (-> query-context :filters empty? not)
-      (assoc-in [:bool :filter] (map #((-> % first name filters) (-> % second first))
-                                   (:filters query-context))))))
+  (-> {}
+      (with-source-fields query-context)
+      (with-query query-context :id-field id-field :filters filters)
+      (with-paging query-context :paged paged :count-only count-only)))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

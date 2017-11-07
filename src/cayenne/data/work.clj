@@ -123,9 +123,9 @@
   (let [response (-> (conf/get-service :elastic)
                      (elastic/request
                       {:method :get :url "work/work/_search"
-                       :body {:query (query/->es-query query-context
-                                                       :id-field id-field
-                                                       :filters filter/std-filters)}}))
+                       :body (query/->es-query query-context
+                                               :id-field id-field
+                                               :filters filter/std-filters)}))
         doc-list (get-in response [:body :hits :hits])]
     (-> (r/api-response :work-list)
         ;; (r/with-debug-info response query-context)
@@ -159,8 +159,8 @@
   (let [response (-> (conf/get-service :elastic)
                      (elastic/request
                       {:method :get :url "work/work/_search"
-                       :body {:query (query/->es-query {:id doi}
-                                                       :id-field :doi)}}))]
+                       :body (query/->es-query {:id doi}
+                                               :id-field :doi)}))]
     (when-let [doc (first (get-in response [:body :hits :hits]))]
       (r/api-response :work :content (-> doc
                                          convert/es-doc->citeproc

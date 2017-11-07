@@ -228,7 +228,7 @@
                       :volume-title :journal-title])
      $)))
 
-(defn item-update-ofs [item]
+(defn item-update-tos [item]
   (map
    #(hash-map
      :doi   (:value %)
@@ -357,7 +357,7 @@
      :reference        (item-references item)
      :license          (item-licenses item)
      :link             (item-links item)
-     :update-of        (item-update-ofs item)
+     :update-to        (item-update-tos item)
      :assertion        (item-assertions item)
      :relation         (item-relations item)
      :contributor      (item-contributors item)
