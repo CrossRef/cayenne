@@ -287,6 +287,12 @@
     :else
     es-body))
 
+(defn with-sort-fields [es-body query-context]
+  (if (-> query-context :sort empty?)
+    es-body
+    (assoc es-body :sort (map #(hash-map % {:order (:order query-context)})
+                              (:sort query-context)))))
+
 (defn ->es-query [query-context & {:keys [paged id-field filters count-only]
                                    :or {paged true
                                         id-field nil
@@ -294,6 +300,7 @@
                                         count-only false}}]
   (-> {}
       (with-source-fields query-context)
+      (with-sort-fields query-context)
       (with-query query-context :id-field id-field :filters filters)
       (with-paging query-context :paged paged :count-only count-only)))
 

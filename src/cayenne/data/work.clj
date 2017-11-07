@@ -120,15 +120,16 @@
      (drop 20 records))))
 
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
-  (let [response (-> (conf/get-service :elastic)
+  (let [es-body (query/->es-query query-context
+                                  :id-field id-field
+                                  :filters filter/std-filters)
+        response (-> (conf/get-service :elastic)
                      (elastic/request
                       {:method :get :url "work/work/_search"
-                       :body (query/->es-query query-context
-                                               :id-field id-field
-                                               :filters filter/std-filters)}))
+                       :body es-body}))
         doc-list (get-in response [:body :hits :hits])]
     (-> (r/api-response :work-list)
-        ;; (r/with-debug-info response query-context)
+        (r/with-debug-info response query-context es-body)
         ;; (r/with-result-facets (facet/->response-facets response))
         (r/with-result-items
           (get-in response [:body :hits :total])
