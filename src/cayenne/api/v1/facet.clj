@@ -4,7 +4,7 @@
 (def std-facets
   {"type"                    {:external-field "type-name"
                               :allow-unlimited-values true}
-   "published"               {:external-field "published"
+   "published"               {:external-field "published-year"
                               :allow-unlimited-values true}
    "container-title"         {:external-field "container-title"}
    "funder.name"             {:external-field "funder-name"

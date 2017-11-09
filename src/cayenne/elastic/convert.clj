@@ -303,6 +303,7 @@
      :member-id        (item-member-id publisher)
      :journal-id       (:journal-id publisher)
      :supplementary-id (itree/get-item-ids item :supplementary)
+     :published-year   (t/year (item-issued-date item))
      
      :published        (item-issued-date item)
      :published-online (item-date item :published-online)
