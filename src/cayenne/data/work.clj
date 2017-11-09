@@ -141,20 +141,20 @@
         (r/with-query-context-info query-context))))
 
 (defn fetch-reverse [query-context]
-  (let [terms (query/clean-terms (:terms query-context) :remove-syntax true)
-        q (str "content_citation:(" terms ")")
-        response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query {:raw-terms q
-                                                  :rows (int 1)})))
-        doc-list (.getResults response)]
-    (if (partial-response? response)
-      (throw (RuntimeException. "Solr returned a partial result set"))
-      (if (zero? (.getNumFound doc-list))
-        (r/api-response :nothing)
-        (let [doc (-> doc-list first convert/es-doc->citeproc)]
-          (if (or (< (count (string/split terms #"\s")) 4) (< (:score doc) 2))
-            (r/api-response :nothing)
-            (r/api-response :work :content doc)))))))
+  (let [terms (:terms query-context)
+        es-body (query/->es-query {:field-terms {"bibliographic" terms}
+                                   :rows 1})
+        response (-> (conf/get-service :elastic)
+                     (elastic/request
+                      {:method :get :url "work/work/_search"
+                       :body es-body}))
+        doc-list (get-in response [:body :hits :hits])]
+    (if (zero? (count doc-list))
+      (r/api-response :nothing)
+      (let [doc (-> doc-list first convert/es-doc->citeproc)]
+        (if (or (< (count (string/split terms #"\s")) 4) (< (:_score doc) 2))
+          (r/api-response :nothing)
+          (r/api-response :work :content doc))))))
 
 (defn fetch-one
   "Fetch a known DOI."
