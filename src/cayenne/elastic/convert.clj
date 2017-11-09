@@ -350,8 +350,9 @@
 
      :abstract              (item-plain-abstract item)
      :abstract-xml          (item-xml-abstract item)
-     :metadata-content      (item-metadata-content item)
-     :bibliographic-content (item-bibliographic-content item)
+     
+     :metadata-content.text      (item-metadata-content item)
+     :bibliographic-content.text (item-bibliographic-content item)
 
      :isbn             (item-isbns item)
      :issn             (item-issns item)

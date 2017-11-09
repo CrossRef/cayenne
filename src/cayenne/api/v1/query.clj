@@ -244,7 +244,7 @@
       (assoc-in [:query :match_all] {})
       
       (not (string/blank? metadata-query))
-      (assoc-in [:query :match] {:metadata-content metadata-query})
+      (assoc-in [:query :match] {:metadata-content.text metadata-query})
       
       id-field
       (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})

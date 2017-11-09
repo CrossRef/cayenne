@@ -105,71 +105,75 @@
 
 ;; todo content, citation_content
 (def work-properties
-  {:metadata-content         {:type "text"}
-   :bibliographic-content    {:type "text"}
-   :type                     {:type "keyword"}
-   :doi                      {:type "keyword"}
-   :prefix                   {:type "keyword"}
-   :owner-prefix             {:type "keyword"}
-   :member-id                {:type "integer"}
-   :journal-id               {:type "integer"}
-   :supplementary-id         {:type "keyword"}
-   :title                    {:type "keyword"}
-   :original-title           {:type "keyword"}
-   :container-title          {:type "keyword"}
-   :short-container-title    {:type "keyword"}
-   :short-title              {:type "keyword"}
-   :group-title              {:type "keyword"}
-   :subtitle                 {:type "keyword"}
-   :volume                   {:type "keyword"}
-   :issue                    {:type "keyword"}
-   :first-page               {:type "keyword"}
-   :last-page                {:type "keyword"}
-   :description              {:type "text"}
-   :is-referenced-by-count   {:type "long"}
-   :references-count         {:type "long"}
-   :article-number           {:type "text"}
-   :first-deposited          {:type "date"}
-   :deposited                {:type "date"}
-   :indexed                  {:type "date"}
-   :published                {:type "date"}
-   :published-online         {:type "date"}
-   :published-print          {:type "date"}
-   :published-other          {:type "date"}
-   :posted                   {:type "date"}
-   :accepted                 {:type "date"}
-   :content-created          {:type "date"}
-   :content-updated          {:type "date"}
-   :approved                 {:type "date"}
-   :subject                  {:type "keyword"}
-   :publication              {:type "text"}
-   :archive                  {:type "keyword"}
-   :publisher                {:type "text"}
-   :publisher-location       {:type "text"}
-   :degree                   {:type "text"}
-   :edition-number           {:type "keyword"}
-   :part-number              {:type "keyword"}
-   :component-number         {:type "keyword"}
-   :update-policy            {:type "keyword"}
-   :domain                   {:type "keyword"}
-   :domain-exclusive         {:type "boolean"}
-   :abstract                 {:type "text"}
-   :abstract-xml             {:type "text"}
-   :index-context            {:type "keyword"}
-   :standards-body           {:type "object" :properties standards-body-properties}
-   :issn                     {:type "object" :properties issn-properties}
-   :isbn                     {:type "object" :properties isbn-properties}
-   :contributor              {:type "nested" :properties contributor-properties}
-   :funder                   {:type "nested" :properties funder-properties}
-   :updated-by               {:type "nested" :properties update-properties}
-   :update-to                {:type "nested" :properties update-properties}
-   :clinical-trial           {:type "nested" :properties clinical-trial-properties}
-   :event                    {:type "object" :properties event-properties}
-   :link                     {:type "nested" :properties link-properties}
-   :license                  {:type "nested" :properties license-properties}
-   :assertion                {:type "nested" :properties assertion-properties}
-   :relation                 {:type "nested" :properties relation-properties}
-   :reference                {:type "object" :properties reference-properties}})
+  {:metadata-content.text      {:type "text"}
+   :bibliographic-content.text {:type "text"}
+   :title.text                 {:type "text"}
+   :container-title.text       {:type "text"}
+   :abstract                   {:type "keyword" :indexed false}
+   :abstract-xml               {:type "keyword" :indexed false}
+   :type                       {:type "keyword"}
+   :doi                        {:type "keyword"}
+   :prefix                     {:type "keyword"}
+   :owner-prefix               {:type "keyword"}
+   :member-id                  {:type "integer"}
+   :journal-id                 {:type "integer"}
+   :supplementary-id           {:type "keyword"}
+   :published-year             {:type "integer"}
+   :title                      {:type "keyword" :copy_to :title.text}
+   :original-title             {:type "keyword" :copy_to :title.text}
+   :container-title            {:type "keyword" :copy_to :container-title.text}
+   :short-container-title      {:type "keyword" :copy_to :container-title.text}
+   :short-title                {:type "keyword" :copy_to :title.text}
+   :group-title                {:type "keyword" :copy_to :container-title.text}
+   :subtitle                   {:type "keyword" :copy_to :title.text}
+   :volume                     {:type "keyword"}
+   :issue                      {:type "keyword"}
+   :first-page                 {:type "keyword"}
+   :last-page                  {:type "keyword"}
+   :description                {:type "keyword"}
+   :is-referenced-by-count     {:type "long"}
+   :references-count           {:type "long"}
+   :article-number             {:type "text"}
+   :first-deposited            {:type "date"}
+   :deposited                  {:type "date"}
+   :indexed                    {:type "date"}
+   :published                  {:type "date"}
+   :published-online           {:type "date"}
+   :published-print            {:type "date"}
+   :published-other            {:type "date"}
+   :posted                     {:type "date"}
+   :accepted                   {:type "date"}
+   :content-created            {:type "date"}
+   :content-updated            {:type "date"}
+   :approved                   {:type "date"}
+   :subject                    {:type "keyword"}
+   :publication                {:type "keyword"}
+   :archive                    {:type "keyword"}
+   :publisher                  {:type "keyword"}
+   :publisher-location         {:type "keyword"}
+   :degree                     {:type "keyword"}
+   :edition-number             {:type "keyword"}
+   :part-number                {:type "keyword"}
+   :component-number           {:type "keyword"}
+   :update-policy              {:type "keyword"}
+   :domain                     {:type "keyword"}
+   :domain-exclusive           {:type "boolean"}
+   :index-context              {:type "keyword"}
+   :standards-body             {:type "object" :properties standards-body-properties}
+   :issn                       {:type "object" :properties issn-properties}
+   :isbn                       {:type "object" :properties isbn-properties}
+   :contributor                {:type "nested" :properties contributor-properties}
+   :funder                     {:type "nested" :properties funder-properties}
+   :updated-by                 {:type "nested" :properties update-properties}
+   :update-to                  {:type "nested" :properties update-properties}
+   :clinical-trial             {:type "nested" :properties clinical-trial-properties}
+   :event                      {:type "object" :properties event-properties}
+   :link                       {:type "nested" :properties link-properties}
+   :license                    {:type "nested" :properties license-properties}
+   :assertion                  {:type "nested" :properties assertion-properties}
+   :relation                   {:type "nested" :properties relation-properties}
+   :reference                  {:type "object" :properties reference-properties
+                                :indexed false}})
 
 (def prefix-properties
   {:value             {:type "keyword"}
