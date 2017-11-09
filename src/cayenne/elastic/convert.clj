@@ -28,6 +28,12 @@
           :else
           (t/date-time year))))
 
+(defn maybe-int [int-as-string]
+  (try
+    (Integer/parseInt int-as-string)
+    (catch NumberFormatException e
+      nil)))
+
 (defn item-id [item id-type & {:keys [converter]
                                :or {converter identity}}]
   (when-let [id (-> item (itree/get-item-ids id-type) first)]
@@ -291,6 +297,15 @@
        (concat (mapcat itree/get-item-ids (itree/get-tree-rel item :awarded))) ; grant numbers
        (concat (map :name (itree/get-tree-rel item :funder)))))) ; funder names
 
+(defn item-contributor-names [item & {:keys [contribution]}]
+  (cond->> (item-contributors item)
+    (not (nil? contribution))
+    (filter #(= (name contribution) (:contribution %)))
+    :always
+    (mapcat #(vector (:given-name %) (:family-name %)
+                     (:org-name %) (:prefix %)
+                     (:suffix %)))))
+
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
@@ -300,8 +315,8 @@
      :type             (item-type item)
      :prefix           (doi-id/extract-long-prefix doi)
      :owner-prefix     (item-owner-prefix publisher)
-     :member-id        (item-member-id publisher)
-     :journal-id       (:journal-id publisher)
+     :member-id        (maybe-int (item-member-id publisher))
+     :journal-id       (maybe-int (:journal-id publisher))
      :supplementary-id (itree/get-item-ids item :supplementary)
      :published-year   (t/year (item-issued-date item))
      
@@ -351,8 +366,13 @@
      :abstract              (item-plain-abstract item)
      :abstract-xml          (item-xml-abstract item)
      
-     :metadata-content.text      (item-metadata-content item)
-     :bibliographic-content.text (item-bibliographic-content item)
+     :metadata-content-text      (item-metadata-content item)
+     :bibliographic-content-text (item-bibliographic-content item)
+     :author-text                (item-contributor-names item :contribution :author)
+     :editor-text                (item-contributor-names item :contribution :editor)
+     :chair-text                 (item-contributor-names item :contribution :chair)
+     :translator-text            (item-contributor-names item :contribution :translator)
+     :contributor-text           (item-contributor-names item)
 
      :isbn             (item-isbns item)
      :issn             (item-issns item)

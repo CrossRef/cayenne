@@ -234,25 +234,24 @@
                                  (apply concat)))))
 
 (defn with-query [es-body query-context & {:keys [id-field filters]}]
-  (let [metadata-query (str (:terms query-context)
-                            " "
-                            (:raw-terms query-context))]
-    (cond-> es-body
-      (and (string/blank? metadata-query)
-           (nil? id-field)
-           (empty? (:filters query-context)))
-      (assoc-in [:query :match_all] {})
-      
-      (not (string/blank? metadata-query))
-      (assoc-in [:query :match] {:metadata-content.text metadata-query})
-      
-      id-field
-      (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})
-      
-      ;; todo only considering first filter value
-      (-> query-context :filters empty? not)
-      (assoc-in [:query :bool :filter] (map #((-> % first name filters) (-> % second first))
-                                     (:filters query-context))))))
+  (cond-> es-body
+    (and (string/blank? (:terms query-context))
+         (nil? id-field)
+         (empty? (:field-terms query-context))
+         (empty? (:filters query-context)))
+    (assoc-in [:query :match_all] {})
+    
+    (not (string/blank? (:terms query-context)))
+    (assoc-in [:query :bool :should]
+              [{:term {:metadata-content-text (:terms query-context)}}])
+    
+    id-field
+    (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})
+    
+    ;; todo only considering first filter value
+    (-> query-context :filters empty? not)
+    (assoc-in [:query :bool :filter] (map #((-> % first name filters) (-> % second first))
+                                          (:filters query-context)))))
 
 (defn with-paging [es-body query-context & {:keys [paged count-only]}]
   (cond
@@ -279,11 +278,12 @@
                                         filters {}
                                         count-only false}}]
   (-> {}
-      (facet/with-aggregations query-context)
       (with-source-fields query-context)
       (with-sort-fields query-context)
       (with-query query-context :id-field id-field :filters filters)
-      (with-paging query-context :paged paged :count-only count-only)))
+      (with-paging query-context :paged paged :count-only count-only)
+      (facet/with-aggregations query-context)
+      (fields/with-field-queries query-context)))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

@@ -9,7 +9,7 @@
    :prefix              {:type "text"}
    :suffix              {:type "text"}
    :orcid               {:type "keyword"}
-   :affiliation         {:type "keyword"}
+   :affiliation         {:type "keyword" :copy_to :affiliation-text}
    :authenticated-orcid {:type "boolean"}})
 
 (def issn-properties
@@ -20,8 +20,8 @@
   {:value {:type "keyword"}
    :type  {:type "keyword"}})
 
-(def funder-properties
-  {:name            {:type "keyword"}
+(def work-funder-properties
+  {:name            {:type "keyword" :copy_to :funder-name-text}
    :doi             {:type "keyword"}
    :doi-asserted-by {:type "keyword"}
    :award           {:type "text"}})
@@ -78,26 +78,26 @@
 
 (def reference-properties
   {:key                  {:type "keyword"}
-   :issn                 {:type "keyword"}
-   :issn-type            {:type "keyword"}
-   :author               {:type "text"}
-   :issue                {:type "text"}
-   :first-page           {:type "text"}
-   :year                 {:type "integer"}
-   :isbn                 {:type "keyword"}
-   :isbn-type            {:type "keyword"}
-   :series-title         {:type "text"}
-   :volume-title         {:type "text"}
-   :edition              {:type "keyword"}
-   :component            {:type "keyword"}
-   :volume               {:type "keyword"}
-   :article-title        {:type "text"}
-   :journal-title        {:type "text"}
-   :standards-body       {:type "text"}
-   :standards-designator {:type "keyword"}
-   :unstructured         {:type "text"}
+   :doi                  {:type "keyword"}
    :doi-asserted-by      {:type "keyword"}
-   :doi                  {:type "keyword"}})
+   :issn                 {:type "keyword" :index false}
+   :issn-type            {:type "keyword" :index false}
+   :author               {:type "text" :index false}
+   :issue                {:type "text" :index false}
+   :first-page           {:type "text" :index false}
+   :year                 {:type "integer" :index false}
+   :isbn                 {:type "keyword" :index false}
+   :isbn-type            {:type "keyword" :index false}
+   :series-title         {:type "text" :index false}
+   :volume-title         {:type "text" :index false}
+   :edition              {:type "keyword" :index false}
+   :component            {:type "keyword" :index false}
+   :volume               {:type "keyword" :index false}
+   :article-title        {:type "text" :index false}
+   :journal-title        {:type "text" :index false}
+   :standards-body       {:type "text" :index false}
+   :standards-designator {:type "keyword" :index false}
+   :unstructured         {:type "text" :index false}})
 
 (def standards-body-properties
   {:name    {:type "text"}
@@ -105,12 +105,22 @@
 
 ;; todo content, citation_content
 (def work-properties
-  {:metadata-content.text      {:type "text"}
-   :bibliographic-content.text {:type "text"}
-   :title.text                 {:type "text"}
-   :container-title.text       {:type "text"}
-   :abstract                   {:type "keyword" :indexed false}
-   :abstract-xml               {:type "keyword" :indexed false}
+  {:metadata-content-text      {:type "text"}
+   :bibliographic-content-text {:type "text"}
+   :title-text                 {:type "text"}
+   :container-title-text       {:type "text"}
+   :author-text                {:type "text"}
+   :editor-text                {:type "text"}
+   :chair-text                 {:type "text"}
+   :translator-text            {:type "text"}
+   :contributor-text           {:type "text"}
+   :publisher-text             {:type "text"}
+   :publisher-location-text    {:type "text"}
+   :degree-text                {:type "text"}
+   :affiliation-text           {:type "text"}
+   :funder-name-text           {:type "text"}
+   :abstract                   {:type "keyword" :index false}
+   :abstract-xml               {:type "keyword" :index false}
    :type                       {:type "keyword"}
    :doi                        {:type "keyword"}
    :prefix                     {:type "keyword"}
@@ -119,13 +129,13 @@
    :journal-id                 {:type "integer"}
    :supplementary-id           {:type "keyword"}
    :published-year             {:type "integer"}
-   :title                      {:type "keyword" :copy_to :title.text}
-   :original-title             {:type "keyword" :copy_to :title.text}
-   :container-title            {:type "keyword" :copy_to :container-title.text}
-   :short-container-title      {:type "keyword" :copy_to :container-title.text}
-   :short-title                {:type "keyword" :copy_to :title.text}
-   :group-title                {:type "keyword" :copy_to :container-title.text}
-   :subtitle                   {:type "keyword" :copy_to :title.text}
+   :title                      {:type "keyword" :copy_to :title-text}
+   :original-title             {:type "keyword" :copy_to :title-text}
+   :container-title            {:type "keyword" :copy_to :container-title-text}
+   :short-container-title      {:type "keyword" :copy_to :container-title-text}
+   :short-title                {:type "keyword" :copy_to :title-text}
+   :group-title                {:type "keyword" :copy_to :container-title-text}
+   :subtitle                   {:type "keyword" :copy_to :title-text}
    :volume                     {:type "keyword"}
    :issue                      {:type "keyword"}
    :first-page                 {:type "keyword"}
@@ -149,9 +159,9 @@
    :subject                    {:type "keyword"}
    :publication                {:type "keyword"}
    :archive                    {:type "keyword"}
-   :publisher                  {:type "keyword"}
-   :publisher-location         {:type "keyword"}
-   :degree                     {:type "keyword"}
+   :publisher                  {:type "keyword" :copy_to :publisher-text}
+   :publisher-location         {:type "keyword" :copy_to :publisher-location-text}
+   :degree                     {:type "keyword" :copy_to :degree-text}
    :edition-number             {:type "keyword"}
    :part-number                {:type "keyword"}
    :component-number           {:type "keyword"}
@@ -163,7 +173,7 @@
    :issn                       {:type "object" :properties issn-properties}
    :isbn                       {:type "object" :properties isbn-properties}
    :contributor                {:type "nested" :properties contributor-properties}
-   :funder                     {:type "nested" :properties funder-properties}
+   :funder                     {:type "nested" :properties work-funder-properties}
    :updated-by                 {:type "nested" :properties update-properties}
    :update-to                  {:type "nested" :properties update-properties}
    :clinical-trial             {:type "nested" :properties clinical-trial-properties}
@@ -172,8 +182,7 @@
    :license                    {:type "nested" :properties license-properties}
    :assertion                  {:type "nested" :properties assertion-properties}
    :relation                   {:type "nested" :properties relation-properties}
-   :reference                  {:type "object" :properties reference-properties
-                                :indexed false}})
+   :reference                  {:type "object" :properties reference-properties}})
 
 (def prefix-properties
   {:value             {:type "keyword"}
@@ -226,11 +235,11 @@
    "journal" {"_all" {:enabled false} :properties journal-properties}})
 
 (def index-settings
-  {"work"    {:number_of_shards 24 :number_of_replicas 3 "index.mapper.dynamic" false}
-   "member"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
-   "funder"  {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
-   "subject" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}
-   "journal" {:number_of_shards 1  :number_of_replicas 3 "index.mapper.dynamic" false}})
+  {"work"    {:number_of_shards 24 :number_of_replicas 3}
+   "member"  {:number_of_shards 1  :number_of_replicas 3}
+   "funder"  {:number_of_shards 1  :number_of_replicas 3}
+   "subject" {:number_of_shards 1  :number_of_replicas 3}
+   "journal" {:number_of_shards 1  :number_of_replicas 3}})
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
