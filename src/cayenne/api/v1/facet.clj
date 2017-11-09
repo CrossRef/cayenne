@@ -2,42 +2,39 @@
   (:require [clojure.string :as string]))
 
 (def std-facets
-  {"type" {:external-field "type-name"
-           :allow-unlimited-values true}
-   "year" {:external-field "published"
-           :allow-unlimited-values true}
-   "publication" {:external-field "container-title"}
-   "category" {:external-field "category-name"
-               :allow-unlimited-values true}
-   "funder_name" {:external-field "funder-name"
-                  :allow-unlimited-values true}
-   "funder_doi" {:external-field "funder-doi"
-                 :allow-unlimited-values true}
-   "orcid" {:external-field "orcid"
-            :allow-unlimited-values true}
-   "issn" {:external-field "issn"
-           :allow-unlimited-values true}
-   "source" {:external-field "source"}
-   "publisher_str" {:external-field "publisher-name"
-                    :allow-unlimited-values true}
-   "license_url" {:external-field "license"
-                  :allow-unlimited-values true}
-   "archive" {:external-field "archive"
-              :allow-unlimited-values true}
-   "update_type" {:external-field "update-type"
-                  :allow-unlimited-values true}
-   "relation_type" {:external-field "relation-type"
-                    :allow-unlimited-values true}
-   "affiliation" {:external-field "affiliation"
-                  :allow-unlimited-values true}
-   "assertion_name" {:external-field "assertion"
-                     :allow-unlimited-values true}
-   "assertion_group_name" {:external-field "assertion-group"
-                           :allow-unlimited-values true}
-   "hl_volume" {:external-field "journal-volume"
-                :allow-unlimited-values true}
-   "hl_issue" {:external-field "journal-issue"
-               :allow-unlimited-values true}})
+  {"type"                    {:external-field "type-name"
+                              :allow-unlimited-values true}
+   "published"               {:external-field "published"
+                              :allow-unlimited-values true}
+   "container-title"         {:external-field "container-title"}
+   "funder.name"             {:external-field "funder-name"
+                              :allow-unlimited-values true}
+   "funder.doi"              {:external-field "funder-doi"
+                              :allow-unlimited-values true}
+   "contributor.orcid"       {:external-field "orcid"
+                              :allow-unlimited-values true}
+   "issn.value"              {:external-field "issn"
+                              :allow-unlimited-values true}
+   "publisher"               {:external-field "publisher-name"
+                              :allow-unlimited-values true}
+   "license.url"             {:external-field "license"
+                              :allow-unlimited-values true}
+   "archive"                 {:external-field "archive"
+                              :allow-unlimited-values true}
+   "update.type"             {:external-field "update-type"
+                              :allow-unlimited-values true}
+   "relation.type"           {:external-field "relation-type"
+                              :allow-unlimited-values true}
+   "contributor.affiliation" {:external-field "affiliation"
+                              :allow-unlimited-values true}
+   "assertion.name"          {:external-field "assertion"
+                              :allow-unlimited-values true}
+   "assertion.group-name"    {:external-field "assertion-group"
+                              :allow-unlimited-values true}
+   "volume"                  {:external-field "journal-volume"
+                              :allow-unlimited-values true}
+   "issue"                   {:external-field "journal-issue"
+                              :allow-unlimited-values true}})
 
 (def external->internal-name
   (into {}
@@ -46,41 +43,34 @@
 (defn facet-value-limit [field specified-limit]
   (cond (and (= specified-limit "*")
              (get-in std-facets [field :allow-unlimited-values]))
-        -1
+        100000
         (= specified-limit "*")
         1000
         :else
         specified-limit))
 
-(defn apply-facets [solr-query facets]
-  (doseq [{:keys [field count]} facets]
-    (let [internal-field-name (external->internal-name field)
-          limited-count (facet-value-limit internal-field-name count)]
-      (if (some #{(string/lower-case field)} ["*" "t" "true" "1"])
-        (do
-          (.setFacetLimit solr-query (int limited-count))
-          (.addFacetField solr-query (into-array String (keys std-facets))))
-        (do
-          (.addFacetField solr-query (into-array String [internal-field-name]))
-          (.setParam solr-query 
-                     (str "f." internal-field-name ".facet.limit") 
-                     (into-array String [(str limited-count)]))))))
-  (doto solr-query
-    (.setFacet true)
-    (.setFacetMinCount (int 1))))
+(defn with-aggregations [es-body {:keys [facets]}]
+  (reduce
+   (fn [es-body {:keys [field count]}]
+     (let [internal-field-name (external->internal-name field)
+           limited-count (facet-value-limit internal-field-name count)]
+       (assoc-in
+        es-body
+        [:aggs internal-field-name]
+        {:terms {:field internal-field-name
+                 :size limited-count}})))
+   es-body
+   facets))
 
-(defn ->response-facet [solr-facet]
-  (let [external-name (get-in std-facets [(.getName solr-facet) :external-field])
-        vals (->> (.getValues solr-facet)
-                   (map #(vector (.getName %) (.getCount %)))
-                   (filter (fn [[_ val]] (not (zero? val))))
-                   (sort-by second)
-                   reverse
-                   flatten
-                   (apply array-map))]
-    [external-name
-     {:value-count (count vals)
-      :values vals}]))
+(defn ->response-facet [aggregation]
+  (let [internal-field-name (first aggregation)
+        buckets (-> aggregation second :buckets)]
+    [(get-in std-facets [(name internal-field-name) :external-field])
+     {:value-count (count buckets)
+      :values (into {}
+                    (map
+                     #(vector (:key %) (:doc_count %))
+                     buckets))}]))
 
-(defn ->response-facets [solr-response]
-  (into {} (map ->response-facet (.getFacetFields solr-response))))
+(defn ->response-facets [aggregations]
+  (into {} (map ->response-facet aggregations)))

@@ -9,7 +9,7 @@
    :prefix              {:type "text"}
    :suffix              {:type "text"}
    :orcid               {:type "keyword"}
-   :affiliation         {:type "text"}
+   :affiliation         {:type "keyword"}
    :authenticated-orcid {:type "boolean"}})
 
 (def issn-properties
@@ -21,7 +21,7 @@
    :type  {:type "keyword"}})
 
 (def funder-properties
-  {:name            {:type "text"}
+  {:name            {:type "keyword"}
    :doi             {:type "keyword"}
    :doi-asserted-by {:type "keyword"}
    :award           {:type "text"}})
@@ -114,13 +114,13 @@
    :member-id                {:type "integer"}
    :journal-id               {:type "integer"}
    :supplementary-id         {:type "keyword"}
-   :title                    {:type "text"}
-   :original-title           {:type "text"}
-   :container-title          {:type "text"}
-   :short-container-title    {:type "text"}
-   :short-title              {:type "text"}
-   :group-title              {:type "text"}
-   :subtitle                 {:type "text"}
+   :title                    {:type "keyword"}
+   :original-title           {:type "keyword"}
+   :container-title          {:type "keyword"}
+   :short-container-title    {:type "keyword"}
+   :short-title              {:type "keyword"}
+   :group-title              {:type "keyword"}
+   :subtitle                 {:type "keyword"}
    :volume                   {:type "keyword"}
    :issue                    {:type "keyword"}
    :first-page               {:type "keyword"}

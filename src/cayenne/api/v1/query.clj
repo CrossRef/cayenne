@@ -21,8 +21,8 @@
 
 ;; todo this should be passed in to ->query-context
 (def sort-fields
-  {"score"                  [:score]
-   "relevance"              [:score]
+  {"score"                  [:_score]
+   "relevance"              [:_score]
    "updated"                [:deposited]
    "deposited"              [:deposited]
    "indexed"                [:indexed]
@@ -279,6 +279,7 @@
                                         filters {}
                                         count-only false}}]
   (-> {}
+      (facet/with-aggregations query-context)
       (with-source-fields query-context)
       (with-sort-fields query-context)
       (with-query query-context :id-field id-field :filters filters)

@@ -130,7 +130,9 @@
         doc-list (get-in response [:body :hits :hits])]
     (-> (r/api-response :work-list)
         (r/with-debug-info response query-context es-body)
-        ;; (r/with-result-facets (facet/->response-facets response))
+        (r/with-result-facets (-> response
+                                  (get-in [:body :aggregations])
+                                  facet/->response-facets))
         (r/with-result-items
           (get-in response [:body :hits :total])
           (-> (map render-record (repeat query-context) doc-list)
