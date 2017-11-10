@@ -128,7 +128,7 @@
    :member-id                  {:type "integer"}
    :journal-id                 {:type "integer"}
    :supplementary-id           {:type "keyword"}
-   :published-year             {:type "integer"}
+   :issued-year                {:type "integer"}
    :title                      {:type "keyword" :copy_to :title-text}
    :original-title             {:type "keyword" :copy_to :title-text}
    :container-title            {:type "keyword" :copy_to :container-title-text}
@@ -147,7 +147,7 @@
    :first-deposited            {:type "date"}
    :deposited                  {:type "date"}
    :indexed                    {:type "date"}
-   :published                  {:type "date"}
+   :issued                     {:type "date"}
    :published-online           {:type "date"}
    :published-print            {:type "date"}
    :published-other            {:type "date"}
