@@ -8,8 +8,9 @@
             [clojure.string :as string]
             [clojure.data.json :as json]
             [clojure.java.io :as io]
-            [taoensso.timbre :as timbre :refer [info error]])
-  (:import [org.apache.solr.client.solrj SolrQuery SolrQuery$ORDER]))
+            [taoensso.timbre :as timbre :refer [info error]]
+            [clj-time.core :as t]
+            [clj-time.coerce :as tc]))
 
 (def default-offset 0)
 (def default-rows 20)
@@ -235,13 +236,7 @@
 
 (defn with-query [es-body query-context & {:keys [id-field filters]}]
   (cond-> es-body
-    (and (string/blank? (:terms query-context))
-         (nil? id-field)
-         (empty? (:field-terms query-context))
-         (empty? (:filters query-context)))
-    (assoc-in [:query :match_all] {})
-    
-    (not (string/blank? (:terms query-context)))
+    (-> query-context :terms string/blank? not)
     (assoc-in [:query :bool :should]
               [{:term {:metadata-content-text (:terms query-context)}}])
     
@@ -272,6 +267,18 @@
     (assoc es-body :sort (map #(hash-map % {:order (:order query-context)})
                               (:sort query-context)))))
 
+(defn with-random-sort [es-body query-context]
+  (if (and (:sample query-context) (not= 0 (:sample query-context)))
+    (let [current-query (:query es-body)]
+      (-> es-body
+          (dissoc :query)
+          (assoc-in [:query :function_score :query] current-query) 
+          (assoc-in [:query :function_score :functions]
+                    [{:random_score {:seed (tc/to-long (t/now))}}])
+          (assoc :from 0)
+          (assoc :size (:sample query-context))))
+      es-body))
+
 (defn ->es-query [query-context & {:keys [paged id-field filters count-only]
                                    :or {paged true
                                         id-field nil
@@ -283,7 +290,8 @@
       (with-query query-context :id-field id-field :filters filters)
       (with-paging query-context :paged paged :count-only count-only)
       (facet/with-aggregations query-context)
-      (fields/with-field-queries query-context)))
+      (fields/with-field-queries query-context)
+      (with-random-sort query-context)))
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

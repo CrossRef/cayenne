@@ -302,9 +302,7 @@
     (not (nil? contribution))
     (filter #(= (name contribution) (:contribution %)))
     :always
-    (mapcat #(vector (:given-name %) (:family-name %)
-                     (:org-name %) (:prefix %)
-                     (:suffix %)))))
+    (mapcat #(vector (:given-name %) (:family-name %) (:org-name %)))))
 
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
