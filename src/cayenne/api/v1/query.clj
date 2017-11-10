@@ -274,7 +274,8 @@
           (dissoc :query)
           (assoc-in [:query :function_score :query] current-query) 
           (assoc-in [:query :function_score :functions]
-                    [{:random_score {:seed (tc/to-long (t/now))}}])
+                    [{:random_score {:seed (tc/to-long (t/now))
+                                     :field :_seq_no}}])
           (assoc :from 0)
           (assoc :size (:sample query-context))))
       es-body))
