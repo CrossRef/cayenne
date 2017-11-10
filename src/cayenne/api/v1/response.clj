@@ -3,13 +3,13 @@
             [cayenne.util :refer [?>]]
             [cayenne.conf :as conf]))
 
-(defn with-debug-info [response solr-response query-context es-body]
+(defn with-debug-info [response solr-response query-context es-request]
   (if-not (:debug query-context)
     response
     (-> response
         (assoc-in [:debug :instance-hostname]
                   (.getCanonicalHostName (java.net.InetAddress/getLocalHost)))
-        (assoc-in [:debug :elastic-request-body] es-body)
+        (assoc-in [:debug :elastic-request] es-request)
         (assoc-in [:debug :elastic-client-config] (conf/get-param [:service :elastic]))
         (assoc-in [:debug :query-context] query-context))))
 

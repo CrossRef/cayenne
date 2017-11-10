@@ -278,21 +278,43 @@
                                      :field :_seq_no}}])
           (assoc :from 0)
           (assoc :size (:sample query-context))))
-      es-body))
+    es-body))
 
-(defn ->es-query [query-context & {:keys [paged id-field filters count-only]
-                                   :or {paged true
-                                        id-field nil
-                                        filters {}
-                                        count-only false}}]
-  (-> {}
-      (with-source-fields query-context)
-      (with-sort-fields query-context)
-      (with-query query-context :id-field id-field :filters filters)
-      (with-paging query-context :paged paged :count-only count-only)
-      (facet/with-aggregations query-context)
-      (fields/with-field-queries query-context)
-      (with-random-sort query-context)))
+(defn with-scroll [es-body query-context]
+  (cond
+    (-> query-context :cursor string/blank?)
+    es-body
+    
+    (-> query-context :cursor (= "*"))
+    (assoc es-body :sort [:_doc])
+    
+    (and (-> query-context :cursor string/blank? not)
+         (-> query-context :cursor (not= "*")))
+    {:scroll "1m"
+     :scroll_id (:cursor query-context)}))
+
+(defn ->es-request [query-context
+                    & {:keys [paged id-field filters count-only]
+                       :or {paged true id-field nil filters {} count-only false}}]
+  {:method :get
+   :url (cond
+          (-> query-context :cursor string/blank?)
+          "/work/work/_search"
+          (and (-> query-context :cursor string/blank? not)
+               (-> query-context :cursor (not= "*")))
+          "/_search/scroll"
+          (-> query-context :cursor (= "*"))
+          "/work/work/_search?scroll=1m")
+   :body 
+   (-> {}
+       (with-source-fields query-context)
+       (with-sort-fields query-context)
+       (with-query query-context :id-field id-field :filters filters)
+       (with-paging query-context :paged paged :count-only count-only)
+       (facet/with-aggregations query-context)
+       (fields/with-field-queries query-context)
+       (with-random-sort query-context)
+       (with-scroll query-context))})
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]

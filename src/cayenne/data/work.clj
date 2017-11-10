@@ -120,16 +120,13 @@
      (drop 20 records))))
 
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
-  (let [es-body (query/->es-query query-context
-                                  :id-field id-field
-                                  :filters filter/std-filters)
-        response (-> (conf/get-service :elastic)
-                     (elastic/request
-                      {:method :get :url "work/work/_search"
-                       :body es-body}))
+  (let [es-request (query/->es-request query-context
+                                       :id-field id-field
+                                       :filters filter/std-filters)
+        response (elastic/request (conf/get-service :elastic) es-request)
         doc-list (get-in response [:body :hits :hits])]
     (-> (r/api-response :work-list)
-        (r/with-debug-info response query-context es-body)
+        (r/with-debug-info response query-context es-request)
         (r/with-result-facets (-> response
                                   (get-in [:body :aggregations])
                                   facet/->response-facets))
@@ -137,17 +134,14 @@
           (get-in response [:body :hits :total])
           (-> (map render-record (repeat query-context) doc-list)
               reordered-preprints)
-          :next-cursor "todo")
+          :next-cursor (get-in response [:body :_scroll_id]))
         (r/with-query-context-info query-context))))
 
 (defn fetch-reverse [query-context]
   (let [terms (:terms query-context)
-        es-body (query/->es-query {:field-terms {"bibliographic" terms}
-                                   :rows 1})
-        response (-> (conf/get-service :elastic)
-                     (elastic/request
-                      {:method :get :url "work/work/_search"
-                       :body es-body}))
+        es-request (query/->es-request {:field-terms {"bibliographic" terms}
+                                        :rows 1})
+        response (elastic/request (conf/get-service :elastic) es-request)
         doc-list (get-in response [:body :hits :hits])]
     (if (zero? (count doc-list))
       (r/api-response :nothing)
@@ -159,11 +153,11 @@
 (defn fetch-one
   "Fetch a known DOI."
   [doi]
-  (let [response (-> (conf/get-service :elastic)
-                     (elastic/request
-                      {:method :get :url "work/work/_search"
-                       :body (query/->es-query {:id doi}
-                                               :id-field :doi)}))]
+  (let [response (elastic/request
+                  (conf/get-service :elastic)
+                  (query/->es-request {:id doi}
+                                      :id-field :doi
+                                      :paged false))]
     (when-let [doc (first (get-in response [:body :hits :hits]))]
       (r/api-response :work :content (-> doc
                                          convert/es-doc->citeproc
