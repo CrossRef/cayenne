@@ -32,10 +32,10 @@
 (defn index-command [csv-row]
   (let [title (nth csv-row title-column)
         journal-id (nth csv-row id-column)]
-    [{:index {:_id journal-id}}
+    [{:index {:_id (Long/parseLong journal-id)}}
      {:title     title
       :token     (util/tokenize-name title)
-      :id        journal-id
+      :id        (Long/parseLong journal-id)
       :doi       (-> csv-row (nth doi-column) doi-id/normalize-long-doi)
       :publisher (nth csv-row publisher-column)
       :issn      (issns csv-row)}]))

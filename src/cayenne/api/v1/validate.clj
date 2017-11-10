@@ -241,6 +241,7 @@
    :container-title string-validator
    :category-name string-validator
    :member integer-validator
+   :journal integer-validator
    :prefix prefix-validator
    :funder funder-id-validator
    :alternative-id string-validator

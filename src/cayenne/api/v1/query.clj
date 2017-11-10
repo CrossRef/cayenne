@@ -252,7 +252,7 @@
   (cond
     paged
     (-> es-body
-        (assoc :from (:offset query-context))
+        (assoc :from (or (:offset query-context) 0))
         (assoc :size (:rows query-context)))
     
     count-only

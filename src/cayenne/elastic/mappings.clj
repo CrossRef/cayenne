@@ -217,7 +217,6 @@
    :code        {:type "integer"}
    :name        {:type "keyword"}})
 
-;; todo metadata coverage fields
 (def journal-properties
   {:title     {:type "text"}
    :token     {:type "keyword"}
@@ -226,20 +225,33 @@
    :publisher {:type "text"}
    :subject   {:type "object" :properties subject-properties}
    :issn      {:type "object" :properties issn-properties}})
+
+(def coverage-properties
+  {:subject-type  {:type "keyword"}
+   :subject-id    {:type "long"}
+   :started       {:type "date"}
+   :finished      {:type "date"}
+   :total-dois    {:type "long"}
+   :backfile-dois {:type "long"}
+   :current-dois  {:type "long"}
+   :breakdowns    {:type "object"}
+   :coverage      {:type "object"}})
    
 (def index-mappings
-  {"work"    {"_all" {:enabled false} :properties work-properties}
-   "member"  {"_all" {:enabled false} :properties member-properties}
-   "funder"  {"_all" {:enabled false} :properties funder-properties}
-   "subject" {"_all" {:enabled false} :properties subject-properties}
-   "journal" {"_all" {:enabled false} :properties journal-properties}})
+  {"work"     {"_all" {:enabled false} :properties work-properties}
+   "member"   {"_all" {:enabled false} :properties member-properties}
+   "funder"   {"_all" {:enabled false} :properties funder-properties}
+   "subject"  {"_all" {:enabled false} :properties subject-properties}
+   "coverage" {"_all" {:enabled false} :properties coverage-properties}
+   "journal"  {"_all" {:enabled false} :properties journal-properties}})
 
 (def index-settings
-  {"work"    {:number_of_shards 24 :number_of_replicas 3}
-   "member"  {:number_of_shards 1  :number_of_replicas 3}
-   "funder"  {:number_of_shards 1  :number_of_replicas 3}
-   "subject" {:number_of_shards 1  :number_of_replicas 3}
-   "journal" {:number_of_shards 1  :number_of_replicas 3}})
+  {"work"     {:number_of_shards 24 :number_of_replicas 3}
+   "member"   {:number_of_shards 1  :number_of_replicas 3}
+   "funder"   {:number_of_shards 1  :number_of_replicas 3}
+   "subject"  {:number_of_shards 1  :number_of_replicas 3}
+   "coverage" {:number_of_shards 1  :number_of_replicas 3}
+   "journal"  {:number_of_shards 1  :number_of_replicas 3}})
   
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+

@@ -8,7 +8,9 @@
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
             [taoensso.timbre :as timbre :refer [error]]
-            [somnium.congomongo :as m]))
+            [qbits.spandex :as elastic]
+            [cayenne.elastic.util :as elastic-util])
+  (:import [java.util UUID]))
 
 (def date-format (df/formatter "yyyy-MM-dd"))
 
@@ -17,9 +19,9 @@
 
 (defn make-id-filter [type id]
   (cond (= type :member)
-        {:member (str id)}
-        (= type :issn)
-        {:issn (map issn-id/to-issn-uri id)}))
+        {:member [(str id)]}
+        (= type :journal)
+        {:journal [(str id)]}))
 
 (defn get-work-count 
   "Get a count of works, with optional filters. timing may be one of :current, 
@@ -28,8 +30,8 @@
   (let [combined-filters
         (-> (make-id-filter type id)
             (?> filters merge filters)
-            (?> (= timing :current) assoc :from-pub-date (back-file-cut-off))
-            (?> (= timing :backfile) assoc :until-pub-date (back-file-cut-off)))]
+            (?> (= timing :current) assoc :from-pub-date [(back-file-cut-off)])
+            (?> (= timing :backfile) assoc :until-pub-date [(back-file-cut-off)]))]
     (-> (assoc {:rows (int 0)} :filters combined-filters)
         (works/fetch)
         (get-in [:message :total-results]))))
@@ -44,8 +46,12 @@
     (let [total-count (get-work-count type id)
           total-back-file-count (get-work-count type id :timing :backfile)
           total-current-count (get-work-count type id :timing :current)
-          filter-back-file-count (get-work-count type id :filters {filter-name filter-value} :timing :backfile)
-          filter-current-count (get-work-count type id :filters {filter-name filter-value} :timing :current)]
+          filter-back-file-count (get-work-count type id
+                                                 :filters {filter-name [filter-value]}
+                                                 :timing :backfile)
+          filter-current-count (get-work-count type id
+                                               :filters {filter-name [filter-value]}
+                                               :timing :current)]
       {:flags {(keyword (str member-action "-" check-name "-current"))
                (not (zero? filter-current-count))
                (keyword (str member-action "-" check-name "-backfile"))
@@ -65,7 +71,7 @@
 (defn check-deposits-articles [type id]
   {:flags
    {:deposits-articles
-    (-> (get-work-count type id :filters {:type "journal-article"})
+    (-> (get-work-count type id :filters {:type ["journal-article"]})
         (zero?)
         (not))}})
 
@@ -83,12 +89,11 @@
    (make-filter-check "deposits" "funders" :has-funder "true")])
 
 (defn check-record-coverage [record & {:keys [type id-field]}]
-  (-> {:last-status-check-time (dc/to-long (dt/now))}
+  (-> {}
       (merge
        (reduce (fn [rslt chk-fn] 
                  (let [check-result (chk-fn type (get record id-field))]
-                   {:last-status-check-time (dc/to-long (dt/now))
-                    :flags (merge (:flags rslt) (:flags check-result))
+                   {:flags (merge (:flags rslt) (:flags check-result))
                     :coverage (merge (:coverage rslt) (:coverage check-result))}))
                {} 
                checkles))))
@@ -110,41 +115,48 @@
   (let [record-id (get record id-field)
         backfile-count (get-work-count type record-id :timing :backfile)
         current-count (get-work-count type record-id :timing :current)]
-    {:counts
-     {:backfile-dois backfile-count
-      :current-dois current-count
-      :total-dois (+ backfile-count current-count)}}))
+    {:backfile-dois backfile-count
+     :current-dois current-count
+     :total-dois (+ backfile-count current-count)}))
 
-(defn check-members
-  "Calculate and insert member metadata coverage metrics into a collection."
-  [collection]
-  (m/with-mongo (conf/get-service :mongo)
-    (doseq [member (m/fetch collection :options [:notimeout])]
-      (try
-        (m/update! 
-         collection
-         {:id (:id member)}
-         (merge member
-                (check-breakdowns member :type :member :id-field :id)
-                (check-record-coverage member :type :member :id-field :id)
-                (check-record-counts member :type :member :id-field :id)))
-        (catch Exception e
-          (error e "Failed to update coverage for member with ID " (:id member)))))))
+(defn index-coverage-command [record & {:keys [type id-field]}]
+  (let [started-date (dt/now)
+        record-source (:_source record)
+        record-counts (check-record-counts record-source :type type :id-field id-field)
+        breakdowns (check-breakdowns record-source :type type :id-field id-field)
+        coverage (check-record-coverage record-source :type type :id-field id-field)]
+    [{:index {:_id (.toString (UUID/randomUUID))}}
+     {:subject-type  (name type)
+      :subject-id    (get record-source id-field)
+      :started       started-date
+      :finished      (dt/now)
+      :total-dois    (:total-dois record-counts)
+      :backfile-dois (:backfile-dois record-counts)
+      :current-dois  (:current-dois record-counts)
+      :breakdowns    breakdowns
+      :coverage      coverage}]))
 
-(defn check-journals
-  "Calculate and insert journal metadata coverage metrics into a collection. Only consider
-   journals that have an ISSN."
-  [collection]
-  (m/with-mongo (conf/get-service :mongo)
-    (doseq [journal (m/fetch collection :where {:issn {:$exists true :$ne []}} :options [:notimeout])]
-      (try
-        (m/update! 
-         collection 
-         {:id (:id journal)}
-         (merge journal
-                (check-breakdowns journal :type :issn :id-field :issn)
-                (check-record-coverage journal :type :issn :id-field :issn)
-                (check-record-counts journal :type :issn :id-field :issn)))
-        (catch Exception e
-          (error e "Failed to update coverage for journal with ID " (:id journal)))))))
-          
+;; todo use scroll
+(defn check-index [index-name id-field]
+  (doseq [some-records
+          (as->
+              (elastic/request
+               (conf/get-service :elastic)
+               {:method :get
+                :url (str "/" (name index-name) "/" (name index-name) "/_search")
+                :body {:_source [id-field] :query {:match_all {}} :size 10000}})
+              $
+            (get-in $ [:body :hits :hits])
+            (partition-all 100 $))]
+    (elastic/request
+     (conf/get-service :elastic)
+     {:method :post
+      :url "/coverage/coverage/_bulk"
+      :body (->> some-records
+                 (map #(index-coverage-command % :type index-name :id-field id-field))
+                 flatten
+                 elastic-util/raw-jsons)})))
+
+(defn check-members [] (check-index :member :id))
+
+(defn check-journals [] (check-index :journal :id))

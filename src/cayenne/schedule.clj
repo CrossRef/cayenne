@@ -82,7 +82,7 @@
     (catch Exception e (error e "Failed to update members collection")))
   (try
     (info "Updating member flags and coverage values")
-    (coverage/check-members "members")
+    (coverage/check-members)
     (catch Exception e (error e "Failed to update member flags and coverage values"))))
 
 (defjob update-journals [ctx]
@@ -92,7 +92,7 @@
     (catch Exception e (error e "Failed to update journals collection")))
   (try
     (info "Updating journal flags and coverage values")
-    (coverage/check-journals "journals")
+    (coverage/check-journals)
     (catch Exception e (error e "Failed to update journal flags and coverage values"))))
 
 ;; Thu, 17 Sep 2015 20:59:19 GMT
