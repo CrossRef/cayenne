@@ -13,7 +13,6 @@
             [cayenne.oai :as oai]
             [cayenne.job :as job]
             [cayenne.html :as html]
-            [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.mongo :as mongo]
             [cayenne.item-tree :as itree]
@@ -87,8 +86,7 @@
 (def dump-annotated-docs
   (comp
    (record-json-writer "out.txt")
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (def dump-solr-docs
   (comp
@@ -96,8 +94,7 @@
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (def dump-plain-es-docs
   (comp
@@ -118,8 +115,7 @@
    es-index/index-command
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (def print-solr-docs
   (comp
@@ -127,16 +123,14 @@
    solr/as-solr-document
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (def index-solr-docs
   (comp 
    solr/insert-item
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (def index-es-docs
   (comp
@@ -148,8 +142,7 @@
    (partial mongo/insert-item "items")
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
-   #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)))
+   #(apply funder/apply-to %)))
 
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir

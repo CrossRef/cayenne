@@ -5,7 +5,6 @@
             [cayenne.formats.datacite :as datacite]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.funder :as funder]
-            [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.solr :as solr]
             [cayenne.api.v1.types :as types]
             [cayenne.api.v1.response :as r]
@@ -154,7 +153,6 @@
    (fn [rdr]
      (let [f #(let [parsed (->> %
                                 unixsd/unixsd-record-parser
-                                (apply doaj/apply-to)
                                 (apply funder/apply-to)
                                 (apply itree/centre-on))
                     with-source (assoc parsed

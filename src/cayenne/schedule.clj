@@ -4,7 +4,6 @@
             [cayenne.tasks.solr :as solr]
             [cayenne.tasks.prefix :as prefix]
             [cayenne.tasks.funder :as funder]
-            [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.category :as category]
             [cayenne.tasks.solr :as solr]
             [cayenne.tasks.publisher :as publisher]
