@@ -326,7 +326,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [p (prefix/fetch-one
-                          (q/->query-context % :id (prefix-id/to-prefix-uri px)))]
+                          (q/->query-context % :id (prefix-id/normalize-prefix px)))]
               {:publisher p})
   :handle-ok :publisher)
 
@@ -341,7 +341,7 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
+  :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/normalize-prefix px))))
 
 (defresource members-resource
   :malformed? (v/malformed? :filter-validator v/validate-member-filters
