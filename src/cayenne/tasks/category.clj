@@ -7,7 +7,10 @@
             [cayenne.conf :as conf]
             [clojure.string :as string]
             [qbits.spandex :as elastic]
-            [cayenne.elastic.util :as elastic-util]))
+            [cayenne.elastic.util :as elastic-util]
+            [cayenne.ids.issn :as issn-id]))
+
+;; todo remove below
 
 (defn get-category-name [category]
   (let [code (String/valueOf category)]
@@ -41,6 +44,8 @@
   ([id item]
    [id (apply-to item)]))
 
+;; end todo remove below
+
 (defn normalize-journal [m]
   (cond->
       (-> m
@@ -61,12 +66,9 @@
 (defn index-subject-command [subject]
   (let [code (-> subject :code int)]
     [{:index {:_id code}}
-     {:code code
-      :high-code   (-> code (/ 100) int (* 100))
-      :name   (-> subject :name string/trim)}]))
-
-(defn update-journal-command [subject]
-  ())
+     {:code      code
+      :high-code (-> code (/ 100) int (* 100))
+      :name      (-> subject :name string/trim)}]))
 
 (defn index-subjects [& {:keys [xls-location
                                 journals-sheet-name
@@ -74,18 +76,10 @@
                          :or {xls-location
                               (-> (conf/get-param [:location :scopus-title-list])
                                   (java.net.URL.))
-                              journals-sheet-name
-                              "Scopus Sources October 2017"
                               categories-sheet-name
                               "ASJC classification codes"}}]
   (with-open [xls-in (clojure.java.io/input-stream xls-location)]
     (let [doc (sheet/load-workbook-from-stream xls-in)
-          journals (->> doc
-                        (sheet/select-sheet journals-sheet-name)
-                        (sheet/select-columns {:C :p_issn
-                                               :D :e_issn
-                                               :AD :categories})
-                        (drop 1))
           subjects (->> doc
                         (sheet/select-sheet categories-sheet-name)
                         (sheet/select-columns {:A :code :B :name})
@@ -94,49 +88,67 @@
       (elastic/request
        (conf/get-service :elastic)
        {:method :post
-        :url "category/category/_bulk"
+        :url "/subject/subject/_bulk"
         :body (->> subjects
                    (map index-subject-command)
                    flatten
                    elastic-util/raw-jsons)}))))
+
+(defn journal-id [issns]
+  (-> (elastic/request
+       (conf/get-service :elastic)
+       {:method :get
+        :url "/journal/journal/_search"
+        :body (assoc-in
+               {:_source [:id]}
+               [:query :bool :should]
+               (map #(hash-map :term {:issn.value %}) issns))})
+      (get-in [:body :hits :hits])
+      first
+      (get-in [:_source :id])))
+
+(defn update-journal-subjects [& {:keys [xls-location
+                                         journals-sheet-name]
+                                  :or {xls-location
+                                       (-> (conf/get-param [:location :scopus-title-list])
+                                           (java.net.URL.))
+                                       journals-sheet-name
+                                       "Scopus Sources October 2017"}}]
+  (with-open [xls-in (clojure.java.io/input-stream xls-location)]
+    (doseq [journal (->> xls-in
+                         sheet/load-workbook-from-stream
+                         (sheet/select-sheet journals-sheet-name)
+                         (sheet/select-columns {:C :p-issn
+                                                :D :e-issn
+                                                :AE :subjects})
+                         (drop 1))]
+      (let [p-issn (-> journal :p-issn str issn-id/normalize-issn)
+            e-issn (-> journal :e-issn str issn-id/normalize-issn)
+            issns (cond-> []
+                    (-> p-issn nil? not)
+                    (conj p-issn)
+                    (-> e-issn nil? not)
+                    (conj e-issn))
+            subject-codes (->> (string/split (:subjects journal) #";")
+                               (map string/trim)
+                               (filter (complement string/blank?)))
+            subjects (map
+                      #(hash-map
+                        :code (-> % str Integer/parseInt)
+                        :high-code (-> % str Integer/parseInt (/ 100) int (* 100)))
+                      subject-codes)]
+        (when-let [jid (journal-id issns)]
+          (elastic/request
+           (conf/get-service :elastic)
+           {:method :post
+            :url (str "/journal/journal/" jid "/_update")
+            :body {:doc {:subject subjects}}}))))))
 
 (defn workbook-sheet-names [xls-file]
   (->> xls-file
        sheet/load-workbook
        sheet/sheet-seq
        (map #(.getSheetName %))))
-
-    ;; (->> subjects (map index-subject-command) flatten)
-    
-
-    ;; (m/with-mongo (conf/get-service :mongo)
-    ;;   (doseq [category categories]
-    ;;     (try
-    ;;       (let [n-category (normalize-category category)]
-    ;;         (m/update! :categories
-    ;;                    {:code (:code n-category)}
-    ;;                    n-category
-    ;;                    :upsert true))
-    ;;       (catch Exception e
-    ;;         (println "Exception on insert of " category)
-    ;;         (println e))))
-    ;;   (doseq [journal journals]
-    ;;     (try
-    ;;       (let [n-journal (normalize-journal journal)]
-    ;;         (m/update! :issns
-    ;;                    {:p_issn (:p_issn n-journal)}
-    ;;                    n-journal
-    ;;                    :upsert true)
-    ;;         (m/update! :issns
-    ;;                    {:e_issn (:e_issn n-journal)}
-    ;;                    n-journal
-    ;;                    :upsert true))
-    ;;       (catch Exception e
-    ;;         (println "Exception on insert of " journal)
-    ;;         (println e)))))))
-                           
-      
-       
        
   
 
