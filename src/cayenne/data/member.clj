@@ -9,23 +9,9 @@
             [cayenne.ids.member :as member-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.formats.citeproc :as citeproc]
-            [somnium.congomongo :as m]
             [clojure.string :as string]
             [clj-time.coerce :as dc]
             [qbits.spandex :as elastic]))
-
-(defn get-solr-works [query-context]
-  (-> (conf/get-service :solr)
-      (.query (query/->solr-query query-context
-                                  :filters filter/std-filters))))
-
-(defn get-solr-work-count [query-context]
-  (-> (conf/get-service :solr)
-      (.query (query/->solr-query query-context
-                                  :paged false
-                                  :count-only true))
-      (.getResults)
-      (.getNumFound)))
 
 (defn ->response-doc [member-doc & {:keys [coverage-doc]}]
   (cond-> {:id           (:id member-doc)

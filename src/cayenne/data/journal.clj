@@ -5,74 +5,75 @@
             [cayenne.ids.issn :as issn-id]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
-            [somnium.congomongo :as m]))
+            [qbits.spandex :as elastic]
+            [clj-time.coerce :as dc]
+            [cayenne.api.v1.filter :as filter]))
 
-(defn ->issn-types [journal-doc]
-  (cond-> []
-    (:eissn journal-doc)
-    (conj {:value (:eissn journal-doc) :type "electronic"})
+(defn ->response-doc [journal-doc & {:keys [coverage-doc]}]
+  (cond-> {:title (:title journal-doc)
+           :publisher (:publisher journal-doc)
+           :ISSN (map :value (:issn journal-doc))
+           :issn-type (:issn journal-doc)
+           :subjects (:subject journal-doc)} ;; todo {:ASJC :name}
+    (not (nil? coverage-doc))
+    (merge
+     {:flags                  (get-in coverage-doc [:coverage :flags])
+      :coverage               (get-in coverage-doc [:coverage :coverage])
+      :counts                 (select-keys coverage-doc [:current-dois
+                                                         :backfile-dois
+                                                         :total-dois])
+      :last-status-check-time (-> coverage-doc :finished dc/to-long)})))
 
-    (:pissn journal-doc)
-    (conj {:value (:pissn journal-doc) :type "print"})))
-
-(defn ->response-doc [journal-doc subject-docs]
-  {:title (:title journal-doc)
-   :publisher (:publisher journal-doc)
-   :ISSN (:issn journal-doc)
-   :issn-type (->issn-types journal-doc)
-   :subjects (map #(hash-map :ASJC (Integer/parseInt (:code %))
-                             :name (:name %))
-                  subject-docs)
-   :flags (:flags journal-doc)
-   :coverage (:coverage journal-doc)
-   :breakdowns (:breakdowns journal-doc)
-   :counts (:counts journal-doc)
-   :last-status-check-time (:last-status-check-time journal-doc)})
-
-(defn issn-doc->subjects [issn-doc]
-  (m/with-mongo (conf/get-service :mongo)
-    (m/fetch "categories" :where {:code {:$in (or (:categories issn-doc) [])}})))
-
-(defn get-subject-docs [issns]
-  (let [query-issns (or issns [])
-        issn-docs (m/with-mongo (conf/get-service :mongo)
-                    (m/fetch "issns"
-                             :where {:$or [{:p_issn {:$in query-issns}}
-                                           {:e_issn {:$in query-issns}}]}))]
-    (mapcat issn-doc->subjects issn-docs)))
+(defn get-coverage [subject-type subject-id]
+  (-> (elastic/request
+       (conf/get-service :elastic)
+       {:method :get
+        :url "/coverage/coverage/_search"
+        :body (-> {}
+                  (assoc-in [:query :bool :must]
+                            [{:term {:subject-type subject-type}}
+                             {:term {:subject-id subject-id}}])
+                  (assoc :size 1)
+                  (assoc :sort {:finished :desc}))})
+      (get-in [:body :hits :hits])
+      first
+      :_source))
 
 (defn fetch-one [query-context]
-  (when-let [journal-doc (m/with-mongo (conf/get-service :mongo)
-                           (m/fetch-one "journals"
-                                        :where {:issn (:id query-context)}))]
-    (r/api-response
-     :journal
-     :content (->response-doc journal-doc
-                              (get-subject-docs (:issn journal-doc))))))
+  (when-let [journal-doc (-> (elastic/request
+                              (conf/get-service :elastic)
+                              (query/->es-request query-context
+                                                  :id-field :issn.value
+                                                  :index "journal"))
+                             (get-in [:body :hits :hits])
+                             first
+                             :_source)]
+    (r/api-response :journal
+                    :content
+                    (->response-doc journal-doc
+                                    :coverage-doc
+                                    (get-coverage :journal (:id journal-doc))))))
 
-(defn ->search-terms [query-context]
-  (if (:terms query-context)
-    (util/tokenize-name (:terms query-context))
-    []))
+(defn prefix-query-context [query-context]
+  (-> query-context
+      (assoc :prefix-terms (:terms query-context))
+      (assoc :prefix-field :title)
+      (dissoc :terms)))
 
 (defn fetch [query-context]
-  (let [search-terms (->search-terms query-context)
-        and-list (map #(hash-map "token" {"$regex" (str "^" %)}) search-terms)
-        where-clause (if (empty? and-list) {} {"$and" and-list})
-        mongo-query (query/->mongo-query query-context :where where-clause)
-        docs (if (and (:rows query-context) (zero? (:rows query-context)))
-               []
-               (m/with-mongo (conf/get-service :mongo)
-                 (apply m/fetch "journals" mongo-query)))
-        result-count (m/with-mongo (conf/get-service :mongo)
-                       (apply m/fetch-count "journals" mongo-query))]
+  (let [es-request (query/->es-request (prefix-query-context query-context)
+                                       :index "journal")
+        response (elastic/request
+                  (conf/get-service :elastic)
+                  es-request)
+        docs (->> (get-in response [:body :hits :hits])
+                  (map :_source))]
     (-> (r/api-response :journal-list)
         (r/with-query-context-info query-context)
+        (r/with-debug-info query-context es-request)
         (r/with-result-items
-          result-count
-          (map #(->response-doc % (get-subject-docs (:issn %))) docs)))))
+          (get-in response [:body :hits :total])
+          (map ->response-doc docs)))))
 
 (defn fetch-works [query-context]
-  (-> query-context
-      (assoc-in [:filters :issn] (issn-id/to-issn-uri (:id query-context)))
-      work/fetch))
+  (work/fetch query-context :id-field :issn.value))

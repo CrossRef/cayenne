@@ -323,6 +323,9 @@
        (with-random-sort query-context)
        (with-scroll query-context))})
 
+(defn ->solr-query [& args]
+  ())
+
 (defn ->mongo-query [query-context
                      & {:keys [where filters id-field]
                         :or {where {} filters {} id-field nil}}]
