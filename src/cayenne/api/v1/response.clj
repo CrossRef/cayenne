@@ -3,7 +3,7 @@
             [cayenne.util :refer [?>]]
             [cayenne.conf :as conf]))
 
-(defn with-debug-info [response solr-response query-context es-request]
+(defn with-debug-info [response query-context es-request]
   (if-not (:debug query-context)
     response
     (-> response

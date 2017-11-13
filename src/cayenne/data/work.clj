@@ -126,7 +126,7 @@
         response (elastic/request (conf/get-service :elastic) es-request)
         doc-list (get-in response [:body :hits :hits])]
     (-> (r/api-response :work-list)
-        (r/with-debug-info response query-context es-request)
+        (r/with-debug-info query-context es-request)
         (r/with-result-facets (-> response
                                   (get-in [:body :aggregations])
                                   facet/->response-facets))

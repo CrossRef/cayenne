@@ -239,7 +239,13 @@
     (-> query-context :terms string/blank? not)
     (assoc-in [:query :bool :should]
               [{:term {:metadata-content-text (:terms query-context)}}])
-    
+
+    (-> query-context :prefix-terms string/blank? not)
+    (assoc-in [:query :bool :should]
+              [{:match_phrase_prefix
+                {(:prefix-field query-context) (:prefix-terms query-context)}}])
+
+    ;; todo could be rewritten to use /type/type/id
     id-field
     (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})
     
@@ -294,17 +300,18 @@
      :scroll_id (:cursor query-context)}))
 
 (defn ->es-request [query-context
-                    & {:keys [paged id-field filters count-only]
-                       :or {paged true id-field nil filters {} count-only false}}]
+                    & {:keys [index paged id-field filters count-only]
+                       :or {index "work" paged true id-field nil filters {}
+                            count-only false}}]
   {:method :get
    :url (cond
           (-> query-context :cursor string/blank?)
-          "/work/work/_search"
+          (str "/" index "/" index "/_search")
           (and (-> query-context :cursor string/blank? not)
                (-> query-context :cursor (not= "*")))
           "/_search/scroll"
           (-> query-context :cursor (= "*"))
-          "/work/work/_search?scroll=1m")
+          (str "/" index "/" index "/_search?scroll=1m"))
    :body 
    (-> {}
        (with-source-fields query-context)

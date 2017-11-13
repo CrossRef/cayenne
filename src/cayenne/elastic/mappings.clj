@@ -191,7 +191,6 @@
    :location          {:type "text"}
    :name              {:type "text"}})
 
-;; todo metadata coverage fields
 (def member-properties
   {:primary-name {:type "text"}
    :location     {:type "text"}
@@ -199,7 +198,6 @@
    :token        {:type "keyword"}
    :prefix       {:type "object" :properties prefix-properties}})
 
-;; todo metadata coverage fields
 (def funder-properties
   {:doi          {:type "keyword"}
    :parent       {:type "keyword"}

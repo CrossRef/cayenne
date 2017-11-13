@@ -357,7 +357,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
-                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+                          (q/->query-context % :id id))]
               {:member m})
   :handle-ok :member)
 
@@ -373,9 +373,9 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
-                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+                          (q/->query-context % :id id))]
               {:member m})
-  :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
+  :handle-ok #(member/fetch-works (q/->query-context % :id id)))
 
 (defresource journals-resource
   :malformed? (v/malformed? :unlimited-offset true)
