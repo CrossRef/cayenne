@@ -31,9 +31,10 @@
        (assoc-in item [:rel relation] (conj existing related))
        item)
      (= kind :multi)
-     (if (and (not (nil? related)) (not (empty? related)))
-       (assoc-in item [:rel relation] (concat existing related))
-       item))))
+     (let [non-nil-related (filter (complement nil?) related)]
+       (if (and (not (nil? non-nil-related)) (not (empty? non-nil-related)))
+         (assoc-in item [:rel relation] (concat existing non-nil-related))
+         item)))))
 
 (defn attach-rel
   "Attach related item to another item via relation."
