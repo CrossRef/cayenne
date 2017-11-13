@@ -33,17 +33,17 @@
       (member-id/extract-member-id)
       (Integer/parseInt)))
 
-(defn expand-context-for-prefixes [query-context]
-  (let [member-doc (m/with-mongo (conf/get-service :mongo)
-                     (m/fetch-one 
-                      "members" 
-                      :where {:id (get-id-from-context query-context)}))
-        prefixes (:prefixes member-doc)
-        prefixes-filter (->> prefixes
-                             (map prefix-id/to-prefix-uri)
-                             (map #(filter/field-is-esc solr-publisher-id-field %))
-                             (apply filter/q-or))]
-    (assoc query-context :raw-filter prefixes-filter)))
+;; (defn expand-context-for-prefixes [query-context]
+;;   (let [member-doc (m/with-mongo (conf/get-service :mongo)
+;;                      (m/fetch-one 
+;;                       "members" 
+;;                       :where {:id (get-id-from-context query-context)}))
+;;         prefixes (:prefixes member-doc)
+;;         prefixes-filter (->> prefixes
+;;                              (map prefix-id/to-prefix-uri)
+;;                              (map #(filter/field-is-esc solr-publisher-id-field %))
+;;                              (apply filter/q-or))]
+;;     (assoc query-context :raw-filter prefixes-filter)))
 
 (defn ->response-doc [pub-doc]
   {:id (:id pub-doc)
@@ -80,7 +80,7 @@
 
 (defn fetch-works [query-context]
   (-> query-context
-      expand-context-for-prefixes
+      ; expand-context-for-prefixes
       work/fetch))
 
 ;; todo handle rows and offset propery (not using either of them)

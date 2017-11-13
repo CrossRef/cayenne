@@ -263,19 +263,22 @@
       (:family-name contributor)))))
 
 (defn item-base-content [item]
-  (->>
-   (vector
-    (t/year (item-issued-date item))
-    (t/year (item-date item :published-print))
-    (journal-issue item)
-    (journal-volume item)
-    (:first-page item)
-    (:last-page item))
-   (concat (map :value (item-issns item)))
-   (concat (map :value (item-isbns item)))
-   (concat (item-titles item))
-   (concat (item-container-titles item))
-   (string/join " ")))
+  (let [published-year (if-not (nil? (item-date item :published-print))
+                         (t/year (item-date item :published-print))
+                         nil)]
+    (->>
+     (vector
+      (t/year (item-issued-date item))
+      published-year
+      (journal-issue item)
+      (journal-volume item)
+      (:first-page item)
+      (:last-page item))
+     (concat (map :value (item-issns item)))
+     (concat (map :value (item-isbns item)))
+     (concat (item-titles item))
+     (concat (item-container-titles item))
+     (string/join " "))))
 
 (defn item-bibliographic-content
   "Fields related to bibliographic citation look up"
