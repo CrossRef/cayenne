@@ -7,7 +7,6 @@
             [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.tools.trace :as trace]
-            [somnium.congomongo :as m]
             [qbits.spandex :as elastic]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
@@ -111,9 +110,6 @@
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
   (set-param! [:service :elastic :urls] ["http://localhost:9200"])
-  (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "localhost")
-  (set-param! [:service :datomic :url] "datomic:mem://test")
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
   (set-param! [:service :logstash :host] "5.9.51.2")
@@ -174,10 +170,6 @@
                    (Executors/newScheduledThreadPool 20))
      (set-service! :conn-mgr
                    (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
-     (set-service! :mongo
-                   (m/make-connection
-                    (get-param [:service :mongo :db])
-                    :host (get-param [:service :mongo :host])))
      (set-service! :elastic
                    (elastic/client {:hosts (get-param [:service :elastic :urls])})))))
 
