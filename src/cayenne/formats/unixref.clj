@@ -174,11 +174,12 @@
   (let [day-val (xml/xselect1 date-loc "day" :text)
         month-val (xml/xselect1 date-loc "month" :text)
         year-val (xml/xselect1 date-loc "year" :text)]
-    {:type :date
-     :day day-val 
-     :month (parse-month month-val) 
-     :year year-val
-     :time-of-year (parse-time-of-year month-val)}))
+    (when (> (Integer/parseInt year-val) 0)
+      {:type :date
+       :day day-val 
+       :month (parse-month month-val) 
+       :year year-val
+       :time-of-year (parse-time-of-year month-val)})))
 
 (defn parse-start-date [start-date-loc]
   (let [month-val (xml/xselect1 start-date-loc ["start_month"])]
