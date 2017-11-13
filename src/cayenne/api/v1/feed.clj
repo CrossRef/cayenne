@@ -19,7 +19,8 @@
             [nio2.dir-seq :refer [dir-seq-glob]]
             [nio2.io :refer [path]]
             [clj-time.core :as dt]
-            [clojure.core.async :refer [chan buffer go go-loop <! >!!]])
+            [clojure.core.async :refer [chan buffer go go-loop <! >!!]]
+            [cayenne.elastic.index :as es-index])
   (:import [java.util UUID]
            [java.io File]
            [java.util.concurrent TimeUnit]))
@@ -138,27 +139,20 @@
 (defmethod process! "application/vnd.datacite.datacite+xml" [feed-context]
   (process-with
    (fn [rdr]
-     (let [f #(let [parsed (->> %
-                                datacite/datacite-record-parser
-                                (apply itree/centre-on))
-                    with-source (assoc parsed
-                                       :source
-                                       (-> feed-context :provider provider-names))]
-                (solr/insert-item with-source))]
+     (let [f #(->> %
+                   datacite/datacite-record-parser
+                   (apply itree/centre-on)
+                   es-index/index-item)]
        (xml/process-xml rdr "record" f)))
    feed-context))
 
 (defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context]
   (process-with
    (fn [rdr]
-     (let [f #(let [parsed (->> %
-                                unixsd/unixsd-record-parser
-                                (apply funder/apply-to)
-                                (apply itree/centre-on))
-                    with-source (assoc parsed
-                                       :source
-                                       (-> feed-context :provider provider-names))]
-                   (solr/insert-item with-source))]
+     (let [f #(->> %
+                   unixsd/unixsd-record-parser
+                   (apply itree/centre-on)
+                   es-index/index-item)]
        (xml/process-xml rdr "crossref_result" f)))
    feed-context))
 
@@ -209,7 +203,8 @@
                            (make-feed-context provider)
                            (record! (get-in % [:request :body])))]
             (assoc % :digest (:digest result)))
-  :handle-created #(r/api-response :feed-file-creation :content {:digest (:digest %)}))
+  :handle-created #(r/api-response :feed-file-creation
+                                   :content {:digest (:digest %)}))
 
 (defroutes feed-api-routes
   (ANY "/:provider" [provider]
