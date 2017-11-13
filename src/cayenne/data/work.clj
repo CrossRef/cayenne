@@ -9,7 +9,6 @@
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
             [cayenne.formats.citeproc :as citeproc]
-            [somnium.congomongo :as m]
             [org.httpkit.client :as http]
             [clojure.string :as string]
             [clojure.data.json :as json]
@@ -20,51 +19,30 @@
   (:import [java.lang RuntimeException]
            [java.net URLEncoder]))
 
-;; todo eventually produce citeproc from more detailed data stored in mongo
-;; for each DOI that comes back from solr. For now, covert the solr fields
-;; to some (occasionally ambiguous) citeproc structures.
-
-;; todo API links - orcids, subject ids, doi, issn, isbn, owner prefix
-
-;; todo conneg. currently returning two different formats - item-tree
-;; where a DOI is known, citeproc for search results.
-
-;; todo should be included in solr data
-(defn get-id-for-prefix [collection prefix]
-  (m/with-mongo (conf/get-service :mongo)
-    (-> collection 
-        (m/fetch-one :where {:prefixes (prefix-id/extract-prefix prefix)})
-        :id
-        member-id/to-member-id-uri)))
-
-(defn get-member-prefix-info [collection id]
-  (m/with-mongo (conf/get-service :mongo)
-    (-> collection
-        (m/fetch-one :where {:id (Integer/parseInt (member-id/extract-member-id id))})
-        :prefix)))
-
 (defn display-citations? [metadata]
   (when (:member metadata)
-    (let [prefix (prefix-id/extract-prefix (:prefix metadata))
-          member-id (member-id/extract-member-id (:member metadata))
-          member-prefix-info (get-member-prefix-info "members" member-id)]
+    (when-let [member-doc (-> (elastic/request
+                               (conf/get-service :elastic)
+                               {:method :get
+                                :url "/members/members/_search"
+                                :body (-> {:size 1}
+                                          (assoc-in
+                                           [:query :bool :filter]
+                                           [{:term {:id (:member metadata)}}]))})
+                              (get-in [:body :hits :hits])
+                              first
+                              :_source)]
       (not
        (empty?
-        (filter #(and (= (:value %) prefix)
+        (filter #(and (= (:value %) (:prefix metadata))
                       (:public-references %))
-                member-prefix-info))))))
+                (:prefix member-doc)))))))
 
-;; (defn with-citations [metadata]
-;;   (if (display-citations? metadata)
-;;     metadata
-;;     (-> metadata
-;;         (dissoc :reference)
-;;         (update-in [:relation] dissoc :cites))))
-
-(defn with-citations [metadata] metadata)
-
-(defn partial-response? [query-response]
-  (.. query-response (getResponseHeader) (get "partialResults")))
+(defn with-citations [metadata]
+  (if (display-citations? metadata)
+    metadata
+    (-> metadata
+        (dissoc :reference))))
 
 (defn render-record [query-context doc]
   (into

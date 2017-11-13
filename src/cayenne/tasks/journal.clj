@@ -2,7 +2,6 @@
   (:require [clojure.data.csv :as csv]
             [clojure.java.io :as io]
             [clojure.string :as string]
-            [somnium.congomongo :as m]
             [cayenne.conf :as conf]
             [cayenne.ids.issn :as issn-id]
             [cayenne.util :as util]
