@@ -12,8 +12,6 @@
   {:id id
    :label (:label t)})
 
-(def solr-type-id-field "type")
-
 (defn fetch-all []
   (-> (r/api-response :type-list)
       (r/with-result-items 
@@ -31,6 +29,4 @@
            (r/api-response :type :content)))))
 
 (defn fetch-works [query-context]
-  (-> query-context
-      (update-in [:id] type-id/->index-id)
-      (work/fetch :id-field solr-type-id-field)))
+  (work/fetch query-context :id-field :type))
