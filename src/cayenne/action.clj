@@ -3,7 +3,6 @@
   (:use [cayenne.conf]
         [cayenne.sources.wok]
         [cayenne.tasks.dump]
-        [cayenne.tasks.citation]
         [clojure.tools.trace]
         [cayenne.formats.unixref :only [unixref-record-parser unixref-citation-parser]]
         [cayenne.formats.unixsd :only [unixsd-record-parser]]
@@ -14,7 +13,6 @@
             [cayenne.oai :as oai]
             [cayenne.job :as job]
             [cayenne.html :as html]
-            [cayenne.tasks.category :as cat]
             [cayenne.tasks.doaj :as doaj]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.mongo :as mongo]
@@ -90,8 +88,7 @@
   (comp
    (record-json-writer "out.txt")
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (def dump-solr-docs
   (comp
@@ -100,8 +97,7 @@
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (def dump-plain-es-docs
   (comp
@@ -123,8 +119,7 @@
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (def print-solr-docs
   (comp
@@ -133,8 +128,7 @@
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (def index-solr-docs
   (comp 
@@ -142,8 +136,7 @@
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (def index-es-docs
   (comp
@@ -156,8 +149,7 @@
    #(assoc % :source "CrossRef")
    #(apply itree/centre-on %)
    #(apply funder/apply-to %)
-   #(apply doaj/apply-to %)
-   #(apply cat/apply-to %)))
+   #(apply doaj/apply-to %)))
 
 (defn parse-unixref-records [file-or-dir using]
   (oai/process file-or-dir
@@ -296,26 +288,6 @@
    DOI to CRMDS response."
   [doi-list-loc]
   (into {} (map find-doi (-> doi-list-loc (line-seq) (distinct)))))
-
-(defn check-url-citations [file-or-dir]
-  (oai/process
-   file-or-dir
-   :parser unixref-record-parser
-   :task (full-url-citation-checker "check.log.txt")))
-
-(defn find-citations-like [file-or-dir patt]
-  (oai/process
-   file-or-dir
-   :parser unixref-citation-parser
-   :task (matching-citation-finder "match.log.txt" patt)))
-
-(defn find-standards-citations [file-or-dir]
-  (let [patt #"^(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
-    (find-citations-like file-or-dir patt)))
-
-(defn find-standards-citations-loose [file-or-dir]
-  (let [patt #"(ASTM [A-G]|ISO |IEC |ISO/IEC |EN |EN ISO |BS |BS ISO |BS EN ISO |IEEE [A-Z]?)[0-9]+((\.|-)[0-9]+)? ((\.|-)[0-9]+)?(:[0-9]{4})?"]
-    (find-citations-like file-or-dir patt)))
 
 (defn update-member-solr-docs [id offset to-be-updated?]
   (let [data (-> (java.net.URL. (str "http://api.crossref.org/v1/members/" 
