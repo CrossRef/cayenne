@@ -192,23 +192,25 @@
    :name              {:type "text"}})
 
 (def member-properties
-  {:primary-name {:type "text"}
-   :location     {:type "text"}
-   :id           {:type "long"}
-   :token        {:type "keyword"}
-   :prefix       {:type "object" :properties prefix-properties}})
+  {:primary-name         {:type "text" :copy_to :primary-name-suggest}
+   :primary-name-suggest {:type "completion"}
+   :location             {:type "text"}
+   :id                   {:type "long"}
+   :token                {:type "keyword"}
+   :prefix               {:type "object" :properties prefix-properties}})
 
 (def funder-properties
-  {:doi          {:type "keyword"}
-   :parent       {:type "keyword"}
-   :child        {:type "keyword"}
-   :affiliated   {:type "keyword"}
-   :country      {:type "keyword"}
-   :primary-name {:type "text"}
-   :name         {:type "text"}
-   :replaces     {:type "keyword"}
-   :replaced-by  {:type "keyword"}
-   :token        {:type "keyword"}})
+  {:doi                  {:type "keyword"}
+   :primary-name-suggest {:type "completion"}
+   :parent               {:type "keyword"}
+   :child                {:type "keyword"}
+   :affiliated           {:type "keyword"}
+   :country              {:type "keyword"}
+   :primary-name         {:type "text" :copy_to :primary-name-suggest}
+   :name                 {:type "text"}
+   :replaces             {:type "keyword"}
+   :replaced-by          {:type "keyword"}
+   :token                {:type "keyword"}})
 
 (def subject-properties
   {:high-code   {:type "integer"}
@@ -216,13 +218,14 @@
    :name        {:type "keyword"}})
 
 (def journal-properties
-  {:title     {:type "text"}
-   :token     {:type "keyword"}
-   :id        {:type "long"}
-   :doi       {:type "keyword"}
-   :publisher {:type "text"}
-   :subject   {:type "object" :properties subject-properties}
-   :issn      {:type "object" :properties issn-properties}})
+  {:title         {:type "text" :copy_to :title-suggest}
+   :title-suggest {:type "completion"}
+   :token         {:type "keyword"}
+   :id            {:type "long"}
+   :doi           {:type "keyword"}
+   :publisher     {:type "text"}
+   :subject       {:type "object" :properties subject-properties}
+   :issn          {:type "object" :properties issn-properties}})
 
 (def coverage-properties
   {:subject-type  {:type "keyword"}

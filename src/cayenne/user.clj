@@ -35,5 +35,6 @@
 (defn index-ancillary []
   (category/index-subjects)
   (publisher/index-members)
-  (journal/index-journals))
+  (journal/index-journals)
+  (category/update-journal-subjects))
 
