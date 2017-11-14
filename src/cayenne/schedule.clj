@@ -1,11 +1,9 @@
 (ns cayenne.schedule
   (:require [cayenne.action :as action]
             [cayenne.conf :as conf]
-            [cayenne.tasks.solr :as solr]
             [cayenne.tasks.prefix :as prefix]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.category :as category]
-            [cayenne.tasks.solr :as solr]
             [cayenne.tasks.publisher :as publisher]
             [cayenne.tasks.coverage :as coverage]
             [cayenne.tasks.journal :as journal]
@@ -20,12 +18,8 @@
             [clojurewerkz.quartzite.jobs :as qj]
             [clojurewerkz.quartzite.schedule.cron :as cron]
             [clojurewerkz.quartzite.schedule.simple :as simple]
-            [taoensso.timbre :as timbre :refer [info error]])
-   (:use [clojurewerkz.quartzite.jobs :only [defjob]]))
-
-(def crossref-oai-services [:crossref-journals :crossref-books :crossref-serials])
-
-(def oai-date-format (timef/formatter "yyyy-MM-dd"))
+            [taoensso.timbre :as timbre :refer [info error]]
+            [clojurewerkz.quartzite.jobs :refer [defjob]]))
 
 (def index-daily-work-trigger
   (qt/build
@@ -61,18 +55,6 @@
    (qt/with-schedule
      (cron/schedule
       (cron/cron-schedule "0 0 * * * ?")))))
-
-(defjob index-crossref-oai [ctx]
-  (let [from (time/minus (time/today-at-midnight) (time/days 3))
-        until (time/today-at-midnight)]
-    (info (str "Running index of CrossRef OAI from "
-               from " until " until))
-    (doseq [oai-service crossref-oai-services]
-      (action/get-oai-records
-       (conf/get-param [:oai oai-service])
-       (timef/unparse oai-date-format from)
-       (timef/unparse oai-date-format until)
-       action/index-solr-docs))))
 
 (defjob update-members [ctx]
   (try
@@ -129,13 +111,6 @@
   (qs/initialize)
   (qs/start))
 
-(defn start-indexing []
-  (qs/schedule
-   (qj/build
-    (qj/of-type index-crossref-oai)
-    (qj/with-identity (qj/key "index-crossref-oai")))
-    index-daily-work-trigger))
-
 (defn start-members-updating []
   (qs/schedule
    (qj/build
@@ -156,12 +131,6 @@
     (qj/of-type update-funders)
     (qj/with-identity (qj/key "update-funders")))
    update-funders-hourly-work-trigger))
-
-(conf/with-core :default
-  (conf/add-startup-task 
-   :index
-   (fn [profiles]
-     (start-indexing))))
 
 (conf/with-core :default
   (conf/add-startup-task

@@ -119,10 +119,6 @@
 
   (set-param! [:deposit :email] "crlabs@fastmail.fm")
 
-  (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
-  (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
-  (set-param! [:oai :datacite :type] "datacite")
-
   (set-param! [:id :issn :path] "http://id.crossref.org/issn/")
   (set-param! [:id :isbn :path] "http://id.crossref.org/isbn/")
   (set-param! [:id :orcid :path] "http://orcid.org/")
@@ -150,14 +146,8 @@
   (set-param! [:test :doi] "10.5555/12345678")
 
   (set-param! [:upstream :pdf-service] "http://46.4.83.72:3000/pdf")
-  (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
-  (set-param! [:upstream :funder-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :funder-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=cnproxy@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :doi-ra-url] "https://doi.crossref.org/doiRA/")
-  (set-param! [:upstream :unixref-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixref&doi=")
-  (set-param! [:upstream :unixsd-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://doi.crossref.org/getPrefixPublisher/?prefix=")
   (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))

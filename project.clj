@@ -17,9 +17,7 @@
                                                :creds :gpg}}
               :dependencies [[com.datomic/datomic-pro "0.9.4894"
                               :exclusions [org.slf4j/log4j-over-slf4j]]]}}
-  :dependencies [[com.datomic/datomic-free "0.9.4880.2"
-                  :exclusions [org.slf4j/log4j-over-slf4j]]
-                 [org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.async "0.2.395"]
                  [org.clojure/tools.nrepl "0.2.3"]
                  [org.clojure/tools.trace "0.7.8"]
@@ -37,7 +35,6 @@
                  [clojurewerkz/quartzite "1.0.1"]
                  [congomongo "0.5.0"]
                  [enlive "1.1.1"]
-                 [htmlcleaner "2.2.4"]
                  [org.apache.jena/jena-core "2.10.1"]
                  [xom "1.2.5"]
                  [clj-http "0.7.2"]

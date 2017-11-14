@@ -2,7 +2,6 @@
   (:require [cayenne.conf :as conf]
             [cayenne.xml :as xml]
             [cayenne.formats.unixsd :as unixsd]
-            [cayenne.formats.datacite :as datacite]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.funder :as funder]
             [cayenne.tasks.solr :as solr]
@@ -26,23 +25,19 @@
            [java.util.concurrent TimeUnit]))
 
 (def feed-content-types #{"application/vnd.crossref.unixsd+xml"
-                          "application/vnd.datacite.datacite+xml"
                           "application/vnd.crossref.update+json"})
 
 (def content-type-mnemonics
   {"application/vnd.crossref.unixsd+xml" "unixsd"
-   "application/vnd.datacite.datacite+xml" "datacite"
    "application/vnd.crossref.update+json" "update"})
 
 (def content-type-mnemonics-reverse
   {"unixsd" "application/vnd.crossref.unixsd+xml"
-   "datacite" "application/vnd.datacite.datacite+xml"
    "update" "application/vnd.crossref.update+json"})
 
-(def feed-providers #{"crossref" "datacite"})
+(def feed-providers #{"crossref"})
 
-(def provider-names {"crossref" "Crossref"
-                     "datacite" "DataCite"})
+(def provider-names {"crossref" "Crossref"})
 
 (defn feed-log [f state]
   (spit
@@ -135,16 +130,6 @@
                     (:failed-file feed-context))))))
   
 (defmulti process! :content-type)
-
-(defmethod process! "application/vnd.datacite.datacite+xml" [feed-context]
-  (process-with
-   (fn [rdr]
-     (let [f #(->> %
-                   datacite/datacite-record-parser
-                   (apply itree/centre-on)
-                   es-index/index-item)]
-       (xml/process-xml rdr "record" f)))
-   feed-context))
 
 (defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context]
   (process-with
