@@ -200,17 +200,22 @@
    :prefix       {:type "object" :properties prefix-properties}})
 
 (def funder-properties
-  {:doi          {:type "keyword"}
-   :suggest      {:type "completion"}
-   :parent       {:type "keyword"}
-   :child        {:type "keyword"}
-   :affiliated   {:type "keyword"}
-   :country      {:type "keyword"}
-   :primary-name {:type "text" :copy_to :suggest}
-   :name         {:type "text"}
-   :replaces     {:type "keyword"}
-   :replaced-by  {:type "keyword"}
-   :token        {:type "keyword"}})
+  {:doi             {:type "keyword"}
+   :suggest         {:type "completion"}
+   :level           {:type "integer"}
+   :parent          {:type "keyword"}
+   :ancestor        {:type "keyword"}
+   :child           {:type "keyword"}
+   :descendant      {:type "keyword"}
+   :hierarchy       {:type "object"}
+   :hierarchy-names {:type "keyword" :index false}
+   :affiliated      {:type "keyword"}
+   :country         {:type "keyword"}
+   :primary-name    {:type "text" :copy_to :suggest}
+   :name            {:type "text" :copy_to :suggest}
+   :replaces        {:type "keyword"}
+   :replaced-by     {:type "keyword"}
+   :token           {:type "keyword"}})
 
 (def subject-properties
   {:high-code   {:type "integer"}

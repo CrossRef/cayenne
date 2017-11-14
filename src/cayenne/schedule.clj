@@ -100,10 +100,7 @@
                                    :headers :last-modified)
           funders-last-modified (timef/parse last-modified-format last-modified-header)]
       (when (time/after? funders-last-modified time-of-previous-update)
-        (funder/clear!)
-        (funder/drop-loading-collection)
-        (funder/load-funders-rdf (java.net.URL. (conf/get-param [:location :cr-funder-registry])))
-        (funder/swapin-loading-collection)
+        (funder/index-funders)
         (write-last-funder-update time-of-this-update)))
     (catch Exception e (error e "Failed to update funders from RDF"))))
 
