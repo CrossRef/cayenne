@@ -62,7 +62,8 @@
        {:method :get
         :url "/journal/journal/_search"
         :body (assoc-in
-               {:_source [:id]}
+               {:_source [:id]
+                :query {:bool {:minimum_should_match 1}}}
                [:query :bool :should]
                (map #(hash-map :term {:issn.value %}) issns))})
       (get-in [:body :hits :hits])

@@ -26,25 +26,25 @@
 (def print-itree-docs
   (comp
    #(info %)
-   #(apply itree/centre-on %)))
+   #(apply itree/centre-on %)
+   unixsd-record-parser))
 
 (def print-elastic-docs
   (comp
    #(info %)
    es-index/index-command
-   #(apply itree/centre-on %)))
+   #(apply itree/centre-on %)
+   unixsd-record-parser))
 
 (def index-elastic-docs
   (comp
    es-index/index-item
-   #(apply itree/centre-on %)))
+   #(apply itree/centre-on %)
+   unixsd-record-parser))
 
 (defn process-file [file record-element using]
   (with-open [rdr (io/reader file)]
-    (xml/process-xml
-     rdr
-     using
-     record-element)))
+    (xml/process-xml rdr record-element using)))
 
 (defn parse-unixsd-record [f using]
   (process-file (io/file f) "record" using))
