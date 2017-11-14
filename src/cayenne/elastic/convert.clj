@@ -405,7 +405,7 @@
         :else
         nil))
 
-(defn citeproc-contributors [es-doc {:keys [contribution]}]
+(defn citeproc-contributors [es-doc & {:keys [contribution]}]
   (cond->> (:contributor es-doc)
     :always
     (map #(hash-map
@@ -419,7 +419,7 @@
            :family (:family-name %)
            :affiliation (map (fn [affil] {:name affil}) (:affiliation %))))
     contribution
-    (filter #(= (:type %) contribution))))
+    (filter #(= (-> % :type keyword) contribution))))
 
 (defn citeproc-events [es-doc]
   (map #(-> %
@@ -524,11 +524,10 @@
         (assoc :created                (-> source-doc :first-deposited citeproc-date))
         (assoc :content-created        (-> source-doc :content-created citeproc-date))
         (assoc :content-updated        (-> source-doc :content-updated citeproc-date))
-        (assoc :author                 (citeproc-contributors source-doc :author))
-        (assoc :editor                 (citeproc-contributors source-doc :author))
-        (assoc :translator             (citeproc-contributors source-doc :author))
-        (assoc :chair                  (citeproc-contributors source-doc :author))
-        (assoc :contributor            (citeproc-contributors source-doc :author))
+        (assoc :author                 (citeproc-contributors source-doc :contribution :author))
+        (assoc :editor                 (citeproc-contributors source-doc :contribution :editor))
+        (assoc :translator             (citeproc-contributors source-doc :contribution :translator))
+        (assoc :chair                  (citeproc-contributors source-doc :contribution :chair))
         (assoc :standards-body         (:standards-body source-doc))
         (assoc :reference              (citeproc-references source-doc))
         (assoc :event                  (citeproc-events source-doc))
