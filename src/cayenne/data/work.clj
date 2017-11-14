@@ -4,11 +4,9 @@
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
-            [cayenne.data.quality :as quality]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
-            [cayenne.formats.citeproc :as citeproc]
             [org.httpkit.client :as http]
             [clojure.string :as string]
             [clojure.data.json :as json]
@@ -24,7 +22,7 @@
     (when-let [member-doc (-> (elastic/request
                                (conf/get-service :elastic)
                                {:method :get
-                                :url "/members/members/_search"
+                                :url "/member/member/_search"
                                 :body (-> {:size 1}
                                           (assoc-in
                                            [:query :bool :filter]

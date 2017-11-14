@@ -405,33 +405,142 @@
         :else
         nil))
 
+(defn citeproc-contributors [es-doc {:keys [contribution]}]
+  (cond->> (:contributor es-doc)
+    :always
+    (map #(hash-map
+           :type (:contribution %)
+           :ORCID (:orcid %)
+           :authenticated-orcid (:authenticated-orcid %)
+           :prefix (:prefix %)
+           :suffix (:suffix %)
+           :name (:org-name %)
+           :given (:given-name %)
+           :family (:family-name %)
+           :affiliation (map (fn [affil] {:name affil}) (:affiliation %))))
+    contribution
+    (filter #(= (:type %) contribution))))
+
+(defn citeproc-events [es-doc]
+  (map #(-> %
+            (update-in [:start] citeproc-date)
+            (update-in [:end] citeproc-date))
+       (:event es-doc)))
+
+(defn citeproc-references [es-doc]
+  (map #(-> %
+            (dissoc :doi)
+            (assoc :DOI (:doi %))
+            (dissoc :issn)
+            (assoc :ISSN (:issn %))
+            (dissoc :isbn)
+            (assoc :ISBN (:isbn %)))
+       (:reference es-doc)))
+
+(defn citeproc-relations [es-doc]
+  (map #(hash-map
+         :id (:object %)
+         :id-type (:object-type %)
+         :asserted-by (:claimed-by %)
+         :rel (:type %))
+       (:relation es-doc)))
+
+(defn citeproc-licenses [es-doc]
+  (map #(-> %
+            (update-in [:start] citeproc-date)
+            (dissoc :version)
+            (assoc :content-version (:version %))
+            (dissoc :delay)
+            (assoc :delay-in-days (:delay %))
+            (dissoc :url)
+            (assoc :URL (:url %)))
+       (:license es-doc)))
+
+(defn citeproc-assertions [es-doc]
+  (map #(hash-map
+         :value (:value %)
+         :URL (:url %)
+         :order (:order %)
+         :name (:name %)
+         :label (:label %)
+         :explanation {:URL (:explanation-url %)}
+         :group {:name (:group-name %) :label (:group-label %)})
+       (:assertion es-doc)))
+
+(defn citeproc-clinical-trials [es-doc]
+  (map #(hash-map
+         :clinical-trial-number (:number %)
+         :registry (:registry %)
+         :type (:type %))
+       (:clinical-trial es-doc)))
+
+(defn citeproc-updates [updates]
+  (map #(hash-map
+         :DOI (:doi %)
+         :type (:type %)
+         :label (:label %)
+         :updated (-> % :date citeproc-date))
+       updates))
+
+;; todo merge on :DOI
+(defn citeproc-funders [es-doc]
+  (map #(hash-map
+         :DOI (:doi %)
+         :name (:name %)
+         :doi-asserted-by (:doi-asserted-by %)
+         :award (map (fn [award] {:name award}) (:award %)))
+       (:funder es-doc)))
+
 (defn es-doc->citeproc [es-doc]
   (let [source-doc (:_source es-doc)]
     (-> source-doc
         (select-keys [:title :short-title :original-title :group-title :subtitle
                       :container-title :short-container-title :issue :volume
                       :description :degree :update-policy :archive :type :prefix
-                      :owner-prefix :member-id :journal-id
-                      :references-count :is-referenced-by-count])
+                      :owner-prefix :references-count :is-referenced-by-count
+                      :publisher :publisher-location :article-number :edition-number
+                      :part-number :component-number])
 
-        (assoc :ISSN             (->> source-doc :issn (map :value)))
-        (assoc :ISBN             (->> source-doc :isbn (map :value)))
-        (assoc :issn-type        (:issn source-doc))
-        (assoc :isbn-type        (:isbn source-doc))
-        (assoc :DOI              (:doi source-doc))
-        (assoc :URL              (-> source-doc :doi doi-id/to-long-doi-uri))
-        (assoc :page             (citeproc-pages source-doc))
-        (assoc :issued           (-> source-doc :issued citeproc-date))
-        (assoc :published-print  (-> source-doc :published-print citeproc-date))
-        (assoc :published-online (-> source-doc :published-online citeproc-date))
-        (assoc :published-other  (-> source-doc :published-other citeproc-date))
-        (assoc :posted           (-> source-doc :posted citeproc-date))
-        (assoc :accepted         (-> source-doc :accepted citeproc-date))
-        (assoc :approved         (-> source-doc :approved citeproc-date))
-        (assoc :indexed          (-> source-doc :indexed citeproc-date))
-        (assoc :deposited        (-> source-doc :deposited citeproc-date))
-        (assoc :first-deposited  (-> source-doc :first-deposited citeproc-date))
-        (assoc :content-created  (-> source-doc :content-created citeproc-date))
-        (assoc :content-updated  (-> source-doc :content-updated citeproc-date))
-        
+        (assoc :abstract               (:abstract-xml source-doc))
+        (assoc :alternative-id         (:supplementary-id source-doc))
+        (assoc :ISSN                   (->> source-doc :issn (map :value)))
+        (assoc :ISBN                   (->> source-doc :isbn (map :value)))
+        (assoc :issn-type              (:issn source-doc))
+        (assoc :isbn-type              (:isbn source-doc))
+        (assoc :DOI                    (:doi source-doc))
+        (assoc :URL                    (-> source-doc :doi doi-id/to-long-doi-uri))
+        (assoc :member                 (:member-id source-doc))
+        (assoc :journal                (:journal-id source-doc))
+        (assoc :page                   (citeproc-pages source-doc))
+        (assoc :issued                 (-> source-doc :issued citeproc-date))
+        (assoc :published-print        (-> source-doc :published-print citeproc-date))
+        (assoc :published-online       (-> source-doc :published-online citeproc-date))
+        (assoc :published-other        (-> source-doc :published-other citeproc-date))
+        (assoc :posted                 (-> source-doc :posted citeproc-date))
+        (assoc :accepted               (-> source-doc :accepted citeproc-date))
+        (assoc :approved               (-> source-doc :approved citeproc-date))
+        (assoc :indexed                (-> source-doc :indexed citeproc-date))
+        (assoc :deposited              (-> source-doc :deposited citeproc-date))
+        (assoc :created                (-> source-doc :first-deposited citeproc-date))
+        (assoc :content-created        (-> source-doc :content-created citeproc-date))
+        (assoc :content-updated        (-> source-doc :content-updated citeproc-date))
+        (assoc :author                 (citeproc-contributors source-doc :author))
+        (assoc :editor                 (citeproc-contributors source-doc :author))
+        (assoc :translator             (citeproc-contributors source-doc :author))
+        (assoc :chair                  (citeproc-contributors source-doc :author))
+        (assoc :contributor            (citeproc-contributors source-doc :author))
+        (assoc :standards-body         (:standards-body source-doc))
+        (assoc :reference              (citeproc-references source-doc))
+        (assoc :event                  (citeproc-events source-doc))
+        (assoc :clinical-trial-number  (citeproc-clinical-trials source-doc))
+        (assoc :assertion              (citeproc-assertions source-doc))
+        (assoc :funder                 (citeproc-funders source-doc))
+        (assoc :license                (citeproc-licenses source-doc))
+        (assoc :updated-by             (citeproc-updates (:updated-by source-doc)))
+        (assoc :update-to              (citeproc-updates (:update-to source-doc)))
+        (assoc :relation               (citeproc-relations source-doc))
+
+        (assoc :content-domain {:crossmark-restriction (:domain-exclusive source-doc)
+                                :domain (:domain source-doc)})
+
         (assoc :score (:_score es-doc)))))

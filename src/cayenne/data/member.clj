@@ -8,7 +8,6 @@
             [cayenne.data.work :as work]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.prefix :as prefix-id]
-            [cayenne.formats.citeproc :as citeproc]
             [clojure.string :as string]
             [clj-time.coerce :as dc]
             [qbits.spandex :as elastic]))

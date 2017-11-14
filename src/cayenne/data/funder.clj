@@ -4,7 +4,6 @@
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
-            [cayenne.formats.citeproc :as citeproc]
             [cayenne.data.work :as work]
             [cayenne.ids.fundref :as fr-id]
             [somnium.congomongo :as m]

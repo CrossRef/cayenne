@@ -4,7 +4,6 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.work :as work]
-            [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.type :as type-id]
             [cayenne.conf :as conf]))
 
