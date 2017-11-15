@@ -11,6 +11,6 @@
 (defn index-item [item]
   (elastic/request
    (conf/get-service :elastic)
-   {:method :post :url "work/work/_bulk"
+   {:method :post :url "/work/work/_bulk"
     :body (elastic-util/raw-jsons (index-command item))}))
       

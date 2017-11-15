@@ -4,10 +4,9 @@
             [cayenne.formats.unixsd :as unixsd]
             [cayenne.item-tree :as itree]
             [cayenne.tasks.funder :as funder]
-            [cayenne.tasks.solr :as solr]
             [cayenne.api.v1.types :as types]
             [cayenne.api.v1.response :as r]
-            [cayenne.api.v1.update :refer [read-updates-message update-as-solr-doc]]
+            [cayenne.api.v1.update :refer [read-updates-message update-as-elastic-command]]
             [compojure.core :refer [defroutes ANY]]
             [liberator.core :refer [defresource]]
             [clojure.string :as string]
@@ -19,7 +18,8 @@
             [nio2.io :refer [path]]
             [clj-time.core :as dt]
             [clojure.core.async :refer [chan buffer go go-loop <! >!!]]
-            [cayenne.elastic.index :as es-index])
+            [cayenne.elastic.index :as es-index]
+            [cayenne.elastic.update :as es-update])
   (:import [java.util UUID]
            [java.io File]
            [java.util.concurrent TimeUnit]))
@@ -143,10 +143,10 @@
 
 (defmethod process! "application/vnd.crossref.update+json" [feed-context]
   (process-with
-   #(doseq [update-doc (->> %
-                            read-updates-message
-                            (map update-as-solr-doc))]
-      (solr/insert-solr-doc update-doc))
+   #(->> %
+         read-updates-message
+         (map update-as-elastic-command)
+         es-update/index-updates)
    feed-context))
 
 (defn process-feed-file! [f]
