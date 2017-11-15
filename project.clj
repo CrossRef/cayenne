@@ -1,7 +1,6 @@
 (defproject crossref/cayenne "1.2.1"
   :description "Index and serve CrossRef metadata"
   :url "http://github.com/CrossRef/cayenne"
-  :signing {:gpg-key "labs@crossref.org"}
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
   :jvm-opts ["-XX:+UseG1GC"]

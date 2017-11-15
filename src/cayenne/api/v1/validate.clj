@@ -260,15 +260,6 @@
    :clinical-trial-number string-validator
    :reference-visibility string-validator})
 
-(def deposit-filter-validators
-  {:from-submission-time date-validator
-   :until-submission-time date-validator
-   :status deposit-status-validator
-   :owner string-validator
-   :type content-type-validator
-   :doi doi-validator
-   :test boolean-validator})
-
 (def member-filter-validators
   {:prefix prefix-validator
    :has-public-references boolean-validator
@@ -277,7 +268,11 @@
    :current-doi-count integer-validator})
 
 (def funder-filter-validators
-  {:location string-validator})
+  {:location string-validator
+   :child funder-id-validator
+   :parent funder-id-validator
+   :ancestor funder-id-validator
+   :descendant funder-id-validator})
 
 (defn validate-filters [filter-validators context filters]
   (let [unknown-filters (cset/difference
@@ -301,8 +296,6 @@
      existence-chk-context
      filters)))
     
-(def validate-deposit-filters (partial validate-filters
-                                       deposit-filter-validators))
 (def validate-work-filters (partial validate-filters
                                     work-filter-validators))
 (def validate-member-filters (partial validate-filters

@@ -106,9 +106,6 @@
         (string/replace #"\s(?i)or\s" " ")
         (string/replace #"\s(?i)and\s" " "))))
 
-(defn random-field []
-  (str "random_" (rand-int Integer/MAX_VALUE)))
-
 (defn parse-rows-val [val]
   (int (cond
         (nil? val)
@@ -329,22 +326,3 @@
       (assoc :prefix-field prefix-field)
       (dissoc :terms)))
 
-(defn ->mongo-query [query-context
-                     & {:keys [where filters id-field]
-                        :or {where {} filters {} id-field nil}}]
-  (let [filter-where (into {}
-                           (map (fn [[n v]]
-                                    ((filters (name n)) v))
-                                (:filters query-context)))]
-    (concat
-     [:where (merge
-              where
-              filter-where
-              (when id-field {id-field (:id query-context)}))]
-     (when (:sort query-context)
-       [:sort {(:sort query-context)
-               (if (= (:order query-context) :asc) 1 -1)}])
-     (when (:rows query-context)
-       [:limit (:rows query-context)])
-     (when (:offset query-context)
-       [:skip (:offset query-context)]))))

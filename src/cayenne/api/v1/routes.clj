@@ -6,7 +6,6 @@
             [cayenne.ids.member :as member-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.conf :as conf]
-            [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
@@ -18,7 +17,6 @@
             [cayenne.data.license :as license]
             [cayenne.api.transform :as transform]
             [cayenne.api.link :as link]
-            [cayenne.api.deposit :as dc]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
@@ -32,7 +30,6 @@
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
-(extend org.bson.types.ObjectId json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend clojure.lang.Var json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend java.lang.Object json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 
@@ -117,85 +114,6 @@
   :available-media-types t/json
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
-
-;; This resource looks a little odd because we are trying to handle
-;; any exception that comes about due to the post! action. If there
-;; is an exception, we return a 400.
-
-(defn deposit-failure [exception]
-  (ring-response
-   {:status 400
-    :body 
-    {:status :failed
-     :message-type :entity-parsing-failure
-     :message {:exception (.toString exception)}}}))
-
-(defresource deposits-resource [data]
-  :malformed? (v/malformed? :filter-validator v/validate-deposit-filters
-                            :unlimited-offset true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :known-content-type? #(known-post-type? % t/depositable)
-  :allowed-methods [:get :post :options :head]
-  :available-media-types t/json
-  :handle-ok #(d/fetch (q/->query-context % :filters {:owner (get-owner %)}))
-  :post-redirect? #(hash-map :location (rel-url "deposits" (:id %)))
-  :handle-see-other #(if (:id %)
-                       (ring-response
-                        {:status 303
-                         :body ""
-                         :headers {"Location"
-                                   (rel-url "deposits" (:id %))}})
-                       (deposit-failure (:ex %)))
-  :post! #(try (hash-map :id (-> (dc/make-deposit-context
-                               data
-                               (get-in % [:request :headers "content-type"])
-                               (get-owner %)
-                               (get-passwd %)
-                               (truth-param % :test)
-                               (param % :pingback)
-                               (param % :url)
-                               (param % :filename)
-                               (param % :parent))
-                              (dc/deposit!)))
-               (catch Exception e {:ex e})))
-
-(defresource deposit-resource [id]
-  :malformed? (v/malformed? :singleton true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :allowed-methods [:get :post :options :head]
-  :available-media-types t/json
-  :exists? #(when-let [deposit 
-                       (-> % 
-                           (q/->query-context 
-                            :filters {:owner (get-owner %)}
-                            :id id)
-                           (d/fetch-one))]
-              {:deposit deposit})
-  :handle-ok :deposit
-  :post! #(do
-            (->> (get-in % [:request :body])
-                 (.bytes)
-                 slurp
-                 (d/modify! id))))
-
-(defresource deposit-data-resource [id]
-  :malformed? (v/malformed? :singleton true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :allowed-methods [:get :options :head]
-  :media-type-available? (constantly true) ;; todo should return {:representation ...}
-  :exists? #(when-let [deposit (d/fetch-one 
-                                (q/->query-context 
-                                 % 
-                                 :filters {:owner (get-owner %)} 
-                                 :id id))] 
-              {:deposit deposit})
-  :handle-ok #(d/fetch-data (q/->query-context
-                             %
-                             :filters {:owner (get-owner %)} 
-                             :id id)))
 
 (defresource works-resource
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
@@ -449,14 +367,6 @@
   :handle-ok #(work/fetch-reverse {:terms (-> (get-in % [:request :body])
                                               (.bytes)
                                               slurp)}))
-
-(defroutes restricted-api-routes
-  (ANY "/deposits" {body :body}
-       (deposits-resource body))
-  (ANY "/deposits/:id" [id]
-       (deposit-resource id))
-  (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id)))
 
 (defroutes api-routes
   (ANY "/reverse" []

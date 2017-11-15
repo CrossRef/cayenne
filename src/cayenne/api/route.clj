@@ -31,15 +31,6 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
-(defn create-protected-api-routes []
-  (wrap-routes
-   (routes
-    v1/restricted-api-routes
-    (context "/v1" [] v1/restricted-api-routes)
-    (context "/v1.0" [] v1/restricted-api-routes))
-   wrap-basic-authentication
-   cr-auth/authenticated?))
-
 (defn create-unprotected-api-routes []
   (routes
    v1/api-routes
@@ -80,8 +71,7 @@
 (defn create-all-routes [& {:keys [feed-api]
                             :or {feed-api false}}]
   (apply routes
-         (cond-> [(create-protected-api-routes)
-                  (create-docs-routes)]
+         (cond-> [(create-docs-routes)]
            feed-api (conj (create-feed-routes))
            true (conj (create-unprotected-api-routes))
            true (conj (create-unknown-route)))))
