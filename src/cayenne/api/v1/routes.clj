@@ -14,7 +14,6 @@
             [cayenne.data.journal :as journal]
             [cayenne.data.type :as data-types]
             [cayenne.data.csl :as csl]
-            [cayenne.data.license :as license]
             [cayenne.api.transform :as transform]
             [cayenne.api.link :as link]
             [cayenne.api.v1.types :as t]
@@ -321,13 +320,6 @@
               {:journal j})
   :handle-ok #(journal/fetch-works (q/->query-context % :id (issn-id/normalize-issn issn))))
 
-(defresource licenses-resource
-  :malformed? (v/malformed? :unlimited-offset true)
-  :handle-malformed :validation-result
-  :allowed-methods [:get :options :head]
-  :available-media-types t/json
-  :handle-ok #(license/fetch-all (q/->query-context %)))
-
 (defresource types-resource
   :malformed? (v/malformed? :unlimited-offset true)
   :handle-malformed :validation-result
@@ -371,8 +363,6 @@
 (defroutes api-routes
   (ANY "/reverse" []
        reverse-lookup-resource)
-  (ANY "/licenses" []
-       licenses-resource)
   (ANY "/styles" []
        csl-styles-resource)
   (ANY "/locales" []

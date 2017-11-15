@@ -49,6 +49,7 @@
         :else
         specified-limit))
 
+;; todo should set up a nested agg for nested fields
 (defn with-aggregations [es-body {:keys [facets]}]
   (reduce
    (fn [es-body {:keys [field count]}]
