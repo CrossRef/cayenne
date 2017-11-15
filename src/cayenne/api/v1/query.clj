@@ -323,8 +323,11 @@
        (with-random-sort query-context)
        (with-scroll query-context))})
 
-(defn ->solr-query [& args]
-  ())
+(defn prefix-query-context [query-context prefix-field]
+  (-> query-context
+      (assoc :prefix-terms (:terms query-context))
+      (assoc :prefix-field prefix-field)
+      (dissoc :terms)))
 
 (defn ->mongo-query [query-context
                      & {:keys [where filters id-field]

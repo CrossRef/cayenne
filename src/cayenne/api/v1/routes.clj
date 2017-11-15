@@ -2,7 +2,6 @@
   (:import [java.net URL URLDecoder])
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
-            [cayenne.ids.fundref :as fr-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.issn :as issn-id]
@@ -295,7 +294,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [f (funder/fetch-one 
-                          (q/->query-context % :id (fr-id/id-to-doi-uri funder-id)))]
+                          (q/->query-context % :id (doi-id/with-funder-prefix funder-id)))]
               {:funder f})
   :handle-ok :funder)
 
@@ -310,7 +309,9 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
+  :handle-ok #(funder/fetch-works (->> funder-id
+                                       doi-id/with-funder-prefix
+                                       (q/->query-context % :id))))
 
 (defresource prefix-resource [px]
   :malformed? (v/malformed? :singleton true)

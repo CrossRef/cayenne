@@ -2,6 +2,8 @@
   (:require [clojure.string :as string]
             [cayenne.ids :as ids]))
 
+(def funder-prefix "10.13039")
+
 (defn is-long-doi?
   "Return true if s is a valid long DOI handle without URI prefix."
   [s]
@@ -23,6 +25,14 @@
    <DOI>"
   [s]
   (or (re-find #"10\.[0-9]{4,}/[^\s]+" (or s "")) ""))
+
+(defn with-prefix [doi prefix]
+  (->> doi
+       extract-long-suffix
+       (str prefix)))
+
+(defn with-funder-prefix [doi]
+  (with-prefix doi funder-prefix))
 
 (defn extract-long-prefix [s]
   (first (string/split (extract-long-doi s) #"/")))

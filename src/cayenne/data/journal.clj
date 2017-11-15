@@ -54,14 +54,10 @@
                                     :coverage-doc
                                     (get-coverage :journal (:id journal-doc))))))
 
-(defn prefix-query-context [query-context]
-  (-> query-context
-      (assoc :prefix-terms (:terms query-context))
-      (assoc :prefix-field :title)
-      (dissoc :terms)))
-
 (defn fetch [query-context]
-  (let [es-request (query/->es-request (prefix-query-context query-context)
+  (let [es-request (query/->es-request (query/prefix-query-context
+                                        query-context
+                                        :title)
                                        :index "journal")
         response (elastic/request
                   (conf/get-service :elastic)

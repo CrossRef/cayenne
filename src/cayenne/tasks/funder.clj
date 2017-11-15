@@ -152,7 +152,6 @@
 ;; Funder RDF inspection
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;::::::
 
-
 (defn rdf->funder-names [rdf-file]
   (let [model (rdf/document->model rdf-file)
         funders (find-funders model)]
