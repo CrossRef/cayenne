@@ -1,43 +1,14 @@
 (ns cayenne.data.funder
+  (:import [java.net URLEncoder])
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.work :as work]
-            [cayenne.ids.fundref :as fr-id]
             [clojure.string :as string]
             [cayenne.ids.doi :as doi-id]
             [qbits.spandex :as elastic]))
-
-(defn get-solr-works [query-context]
-  (-> (conf/get-service :solr)
-      (.query (query/->solr-query query-context 
-                                  :id-field solr-funder-id-field
-                                  :filters filter/std-filters))))
-
-(defn get-solr-work-count 
-  "Get work count from solr for a mongo funder doc."
-  [funder-doc]
-  (-> (conf/get-service :solr)
-      (.query (query/->solr-query {:id (:uri funder-doc)}
-                                  :id-field solr-funder-id-field
-                                  :paged false
-                                  :count-only true))
-      (.getResults)
-      (.getNumFound)))
-
-(defn get-solr-descendant-work-count
-  [funder-doc]
-  (let [ids (vec (conj (map fr-id/id-to-doi-uri (:descendants funder-doc))
-                  (:uri funder-doc)))]
-    (-> (conf/get-service :solr)
-        (.query (query/->solr-query {:id ids}
-                                    :id-field solr-funder-id-field
-                                    :paged false
-                                    :count-only true))
-        (.getResults)
-        (.getNumFound))))
 
 (defn fetch-descendant-dois
   "Get all descendant funder ids for a funder."
@@ -45,10 +16,8 @@
   (-> (elastic/request
        (conf/get-service :elastic)
        {:method :get
-        :url (str "/funder/funder/" funder-doi)})
-      (get-in [:body :hits :hits])
-      first
-      (get-in [:_source :descendant])))
+        :url (str "/funder/funder/" (URLEncoder/encode funder-doi))})
+      (get-in [:body :_source :descendant])))
 
 (defn fetch-descendant-work-count [funder-doi]
   (let [funder-dois (conj (fetch-descendant-dois funder-doi)

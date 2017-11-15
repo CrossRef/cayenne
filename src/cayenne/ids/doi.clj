@@ -26,14 +26,6 @@
   [s]
   (or (re-find #"10\.[0-9]{4,}/[^\s]+" (or s "")) ""))
 
-(defn with-prefix [doi prefix]
-  (->> doi
-       extract-long-suffix
-       (str prefix)))
-
-(defn with-funder-prefix [doi]
-  (with-prefix doi funder-prefix))
-
 (defn extract-long-prefix [s]
   (first (string/split (extract-long-doi s) #"/")))
 
@@ -74,4 +66,12 @@
   [s]
   (when s
     (ids/get-id-uri :short-doi (normalize-short-doi s))))
+
+(defn with-prefix [doi prefix]
+  (->> doi
+       extract-long-suffix
+       (str prefix "/")))
+
+(defn with-funder-prefix [doi]
+  (with-prefix doi funder-prefix))
 
