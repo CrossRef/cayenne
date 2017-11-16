@@ -178,6 +178,7 @@
    :contributor-affiliation    {:type "keyword"}
    :assertion-name             {:type "keyword"}
    :assertion-group-name       {:type "keyword"}
+   :link-application           {:type "keyword"}
    :standards-body             {:type "object" :properties standards-body-properties}
    :issn                       {:type "object" :properties issn-properties}
    :isbn                       {:type "object" :properties isbn-properties}

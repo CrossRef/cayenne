@@ -31,6 +31,7 @@
                               :allow-unlimited-values true}
    "assertion-group-name"    {:external-field "assertion-group"
                               :allow-unlimited-values true}
+   "link-application"        {:external-field "link-application"}
    "volume"                  {:external-field "journal-volume"
                               :allow-unlimited-values true}
    "issue"                   {:external-field "journal-issue"
@@ -49,7 +50,6 @@
         :else
         specified-limit))
 
-;; todo should set up a nested agg for nested fields
 ;; todo should handle multiple nested aggs at the same path
 (defn with-aggregations [es-body {:keys [facets]}]
   (reduce

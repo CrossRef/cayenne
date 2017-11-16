@@ -317,7 +317,8 @@
         relations      (item-relations item)
         update-tos     (item-update-tos item)
         licenses       (item-licenses item)
-        funders        (item-funders item)]
+        funders        (item-funders item)
+        links          (item-links item)]
     {:doi              doi
      :type             (item-type item)
      :prefix           (doi-id/extract-long-prefix doi)
@@ -385,7 +386,7 @@
      :issn             (item-issns item)
      :reference        (item-references item)
      :license          licenses
-     :link             (item-links item)
+     :link             links
      :update-to        update-tos
      :assertion        assertions
      :relation         relations
@@ -396,6 +397,7 @@
      :standards-body   (item-standards-body item)
 
      ;; fields from nested objects places in the parent for aggregations
+     :link-application        (map :application links)
      :assertion-group-name    (map :group-name assertions)
      :assertion-name          (map :name assertions)
      :contributor-affiliation (mapcat :affiliation contributors)
