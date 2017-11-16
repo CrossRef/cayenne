@@ -7,29 +7,29 @@
    "issued-year"             {:external-field "published"
                               :allow-unlimited-values true}
    "container-title"         {:external-field "container-title"}
-   "funder.name"             {:external-field "funder-name"
+   "funder-name"             {:external-field "funder-name"
                               :allow-unlimited-values true}
-   "funder.doi"              {:external-field "funder-doi"
+   "funder-doi"              {:external-field "funder-doi"
                               :allow-unlimited-values true}
-   "contributor.orcid"       {:external-field "orcid"
+   "contributor-orcid"       {:external-field "orcid"
                               :allow-unlimited-values true}
    "issn.value"              {:external-field "issn"
                               :allow-unlimited-values true}
    "publisher"               {:external-field "publisher-name"
                               :allow-unlimited-values true}
-   "license.url"             {:external-field "license"
+   "license-url"             {:external-field "license"
                               :allow-unlimited-values true}
    "archive"                 {:external-field "archive"
                               :allow-unlimited-values true}
-   "update.type"             {:external-field "update-type"
+   "update-type"             {:external-field "update-type"
                               :allow-unlimited-values true}
-   "relation.type"           {:external-field "relation-type"
+   "relation-type"           {:external-field "relation-type"
                               :allow-unlimited-values true}
-   "contributor.affiliation" {:external-field "affiliation"
+   "contributor-affiliation" {:external-field "affiliation"
                               :allow-unlimited-values true}
-   "assertion.name"          {:external-field "assertion"
+   "assertion-name"          {:external-field "assertion"
                               :allow-unlimited-values true}
-   "assertion.group-name"    {:external-field "assertion-group"
+   "assertion-group-name"    {:external-field "assertion-group"
                               :allow-unlimited-values true}
    "volume"                  {:external-field "journal-volume"
                               :allow-unlimited-values true}
@@ -50,11 +50,13 @@
         specified-limit))
 
 ;; todo should set up a nested agg for nested fields
+;; todo should handle multiple nested aggs at the same path
 (defn with-aggregations [es-body {:keys [facets]}]
   (reduce
    (fn [es-body {:keys [field count]}]
      (let [internal-field-name (external->internal-name field)
-           limited-count (facet-value-limit internal-field-name count)]
+           limited-count (facet-value-limit internal-field-name count)
+           nested-path (get-in std-facets [internal-field-name :nested-path])]
        (assoc-in
         es-body
         [:aggs internal-field-name]

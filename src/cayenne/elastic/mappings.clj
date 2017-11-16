@@ -169,6 +169,15 @@
    :domain                     {:type "keyword"}
    :domain-exclusive           {:type "boolean"}
    :index-context              {:type "keyword"}
+   :funder-name                {:type "keyword"}
+   :funder-doi                 {:type "keyword"}
+   :contributor-orcid          {:type "keyword"}
+   :license-url                {:type "keyword"}
+   :update-type                {:type "keyword"}
+   :relation-type              {:type "keyword"}
+   :contributor-affiliation    {:type "keyword"}
+   :assertion-name             {:type "keyword"}
+   :assertion-group-name       {:type "keyword"}
    :standards-body             {:type "object" :properties standards-body-properties}
    :issn                       {:type "object" :properties issn-properties}
    :isbn                       {:type "object" :properties isbn-properties}
