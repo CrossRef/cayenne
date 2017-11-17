@@ -311,14 +311,7 @@
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
         journal-issue  (itree/find-item-of-subtype item :journal-issue)
-        journal-volume (itree/find-item-of-subtype item :journal-volume)
-        assertions     (item-assertions item)
-        contributors   (item-contributors item)
-        relations      (item-relations item)
-        update-tos     (item-update-tos item)
-        licenses       (item-licenses item)
-        funders        (item-funders item)
-        links          (item-links item)]
+        journal-volume (itree/find-item-of-subtype item :journal-volume)]
     {:doi              doi
      :type             (item-type item)
      :prefix           (doi-id/extract-long-prefix doi)
@@ -385,28 +378,16 @@
      :isbn             (item-isbns item)
      :issn             (item-issns item)
      :reference        (item-references item)
-     :license          licenses
-     :link             links
-     :update-to        update-tos
-     :assertion        assertions
-     :relation         relations
-     :contributor      contributors
-     :funder           funders
+     :license          (item-licenses item)
+     :link             (item-links item)
+     :update-to        (item-update-tos item)
+     :assertion        (item-assertions item)
+     :relation         (item-relations item)
+     :contributor      (item-contributors item)
+     :funder           (item-funders item)
      :clinical-trial   (item-clinical-trials item)
      :event            (item-events item)
-     :standards-body   (item-standards-body item)
-
-     ;; fields from nested objects places in the parent for aggregations
-     :link-application        (map :application links)
-     :assertion-group-name    (map :group-name assertions)
-     :assertion-name          (map :name assertions)
-     :contributor-affiliation (mapcat :affiliation contributors)
-     :contributor-orcid       (map :orcid contributors)
-     :relation-type           (map :type relations)
-     :update-type             (map :type update-tos)
-     :license-url             (map :url licenses)
-     :funder-doi              (map :doi funders)
-     :funder-name             (map :name funders)}))
+     :standards-body   (item-standards-body item)}))
 
 (defn citeproc-date [date-str]
   (when date-str

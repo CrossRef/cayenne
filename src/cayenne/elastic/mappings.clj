@@ -8,8 +8,8 @@
    :org-name            {:type "text"}
    :prefix              {:type "text"}
    :suffix              {:type "text"}
-   :orcid               {:type "keyword"}
-   :affiliation         {:type "keyword" :copy_to :affiliation-text}
+   :orcid               {:type "keyword" :copy_to :contributor-orcid}
+   :affiliation         {:type "keyword" :copy_to [:affiliation :affiliation-text]}
    :authenticated-orcid {:type "boolean"}})
 
 (def issn-properties
@@ -21,14 +21,14 @@
    :type  {:type "keyword"}})
 
 (def work-funder-properties
-  {:name            {:type "keyword" :copy_to :funder-name-text}
-   :doi             {:type "keyword"}
+  {:name            {:type "keyword" :copy_to [:funder-name :funder-name-text]}
+   :doi             {:type "keyword" :copy_to :funder-doi}
    :doi-asserted-by {:type "keyword"}
    :award           {:type "text"}})
 
 (def update-properties
   {:doi   {:type "keyword"}
-   :type  {:type "keyword"}
+   :type  {:type "keyword" :copy_to :update-type}
    :label {:type "keyword"}
    :date  {:type "date"}})
 
@@ -41,7 +41,7 @@
   {:content-type {:type "keyword"}
    :url          {:type "keyword"}
    :version      {:type "keyword"}
-   :application  {:type "keyword"}})
+   :application  {:type "keyword" :copy_to :link-application}})
 
 (def event-properties
   {:name     {:type "text"}
@@ -55,14 +55,14 @@
 
 (def license-properties
   {:version {:type "keyword"}
-   :url     {:type "keyword"}
+   :url     {:type "keyword" :copy_to :license-url}
    :delay   {:type "long"}
    :start   {:type "date"}})
 
 (def assertion-properties
-  {:name            {:type "keyword"}
+  {:name            {:type "keyword" :copy_to :assertion-name}
    :label           {:type "text"}
-   :group-name      {:type "keyword"}
+   :group-name      {:type "keyword" :copy_to :assertion-group-name}
    :group-label     {:type "text"}
    :url             {:type "keyword"}
    :value           {:type "text"}
@@ -70,7 +70,7 @@
    :explanation-url {:type "keyword"}})
 
 (def relation-properties
-  {:type        {:type "keyword"}
+  {:type        {:type "keyword" :copy_to :relation-type}
    :object      {:type "keyword"}
    :object-type {:type "keyword"}
    :object-ns   {:type "keyword"}

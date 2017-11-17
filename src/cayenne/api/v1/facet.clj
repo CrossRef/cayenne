@@ -25,7 +25,7 @@
                               :allow-unlimited-values true}
    "relation-type"           {:external-field "relation-type"
                               :allow-unlimited-values true}
-   "contributor-affiliation" {:external-field "affiliation"
+   "affiliation"             {:external-field "affiliation"
                               :allow-unlimited-values true}
    "assertion-name"          {:external-field "assertion"
                               :allow-unlimited-values true}
