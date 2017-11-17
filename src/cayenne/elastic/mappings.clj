@@ -103,7 +103,6 @@
   {:name    {:type "text"}
    :acronym {:type "text"}})
 
-;; todo content, citation_content
 (def work-properties
   {:metadata-content-text      {:type "text"}
    :bibliographic-content-text {:type "text"}

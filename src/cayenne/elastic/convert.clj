@@ -74,7 +74,8 @@
         (itree/get-tree-rel item :published-other)
         (itree/get-tree-rel item :published)
         (itree/get-tree-rel item :content-created)
-        (itree/get-tree-rel item :first-deposited))
+        (itree/get-tree-rel item :first-deposited)
+        (itree/get-tree-rel item :deposited))
        (sort-by particle->date-time)
        first
        particle->date-time))
