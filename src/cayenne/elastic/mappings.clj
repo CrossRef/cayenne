@@ -127,6 +127,8 @@
    :owner-prefix               {:type "keyword"}
    :member-id                  {:type "integer"}
    :journal-id                 {:type "integer"}
+   :book-id                    {:type "integer"}
+   :citation-id                {:type "integer"}
    :supplementary-id           {:type "keyword"}
    :issued-year                {:type "integer"}
    :title                      {:type "keyword" :copy_to :title-text}

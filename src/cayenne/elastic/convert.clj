@@ -25,7 +25,7 @@
             (t/date-time year month day))
           (and year month)
           (t/date-time year month)
-          :else
+          year
           (t/date-time year))))
 
 (defn maybe-int [int-as-string]
@@ -318,6 +318,8 @@
      :owner-prefix     (item-owner-prefix publisher)
      :member-id        (maybe-int (item-member-id publisher))
      :journal-id       (maybe-int (:journal-id publisher))
+     :citation-id      (maybe-int (:citation-id publisher))
+     :book-id          (maybe-int (:book-id publisher))
      :supplementary-id (itree/get-item-ids item :supplementary)
      :issued-year      (t/year (item-issued-date item))
      

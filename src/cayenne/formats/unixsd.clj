@@ -33,8 +33,16 @@
                                                 :text))
         (itree/add-property :journal-id (-> oai-record
                                             (xml/xselect1 :> "crm-item"
-                                                          [:= "name" "journal-id"] :text)
-                                            string/trim))
+                                                          [:= "name" "journal-id"] :text)))
+        
+        (itree/add-property :book-id (-> oai-record
+                                         (xml/xselect1 :> "crm-item"
+                                                       [:= "name" "book-id"] :text)))
+        
+        (itree/add-property :citation-id (-> oai-record
+                                             (xml/xselect1 :> "crm-item"
+                                                           [:= "name" "citation-id"] :text)))
+
         (itree/add-id (-> oai-record
                           (xml/xselect1 :> "crm-item"
                                         [:= "name" "member-id"] :text)
