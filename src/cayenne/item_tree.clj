@@ -43,7 +43,9 @@
 ;; todo are section part track only for books or for article figures etc too?
 
 (defn add-property [item k v]
-  (assoc item k v))
+  (if (nil? v)
+    item
+    (assoc item k v)))
 
 (defn add-properties [item m]
   (merge item m))
@@ -53,8 +55,15 @@
     (assoc item :id (conj existing-ids id))))
 
 (defn add-relation [item rel-type rel-item]
-  (let [existing-items (get-in item [:rel rel-type] [])]
-    (assoc-in item [:rel rel-type] (conj existing-items rel-item))))
+  (if rel-item
+    (let [existing-items (or (get-in item [:rel rel-type]) [])]
+      (assoc-in item [:rel rel-type] (conj existing-items rel-item)))
+    item))
+
+(defn add-relations [item rel-type rel-items]
+  (let [existing-items (or (get-in item [:rel rel-type]) [])]
+    (assoc-in item [:rel rel-type] (concat existing-items rel-items))))
+
 
 (defn add-relations [item rel-type rel-items]
   (let [existing-items (get-in item [:rel rel-type] [])]

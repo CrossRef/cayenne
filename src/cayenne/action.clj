@@ -52,7 +52,7 @@
 (defn parse-doi [doi using]
   (process-file (doi-file doi) "crossref_result" using))
 
-(defn parse-doi-list [list-file using]
+(defn parse-doi-list [list-file using & {:keys [skip] :or {skip 0}}]
   (with-open [rdr (io/reader (io/file list-file))]
-    (doseq [doi (line-seq rdr)]
+    (doseq [doi (drop skip (line-seq rdr))]
       (process-file (doi-file doi) "crossref_result" using))))
