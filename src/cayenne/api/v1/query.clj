@@ -231,6 +231,20 @@
                                  (map select-fields)
                                  (apply concat)))))
 
+(defn with-filters [es-body query-context & {:keys [filters]}]
+   (let [filter-clauses (map #((-> % first name filters)
+                               (-> % second first))
+                             (:filters query-context))
+         filter-occurrence (->> filter-clauses
+                                (filter #(= (:occurrence %) :filter))
+                                (map :clause))
+         must-not-occurrence (->> filter-clauses
+                                  (filter #(= (:occurrence %) :must-not))
+                                  (map :clause))]
+     (-> es-body
+         (assoc-in [:query :bool :filter] filter-occurrence)
+         (assoc-in [:query :bool :must_not] must-not-occurrence))))
+  
 (defn with-query [es-body query-context & {:keys [id-field filters]}]
   (cond-> es-body
     (-> query-context :terms string/blank? not)
@@ -248,9 +262,8 @@
     
     ;; todo only considering first filter value
     (-> query-context :filters empty? not)
-    (assoc-in [:query :bool :filter] (map #((-> % first name filters) (-> % second first))
-                                          (:filters query-context)))))
-
+    (with-filters query-context :filters filters)))
+    
 (defn with-paging [es-body query-context & {:keys [paged count-only]}]
   (cond
     paged
