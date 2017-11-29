@@ -196,11 +196,11 @@
    :reference                  {:type "object" :properties reference-properties}})
 
 (def prefix-properties
-  {:value             {:type "keyword"}
-   :member-id         {:type "integer"}
-   :public-references {:type "boolean"}
-   :location          {:type "text"}
-   :name              {:type "text"}})
+  {:value                {:type "keyword"}
+   :member-id            {:type "integer"}
+   :reference-visibility {:type "keyword"}
+   :location             {:type "text"}
+   :name                 {:type "text"}})
 
 (def member-properties
   {:primary-name {:type "text" :copy_to :suggest}

@@ -30,7 +30,6 @@
     (when (= 200 (:status response))
       (-> response :body (json/read-str :key-fn keyword)))))
 
-
 (defn get-prefix-info
   "Return information about an owner prefix from the Crossref prefix information
    API."
@@ -48,11 +47,12 @@
        :member-id member-id
        :name (zx/text (zx/xml1-> root :publisher :prefix_name))
        :location (zx/text (zx/xml1-> root :publisher :publisher_location))
-       :public-references (= "true"
-                             (zx/text
-                              (zx/xml1-> root
-                                         :publisher
-                                         :allows_public_access_to_refs)))})))
+       :reference-visibility
+       (if-let [ref-loc (zx/xml1-> root
+                                   :publisher
+                                   :references_distribution)]
+         (-> ref-loc zx/text keyword)
+         :closed)})))
 
 (defn index-command
   "Turn a member record from the Crossref prefix information API into

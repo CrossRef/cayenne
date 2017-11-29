@@ -9,7 +9,8 @@
             [cayenne.xml :as xml]
             [cayenne.elastic.index :as es-index]
             [cayenne.formats.unixsd :refer [unixsd-record-parser]]
-            [taoensso.timbre :as timbre :refer [info error]]))
+            [taoensso.timbre :as timbre :refer [info error]]
+            [clojure.string :as string]))
 
 (defn openurl-file [doi]
   (let [extracted-doi (doi/extract-long-doi doi)
@@ -54,5 +55,6 @@
 
 (defn parse-doi-list [list-file using & {:keys [skip] :or {skip 0}}]
   (with-open [rdr (io/reader (io/file list-file))]
-    (doseq [doi (drop skip (line-seq rdr))]
+    (doseq [doi (drop skip (line-seq rdr))
+            :when (not (string/blank? doi))]
       (process-file (doi-file doi) "crossref_result" using))))

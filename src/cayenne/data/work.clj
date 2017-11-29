@@ -33,7 +33,7 @@
       (not
        (empty?
         (filter #(and (= (:value %) (:prefix metadata))
-                      (:public-references %))
+                      (= (:reference-visibility %) "public"))
                 (:prefix member-doc)))))))
 
 (defn with-citations [metadata]
