@@ -50,7 +50,7 @@
        :reference-visibility
        (if-let [ref-loc (zx/xml1-> root
                                    :publisher
-                                   :references_distribution)]
+                                   :reference_distribution)]
          (-> ref-loc zx/text keyword)
          :closed)})))
 
