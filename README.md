@@ -79,3 +79,11 @@ to later connect a repl:
 Create a docker image:
 
     $ lein uberimage
+	
+## Reference Visibility
+
+References are displayed in API output. The visiblity level of those references
+can be set as `open`, `limited` or `closed`, where each setting will display
+more references than the last. This setting can be configured directly by
+the internal config variable `[:service :api :references]` or via the ENV VAR
+`REFERENCES`.

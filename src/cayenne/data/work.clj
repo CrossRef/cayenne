@@ -46,15 +46,24 @@
     metadata
     (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata)))))
 
+(def reference-visibilities
+  {"open" ["open"]
+   "limited" ["open" "limited"]
+   "closed" ["open" "limited" "closed"]})
+
 (defn display-citations? [metadata]
   (when (:member metadata)
     (let [prefix (prefix-id/extract-prefix (:prefix metadata))
           member-id (member-id/extract-member-id (:member metadata))
-          member-prefix-info (get-member-prefix-info "members" member-id)]
+          member-prefix-info (get-member-prefix-info "members" member-id)
+          visibilities (or (-> [:service :api :references]
+                               conf/get-param
+                               reference-visibilities)
+                           ["open"])]
       (not
        (empty?
         (filter #(and (= (:value %) prefix)
-                      (:public-references %))
+                      (some #{(:reference-visibility %)} visibilities))
                 member-prefix-info))))))
 
 (defn with-citations [metadata]

@@ -8,6 +8,7 @@
             [clojure.data.json :as json]
             [clojure.pprint :refer [pprint]]
             [org.httpkit.client :as http]
+            [taoensso.timbre :as timbre :refer [info error]]
             [environ.core :refer [env]]))
 
 (defn slack-format
@@ -40,6 +41,10 @@
    some parameter values in the given core."
   [core-name]
   (conf/with-core core-name
+    (when (env :references)
+      (if (some #{(env :references)} ["open" "limited" "closed"])
+        (conf/set-param! [:service :api :references] (env :references))
+        (error (str "Unknown references setting " (env :references)))))
     (when (env :mongo-host)
       (conf/set-param! [:service :mongo :host] (env :mongo-host)))
     (when (env :solr-host)

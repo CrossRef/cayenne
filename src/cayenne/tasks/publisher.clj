@@ -64,7 +64,13 @@
       {:value prefix
        :name (zx/text (zx/xml1-> root :publisher :prefix_name))
        :location (zx/text (zx/xml1-> root :publisher :publisher_location))
-       :public-references (= "true" (zx/text (zx/xml1-> root :publisher :allows_public_access_to_refs)))})))
+       :public-references
+       (-> (zx/xml1-> root :publisher :reference_distribution)
+           zx/text
+           (= "open"))
+       :reference-visibility
+       (-> (zx/xml1-> root :publisher :reference_distribution)
+           zx/text)})))
 
 (defn load-publishers [collection]
   (m/with-mongo (conf/get-service :mongo)
