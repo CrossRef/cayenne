@@ -342,6 +342,7 @@
 (def member-filters
   {"prefix" (mongo-equality "prefixes")
    "has-public-references" (mongo-bool "public-references")
+   "reference-visibility" (mongo-equality "prefix.reference-visibility")
    "backfile-doi-count" (mongo-equality "counts.backfile-dois"
                                         :transformer util/parse-int-safe)
    "current-doi-count" (mongo-equality "counts.current-dois"
