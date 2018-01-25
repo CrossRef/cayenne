@@ -214,6 +214,66 @@
       (map prefix/to-prefix-uri (:prefixes member-doc))
       ["nothing"]))) ; 'nothing' forces filter to match nothing if we have no prefixes
 
+
+
+;;=========
+ (declare member-filters)
+
+ (defn local-mongo-query [query-context
+                     & {:keys [where filters id-field] 
+                        :or {where {} filters {} id-field nil}}]
+  (let [filter-where (into {} 
+                           (map (fn [[n v]]
+                                    ((filters (name n)) v))
+                                (:filters query-context)))]
+    (concat
+     [:where (merge
+              where
+              filter-where
+              (when id-field {id-field (:id query-context)}))]
+     (when (:sort query-context)
+       [:sort {(:sort query-context)
+               (if (= (:order query-context) :asc) 1 -1)}])
+     (when (:rows query-context)
+       [:limit (:rows query-context)])
+     (when (:offset query-context)
+       [:skip (:offset query-context)]))))
+
+(defn filter-prefixes [member val]
+   (doall(filter #(= val (:reference-visibility %)) (:prefix member )) )
+)
+
+(defn multi-equality [field]
+  (fn [val]
+    (let [ 
+        query-context {:filters {:reference-visibility  val}}
+        mongo-query (local-mongo-query query-context 
+                                         :filters member-filters)
+        docs         (m/with-mongo (conf/get-service :mongo)
+                       (apply m/fetch "members" mongo-query))
+        result-count ( m/with-mongo (conf/get-service :mongo)
+                       (apply m/fetch-count "members" mongo-query)) 
+
+
+        results (str "{!terms f="  field  "}" 
+                   (apply str 
+                     (for [member docs]
+                      (apply str
+                        (for [prefix (filter-prefixes member val)]     
+                          (do
+                             (str "http://id.crossref.org/prefix/"(:value  prefix)  "," ) 
+                           ))))))]
+;;  Helpfull debug print statements
+;;    (doseq [member  docs]       
+;;           ( doseq [px ( mikes-stuff member val  ) ]  
+;;                         (println (str (:value px) " : " ( :reference-visibility px))))) 
+;;    (println result-count " : " results)
+
+    results )))
+
+
+
+;;=======
 ;; Mongo filters
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -244,7 +304,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (def std-filters
-  {"from-update-date" (stamp-date "deposited_at" :from)
+  {"reference-visibility" (multi-equality "owner_prefix")
+   "from-update-date" (stamp-date "deposited_at" :from)
    "until-update-date" (stamp-date "deposited_at" :until)
    "from-index-date" (stamp-date "indexed_at" :from)
    "until-index-date" (stamp-date "indexed_at" :until)

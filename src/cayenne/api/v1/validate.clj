@@ -256,7 +256,8 @@
    :award.funder funder-id-validator
    :award.number string-validator
    :has-clinical-trial-number boolean-validator
-   :clinical-trial-number string-validator})
+   :clinical-trial-number string-validator
+   :reference-visibility string-validator})
 
 (def deposit-filter-validators
   {:from-submission-time date-validator
