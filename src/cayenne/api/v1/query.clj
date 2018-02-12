@@ -285,14 +285,16 @@
       (let [filter-name-s (name filter-name)]
         (when (filters filter-name-s)
           (if (not (sequential? filter-val))
-            (doto query
-              (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)])))
+              (doto query
+                 (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)] ))) 
+            
             (let [filter-fn (filters filter-name-s)
                   filter-query-str (->> filter-val 
                                         (map filter-fn)
-                                        (string/join " OR "))]
-              (doto query
-                (.addFilterQuery (into-array String [(str "(" filter-query-str ")")]))))))))
+                                        (string/join " OR "))]  
+                (doto query
+                  (.addFilterQuery (into-array String [(str "(" filter-query-str ")")]))))))))
+
     (when (:raw-filter query-context)
       (doto query
         (.addFilterQuery (into-array String [(:raw-filter query-context)]))))

@@ -16,7 +16,9 @@
             [cayenne.ids.doi :as doi]
             [clojure.set :as set])
   (:import [java.lang RuntimeException]
-           [java.net URLEncoder]))
+           [java.net URLEncoder]
+           [org.apache.solr.client.solrj SolrRequest SolrRequest$METHOD])
+  )
 
 ;; todo eventually produce citeproc from more detailed data stored in mongo
 ;; for each DOI that comes back from solr. For now, covert the solr fields
@@ -135,7 +137,7 @@
   (let [response (-> (conf/get-service :solr)
                      (.query (query/->solr-query query-context
                                                  :id-field id-field
-                                                 :filters filter/std-filters)))
+                                                 :filters filter/std-filters) SolrRequest$METHOD/POST ))
         doc-list (.getResults response)]
     (if (partial-response? response)
       (throw (RuntimeException. "Solr returned a partial result set"))
