@@ -260,9 +260,8 @@
                      (for [member docs]
                       (apply str
                         (for [prefix (filter-prefixes member val)]     
-                          (do
                              (str "http://id.crossref.org/prefix/"(:value  prefix)  "," ) 
-                           ))))))]
+                           )))))]
 ;;  Helpfull debug print statements
 ;;    (doseq [member  docs]       
 ;;           ( doseq [px ( mikes-stuff member val  ) ]  
