@@ -36,10 +36,16 @@
           (assoc :other_names_display (conj other-names-display (.trim name)))
           (add-tokens (util/tokenize-name name))))))
 
+(defn- funder-name-exists? [f f-name name-type]
+  (if (= name-type :primary)
+    (= (:primary_name f) f-name)
+    (some #{f-name} (:other_names_display f))))
+
 (defn insert-funder [id name name-type]
   (m/with-mongo (conf/get-service :mongo)
     (if-let [existing-doc (m/fetch-one :funders :where {:id id})]
-      (m/update! :funders existing-doc (add-name existing-doc name name-type))
+      (when-not (funder-name-exists? existing-doc name name-type)
+        (m/update! :funders existing-doc (add-name existing-doc name name-type)))
       (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
 
 (defn insert-full-funder [id name country alt-names parent-id child-ids
