@@ -10,7 +10,8 @@
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
-  :profiles {:uberjar {:aot :all}
+  :profiles {:dev {:resource-paths ["test/resources"]}
+             :uberjar {:aot :all}
              :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                                :creds :gpg}}
