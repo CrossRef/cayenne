@@ -74,7 +74,8 @@
 
 (defn stop-core! [name]
   (with-core name
-    ((get-service :api)) ; stop http kit
+    (let [stop-fn (get-service :api)]
+      (stop-fn :timeout 100)) ; stop http kit allowing 100ms to close open connections
     (set-param! [:status] :stopped)))
 
 (defn set-core! [name]
