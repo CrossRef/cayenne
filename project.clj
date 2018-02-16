@@ -34,7 +34,7 @@
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "6.4.2"]
                  [clojurewerkz/quartzite "1.0.1"]
-                 [congomongo "0.4.1"]
+                 [congomongo "0.5.0"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]
                  [org.apache.jena/jena-core "2.10.1"]

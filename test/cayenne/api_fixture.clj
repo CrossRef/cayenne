@@ -1,5 +1,7 @@
 (ns cayenne.api-fixture
   (:require [cayenne.conf :refer [start-core! stop-core!]]
+            [cayenne.tasks.funder :refer [select-country-stmts]]
+            [cayenne.rdf :as rdf]
             [clojure.java.shell :refer [sh]]
             [clj-http.client :as http]
             [somnium.congomongo :as m]))
@@ -34,6 +36,23 @@
                  (not (mongo-ready?)))
         (println "Waiting for solr and mongo to be ready..")
         (Thread/sleep 500))
+      ;; TODO: move this to somewhere more obvious
+      (intern 
+        'cayenne.tasks.funder 
+        'get-country-literal-name 
+        (fn [model node] 
+          (let [url (rdf/->uri (first (rdf/objects (select-country-stmts model node))))]
+            (case url
+              "http://sws.geonames.org/2921044/" "Germany"
+              "http://sws.geonames.org/6252001/" "United States"
+              "http://sws.geonames.org/2077456/" "Australia"
+              "http://sws.geonames.org/337996/" "Ethiopia"
+              "http://sws.geonames.org/1814991/" "China"
+              "http://sws.geonames.org/2635167/" "United Kingdom"
+              "http://sws.geonames.org/3144096/" "Norway"
+              "http://sws.geonames.org/2661886/" "Sweden"
+              "http://sws.geonames.org/1861060/" "Japan"
+              url))))
       (start-core! :default :api)
       (with-f)
       (f)
