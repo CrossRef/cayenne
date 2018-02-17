@@ -5,7 +5,10 @@
             [cayenne.tasks.solr :refer [start-insert-list-processing]]
             [cayenne.api-fixture :refer [api-root api-with]]
             [clojure.test :refer [use-fixtures deftest testing is]]
-            [clj-http.client :as http]))
+            [clj-http.client :as http]
+            [me.raynes.fs :refer [copy-dir delete-dir]]
+            [nio2.io :refer [path]]
+            [nio2.dir-seq :refer [dir-seq-glob]]))
 
 (deftest querying-journals
   (testing "journals endpoint returns expected result"
@@ -26,7 +29,7 @@
         (is (= expected-response response)))))
 
   (testing "journals endpoint returns expected result for ISSN"
-    (doseq [issn ["2542-1298" "2303-5595"]]
+    (doseq [issn ["0306-4530" "2542-1298" "2303-5595"]]
       (let [response (-> (http/get (str api-root "/v1/journals/" issn) {:as :json})
                          :body
                          :message
@@ -34,21 +37,36 @@
             expected-response (read-string (slurp (str "test/resources/titles/" issn ".edn")))]
         (is (= expected-response response)))))
   
-  (comment (testing "journals endpoint returns expected result for ISSN works"
-    (doseq [issn ["2542-1298" "2303-5595"]]
+  (testing "journals endpoint returns expected result for ISSN works"
+    (doseq [issn ["0306-4530"]]
       (let [response (-> (http/get (str api-root "/v1/journals/" issn "/works") {:as :json})
                          :body
                          :message
-                         (dissoc :last-status-check-time))
+                         (update-in [:items] (partial map #(dissoc % :indexed)))
+                         (update-in [:items] (partial sort-by :DOI)))
             expected-response (read-string (slurp (str "test/resources/titles/" issn "-works.edn")))]
-        (is (= expected-response response)))))))
+        (is (= expected-response (into (sorted-map) response) ))))))
 
 (use-fixtures 
   :once 
   (api-with 
     (fn []
-      (with-core :default 
-        (comment (set-param! [:dir :data] "test/resources/works/"))
-        (set-param! [:location :cr-titles-csv] "test/resources/titles.csv")) 
-      (load-journals)
-      (comment (start-feed-processing)))))
+      (let [feed-dir "test/resources/feeds"
+            feed-source-dir (str feed-dir "/source")
+            feed-in-dir (str feed-dir "/feed-in")
+            feed-processed-dir (str feed-dir "/feed-processed")]
+        (delete-dir feed-processed-dir)
+        (delete-dir feed-in-dir)
+        (copy-dir feed-source-dir feed-in-dir)
+        (with-core :default 
+          (set-param! [:dir :data] feed-dir)
+          (set-param! [:dir :test-data] feed-dir)
+          (set-param! [:location :cr-titles-csv] "test/resources/titles.csv")
+          (set-param! [:service :solr :insert-list-max-size] 1))
+        (load-journals)
+        (start-insert-list-processing)
+        (start-feed-processing)
+        (while (not (empty? (dir-seq-glob (path feed-in-dir) "*.body")))
+          (println "Waiting for feed to process....")
+          (Thread/sleep 1000))))))
+      

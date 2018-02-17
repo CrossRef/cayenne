@@ -10,8 +10,7 @@
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
-  :profiles {:dev {:resource-paths ["test/resources"]}
-             :uberjar {:aot :all}
+  :profiles {:uberjar {:aot :all}
              :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                                :creds :gpg}}
@@ -30,6 +29,7 @@
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
+                 [me.raynes/fs "1.4.6"]
                  [com.taoensso/timbre "3.4.0"]
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "6.4.2"]
