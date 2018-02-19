@@ -14,6 +14,14 @@
     (catch Exception e
       false)))
 
+(defn solr-doc-count []
+  (-> (http/get "http://localhost:8983/solr/admin/cores?action=STATUS&wt=json" {:as :json})
+      :body
+      :status
+      :crmds1
+      :index
+      :numDocs))
+
 (defn- mongo-ready? []
   (try
     (let [conn (m/make-connection "crossref" :host "127.0.0.1" :port 27017)

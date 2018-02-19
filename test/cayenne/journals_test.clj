@@ -2,8 +2,9 @@
   (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
             [cayenne.conf :refer [set-param! with-core]]
             [cayenne.tasks :refer [load-journals load-last-day-works]]
+            [cayenne.tasks.coverage :refer [check-journals]]
             [cayenne.tasks.solr :refer [start-insert-list-processing]]
-            [cayenne.api-fixture :refer [api-root api-with]]
+            [cayenne.api-fixture :refer [api-root api-with solr-doc-count]]
             [clojure.test :refer [use-fixtures deftest testing is]]
             [clj-http.client :as http]
             [me.raynes.fs :refer [copy-dir delete-dir]]
@@ -45,7 +46,7 @@
                          (update-in [:items] (partial map #(dissoc % :indexed)))
                          (update-in [:items] (partial sort-by :DOI)))
             expected-response (read-string (slurp (str "test/resources/titles/" issn "-works.edn")))]
-        (is (= expected-response (into (sorted-map) response) ))))))
+        (is (= expected-response response))))))
 
 (use-fixtures 
   :once 
@@ -54,7 +55,8 @@
       (let [feed-dir "test/resources/feeds"
             feed-source-dir (str feed-dir "/source")
             feed-in-dir (str feed-dir "/feed-in")
-            feed-processed-dir (str feed-dir "/feed-processed")]
+            feed-processed-dir (str feed-dir "/feed-processed")
+            feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
         (delete-dir feed-processed-dir)
         (delete-dir feed-in-dir)
         (copy-dir feed-source-dir feed-in-dir)
@@ -62,11 +64,12 @@
           (set-param! [:dir :data] feed-dir)
           (set-param! [:dir :test-data] feed-dir)
           (set-param! [:location :cr-titles-csv] "test/resources/titles.csv")
-          (set-param! [:service :solr :insert-list-max-size] 1))
+          (set-param! [:service :solr :insert-list-max-size] 0))
         (load-journals)
         (start-insert-list-processing)
         (start-feed-processing)
-        (while (not (empty? (dir-seq-glob (path feed-in-dir) "*.body")))
-          (println "Waiting for feed to process....")
-          (Thread/sleep 1000))))))
+        (while (not= (solr-doc-count) feed-file-count)
+          (println "Waiting for solr to finish indexing....")
+          (Thread/sleep 1000))
+        (check-journals "journals")))))
       
