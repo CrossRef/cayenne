@@ -40,7 +40,7 @@
   
   (testing "journals endpoint returns expected result for ISSN works"
     (doseq [issn ["0306-4530"]]
-      (let [response (-> (http/get (str api-root "/v1/journals/" issn "/works") {:as :json})
+      (let [response (-> (http/get (str api-root "/v1/journals/" issn "/works?rows=76") {:as :json})
                          :body
                          :message
                          (update-in [:items] (partial map #(dissoc % :indexed)))
