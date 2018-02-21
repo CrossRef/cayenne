@@ -1,9 +1,15 @@
 (ns cayenne.api-fixture
-  (:require [cayenne.conf :refer [start-core! stop-core!]]
-            [cayenne.tasks.funder :refer [select-country-stmts]]
-            [cayenne.rdf :as rdf]
+  (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
+            [cayenne.conf :refer [start-core! stop-core! set-param! with-core]]
+            [cayenne.tasks :refer [load-journals load-last-day-works]]
+            [cayenne.tasks.coverage :refer [check-journals]]
+            [cayenne.tasks.solr :refer [start-insert-list-processing]]
+            [clojure.java.io :refer [resource]]
             [clojure.java.shell :refer [sh]]
             [clj-http.client :as http]
+            [me.raynes.fs :refer [copy-dir delete-dir]]
+            [nio2.io :refer [path]]
+            [nio2.dir-seq :refer [dir-seq-glob]]
             [somnium.congomongo :as m]))
 
 (defonce api-root "http://localhost:3000")
@@ -44,23 +50,6 @@
                  (not (mongo-ready?)))
         (println "Waiting for solr and mongo to be ready..")
         (Thread/sleep 500))
-      ;; TODO: move this to somewhere more obvious
-      (intern 
-        'cayenne.tasks.funder 
-        'get-country-literal-name 
-        (fn [model node] 
-          (let [url (rdf/->uri (first (rdf/objects (select-country-stmts model node))))]
-            (case url
-              "http://sws.geonames.org/2921044/" "Germany"
-              "http://sws.geonames.org/6252001/" "United States"
-              "http://sws.geonames.org/2077456/" "Australia"
-              "http://sws.geonames.org/337996/" "Ethiopia"
-              "http://sws.geonames.org/1814991/" "China"
-              "http://sws.geonames.org/2635167/" "United Kingdom"
-              "http://sws.geonames.org/3144096/" "Norway"
-              "http://sws.geonames.org/2661886/" "Sweden"
-              "http://sws.geonames.org/1861060/" "Japan"
-              url))))
       (start-core! :default :api)
       (with-f)
       (f)
@@ -68,3 +57,27 @@
         (stop-core! :default)
         (Thread/sleep 2000)
         (sh "docker-compose" "down")))))
+
+(def api-with-works
+  (api-with 
+    (fn []
+      (let [feed-dir (.getPath (resource "feeds"))
+            feed-source-dir (str feed-dir "/source")
+            feed-in-dir (str feed-dir "/feed-in")
+            feed-processed-dir (str feed-dir "/feed-processed")
+            feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
+        (delete-dir feed-processed-dir)
+        (delete-dir feed-in-dir)
+        (copy-dir feed-source-dir feed-in-dir)
+        (with-core :default 
+          (set-param! [:dir :data] feed-dir)
+          (set-param! [:dir :test-data] feed-dir)
+          (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+          (set-param! [:service :solr :insert-list-max-size] 0))
+        (load-journals)
+        (start-insert-list-processing)
+        (start-feed-processing)
+        (while (not= (solr-doc-count) feed-file-count)
+          (println "Waiting for solr to finish indexing....")
+          (Thread/sleep 1000))
+        (check-journals "journals")))))
