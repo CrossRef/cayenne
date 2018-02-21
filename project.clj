@@ -11,6 +11,7 @@
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
   :profiles {:uberjar {:aot :all}
+             :dev {:resource-paths ["dev-resources"]}
              :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                                :creds :gpg}}

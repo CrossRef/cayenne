@@ -5,6 +5,7 @@
             [cayenne.tasks.coverage :refer [check-journals]]
             [cayenne.tasks.solr :refer [start-insert-list-processing]]
             [cayenne.api-fixture :refer [api-root api-with solr-doc-count]]
+            [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]
             [clj-http.client :as http]
             [me.raynes.fs :refer [copy-dir delete-dir]]
@@ -17,7 +18,7 @@
                        :body
                        :message
                        (update-in [:items] (partial map #(dissoc % :last-status-check-time))))
-          expected-response (read-string (slurp "test/resources/titles.edn"))]
+          expected-response (read-string (slurp (resource "titles.edn")))]
       (is (= expected-response response))))
 
   (testing "journals endpoint returns expected result for offset"
@@ -26,7 +27,7 @@
                          :body
                          :message
                          (update-in [:items] (partial map #(dissoc % :last-status-check-time))))
-            expected-response (read-string (slurp (str "test/resources/titles-offset-" offset ".edn")))]
+            expected-response (read-string (slurp (resource (str "titles-offset-" offset ".edn"))))]
         (is (= expected-response response)))))
 
   (testing "journals endpoint returns expected result for ISSN"
@@ -35,7 +36,7 @@
                          :body
                          :message
                          (dissoc :last-status-check-time))
-            expected-response (read-string (slurp (str "test/resources/titles/" issn ".edn")))]
+            expected-response (read-string (slurp (resource (str "titles/" issn ".edn"))))]
         (is (= expected-response response)))))
   
   (testing "journals endpoint returns expected result for ISSN works"
@@ -45,14 +46,14 @@
                          :message
                          (update-in [:items] (partial map #(dissoc % :indexed)))
                          (update-in [:items] (partial sort-by :DOI)))
-            expected-response (read-string (slurp (str "test/resources/titles/" issn "-works.edn")))]
+            expected-response (read-string (slurp (resource (str "titles/" issn "-works.edn"))))]
         (is (= expected-response response))))))
 
 (use-fixtures 
   :once 
   (api-with 
     (fn []
-      (let [feed-dir "test/resources/feeds"
+      (let [feed-dir (.getPath (resource "feeds"))
             feed-source-dir (str feed-dir "/source")
             feed-in-dir (str feed-dir "/feed-in")
             feed-processed-dir (str feed-dir "/feed-processed")
@@ -63,7 +64,7 @@
         (with-core :default 
           (set-param! [:dir :data] feed-dir)
           (set-param! [:dir :test-data] feed-dir)
-          (set-param! [:location :cr-titles-csv] "test/resources/titles.csv")
+          (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
           (set-param! [:service :solr :insert-list-max-size] 0))
         (load-journals)
         (start-insert-list-processing)

@@ -2,6 +2,7 @@
   (:require [cayenne.conf :refer [with-core set-param!]]
             [cayenne.api-fixture :refer [api-root api-with]]
             [cayenne.tasks :refer [load-funders]]
+            [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]
             [clj-http.client :as http]))
 
@@ -10,7 +11,7 @@
     (let [response (-> (http/get (str api-root "/v1/funders") {:as :json})
                        :body
                        :message)
-          expected-response (read-string (slurp "test/resources/funders.edn"))]
+          expected-response (read-string (slurp (resource "funders.edn")))]
       (is (= expected-response response))))
 
   (testing "funders endpoint returns expected result for offset"
@@ -18,7 +19,7 @@
       (let [response (-> (http/get (str api-root "/v1/funders?offset=" offset) {:as :json})
                          :body
                          :message)
-            expected-response (read-string (slurp (str "test/resources/funders-offset-" offset ".edn")))]
+            expected-response (read-string (slurp (resource (str "funders-offset-" offset ".edn"))))]
         (is (= expected-response response)))))
   
   (testing "funders endpoint returns expected result for funder"
@@ -28,7 +29,7 @@
                          :message 
                          (dissoc :work-count)
                          (dissoc :descendant-work-count))
-            expected-response (-> (read-string (slurp (str "test/resources/funders/" funder ".edn")))
+            expected-response (-> (read-string (slurp (resource (str "funders/" funder ".edn"))))
                                   (dissoc :work-count)
                                   (dissoc :descendant-work-count))]
         (is (= expected-response response))))))
@@ -38,7 +39,7 @@
   (api-with 
     (fn [] 
       (with-core :default
-        (->> (.getAbsolutePath (clojure.java.io/file  "test/resources/registry.rdf"))
+        (->> (.getPath (resource "registry.rdf"))
              (str "file://")
              (set-param! [:location :cr-funder-registry])))
       (load-funders))))
