@@ -7,7 +7,7 @@
 
 (deftest querying-works
   (testing "works endpoint returns expected result for DOI"
-    (doseq [doi ["10.1016/j.psyneuen.2016.10.018"]]
+    (doseq [doi ["10.1016/j.psyneuen.2016.10.018" "10.7287/peerj.2196v0.1/reviews/2"]]
       (let [response (-> (http/get (str api-root "/v1/works/" doi) {:as :json})
                          :body
                          :message

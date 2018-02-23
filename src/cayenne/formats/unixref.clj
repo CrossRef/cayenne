@@ -95,6 +95,9 @@
 (defn find-conf [record-loc]
   (xml/xselect1 record-loc :> "conference"))
 
+(defn find-peer-review [record-loc]
+  (xml/xselect1 record-loc :> "peer_review"))
+
 (defn find-proceedings [conf-loc]
   (xml/xselect1 conf-loc "proceedings_metadata"))
 
@@ -444,7 +447,8 @@
   (-> {:type :org
        :name (xml/xselect1 institution-loc "institution_name" :text)
        :acronym (xml/xselect1 institution-loc "institution_acronym" :text)
-       :location (xml/xselect1 institution-loc "institution_location" :text)}
+       :location (or (xml/xselect1 institution-loc "institution_place" :text)
+                     (xml/xselect1 institution-loc "institution_location" :text))}
       (parse-attach :component institution-loc :multi parse-departments)))
 
 (defn parse-institutions [parent-loc]
@@ -680,6 +684,10 @@
   (let [domains (xml/xselect item-loc :> "crossmark" "crossmark_domains" "crossmark_domain")]
     (map #(string/trim (xml/xselect1 % :text)) domains)))
 
+(defn parse-resource-domain [item-loc]
+  (when-let [domain (xml/xselect1 item-loc "doi_data" "resource" :text)]
+    (last (re-find #"//(.+?)/" domain))))
+
 (def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
 (defn parse-update-date [update-loc]
@@ -848,6 +856,33 @@
           :start-page (xml/xselect1 conf-paper-loc "pages" "start_page")
           :end-page (xml/xselect1 conf-paper-loc "pages" "end_page")
           :other-pages (xml/xselect1 conf-paper-loc "pages" "other_pages")}))))
+
+(defn parse-review [peer-review-loc]
+  (let [running-number (xml/xselect1 peer-review-loc "running_number" :text)
+        competing-interest-statement (xml/xselect1 peer-review-loc "competing_interest_statement" :text)
+        revision-round (xml/xselect1 peer-review-loc ["revision-round"])
+        stage (xml/xselect1 peer-review-loc ["stage"])
+        recommendation (xml/xselect1 peer-review-loc ["recommendation"])
+        r-type (xml/xselect1 peer-review-loc ["type"])
+        language (xml/xselect1 peer-review-loc ["language"])]
+    {:review {:running-number (string/trim running-number)
+              :revision-round (string/trim revision-round)
+              :stage (string/trim stage)
+              :competing-interest-statement (string/trim competing-interest-statement)
+              :recommendation (string/trim recommendation)
+              :review-type (string/trim r-type)
+              :language (string/trim language)}}))
+
+(defn parse-peer-review [peer-review-loc]
+  (when peer-review-loc
+    (let [person-loc (-> (xml/xselect1 peer-review-loc "contributors")
+                         (xml/xselect1 "person_name"))]
+    (-> (parse-item peer-review-loc)
+        (parse-attach :domains peer-review-loc :single parse-resource-domain)
+        (parse-attach :author person-loc :single parse-person-name)
+        (parse-attach :published (xml/xselect1 peer-review-loc "review_date") :single parse-date)
+        (conj (parse-review peer-review-loc))
+        (conj {:subtype :peer-review})))))
 
 ;; todo perhaps make sponsor organisation and event location address first class items.
 (defn parse-event [event-loc]
@@ -1175,6 +1210,7 @@
    event
      conference
    citation
+   peer-review
    person
    org
    date
@@ -1228,7 +1264,8 @@
               (parse-journal (find-journal oai-record))
               (parse-posted-content (find-posted-content oai-record))
               (parse-book (find-book oai-record))
-              (parse-conf (find-conf oai-record)))]
+              (parse-conf (find-conf oai-record))
+              (parse-peer-review (find-peer-review oai-record)))]
     (if work
       [(parse-primary-id oai-record)
        (parse-attach work :deposited oai-record :single parse-deposit-date)]

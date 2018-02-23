@@ -37,6 +37,7 @@
                      :model "Model"
                      :film "Film"
                      :posted-content "Posted Content"
+                     :peer-review "Peer Review"
                      :other "Other"})
 
 ;; todo are section part track only for books or for article figures etc too?
