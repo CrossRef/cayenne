@@ -349,7 +349,7 @@
     (if (empty? unknown-query-fields)
       (pass context)
       (reduce #(fail %1 %2 :field-query-not-available
-                     (str "Field query " %2 " specified byt there is no "
+                     (str "Field query " %2 " specified but there is no "
                           "such field query for this route. Valid field "
                           "queries for this route are: "
                           (string/join ", " available-query-fields)))
