@@ -14,7 +14,26 @@
                          (dissoc :indexed))
             expected-response (read-string (slurp (resource (str "works/" doi ".edn"))))]
         (is (= expected-response response)))))
-  
+
+  (testing "works endpoint returns expected result for query"
+    (doseq [q-filter ["query.title=Peer" "query.title=Socioeconomic"]]
+      (let [response (-> (http/get (str api-root "/v1/works?" q-filter) {:as :json})
+                         :body
+                         :message
+                         (update-in [:items] (partial map #(dissoc % :indexed))))
+            expected-response (read-string (slurp (resource (str "works/" q-filter ".edn"))))]
+        (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
+
+  (testing "works endpoint returns expected result for filter"
+    (doseq [q-filter ["content-domain:peerj.com" "from-created-date:2018" 
+                      "from-deposit-date:2018" "from-pub-date:2018"]]
+      (let [response (-> (http/get (str api-root "/v1/works?filter=" q-filter) {:as :json})
+                         :body
+                         :message
+                         (update-in [:items] (partial map #(dissoc % :indexed))))
+            expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
+        (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
+
   (testing "works endpoint returns expected result for DOI agency"
     (with-redefs 
       [cayenne.data.work/get-agency 
