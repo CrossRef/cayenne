@@ -1,1 +1,13 @@
-{:hierarchy-names {:501100000314 "ABBEY AWARDS"}, :replaced-by [], :work-count 0, :name "ABBEY AWARDS", :descendants [], :descendant-work-count 0, :id "501100000314", :tokens ["abbey" "awards" "abbey"], :replaces [], :uri "http://dx.doi.org/10.13039/501100000314", :hierarchy {:501100000314 {}}, :alt-names ["Abbey"], :location "United Kingdom"}
+{:hierarchy-names {:501100000314 "ABBEY AWARDS"},
+ :replaced-by [],
+ :work-count 0,
+ :name "ABBEY AWARDS",
+ :descendants [],
+ :descendant-work-count 0,
+ :id "501100000314",
+ :tokens ["abbey" "awards" "abbey"],
+ :replaces [],
+ :uri "http://dx.doi.org/10.13039/501100000314",
+ :hierarchy {:501100000314 {}},
+ :alt-names ["Abbey"],
+ :location "United Kingdom"}

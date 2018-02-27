@@ -1,1 +1,316 @@
-{:items-per-page 20, :query {:start-index 20, :search-terms nil}, :total-results 15965, :items [{:id "501100004760", :location "http://sws.geonames.org/1668284/", :name "National Chi Nan University", :alt-names ["NCNU"], :uri "http://dx.doi.org/10.13039/501100004760", :replaces [], :replaced-by [], :tokens ["national" "chi" "nan" "university" "ncnu"]} {:id "100011517", :location "United States", :name "Lucille P. Markey Charitable Trust", :alt-names ["Markey Trust"], :uri "http://dx.doi.org/10.13039/100011517", :replaces [], :replaced-by [], :tokens ["lucille" "p" "markey" "charitable" "trust" "markey" "trust"]} {:id "501100005248", :location "http://sws.geonames.org/3469034/", :name "Faculdade de Medicina do ABC", :alt-names ["FMABC"], :uri "http://dx.doi.org/10.13039/501100005248", :replaces [], :replaced-by [], :tokens ["faculdade" "de" "medicina" "do" "abc" "fmabc"]} {:id "501100001711", :location "http://sws.geonames.org/2658434/", :name "Schweizerischer Nationalfonds zur Förderung der Wissenschaftlichen Forschung", :alt-names ["FNS" "Fondo Nazionale Svizzero" "Fonds National Suisse" "Fondo Nazionale Svizzero per la Ricerca Scientifica" "SNSF" "Fonds National Suisse de la Recherche Scientifique" "Swiss National Science Foundation" "SNF" "Schweizerischer Nationalfonds"], :uri "http://dx.doi.org/10.13039/501100001711", :replaces [], :replaced-by [], :tokens ["schweizerischer" "nationalfonds" "zur" "förderung" "der" "wissenschaftlichen" "forschung" "fns" "fondo" "nazionale" "svizzero" "fonds" "national" "suisse" "fondo" "nazionale" "svizzero" "per" "la" "ricerca" "scientifica" "snsf" "fonds" "national" "suisse" "de" "la" "recherche" "scientifique" "swiss" "national" "science" "foundation" "snf" "schweizerischer" "nationalfonds"]} {:id "100007328", :location "United States", :name "N. Bud Grossman Center for Memory Research and Care", :alt-names ["Grossman Center"], :uri "http://dx.doi.org/10.13039/100007328", :replaces [], :replaced-by [], :tokens ["n" "bud" "grossman" "center" "for" "memory" "research" "and" "care" "grossman" "center"]} {:id "501100000682", :location "United Kingdom", :name "Royal College of Obstetricians and Gynaecologists", :alt-names ["RCOG"], :uri "http://dx.doi.org/10.13039/501100000682", :replaces [], :replaced-by [], :tokens ["royal" "college" "of" "obstetricians" "and" "gynaecologists" "rcog"]} {:id "100005994", :location "United States", :name "Women's Research and Education Institute", :alt-names ["WREI" "Women’s Research & Education Institute"], :uri "http://dx.doi.org/10.13039/100005994", :replaces [], :replaced-by [], :tokens ["womens" "research" "and" "education" "institute" "wrei" "women’s" "research" "&" "and" "education" "institute"]} {:id "501100000079", :location "http://sws.geonames.org/6251999/", :name "Certified General Accountants Association of Canada", :alt-names ["l’Association des comptables généraux accrédités du Canada" "CGA"], :uri "http://dx.doi.org/10.13039/501100000079", :replaces [], :replaced-by [], :tokens ["certified" "general" "accountants" "association" "of" "canada" "l’association" "des" "comptables" "généraux" "accrédités" "du" "canada" "cga"]} {:id "100008241", :location "United Kingdom", :name "Alder Hey Children's NHS Foundation Trust", :alt-names ["Alder Hey Children's Hospital" "Alder Hey Children's Hospital NHS Foundation Trust"], :uri "http://dx.doi.org/10.13039/100008241", :replaces [], :replaced-by [], :tokens ["alder" "hey" "childrens" "nhs" "foundation" "trust" "alder" "hey" "childrens" "hospital" "alder" "hey" "childrens" "hospital" "nhs" "foundation" "trust"]} {:id "100003795", :location "United States", :name "Gay and Lesbian Medical Association", :alt-names ["GLMA"], :uri "http://dx.doi.org/10.13039/100003795", :replaces [], :replaced-by [], :tokens ["gay" "and" "lesbian" "medical" "association" "glma"]} {:id "100001312", :location "United States", :name "Charles H. Revson Foundation", :alt-names [], :uri "http://dx.doi.org/10.13039/100001312", :replaces [], :replaced-by [], :tokens ["charles" "h" "revson" "foundation"]} {:id "100008209", :location "United States", :name "University at Buffalo", :alt-names ["SUNY Buffalo" "UB"], :uri "http://dx.doi.org/10.13039/100008209", :replaces [], :replaced-by [], :tokens ["university" "at" "buffalo" "suny" "buffalo" "ub"]} {:id "501100003131", :location "http://sws.geonames.org/2623032/", :name "Aalborg Samarbejdet", :alt-names ["Aalborg Samarbejdet Region"], :uri "http://dx.doi.org/10.13039/501100003131", :replaces [], :replaced-by [], :tokens ["aalborg" "samarbejdet" "aalborg" "samarbejdet" "region"]} {:id "501100007682", :location "http://sws.geonames.org/3202326/", :name "Medicinski Fakultet, Sveučilište u Zagrebu", :alt-names ["University of Zagreb Medical School" "University of Zagreb, School of Medicine" "School of Medicine, University of Zagreb" "Sveučilište u Zagrebu, Medicinski Fakultet"], :uri "http://dx.doi.org/10.13039/501100007682", :replaces [], :replaced-by [], :tokens ["medicinski" "fakultet" "sveučilište" "u" "zagrebu" "university" "of" "zagreb" "medical" "school" "university" "of" "zagreb" "school" "of" "medicine" "school" "of" "medicine" "university" "of" "zagreb" "sveučilište" "u" "zagrebu" "medicinski" "fakultet"]} {:id "501100005973", :location "Germany", :name "Dr. Mildred Scheel Stiftung für Krebsforschung", :alt-names [], :uri "http://dx.doi.org/10.13039/501100005973", :replaces [], :replaced-by [], :tokens ["dr" "mildred" "scheel" "stiftung" "für" "krebsforschung"]} {:id "100010565", :location "United States", :name "American Association of Bovine Practitioners", :alt-names ["AABP"], :uri "http://dx.doi.org/10.13039/100010565", :replaces [], :replaced-by [], :tokens ["american" "association" "of" "bovine" "practitioners" "aabp"]} {:id "100006759", :location "United States", :name "California Department of Food and Agriculture", :alt-names ["CDFA"], :uri "http://dx.doi.org/10.13039/100006759", :replaces [], :replaced-by [], :tokens ["california" "department" "of" "food" "and" "agriculture" "cdfa"]} {:id "100002418", :location "United States", :name "Intel Corporation", :alt-names ["Intel"], :uri "http://dx.doi.org/10.13039/100002418", :replaces [], :replaced-by [], :tokens ["intel" "corporation" "intel"]} {:id "100010158", :location "http://sws.geonames.org/953987/", :name "Physiology Society of Southern Africa", :alt-names [], :uri "http://dx.doi.org/10.13039/100010158", :replaces [], :replaced-by [], :tokens ["physiology" "society" "of" "southern" "africa"]} {:id "100010206", :location "United States", :name "Defense Language Institute Foreign Language Center", :alt-names ["DLIFLC"], :uri "http://dx.doi.org/10.13039/100010206", :replaces [], :replaced-by [], :tokens ["defense" "language" "institute" "foreign" "language" "center" "dliflc"]}]}
+{:items-per-page 20,
+ :query {:start-index 20, :search-terms nil},
+ :total-results 15965,
+ :items
+ ({:id "501100004760",
+   :location "http://sws.geonames.org/1668284/",
+   :name "National Chi Nan University",
+   :alt-names ["NCNU"],
+   :uri "http://dx.doi.org/10.13039/501100004760",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["national" "chi" "nan" "university" "ncnu"]}
+  {:id "100011517",
+   :location "United States",
+   :name "Lucille P. Markey Charitable Trust",
+   :alt-names ["Markey Trust"],
+   :uri "http://dx.doi.org/10.13039/100011517",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["lucille" "p" "markey" "charitable" "trust" "markey" "trust"]}
+  {:id "501100005248",
+   :location "http://sws.geonames.org/3469034/",
+   :name "Faculdade de Medicina do ABC",
+   :alt-names ["FMABC"],
+   :uri "http://dx.doi.org/10.13039/501100005248",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["faculdade" "de" "medicina" "do" "abc" "fmabc"]}
+  {:id "501100001711",
+   :location "http://sws.geonames.org/2658434/",
+   :name
+   "Schweizerischer Nationalfonds zur Förderung der Wissenschaftlichen Forschung",
+   :alt-names
+   ["FNS"
+    "Fondo Nazionale Svizzero"
+    "Fonds National Suisse"
+    "Fondo Nazionale Svizzero per la Ricerca Scientifica"
+    "SNSF"
+    "Fonds National Suisse de la Recherche Scientifique"
+    "Swiss National Science Foundation"
+    "SNF"
+    "Schweizerischer Nationalfonds"],
+   :uri "http://dx.doi.org/10.13039/501100001711",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["schweizerischer"
+    "nationalfonds"
+    "zur"
+    "förderung"
+    "der"
+    "wissenschaftlichen"
+    "forschung"
+    "fns"
+    "fondo"
+    "nazionale"
+    "svizzero"
+    "fonds"
+    "national"
+    "suisse"
+    "fondo"
+    "nazionale"
+    "svizzero"
+    "per"
+    "la"
+    "ricerca"
+    "scientifica"
+    "snsf"
+    "fonds"
+    "national"
+    "suisse"
+    "de"
+    "la"
+    "recherche"
+    "scientifique"
+    "swiss"
+    "national"
+    "science"
+    "foundation"
+    "snf"
+    "schweizerischer"
+    "nationalfonds"]}
+  {:id "100007328",
+   :location "United States",
+   :name "N. Bud Grossman Center for Memory Research and Care",
+   :alt-names ["Grossman Center"],
+   :uri "http://dx.doi.org/10.13039/100007328",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["n"
+    "bud"
+    "grossman"
+    "center"
+    "for"
+    "memory"
+    "research"
+    "and"
+    "care"
+    "grossman"
+    "center"]}
+  {:id "501100000682",
+   :location "United Kingdom",
+   :name "Royal College of Obstetricians and Gynaecologists",
+   :alt-names ["RCOG"],
+   :uri "http://dx.doi.org/10.13039/501100000682",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["royal"
+    "college"
+    "of"
+    "obstetricians"
+    "and"
+    "gynaecologists"
+    "rcog"]}
+  {:id "100005994",
+   :location "United States",
+   :name "Women's Research and Education Institute",
+   :alt-names ["WREI" "Women’s Research & Education Institute"],
+   :uri "http://dx.doi.org/10.13039/100005994",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["womens"
+    "research"
+    "and"
+    "education"
+    "institute"
+    "wrei"
+    "women’s"
+    "research"
+    "&"
+    "and"
+    "education"
+    "institute"]}
+  {:id "501100000079",
+   :location "http://sws.geonames.org/6251999/",
+   :name "Certified General Accountants Association of Canada",
+   :alt-names
+   ["l’Association des comptables généraux accrédités du Canada"
+    "CGA"],
+   :uri "http://dx.doi.org/10.13039/501100000079",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["certified"
+    "general"
+    "accountants"
+    "association"
+    "of"
+    "canada"
+    "l’association"
+    "des"
+    "comptables"
+    "généraux"
+    "accrédités"
+    "du"
+    "canada"
+    "cga"]}
+  {:id "100008241",
+   :location "United Kingdom",
+   :name "Alder Hey Children's NHS Foundation Trust",
+   :alt-names
+   ["Alder Hey Children's Hospital"
+    "Alder Hey Children's Hospital NHS Foundation Trust"],
+   :uri "http://dx.doi.org/10.13039/100008241",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["alder"
+    "hey"
+    "childrens"
+    "nhs"
+    "foundation"
+    "trust"
+    "alder"
+    "hey"
+    "childrens"
+    "hospital"
+    "alder"
+    "hey"
+    "childrens"
+    "hospital"
+    "nhs"
+    "foundation"
+    "trust"]}
+  {:id "100003795",
+   :location "United States",
+   :name "Gay and Lesbian Medical Association",
+   :alt-names ["GLMA"],
+   :uri "http://dx.doi.org/10.13039/100003795",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["gay" "and" "lesbian" "medical" "association" "glma"]}
+  {:id "100001312",
+   :location "United States",
+   :name "Charles H. Revson Foundation",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100001312",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["charles" "h" "revson" "foundation"]}
+  {:id "100008209",
+   :location "United States",
+   :name "University at Buffalo",
+   :alt-names ["SUNY Buffalo" "UB"],
+   :uri "http://dx.doi.org/10.13039/100008209",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["university" "at" "buffalo" "suny" "buffalo" "ub"]}
+  {:id "501100003131",
+   :location "http://sws.geonames.org/2623032/",
+   :name "Aalborg Samarbejdet",
+   :alt-names ["Aalborg Samarbejdet Region"],
+   :uri "http://dx.doi.org/10.13039/501100003131",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["aalborg" "samarbejdet" "aalborg" "samarbejdet" "region"]}
+  {:id "501100007682",
+   :location "http://sws.geonames.org/3202326/",
+   :name "Medicinski Fakultet, Sveučilište u Zagrebu",
+   :alt-names
+   ["University of Zagreb Medical School"
+    "University of Zagreb, School of Medicine"
+    "School of Medicine, University of Zagreb"
+    "Sveučilište u Zagrebu, Medicinski Fakultet"],
+   :uri "http://dx.doi.org/10.13039/501100007682",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["medicinski"
+    "fakultet"
+    "sveučilište"
+    "u"
+    "zagrebu"
+    "university"
+    "of"
+    "zagreb"
+    "medical"
+    "school"
+    "university"
+    "of"
+    "zagreb"
+    "school"
+    "of"
+    "medicine"
+    "school"
+    "of"
+    "medicine"
+    "university"
+    "of"
+    "zagreb"
+    "sveučilište"
+    "u"
+    "zagrebu"
+    "medicinski"
+    "fakultet"]}
+  {:id "501100005973",
+   :location "Germany",
+   :name "Dr. Mildred Scheel Stiftung für Krebsforschung",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/501100005973",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["dr" "mildred" "scheel" "stiftung" "für" "krebsforschung"]}
+  {:id "100010565",
+   :location "United States",
+   :name "American Association of Bovine Practitioners",
+   :alt-names ["AABP"],
+   :uri "http://dx.doi.org/10.13039/100010565",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["american" "association" "of" "bovine" "practitioners" "aabp"]}
+  {:id "100006759",
+   :location "United States",
+   :name "California Department of Food and Agriculture",
+   :alt-names ["CDFA"],
+   :uri "http://dx.doi.org/10.13039/100006759",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["california" "department" "of" "food" "and" "agriculture" "cdfa"]}
+  {:id "100002418",
+   :location "United States",
+   :name "Intel Corporation",
+   :alt-names ["Intel"],
+   :uri "http://dx.doi.org/10.13039/100002418",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["intel" "corporation" "intel"]}
+  {:id "100010158",
+   :location "http://sws.geonames.org/953987/",
+   :name "Physiology Society of Southern Africa",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100010158",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["physiology" "society" "of" "southern" "africa"]}
+  {:id "100010206",
+   :location "United States",
+   :name "Defense Language Institute Foreign Language Center",
+   :alt-names ["DLIFLC"],
+   :uri "http://dx.doi.org/10.13039/100010206",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["defense"
+    "language"
+    "institute"
+    "foreign"
+    "language"
+    "center"
+    "dliflc"]})}

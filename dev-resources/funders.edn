@@ -1,1 +1,219 @@
-{:items-per-page 20, :query {:start-index 0, :search-terms nil}, :total-results 15965, :items [{:id "100004410", :location "Germany", :name "European Molecular Biology Organization", :alt-names ["EMBO"], :uri "http://dx.doi.org/10.13039/100004410", :replaces ["501100003043"], :replaced-by [], :tokens ["european" "molecular" "biology" "organization" "embo"]} {:id "100005165", :location "United States", :name "American Educational Research Association", :alt-names ["AERA"], :uri "http://dx.doi.org/10.13039/100005165", :replaces [], :replaced-by [], :tokens ["american" "educational" "research" "association" "aera"]} {:id "100002569", :location "United States", :name "American Association of Endodontists Foundation", :alt-names ["AAE Foundation"], :uri "http://dx.doi.org/10.13039/100002569", :replaces [], :replaced-by [], :tokens ["american" "association" "of" "endodontists" "foundation" "aae" "foundation"]} {:id "501100005887", :location "Australia", :name "Faculty of Sciences, University of Adelaide", :alt-names [], :uri "http://dx.doi.org/10.13039/501100005887", :replaces [], :replaced-by [], :tokens ["faculty" "of" "sciences" "university" "of" "adelaide"]} {:id "501100009402", :location "Ethiopia", :name "Mekelle University", :alt-names ["MU"], :uri "http://dx.doi.org/10.13039/501100009402", :replaces [], :replaced-by [], :tokens ["mekelle" "university" "mu"]} {:id "501100007535", :location "China", :name "Southwest University for Nationalities", :alt-names ["SWUN"], :uri "http://dx.doi.org/10.13039/501100007535", :replaces [], :replaced-by [], :tokens ["southwest" "university" "for" "nationalities" "swun"]} {:id "501100000314", :location "United Kingdom", :name "ABBEY AWARDS", :alt-names ["Abbey"], :uri "http://dx.doi.org/10.13039/501100000314", :replaces [], :replaced-by [], :tokens ["abbey" "awards" "abbey"]} {:id "501100001316", :location "United Kingdom", :name "University of Kent", :alt-names [], :uri "http://dx.doi.org/10.13039/501100001316", :replaces [], :replaced-by [], :tokens ["university" "of" "kent"]} {:id "100009701", :location "United States", :name "Childhood Apraxia of Speech Association of North America", :alt-names ["CASANA"], :uri "http://dx.doi.org/10.13039/100009701", :replaces [], :replaced-by [], :tokens ["childhood" "apraxia" "of" "speech" "association" "of" "north" "america" "casana"]} {:id "501100004056", :location "Norway", :name "Akershus University College of Applied Science", :alt-names [], :uri "http://dx.doi.org/10.13039/501100004056", :replaces [], :replaced-by [], :tokens ["akershus" "university" "college" "of" "applied" "science"]} {:id "100000152", :location "United States", :name "Division of Molecular and Cellular Biosciences", :alt-names ["BIO/MCB" "MCB"], :uri "http://dx.doi.org/10.13039/100000152", :replaces [], :replaced-by [], :tokens ["division" "of" "molecular" "and" "cellular" "biosciences" "bio/mcb" "mcb"]} {:id "100007727", :location "United States", :name "Biodesign Institute, Arizona State University", :alt-names [], :uri "http://dx.doi.org/10.13039/100007727", :replaces [], :replaced-by [], :tokens ["biodesign" "institute" "arizona" "state" "university"]} {:id "100011666", :location "United States", :name "Ehlers-Danlos Society", :alt-names [], :uri "http://dx.doi.org/10.13039/100011666", :replaces [], :replaced-by [], :tokens ["ehlers" "danlos" "society"]} {:id "501100002291", :location "United Kingdom", :name "Botanical Society of Britain and Ireland", :alt-names ["BSBI"], :uri "http://dx.doi.org/10.13039/501100002291", :replaces [], :replaced-by [], :tokens ["botanical" "society" "of" "britain" "and" "ireland" "bsbi"]} {:id "100010240", :location "United States", :name "Nancy Sayles Day Foundation", :alt-names [], :uri "http://dx.doi.org/10.13039/100010240", :replaces [], :replaced-by [], :tokens ["nancy" "sayles" "day" "foundation"]} {:id "100010811", :location "Sweden", :name "Stiftelsen Synfrämjandets Forskningsfond", :alt-names [], :uri "http://dx.doi.org/10.13039/100010811", :replaces [], :replaced-by [], :tokens ["stiftelsen" "synfrämjandets" "forskningsfond"]} {:id "501100005738", :location "Japan", :name "Central Research Institute, Fukuoka University", :alt-names ["Central Research Institute of Fukuoka University" "Fukuoka University Central Research Institute"], :uri "http://dx.doi.org/10.13039/501100005738", :replaces [], :replaced-by [], :tokens ["central" "research" "institute" "fukuoka" "university" "central" "research" "institute" "of" "fukuoka" "university" "fukuoka" "university" "central" "research" "institute"]} {:id "100002037", :location "United States", :name "CSL Behring Foundation for Research and Advancement of Patient Health", :alt-names [], :uri "http://dx.doi.org/10.13039/100002037", :replaces [], :replaced-by [], :tokens ["csl" "behring" "foundation" "for" "research" "and" "advancement" "of" "patient" "health"]} {:id "100000003", :location "United States", :name "Boeing", :alt-names ["Boeing Company"], :uri "http://dx.doi.org/10.13039/100000003", :replaces [], :replaced-by [], :tokens ["boeing" "boeing" "company"]} {:id "501100006004", :location "Japan", :name "Tohoku University", :alt-names [], :uri "http://dx.doi.org/10.13039/501100006004", :replaces [], :replaced-by [], :tokens ["tohoku" "university"]}]}
+{:items-per-page 20,
+ :query {:start-index 0, :search-terms nil},
+ :total-results 15965,
+ :items
+ ({:id "100004410",
+   :location "Germany",
+   :name "European Molecular Biology Organization",
+   :alt-names ["EMBO"],
+   :uri "http://dx.doi.org/10.13039/100004410",
+   :replaces ["501100003043"],
+   :replaced-by [],
+   :tokens ["european" "molecular" "biology" "organization" "embo"]}
+  {:id "100005165",
+   :location "United States",
+   :name "American Educational Research Association",
+   :alt-names ["AERA"],
+   :uri "http://dx.doi.org/10.13039/100005165",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["american" "educational" "research" "association" "aera"]}
+  {:id "100002569",
+   :location "United States",
+   :name "American Association of Endodontists Foundation",
+   :alt-names ["AAE Foundation"],
+   :uri "http://dx.doi.org/10.13039/100002569",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["american"
+    "association"
+    "of"
+    "endodontists"
+    "foundation"
+    "aae"
+    "foundation"]}
+  {:id "501100005887",
+   :location "Australia",
+   :name "Faculty of Sciences, University of Adelaide",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/501100005887",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["faculty" "of" "sciences" "university" "of" "adelaide"]}
+  {:id "501100009402",
+   :location "Ethiopia",
+   :name "Mekelle University",
+   :alt-names ["MU"],
+   :uri "http://dx.doi.org/10.13039/501100009402",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["mekelle" "university" "mu"]}
+  {:id "501100007535",
+   :location "China",
+   :name "Southwest University for Nationalities",
+   :alt-names ["SWUN"],
+   :uri "http://dx.doi.org/10.13039/501100007535",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["southwest" "university" "for" "nationalities" "swun"]}
+  {:id "501100000314",
+   :location "United Kingdom",
+   :name "ABBEY AWARDS",
+   :alt-names ["Abbey"],
+   :uri "http://dx.doi.org/10.13039/501100000314",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["abbey" "awards" "abbey"]}
+  {:id "501100001316",
+   :location "United Kingdom",
+   :name "University of Kent",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/501100001316",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["university" "of" "kent"]}
+  {:id "100009701",
+   :location "United States",
+   :name "Childhood Apraxia of Speech Association of North America",
+   :alt-names ["CASANA"],
+   :uri "http://dx.doi.org/10.13039/100009701",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["childhood"
+    "apraxia"
+    "of"
+    "speech"
+    "association"
+    "of"
+    "north"
+    "america"
+    "casana"]}
+  {:id "501100004056",
+   :location "Norway",
+   :name "Akershus University College of Applied Science",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/501100004056",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["akershus" "university" "college" "of" "applied" "science"]}
+  {:id "100000152",
+   :location "United States",
+   :name "Division of Molecular and Cellular Biosciences",
+   :alt-names ["BIO/MCB" "MCB"],
+   :uri "http://dx.doi.org/10.13039/100000152",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["division"
+    "of"
+    "molecular"
+    "and"
+    "cellular"
+    "biosciences"
+    "bio/mcb"
+    "mcb"]}
+  {:id "100007727",
+   :location "United States",
+   :name "Biodesign Institute, Arizona State University",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100007727",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["biodesign" "institute" "arizona" "state" "university"]}
+  {:id "100011666",
+   :location "United States",
+   :name "Ehlers-Danlos Society",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100011666",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["ehlers" "danlos" "society"]}
+  {:id "501100002291",
+   :location "United Kingdom",
+   :name "Botanical Society of Britain and Ireland",
+   :alt-names ["BSBI"],
+   :uri "http://dx.doi.org/10.13039/501100002291",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["botanical" "society" "of" "britain" "and" "ireland" "bsbi"]}
+  {:id "100010240",
+   :location "United States",
+   :name "Nancy Sayles Day Foundation",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100010240",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["nancy" "sayles" "day" "foundation"]}
+  {:id "100010811",
+   :location "Sweden",
+   :name "Stiftelsen Synfrämjandets Forskningsfond",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100010811",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["stiftelsen" "synfrämjandets" "forskningsfond"]}
+  {:id "501100005738",
+   :location "Japan",
+   :name "Central Research Institute, Fukuoka University",
+   :alt-names
+   ["Central Research Institute of Fukuoka University"
+    "Fukuoka University Central Research Institute"],
+   :uri "http://dx.doi.org/10.13039/501100005738",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["central"
+    "research"
+    "institute"
+    "fukuoka"
+    "university"
+    "central"
+    "research"
+    "institute"
+    "of"
+    "fukuoka"
+    "university"
+    "fukuoka"
+    "university"
+    "central"
+    "research"
+    "institute"]}
+  {:id "100002037",
+   :location "United States",
+   :name
+   "CSL Behring Foundation for Research and Advancement of Patient Health",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100002037",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["csl"
+    "behring"
+    "foundation"
+    "for"
+    "research"
+    "and"
+    "advancement"
+    "of"
+    "patient"
+    "health"]}
+  {:id "100000003",
+   :location "United States",
+   :name "Boeing",
+   :alt-names ["Boeing Company"],
+   :uri "http://dx.doi.org/10.13039/100000003",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["boeing" "boeing" "company"]}
+  {:id "501100006004",
+   :location "Japan",
+   :name "Tohoku University",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/501100006004",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["tohoku" "university"]})}
