@@ -15,7 +15,13 @@
     (doseq [q-filter ["query.title=Peer" "query.title=Socioeconomic"]]
       (let [response (api-get (str "/v1/works?" q-filter))
             expected-response (read-string (slurp (resource (str "works/" q-filter ".edn"))))]
-        (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
+        (is (= expected-response response) (str "unexpected result for query " q-filter)))))
+
+  (testing "works endpoint returns expected result for select"
+    (doseq [select ["volume" "title" "DOI" "member"]]
+      (let [response (api-get (str "/v1/works?select=" select "&sort=created"))
+            expected-response (read-string (slurp (resource (str "works/?select=" select ".edn"))))]
+        (is (= expected-response response) (str "unexpected result for select " select)))))
 
   (testing "works endpoint returns expected result for filter"
     (doseq [q-filter ["content-domain:peerj.com" "from-created-date:2018" 

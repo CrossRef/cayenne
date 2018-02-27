@@ -1,0 +1,44 @@
+{:facets {},
+ :total-results 174,
+ :items
+ ({:title
+   ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\""]}
+  {:title
+   ["Emerging Role of Corticosteroid-Binding Globulin in Glucocorticoid-Driven Metabolic Disorders"]}
+  {:title
+   ["Hierarchy stability moderates the effect of status on stress and performance in humans"]}
+  {:title ["Puberty and structural brain development in humans"]}
+  {:title
+   ["Effects of psychosocial stress on the goal-directed and habit memory systems during learning and later execution"]}
+  {:title
+   ["Very Preterm and Full-Term Infants’ Response to Socio-Emotional Stress: The Role of Postnatal Maternal Bonding"]}
+  {:title
+   ["Intraindividual stability of cortisol and cortisone and the ratio of cortisol to cortisone in saliva, urine and hair"]}
+  {:title
+   ["Effect of smoking on risperidone pharmacokinetics – A multifactorial approach to better predict the influence on drug metabolism"]}
+  {:title
+   ["The neural diathesis-stress model of schizophrenia revisited: An update on recent findings considering illness stage and neurobiological and methodological complexities"]}
+  {:title
+   ["Forced swimming-induced oxytocin release into blood and brain: Effects of adrenalectomy and corticosterone treatment"]}
+  {:title
+   ["Analyses of differentially expressed genes after exposure to acute stress, acute ethanol, or a combination of both in mice"]}
+  {:title
+   ["Intranasal oxytocin reduces social perception in women: Neural activation and individual variation"]}
+  {:title
+   ["The effect of cortisol on autobiographical memory retrieval depends on remoteness and valence of memories"]}
+  {:title
+   ["Dynamic Changes in DNA Methylation Occur during the First Year of Life in Preterm Infants"]}
+  {:title
+   ["Endocannabinoid Signaling and the Hypothalamic-Pituitary-Adrenal Axis"]}
+  {:title
+   ["High-Fat-Diet-Induced Deficits in Dopamine Terminal Function Are Reversed by Restoring Insulin Signaling"]}
+  {:title
+   ["A systematic review of the psychobiological burden of informal caregiving for patients with dementia: Focus on cognitive and biological markers of chronic stress"]}
+  {:title
+   ["Signaling pathways underlying the antidepressant-like effect of inosine in mice"]}
+  {:title
+   ["The exercise-glucocorticoid paradox: How exercise is beneficial to cognition, mood, and the brain while increasing glucocorticoid levels"]}
+  {:title
+   ["Effects of the combination of metyrapone and oxazepam on cocaine-induced increases in corticosterone in the medial prefrontal cortex and nucleus accumbens"]}),
+ :items-per-page 20,
+ :query {:start-index 0, :search-terms nil}}
