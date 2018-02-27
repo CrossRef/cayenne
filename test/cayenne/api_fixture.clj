@@ -58,6 +58,15 @@
         (Thread/sleep 2000)
         (sh "docker-compose" "down")))))
 
+(defn api-get [route]
+  (let [message (-> (http/get (str api-root route) {:as :json})
+                    :body
+                    :message)]
+    (cond-> message
+      (:last-status-check-time message) (dissoc :last-status-check-time)
+      (:indexed message) (dissoc :indexed)
+      (:items message) (update :items (partial map #(dissoc % :indexed :last-status-check-time))))))
+
 (def api-with-works
   (api-with 
     (fn []

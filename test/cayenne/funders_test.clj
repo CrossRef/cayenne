@@ -1,39 +1,28 @@
 (ns cayenne.funders-test
   (:require [cayenne.conf :refer [with-core set-param!]]
-            [cayenne.api-fixture :refer [api-root api-with]]
+            [cayenne.api-fixture :refer [api-root api-get api-with]]
             [cayenne.tasks :refer [load-funders]]
             [cayenne.tasks.funder :refer [select-country-stmts]]
             [cayenne.rdf :as rdf]
             [clojure.java.io :refer [resource]]
-            [clojure.test :refer [use-fixtures deftest testing is]]
-            [clj-http.client :as http]))
+            [clojure.test :refer [use-fixtures deftest testing is]]))
 
 (deftest querying-funders
   (testing "funders endpoint returns expected result"
-    (let [response (-> (http/get (str api-root "/v1/funders") {:as :json})
-                       :body
-                       :message)
+    (let [response (api-get "/v1/funders")
           expected-response (read-string (slurp (resource "funders.edn")))]
       (is (= expected-response response))))
 
   (testing "funders endpoint returns expected result for offset"
     (doseq [offset [20 40]]
-      (let [response (-> (http/get (str api-root "/v1/funders?offset=" offset) {:as :json})
-                         :body
-                         :message)
+      (let [response (api-get (str "/v1/funders?offset=" offset))
             expected-response (read-string (slurp (resource (str "funders-offset-" offset ".edn"))))]
         (is (= expected-response response)))))
   
   (testing "funders endpoint returns expected result for funder"
     (doseq [funder ["100000001" "100006151" "501100000315" "501100000314"]]
-      (let [response (-> (http/get (str api-root "/v1/funders/" funder) {:as :json})
-                         :body
-                         :message 
-                         (dissoc :work-count)
-                         (dissoc :descendant-work-count))
-            expected-response (-> (read-string (slurp (resource (str "funders/" funder ".edn"))))
-                                  (dissoc :work-count)
-                                  (dissoc :descendant-work-count))]
+      (let [response (api-get (str "/v1/funders/" funder))
+            expected-response (read-string (slurp (resource (str "funders/" funder ".edn"))))]
         (is (= expected-response response))))))
 
 (use-fixtures 
