@@ -139,14 +139,15 @@
 
 (defn contrib 
   "Drop placeholders indicating missing data."
-  [type orcid authenticated suffix given family org-name]
+  [type orcid authenticated suffix given family org-name a-sequence]
   (let [has-type? (not= type "-")
         has-orcid? (not= orcid "-")
         has-authenticated-orcid? (not= authenticated "-")
         has-suffix? (not= suffix "-")
         has-given? (not= given "-")
         has-family? (not= family "-")
-        has-org-name? (not= org-name "-")]
+        has-org-name? (not= org-name "-")
+        has-sequence? (not= a-sequence "-")]
     (-> {}
         (util/?> has-type? assoc :type (sanitize-type type))
         (util/?> has-orcid? assoc :ORCID orcid)
@@ -156,7 +157,8 @@
         (util/?> has-suffix? assoc :suffix suffix)
         (util/?> has-org-name? assoc :name org-name)
         (util/?> has-given? assoc :given given)
-        (util/?> has-family? assoc :family family))))
+        (util/?> has-family? assoc :family family)
+        (util/?> has-sequence? assoc :sequence a-sequence))))
 
 (defn contrib-affiliations [affiliations]
   (map #(hash-map :name %) affiliations))
@@ -177,7 +179,8 @@
                             (get solr-doc "contributor_suffix")
                             (get solr-doc "contributor_given_name")
                             (get solr-doc "contributor_family_name")
-                            (get solr-doc "contributor_org_name")))))
+                            (get solr-doc "contributor_org_name")
+                            (get solr-doc "contributor_sequence")))))
 
 (defn ->citeproc-awards [solr-doc]
   (map

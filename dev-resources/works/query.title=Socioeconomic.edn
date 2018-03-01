@@ -39,9 +39,9 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Samuele", :family "Zilioli", :affiliation []}
-    {:given "Ledina", :family "Imami", :affiliation []}
-    {:given "Richard B.", :family "Slatcher", :affiliation []}],
+   [{:given "Samuele", :family "Zilioli", :sequence "first" :affiliation []}
+    {:given "Ledina", :family "Imami", :sequence "additional" :affiliation []}
+    {:given "Richard B.", :family "Slatcher", :sequence "additional" :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link

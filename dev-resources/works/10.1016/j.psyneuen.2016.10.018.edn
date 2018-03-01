@@ -36,12 +36,12 @@
  :prefix "10.1016",
  :volume "75",
  :author
- [{:given "Christian Eric", :family "Deuter", :affiliation []}
-  {:given "Katja", :family "Wingenfeld", :affiliation []}
-  {:given "Katharina", :family "Schultebraucks", :affiliation []}
-  {:given "Julian", :family "Hellmann-Regen", :affiliation []}
-  {:given "Dominique", :family "Piber", :affiliation []}
-  {:given "Christian", :family "Otte", :affiliation []}],
+ [{:given "Christian Eric", :family "Deuter", :sequence "first" :affiliation []}
+  {:given "Katja", :family "Wingenfeld", :sequence "additional" :affiliation []}
+  {:given "Katharina", :family "Schultebraucks", :sequence "additional" :affiliation []}
+  {:given "Julian", :family "Hellmann-Regen", :sequence "additional" :affiliation []}
+  {:given "Dominique", :family "Piber", :sequence "additional" :affiliation []}
+  {:given "Christian", :family "Otte", :sequence "additional" :affiliation []}],
  :member "78",
  :container-title ["Psychoneuroendocrinology"],
  :original-title [],

@@ -142,6 +142,7 @@
    :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
    :orcid-authenticated (:orcid-authenticated contributor)
+   :sequence (:sequence contributor)
    :type (name type)})
 
 (defn get-contributor-details*
@@ -565,6 +566,7 @@
          "contributor_orcid" (map (util/?- :orcid) contrib-details)
          "contributor_orcid_authed" (map (util/?- :orcid-authenticated) contrib-details)
          "contributor_type" (map (util/?- :type) contrib-details)
+         "contributor_sequence" (map (util/?- :sequence) contrib-details)
          "hl_description" (:description item)
          "hl_year" (:year pub-date)
          "hl_authors" (get-contributor-names item :author)

@@ -875,14 +875,12 @@
 
 (defn parse-peer-review [peer-review-loc]
   (when peer-review-loc
-    (let [person-loc (-> (xml/xselect1 peer-review-loc "contributors")
-                         (xml/xselect1 "person_name"))]
     (-> (parse-item peer-review-loc)
         (parse-attach :domains peer-review-loc :single parse-resource-domain)
-        (parse-attach :author person-loc :single parse-person-name)
+        (parse-attach :author peer-review-loc :multi (partial parse-item-contributors "reviewer"))
         (parse-attach :published (xml/xselect1 peer-review-loc "review_date") :single parse-date)
         (conj (parse-review peer-review-loc))
-        (conj {:subtype :peer-review})))))
+        (conj {:subtype :peer-review}))))
 
 ;; todo perhaps make sponsor organisation and event location address first class items.
 (defn parse-event [event-loc]

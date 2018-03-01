@@ -39,9 +39,18 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Samuele", :family "Zilioli", :affiliation []}
-    {:given "Ledina", :family "Imami", :affiliation []}
-    {:given "Richard B.", :family "Slatcher", :affiliation []}],
+   [{:given "Samuele",
+     :family "Zilioli",
+     :sequence "first",
+     :affiliation []}
+    {:given "Ledina",
+     :family "Imami",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Richard B.",
+     :family "Slatcher",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -122,13 +131,34 @@
    :prefix "10.1016",
    :volume "74",
    :author
-   [{:given "Yu-Ju", :family "Chen", :affiliation []}
-    {:given "Chin-Ling", :family "Lin", :affiliation []}
-    {:given "Chi-Rong", :family "Li", :affiliation []}
-    {:given "Shih-Ming", :family "Huang", :affiliation []}
-    {:given "James Yi-Hsin", :family "Chan", :affiliation []}
-    {:given "Wen-Hui", :family "Fang", :affiliation []}
-    {:given "Wei-Liang", :family "Chen", :affiliation []}],
+   [{:given "Yu-Ju",
+     :family "Chen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Chin-Ling",
+     :family "Lin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Chi-Rong",
+     :family "Li",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Shih-Ming",
+     :family "Huang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James Yi-Hsin",
+     :family "Chan",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wen-Hui",
+     :family "Fang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wei-Liang",
+     :family "Chen",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -214,18 +244,54 @@
    :prefix "10.1016",
    :volume "74",
    :author
-   [{:given "Rene", :family "Seiger", :affiliation []}
-    {:given "Andreas", :family "Hahn", :affiliation []}
-    {:given "Allan", :family "Hummer", :affiliation []}
-    {:given "Georg S.", :family "Kranz", :affiliation []}
-    {:given "Sebastian", :family "Ganger", :affiliation []}
-    {:given "Michael", :family "Woletz", :affiliation []}
-    {:given "Christoph", :family "Kraus", :affiliation []}
-    {:given "Ronald", :family "Sladky", :affiliation []}
-    {:given "Alexander", :family "Kautzky", :affiliation []}
-    {:given "Siegfried", :family "Kasper", :affiliation []}
-    {:given "Christian", :family "Windischberger", :affiliation []}
-    {:given "Rupert", :family "Lanzenberger", :affiliation []}],
+   [{:given "Rene",
+     :family "Seiger",
+     :sequence "first",
+     :affiliation []}
+    {:given "Andreas",
+     :family "Hahn",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Allan",
+     :family "Hummer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Georg S.",
+     :family "Kranz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sebastian",
+     :family "Ganger",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Michael",
+     :family "Woletz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christoph",
+     :family "Kraus",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ronald",
+     :family "Sladky",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alexander",
+     :family "Kautzky",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Siegfried",
+     :family "Kasper",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christian",
+     :family "Windischberger",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rupert",
+     :family "Lanzenberger",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -306,14 +372,38 @@
    :prefix "10.1016",
    :volume "74",
    :author
-   [{:given "Alessio", :family "Soggiu", :affiliation []}
-    {:given "Cristian", :family "Piras", :affiliation []}
-    {:given "Viviana", :family "Greco", :affiliation []}
-    {:given "Paola", :family "Devoto", :affiliation []}
-    {:given "Andrea", :family "Urbani", :affiliation []}
-    {:given "Luigino", :family "Calzetta", :affiliation []}
-    {:given "Marco", :family "Bortolato", :affiliation []}
-    {:given "Paola", :family "Roncada", :affiliation []}],
+   [{:given "Alessio",
+     :family "Soggiu",
+     :sequence "first",
+     :affiliation []}
+    {:given "Cristian",
+     :family "Piras",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Viviana",
+     :family "Greco",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Paola",
+     :family "Devoto",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Andrea",
+     :family "Urbani",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Luigino",
+     :family "Calzetta",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marco",
+     :family "Bortolato",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Paola",
+     :family "Roncada",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -395,13 +485,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Gina-Isabelle", :family "Henze", :affiliation []}
-    {:given "Sandra", :family "Zänkert", :affiliation []}
-    {:given "David F.", :family "Urschler", :affiliation []}
-    {:given "Tanja J.", :family "Hiltl", :affiliation []}
-    {:given "Brigitte M.", :family "Kudielka", :affiliation []}
-    {:given "Jens C.", :family "Pruessner", :affiliation []}
-    {:given "Stefan", :family "Wüst", :affiliation []}],
+   [{:given "Gina-Isabelle",
+     :family "Henze",
+     :sequence "first",
+     :affiliation []}
+    {:given "Sandra",
+     :family "Zänkert",
+     :sequence "additional",
+     :affiliation []}
+    {:given "David F.",
+     :family "Urschler",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tanja J.",
+     :family "Hiltl",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Brigitte M.",
+     :family "Kudielka",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jens C.",
+     :family "Pruessner",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stefan",
+     :family "Wüst",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -482,13 +593,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Laura A.", :family "Colangelo", :affiliation []}
-    {:given "Pamela", :family "Ouyang", :affiliation []}
-    {:given "Sherita Hill", :family "Golden", :affiliation []}
-    {:given "Moyses", :family "Szklo", :affiliation []}
-    {:given "Susan M.", :family "Gapstur", :affiliation []}
-    {:given "Dhananjay", :family "Vaidya", :affiliation []}
-    {:given "Kiang", :family "Liu", :affiliation []}],
+   [{:given "Laura A.",
+     :family "Colangelo",
+     :sequence "first",
+     :affiliation []}
+    {:given "Pamela",
+     :family "Ouyang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sherita Hill",
+     :family "Golden",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Moyses",
+     :family "Szklo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Susan M.",
+     :family "Gapstur",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Dhananjay",
+     :family "Vaidya",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kiang",
+     :family "Liu",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -568,7 +700,11 @@
    ["Optimizing laboratory animal stress paradigms: The H-H* experimental design"],
    :prefix "10.1016",
    :volume "75",
-   :author [{:given "Richard", :family "McCarty", :affiliation []}],
+   :author
+   [{:given "Richard",
+     :family "McCarty",
+     :sequence "first",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -655,10 +791,22 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Elysia Poggi", :family "Davis", :affiliation []}
-    {:given "Kevin", :family "Head", :affiliation []}
-    {:given "Claudia", :family "Buss", :affiliation []}
-    {:given "Curt A.", :family "Sandman", :affiliation []}],
+   [{:given "Elysia Poggi",
+     :family "Davis",
+     :sequence "first",
+     :affiliation []}
+    {:given "Kevin",
+     :family "Head",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Claudia",
+     :family "Buss",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Curt A.",
+     :family "Sandman",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -739,11 +887,26 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Stephanie H.", :family "Cook", :affiliation []}
-    {:given "Robert-Paul", :family "Juster", :affiliation []}
-    {:given "Benjamin J.", :family "Calebs", :affiliation []}
-    {:given "Justin", :family "Heinze", :affiliation []}
-    {:given "Alison L.", :family "Miller", :affiliation []}],
+   [{:given "Stephanie H.",
+     :family "Cook",
+     :sequence "first",
+     :affiliation []}
+    {:given "Robert-Paul",
+     :family "Juster",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Benjamin J.",
+     :family "Calebs",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Justin",
+     :family "Heinze",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alison L.",
+     :family "Miller",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -824,14 +987,38 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Alexis E.", :family "Whitton", :affiliation []}
-    {:given "Ashlee", :family "Van’t Veer", :affiliation []}
-    {:given "Pragya", :family "Kakani", :affiliation []}
-    {:given "Daniel G.", :family "Dillon", :affiliation []}
-    {:given "Manon L.", :family "Ironside", :affiliation []}
-    {:given "Anja", :family "Haile", :affiliation []}
-    {:given "David J.", :family "Crowley", :affiliation []}
-    {:given "Diego A.", :family "Pizzagalli", :affiliation []}],
+   [{:given "Alexis E.",
+     :family "Whitton",
+     :sequence "first",
+     :affiliation []}
+    {:given "Ashlee",
+     :family "Van’t Veer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Pragya",
+     :family "Kakani",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Daniel G.",
+     :family "Dillon",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Manon L.",
+     :family "Ironside",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Anja",
+     :family "Haile",
+     :sequence "additional",
+     :affiliation []}
+    {:given "David J.",
+     :family "Crowley",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Diego A.",
+     :family "Pizzagalli",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -912,10 +1099,22 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Khandis R.", :family "Blake", :affiliation []}
-    {:given "Brock", :family "Bastian", :affiliation []}
-    {:given "Siobhan M.", :family "O’Dean", :affiliation []}
-    {:given "Thomas F.", :family "Denson", :affiliation []}],
+   [{:given "Khandis R.",
+     :family "Blake",
+     :sequence "first",
+     :affiliation []}
+    {:given "Brock",
+     :family "Bastian",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Siobhan M.",
+     :family "O’Dean",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Thomas F.",
+     :family "Denson",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -999,10 +1198,22 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Massimiliano", :family "de Zambotti", :affiliation []}
-    {:given "John", :family "Trinder", :affiliation []}
-    {:given "Ian M.", :family "Colrain", :affiliation []}
-    {:given "Fiona C.", :family "Baker", :affiliation []}],
+   [{:given "Massimiliano",
+     :family "de Zambotti",
+     :sequence "first",
+     :affiliation []}
+    {:given "John",
+     :family "Trinder",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ian M.",
+     :family "Colrain",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Fiona C.",
+     :family "Baker",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1083,19 +1294,58 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Raoul", :family "Belzeaux", :affiliation []}
-    {:given "Marie-Noëlle", :family "Lefebvre", :affiliation []}
-    {:given "Anne", :family "Lazzari", :affiliation []}
-    {:given "Tifenn", :family "Le Carpentier", :affiliation []}
-    {:given "Julia-Lou", :family "Consoloni", :affiliation []}
-    {:given "Xavier", :family "Zendjidjian", :affiliation []}
-    {:given "Mocrane", :family "Abbar", :affiliation []}
-    {:given "Philippe", :family "Courtet", :affiliation []}
-    {:given "Jean", :family "Naudin", :affiliation []}
-    {:given "José", :family "Boucraut", :affiliation []}
-    {:given "Pierre", :family "Gressens", :affiliation []}
-    {:given "Nicolas", :family "Glaichenhaus", :affiliation []}
-    {:given "El Chérif", :family "Ibrahim", :affiliation []}],
+   [{:given "Raoul",
+     :family "Belzeaux",
+     :sequence "first",
+     :affiliation []}
+    {:given "Marie-Noëlle",
+     :family "Lefebvre",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Anne",
+     :family "Lazzari",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tifenn",
+     :family "Le Carpentier",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Julia-Lou",
+     :family "Consoloni",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Xavier",
+     :family "Zendjidjian",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Mocrane",
+     :family "Abbar",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Philippe",
+     :family "Courtet",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jean",
+     :family "Naudin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "José",
+     :family "Boucraut",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Pierre",
+     :family "Gressens",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Nicolas",
+     :family "Glaichenhaus",
+     :sequence "additional",
+     :affiliation []}
+    {:given "El Chérif",
+     :family "Ibrahim",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1189,14 +1439,38 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Bryon", :family "Adinoff", :affiliation []}
-    {:given "David", :family "Leonard", :affiliation []}
-    {:given "Julianne", :family "Price", :affiliation []}
-    {:given "Martin A.", :family "Javors", :affiliation []}
-    {:given "Robrina", :family "Walker", :affiliation []}
-    {:given "E. Sherwood", :family "Brown", :affiliation []}
-    {:given "Hong", :family "Xiao", :affiliation []}
-    {:given "Uma", :family "Rao", :affiliation []}],
+   [{:given "Bryon",
+     :family "Adinoff",
+     :sequence "first",
+     :affiliation []}
+    {:given "David",
+     :family "Leonard",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Julianne",
+     :family "Price",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Martin A.",
+     :family "Javors",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Robrina",
+     :family "Walker",
+     :sequence "additional",
+     :affiliation []}
+    {:given "E. Sherwood",
+     :family "Brown",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Hong",
+     :family "Xiao",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Uma",
+     :family "Rao",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1277,12 +1551,30 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Samuele", :family "Zilioli", :affiliation []}
-    {:given "Richard B.", :family "Slatcher", :affiliation []}
-    {:given "Peilian", :family "Chi", :affiliation []}
-    {:given "Xiaoming", :family "Li", :affiliation []}
-    {:given "Junfeng", :family "Zhao", :affiliation []}
-    {:given "Guoxiang", :family "Zhao", :affiliation []}],
+   [{:given "Samuele",
+     :family "Zilioli",
+     :sequence "first",
+     :affiliation []}
+    {:given "Richard B.",
+     :family "Slatcher",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Peilian",
+     :family "Chi",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Xiaoming",
+     :family "Li",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Junfeng",
+     :family "Zhao",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Guoxiang",
+     :family "Zhao",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1363,8 +1655,14 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Donald R.", :family "Williams", :affiliation []}
-    {:given "Paul-Christian", :family "Bürkner", :affiliation []}],
+   [{:given "Donald R.",
+     :family "Williams",
+     :sequence "first",
+     :affiliation []}
+    {:given "Paul-Christian",
+     :family "Bürkner",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1445,9 +1743,18 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Kyle W.", :family "Murdock", :affiliation []}
-    {:given "Angie S.", :family "LeRoy", :affiliation []}
-    {:given "Christopher P.", :family "Fagundes", :affiliation []}],
+   [{:given "Kyle W.",
+     :family "Murdock",
+     :sequence "first",
+     :affiliation []}
+    {:given "Angie S.",
+     :family "LeRoy",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christopher P.",
+     :family "Fagundes",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1528,18 +1835,54 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Che-Hung", :family "Yen", :affiliation []}
-    {:given "Pei-Shen", :family "Ho", :affiliation []}
-    {:given "Yi-Wei", :family "Yeh", :affiliation []}
-    {:given "Chih-Sung", :family "Liang", :affiliation []}
-    {:given "Shin-Chang", :family "Kuo", :affiliation []}
-    {:given "Chang-Chih", :family "Huang", :affiliation []}
-    {:given "Chun-Yen", :family "Chen", :affiliation []}
-    {:given "Mei-Chen", :family "Shih", :affiliation []}
-    {:given "Kuo-Hsing", :family "Ma", :affiliation []}
-    {:given "Yueh-Feng", :family "Sung", :affiliation []}
-    {:given "Ru-Band", :family "Lu", :affiliation []}
-    {:given "San-Yuan", :family "Huang", :affiliation []}],
+   [{:given "Che-Hung",
+     :family "Yen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Pei-Shen",
+     :family "Ho",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yi-Wei",
+     :family "Yeh",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Chih-Sung",
+     :family "Liang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Shin-Chang",
+     :family "Kuo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Chang-Chih",
+     :family "Huang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Chun-Yen",
+     :family "Chen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Mei-Chen",
+     :family "Shih",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kuo-Hsing",
+     :family "Ma",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yueh-Feng",
+     :family "Sung",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ru-Band",
+     :family "Lu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "San-Yuan",
+     :family "Huang",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1632,14 +1975,35 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "D.", :family "Hough", :affiliation []}
-    {:given "M.", :family "Bellingham", :affiliation []}
-    {:given "I.R.H.", :family "Haraldsen", :affiliation []}
-    {:given "M.", :family "McLaughlin", :affiliation []}
-    {:given "M.", :family "Rennie", :affiliation []}
-    {:given "J.E.", :family "Robinson", :affiliation []}
-    {:given "A.K.", :family "Solbakk", :affiliation []}
-    {:given "N.P.", :family "Evans", :affiliation []}],
+   [{:given "D.", :family "Hough", :sequence "first", :affiliation []}
+    {:given "M.",
+     :family "Bellingham",
+     :sequence "additional",
+     :affiliation []}
+    {:given "I.R.H.",
+     :family "Haraldsen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "M.",
+     :family "McLaughlin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "M.",
+     :family "Rennie",
+     :sequence "additional",
+     :affiliation []}
+    {:given "J.E.",
+     :family "Robinson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "A.K.",
+     :family "Solbakk",
+     :sequence "additional",
+     :affiliation []}
+    {:given "N.P.",
+     :family "Evans",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1720,13 +2084,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "John M.", :family "Violanti", :affiliation []}
-    {:given "Desta", :family "Fekedulegn", :affiliation []}
-    {:given "Michael E.", :family "Andrew", :affiliation []}
-    {:given "Tara A.", :family "Hartley", :affiliation []}
-    {:given "Luenda E.", :family "Charles", :affiliation []}
-    {:given "Diane B.", :family "Miller", :affiliation []}
-    {:given "Cecil M.", :family "Burchfiel", :affiliation []}],
+   [{:given "John M.",
+     :family "Violanti",
+     :sequence "first",
+     :affiliation []}
+    {:given "Desta",
+     :family "Fekedulegn",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Michael E.",
+     :family "Andrew",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tara A.",
+     :family "Hartley",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Luenda E.",
+     :family "Charles",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Diane B.",
+     :family "Miller",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Cecil M.",
+     :family "Burchfiel",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1807,12 +2192,30 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Christian Eric", :family "Deuter", :affiliation []}
-    {:given "Katja", :family "Wingenfeld", :affiliation []}
-    {:given "Katharina", :family "Schultebraucks", :affiliation []}
-    {:given "Julian", :family "Hellmann-Regen", :affiliation []}
-    {:given "Dominique", :family "Piber", :affiliation []}
-    {:given "Christian", :family "Otte", :affiliation []}],
+   [{:given "Christian Eric",
+     :family "Deuter",
+     :sequence "first",
+     :affiliation []}
+    {:given "Katja",
+     :family "Wingenfeld",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Katharina",
+     :family "Schultebraucks",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Julian",
+     :family "Hellmann-Regen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Dominique",
+     :family "Piber",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christian",
+     :family "Otte",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1900,11 +2303,26 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Daryl B.", :family "O’Connor", :affiliation []}
-    {:given "Jessica A.", :family "Green", :affiliation []}
-    {:given "Eamonn", :family "Ferguson", :affiliation []}
-    {:given "Ronan E.", :family "O’Carroll", :affiliation []}
-    {:given "Rory C.", :family "O’Connor", :affiliation []}],
+   [{:given "Daryl B.",
+     :family "O’Connor",
+     :sequence "first",
+     :affiliation []}
+    {:given "Jessica A.",
+     :family "Green",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Eamonn",
+     :family "Ferguson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ronan E.",
+     :family "O’Carroll",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rory C.",
+     :family "O’Connor",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -1985,14 +2403,38 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Xingui", :family "Chen", :affiliation []}
-    {:given "Jingjing", :family "Li", :affiliation []}
-    {:given "Jingjie", :family "Zhang", :affiliation []}
-    {:given "Xiaoxuan", :family "He", :affiliation []}
-    {:given "Chunyan", :family "Zhu", :affiliation []}
-    {:given "Lei", :family "Zhang", :affiliation []}
-    {:given "Xinglong", :family "Hu", :affiliation []}
-    {:given "Kai", :family "Wang", :affiliation []}],
+   [{:given "Xingui",
+     :family "Chen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Jingjing",
+     :family "Li",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jingjie",
+     :family "Zhang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Xiaoxuan",
+     :family "He",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Chunyan",
+     :family "Zhu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lei",
+     :family "Zhang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Xinglong",
+     :family "Hu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kai",
+     :family "Wang",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2073,13 +2515,34 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Daniela", :family "Cohen", :affiliation []}
-    {:given "Anat", :family "Perry", :affiliation []}
-    {:given "Gadi", :family "Gilam", :affiliation []}
-    {:given "Naama", :family "Mayseless", :affiliation []}
-    {:given "Tal", :family "Gonen", :affiliation []}
-    {:given "Talma", :family "Hendler", :affiliation []}
-    {:given "Simone G.", :family "Shamay-Tsoory", :affiliation []}],
+   [{:given "Daniela",
+     :family "Cohen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Anat",
+     :family "Perry",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Gadi",
+     :family "Gilam",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Naama",
+     :family "Mayseless",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tal",
+     :family "Gonen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Talma",
+     :family "Hendler",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Simone G.",
+     :family "Shamay-Tsoory",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2165,12 +2628,30 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Katharine E.", :family "McCann", :affiliation []}
-    {:given "Anna M.", :family "Rosenhauer", :affiliation []}
-    {:given "Genna M.F.", :family "Jones", :affiliation []}
-    {:given "Alisa", :family "Norvelle", :affiliation []}
-    {:given "Dennis C.", :family "Choi", :affiliation []}
-    {:given "Kim L.", :family "Huhman", :affiliation []}],
+   [{:given "Katharine E.",
+     :family "McCann",
+     :sequence "first",
+     :affiliation []}
+    {:given "Anna M.",
+     :family "Rosenhauer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Genna M.F.",
+     :family "Jones",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alisa",
+     :family "Norvelle",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Dennis C.",
+     :family "Choi",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kim L.",
+     :family "Huhman",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2260,8 +2741,14 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "M. Allie", :family "Holschbach", :affiliation []}
-    {:given "Joseph S.", :family "Lonstein", :affiliation []}],
+   [{:given "M. Allie",
+     :family "Holschbach",
+     :sequence "first",
+     :affiliation []}
+    {:given "Joseph S.",
+     :family "Lonstein",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2348,13 +2835,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Thelma A.", :family "Lovick", :affiliation []}
-    {:given "Vinicius G.", :family "Guapo", :affiliation []}
-    {:given "Janete A.", :family "Anselmo-Franci", :affiliation []}
-    {:given "Camila M.", :family "Loureiro", :affiliation []}
-    {:given "Maria Clara M.", :family "Faleiros", :affiliation []}
-    {:given "Cristina M.", :family "Del Ben", :affiliation []}
-    {:given "Marcus L.", :family "Brandão", :affiliation []}],
+   [{:given "Thelma A.",
+     :family "Lovick",
+     :sequence "first",
+     :affiliation []}
+    {:given "Vinicius G.",
+     :family "Guapo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Janete A.",
+     :family "Anselmo-Franci",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Camila M.",
+     :family "Loureiro",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Maria Clara M.",
+     :family "Faleiros",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Cristina M.",
+     :family "Del Ben",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marcus L.",
+     :family "Brandão",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2436,13 +2944,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Ryota", :family "Taguchi", :affiliation []}
-    {:given "Kodo", :family "Shikata", :affiliation []}
-    {:given "Yoshiaki", :family "Furuya", :affiliation []}
-    {:given "Tetsuya", :family "Hirakawa", :affiliation []}
-    {:given "Mitsuhiro", :family "Ino", :affiliation []}
-    {:given "Kogyoku", :family "Shin", :affiliation []}
-    {:given "Hisashi", :family "Shibata", :affiliation []}],
+   [{:given "Ryota",
+     :family "Taguchi",
+     :sequence "first",
+     :affiliation []}
+    {:given "Kodo",
+     :family "Shikata",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yoshiaki",
+     :family "Furuya",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tetsuya",
+     :family "Hirakawa",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Mitsuhiro",
+     :family "Ino",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kogyoku",
+     :family "Shin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Hisashi",
+     :family "Shibata",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2536,14 +3065,38 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Camelia E.", :family "Hostinar", :affiliation []}
-    {:given "Richard J.", :family "Davidson", :affiliation []}
-    {:given "Eileen K.", :family "Graham", :affiliation []}
-    {:given "Daniel K.", :family "Mroczek", :affiliation []}
-    {:given "Margie E.", :family "Lachman", :affiliation []}
-    {:given "Teresa E.", :family "Seeman", :affiliation []}
-    {:given "Carien M.", :family "van Reekum", :affiliation []}
-    {:given "Gregory E.", :family "Miller", :affiliation []}],
+   [{:given "Camelia E.",
+     :family "Hostinar",
+     :sequence "first",
+     :affiliation []}
+    {:given "Richard J.",
+     :family "Davidson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Eileen K.",
+     :family "Graham",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Daniel K.",
+     :family "Mroczek",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Margie E.",
+     :family "Lachman",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Teresa E.",
+     :family "Seeman",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Carien M.",
+     :family "van Reekum",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Gregory E.",
+     :family "Miller",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2624,18 +3177,54 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Fabian", :family "Streit", :affiliation []}
-    {:given "Ceren", :family "Akdeniz", :affiliation []}
-    {:given "Leila", :family "Haddad", :affiliation []}
-    {:given "Robert", :family "Kumsta", :affiliation []}
-    {:given "Sonja", :family "Entringer", :affiliation []}
-    {:given "Josef", :family "Frank", :affiliation []}
-    {:given "Ilona S.", :family "Yim", :affiliation []}
-    {:given "Sandra", :family "Zänkert", :affiliation []}
-    {:given "Stephanie H.", :family "Witt", :affiliation []}
-    {:given "Peter", :family "Kirsch", :affiliation []}
-    {:given "Marcella", :family "Rietschel", :affiliation []}
-    {:given "Stefan", :family "Wüst", :affiliation []}],
+   [{:given "Fabian",
+     :family "Streit",
+     :sequence "first",
+     :affiliation []}
+    {:given "Ceren",
+     :family "Akdeniz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Leila",
+     :family "Haddad",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Robert",
+     :family "Kumsta",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sonja",
+     :family "Entringer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Josef",
+     :family "Frank",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ilona S.",
+     :family "Yim",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sandra",
+     :family "Zänkert",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stephanie H.",
+     :family "Witt",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Peter",
+     :family "Kirsch",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marcella",
+     :family "Rietschel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stefan",
+     :family "Wüst",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2716,8 +3305,14 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Amanda P.", :family "Borrow", :affiliation []}
-    {:given "Nicole M.", :family "Cameron", :affiliation []}],
+   [{:given "Amanda P.",
+     :family "Borrow",
+     :sequence "first",
+     :affiliation []}
+    {:given "Nicole M.",
+     :family "Cameron",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2832,12 +3427,27 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "K.", :family "Chun", :affiliation []}
-    {:given "J.P.", :family "Capitanio", :affiliation []}
-    {:given "D.M.", :family "Lamkin", :affiliation []}
-    {:given "E.K.", :family "Sloan", :affiliation []}
-    {:given "J.M.G.", :family "Arevalo", :affiliation []}
-    {:given "S.W.", :family "Cole", :affiliation []}],
+   [{:given "K.", :family "Chun", :sequence "first", :affiliation []}
+    {:given "J.P.",
+     :family "Capitanio",
+     :sequence "additional",
+     :affiliation []}
+    {:given "D.M.",
+     :family "Lamkin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "E.K.",
+     :family "Sloan",
+     :sequence "additional",
+     :affiliation []}
+    {:given "J.M.G.",
+     :family "Arevalo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "S.W.",
+     :family "Cole",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -2926,14 +3536,35 @@
    :prefix "10.1016",
    :volume "78",
    :author
-   [{:given "A.", :family "Flöck", :affiliation []}
-    {:given "S.K.", :family "Weber", :affiliation []}
-    {:given "N.", :family "Ferrari", :affiliation []}
-    {:given "C.", :family "Fietz", :affiliation []}
-    {:given "C.", :family "Graf", :affiliation []}
-    {:given "R.", :family "Fimmers", :affiliation []}
-    {:given "U.", :family "Gembruch", :affiliation []}
-    {:given "W.M.", :family "Merz", :affiliation []}],
+   [{:given "A.", :family "Flöck", :sequence "first", :affiliation []}
+    {:given "S.K.",
+     :family "Weber",
+     :sequence "additional",
+     :affiliation []}
+    {:given "N.",
+     :family "Ferrari",
+     :sequence "additional",
+     :affiliation []}
+    {:given "C.",
+     :family "Fietz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "C.",
+     :family "Graf",
+     :sequence "additional",
+     :affiliation []}
+    {:given "R.",
+     :family "Fimmers",
+     :sequence "additional",
+     :affiliation []}
+    {:given "U.",
+     :family "Gembruch",
+     :sequence "additional",
+     :affiliation []}
+    {:given "W.M.",
+     :family "Merz",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3019,10 +3650,22 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Lycia D.", :family "de Voogd", :affiliation []}
-    {:given "Floris", :family "Klumpers", :affiliation []}
-    {:given "Guillén", :family "Fernández", :affiliation []}
-    {:given "Erno J.", :family "Hermans", :affiliation []}],
+   [{:given "Lycia D.",
+     :family "de Voogd",
+     :sequence "first",
+     :affiliation []}
+    {:given "Floris",
+     :family "Klumpers",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Guillén",
+     :family "Fernández",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Erno J.",
+     :family "Hermans",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3103,13 +3746,34 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Michaela", :family "Schmidt", :affiliation []}
-    {:given "Florian", :family "Lapert", :affiliation []}
-    {:given "Christiane", :family "Brandwein", :affiliation []}
-    {:given "Michael", :family "Deuschle", :affiliation []}
-    {:given "Christian", :family "Kasperk", :affiliation []}
-    {:given "Jasmine M.", :family "Grimsley", :affiliation []}
-    {:given "Peter", :family "Gass", :affiliation []}],
+   [{:given "Michaela",
+     :family "Schmidt",
+     :sequence "first",
+     :affiliation []}
+    {:given "Florian",
+     :family "Lapert",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christiane",
+     :family "Brandwein",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Michael",
+     :family "Deuschle",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christian",
+     :family "Kasperk",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jasmine M.",
+     :family "Grimsley",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Peter",
+     :family "Gass",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3190,14 +3854,35 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "A.", :family "Easter", :affiliation []}
-    {:given "E.", :family "Taborelli", :affiliation []}
-    {:given "A.", :family "Bye", :affiliation []}
-    {:given "P.A.", :family "Zunszain", :affiliation []}
-    {:given "C.M.", :family "Pariante", :affiliation []}
-    {:given "J.", :family "Treasure", :affiliation []}
-    {:given "U.", :family "Schmidt", :affiliation []}
-    {:given "N.", :family "Micali", :affiliation []}],
+   [{:given "A.", :family "Easter", :sequence "first", :affiliation []}
+    {:given "E.",
+     :family "Taborelli",
+     :sequence "additional",
+     :affiliation []}
+    {:given "A.",
+     :family "Bye",
+     :sequence "additional",
+     :affiliation []}
+    {:given "P.A.",
+     :family "Zunszain",
+     :sequence "additional",
+     :affiliation []}
+    {:given "C.M.",
+     :family "Pariante",
+     :sequence "additional",
+     :affiliation []}
+    {:given "J.",
+     :family "Treasure",
+     :sequence "additional",
+     :affiliation []}
+    {:given "U.",
+     :family "Schmidt",
+     :sequence "additional",
+     :affiliation []}
+    {:given "N.",
+     :family "Micali",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3290,12 +3975,30 @@
    :prefix "10.1016",
    :volume "75",
    :author
-   [{:given "Fabian", :family "Probst", :affiliation []}
-    {:given "Juliane", :family "Meng-Hentschel", :affiliation []}
-    {:given "Jessika", :family "Golle", :affiliation []}
-    {:given "Sylvia", :family "Stucki", :affiliation []}
-    {:given "Carola", :family "Akyildiz-Kunz", :affiliation []}
-    {:given "Janek S.", :family "Lobmaier", :affiliation []}],
+   [{:given "Fabian",
+     :family "Probst",
+     :sequence "first",
+     :affiliation []}
+    {:given "Juliane",
+     :family "Meng-Hentschel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jessika",
+     :family "Golle",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sylvia",
+     :family "Stucki",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Carola",
+     :family "Akyildiz-Kunz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Janek S.",
+     :family "Lobmaier",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3376,12 +4079,30 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Cüneyt", :family "Demiralay", :affiliation []}
-    {:given "Agorastos", :family "Agorastos", :affiliation []}
-    {:given "Alexander", :family "Yassouridis", :affiliation []}
-    {:given "Holger", :family "Jahn", :affiliation []}
-    {:given "Klaus", :family "Wiedemann", :affiliation []}
-    {:given "Michael", :family "Kellner", :affiliation []}],
+   [{:given "Cüneyt",
+     :family "Demiralay",
+     :sequence "first",
+     :affiliation []}
+    {:given "Agorastos",
+     :family "Agorastos",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alexander",
+     :family "Yassouridis",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Holger",
+     :family "Jahn",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Klaus",
+     :family "Wiedemann",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Michael",
+     :family "Kellner",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3462,18 +4183,54 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Neus", :family "Salvat-Pujol", :affiliation []}
-    {:given "Javier", :family "Labad", :affiliation []}
-    {:given "Mikel", :family "Urretavizcaya", :affiliation []}
-    {:given "Aida", :family "de Arriba-Arnau", :affiliation []}
-    {:given "Cinto", :family "Segalàs", :affiliation []}
-    {:given "Eva", :family "Real", :affiliation []}
-    {:given "Alex", :family "Ferrer", :affiliation []}
-    {:given "José M.", :family "Crespo", :affiliation []}
-    {:given "Susana", :family "Jiménez-Murcia", :affiliation []}
-    {:given "Carles", :family "Soriano-Mas", :affiliation []}
-    {:given "José M.", :family "Menchón", :affiliation []}
-    {:given "Virginia", :family "Soria", :affiliation []}],
+   [{:given "Neus",
+     :family "Salvat-Pujol",
+     :sequence "first",
+     :affiliation []}
+    {:given "Javier",
+     :family "Labad",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Mikel",
+     :family "Urretavizcaya",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Aida",
+     :family "de Arriba-Arnau",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Cinto",
+     :family "Segalàs",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Eva",
+     :family "Real",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alex",
+     :family "Ferrer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "José M.",
+     :family "Crespo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Susana",
+     :family "Jiménez-Murcia",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Carles",
+     :family "Soriano-Mas",
+     :sequence "additional",
+     :affiliation []}
+    {:given "José M.",
+     :family "Menchón",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Virginia",
+     :family "Soria",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3559,16 +4316,46 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Markus", :family "Gerber", :affiliation []}
-    {:given "Katharina", :family "Endes", :affiliation []}
-    {:given "Serge", :family "Brand", :affiliation []}
-    {:given "Christian", :family "Herrmann", :affiliation []}
-    {:given "Flora", :family "Colledge", :affiliation []}
-    {:given "Lars", :family "Donath", :affiliation []}
-    {:given "Oliver", :family "Faude", :affiliation []}
-    {:given "Uwe", :family "Pühse", :affiliation []}
-    {:given "Henner", :family "Hanssen", :affiliation []}
-    {:given "Lukas", :family "Zahner", :affiliation []}],
+   [{:given "Markus",
+     :family "Gerber",
+     :sequence "first",
+     :affiliation []}
+    {:given "Katharina",
+     :family "Endes",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Serge",
+     :family "Brand",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christian",
+     :family "Herrmann",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Flora",
+     :family "Colledge",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lars",
+     :family "Donath",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Oliver",
+     :family "Faude",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Uwe",
+     :family "Pühse",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Henner",
+     :family "Hanssen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lukas",
+     :family "Zahner",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3649,13 +4436,34 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Paul L.", :family "Plener", :affiliation []}
-    {:given "Katrin", :family "Zohsel", :affiliation []}
-    {:given "Erika", :family "Hohm", :affiliation []}
-    {:given "Arlette F.", :family "Buchmann", :affiliation []}
-    {:given "T.", :family "Banaschewski", :affiliation []}
-    {:given "Ulrich S.", :family "Zimmermann", :affiliation []}
-    {:given "Manfred", :family "Laucht", :affiliation []}],
+   [{:given "Paul L.",
+     :family "Plener",
+     :sequence "first",
+     :affiliation []}
+    {:given "Katrin",
+     :family "Zohsel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Erika",
+     :family "Hohm",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Arlette F.",
+     :family "Buchmann",
+     :sequence "additional",
+     :affiliation []}
+    {:given "T.",
+     :family "Banaschewski",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ulrich S.",
+     :family "Zimmermann",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Manfred",
+     :family "Laucht",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3736,9 +4544,18 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Norbert", :family "Zmyj", :affiliation []}
-    {:given "Silvia", :family "Schneider", :affiliation []}
-    {:given "Sabine", :family "Seehagen", :affiliation []}],
+   [{:given "Norbert",
+     :family "Zmyj",
+     :sequence "first",
+     :affiliation []}
+    {:given "Silvia",
+     :family "Schneider",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sabine",
+     :family "Seehagen",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3826,14 +4643,38 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Susanne", :family "Fischer", :affiliation []}
-    {:given "Roman", :family "Duncko", :affiliation []}
-    {:given "Stephani L.", :family "Hatch", :affiliation []}
-    {:given "Andrew", :family "Papadopoulos", :affiliation []}
-    {:given "Laura", :family "Goodwin", :affiliation []}
-    {:given "Souci", :family "Frissa", :affiliation []}
-    {:given "Matthew", :family "Hotopf", :affiliation []}
-    {:given "Anthony J.", :family "Cleare", :affiliation []}],
+   [{:given "Susanne",
+     :family "Fischer",
+     :sequence "first",
+     :affiliation []}
+    {:given "Roman",
+     :family "Duncko",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stephani L.",
+     :family "Hatch",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Andrew",
+     :family "Papadopoulos",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Laura",
+     :family "Goodwin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Souci",
+     :family "Frissa",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Matthew",
+     :family "Hotopf",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Anthony J.",
+     :family "Cleare",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -3914,14 +4755,38 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Raffaele", :family "Cacciaglia", :affiliation []}
-    {:given "Frauke", :family "Nees", :affiliation []}
-    {:given "Oliver", :family "Grimm", :affiliation []}
-    {:given "Stephanie", :family "Ridder", :affiliation []}
-    {:given "Sebastian T.", :family "Pohlack", :affiliation []}
-    {:given "Slawomira J.", :family "Diener", :affiliation []}
-    {:given "Claudia", :family "Liebscher", :affiliation []}
-    {:given "Herta", :family "Flor", :affiliation []}],
+   [{:given "Raffaele",
+     :family "Cacciaglia",
+     :sequence "first",
+     :affiliation []}
+    {:given "Frauke",
+     :family "Nees",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Oliver",
+     :family "Grimm",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stephanie",
+     :family "Ridder",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sebastian T.",
+     :family "Pohlack",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Slawomira J.",
+     :family "Diener",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Claudia",
+     :family "Liebscher",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Herta",
+     :family "Flor",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4002,17 +4867,50 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Yin Ting", :family "Cheung", :affiliation []}
-    {:given "Wassim", :family "Chemaitilly", :affiliation []}
-    {:given "Daniel A.", :family "Mulrooney", :affiliation []}
-    {:given "Tara M.", :family "Brinkman", :affiliation []}
-    {:given "Wei", :family "Liu", :affiliation []}
-    {:given "Pia", :family "Banerjee", :affiliation []}
-    {:given "Deokumar", :family "Srivastava", :affiliation []}
-    {:given "Ching-Hon", :family "Pui", :affiliation []}
-    {:given "Leslie L.", :family "Robison", :affiliation []}
-    {:given "Melissa M.", :family "Hudson", :affiliation []}
-    {:given "Kevin R.", :family "Krull", :affiliation []}],
+   [{:given "Yin Ting",
+     :family "Cheung",
+     :sequence "first",
+     :affiliation []}
+    {:given "Wassim",
+     :family "Chemaitilly",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Daniel A.",
+     :family "Mulrooney",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tara M.",
+     :family "Brinkman",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wei",
+     :family "Liu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Pia",
+     :family "Banerjee",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Deokumar",
+     :family "Srivastava",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ching-Hon",
+     :family "Pui",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Leslie L.",
+     :family "Robison",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Melissa M.",
+     :family "Hudson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kevin R.",
+     :family "Krull",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4096,12 +4994,30 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Chuan-Chia", :family "Chang", :affiliation []}
-    {:given "Wen-Hui", :family "Fang", :affiliation []}
-    {:given "Hsin-An", :family "Chang", :affiliation []}
-    {:given "Tieh-Ching", :family "Chang", :affiliation []}
-    {:given "Jia-Fwa", :family "Shyu", :affiliation []}
-    {:given "San-Yuan", :family "Huang", :affiliation []}],
+   [{:given "Chuan-Chia",
+     :family "Chang",
+     :sequence "first",
+     :affiliation []}
+    {:given "Wen-Hui",
+     :family "Fang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Hsin-An",
+     :family "Chang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tieh-Ching",
+     :family "Chang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jia-Fwa",
+     :family "Shyu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "San-Yuan",
+     :family "Huang",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4189,13 +5105,34 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Marie-Laure", :family "Ancelin", :affiliation []}
-    {:given "Jacqueline", :family "Scali", :affiliation []}
-    {:given "Joanna", :family "Norton", :affiliation []}
-    {:given "Karen", :family "Ritchie", :affiliation []}
-    {:given "Anne-Marie", :family "Dupuy", :affiliation []}
-    {:given "Isabelle", :family "Chaudieu", :affiliation []}
-    {:given "Joanne", :family "Ryan", :affiliation []}],
+   [{:given "Marie-Laure",
+     :family "Ancelin",
+     :sequence "first",
+     :affiliation []}
+    {:given "Jacqueline",
+     :family "Scali",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Joanna",
+     :family "Norton",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Karen",
+     :family "Ritchie",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Anne-Marie",
+     :family "Dupuy",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Isabelle",
+     :family "Chaudieu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Joanne",
+     :family "Ryan",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4276,10 +5213,22 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Korrina A.", :family "Duffy", :affiliation []}
-    {:given "Lasana T.", :family "Harris", :affiliation []}
-    {:given "Tanya L.", :family "Chartrand", :affiliation []}
-    {:given "Steven J.", :family "Stanton", :affiliation []}],
+   [{:given "Korrina A.",
+     :family "Duffy",
+     :sequence "first",
+     :affiliation []}
+    {:given "Lasana T.",
+     :family "Harris",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tanya L.",
+     :family "Chartrand",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Steven J.",
+     :family "Stanton",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4384,11 +5333,26 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Jessica", :family "Raper", :affiliation []}
-    {:given "Mark", :family "Wilson", :affiliation []}
-    {:given "Mar", :family "Sanchez", :affiliation []}
-    {:given "Christa", :family "Payne", :affiliation []}
-    {:given "Jocelyne", :family "Bachevalier", :affiliation []}],
+   [{:given "Jessica",
+     :family "Raper",
+     :sequence "first",
+     :affiliation []}
+    {:given "Mark",
+     :family "Wilson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Mar",
+     :family "Sanchez",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christa",
+     :family "Payne",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jocelyne",
+     :family "Bachevalier",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4469,10 +5433,22 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Jennifer", :family "Lymer", :affiliation []}
-    {:given "Alana", :family "Robinson", :affiliation []}
-    {:given "Boyer D.", :family "Winters", :affiliation []}
-    {:given "Elena", :family "Choleris", :affiliation []}],
+   [{:given "Jennifer",
+     :family "Lymer",
+     :sequence "first",
+     :affiliation []}
+    {:given "Alana",
+     :family "Robinson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Boyer D.",
+     :family "Winters",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Elena",
+     :family "Choleris",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4553,14 +5529,38 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Yufang", :family "Guo", :affiliation []}
-    {:given "Louisa", :family "Lam", :affiliation []}
-    {:given "Yuanhui", :family "Luo", :affiliation []}
-    {:given "Virginia", :family "Plummer", :affiliation []}
-    {:given "Wendy", :family "Cross", :affiliation []}
-    {:given "Hui", :family "Li", :affiliation []}
-    {:given "Yizhen", :family "Yin", :affiliation []}
-    {:given "Jingping", :family "Zhang", :affiliation []}],
+   [{:given "Yufang",
+     :family "Guo",
+     :sequence "first",
+     :affiliation []}
+    {:given "Louisa",
+     :family "Lam",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yuanhui",
+     :family "Luo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Virginia",
+     :family "Plummer",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wendy",
+     :family "Cross",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Hui",
+     :family "Li",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yizhen",
+     :family "Yin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jingping",
+     :family "Zhang",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4658,14 +5658,38 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Joshua", :family "Chiappelli", :affiliation []}
-    {:given "Peter", :family "Kochunov", :affiliation []}
-    {:given "Anya", :family "Savransky", :affiliation []}
-    {:given "Feven", :family "Fisseha", :affiliation []}
-    {:given "Krista", :family "Wisner", :affiliation []}
-    {:given "Xiaoming", :family "Du", :affiliation []}
-    {:given "Laura M.", :family "Rowland", :affiliation []}
-    {:given "L. Elliot", :family "Hong", :affiliation []}],
+   [{:given "Joshua",
+     :family "Chiappelli",
+     :sequence "first",
+     :affiliation []}
+    {:given "Peter",
+     :family "Kochunov",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Anya",
+     :family "Savransky",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Feven",
+     :family "Fisseha",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Krista",
+     :family "Wisner",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Xiaoming",
+     :family "Du",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Laura M.",
+     :family "Rowland",
+     :sequence "additional",
+     :affiliation []}
+    {:given "L. Elliot",
+     :family "Hong",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4746,9 +5770,18 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Sarah", :family "Ketay", :affiliation []}
-    {:given "Keith M.", :family "Welker", :affiliation []}
-    {:given "Richard B.", :family "Slatcher", :affiliation []}],
+   [{:given "Sarah",
+     :family "Ketay",
+     :sequence "first",
+     :affiliation []}
+    {:given "Keith M.",
+     :family "Welker",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Richard B.",
+     :family "Slatcher",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4834,12 +5867,30 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Leslie E.", :family "Roos", :affiliation []}
-    {:given "Ryan J.", :family "Giuliano", :affiliation []}
-    {:given "Kathryn G.", :family "Beauchamp", :affiliation []}
-    {:given "Megan", :family "Gunnar", :affiliation []}
-    {:given "Brigette", :family "Amidon", :affiliation []}
-    {:given "Philip A.", :family "Fisher", :affiliation []}],
+   [{:given "Leslie E.",
+     :family "Roos",
+     :sequence "first",
+     :affiliation []}
+    {:given "Ryan J.",
+     :family "Giuliano",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kathryn G.",
+     :family "Beauchamp",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Megan",
+     :family "Gunnar",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Brigette",
+     :family "Amidon",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Philip A.",
+     :family "Fisher",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -4929,13 +5980,34 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Lucy S.", :family "King", :affiliation []}
-    {:given "Natalie L.", :family "Colich", :affiliation []}
-    {:given "Joelle", :family "LeMoult", :affiliation []}
-    {:given "Kathryn L.", :family "Humphreys", :affiliation []}
-    {:given "Sarah J.", :family "Ordaz", :affiliation []}
-    {:given "Alexandria N.", :family "Price", :affiliation []}
-    {:given "Ian H.", :family "Gotlib", :affiliation []}],
+   [{:given "Lucy S.",
+     :family "King",
+     :sequence "first",
+     :affiliation []}
+    {:given "Natalie L.",
+     :family "Colich",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Joelle",
+     :family "LeMoult",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kathryn L.",
+     :family "Humphreys",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sarah J.",
+     :family "Ordaz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Alexandria N.",
+     :family "Price",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ian H.",
+     :family "Gotlib",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5016,9 +6088,15 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Fang", :family "Tang", :affiliation []}
-    {:given "Gangpu", :family "Wang", :affiliation []}
-    {:given "Ying", :family "Lian", :affiliation []}],
+   [{:given "Fang", :family "Tang", :sequence "first", :affiliation []}
+    {:given "Gangpu",
+     :family "Wang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ying",
+     :family "Lian",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5109,17 +6187,50 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Juan-Li", :family "Wu", :affiliation []}
-    {:given "Yang", :family "He", :affiliation []}
-    {:given "Radovan", :family "Hrubý", :affiliation []}
-    {:given "Rawien", :family "Balesar", :affiliation []}
-    {:given "Yang-Jian", :family "Qi", :affiliation []}
-    {:given "Lei", :family "Guo", :affiliation []}
-    {:given "Zhong", :family "Ren", :affiliation []}
-    {:given "Qiong-Bin", :family "Zhu", :affiliation []}
-    {:given "Man-Li", :family "Huang", :affiliation []}
-    {:given "Dick F.", :family "Swaab", :affiliation []}
-    {:given "Ai-Min", :family "Bao", :affiliation []}],
+   [{:given "Juan-Li",
+     :family "Wu",
+     :sequence "first",
+     :affiliation []}
+    {:given "Yang",
+     :family "He",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Radovan",
+     :family "Hrubý",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rawien",
+     :family "Balesar",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yang-Jian",
+     :family "Qi",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lei",
+     :family "Guo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Zhong",
+     :family "Ren",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Qiong-Bin",
+     :family "Zhu",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Man-Li",
+     :family "Huang",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Dick F.",
+     :family "Swaab",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ai-Min",
+     :family "Bao",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5200,8 +6311,14 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Shira", :family "Meir Drexler", :affiliation []}
-    {:given "Oliver T.", :family "Wolf", :affiliation []}],
+   [{:given "Shira",
+     :family "Meir Drexler",
+     :sequence "first",
+     :affiliation []}
+    {:given "Oliver T.",
+     :family "Wolf",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5282,13 +6399,34 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Marie-Thérèse", :family "Traversy", :affiliation []}
-    {:given "Milène", :family "Vandal", :affiliation []}
-    {:given "Cyntia", :family "Tremblay", :affiliation []}
-    {:given "Marine", :family "Tournissac", :affiliation []}
-    {:given "Ariane", :family "Giguère-Rancourt", :affiliation []}
-    {:given "A. David", :family "Bennett", :affiliation []}
-    {:given "Frédéric", :family "Calon", :affiliation []}],
+   [{:given "Marie-Thérèse",
+     :family "Traversy",
+     :sequence "first",
+     :affiliation []}
+    {:given "Milène",
+     :family "Vandal",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Cyntia",
+     :family "Tremblay",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marine",
+     :family "Tournissac",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ariane",
+     :family "Giguère-Rancourt",
+     :sequence "additional",
+     :affiliation []}
+    {:given "A. David",
+     :family "Bennett",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Frédéric",
+     :family "Calon",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5381,13 +6519,31 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "D.", :family "Hough", :affiliation []}
-    {:given "M.", :family "Bellingham", :affiliation []}
-    {:given "I.R.", :family "Haraldsen", :affiliation []}
-    {:given "M.", :family "McLaughlin", :affiliation []}
-    {:given "J.E.", :family "Robinson", :affiliation []}
-    {:given "A.K.", :family "Solbakk", :affiliation []}
-    {:given "N.P.", :family "Evans", :affiliation []}],
+   [{:given "D.", :family "Hough", :sequence "first", :affiliation []}
+    {:given "M.",
+     :family "Bellingham",
+     :sequence "additional",
+     :affiliation []}
+    {:given "I.R.",
+     :family "Haraldsen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "M.",
+     :family "McLaughlin",
+     :sequence "additional",
+     :affiliation []}
+    {:given "J.E.",
+     :family "Robinson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "A.K.",
+     :family "Solbakk",
+     :sequence "additional",
+     :affiliation []}
+    {:given "N.P.",
+     :family "Evans",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5468,10 +6624,22 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Susann", :family "Wichmann", :affiliation []}
-    {:given "Clemens", :family "Kirschbaum", :affiliation []}
-    {:given "Thomas", :family "Lorenz", :affiliation []}
-    {:given "Katja", :family "Petrowski", :affiliation []}],
+   [{:given "Susann",
+     :family "Wichmann",
+     :sequence "first",
+     :affiliation []}
+    {:given "Clemens",
+     :family "Kirschbaum",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Thomas",
+     :family "Lorenz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Katja",
+     :family "Petrowski",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5569,19 +6737,58 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Daniel", :family "Lindqvist", :affiliation []}
-    {:given "Firdaus S.", :family "Dhabhar", :affiliation []}
-    {:given "S. Jill", :family "James", :affiliation []}
-    {:given "Christina M.", :family "Hough", :affiliation []}
-    {:given "Felipe A.", :family "Jain", :affiliation []}
-    {:given "F. Saverio", :family "Bersani", :affiliation []}
-    {:given "Victor I.", :family "Reus", :affiliation []}
-    {:given "Josine E.", :family "Verhoeven", :affiliation []}
-    {:given "Elissa S.", :family "Epel", :affiliation []}
-    {:given "Laura", :family "Mahan", :affiliation []}
-    {:given "Rebecca", :family "Rosser", :affiliation []}
-    {:given "Owen M.", :family "Wolkowitz", :affiliation []}
-    {:given "Synthia H.", :family "Mellon", :affiliation []}],
+   [{:given "Daniel",
+     :family "Lindqvist",
+     :sequence "first",
+     :affiliation []}
+    {:given "Firdaus S.",
+     :family "Dhabhar",
+     :sequence "additional",
+     :affiliation []}
+    {:given "S. Jill",
+     :family "James",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christina M.",
+     :family "Hough",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Felipe A.",
+     :family "Jain",
+     :sequence "additional",
+     :affiliation []}
+    {:given "F. Saverio",
+     :family "Bersani",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Victor I.",
+     :family "Reus",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Josine E.",
+     :family "Verhoeven",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Elissa S.",
+     :family "Epel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Laura",
+     :family "Mahan",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rebecca",
+     :family "Rosser",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Owen M.",
+     :family "Wolkowitz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Synthia H.",
+     :family "Mellon",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5662,10 +6869,22 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Audrey", :family "Torcaso", :affiliation []}
-    {:given "AnnaDorothea", :family "Asimes", :affiliation []}
-    {:given "Margaret", :family "Meagher", :affiliation []}
-    {:given "Toni R.", :family "Pak", :affiliation []}],
+   [{:given "Audrey",
+     :family "Torcaso",
+     :sequence "first",
+     :affiliation []}
+    {:given "AnnaDorothea",
+     :family "Asimes",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Margaret",
+     :family "Meagher",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Toni R.",
+     :family "Pak",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5751,17 +6970,50 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Cecilia", :family "Lundin", :affiliation []}
-    {:given "Kristina Gemzell", :family "Danielsson", :affiliation []}
-    {:given "Marie", :family "Bixo", :affiliation []}
-    {:given "Lena", :family "Moby", :affiliation []}
-    {:given "Hanna", :family "Bengtsdotter", :affiliation []}
-    {:given "Izabella", :family "Jawad", :affiliation []}
-    {:given "Lena", :family "Marions", :affiliation []}
-    {:given "Jan", :family "Brynhildsen", :affiliation []}
-    {:given "Agota", :family "Malmborg", :affiliation []}
-    {:given "Ingela", :family "Lindh", :affiliation []}
-    {:given "Inger", :family "Sundström Poromaa", :affiliation []}],
+   [{:given "Cecilia",
+     :family "Lundin",
+     :sequence "first",
+     :affiliation []}
+    {:given "Kristina Gemzell",
+     :family "Danielsson",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marie",
+     :family "Bixo",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lena",
+     :family "Moby",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Hanna",
+     :family "Bengtsdotter",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Izabella",
+     :family "Jawad",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Lena",
+     :family "Marions",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jan",
+     :family "Brynhildsen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Agota",
+     :family "Malmborg",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ingela",
+     :family "Lindh",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Inger",
+     :family "Sundström Poromaa",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5842,18 +7094,54 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Doris", :family "Payer", :affiliation []}
-    {:given "Belinda", :family "Williams", :affiliation []}
-    {:given "Esmaeil", :family "Mansouri", :affiliation []}
-    {:given "Suzanna", :family "Stevanovski", :affiliation []}
-    {:given "Shinichiro", :family "Nakajima", :affiliation []}
-    {:given "Bernard", :family "Le Foll", :affiliation []}
-    {:given "Stephen", :family "Kish", :affiliation []}
-    {:given "Sylvain", :family "Houle", :affiliation []}
-    {:given "Romina", :family "Mizrahi", :affiliation []}
-    {:given "Susan R.", :family "George", :affiliation []}
-    {:given "Tony P.", :family "George", :affiliation []}
-    {:given "Isabelle", :family "Boileau", :affiliation []}],
+   [{:given "Doris",
+     :family "Payer",
+     :sequence "first",
+     :affiliation []}
+    {:given "Belinda",
+     :family "Williams",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Esmaeil",
+     :family "Mansouri",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Suzanna",
+     :family "Stevanovski",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Shinichiro",
+     :family "Nakajima",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Bernard",
+     :family "Le Foll",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stephen",
+     :family "Kish",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Sylvain",
+     :family "Houle",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Romina",
+     :family "Mizrahi",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Susan R.",
+     :family "George",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Tony P.",
+     :family "George",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Isabelle",
+     :family "Boileau",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -5934,17 +7222,50 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Christina M.", :family "Hough", :affiliation []}
-    {:given "Daniel", :family "Lindqvist", :affiliation []}
-    {:given "Elissa S.", :family "Epel", :affiliation []}
-    {:given "Molly St.", :family "Denis", :affiliation []}
-    {:given "Victor I.", :family "Reus", :affiliation []}
-    {:given "F. Saverio", :family "Bersani", :affiliation []}
-    {:given "Rebecca", :family "Rosser", :affiliation []}
-    {:given "Laura", :family "Mahan", :affiliation []}
-    {:given "Heather M.", :family "Burke", :affiliation []}
-    {:given "Owen M.", :family "Wolkowitz", :affiliation []}
-    {:given "Synthia H.", :family "Mellon", :affiliation []}],
+   [{:given "Christina M.",
+     :family "Hough",
+     :sequence "first",
+     :affiliation []}
+    {:given "Daniel",
+     :family "Lindqvist",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Elissa S.",
+     :family "Epel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Molly St.",
+     :family "Denis",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Victor I.",
+     :family "Reus",
+     :sequence "additional",
+     :affiliation []}
+    {:given "F. Saverio",
+     :family "Bersani",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rebecca",
+     :family "Rosser",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Laura",
+     :family "Mahan",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Heather M.",
+     :family "Burke",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Owen M.",
+     :family "Wolkowitz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Synthia H.",
+     :family "Mellon",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6025,12 +7346,30 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Jelle V.", :family "Zorn", :affiliation []}
-    {:given "Remmelt R.", :family "Schür", :affiliation []}
-    {:given "Marco P.", :family "Boks", :affiliation []}
-    {:given "René S.", :family "Kahn", :affiliation []}
-    {:given "Marian", :family "Joëls", :affiliation []}
-    {:given "Christiaan H.", :family "Vinkers", :affiliation []}],
+   [{:given "Jelle V.",
+     :family "Zorn",
+     :sequence "first",
+     :affiliation []}
+    {:given "Remmelt R.",
+     :family "Schür",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marco P.",
+     :family "Boks",
+     :sequence "additional",
+     :affiliation []}
+    {:given "René S.",
+     :family "Kahn",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Marian",
+     :family "Joëls",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christiaan H.",
+     :family "Vinkers",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6112,11 +7451,26 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Danielle A.", :family "Hamstra", :affiliation []}
-    {:given "E. Ronald", :family "de Kloet", :affiliation []}
-    {:given "Ina", :family "Quataert", :affiliation []}
-    {:given "Myrthe", :family "Jansen", :affiliation []}
-    {:given "Willem", :family "Van der Does", :affiliation []}],
+   [{:given "Danielle A.",
+     :family "Hamstra",
+     :sequence "first",
+     :affiliation []}
+    {:given "E. Ronald",
+     :family "de Kloet",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Ina",
+     :family "Quataert",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Myrthe",
+     :family "Jansen",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Willem",
+     :family "Van der Does",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6197,10 +7551,22 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Katie", :family "Daughters", :affiliation []}
-    {:given "Antony S.R.", :family "Manstead", :affiliation []}
-    {:given "Femke S.", :family "Ten Velden", :affiliation []}
-    {:given "Carsten K.W.", :family "De Dreu", :affiliation []}],
+   [{:given "Katie",
+     :family "Daughters",
+     :sequence "first",
+     :affiliation []}
+    {:given "Antony S.R.",
+     :family "Manstead",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Femke S.",
+     :family "Ten Velden",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Carsten K.W.",
+     :family "De Dreu",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6286,13 +7652,34 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Brittany L.", :family "Smith", :affiliation []}
-    {:given "Carey E.", :family "Lyons", :affiliation []}
-    {:given "Fernanda Guilhaume", :family "Correa", :affiliation []}
-    {:given "Stephen C.", :family "Benoit", :affiliation []}
-    {:given "Brent", :family "Myers", :affiliation []}
-    {:given "Matia B.", :family "Solomon", :affiliation []}
-    {:given "James P.", :family "Herman", :affiliation []}],
+   [{:given "Brittany L.",
+     :family "Smith",
+     :sequence "first",
+     :affiliation []}
+    {:given "Carey E.",
+     :family "Lyons",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Fernanda Guilhaume",
+     :family "Correa",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Stephen C.",
+     :family "Benoit",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Brent",
+     :family "Myers",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Matia B.",
+     :family "Solomon",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James P.",
+     :family "Herman",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6380,11 +7767,26 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Hubert R.", :family "Dinse", :affiliation []}
-    {:given "J.C.", :family "Kattenstroth", :affiliation []}
-    {:given "M.", :family "Lenz", :affiliation []}
-    {:given "M.", :family "Tegenthoff", :affiliation []}
-    {:given "O.T.", :family "Wolf", :affiliation []}],
+   [{:given "Hubert R.",
+     :family "Dinse",
+     :sequence "first",
+     :affiliation []}
+    {:given "J.C.",
+     :family "Kattenstroth",
+     :sequence "additional",
+     :affiliation []}
+    {:given "M.",
+     :family "Lenz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "M.",
+     :family "Tegenthoff",
+     :sequence "additional",
+     :affiliation []}
+    {:given "O.T.",
+     :family "Wolf",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6465,17 +7867,50 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Krystyna", :family "Wasilewska", :affiliation []}
-    {:given "Aleksandra", :family "Pawlak", :affiliation []}
-    {:given "Grażyna", :family "Kostrzewa", :affiliation []}
-    {:given "Agnieszka", :family "Sobczyk-Kopcioł", :affiliation []}
-    {:given "Aleksandra", :family "Kaczorowska", :affiliation []}
-    {:given "Jarosław", :family "Badowski", :affiliation []}
-    {:given "Małgorzata", :family "Brzozowska", :affiliation []}
-    {:given "Wojciech", :family "Drygas", :affiliation []}
-    {:given "Jerzy", :family "Piwoński", :affiliation []}
-    {:given "Wojciech", :family "Bielecki", :affiliation []}
-    {:given "Rafał", :family "Płoski", :affiliation []}],
+   [{:given "Krystyna",
+     :family "Wasilewska",
+     :sequence "first",
+     :affiliation []}
+    {:given "Aleksandra",
+     :family "Pawlak",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Grażyna",
+     :family "Kostrzewa",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Agnieszka",
+     :family "Sobczyk-Kopcioł",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Aleksandra",
+     :family "Kaczorowska",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jarosław",
+     :family "Badowski",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Małgorzata",
+     :family "Brzozowska",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wojciech",
+     :family "Drygas",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Jerzy",
+     :family "Piwoński",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Wojciech",
+     :family "Bielecki",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rafał",
+     :family "Płoski",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6556,9 +7991,18 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Courtney M.", :family "Keller", :affiliation []}
-    {:given "Kelly N.", :family "Breaux", :affiliation []}
-    {:given "Nicholas E.", :family "Goeders", :affiliation []}],
+   [{:given "Courtney M.",
+     :family "Keller",
+     :sequence "first",
+     :affiliation []}
+    {:given "Kelly N.",
+     :family "Breaux",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Nicholas E.",
+     :family "Goeders",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6650,15 +8094,42 @@
    :prefix "10.1016",
    :volume "76",
    :author
-   [{:given "Tuong-Vi", :family "Nguyen", :affiliation []}
-    {:given "Jimin", :family "Lew", :affiliation []}
-    {:given "Matthew D.", :family "Albaugh", :affiliation []}
-    {:given "Kelly N.", :family "Botteron", :affiliation []}
-    {:given "James J.", :family "Hudziak", :affiliation []}
-    {:given "Vladimir S.", :family "Fonov", :affiliation []}
-    {:given "D. Louis", :family "Collins", :affiliation []}
-    {:given "Simon", :family "Ducharme", :affiliation []}
-    {:given "James T.", :family "McCracken", :affiliation []}],
+   [{:given "Tuong-Vi",
+     :family "Nguyen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Jimin",
+     :family "Lew",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Matthew D.",
+     :family "Albaugh",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kelly N.",
+     :family "Botteron",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James J.",
+     :family "Hudziak",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Vladimir S.",
+     :family "Fonov",
+     :sequence "additional",
+     :affiliation []}
+    {:given "D. Louis",
+     :family "Collins",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Simon",
+     :family "Ducharme",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James T.",
+     :family "McCracken",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6739,10 +8210,22 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Luz", :family "Torner", :affiliation []}
-    {:given "Paul M.", :family "Plotsky", :affiliation []}
-    {:given "Inga D.", :family "Neumann", :affiliation []}
-    {:given "Trynke R.", :family "de Jong", :affiliation []}],
+   [{:given "Luz",
+     :family "Torner",
+     :sequence "first",
+     :affiliation []}
+    {:given "Paul M.",
+     :family "Plotsky",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Inga D.",
+     :family "Neumann",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Trynke R.",
+     :family "de Jong",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link
@@ -6824,11 +8307,18 @@
    :prefix "10.1016",
    :volume "77",
    :author
-   [{:given "Marion", :family "Fournier", :affiliation []}
+   [{:given "Marion",
+     :family "Fournier",
+     :sequence "first",
+     :affiliation []}
     {:given "Fabienne",
      :family "d’Arripe- Longueville",
+     :sequence "additional",
      :affiliation []}
-    {:given "Rémi", :family "Radel", :affiliation []}],
+    {:given "Rémi",
+     :family "Radel",
+     :sequence "additional",
+     :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
    :link

@@ -26,6 +26,7 @@
      :authenticated-orcid false,
      :given "Xiaoguang",
      :family "Fang",
+     :sequence "first"
      :affiliation []}],
    :member "291",
    :review
