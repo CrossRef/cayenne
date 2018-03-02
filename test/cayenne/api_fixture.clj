@@ -1,24 +1,16 @@
 (ns cayenne.api-fixture
   (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
-            [cayenne.conf :refer [start-core! stop-core! set-param! with-core]]
+            [cayenne.conf :refer [set-param! with-core]]
             [cayenne.tasks :refer [load-journals load-last-day-works]]
             [cayenne.tasks.coverage :refer [check-journals]]
             [cayenne.tasks.solr :refer [start-insert-list-processing]]
             [clojure.java.io :refer [resource]]
-            [clojure.java.shell :refer [sh]]
             [clj-http.client :as http]
             [me.raynes.fs :refer [copy-dir delete-dir]]
             [nio2.io :refer [path]]
-            [nio2.dir-seq :refer [dir-seq-glob]]
-            [somnium.congomongo :as m]))
+            [nio2.dir-seq :refer [dir-seq-glob]]))
 
 (defonce api-root "http://localhost:3000")
-
-(defn- solr-ready? []
-  (try
-    (= 200 (:status (http/get "http://localhost:8983/solr/crmds1/admin/ping")))
-    (catch Exception e
-      false)))
 
 (defn solr-doc-count []
   (-> (http/get "http://localhost:8983/solr/admin/cores?action=STATUS&wt=json" {:as :json})
@@ -28,35 +20,14 @@
       :index
       :numDocs))
 
-(defn- mongo-ready? []
-  (try
-    (let [conn (m/make-connection "crossref" :host "127.0.0.1" :port 27017)
-          databases (m/with-mongo conn
-                      (m/databases))]
-      (m/close-connection conn)
-      databases)
-    (catch Exception e
-      false)))
-
 (defn api-with [with-f]
   (fn [f]
     (try 
-      (sh 
-        "docker-compose" "up" "-d" "mongo" "solr" 
-        :env { "CAYENNE_SOLR_HOST" "cayenne_solr_1:8983" 
-              "MONGO_HOST" "cayenne_mongo_1:27017"})
-      ;; wait for solr to start, sometimes takes a while to load the core
-      (while (or (not (solr-ready?))
-                 (not (mongo-ready?)))
-        (println "Waiting for solr and mongo to be ready..")
-        (Thread/sleep 500))
-      (start-core! :default :api)
+      (user/start) 
       (with-f)
       (f)
       (finally
-        (stop-core! :default)
-        (Thread/sleep 2000)
-        (sh "docker-compose" "down")))))
+        (user/stop)))))
 
 (defn api-get [route]
   (let [message (-> (http/get (str api-root route) {:as :json})
