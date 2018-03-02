@@ -684,10 +684,6 @@
   (let [domains (xml/xselect item-loc :> "crossmark" "crossmark_domains" "crossmark_domain")]
     (map #(string/trim (xml/xselect1 % :text)) domains)))
 
-(defn parse-resource-domain [item-loc]
-  (when-let [domain (xml/xselect1 item-loc "doi_data" "resource" :text)]
-    (last (re-find #"//(.+?)/" domain))))
-
 (def update-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
 (defn parse-update-date [update-loc]
@@ -876,7 +872,6 @@
 (defn parse-peer-review [peer-review-loc]
   (when peer-review-loc
     (-> (parse-item peer-review-loc)
-        (parse-attach :domains peer-review-loc :single parse-resource-domain)
         (parse-attach :author peer-review-loc :multi (partial parse-item-contributors "reviewer"))
         (parse-attach :published (xml/xselect1 peer-review-loc "review_date") :single parse-date)
         (conj (parse-review peer-review-loc))

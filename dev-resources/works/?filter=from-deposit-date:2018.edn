@@ -8,7 +8,7 @@
     :acronym ["PI"]},
    :reference-count 0,
    :publisher "Rockefeller University Press",
-   :content-domain {:domain ["peerj.com"]},
+   :content-domain {:domain []},
    :published-print {:date-parts [[2017 4 19]]},
    :DOI "10.7287/peerj.2196v0.1/reviews/2",
    :type "peer-review",
