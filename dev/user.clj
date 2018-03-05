@@ -21,10 +21,15 @@
       false)))
 
 (defn start []
-  (sh 
-    "docker-compose" "up" "-d" "mongo" "solr" 
-    :env { "CAYENNE_SOLR_HOST" "cayenne_solr_1:8983" 
-          "MONGO_HOST" "cayenne_mongo_1:27017"})
+  (let [result
+    (sh "docker-compose" "up" "-d" "mongo" "solr"
+        :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
+              "MONGO_HOST" "cayenne_mongo_1:27017"})]
+    (when-not (-> result :exit zero?)
+      (println "Error starting Docker Compose:")
+      (println result)))
+
+
   ;; wait for solr to start, sometimes takes a while to load the core
   (while (or (not (solr-ready?))
              (not (mongo-ready?)))
@@ -42,4 +47,3 @@
   (start-core! :default :api))
 
 (def system @cores)
-   
