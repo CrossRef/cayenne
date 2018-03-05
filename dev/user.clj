@@ -24,6 +24,7 @@
   (let [result
     (sh "docker-compose" "up" "-d" "mongo" "solr"
         :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
+              "PATH" (System/getenv "PATH")
               "MONGO_HOST" "cayenne_mongo_1:27017"})]
     (when-not (-> result :exit zero?)
       (println "Error starting Docker Compose:")
