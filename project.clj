@@ -11,6 +11,8 @@
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}
   :profiles {:uberjar {:aot :all}
+             :dev {:source-paths ["dev"]
+                   :resource-paths ["dev-resources"]}
              :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
                                                :creds :gpg}}
@@ -29,11 +31,12 @@
                  [xml-apis "1.4.01"]
                  [metrics-clojure "1.0.1"]
                  [metrics-clojure-ring "1.0.1"]
+                 [me.raynes/fs "1.4.6"]
                  [com.taoensso/timbre "3.4.0"]
                  [irclj "0.5.0-alpha2"]
                  [org.apache.solr/solr-solrj "6.4.2"]
                  [clojurewerkz/quartzite "1.0.1"]
-                 [congomongo "0.4.1"]
+                 [congomongo "0.5.0"]
                  [enlive "1.1.1"]
                  [htmlcleaner "2.2.4"]
                  [org.apache.jena/jena-core "2.10.1"]

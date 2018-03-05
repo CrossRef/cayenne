@@ -79,7 +79,29 @@ to later connect a repl:
 Create a docker image:
 
     $ lein uberimage
-	
+
+
+## Running tests
+
+Running with `lein test` should take care of creating any required infrastructure, typically MongoDB and Solr. 
+
+The Solr instance will be created using docker image `crossref/cayenne-solr`, this docker image is available in docker hub but
+can also be created locally by cloning `https://github.com/crossref/cayenne-solr` and running `docker image build ./ -t crossref/cayenne-solr`, building
+the image locally is useful if you want to make changes to the Solr schema. 
+
+In order for the tests to pass there must be a specific set of feed files present in the feed input directory, these feed files
+are not currently in this repository because of distribution issues but this will be addressed. For now, if the expected number of feed files is not
+present an exception will be thrown: 
+
+```
+actual: java.lang.Exception: The number of feed input files is not as expected. Expected to find 174 files in /home/markwoodhall/src/crossref/cayenne/dev-resources/feeds/source
+```
+
+Note. Occasionally HTTP Kit will hold onto port 3000 after starting the API, this can sometimes cause problems with multiple
+test runs, running a subset, e.g. `lein test cayenne.works-test` is more reliable.
+
+Running tests from the REPL will also work.
+
 ## Reference Visibility
 
 References are displayed in API output. The visiblity level of those references

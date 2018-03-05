@@ -22,7 +22,7 @@
    doi:<DOI>
    <DOI>"
   [s]
-  (or (re-find #"10\.[0-9]{4,}/[^\s]+" s) ""))
+  (or (re-find #"10\.[0-9]{4,}/[^\s]+" (or s "")) ""))
 
 (defn extract-long-prefix [s]
   (first (string/split (extract-long-doi s) #"/")))

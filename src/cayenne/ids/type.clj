@@ -60,6 +60,9 @@
                                      :label "Dissertation"}
                       :posted-content {:index-id "Posted Content"
                                        :label "Posted Content"}
+                      :peer-review {:index-id "Peer Review"
+                                    :crossmark-unaware? true
+                                    :label "Peer Review"}
                       :other {:index-id "Other"
                               :label "Other"}})
 

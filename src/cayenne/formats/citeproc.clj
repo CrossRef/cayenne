@@ -76,7 +76,7 @@
                 (->date-parts (get solr-doc (str prefix "_year"))
                               (get solr-doc (str prefix "_month"))
                               (get solr-doc (str prefix "_day")))))
-        
+
 (defn license [url start-date delay-in-days content-version]
   (-> {:URL url}
       (assoc-exists :start (->date-parts start-date))
@@ -139,14 +139,15 @@
 
 (defn contrib 
   "Drop placeholders indicating missing data."
-  [type orcid authenticated suffix given family org-name]
+  [type orcid authenticated suffix given family org-name a-sequence]
   (let [has-type? (not= type "-")
         has-orcid? (not= orcid "-")
         has-authenticated-orcid? (not= authenticated "-")
         has-suffix? (not= suffix "-")
         has-given? (not= given "-")
         has-family? (not= family "-")
-        has-org-name? (not= org-name "-")]
+        has-org-name? (not= org-name "-")
+        has-sequence? (not= a-sequence "-")]
     (-> {}
         (util/?> has-type? assoc :type (sanitize-type type))
         (util/?> has-orcid? assoc :ORCID orcid)
@@ -156,7 +157,8 @@
         (util/?> has-suffix? assoc :suffix suffix)
         (util/?> has-org-name? assoc :name org-name)
         (util/?> has-given? assoc :given given)
-        (util/?> has-family? assoc :family family))))
+        (util/?> has-family? assoc :family family)
+        (util/?> has-sequence? assoc :sequence a-sequence))))
 
 (defn contrib-affiliations [affiliations]
   (map #(hash-map :name %) affiliations))
@@ -177,7 +179,8 @@
                             (get solr-doc "contributor_suffix")
                             (get solr-doc "contributor_given_name")
                             (get solr-doc "contributor_family_name")
-                            (get solr-doc "contributor_org_name")))))
+                            (get solr-doc "contributor_org_name")
+                            (get solr-doc "contributor_sequence")))))
 
 (defn ->citeproc-awards [solr-doc]
   (map
@@ -274,9 +277,11 @@
         {:clinical-trial-number ctn :registry registry}
         (when (and type (not= type "-")) {:type type}))) ctns registries types)))
 
-(defn ->content-domains [solr-doc]
-  {:domain (or (get solr-doc "domains") [])
-   :crossmark-restriction (or (get solr-doc "domain_exclusive") false)})
+(defn ->content-domains [{:keys [crossmark-unaware?]} solr-doc]
+  (merge 
+    {:domain (or (get solr-doc "domains") [])}
+    (if-not crossmark-unaware?
+      {:crossmark-restriction (or (get solr-doc "domain_exclusive") false)})))
 
 (defn ->issn-types [solr-doc]
   (concat
@@ -297,6 +302,23 @@
         (assoc-exists :number (get solr-doc "event_number"))
         (assoc-date solr-doc :start "event_start")
         (assoc-date solr-doc :end "event_end"))))
+
+(defn ->review [solr-doc]
+  (when-let [peer-review-type (get solr-doc "peer_review_type")]
+    (-> {:type peer-review-type}
+        (assoc-exists :running-number (get solr-doc "peer_review_running_number"))
+        (assoc-exists :revision-round (get solr-doc "peer_review_revision_round"))
+        (assoc-exists :stage (get solr-doc "peer_review_stage"))
+        (assoc-exists :competing-interest-statement (get solr-doc "peer_review_competing_interest_statement"))
+        (assoc-exists :recommendation (get solr-doc "peer_review_recommendation"))
+        (assoc-exists :language (get solr-doc "peer_review_language")))))
+
+(defn ->institution [solr-doc]
+  (when-let [institution-name (first (get solr-doc "institution_name"))]
+    (-> {:name institution-name}
+        (assoc-exists :place (get solr-doc "institution_location"))
+        (assoc-exists :department (get solr-doc "institution_department"))
+        (assoc-exists :acronym (get solr-doc "institution_acronym")))))
 
 (defn citation-key-doi-map [solr-doc]
   (if-let [key-dois (get solr-doc "citation_key_doi")]
@@ -384,65 +406,71 @@
         body-acronym (get solr-doc "standards_body_acronym")]
     (when (or body-name body-acronym)
       {:name body-name :acronym body-acronym})))
-  
+
 (defn ->citeproc [solr-doc]
-  (-> {:source (get solr-doc "source")
-       :prefix (prefix-id/extract-prefix (get solr-doc "owner_prefix"))
-       :member (member-id/extract-member-id (get solr-doc "member_id"))
-       :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
-       :URL (get solr-doc "doi")
-       :issued (->date-parts (get solr-doc "year")
-                             (get solr-doc "month")
-                             (get solr-doc "day"))
-       :created (->date-parts (get solr-doc "first_deposited_at"))
-       :deposited (->date-parts (get solr-doc "deposited_at"))
-       :indexed (->date-parts (get solr-doc "indexed_at"))
-       :publisher (get solr-doc "publisher")
-       :references-count (get solr-doc "citation_count")
-       :reference-count (get solr-doc "citation_count")
-       :is-referenced-by-count (get solr-doc "cited_by_count")
-       :type (type-id/->type-id (get solr-doc "type"))
-       :content-domain (->content-domains solr-doc)
-       :relation (->citeproc-relations solr-doc)
-       :score (get solr-doc "score")}
-      (assoc-date solr-doc :published-online "online")
-      (assoc-date solr-doc :published-print "print")
-      (assoc-date solr-doc :posted "posted")
-      (assoc-date solr-doc :accepted "accepted")
-      (assoc-date solr-doc :content-created "content_created")
-      (assoc-date solr-doc :content-updated "content_updated")
-      (assoc-date solr-doc :approved "approved")
-      (assoc-exists :publisher-location (get solr-doc "publisher_location"))
-      (assoc-exists :abstract (get solr-doc "abstract_xml"))
-      (assoc-exists :article-number (get solr-doc "article_number"))
-      (assoc-exists :volume (get solr-doc "hl_volume"))
-      (assoc-exists :issue (get solr-doc "hl_issue"))
-      (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
-      (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
-      (assoc-exists :alternative-id (map ids/extract-supplementary-id
-                                         (get solr-doc "supplementary_id")))
-      (assoc-exists :title (set (get solr-doc "hl_title")))
-      (assoc-exists :short-title (set (get solr-doc "hl_short_title")))
-      (assoc-exists :original-title (set (get solr-doc "hl_original_title")))
-      (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
-      (assoc-exists :container-title (set (get solr-doc "hl_publication")))
-      (assoc-exists :short-container-title (set (get solr-doc "hl_short_publication")))
-      (assoc-exists :group-title (get solr-doc "hl_group_title"))
-      (assoc-exists :subject (get solr-doc "category"))
-      (assoc-exists :archive (get solr-doc "archive"))
-      (assoc-exists :degree (get solr-doc "degree"))
-      (assoc-exists :update-policy (get solr-doc "update_policy"))
-      (assoc-exists :update-to (->citeproc-updates-to solr-doc))
-      (assoc-exists :updated-by (->citeproc-updated-by solr-doc))
-      (assoc-exists :license (->citeproc-licenses solr-doc))
-      (assoc-exists :link (->citeproc-links solr-doc))
-      (assoc-exists :page (->citeproc-pages solr-doc))
-      (assoc-exists :funder (->citeproc-funders-merged solr-doc))
-      (assoc-exists :assertion (->citeproc-assertions solr-doc))
-      (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
-      (assoc-exists :issn-type (->issn-types solr-doc))
-      (assoc-exists :event (->event solr-doc))
-      (assoc-exists :reference (->citeproc-citations solr-doc))
-      (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
-      (merge (->citeproc-contribs solr-doc))))
+  (let [type-id (type-id/->type-id (get solr-doc "type"))
+        type-key (keyword type-id)
+        domain (-> (get type-id/type-dictionary type-key)
+                   (->content-domains solr-doc))]
+    (-> {:source (get solr-doc "source")
+         :prefix (prefix-id/extract-prefix (get solr-doc "owner_prefix"))
+         :member (member-id/extract-member-id (get solr-doc "member_id"))
+         :DOI (doi-id/extract-long-doi (get solr-doc "doi"))
+         :URL (get solr-doc "doi")
+         :issued (->date-parts (get solr-doc "year")
+                               (get solr-doc "month")
+                               (get solr-doc "day"))
+         :created (->date-parts (get solr-doc "first_deposited_at"))
+         :deposited (->date-parts (get solr-doc "deposited_at"))
+         :indexed (->date-parts (get solr-doc "indexed_at"))
+         :publisher (get solr-doc "publisher")
+         :references-count (get solr-doc "citation_count")
+         :reference-count (get solr-doc "citation_count")
+         :is-referenced-by-count (get solr-doc "cited_by_count")
+         :type type-id
+         :content-domain domain
+         :relation (->citeproc-relations solr-doc)
+         :score (get solr-doc "score")}
+        (assoc-date solr-doc :published-online "online")
+        (assoc-date solr-doc :published-print "print")
+        (assoc-date solr-doc :posted "posted")
+        (assoc-date solr-doc :accepted "accepted")
+        (assoc-date solr-doc :content-created "content_created")
+        (assoc-date solr-doc :content-updated "content_updated")
+        (assoc-date solr-doc :approved "approved")
+        (assoc-exists :publisher-location (get solr-doc "publisher_location"))
+        (assoc-exists :abstract (get solr-doc "abstract_xml"))
+        (assoc-exists :article-number (get solr-doc "article_number"))
+        (assoc-exists :volume (get solr-doc "hl_volume"))
+        (assoc-exists :issue (get solr-doc "hl_issue"))
+        (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
+        (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
+        (assoc-exists :alternative-id (map ids/extract-supplementary-id
+                                           (get solr-doc "supplementary_id")))
+        (assoc-exists :title (set (get solr-doc "hl_title")))
+        (assoc-exists :short-title (set (get solr-doc "hl_short_title")))
+        (assoc-exists :original-title (set (get solr-doc "hl_original_title")))
+        (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))
+        (assoc-exists :container-title (set (get solr-doc "hl_publication")))
+        (assoc-exists :short-container-title (set (get solr-doc "hl_short_publication")))
+        (assoc-exists :group-title (get solr-doc "hl_group_title"))
+        (assoc-exists :subject (get solr-doc "category"))
+        (assoc-exists :archive (get solr-doc "archive"))
+        (assoc-exists :degree (get solr-doc "degree"))
+        (assoc-exists :update-policy (get solr-doc "update_policy"))
+        (assoc-exists :update-to (->citeproc-updates-to solr-doc))
+        (assoc-exists :updated-by (->citeproc-updated-by solr-doc))
+        (assoc-exists :license (->citeproc-licenses solr-doc))
+        (assoc-exists :link (->citeproc-links solr-doc))
+        (assoc-exists :page (->citeproc-pages solr-doc))
+        (assoc-exists :funder (->citeproc-funders-merged solr-doc))
+        (assoc-exists :assertion (->citeproc-assertions solr-doc))
+        (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
+        (assoc-exists :issn-type (->issn-types solr-doc))
+        (assoc-exists :event (->event solr-doc))
+        (assoc-exists :institution (->institution solr-doc))
+        (assoc-exists :review (->review solr-doc))
+        (assoc-exists :reference (->citeproc-citations solr-doc))
+        (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
+        (merge (->citeproc-contribs solr-doc)))))
 

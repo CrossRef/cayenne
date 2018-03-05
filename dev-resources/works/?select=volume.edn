@@ -1,0 +1,25 @@
+{:facets {},
+ :total-results 174,
+ :items
+ ({}
+  {:volume "7"}
+  {:volume "114"}
+  {:volume "44"}
+  {:volume "77"}
+  {:volume "22"}
+  {:volume "118"}
+  {:volume "185"}
+  {:volume "73"}
+  {:volume "77"}
+  {:volume "58"}
+  {:volume "147"}
+  {:volume "123"}
+  {:volume "7"}
+  {}
+  {:volume "8"}
+  {:volume "73"}
+  {:volume "13"}
+  {:volume "44"}
+  {:volume "77"}),
+ :items-per-page 20,
+ :query {:start-index 0, :search-terms nil}}

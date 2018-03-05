@@ -74,7 +74,8 @@
 
 (defn stop-core! [name]
   (with-core name
-    ((get-service :api)) ; stop http kit
+    (let [stop-fn (get-service :api)]
+      (stop-fn :timeout 100)) ; stop http kit allowing 100ms to close open connections
     (set-param! [:status] :stopped)))
 
 (defn set-core! [name]
@@ -162,10 +163,10 @@
   (set-param! [:upstream :funder-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=cnproxy@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
+  (set-param! [:upstream :doi-ra-url] "https://doi.crossref.org/doiRA/")
   (set-param! [:upstream :unixref-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixref&doi=")
   (set-param! [:upstream :unixsd-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://doi.crossref.org/getPrefixPublisher/?prefix=")
-  (set-param! [:upstream :ra-url] "http://hdl.handle.net/api/handles/")
   (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 

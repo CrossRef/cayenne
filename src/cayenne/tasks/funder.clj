@@ -36,42 +36,35 @@
           (assoc :other_names_display (conj other-names-display (.trim name)))
           (add-tokens (util/tokenize-name name))))))
 
-(defn insert-funder [id name name-type]
-  (m/with-mongo (conf/get-service :mongo)
-    (if-let [existing-doc (m/fetch-one :funders :where {:id id})]
-      (m/update! :funders existing-doc (add-name existing-doc name name-type))
-      (m/insert! :funders (add-name {:id id :uri (fundref/id-to-doi-uri id)} name name-type)))))
+(defn- funder-name-exists? [f f-name name-type]
+  (if (= name-type :primary)
+    (= (:primary_name f) f-name)
+    (some #{f-name} (:other_names_display f))))
 
-(defn insert-full-funder [id name country alt-names parent-id child-ids
-                          affiliation-ids replaced-by-ids replaces-ids]
-  (if (nil? name)
-    (prn "no pref label for " id)
-    (m/with-mongo (conf/get-service :mongo)
-      (m/insert! :fundersloading
-                 {:id id
-                  :uri (fundref/id-to-doi-uri id)
-                  :country country
-                  :primary_name_display name
-                  :other_names_display alt-names
-                  :name_tokens (concat (util/tokenize-name name)
-                                       (mapcat util/tokenize-name alt-names))
-                                        ; hack here since funders can appear as their own parent in
-                                        ; the registry. bug in the registry.
-                  :parent (if (not= parent-id id) parent-id nil)
-                  :children (or child-ids [])
-                  :replaces (or replaces-ids [])
-                  :replaced-by (or replaced-by-ids [])
-                  :affiliated (or affiliation-ids [])}))))
-  
-(defn load-funders-csv []
-  (ensure-funder-indexes! :funders)
-  (with-open [rdr (io/reader (conf/get-resource :funders))]
-    (let [funders (csv/read-csv rdr :separator \tab)]
-      (doseq [funder funders]
-        (let [name-type (if (= (nth funder 2) "N") :primary :other)]
-          (insert-funder (first funder)
-                         (second funder)
-                         name-type))))))
+(defn- ->funder 
+  [{:keys [id country name alternative-names broader-id narrower-ids replaces-ids replaced-by-ids affiliated-ids]}] 
+  {:id id
+   :uri (fundref/id-to-doi-uri id)
+   :country country
+   :primary_name_display name
+   :other_names_display alternative-names
+   :name_tokens (concat (util/tokenize-name name)
+                        (mapcat util/tokenize-name alternative-names))
+   ; hack here since funders can appear as their own parent in
+   ; the registry. bug in the registry.
+   :parent (if (not= broader-id id) broader-id nil)
+   :children (or narrower-ids [])
+   :replaces (or replaces-ids [])
+   :replaced-by (or replaced-by-ids [])
+   :affiliated (or affiliated-ids [])})
+
+(defn insert-funders [col]
+  (let [chunks (->> (filter :name col)
+                    (map ->funder)
+                    (partition-all 5000))]
+    (doseq [funders chunks]
+      (m/with-mongo (conf/get-service :mongo)
+        (m/mass-insert! :fundersloading funders)))))
 
 (defn find-funders [model]
   (-> (rdf/select model
@@ -212,19 +205,10 @@
 (defn load-funders-rdf [rdf-file]
   (ensure-funder-indexes! :fundersloading)
   (let [model (rdf/document->model rdf-file)]
-    (doall
+    (dorun
      (->> (find-funders model)
           (map (partial funder-concept->map model))
-          (map #(insert-full-funder
-                 (:id %)
-                 (:name %)
-                 (:country %)
-                 (:alternative-names %)
-                 (:broader-id %)
-                 (:narrower-ids %)
-                 (:affiliated-ids %)
-                 (:replaced-by-ids %)
-                 (:replaces-ids %))))))
+          (insert-funders))))
   (build-nestings :fundersloading))
 
 (defn rdf->funder-names [rdf-file]

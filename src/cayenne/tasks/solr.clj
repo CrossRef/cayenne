@@ -142,6 +142,7 @@
    :affiliations (map :name (get-item-rel contributor :affiliation))
    :orcid (first (get-item-ids contributor :orcid))
    :orcid-authenticated (:orcid-authenticated contributor)
+   :sequence (:sequence contributor)
    :type (name type)})
 
 (defn get-contributor-details*
@@ -421,6 +422,17 @@
         end-date (assoc "event_end_month" (:month end-date))
         end-date (assoc "event_end_day" (:day end-date))))))
 
+(defn as-peer-review [item]
+  (let [{:keys [running-number revision-round stage recommendation 
+                competing-interest-statement review-type language]} (:review item)]
+    {"peer_review_running_number" running-number
+     "peer_review_revision_round" revision-round
+     "peer_review_stage" stage
+     "peer_review_recommendation" recommendation
+     "peer_review_competing_interest_statement" competing-interest-statement
+     "peer_review_type" review-type
+     "peer_review_language" language}))
+
 (defn as-citations [item]
   (letfn [(citation-field [f]
             (str "citation_"
@@ -459,6 +471,7 @@
         publisher (first (get-tree-rel item :publisher))
         full-text-resources (get-item-rel item :resource-fulltext)
         funders (get-tree-rel item :funder)
+        institutions (get-tree-rel item :institution)
         relations (get-tree-rel item :relation)
         assertions (get-tree-rel item :assertion)
         clinical-trial-numbers (get-tree-rel item :clinical-trial-number)
@@ -553,6 +566,7 @@
          "contributor_orcid" (map (util/?- :orcid) contrib-details)
          "contributor_orcid_authed" (map (util/?- :orcid-authenticated) contrib-details)
          "contributor_type" (map (util/?- :type) contrib-details)
+         "contributor_sequence" (map (util/?- :sequence) contrib-details)
          "hl_description" (:description item)
          "hl_year" (:year pub-date)
          "hl_authors" (get-contributor-names item :author)
@@ -609,6 +623,10 @@
          "funder_record_name" (map (util/?- :name) funders)
          "funder_record_doi_asserted_by" (map (util/?- :doi-asserted-by) funders)
          "funder_record_doi" (map (util/?fn- (comp first get-item-ids)) funders)
+         "institution_name" (map (util/?- :name) institutions)
+         "institution_acronym" (map (util/?- :acronym) institutions)
+         "institution_location" (map (util/?- :location) institutions)
+         "institution_department" (map :name (flatten (map #(get-item-rel % :component) institutions)))
          "domain_exclusive" (or (first (get-item-rel item :domain-exclusive)) false)
          "domains" (get-item-rel item :domains)
          "abstract" (-> item (get-item-rel :abstract) first :plain)
@@ -618,6 +636,7 @@
          "clinical_trial_number_type" (map (util/?- :ctn-type) clinical-trial-numbers)
          "clinical_trial_number_proxy" (map #(-> % :ctn cayenne.ids.ctn/ctn-proxy) clinical-trial-numbers)}
 
+        (merge (as-peer-review item))
         (merge (as-citations item))
         (merge (as-event item))
         (merge (as-issn-types item))

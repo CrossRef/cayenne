@@ -1,0 +1,88 @@
+{:facets {},
+ :total-results 1,
+ :items
+ ({:reference-count 34,
+   :publisher "Elsevier BV",
+   :license
+   [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
+     :start
+     {:date-parts [[2017 1 1]],
+      :date-time "2017-01-01T00:00:00Z",
+      :timestamp 1483228800000},
+     :delay-in-days 0,
+     :content-version "tdm"}],
+   :content-domain
+   {:domain
+    ["psyneuen-journal.com"
+     "clinicalkey.jp"
+     "clinicalkey.com"
+     "clinicalkey.es"
+     "clinicalkey.com.au"
+     "clinicalkey.fr"
+     "elsevier.com"
+     "sciencedirect.com"],
+    :crossmark-restriction true},
+   :short-container-title ["Psychoneuroendocrinology"],
+   :published-print {:date-parts [[2017 1]]},
+   :DOI "10.1016/j.psyneuen.2016.09.025",
+   :type "journal-article",
+   :created
+   {:date-parts [[2016 10 10]],
+    :date-time "2016-10-10T07:11:11Z",
+    :timestamp 1476083471000},
+   :page "36-43",
+   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
+   :source "Crossref",
+   :is-referenced-by-count 5,
+   :title
+   ["Socioeconomic status, perceived control, diurnal cortisol, and physical symptoms: A moderated mediation model"],
+   :prefix "10.1016",
+   :volume "75",
+   :author
+   [{:given "Samuele", :family "Zilioli", :sequence "first" :affiliation []}
+    {:given "Ledina", :family "Imami", :sequence "additional" :affiliation []}
+    {:given "Richard B.", :family "Slatcher", :sequence "additional" :affiliation []}],
+   :member "78",
+   :container-title ["Psychoneuroendocrinology"],
+   :link
+   [{:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016307545?httpAccept=text/xml",
+     :content-type "text/xml",
+     :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016307545?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
+     :intended-application "text-mining"}],
+   :deposited
+   {:date-parts [[2017 11 30]],
+    :date-time "2017-11-30T15:51:07Z",
+    :timestamp 1512057067000},
+   :score 5.5272517,
+   :issued {:date-parts [[2017 1]]},
+   :references-count 34,
+   :alternative-id ["S0306453016307545"],
+   :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.025",
+   :ISSN ["0306-4530"],
+   :issn-type [{:value "0306-4530", :type "print"}],
+   :assertion
+   [{:value "Elsevier",
+     :name "publisher",
+     :label "This article is maintained by"}
+    {:value
+     "Socioeconomic status, perceived control, diurnal cortisol, and physical symptoms: A moderated mediation model",
+     :name "articletitle",
+     :label "Article Title"}
+    {:value "Psychoneuroendocrinology",
+     :name "journaltitle",
+     :label "Journal Title"}
+    {:value "http://dx.doi.org/10.1016/j.psyneuen.2016.09.025",
+     :name "articlelink",
+     :label "CrossRef DOI link to publisher maintained version"}
+    {:value "article", :name "content_type", :label "Content Type"}
+    {:value "© 2016 Elsevier Ltd. All rights reserved.",
+     :name "copyright",
+     :label "Copyright"}]}),
+ :items-per-page 20,
+ :query {:start-index 0, :search-terms nil}}
