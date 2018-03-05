@@ -163,10 +163,10 @@
   (set-param! [:upstream :funder-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
   (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=cnproxy@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
+  (set-param! [:upstream :doi-ra-url] "https://doi.crossref.org/doiRA/")
   (set-param! [:upstream :unixref-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixref&doi=")
   (set-param! [:upstream :unixsd-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://doi.crossref.org/getPrefixPublisher/?prefix=")
-  (set-param! [:upstream :ra-url] "https://doi.crossref.org/doiRA/")
   (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 

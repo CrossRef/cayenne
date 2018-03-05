@@ -179,7 +179,7 @@
                                            with-citations))))))
 
 (defn get-agency [doi]
-  @(http/get (str (conf/get-param [:upstream :ra-url])
+  @(http/get (str (conf/get-param [:upstream :doi-ra-url])
                   doi)))
 
 (defn parse-agency [{:keys [status headers body error]}]
