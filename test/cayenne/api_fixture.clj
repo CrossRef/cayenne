@@ -46,6 +46,14 @@
             feed-in-dir (str feed-dir "/feed-in")
             feed-processed-dir (str feed-dir "/feed-processed")
             feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
+        (when-not (= feed-file-count 174) 
+          (throw (Exception. 
+                   (str "The number of feed input files is not as expected. Expected to find " 
+                        174 
+                        " files in " 
+                        feed-source-dir
+                        " but found "
+                        feed-file-count))))
         (delete-dir feed-processed-dir)
         (delete-dir feed-in-dir)
         (copy-dir feed-source-dir feed-in-dir)
