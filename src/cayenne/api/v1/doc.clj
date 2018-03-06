@@ -1,50 +1,36 @@
 (ns cayenne.api.v1.doc
-  (:require [compojure.core :refer [defroutes GET]]
-            [clojure.data.json :as json]))
-
-(def docs
-  {:apiVersion 0.1
-   :swaggerVersion 1.2
-   :apis [{:path "/works"}
-          {:path "/funders"}
-          {:path "/publishers"}]
-   :info {:title "CrossRef Unified Resource API"
-          :contact "labs@crossref.org"
-          :license "CC0 1.0 Universal"
-          :licenseUrl "http://creativecommons.org/publicdomain/zero/1.0"}})
-
-(defn api-path [path]
-  {:path path
-   :operations [{:method :GET
-                 :responseMessages {:code 404
-                                    :message "Entity not found."}}]})
-
-(def works-docs
-  {:apiVersion 01
-   :swaggerVersion 1.2
-   :resourcePath "/works"
-   :apis [(api-path "/works")
-          (api-path "/works/{doi}")
-          (api-path "/works/random/{count}")]})
-
-(def funders-docs
-  {:apiVersion 01
-   :swaggerVersion 1.2
-   :resourcePath "/funders"
-   :apis [(api-path "/funders")
-          (api-path "/funders/{funderId}")
-          (api-path "/funders/{funderId}/works")]})
-
-(def publishers-docs
-  {:apiVersion 01
-   :swaggerVersion 1.2
-   :resourcePath "/publishers"
-   :apis [(api-path "/publishers")
-          (api-path "/publishers/{ownerPrefix}")
-          (api-path "/publishers/{ownerPrefix}/works")]})
+  (:require [cayenne.api.v1.schema :as sc]
+            [compojure.core :refer [defroutes GET]]
+            [clojure.data.json :as json]
+            [ring.swagger.swagger-ui :refer [swagger-ui]]
+            [ring.swagger.swagger2 :as rs]
+            [schema.core :as s]))
 
 (defroutes api-doc-routes
-  (GET "/api-docs" [] (json/write-str docs))
-  (GET "/api-docs/works" [] (json/write-str works-docs))
-  (GET "/api-docs/funders" [] (json/write-str funders-docs))
-  (GET "/api-docs/publishers" [] (json/write-str publishers-docs)))
+  (swagger-ui
+    {:path "/swagger-ui"
+     :swagger-docs "/swagger-docs"})
+  (GET "/swagger-docs" [] 
+       (json/write-str 
+         (s/with-fn-validation
+           (rs/swagger-json
+             {:info {:version "0.1"
+                     :title "Crossref Unified Resource API"
+                     :description "Crossref Unified Resource API"
+                     :termsOfService "https://github.com/CrossRef/rest-api-doc"
+                     :contact {:name "Crossref Labs"
+                               :email "support@crossref.org"
+                               :url "https://crossref.org"}}
+              :tags [{:name "funder"
+                      :description "Endpoints that expose funder related data"}]
+              :paths {"/funders" {:get {:description "Gets a collection of funders"
+                                        :parameters (merge-with merge sc/FundersFilter sc/QueryParams)
+                                        :responses {200 {:schema sc/FundersMessage
+                                                         :description "A list of funders."}}
+                                        :tags ["funder"]}}
+                      "/funders/:id" {:get {:description "Gets a specific funder by it's id, as an example use id 501100006004"
+                                            :parameters {:path {:id sc/FunderId}}
+                                            :responses {200 {:schema sc/Funders
+                                                             :description "The funder identified by {id}."}
+                                                        404 {:description "The funder identified by {id} does not exist."}}
+                                            :tags ["funder"]}}}})))))
