@@ -2,6 +2,7 @@
   (:require [cayenne.conf :refer [set-param! with-core cores start-core! stop-core!]]
             [cayenne.tasks :refer [load-funders]]
             [cayenne.rdf :as rdf]
+            [cayenne.tasks :refer [load-journals]]
             [cayenne.tasks.funder :refer [select-country-stmts]]
             [clojure.java.io :refer [resource]]
             [clojure.java.shell :refer [sh]]
@@ -72,5 +73,10 @@
            "http://sws.geonames.org/1861060/" "Japan"
            url)))]
     (load-funders)))
+
+(defn load-test-journals []
+  (with-core :default 
+    (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
+  (load-journals))
 
 (def system @cores)
