@@ -63,6 +63,28 @@
    :abstracts-current s/Int
    :references-current s/Int})
 
+(s/defschema JournalFlags
+  {:deposits-abstracts-current Boolean
+   :deposits-orcids-current Boolean
+   :deposits Boolean
+   :deposits-affiliations-backfile Boolean
+   :deposits-update-policies-backfile Boolean
+   :deposits-award-numbers-current Boolean
+   :deposits-resource-links-current Boolean
+   :deposits-articles Boolean
+   :deposits-affiliations-current Boolean
+   :deposits-funders-current Boolean
+   :deposits-references-backfile Boolean
+   :deposits-abstracts-backfile Boolean
+   :deposits-licenses-backfile Boolean
+   :deposits-award-numbers-backfile Boolean
+   :deposits-references-current Boolean
+   :deposits-resource-links-backfile Boolean
+   :deposits-orcids-backfile Boolean
+   :deposits-funders-backfile Boolean
+   :deposits-update-policies-current Boolean
+   :deposits-licenses-current Boolean})
+
 (s/defschema JournalCounts
   {:total-dois s/Int
    :current-dois s/Int
@@ -79,6 +101,7 @@
    :counts JournalCounts
    :dois-by-issued-year [[s/Int s/Int]]
    :coverage JournalCoverage
+   :flags JournalFlags
    :subjects [s/Str]
    :issn-type JournalIssnType
    :ISSN JournalIssn})
