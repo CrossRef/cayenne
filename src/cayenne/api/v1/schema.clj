@@ -23,9 +23,8 @@
 (s/defschema QueryParams
   {:query {(s/optional-key :rows) (field s/Int {:description "The number of rows to return"})
            :mailto (field s/Str 
-                          {:value "api-demo@crossref.org" 
-                           :pattern #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,6}$" 
-                           :description "The email address to identify yourself and be in the \"polite pool\""})
+                          {:pattern #"^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+\.[A-Za-z]{2,6}$" 
+                           :description "The email address to identify yourself and be in the \"polite pool\", see [https://github.com/CrossRef/rest-api-doc#etiquette](https://github.com/CrossRef/rest-api-doc#etiquette)"})
            (s/optional-key :offset) (field s/Int {:description "The number of rows to skip before returning"})}})
 
 (s/defschema Author
