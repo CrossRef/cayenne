@@ -5,17 +5,32 @@
             [schema.core :as s]))
 
 ;; Generic
-(s/defschema Query 
+(s/defschema Query
   {:start-index s/Int :search-terms s/Str})
 
-(s/defschema Message 
+(s/defschema DateParts
+  {:date-parts [[s/Int s/Int s/Int]]})
+
+(s/defschema Date
+  (merge DateParts {:date-time s/Inst
+                    :timestamp s/Int}))
+
+(s/defschema Message
   {:status s/Str
    :message-type s/Str
    :message-version s/Str})
 
-(s/defschema QueryParams 
-  {:query {:rows (field s/Int {:description "The number of rows to return" :required false})
-           :offset (field s/Int {:description "The number of rows to skip before returning" :required false})}})
+(s/defschema QueryParams
+  {:query {(s/optional-key :rows) (field s/Int {:description "The number of rows to return"})
+           (s/optional-key :offset) (field s/Int {:description "The number of rows to skip before returning"})}})
+
+(s/defschema Author
+  {:ORCID s/Str
+   :authenticated-orcid Boolean
+   :given s/Str
+   :family s/Str
+   :sequence s/Str
+   :affiliation [s/Str]})
 
 ;; Funders
 (s/defschema FunderId (field s/Str {:description "The id of the funder"}))
@@ -28,22 +43,29 @@
                      :replaced-by [s/Str]
                      :tokens [s/Str]})
 
-(s/defschema FunderMessage (merge Message {:message Funder}))
-(s/defschema Funders (merge Message {:message {:items-per-page s/Int
-                                               :query Query
-                                               :total-results s/Int
-                                               :items [Funder]}}))
+(s/defschema FunderMessage
+  (merge Message {:message-type #"funder" :message Funder}))
 
-(s/defschema 
-  FundersFilter 
-  {:query 
+(s/defschema Funders
+  {:items-per-page s/Int
+   :query Query
+   :total-results s/Int
+   :items [Funder]})
+
+(s/defschema FundersMessage
+  (merge Message {:message-type #"funder-list"
+                  :message Funders}))
+
+(s/defschema
+  FundersFilter
+  {:query
    {:filter (field s/Str {:description "Exposes the ability to search funders by location using a Lucene based syntax"
                           :required false
                           :pattern "location:.*"})}})
 
 ;; Journals
 (s/defschema JournalIssn (field [s/Str] {:description "The ISSN identifiers associated with the journal"}))
-(s/defschema JournalCoverage 
+(s/defschema JournalCoverage
   {:affiliations-current s/Int
    :funders-backfile s/Int
    :licenses-backfile s/Int
@@ -90,11 +112,11 @@
    :current-dois s/Int
    :backfile-dois s/Int})
 
-(s/defschema JournalIssnType 
+(s/defschema JournalIssnType
   {:value s/Str
    :type s/Str})
 
-(s/defschema Journal 
+(s/defschema Journal
   {:title (field s/Str {:description "The title of the journal"}) ,
    :publisher (field s/Str {:description "The publisher of the journal"})
    :last-status-check-time s/Int
@@ -107,9 +129,101 @@
    :ISSN JournalIssn})
 
 (s/defschema JournalMessage
-  (merge Message {:message Journal}))
+  (merge Message {:message-type #"journal" :message Journal}))
 
-(s/defschema Journals (merge Message {:message {:items-per-page s/Int
-                                                :query Query
-                                                :total-results s/Int
-                                                :items [Journal]}}))
+(s/defschema Journals
+  {:items-per-page s/Int
+   :query Query
+   :total-results s/Int
+   :items [Journal]})
+
+(s/defschema JournalsMessage
+  (merge Message {:message-type #"journal-list"
+                  :message Journals}))
+
+;; works
+(s/defschema Agency {:id s/Str :label s/Str})
+(s/defschema Quality {:id s/Str :description s/Str :pass Boolean})
+(s/defschema WorkDoi (field [s/Str] {:description "The DOI identifier associated with the work"}))
+(s/defschema WorkLink
+  {:URL s/Str
+   :content-type s/Str
+   :content-version s/Str
+   :intended-application s/Str})
+
+(s/defschema WorkLicense
+  {:URL s/Str
+   :start Date
+   :delay-in-days s/Int
+   :content-version s/Str})
+
+(s/defschema WorkDomain
+  {:domain [s/Str]
+    :crossmark-restriction Boolean})
+
+(s/defschema WorkReview
+  {:type s/Str
+   :running-number s/Str
+   :revision-round s/Str
+   :stage s/Str
+   :competing-interest-statement s/Str
+   :recommendation s/Str
+   :language s/Str})
+
+(s/defschema WorkInstitution
+  {:name s/Str
+   :place [s/Str]
+   :department [s/Str]
+   :accronym [s/Str]})
+
+(s/defschema Work
+  {:indexed Date
+   (s/optional-key :institution) WorkInstitution
+   :reference-count s/Int
+   :publisher s/Str
+   :issue s/Str
+   :content-domain WorkDomain
+   :short-container-title s/Str
+   :published-print DateParts
+   :DOI WorkDoi
+   :type s/Str
+   :created Date
+   :license [WorkLicense]
+   :page s/Str
+   :source s/Str
+   :is-reference-by-count s/Int
+   :title [s/Str]
+   (s/optional-key :original-title) [s/Str]
+   :short-title [s/Str]
+   :prefix s/Str
+   :volume s/Str
+   :member s/Str
+   :container-title [s/Str]
+   :link [WorkLink]
+   :deposited Date
+   :score Long
+   :author [Author]
+   :URL s/Str
+   :references-count s/Int
+   (s/optional-key :review) WorkReview})
+
+(s/defschema WorkMessage
+  (merge Message
+         {:message Work}))
+
+(s/defschema Works
+  {:items-per-page s/Int
+   :query Query
+   :total-results s/Int
+   :items [Work]})
+
+(s/defschema WorksMessage
+  (merge Message
+         {:message-type #"work-list"
+          :message Works}))
+
+(s/defschema AgencyMessage
+  (merge Message {:message-type #"work-agency" :message {:DOI s/Str :agency Agency}}))
+
+(s/defschema QualityMessage
+  (merge Message {:message-type #"work-quality" :message [Quality]}))
