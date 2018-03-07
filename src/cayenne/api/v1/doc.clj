@@ -50,7 +50,7 @@
                                                            404 {:description "The journal identified by {issn} does not exist."}}
                                                :tags ["journal"]}}
                       "/works" {:get {:description "Gets a collection of works"
-                                         :parameters sc/QueryParams
+                                         :parameters (merge-with merge sc/WorksSelector sc/QueryParams)
                                          :responses {200 {:schema sc/WorksMessage
                                                           :description "A list of works"}}
                                          :tags ["work"]}}

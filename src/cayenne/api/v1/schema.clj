@@ -142,6 +142,13 @@
                   :message Journals}))
 
 ;; works
+(s/defschema
+  WorksSelector
+  {:query
+   {:select (field s/Str {:description "Exposes the ability to select certain fields from works data, supports a comma separated list of fields, e.g. DOI,volume "
+                          :required false
+                          :pattern #"^\w+(,\w+)*$"})}})
+
 (s/defschema Agency {:id s/Str :label s/Str})
 (s/defschema Quality {:id s/Str :description s/Str :pass Boolean})
 (s/defschema WorkDoi (field [s/Str] {:description "The DOI identifier associated with the work"}))
