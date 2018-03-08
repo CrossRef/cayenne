@@ -25,7 +25,11 @@
     {:name "work"
      :description "Endpoints that expose works related data"}
     {:name "prefix"
-     :description "Endpoints that expose prefix related data"}]})
+     :description "Endpoints that expose prefix related data"}
+    {:name "member"
+     :description "Endpoints that expose member related data"}
+    {:name "type"
+     :description "Endpoints that expose type related data"}]})
 
 (def funders
   {"/funders" 
@@ -119,20 +123,20 @@
           :parameters sc/QueryParams
           :responses {200 {:schema sc/MembersMessage
                            :description "A collection of members"}}
-          :tags ["members"]}}
+          :tags ["member"]}}
    "/members/:id" 
    {:get {:description "Gets a specific member by it's id, as an example use prefix 324"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/MemberMessage
                            :description "The prefix data identified by {id}."}
                       404 {:description "The prefix data identified by {id} does not exist."}}
-          :tags ["members"]}}
+          :tags ["member"]}}
    "/members/:id/works"
    {:get {:description "Gets a collection of works for member id {id}"
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["members"]}}})
+          :tags ["member"]}}})
 
 (def types
   {"/types"
@@ -140,20 +144,20 @@
           :parameters sc/QueryParams
           :responses {200 {:schema sc/TypesMessage
                            :description "A collection of types"}}
-          :tags ["types"]}}
+          :tags ["type"]}}
    "/types/:id" 
    {:get {:description "Gets a specific type by it's id, as an example use `monograph`"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/TypeMessage
                            :description "The type identified by {id}."}
                       404 {:description "The type identified by {id} does not exist."}}
-          :tags ["types"]}}
+          :tags ["type"]}}
    "/types/:id/works"
    {:get {:description "Gets a collection of works for type id {id}"
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["types"]}}})
+          :tags ["type"]}}})
 
 (def paths
   {:paths 
