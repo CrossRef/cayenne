@@ -27,6 +27,9 @@
                            :description "The email address to identify yourself and be in the \"polite pool\", see [https://github.com/CrossRef/rest-api-doc#etiquette](https://github.com/CrossRef/rest-api-doc#etiquette)"})
            (s/optional-key :offset) (field s/Int {:description "The number of rows to skip before returning"})}})
 
+(s/defschema IdAndLabel
+  {:id s/Str :label s/Str})
+
 (s/defschema Author
   {:ORCID s/Str
    :authenticated-orcid Boolean
@@ -165,7 +168,7 @@
     (field s/Str {:description "Combined with sort can be used to specify the order of results, e.g. asc or desc"
                   :pattern #"(asc|desc)"})}})
 
-(s/defschema Agency {:id s/Str :label s/Str})
+(s/defschema Agency IdAndLabel)
 (s/defschema Quality {:id s/Str :description s/Str :pass Boolean})
 (s/defschema WorkDoi (field [s/Str] {:description "The DOI identifier associated with the work"}))
 (s/defschema WorkLink
@@ -299,3 +302,22 @@
   (merge Message
          {:message-type #"member" 
           :message Member}))
+
+;; Types
+(s/defschema Type IdAndLabel)
+
+(s/defschema Types
+  {:items-per-page s/Int
+   :query Query
+   :total-results s/Int
+   :items [Type]})
+
+(s/defschema TypesMessage
+  (merge Message
+         {:message-type #"type-list"
+          :message Types}))
+
+(s/defschema TypeMessage
+  (merge Message
+         {:message-type #"type" 
+          :message Type}))

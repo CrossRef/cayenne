@@ -124,15 +124,36 @@
    {:get {:description "Gets a specific member by it's id, as an example use prefix 324"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/MemberMessage
-                           :description "The prefix data identified by {prefix}."}
-                      404 {:description "The prefix data identified by {prefix} does not exist."}}
+                           :description "The prefix data identified by {id}."}
+                      404 {:description "The prefix data identified by {id} does not exist."}}
           :tags ["members"]}}
    "/members/:id/works"
-   {:get {:description "Gets a collection of works for member prefix {id}"
+   {:get {:description "Gets a collection of works for member id {id}"
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
           :tags ["members"]}}})
+
+(def types
+  {"/types"
+   {:get {:description "Gets a collection of types"
+          :parameters sc/QueryParams
+          :responses {200 {:schema sc/TypesMessage
+                           :description "A collection of types"}}
+          :tags ["types"]}}
+   "/types/:id" 
+   {:get {:description "Gets a specific type by it's id, as an example use `monograph`"
+          :parameters {:path {:id s/Int}}
+          :responses {200 {:schema sc/TypeMessage
+                           :description "The type identified by {id}."}
+                      404 {:description "The type identified by {id} does not exist."}}
+          :tags ["types"]}}
+   "/types/:id/works"
+   {:get {:description "Gets a collection of works for type id {id}"
+          :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
+          :responses {200 {:schema sc/WorksMessage
+                           :description "A list of works"}}
+          :tags ["types"]}}})
 
 (def paths
   {:paths 
@@ -141,7 +162,8 @@
      journals
      works
      prefixes
-     members)})
+     members
+     types)})
 
 (defroutes api-doc-routes
   (swagger-ui
