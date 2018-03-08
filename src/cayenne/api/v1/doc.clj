@@ -23,7 +23,9 @@
     {:name "journal"
      :description "Endpoints that expose journal related data"}
     {:name "work"
-     :description "Endpoints that expose works related data"}]})
+     :description "Endpoints that expose works related data"}
+    {:name "prefix"
+     :description "Endpoints that expose prefix related data"}]})
 
 (def funders
   {"/funders" 
@@ -84,12 +86,28 @@
                       404 {:description "The work identified by {doi} does not exist."}}
           :tags ["work"]}}})
 
+(def prefixes
+  {"/prefixes/:prefix" 
+   {:get {:description "Gets a specific prefix by it's prefix, as an example use prefix 10.1016"
+          :parameters {:path {:prefix s/Str}}
+          :responses {200 {:schema sc/PrefixMessage
+                           :description "The prefix data identified by {prefix}."}
+                      404 {:description "The prefix data identified by {prefix} does not exist."}}
+          :tags ["prefix"]}}
+   "/prefixes/:prefix/works"
+   {:get {:description "Gets a collection of works with prefix {prefix}"
+          :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
+          :responses {200 {:schema sc/WorksMessage
+                           :description "A list of works"}}
+          :tags ["prefix"]}}})
+
 (def paths
   {:paths 
    (merge 
      funders 
      journals
-     works)})
+     works
+     prefixes)})
 
 (defroutes api-doc-routes
   (swagger-ui

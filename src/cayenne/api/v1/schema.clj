@@ -251,3 +251,12 @@
 
 (s/defschema QualityMessage
   (merge Message {:message-type #"work-quality" :message [Quality]}))
+
+;; Prefixes
+(s/defschema Prefix
+  {:member s/Str
+   :name s/Str
+   :prefix s/Str})
+
+(s/defschema PrefixMessage
+  (merge Message {:message-type #"prefix" :message Prefix}))
