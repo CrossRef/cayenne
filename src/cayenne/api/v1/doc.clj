@@ -40,6 +40,12 @@
           :responses {200 {:schema sc/FunderMessage
                            :description "The funder identified by {id}."}
                       404 {:description "The funder identified by {id} does not exist."}}
+          :tags ["funder"]}}
+   "/funders/:id/works"
+   {:get {:description "Gets a collection of works for funder {id}"
+          :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
+          :responses {200 {:schema sc/WorksMessage
+                           :description "A list of works"}}
           :tags ["funder"]}}})
 
 (def journals
@@ -55,6 +61,12 @@
           :responses {200 {:schema sc/JournalMessage
                            :description "The journal identified by {issn}."}
                       404 {:description "The journal identified by {issn} does not exist."}}
+          :tags ["journal"]}}
+   "/journals/:issn/works"
+   {:get {:description "Gets a collection of works for issn {issn}"
+          :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
+          :responses {200 {:schema sc/WorksMessage
+                           :description "A list of works"}}
           :tags ["journal"]}}})
 
 (def works
