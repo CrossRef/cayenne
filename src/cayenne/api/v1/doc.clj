@@ -125,7 +125,7 @@
                            :description "A collection of members"}}
           :tags ["member"]}}
    "/members/:id" 
-   {:get {:description "Gets a specific member by it's id, as an example use prefix 324"
+   {:get {:description "Gets a specific member by it's id, as an example use id 324"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/MemberMessage
                            :description "The prefix data identified by {id}."}
