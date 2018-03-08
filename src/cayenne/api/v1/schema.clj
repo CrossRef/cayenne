@@ -146,11 +146,24 @@
 
 ;; works
 (s/defschema
-  WorksSelector
-  {:query
-   {:select (field s/Str {:description "Exposes the ability to select certain fields from works data, supports a comma separated list of fields, e.g. DOI,volume "
+  WorksQuery
+  {:query 
+   {:select (field s/Str {:description "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
                           :required false
-                          :pattern #"^\w+(,\w+)*$"})}})
+                          :pattern #"^\w+(,\w+)*$"})
+    :filter (field s/Str {:description "Exposes the ability to filter by certain fields, supports a comma separated list of luncene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
+                          :required false})
+    :query (field s/Str {:description "Exposes the ability to free text query certain fields, supports a comma separated list of luncene filters, e.g. `title:cortisol`"
+                         :required false})
+    :cursor (field s/Str {:description "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
+                          :required false})
+    :sample (field s/Int {:description "Exposes the ability to return `N` number of random sample items"
+                          :required false})
+    :sort (field s/Str {:description "Exposes the ability to sort results by a certain field, e.g `score`"
+                        :required false})
+    :order (field s/Str {:description "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+                         :pattern #"(asc|desc)"
+                         :required false})}})
 
 (s/defschema Agency {:id s/Str :label s/Str})
 (s/defschema Quality {:id s/Str :description s/Str :pass Boolean})
@@ -225,6 +238,7 @@
   {:items-per-page s/Int
    :query Query
    :total-results s/Int
+   (s/optional-key :next-cursor) (field s/Str {:description "Used to navigate to the next page of results when using cursor deep paging"})
    :items [Work]})
 
 (s/defschema WorksMessage
