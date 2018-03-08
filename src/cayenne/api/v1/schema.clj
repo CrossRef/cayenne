@@ -246,8 +246,12 @@
          {:message-type #"work-list"
           :message Works}))
 
+(s/defschema DoiAgency
+  {:DOI WorkDoi
+   :agency Agency})
+
 (s/defschema AgencyMessage
-  (merge Message {:message-type #"work-agency" :message {:DOI s/Str :agency Agency}}))
+  (merge Message {:message-type #"work-agency" :message DoiAgency}))
 
 (s/defschema QualityMessage
   (merge Message {:message-type #"work-quality" :message [Quality]}))
