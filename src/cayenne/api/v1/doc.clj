@@ -113,13 +113,35 @@
                            :description "A list of works"}}
           :tags ["prefix"]}}})
 
+(def members
+  {"/members"
+   {:get {:description "Gets a collection of members"
+          :parameters sc/QueryParams
+          :responses {200 {:schema sc/MembersMessage
+                           :description "A collection of members"}}
+          :tags ["members"]}}
+   "/members/:id" 
+   {:get {:description "Gets a specific member by it's id, as an example use prefix 324"
+          :parameters {:path {:id s/Int}}
+          :responses {200 {:schema sc/MemberMessage
+                           :description "The prefix data identified by {prefix}."}
+                      404 {:description "The prefix data identified by {prefix} does not exist."}}
+          :tags ["members"]}}
+   "/members/:id/works"
+   {:get {:description "Gets a collection of works for member prefix {id}"
+          :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
+          :responses {200 {:schema sc/WorksMessage
+                           :description "A list of works"}}
+          :tags ["members"]}}})
+
 (def paths
   {:paths 
    (merge 
      funders 
      journals
      works
-     prefixes)})
+     prefixes
+     members)})
 
 (defroutes api-doc-routes
   (swagger-ui

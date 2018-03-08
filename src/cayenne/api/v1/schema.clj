@@ -35,9 +35,56 @@
    :sequence s/Str
    :affiliation [s/Str]})
 
+(s/defschema Coverage
+  {:affiliations-current s/Int
+   :funders-backfile s/Int
+   :licenses-backfile s/Int
+   :funders-current s/Int
+   :affiliations-backfile s/Int
+   :resource-links-backfile s/Int
+   :orcids-backfile s/Int
+   :update-policies-current s/Int
+   :orcids-current s/Int
+   :references-backfie s/Int
+   :award-numbers-backfile s/Int
+   :update-policies-backfile s/Int
+   :licenses-current s/Int
+   :award-numbers-current s/Int
+   :abstracts-backfile s/Int
+   :resource-links-current s/Int
+   :abstracts-current s/Int
+   :references-current s/Int})
+
+(s/defschema Flags
+  {:deposits-abstracts-current Boolean
+   :deposits-orcids-current Boolean
+   :deposits Boolean
+   :deposits-affiliations-backfile Boolean
+   :deposits-update-policies-backfile Boolean
+   :deposits-award-numbers-current Boolean
+   :deposits-resource-links-current Boolean
+   :deposits-articles Boolean
+   :deposits-affiliations-current Boolean
+   :deposits-funders-current Boolean
+   :deposits-references-backfile Boolean
+   :deposits-abstracts-backfile Boolean
+   :deposits-licenses-backfile Boolean
+   :deposits-award-numbers-backfile Boolean
+   :deposits-references-current Boolean
+   :deposits-resource-links-backfile Boolean
+   :deposits-orcids-backfile Boolean
+   :deposits-funders-backfile Boolean
+   :deposits-update-policies-current Boolean
+   :deposits-licenses-current Boolean})
+
+(s/defschema DoiCounts
+  {:total-dois s/Int
+   :current-dois s/Int
+   :backfile-dois s/Int})
+
 ;; Funders
 (s/defschema FunderId (field s/Str {:description "The id of the funder"}))
-(s/defschema Funder {:id FunderId,
+(s/defschema Funder {:id FunderId
                      :location (field s/Str {:description "The geographic location of the funder"})
                      :name s/Str
                      :alt-names (field [s/Str] {:description "Other names this funder may be identified with"})
@@ -68,65 +115,18 @@
 
 ;; Journals
 (s/defschema JournalIssn (field [s/Str] {:description "The ISSN identifiers associated with the journal"}))
-(s/defschema JournalCoverage
-  {:affiliations-current s/Int
-   :funders-backfile s/Int
-   :licenses-backfile s/Int
-   :funders-current s/Int
-   :affiliations-backfile s/Int
-   :resource-links-backfile s/Int
-   :orcids-backfile s/Int
-   :update-policies-current s/Int
-   :orcids-current s/Int
-   :references-backfie s/Int
-   :award-numbers-backfile s/Int
-   :update-policies-backfile s/Int
-   :licenses-current s/Int
-   :award-numbers-current s/Int
-   :abstracts-backfile s/Int
-   :resource-links-current s/Int
-   :abstracts-current s/Int
-   :references-current s/Int})
-
-(s/defschema JournalFlags
-  {:deposits-abstracts-current Boolean
-   :deposits-orcids-current Boolean
-   :deposits Boolean
-   :deposits-affiliations-backfile Boolean
-   :deposits-update-policies-backfile Boolean
-   :deposits-award-numbers-current Boolean
-   :deposits-resource-links-current Boolean
-   :deposits-articles Boolean
-   :deposits-affiliations-current Boolean
-   :deposits-funders-current Boolean
-   :deposits-references-backfile Boolean
-   :deposits-abstracts-backfile Boolean
-   :deposits-licenses-backfile Boolean
-   :deposits-award-numbers-backfile Boolean
-   :deposits-references-current Boolean
-   :deposits-resource-links-backfile Boolean
-   :deposits-orcids-backfile Boolean
-   :deposits-funders-backfile Boolean
-   :deposits-update-policies-current Boolean
-   :deposits-licenses-current Boolean})
-
-(s/defschema JournalCounts
-  {:total-dois s/Int
-   :current-dois s/Int
-   :backfile-dois s/Int})
-
 (s/defschema JournalIssnType
   {:value s/Str
    :type s/Str})
 
 (s/defschema Journal
-  {:title (field s/Str {:description "The title of the journal"}) ,
+  {:title (field s/Str {:description "The title of the journal"})
    :publisher (field s/Str {:description "The publisher of the journal"})
    :last-status-check-time s/Int
-   :counts JournalCounts
+   :counts DoiCounts
    :dois-by-issued-year [[s/Int s/Int]]
-   :coverage JournalCoverage
-   :flags JournalFlags
+   :coverage Coverage
+   :flags Flags
    :subjects [s/Str]
    :issn-type JournalIssnType
    :ISSN JournalIssn})
@@ -232,7 +232,8 @@
 
 (s/defschema WorkMessage
   (merge Message
-         {:message Work}))
+         {:message-type #"work" 
+          :message Work}))
 
 (s/defschema Works
   {:items-per-page s/Int
@@ -260,7 +261,41 @@
 (s/defschema Prefix
   {:member s/Str
    :name s/Str
+   (s/optional-key :value) s/Str
+   (s/optional-key :public-reference) Boolean
+   (s/optional-key :reference-visibilty) s/Str
    :prefix s/Str})
 
 (s/defschema PrefixMessage
   (merge Message {:message-type #"prefix" :message Prefix}))
+
+;; Members
+(s/defschema Member
+  {:id s/Int
+   :primary-name s/Str
+   :last-status-check-time s/Int
+   :counts DoiCounts
+   :dois-by-issued-year [[s/Int s/Int]]
+   :prefixes [s/Str]
+   :coverage Coverage
+   :flags Flags
+   :tokens [s/Str]
+   :names [s/Str]
+   :location s/Str
+   :prefix [Prefix]})
+
+(s/defschema Members
+  {:items-per-page s/Int
+   :query Query
+   :total-results s/Int
+   :items [Member]})
+
+(s/defschema MembersMessage
+  (merge Message
+         {:message-type #"member-list"
+          :message Members}))
+
+(s/defschema MemberMessage
+  (merge Message
+         {:message-type #"member" 
+          :message Member}))
