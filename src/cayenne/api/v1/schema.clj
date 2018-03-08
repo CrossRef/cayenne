@@ -62,9 +62,9 @@
 (s/defschema
   FundersFilter
   {:query
-   {:filter (field s/Str {:description "Exposes the ability to search funders by location using a Lucene based syntax"
-                          :required false
-                          :pattern "location:.*"})}})
+   {(s/optional-key :filter) 
+    (field s/Str {:description "Exposes the ability to search funders by location using a Lucene based syntax"
+                  :pattern "location:.*"})}})
 
 ;; Journals
 (s/defschema JournalIssn (field [s/Str] {:description "The ISSN identifiers associated with the journal"}))
@@ -148,22 +148,22 @@
 (s/defschema
   WorksQuery
   {:query 
-   {:select (field s/Str {:description "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
-                          :required false
-                          :pattern #"^\w+(,\w+)*$"})
-    :filter (field s/Str {:description "Exposes the ability to filter by certain fields, supports a comma separated list of luncene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"
-                          :required false})
-    :query (field s/Str {:description "Exposes the ability to free text query certain fields, supports a comma separated list of luncene filters, e.g. `title:cortisol`"
-                         :required false})
-    :cursor (field s/Str {:description "Exposes the ability to deep page through large result sets, where offset would cause performance problems"
-                          :required false})
-    :sample (field s/Int {:description "Exposes the ability to return `N` number of random sample items"
-                          :required false})
-    :sort (field s/Str {:description "Exposes the ability to sort results by a certain field, e.g `score`"
-                        :required false})
-    :order (field s/Str {:description "Combined with sort can be used to specify the order of results, e.g. asc or desc"
-                         :pattern #"(asc|desc)"
-                         :required false})}})
+   {(s/optional-key :select) 
+    (field s/Str {:description "Exposes the ability to select certain fields, supports a comma separated list of fields, e.g. `DOI,volume`"
+                  :pattern #"^\w+(,\w+)*$"})
+    (s/optional-key :filter) 
+    (field s/Str {:description "Exposes the ability to filter by certain fields, supports a comma separated list of luncene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"})
+    (s/optional-key :query) 
+    (field s/Str {:description "Exposes the ability to free text query certain fields, supports a comma separated list of luncene filters, e.g. `title:cortisol`"})
+    (s/optional-key :cursor) 
+    (field s/Str {:description "Exposes the ability to deep page through large result sets, where offset would cause performance problems"})
+    (s/optional-key :sample) 
+    (field s/Int {:description "Exposes the ability to return `N` number of random sample items"})
+    (s/optional-key :sort) 
+    (field s/Str {:description "Exposes the ability to sort results by a certain field, e.g `score`"})
+    (s/optional-key :order) 
+    (field s/Str {:description "Combined with sort can be used to specify the order of results, e.g. asc or desc"
+                  :pattern #"(asc|desc)"})}})
 
 (s/defschema Agency {:id s/Str :label s/Str})
 (s/defschema Quality {:id s/Str :description s/Str :pass Boolean})
