@@ -21,17 +21,17 @@
 
 (def tags
   {:tags
-   [{:name "funder"
+   [{:name "Funder"
      :description "Endpoints that expose funder related data"}
-    {:name "journal"
+    {:name "Journal"
      :description "Endpoints that expose journal related data"}
-    {:name "work"
+    {:name "Work"
      :description "Endpoints that expose works related data"}
-    {:name "prefix"
+    {:name "Prefix"
      :description "Endpoints that expose prefix related data"}
-    {:name "member"
+    {:name "Member"
      :description "Endpoints that expose member related data"}
-    {:name "type"
+    {:name "Type"
      :description "Endpoints that expose type related data"}]})
 
 (defn- fields [compound-fields field]
@@ -78,20 +78,20 @@
           :parameters (merge-with merge sc/FundersFilter sc/QueryParams)
           :responses {200 {:schema sc/FundersMessage
                            :description "A list of funders."}}
-          :tags ["funder"]}}
+          :tags ["Funder"]}}
    "/funders/:id" 
    {:get {:description "Gets a specific funder by it's id, as an example use id 501100006004"
           :parameters {:path {:id sc/FunderId}}
           :responses {200 {:schema sc/FunderMessage
                            :description "The funder identified by {id}."}
                       404 {:description "The funder identified by {id} does not exist."}}
-          :tags ["funder"]}}
+          :tags ["Funder"]}}
    "/funders/:id/works"
    {:get {:description (works-description "Gets a collection of works for funder {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["funder"]}}})
+          :tags ["Funder"]}}})
 
 (def journals
   {"/journals" 
@@ -99,20 +99,20 @@
           :parameters sc/QueryParams
           :responses {200 {:schema sc/JournalsMessage
                            :description "A list of journals"}}
-          :tags ["journal"]}}
+          :tags ["Journal"]}}
    "/journals/:issn" 
    {:get {:description "Gets a specific journal by it's issn, as an example use id 03064530"
           :parameters {:path {:id sc/JournalIssn}}
           :responses {200 {:schema sc/JournalMessage
                            :description "The journal identified by {issn}."}
                       404 {:description "The journal identified by {issn} does not exist."}}
-          :tags ["journal"]}}
+          :tags ["Journal"]}}
    "/journals/:issn/works"
    {:get {:description (works-description "Gets a collection of works for issn {issn}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["journal"]}}})
+          :tags ["Journal"]}}})
 
 (def works
   {"/works" 
@@ -120,28 +120,28 @@
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["work"]}}
+          :tags ["Work"]}}
    "/works/:doi" 
    {:get {:description "Gets a specific work by it's DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/WorkMessage
                            :description "The work identified by {doi}."}
                       404 {:description "The work identified by {doi} does not exist."}}
-          :tags ["work"]}}
+          :tags ["Work"]}}
    "/works/:doi/agency" 
    {:get {:description "Gets the agency associated with a specific work by it's DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/AgencyMessage
                            :description "The agency associated with work identified by {doi}."}
                       404 {:description "The work identified by {doi} does not exist."}}
-          :tags ["work"]}}
+          :tags ["Work"]}}
    "/works/:doi/quality" 
    {:get {:description "Gets the list of quality standards for work by it's DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/QualityMessage
                            :description "The quality standards associated with work identified by {doi}."}
                       404 {:description "The work identified by {doi} does not exist."}}
-          :tags ["work"]}}})
+          :tags ["Work"]}}})
 
 (def prefixes
   {"/prefixes/:prefix" 
@@ -150,13 +150,13 @@
           :responses {200 {:schema sc/PrefixMessage
                            :description "The prefix data identified by {prefix}."}
                       404 {:description "The prefix data identified by {prefix} does not exist."}}
-          :tags ["prefix"]}}
+          :tags ["Prefix"]}}
    "/prefixes/:prefix/works"
    {:get {:description (works-description "Gets a collection of works with prefix {prefix}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["prefix"]}}})
+          :tags ["Prefix"]}}})
 
 (def members
   {"/members"
@@ -164,20 +164,20 @@
           :parameters sc/QueryParams
           :responses {200 {:schema sc/MembersMessage
                            :description "A collection of members"}}
-          :tags ["member"]}}
+          :tags ["Member"]}}
    "/members/:id" 
    {:get {:description "Gets a specific member by it's id, as an example use id 324"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/MemberMessage
                            :description "The prefix data identified by {id}."}
                       404 {:description "The prefix data identified by {id} does not exist."}}
-          :tags ["member"]}}
+          :tags ["Member"]}}
    "/members/:id/works"
    {:get {:description (works-description "Gets a collection of works for member id {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["member"]}}})
+          :tags ["Member"]}}})
 
 (def types
   {"/types"
@@ -185,20 +185,20 @@
           :parameters sc/QueryParams
           :responses {200 {:schema sc/TypesMessage
                            :description "A collection of types"}}
-          :tags ["type"]}}
+          :tags ["Type"]}}
    "/types/:id" 
    {:get {:description "Gets a specific type by it's id, as an example use `monograph`"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/TypeMessage
                            :description "The type identified by {id}."}
                       404 {:description "The type identified by {id} does not exist."}}
-          :tags ["type"]}}
+          :tags ["Type"]}}
    "/types/:id/works"
    {:get {:description (works-description "Gets a collection of works for type id {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
-          :tags ["type"]}}})
+          :tags ["Type"]}}})
 
 (def paths
   {:paths 
