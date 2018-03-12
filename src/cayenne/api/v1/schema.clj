@@ -156,6 +156,8 @@
                   :pattern #"^\w+(,\w+)*$"})
     (s/optional-key :filter) 
     (field s/Str {:description "Exposes the ability to filter by certain fields, supports a comma separated list of luncene filters, e.g. `content-domain:psychoceramics.labs.crossref.org`"})
+    (s/optional-key :facets) 
+    (field s/Str {:description "Exposes the ability to retrieve counts for pre-defined facets e.g. `type-name:*` returns counts of all works by type"})
     (s/optional-key :query) 
     (field s/Str {:description "Exposes the ability to free text query certain fields, supports a comma separated list of luncene filters, e.g. `title:cortisol`"})
     (s/optional-key :cursor) 
