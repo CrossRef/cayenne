@@ -33,6 +33,22 @@
     {:name "type"
      :description "Endpoints that expose type related data"}]})
 
+(defn- fields [field]
+  (let [c-fields (get cayenne.api.v1.filter/compound-fields (keyword field))
+        field-prefix (str "\n  + " field ".")]
+    [field 
+     (if c-fields
+       (str field "." (clojure.string/join field-prefix c-fields)))]))
+   
+(defn- filters-description [title filters]
+  (->> (map (comp fields key) filters)
+       (map #(str "\n+ " (first %) (if (second %) (str "\n  + " (second %)))))
+       clojure.string/join
+       (str title 
+            "\n ## Filters " 
+            "\n Filters allow you to narrow queries. All filter results are lists."
+            "\n This endpoint supports the following filters.")))
+
 (def funders
   {"/funders" 
    {:get {:description "Gets a collection of funders"
@@ -48,7 +64,9 @@
                       404 {:description "The funder identified by {id} does not exist."}}
           :tags ["funder"]}}
    "/funders/:id/works"
-   {:get {:description "Gets a collection of works for funder {id}"
+   {:get {:description (filters-description 
+                         "Gets a collection of works for funder {id}."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -69,7 +87,9 @@
                       404 {:description "The journal identified by {issn} does not exist."}}
           :tags ["journal"]}}
    "/journals/:issn/works"
-   {:get {:description "Gets a collection of works for issn {issn}"
+   {:get {:description (filters-description 
+                         "Gets a collection of works for issn {issn}."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -77,7 +97,9 @@
 
 (def works
   {"/works" 
-   {:get {:description "Gets a collection of works"
+   {:get {:description (filters-description 
+                         "Gets a collection of works."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -113,7 +135,9 @@
                       404 {:description "The prefix data identified by {prefix} does not exist."}}
           :tags ["prefix"]}}
    "/prefixes/:prefix/works"
-   {:get {:description "Gets a collection of works with prefix {prefix}"
+   {:get {:description (filters-description 
+                         "Gets a collection of works with prefix {prefix}."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -134,7 +158,9 @@
                       404 {:description "The prefix data identified by {id} does not exist."}}
           :tags ["member"]}}
    "/members/:id/works"
-   {:get {:description "Gets a collection of works for member id {id}"
+   {:get {:description (filters-description 
+                         "Gets a collection of works for member id {id}."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -155,7 +181,9 @@
                       404 {:description "The type identified by {id} does not exist."}}
           :tags ["type"]}}
    "/types/:id/works"
-   {:get {:description "Gets a collection of works for type id {id}"
+   {:get {:description (filters-description 
+                         "Gets a collection of works for type id {id}."
+                         std-filters)
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
