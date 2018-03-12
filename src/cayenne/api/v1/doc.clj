@@ -1,7 +1,9 @@
 (ns cayenne.api.v1.doc
   (:require [cayenne.api.v1.schema :as sc]
+            [cayenne.api.v1.filter :refer [std-filters]]
             [compojure.core :refer [defroutes GET]]
             [clojure.data.json :as json]
+            [clojure.java.io :refer [resource]]
             [ring.swagger.swagger-ui :refer [swagger-ui]]
             [ring.swagger.swagger2 :as rs]
             [schema.core :as s]))
@@ -10,9 +12,9 @@
   {:info 
    {:version "0.1"
     :title "Crossref Unified Resource API"
-    :description "Crossref Unified Resource API"
+    :description (slurp (resource "description.md"))
     :termsOfService "https://github.com/CrossRef/rest-api-doc"
-    :contact {:name "Crossref Labs"
+    :contact {:name "Crossref"
               :email "support@crossref.org"
               :url "https://crossref.org"}}})
 
