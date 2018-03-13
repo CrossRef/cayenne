@@ -31,17 +31,16 @@
         :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
               "PATH" (System/getenv "PATH")
               "MONGO_HOST" "cayenne_mongo_1:27017"})]
-    (when-not (-> result :exit zero?)
-      (println "Error starting Docker Compose:")
-      (println result)))
-
-
-  ;; wait for solr to start, sometimes takes a while to load the core
-  (while (or (not (solr-ready?))
-             (not (mongo-ready?)))
-    (println "Waiting for solr and mongo to be ready..")
-    (Thread/sleep 500))
-  (start-core! :default :api))
+    (if-not (-> result :exit zero?)
+      (do (println "Error starting Docker Compose:")
+          (println result))
+      (do 
+        ;; wait for solr to start, sometimes takes a while to load the core
+        (while (or (not (solr-ready?))
+                   (not (mongo-ready?)))
+          (println "Waiting for solr and mongo to be ready..")
+          (Thread/sleep 500))
+        (start-core! :default :api)))))
 
 (defn stop []
   (stop-core! :default)
