@@ -219,3 +219,17 @@ Note that the "message-type" returned will differ from the mime-type:
 - member-list (list)
 
 Normally, an API list result will return both the summary and the items. If you want to just retrieve the summary, you can do so by specifying that the number of rows returned should be zero.
+
+#### Sort order
+
+If the API call includes a query, then the sort order will be by the relevance score. If no query is included, then the sort order will be by DOI update date.
+
+See the documentation for each endpoint to find the list of elements that you can sort by.
+
+### Selecting which elements to return
+
+Crossref metadata records can be quite large. Sometimes you just want a few elements from the schema. You can "select" a subset of elements to return using the `select` parameter. This can make your API calls much more efficient. For example:
+
+`http://api.crossref.org/works?sample=10&select=DOI,title`
+
+See the documentation for each endpoint to find the list of elements that can be selected.

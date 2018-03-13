@@ -11,7 +11,7 @@
             [schema.core :as s]))
 
 (def info
-  {:info 
+  {:info
    {:version "0.1"
     :title "Crossref Unified Resource API"
     :description (slurp (resource "description.md"))
@@ -38,11 +38,11 @@
 (defn- fields [compound-fields field]
   (let [c-fields (get compound-fields (keyword field))
         field-prefix (str "\n  + " field ".")]
-    [field 
+    [field
      (if c-fields
        (str field "." (clojure.string/join field-prefix c-fields)))]))
 
-(defn- fields-description 
+(defn- fields-description
   ([title filters]
    (fields-description title filters {}))
   ([title filters compound-fields]
@@ -52,35 +52,28 @@
         (str title))))
 
 (defn- filters-description []
-  (fields-description 
-    (str "\n ## Filters" 
-         "\n Filters allow you to narrow queries. All filter results are lists."
-         "This endpoint supports the following filters.")
+  (fields-description
+    (slurp (resource "filters-description.md"))
     std-filters
     compound-fields))
 
 (defn- facets-description []
-  (fields-description 
-    (str "\n ## Facets" 
-         "\n Facet counts can be retrieved by enabling faceting. Facets are enabled by providing facet field names along with a maximum number of returned term values. The larger the number of returned values, the longer the query will take. Some facet fields can accept a `*` as their maximum, which indicates that all values should be returned.Filters allow you to narrow queries. All filter results are lists." 
-         "This endpoint supports the following facets.")
+  (fields-description
+    (slurp (resource "facets-description.md"))
     (reduce merge (map (comp #(assoc {} % []) :external-field val) std-facets))))
 
 (defn- selects-description []
-  (fields-description 
-    (str "\n ## Fields" 
-         "This endpoint supports the selecting the following fields.")
+  (fields-description
+    (slurp (resource "selects-description.md"))
     select-fields))
 
 (defn- sorts-description []
-  (fields-description 
-    (str "\n ## Sort" 
-         "\n Results from a listy response can be sorted by applying the `sort` and `order` parameters. Order sets the result ordering, either `asc` or `desc`. Sort sets the field by which results will be sorted."
-         "This endpoint supports sorting by the following fields.")
+  (fields-description
+    (slurp (resource "sorts-description.md"))
     sort-fields))
 
 (defn- works-description [title]
-  (str 
+  (str
     title
     (filters-description)
     (facets-description)
@@ -88,69 +81,69 @@
     (sorts-description)))
 
 (def funders
-  {"/funders" 
-   {:get {:description "Gets a collection of funders"
+  {"/funders"
+   {:get {:description "Returns a list of all funders in the [Funder Registry](https://github.com/Crossref/open-funder-registry)."
           :parameters (merge-with merge sc/FundersFilter sc/QueryParams)
           :responses {200 {:schema sc/FundersMessage
                            :description "A list of funders."}}
           :tags ["Funder"]}}
-   "/funders/:id" 
-   {:get {:description "Gets a specific funder by it's id, as an example use id 501100006004"
+   "/funders/:id"
+   {:get {:description "Returns metadata for specified funder **and** its suborganizations, as an example use id 501100006004"
           :parameters {:path {:id sc/FunderId}}
           :responses {200 {:schema sc/FunderMessage
                            :description "The funder identified by {id}."}
                       404 {:description "The funder identified by {id} does not exist."}}
           :tags ["Funder"]}}
    "/funders/:id/works"
-   {:get {:description (works-description "Gets a collection of works for funder {id}.")
+   {:get {:description (works-description "Returns list of works associated with the specified {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
           :tags ["Funder"]}}})
 
 (def journals
-  {"/journals" 
-   {:get {:description "Gets a collection of journals"
+  {"/journals"
+   {:get {:description "Return a list of journals in the Crossref database."
           :parameters sc/QueryParams
           :responses {200 {:schema sc/JournalsMessage
                            :description "A list of journals"}}
           :tags ["Journal"]}}
-   "/journals/:issn" 
-   {:get {:description "Gets a specific journal by it's issn, as an example use id 03064530"
+   "/journals/:issn"
+   {:get {:description "Returns information about a journal with the given ISSN, as an example use ISSN 03064530"
           :parameters {:path {:id sc/JournalIssn}}
           :responses {200 {:schema sc/JournalMessage
                            :description "The journal identified by {issn}."}
                       404 {:description "The journal identified by {issn} does not exist."}}
           :tags ["Journal"]}}
    "/journals/:issn/works"
-   {:get {:description (works-description "Gets a collection of works for issn {issn}.")
+   {:get {:description (works-description "Returns a list of works in the journal identified by {issn}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
           :tags ["Journal"]}}})
 
 (def works
-  {"/works" 
-   {:get {:description (works-description "Gets a collection of works.")
+  {"/works"
+   {:get {:description (works-description "Returns a list of all works (journal articles, conference proceedings, books, components, etc), 20 per page.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
           :tags ["Work"]}}
-   "/works/:doi" 
-   {:get {:description "Gets a specific work by it's DOI, as an example use DOI 10.5555/12345678"
+   "/works/:doi"
+   {:get {:description "Returns metadata for the specified Crossref DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/WorkMessage
                            :description "The work identified by {doi}."}
                       404 {:description "The work identified by {doi} does not exist."}}
           :tags ["Work"]}}
-   "/works/:doi/agency" 
+   "/works/:doi/agency"
    {:get {:description "Gets the agency associated with a specific work by it's DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/AgencyMessage
                            :description "The agency associated with work identified by {doi}."}
                       404 {:description "The work identified by {doi} does not exist."}}
           :tags ["Work"]}}
-   "/works/:doi/quality" 
+   "/works/:doi/quality"
    {:get {:description "Gets the list of quality standards for work by it's DOI, as an example use DOI 10.5555/12345678"
           :parameters {:path {:doi sc/WorkDoi}}
           :responses {200 {:schema sc/QualityMessage
@@ -159,15 +152,15 @@
           :tags ["Work"]}}})
 
 (def prefixes
-  {"/prefixes/:prefix" 
-   {:get {:description "Gets a specific prefix by it's prefix, as an example use prefix 10.1016"
+  {"/prefixes/:prefix"
+   {:get {:description "Returns metadata for the DOI owner prefix, as an example use prefix 10.1016"
           :parameters {:path {:prefix s/Str}}
           :responses {200 {:schema sc/PrefixMessage
                            :description "The prefix data identified by {prefix}."}
                       404 {:description "The prefix data identified by {prefix} does not exist."}}
           :tags ["Prefix"]}}
    "/prefixes/:prefix/works"
-   {:get {:description (works-description "Gets a collection of works with prefix {prefix}.")
+   {:get {:description (works-description "Returns list of works associated with specified {prefix}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -175,20 +168,20 @@
 
 (def members
   {"/members"
-   {:get {:description "Gets a collection of members"
+   {:get {:description "Returns a list of all Crossref members (mostly publishers)."
           :parameters sc/QueryParams
           :responses {200 {:schema sc/MembersMessage
                            :description "A collection of members"}}
           :tags ["Member"]}}
-   "/members/:id" 
-   {:get {:description "Gets a specific member by it's id, as an example use id 324"
+   "/members/:id"
+   {:get {:description "Returns metadata for a Crossref member, as an example use id 324"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/MemberMessage
                            :description "The prefix data identified by {id}."}
                       404 {:description "The prefix data identified by {id} does not exist."}}
           :tags ["Member"]}}
    "/members/:id/works"
-   {:get {:description (works-description "Gets a collection of works for member id {id}.")
+   {:get {:description (works-description "Returns list of works associated with a Crossref member (deposited by a Crossref member) with {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
@@ -196,29 +189,29 @@
 
 (def types
   {"/types"
-   {:get {:description "Gets a collection of types"
+   {:get {:description "Returns a list of valid work types."
           :parameters sc/QueryParams
           :responses {200 {:schema sc/TypesMessage
                            :description "A collection of types"}}
           :tags ["Type"]}}
-   "/types/:id" 
-   {:get {:description "Gets a specific type by it's id, as an example use `monograph`"
+   "/types/:id"
+   {:get {:description "Returns information about a metadata work type, as an example use `monograph`"
           :parameters {:path {:id s/Int}}
           :responses {200 {:schema sc/TypeMessage
                            :description "The type identified by {id}."}
                       404 {:description "The type identified by {id} does not exist."}}
           :tags ["Type"]}}
    "/types/:id/works"
-   {:get {:description (works-description "Gets a collection of works for type id {id}.")
+   {:get {:description (works-description "returns list of works of type {id}.")
           :parameters (merge-with merge sc/WorksQuery sc/QueryParams)
           :responses {200 {:schema sc/WorksMessage
                            :description "A list of works"}}
           :tags ["Type"]}}})
 
 (def paths
-  {:paths 
-   (merge 
-     funders 
+  {:paths
+   (merge
+     funders
      journals
      works
      prefixes
@@ -229,8 +222,8 @@
   (swagger-ui
     {:path "/swagger-ui"
      :swagger-docs "/swagger-docs"})
-  (GET "/swagger-docs" [] 
-       (json/write-str 
+  (GET "/swagger-docs" []
+       (json/write-str
          (s/with-fn-validation
            (rs/swagger-json
              (merge
