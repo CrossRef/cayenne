@@ -1,6 +1,7 @@
 (ns cayenne.api.v1.doc
   (:require [cayenne.api.v1.schema :as sc]
             [cayenne.api.v1.filter :refer [std-filters compound-fields]]
+            [cayenne.api.v1.fields :refer [work-fields]]
             [cayenne.api.v1.facet :refer [std-facets]]
             [cayenne.api.v1.query :refer [select-fields sort-fields]]
             [compojure.core :refer [defroutes GET]]
@@ -72,10 +73,16 @@
     (slurp (resource "sorts-description.md"))
     sort-fields))
 
+(defn- query-description []
+  (fields-description
+    (slurp (resource "query-description.md"))
+    work-fields))
+
 (defn- works-description [title]
   (str
     title
     (filters-description)
+    (query-description)
     (facets-description)
     (selects-description)
     (sorts-description)))
