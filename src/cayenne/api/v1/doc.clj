@@ -2,6 +2,7 @@
   (:require [cayenne.api.v1.schema :as sc]
             [cayenne.api.v1.filter :refer [std-filters compound-fields]]
             [cayenne.api.v1.facet :refer [std-facets]]
+            [cayenne.api.v1.query :refer [select-fields sort-fields]]
             [compojure.core :refer [defroutes GET]]
             [clojure.data.json :as json]
             [clojure.java.io :refer [resource]]
@@ -50,27 +51,41 @@
         clojure.string/join
         (str title))))
 
-(defn- filters-description [title]
+(defn- filters-description []
   (fields-description 
-    (str title 
-         "\n ## Filters " 
+    (str "\n ## Filters" 
          "\n Filters allow you to narrow queries. All filter results are lists."
-         "\n This endpoint supports the following filters.")
+         "This endpoint supports the following filters.")
     std-filters
     compound-fields))
 
-(defn- facets-description [title]
+(defn- facets-description []
   (fields-description 
-    (str "" 
-         "\n ## Facets " 
+    (str "\n ## Facets" 
          "\n Facet counts can be retrieved by enabling faceting. Facets are enabled by providing facet field names along with a maximum number of returned term values. The larger the number of returned values, the longer the query will take. Some facet fields can accept a `*` as their maximum, which indicates that all values should be returned.Filters allow you to narrow queries. All filter results are lists." 
-         "\n This endpoint supports the following facets")
+         "This endpoint supports the following facets.")
     (reduce merge (map (comp #(assoc {} % []) :external-field val) std-facets))))
+
+(defn- selects-description []
+  (fields-description 
+    (str "\n ## Fields" 
+         "This endpoint supports the selecting the following fields.")
+    select-fields))
+
+(defn- sorts-description []
+  (fields-description 
+    (str "\n ## Sort" 
+         "\n Results from a listy response can be sorted by applying the `sort` and `order` parameters. Order sets the result ordering, either `asc` or `desc`. Sort sets the field by which results will be sorted."
+         "This endpoint supports sorting by the following fields.")
+    sort-fields))
 
 (defn- works-description [title]
   (str 
-    (filters-description title)
-    (facets-description "")))
+    title
+    (filters-description)
+    (facets-description)
+    (selects-description)
+    (sorts-description)))
 
 (def funders
   {"/funders" 
