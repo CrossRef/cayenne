@@ -11,8 +11,7 @@
 
   (testing "members endpoint returns expected result for member works"
     (doseq [member-id ["78"]]
-      (let [response (-> (api-get (str "/v1/members/" member-id "/works?rows=200"))
-                         (update-in [:items] (partial sort-by :DOI)))
+      (let [response (api-get (str "/v1/members/" member-id "/works?rows=200"))
             expected-response (read-string (slurp (resource (str "members/" member-id "-works.edn"))))]
         (is (= expected-response response))))))
 
