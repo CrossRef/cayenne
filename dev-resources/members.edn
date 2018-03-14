@@ -1,0 +1,194 @@
+{:items-per-page 20,
+ :query {:start-index 0, :search-terms nil},
+ :total-results 1,
+ :items
+ ({:primary-name "Elsevier BV",
+   :counts {:total-dois 121, :current-dois 121, :backfile-dois 0},
+   :breakdowns {:dois-by-issued-year [[2017 115] [2016 6]]},
+   :prefixes
+   ["10.7424"
+    "10.25013"
+    "10.14219"
+    "10.1602"
+    "10.1529"
+    "10.1533"
+    "10.1580"
+    "10.3816"
+    "10.1240"
+    "10.1205"
+    "10.1197"
+    "10.1157"
+    "10.3921"
+    "10.1367"
+    "10.1331"
+    "10.1383"
+    "10.2111"
+    "10.2139"
+    "10.1006"
+    "10.1016"
+    "10.1067"
+    "10.1078"
+    "10.2353"
+    "10.1054"
+    "10.1053"
+    "10.3182"
+    "10.7811"
+    "10.4065"],
+   :coverage
+   {:affiliations-current 0.0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0.38842976093292236,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0.9504132270812988,
+    :orcids-current 0.06611569970846176,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 1.0,
+    :award-numbers-current 0.26446279883384705,
+    :abstracts-backfile 0,
+    :resource-links-current 1.0,
+    :abstracts-current 0.0,
+    :references-current 0.9917355179786682},
+   :prefix
+   [{:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.7424"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.25013"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.14219"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1602"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1529"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1533"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1580"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.3816"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1240"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1205"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1197"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1157"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.3921"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1367"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1331"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1383"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.2111"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.2139"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1006"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1016"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1067"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1078"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.2353"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1054"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.1053"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.3182"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.7811"}
+    {:reference-visibility "closed",
+     :public-references false,
+     :name "Elsevier ",
+     :value "10.4065"}],
+   :id 78,
+   :tokens ["elsevier" "bv"],
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current true,
+    :deposits true,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current true,
+    :deposits-resource-links-current true,
+    :deposits-articles true,
+    :deposits-affiliations-current false,
+    :deposits-funders-current true,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current true,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current true,
+    :deposits-licenses-current true},
+   :location
+   "230 Park Avenue Suite 800 Shantae McGee New York NY 10169-0935 United States",
+   :names ["Elsevier BV" "Elsevier"]})}

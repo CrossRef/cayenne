@@ -24,10 +24,17 @@
         (is (= expected-response response) (str "unexpected result for select " select)))))
 
   (testing "works endpoint returns expected result for filter"
-    (doseq [q-filter ["from-created-date:2018" "from-deposit-date:2018" "from-pub-date:2018"]]
-      (let [response (api-get (str "/v1/works?filter=" q-filter))
+    (doseq [q-filter ["member:78" "from-created-date:2018" 
+                      "from-deposit-date:2018" "from-pub-date:2018"]]
+      (let [response (api-get (str "/v1/works?rows=1000&filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
+
+  (testing "works related endpoints agree on work counts"
+    (let [work-count (:total-results (api-get (str "/v1/works?filter=member:78")))
+          member-work-count (:total-results (api-get (str "/v1/members/78/works")))
+          member-doi-count (-> (api-get (str "/v1/members/78")) :counts :total-dois)]
+      (is (= work-count member-work-count member-doi-count))))
 
   (testing "works endpoint returns expected result for DOI agency"
     (with-redefs 
