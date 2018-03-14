@@ -27,12 +27,12 @@
         related (parse-fn loc)]
     (cond 
      (= kind :single)
-     (if (not (nil? related))
+     (if related
        (assoc-in item [:rel relation] (conj existing related))
        item)
      (= kind :multi)
-     (let [non-nil-related (filter (complement nil?) related)]
-       (if (and (not (nil? non-nil-related)) (not (empty? non-nil-related)))
+     (let [non-nil-related (remove nil? related)]
+       (if (not-empty non-nil-related)
          (assoc-in item [:rel relation] (concat existing non-nil-related))
          item)))))
 
@@ -67,7 +67,7 @@
 (defn if-conj
   "Conj item to coll iff item is not nil."
   [coll item]
-  (if (not (nil? item))
+  (if item
     (conj coll item)
     coll))
 

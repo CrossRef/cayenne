@@ -29,7 +29,7 @@
   (assert (even? (count kvs)))
   (into m
         (for [[k v] (partition 2 kvs)
-         :when (not (nil? (parse-int-safe v)))]
+         :when (parse-int-safe v)]
           [k (parse-int-safe v)])))
 
 (defn keys-in
@@ -53,7 +53,7 @@
 (defn without-nil-vals
   "Dissoc any key val pairs where the val is nil."
   [record]
-  (reduce (fn [m [k v]] (if (nil? v) (dissoc m k) m)) record record))
+  (reduce (fn [m [k v]] (if v m (dissoc m k))) record record))
 
 (defn without-keyword-vals
   "Convert all map values that are keywords into Java strings."

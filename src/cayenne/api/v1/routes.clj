@@ -41,7 +41,7 @@
 (defn authed?
   "Has this request been successfully authenticated?"
   [context]
-  (not (nil? (get-in context [:request :basic-authentication]))))
+  (get-in context [:request :basic-authentication]))
 
 (defn get-owner [context]
   (get-in context [:request :basic-authentication 0]))

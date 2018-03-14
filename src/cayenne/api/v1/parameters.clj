@@ -12,7 +12,7 @@
                                          :or {body-params true query-params true}}]
   (cond 
     (and body-params 
-         (not (nil? (get-in request-context [:request :body]))))
+         (get-in request-context [:request :body]))
     (-> request-context
         (get-in [:request :body])
         (io/reader)

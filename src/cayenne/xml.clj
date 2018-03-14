@@ -27,9 +27,9 @@
        (.trim)))
      
 (defn- child-seq [^nu.xom.Node node]
-  (if (nil? node)
-    []
-    (map #(.getChild node %) (range 0 (.getChildCount node)))))
+  (if node
+    (map #(.getChild node %) (range 0 (.getChildCount node)))
+    []))
 
 (defn- descendant-seq* [nodes where-fn]
   (let [children (flatten (map child-seq nodes))
@@ -43,7 +43,7 @@
   (flatten (descendant-seq* nodes where-fn)))
 
 (defn- attribute->str [attribute]
-  (when (not (nil? attribute))
+  (when attribute
     (.getValue attribute)))
 
 (defn process-xml [^java.io.Reader rdr tag-name process-fn]
@@ -73,9 +73,7 @@
 
 (defn- xselect-result [out-val]
   (if (= SelectorContext (type out-val))
-    (if (nil? (:nodes out-val))
-      []
-      (:nodes out-val))
+    (or (:nodes out-val) [])
     out-val))
 
 (defn- xselect* [^SelectorContext context selector]
@@ -125,7 +123,7 @@
       false))))
 
 (defn xselect [nodes & path]
-  (if (nil? nodes)
+  (if-not nodes
     []
     (let [node-seq (if (seq? nodes) nodes (cons nodes nil))
           initial (->SelectorContext node-seq false)

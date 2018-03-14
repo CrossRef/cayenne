@@ -20,8 +20,8 @@
   (let [pub-dates (concat
                    (i/get-tree-rel item :published-online)
                    (i/get-tree-rel item :published-print))]
-    (filter
-     #(or (nil? (:day %)) (nil? (:month %)) (nil? (:year %)))
+    (keep
+     #(or (:day %) (:month %) (:year %))
      pub-dates)))
 
 (defn funding-information [item]
@@ -57,8 +57,8 @@
 
 (defn contributors-have-full-names [item]
   (let [contributors (i/find-items-of-type item :person)]
-    (filter
-     #(or (nil? (:first-name %)) (nil? (:last-name %)))
+    (keep
+     #(or (:first-name %) (:last-name %))
      contributors)))
 
 (defn contributors-have-orcids [item]
@@ -69,7 +69,7 @@
 
 (defn contributors-have-affiliations [item]
   (let [contributors (i/find-items-of-type item :person)]
-    (filter #(nil? (:affiliation %)) contributors)))
+    (keep :affiliation contributors)))
 
 (defn contributors-no-bad-punctuation [item]
   (let [contributors (i/find-items-of-type item :person)
@@ -83,8 +83,8 @@
         (concat
          (i/find-items-of-subtype item :journal-article)
          (i/find-items-of-subtype item :proceedings-article))]
-    (filter
-     #(or (nil? (:first-page %)) (nil? (:last-page %)))
+    (keep
+     #(or (:first-page %) (:last-page %))
      articles)))
 
 (defn articles-have-separate-pages [item]
