@@ -38,7 +38,7 @@
                                           "application/citeproc+json" 
                                           "application/vnd.citationstyles.csl+json"}))]
         (let [response (->> {:accept content-type} 
-                            (http/get (str api-root "/v1/works/" doi "/transform") )
+                            (http/get (str api-root "/v1/works/" doi "/transform"))
                             :body)
               expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
           (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type))))))
