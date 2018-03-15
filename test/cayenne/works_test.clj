@@ -39,11 +39,16 @@
 
   (testing "works endpoint returns expected result for transform"
     (doseq [doi ["10.1016/j.psyneuen.2016.10.018" "10.7287/peerj.2196v0.1/reviews/2"]]
-      (let [response (->> {:accept "application/rdf+xml"} 
-                          (http/get (str api-root "/v1/works/" doi "/transform") )
-                          :body)
-            expected-response (slurp (resource (str "works/" doi "-transform.rdf")))]
-        (is (= expected-response response) (str "unexpected result for transform of " doi)))))
+      (doseq [content-type (->> cayenne.api.v1.types/work-transform
+                                (remove #{"application/x-bibtex" 
+                                          "application/json" 
+                                          "application/citeproc+json" 
+                                          "application/vnd.citationstyles.csl+json"}))]
+        (let [response (->> {:accept content-type} 
+                            (http/get (str api-root "/v1/works/" doi "/transform") )
+                            :body)
+              expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
+          (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type))))))
 
   (testing "works endpoint returns expected result for DOI agency"
     (with-redefs 
