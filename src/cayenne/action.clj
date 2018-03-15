@@ -343,7 +343,7 @@
         (let [doi (:DOI record)
               funding (:funder record)]
           (->> funding
-               (keep :DOI)
+               (remove :DOI)
                (map #(vector doi (:name %))))))
       data)
      (if (zero? (count data))
