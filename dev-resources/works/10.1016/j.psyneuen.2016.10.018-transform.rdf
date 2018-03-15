@@ -1,0 +1,75 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://purl.org/dc/terms/"
+    xmlns:j.1="http://prismstandard.org/namespaces/basic/2.1/"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.2="http://purl.org/ontology/bibo/"
+    xmlns:j.3="http://xmlns.com/foaf/0.1/">
+  <rdf:Description rdf:about="http://dx.doi.org/10.1016/j.psyneuen.2016.10.018">
+    <owl:sameAs rdf:resource="doi:10.1016/j.psyneuen.2016.10.018"/>
+    <j.0:publisher>Elsevier BV</j.0:publisher>
+    <j.1:startingPage>132</j.1:startingPage>
+    <j.1:volume>75</j.1:volume>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/dominique-piber-503qfqbenfar">
+        <j.3:name>Dominique Piber</j.3:name>
+        <j.3:familyName>Piber</j.3:familyName>
+        <j.3:givenName>Dominique</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:identifier>10.1016/j.psyneuen.2016.10.018</j.0:identifier>
+    <j.0:title>Effects of mineralocorticoid-receptor stimulation on risk taking behavior in young healthy men and women</j.0:title>
+    <j.2:pageStart>132</j.2:pageStart>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar">
+        <j.3:name>Christian Eric Deuter</j.3:name>
+        <j.3:familyName>Deuter</j.3:familyName>
+        <j.3:givenName>Christian Eric</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <owl:sameAs rdf:resource="info:doi/10.1016/j.psyneuen.2016.10.018"/>
+    <j.2:doi>10.1016/j.psyneuen.2016.10.018</j.2:doi>
+    <j.2:volume>75</j.2:volume>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar">
+        <j.3:name>Katharina Schultebraucks</j.3:name>
+        <j.3:familyName>Schultebraucks</j.3:familyName>
+        <j.3:givenName>Katharina</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth"
+    >2017-01</j.0:date>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/christian-otte-503qfqbenfar">
+        <j.3:name>Christian Otte</j.3:name>
+        <j.3:familyName>Otte</j.3:familyName>
+        <j.3:givenName>Christian</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:isPartOf>
+      <j.2:Journal rdf:about="http://id.crossref.org/issn/0306-4530">
+        <owl:sameAs>urn:issn:0306-4530</owl:sameAs>
+        <j.0:title>Psychoneuroendocrinology</j.0:title>
+        <j.1:issn>0306-4530</j.1:issn>
+        <j.2:issn>0306-4530</j.2:issn>
+      </j.2:Journal>
+    </j.0:isPartOf>
+    <j.2:pageEnd>140</j.2:pageEnd>
+    <j.1:doi>10.1016/j.psyneuen.2016.10.018</j.1:doi>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar">
+        <j.3:name>Julian Hellmann-Regen</j.3:name>
+        <j.3:familyName>Hellmann-Regen</j.3:familyName>
+        <j.3:givenName>Julian</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <j.0:creator>
+      <j.3:Person rdf:about="http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar">
+        <j.3:name>Katja Wingenfeld</j.3:name>
+        <j.3:familyName>Wingenfeld</j.3:familyName>
+        <j.3:givenName>Katja</j.3:givenName>
+      </j.3:Person>
+    </j.0:creator>
+    <j.1:endingPage>140</j.1:endingPage>
+  </rdf:Description>
+</rdf:RDF>
