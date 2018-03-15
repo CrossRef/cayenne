@@ -1,0 +1,50 @@
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://www.w3.org/2002/07/owl#sameAs> <doi:10.1016/j.psyneuen.2016.10.018> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/publisher> "Elsevier BV" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://prismstandard.org/namespaces/basic/2.1/startingPage> "132" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://prismstandard.org/namespaces/basic/2.1/volume> "75" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/identifier> "10.1016/j.psyneuen.2016.10.018" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/title> "Effects of mineralocorticoid-receptor stimulation on risk taking behavior in young healthy men and women" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/ontology/bibo/pageStart> "132" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://www.w3.org/2002/07/owl#sameAs> <info:doi/10.1016/j.psyneuen.2016.10.018> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/ontology/bibo/doi> "10.1016/j.psyneuen.2016.10.018" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/ontology/bibo/volume> "75" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/date> "2017-01"^^<http://www.w3.org/2001/XMLSchema#gYearMonth> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/christian-otte-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/isPartOf> <http://id.crossref.org/issn/0306-4530> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/ontology/bibo/pageEnd> "140" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://prismstandard.org/namespaces/basic/2.1/doi> "10.1016/j.psyneuen.2016.10.018" .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> .
+<http://dx.doi.org/10.1016/j.psyneuen.2016.10.018> <http://prismstandard.org/namespaces/basic/2.1/endingPage> "140" .
+<http://id.crossref.org/issn/0306-4530> <http://www.w3.org/2002/07/owl#sameAs> "urn:issn:0306-4530" .
+<http://id.crossref.org/issn/0306-4530> <http://purl.org/dc/terms/title> "Psychoneuroendocrinology" .
+<http://id.crossref.org/issn/0306-4530> <http://prismstandard.org/namespaces/basic/2.1/issn> "0306-4530" .
+<http://id.crossref.org/issn/0306-4530> <http://purl.org/ontology/bibo/issn> "0306-4530" .
+<http://id.crossref.org/issn/0306-4530> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://purl.org/ontology/bibo/Journal> .
+<http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Julian Hellmann-Regen" .
+<http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Hellmann-Regen" .
+<http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Julian" .
+<http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Christian Eric Deuter" .
+<http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Deuter" .
+<http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Christian Eric" .
+<http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://id.crossref.org/contributor/christian-otte-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Christian Otte" .
+<http://id.crossref.org/contributor/christian-otte-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Otte" .
+<http://id.crossref.org/contributor/christian-otte-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Christian" .
+<http://id.crossref.org/contributor/christian-otte-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Katharina Schultebraucks" .
+<http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Schultebraucks" .
+<http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Katharina" .
+<http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Katja Wingenfeld" .
+<http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Wingenfeld" .
+<http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Katja" .
+<http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> <http://xmlns.com/foaf/0.1/name> "Dominique Piber" .
+<http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> <http://xmlns.com/foaf/0.1/familyName> "Piber" .
+<http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> <http://xmlns.com/foaf/0.1/givenName> "Dominique" .
+<http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
