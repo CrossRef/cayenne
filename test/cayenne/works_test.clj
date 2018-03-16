@@ -25,7 +25,8 @@
         (is (= expected-response response) (str "unexpected result for select " select)))))
 
   (testing "works endpoint returns expected result for filter"
-    (doseq [q-filter ["from-created-date:2018" "from-deposit-date:2018" "from-pub-date:2018"]]
+    (doseq [q-filter ["type:peer-review" "from-created-date:2018" 
+                      "from-deposit-date:2018" "from-pub-date:2018"]]
       (let [response (api-get (str "/v1/works?filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
