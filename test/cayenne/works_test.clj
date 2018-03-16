@@ -44,11 +44,20 @@
                                           "application/json" 
                                           "application/citeproc+json" 
                                           "application/vnd.citationstyles.csl+json"}))]
-        (let [response (->> {:accept content-type} 
-                            (http/get (str api-root "/v1/works/" doi "/transform"))
-                            :body)
-              expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
-          (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type))))))
+        (with-redefs 
+          [org.httpkit.client/get 
+           (fn [_ _]
+             ;; trasforming to unixref and unixsd xml results in a call to an upstream http
+             ;; service, here we mock it out to slurp from a file instead
+             (let [file (if (clojure.string/ends-with? content-type "unixref+xml")
+                            "application/vnd.crossref.unixref+xml"
+                            "application/vnd.crossref.unixsd+xml")]
+                 (atom {:body (slurp (resource (str "works/" doi "/" file)))})))]
+          (let [response (->> {:accept content-type} 
+                              (http/get (str api-root "/v1/works/" doi "/transform"))
+                              :body)
+                expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
+            (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type)))))))
 
   (testing "works endpoint returns expected result for DOI agency"
     (with-redefs 
