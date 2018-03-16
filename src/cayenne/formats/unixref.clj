@@ -23,7 +23,7 @@
 (defn parse-attach
   "Attach a relation by running a function on an xml location."
   [item relation loc kind parse-fn]
-  (let [existing (or (get-in item [:rel relation]) [])
+  (let [existing (get-in item [:rel relation] [])
         related (parse-fn loc)]
     (cond 
      (= kind :single)
@@ -39,21 +39,21 @@
 (defn attach-rel
   "Attach related item to another item via relation."
   [item relation related-item]
-  (let [existing (or (get item relation) [])]
+  (let [existing (get item relation [])]
     (assoc-in item [:rel relation] (conj existing related-item))))
 
 (defn attach-id
   "Attach URI ids to an item."
   [item id]
   (if id
-    (let [existing (or (get item :id) [])]
+    (let [existing (get item :id [])]
       (assoc item :id (conj existing id)))
     item))
 
 (defn attach-ids
   [item ids]
   (if (not (empty? ids))
-    (let [existing (or (get item :id) [])]
+    (let [existing (get item :id [])]
       (assoc item :id (concat existing ids)))
     item))
 

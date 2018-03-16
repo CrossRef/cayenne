@@ -40,7 +40,7 @@
 
 (defn make-sorted-accept [accept-value]
   (sort-by
-   #(Float/parseFloat (or (get-in % [:params :q]) "1.0"))
+   #(Float/parseFloat (get-in % [:params :q] "1.0"))
    >
    (make-accept accept-value)))
 
