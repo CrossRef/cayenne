@@ -10,7 +10,7 @@
             [taoensso.timbre :as timbre :refer [info error]]
             [cayenne.ids.ctn :refer [normalize-ctn]]
             [clojure.string :as string])
-  (:use [cayenne.util :only [?> ?>>]])
+  (:use [cayenne.util :only [?> ?>> safe-trim]])
   (:use [cayenne.ids.doi :only [to-long-doi-uri]])
   (:use [cayenne.ids.issn :only [to-issn-uri]])
   (:use [cayenne.ids.isbn :only [to-isbn-uri]])
@@ -861,13 +861,13 @@
         recommendation (xml/xselect1 peer-review-loc ["recommendation"])
         r-type (xml/xselect1 peer-review-loc ["type"])
         language (xml/xselect1 peer-review-loc ["language"])]
-    {:review {:running-number (string/trim running-number)
-              :revision-round (string/trim revision-round)
-              :stage (string/trim stage)
-              :competing-interest-statement (string/trim competing-interest-statement)
-              :recommendation (string/trim recommendation)
-              :review-type (string/trim r-type)
-              :language (string/trim language)}}))
+    {:review {:running-number (safe-trim running-number)
+              :revision-round (safe-trim revision-round)
+              :stage (safe-trim stage)
+              :competing-interest-statement (safe-trim competing-interest-statement)
+              :recommendation (safe-trim recommendation)
+              :review-type (safe-trim r-type)
+              :language (safe-trim language)}}))
 
 (defn parse-peer-review [peer-review-loc]
   (when peer-review-loc
