@@ -45,18 +45,14 @@
   (str "(" (string/join " " (interpose "AND" more)) ")"))
 
 (defn field-lt-or-gt [field-name val end-point]
-  (cond 
-   (= end-point :from)
-   (field-gt field-name val)
-   (= end-point :until)
-   (field-lt field-name val)))
+  (condp = end-point 
+   :from (field-gt field-name val)
+   :until (field-lt field-name val)))
 
 (defn field-lte-or-gte [field-name val end-point]
-  (cond
-   (= end-point :from)
-   (field-gte field-name val)
-   (= end-point :until)
-   (field-lte field-name val)))
+  (condp = end-point
+   :from (field-gte field-name val)
+   :until (field-lte field-name val)))
 
 (defn split-date [date-str]
   (let [date-parts (string/split date-str #"-")]
@@ -280,10 +276,9 @@
   (fn [val]
     (let [fval (if (sequential? val) (first val) val)
           date-val (-> fval (obj-date :direction direction) dc/to-date)]
-      (cond (= direction :from)
-            {field {"$gte" date-val}}
-            (= direction :until)
-            {field {"$lte" date-val}}))))
+      (condp = direction
+        :from {field {"$gte" date-val}}
+        :until {field {"$lte" date-val}}))))
 
 (defn mongo-equality [field & {:keys [transformer] :or {transformer identity}}]
   (fn [val]

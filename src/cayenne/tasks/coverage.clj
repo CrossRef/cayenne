@@ -16,10 +16,9 @@
   (df/unparse date-format (dt/minus (dt/now) (dt/years 2))))
 
 (defn make-id-filter [type id]
-  (cond (= type :member)
-        {:member (str id)}
-        (= type :issn)
-        {:issn (map issn-id/to-issn-uri id)}))
+  (condp = type
+    :member {:member (str id)}
+    :issn {:issn (map issn-id/to-issn-uri id)}))
 
 (defn get-work-count 
   "Get a count of works, with optional filters. timing may be one of :current, 
