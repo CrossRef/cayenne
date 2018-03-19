@@ -1,7 +1,8 @@
 {:facets {},
- :total-results 174,
+ :total-results 176,
  :items
- ({:member "291"}
+ ({}
+  {:member "291"}
   {:member "1965"}
   {:member "341"}
   {:member "78"}
@@ -19,7 +20,6 @@
   {:member "316"}
   {:member "78"}
   {:member "297"}
-  {:member "78"}
   {:member "78"}),
  :items-per-page 20,
  :query {:start-index 0, :search-terms nil}}

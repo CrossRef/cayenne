@@ -1,7 +1,8 @@
 {:facets {},
- :total-results 174,
+ :total-results 176,
  :items
  ({}
+  {}
   {:volume "7"}
   {:volume "114"}
   {:volume "44"}
@@ -19,7 +20,6 @@
   {:volume "8"}
   {:volume "73"}
   {:volume "13"}
-  {:volume "44"}
-  {:volume "77"}),
+  {:volume "44"}),
  :items-per-page 20,
  :query {:start-index 0, :search-terms nil}}
