@@ -1,7 +1,9 @@
 {:facets {},
- :total-results 174,
+ :total-results 176,
  :items
  ({:title
+   ["Peer Review #1 of \"Multimodal Imaging Brain Connectivity Analysis (MIBCA) toolbox (v0.2)\""]}
+  {:title
    ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\""]}
   {:title
    ["Emerging Role of Corticosteroid-Binding Globulin in Glucocorticoid-Driven Metabolic Disorders"]}
@@ -37,8 +39,6 @@
   {:title
    ["Signaling pathways underlying the antidepressant-like effect of inosine in mice"]}
   {:title
-   ["The exercise-glucocorticoid paradox: How exercise is beneficial to cognition, mood, and the brain while increasing glucocorticoid levels"]}
-  {:title
-   ["Effects of the combination of metyrapone and oxazepam on cocaine-induced increases in corticosterone in the medial prefrontal cortex and nucleus accumbens"]}),
+   ["The exercise-glucocorticoid paradox: How exercise is beneficial to cognition, mood, and the brain while increasing glucocorticoid levels"]}),
  :items-per-page 20,
  :query {:start-index 0, :search-terms nil}}
