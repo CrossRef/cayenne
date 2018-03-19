@@ -117,16 +117,14 @@
     (string/join " " (map first (string/split first-name #"[\s\-]+")))))
 
 (defn as-name [org-or-person]
-  (cond (= :org (get-item-type org-or-person))
-        (:name org-or-person)
-        (= :person (get-item-type org-or-person))
-        (str (:first-name org-or-person) " " (:last-name org-or-person))))
+  (condp = (get-item-type org-or-person)
+    :org (:name org-or-person)
+    :person (str (:first-name org-or-person) " " (:last-name org-or-person))))
 
 (defn as-initials [org-or-person]
-  (cond (= :org (get-item-type org-or-person))
-        (as-name org-or-person)
-        (= :person (get-item-type org-or-person))
-        (str (initials (:first-name org-or-person)) " " (:last-name org-or-person))))
+  (condp = (get-item-type org-or-person) 
+    :org (as-name org-or-person)
+    :person (str (initials (:first-name org-or-person)) " " (:last-name org-or-person))))
 
 (defn get-contributor-names
   "Contributor names as a concatenated string."
