@@ -40,7 +40,7 @@
   (let [c-fields (get compound-fields (keyword field))
         field-prefix (str "\n  + " field ".")]
     [field
-     (if c-fields
+     (when c-fields
        (str field "." (clojure.string/join field-prefix c-fields)))]))
 
 (defn- fields-description
@@ -48,7 +48,7 @@
    (fields-description title filters {}))
   ([title filters compound-fields]
    (->> (map (comp (partial fields compound-fields) key) filters)
-        (map #(str "\n+ " (first %) (if (second %) (str "\n  + " (second %)))))
+        (map #(str "\n+ " (first %) (when (second %) (str "\n  + " (second %)))))
         clojure.string/join
         (str title))))
 
