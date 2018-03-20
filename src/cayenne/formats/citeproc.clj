@@ -25,6 +25,9 @@
               (count (get solr-doc field-name)))
            "-")))
 
+(defn some-dateparts? [{:keys [date-parts]}]
+  (seq (remove nil? (flatten date-parts))))
+
 (defn assoc-exists 
   "Like assoc except only performs the assoc if value is
    a non-empty string, non-empty list or a non-nil value."
@@ -407,6 +410,21 @@
     (when (or body-name body-acronym)
       {:name body-name :acronym body-acronym})))
 
+(defn ->citeproc-free-to-read [solr-doc]
+  (let [start (->date-parts 
+                (get solr-doc "free_to_read_start_year")
+                (get solr-doc "free_to_read_start_month")
+                (get solr-doc "free_to_read_start_day"))
+        end (->date-parts 
+              (get solr-doc "free_to_read_end_year")
+              (get solr-doc "free_to_read_end_month")
+              (get solr-doc "free_to_read_end_day"))]
+
+    (when (or (some-dateparts? start) (some-dateparts? end))
+      (cond-> {}
+        (some-dateparts? start) (assoc :start-date start)
+        (some-dateparts? end) (assoc :end-date end)))))
+
 (defn ->citeproc [solr-doc]
   (let [type-id (type-id/->type-id (get solr-doc "type"))
         type-key (keyword type-id)
@@ -472,5 +490,6 @@
         (assoc-exists :review (->review solr-doc))
         (assoc-exists :reference (->citeproc-citations solr-doc))
         (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
+        (assoc-exists :free-to-read (->citeproc-free-to-read solr-doc))
         (merge (->citeproc-contribs solr-doc)))))
 

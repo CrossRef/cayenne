@@ -6,6 +6,11 @@
  :published-print {:date-parts [[2017 1]]},
  :DOI "10.1084/jem.20151673",
  :type "journal-article",
+ :free-to-read
+ {:start-date
+  {:date-parts [[2015 1 15]]}
+  :end-date 
+  {:date-parts [[2025 1 1]]}}
  :created
  {:date-parts [[2016 12 7]],
   :date-time "2016-12-07T15:10:13Z",

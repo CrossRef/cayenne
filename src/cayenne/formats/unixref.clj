@@ -632,7 +632,7 @@
       parsed (map parse-clinical-trial-number ctns)]
   parsed))
 
-(def license-date-formatter (ftime/formatter "yyyy-MM-dd"))
+(def yyyy-MM-dd-date-formatter (ftime/formatter "yyyy-MM-dd"))
 
 ;; some publishers are depositing dates as a date time in an unknown
 ;; format. temporarily get around that by taking the first 10 chars -
@@ -641,7 +641,16 @@
 (defn parse-license-start-date [license-loc]
   (if-let [raw-date (xml/xselect1 license-loc ["start_date"])]
     (let [concat-date (apply str (take 10 raw-date))
-          d (ftime/parse license-date-formatter concat-date)]
+          d (ftime/parse yyyy-MM-dd-date-formatter concat-date)]
+      {:type :date
+       :year (t/year d)
+       :month (t/month d)
+       :day (t/day d)})))
+
+(defn parse-yyyy-MM-dd-date [s]
+  (when s
+    (let [concat-date (apply str (take 10 s))
+          d (ftime/parse yyyy-MM-dd-date-formatter concat-date)]
       {:type :date
        :year (t/year d)
        :month (t/month d)
@@ -807,11 +816,13 @@
 
 (defn parse-journal-article [article-loc]
   (when article-loc
-    (conj (parse-item article-loc)
-          {:subtype :journal-article
-           :first-page (xml/xselect1 article-loc "pages" "first_page" :text)
-           :last-page (xml/xselect1 article-loc "pages" "last_page" :text)
-           :other-pages (xml/xselect1 article-loc "pages" "other_pages" :text)})))
+    (-> (parse-item article-loc)
+        (parse-attach :free-to-read-start (xml/xselect1 article-loc "doi_data" "free_to_read" ["start_date"]) :single parse-yyyy-MM-dd-date)
+        (parse-attach :free-to-read-end (xml/xselect1 article-loc "doi_data" "free_to_read" ["end_date"]) :single parse-yyyy-MM-dd-date)
+        (conj {:subtype :journal-article
+               :first-page (xml/xselect1 article-loc "pages" "first_page" :text)
+               :last-page (xml/xselect1 article-loc "pages" "last_page" :text)
+               :other-pages (xml/xselect1 article-loc "pages" "other_pages" :text)}))))
 
 (defn parse-journal-issue [issue-loc]
   (when issue-loc
