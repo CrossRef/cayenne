@@ -47,10 +47,10 @@
             feed-in-dir (str feed-dir "/feed-in")
             feed-processed-dir (str feed-dir "/feed-processed")
             feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
-        (when-not (= feed-file-count 174) 
+        (when-not (= feed-file-count 176) 
           (throw (Exception. 
                    (str "The number of feed input files is not as expected. Expected to find " 
-                        174 
+                        176 
                         " files in " 
                         feed-source-dir
                         " but found "

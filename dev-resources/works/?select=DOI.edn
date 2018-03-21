@@ -1,5 +1,5 @@
 {:facets {},
- :total-results 174,
+ :total-results 176,
  :items
  ({:DOI "10.1002/cphy.c160005"}
   {:DOI "10.1007/s11302-016-9551-2"}
@@ -8,7 +8,6 @@
   {:DOI "10.1016/j.neubiorev.2016.12.006"}
   {:DOI "10.1016/j.neubiorev.2016.12.013"}
   {:DOI "10.1016/j.neuroimage.2016.12.046"}
-  {:DOI "10.1016/j.psyneuen.2016.12.004"}
   {:DOI "10.1016/j.psyneuen.2016.12.006"}
   {:DOI "10.1016/j.psyneuen.2016.12.008"}
   {:DOI "10.1016/j.schres.2016.12.016"}
@@ -20,6 +19,7 @@
   {:DOI "10.1111/infa.12175"}
   {:DOI "10.3389/fendo.2016.00158"}
   {:DOI "10.3389/fendo.2016.00160"}
+  {:DOI "10.7287/peerj.1078v0.2/reviews/1"}
   {:DOI "10.7287/peerj.2196v0.1/reviews/2"}),
  :items-per-page 20,
  :query {:start-index 0, :search-terms nil}}

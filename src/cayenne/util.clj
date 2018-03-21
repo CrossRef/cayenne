@@ -188,3 +188,6 @@
           (dissoc m k)))
       m)
     (dissoc m k)))
+
+(defn safe-trim [s]
+  (when s (string/trim s)))
