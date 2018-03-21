@@ -637,6 +637,7 @@
          "institution_department" (map :name (flatten (map #(get-item-rel % :component) institutions)))
          "domain_exclusive" (or (first (get-item-rel item :domain-exclusive)) false)
          "domains" (get-item-rel item :domains)
+         "language" (:language (find-item-of-subtype item :journal))
          "abstract" (-> item (get-item-rel :abstract) first :plain)
          "abstract_xml" (-> item (get-item-rel :abstract) first :xml)
          "clinical_trial_number_ctn" (map :ctn clinical-trial-numbers)

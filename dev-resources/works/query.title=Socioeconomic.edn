@@ -11,6 +11,7 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
+   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"

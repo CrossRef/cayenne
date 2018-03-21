@@ -19,6 +19,7 @@
    "elsevier.com"
    "sciencedirect.com"],
   :crossmark-restriction true},
+ :language "en"
  :short-container-title ["Psychoneuroendocrinology"],
  :published-print {:date-parts [[2017 1]]},
  :DOI "10.1016/j.psyneuen.2016.10.018",

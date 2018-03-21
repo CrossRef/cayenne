@@ -1,6 +1,7 @@
 {:reference-count 3,
  :publisher "Rockefeller University Press",
  :issue "1",
+ :language "en"
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title ["J. Exp. Med."],
  :published-print {:date-parts [[2017 1]]},

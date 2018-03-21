@@ -842,8 +842,11 @@
     (let [issue (-> journal-loc (find-journal-issue) (parse-journal-issue))
           volume (-> journal-loc (find-journal-volume) (parse-journal-volume))
           article (-> journal-loc (find-journal-article) (parse-journal-article))
-          journal (-> journal-loc (find-journal-metadata) (parse-item)
-                      (assoc :subtype :journal))]
+          meta-loc (find-journal-metadata journal-loc)
+          journal (-> meta-loc 
+                      (parse-item)
+                      (conj {:subtype :journal
+                             :language (xml/xselect1 meta-loc ["language"])}))]
       (cond 
        (nil? issue)   (->> article
                            (attach-rel journal :component))

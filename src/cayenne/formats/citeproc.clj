@@ -461,6 +461,7 @@
         (assoc-exists :article-number (get solr-doc "article_number"))
         (assoc-exists :volume (get solr-doc "hl_volume"))
         (assoc-exists :issue (get solr-doc "hl_issue"))
+        (assoc-exists :language (get solr-doc "language"))
         (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
         (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
         (assoc-exists :alternative-id (map ids/extract-supplementary-id
