@@ -829,6 +829,8 @@
     (-> (parse-item issue-loc)
         (conj {:subtype :journal-issue
                :numbering (xml/xselect1 issue-loc "special_numbering" :text)
+               :published-print (first (parse-item-pub-dates "print" issue-loc))
+               :published-online (first (parse-item-pub-dates "online" issue-loc))
                :issue (xml/xselect1 issue-loc "issue" :text)}))))
 
 (defn parse-journal-volume [volume-loc]

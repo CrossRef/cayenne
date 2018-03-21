@@ -496,7 +496,8 @@
         standards-body (first (get-tree-rel item :standards-body))
         contrib-details (get-contributor-details item)
         updates (get-updates item)
-        doi (first (get-item-ids item :long-doi))]
+        doi (first (get-item-ids item :long-doi))
+        journal-issue (find-item-of-subtype item :journal-issue)]
     (-> {"source" (:source item)
          "indexed_at" (formatted-now)
          "deposited_at" (if deposit-date (as-datetime-string deposit-date) (formatted-now))
@@ -558,6 +559,12 @@
          "free_to_read_end_year" (:year free-to-read-end-date)
          "free_to_read_end_month" (:month free-to-read-end-date)
          "free_to_read_end_day" (:day free-to-read-end-date)
+         "issue_online_year" (:year (:published-online journal-issue))
+         "issue_online_month" (:month (:published-online journal-issue))
+         "issue_online_day" (:day (:published-online journal-issue))
+         "issue_print_year" (:year (:published-print journal-issue))
+         "issue_print_month" (:month (:published-print journal-issue))
+         "issue_print_day" (:day (:published-print journal-issue))
          "content_created_year" (:year content-created-date)
          "content_created_month" (:month content-created-date)
          "content_created_day" (:day content-created-date)
@@ -586,7 +593,7 @@
          "hl_last_page" (:last-page item)
          "hl_funder_name" funder-names
          "hl_grant" (as-solr-grant-info-field item)
-         "hl_issue" (:issue (find-item-of-subtype item :journal-issue))
+         "hl_issue" (:issue journal-issue)
          "hl_volume" (:volume (find-item-of-subtype item :journal-volume))
          "hl_group_title" (->> (get-item-rel item :title)
                                (filter #(= (:subtype %) :group))

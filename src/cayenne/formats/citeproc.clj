@@ -410,6 +410,22 @@
     (when (or body-name body-acronym)
       {:name body-name :acronym body-acronym})))
 
+(defn ->citeproc-journal-issue [solr-doc]
+  (let [published-online (->date-parts 
+                           (get solr-doc "issue_online_year")
+                           (get solr-doc "issue_online_month")
+                           (get solr-doc "issue_online_day"))
+        published-print (->date-parts 
+                          (get solr-doc "issue_print_year")
+                          (get solr-doc "issue_print_month")
+                          (get solr-doc "issue_print_day"))
+        issue (get solr-doc "hl_issue")]
+    (when issue
+      (cond-> {}
+        (some-dateparts? published-online) (assoc :published-online published-online)
+        (some-dateparts? published-print) (assoc :published-print published-print)
+        issue (assoc :issue issue)))))
+
 (defn ->citeproc-free-to-read [solr-doc]
   (let [start (->date-parts 
                 (get solr-doc "free_to_read_start_year")
@@ -492,5 +508,6 @@
         (assoc-exists :reference (->citeproc-citations solr-doc))
         (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
         (assoc-exists :free-to-read (->citeproc-free-to-read solr-doc))
+        (assoc-exists :journal-issue (->citeproc-journal-issue solr-doc))
         (merge (->citeproc-contribs solr-doc)))))
 
