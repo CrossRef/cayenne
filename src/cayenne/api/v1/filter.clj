@@ -302,6 +302,12 @@
 ;; Filter definitions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(def compound-fields
+  {:full-text ["type" "application" "version"]
+   :license ["url" "version" "delay"]
+   :award ["funder_doi" "number"]
+   :relation ["type" "object_type" "object"]})
+
 (def std-filters
   {"reference-visibility" (multi-equality "owner_prefix")
    "from-update-date" (stamp-date "deposited_at" :from)
@@ -354,10 +360,10 @@
    "funder-doi-asserted-by" (equality "funder_record_doi_asserted_by")
    "has-assertion" (existence "assertion_name")
    "has-clinical-trial-number" (existence "clinical_trial_number_ctn")
-   "full-text" (compound "full_text" ["type" "application" "version"]
+   "full-text" (compound "full_text" (:full-text compound-fields)
                          :transformers {"type" util/slugify
                                         "application" util/slugify})
-   "license" (compound "license" ["url" "version" "delay"]
+   "license" (compound "license" (:license compound-fields)
                        :transformers {"url" util/slugify}
                        :matchers {"delay" #(str ":[* TO " % "]")})
    "directory" (equality "oa_status" :transformer string/upper-case)
@@ -379,13 +385,13 @@
    "alternative-id" (equality "supplementary_id" :transformer ids/to-supplementary-id-uri)
 
    ;; todo award_funder_doi_number should place funder_doi in value
-   "award" (compound "award" ["funder_doi" "number"]
+   "award" (compound "award" (:award compound-fields)
                      :transformers {"funder_doi" (comp util/slugify fundref/normalize-to-doi-uri)}
                      :matchers {"number" #(str ":\"" (-> % string/lower-case (string/replace #"[\s_\-]+" "")) "\"")
                                 "funder_doi" #(str ":\"" (fundref/normalize-to-doi-uri %) "\"")}
                      :aliases {"funder" "funder_doi"})
    
-   "relation" (compound "relation" ["type" "object_type" "object"])
+   "relation" (compound "relation" (:relation compound-fields))
    "member" (generated "owner_prefix" :generator member-prefix-generator)
    "prefix" (equality "owner_prefix" :transformer prefix/to-prefix-uri)
    "funder" (equality "funder_doi" :transformer fundref/normalize-to-doi-uri)})
