@@ -76,7 +76,7 @@
                         (sheet/select-sheet categories-sheet-name)
                         (sheet/select-columns {:A :code :B :name})
                         (drop 1)
-                        (keep :code))]
+                        (filter :code))]
 
     (m/with-mongo (conf/get-service :mongo)
       (doseq [category categories]

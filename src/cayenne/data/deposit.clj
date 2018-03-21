@@ -46,7 +46,7 @@
           (assoc :citation-count (-> with-length-doc :citations count))
           (assoc :matched-citation-count (->> with-length-doc
                                               :citations
-                                              (keep :match)
+                                              (filter :match)
                                               count)))
       with-length-doc)))
 
