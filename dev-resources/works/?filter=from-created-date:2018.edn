@@ -26,7 +26,7 @@
      :authenticated-orcid false,
      :given "Xiaoguang",
      :family "Fang",
-     :sequence "first"
+     :sequence "first",
      :affiliation []}],
    :member "291",
    :review
@@ -52,5 +52,5 @@
     [{:id-type "doi",
       :id "10.7717/peerj.2196",
       :asserted-by "subject"}]}}),
- :items-per-page 20,
+ :items-per-page 1000,
  :query {:start-index 0, :search-terms nil}}
