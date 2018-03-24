@@ -3,6 +3,7 @@
  :items
  ({:reference-count 873,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
@@ -57,6 +58,7 @@
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00001-8"}
   {:reference-count 256,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
@@ -111,6 +113,7 @@
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00015-8"}
   {:reference-count 167,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
@@ -169,6 +172,7 @@
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00016-x"}
   {:reference-count 183,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
@@ -231,6 +235,7 @@
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00046-8"}
   {:reference-count 273,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
@@ -295,6 +300,7 @@
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00111-5"}
   {:reference-count 193,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128040966", :type "print"}],
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start

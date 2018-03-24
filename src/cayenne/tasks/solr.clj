@@ -404,6 +404,12 @@
                        (:value %)))
        (apply merge)))
 
+(defn as-isbn-types [item]
+  (->> (get-tree-rel item :isbn)
+       (map #(hash-map (str "isbn_type_" (-> % :kind name))
+                       (:value %)))
+       (apply merge)))
+
 (defn as-event [item]
   (when-let [event (-> item (get-tree-rel :about) first)]
     (let [start-date (-> event (get-item-rel :start) first)
@@ -656,6 +662,7 @@
         (merge (as-peer-review item))
         (merge (as-citations item))
         (merge (as-event item))
+        (merge (as-isbn-types item))
         (merge (as-issn-types item))
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
