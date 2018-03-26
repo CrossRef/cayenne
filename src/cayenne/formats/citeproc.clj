@@ -513,6 +513,7 @@
         (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
         (assoc-exists :issn-type (->issn-types solr-doc))
         (assoc-exists :isbn-type (->isbn-types solr-doc))
+        (assoc-exists :edition-number (get solr-doc "edition_number"))
         (assoc-exists :event (->event solr-doc))
         (assoc-exists :institution (->institution solr-doc))
         (assoc-exists :review (->review solr-doc))

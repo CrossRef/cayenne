@@ -631,6 +631,7 @@
          "full_text_url" (map (util/?- :value) full-text-resources)
          "full_text_version" (map (util/?- :content-version) full-text-resources)
          "full_text_application" (map (util/?- :intended-application) full-text-resources)
+         "edition_number" (:edition-number (find-item-of-subtype item :edited-book))
          "publisher" (:name publisher)
          "publisher_str" (:name publisher)
          "hl_publisher" (:name publisher)

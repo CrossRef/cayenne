@@ -6,6 +6,7 @@
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title [],
  :DOI "10.5555/test5",
+ :edition-number "2"
  :type "book-set",
  :created
  {:date-parts [[2009 3 10]],
