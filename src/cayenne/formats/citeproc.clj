@@ -218,10 +218,10 @@
   (let [funders (->citeproc-funders solr-doc)]
     (concat 
      (->> funders
-          (filter #(not= (:DOI %) nil))
+          (filter :DOI)
           (reduce #(merge %1 {(str (:DOI %2) (:doi-asserted-by %2)) %2}) {})
           vals)
-     (filter #(= (:DOI %) nil) funders))))
+     (remove :DOI funders))))
 
 (defn ->citeproc-updates-to [solr-doc]
   (map 
@@ -381,7 +381,7 @@
 (defn ->citeproc-cites-relations [solr-doc]
   (->> (get solr-doc "citation_key")
        (map #(first (get solr-doc (str "citation_doi_" %))))
-       (filter (complement nil?))
+       (remove nil?)
        (map #(hash-map :id % :id-type "doi" :asserted-by "subject"))))
 
 (defn ->citeproc-relations [solr-doc]

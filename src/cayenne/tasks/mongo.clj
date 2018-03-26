@@ -37,4 +37,4 @@
        (map (partial get-item-with-id collection))))
 
 (defn check-for-dois [collection dois]
-  (filter (complement nil?) (get-dois collection dois)))  
+  (remove nil? (get-dois collection dois)))  

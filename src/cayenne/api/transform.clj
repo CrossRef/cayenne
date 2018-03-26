@@ -33,33 +33,25 @@
   (rdf/->xml metadata))
 
 (defmethod ->format "application/vnd.citationstyles.csl+json" [representation metadata]
-  (cond-> metadata
-    (-> metadata :type csl-type nil? not)
-    (assoc :type (csl-type (:type metadata)))
-        
-    (not (empty? (:title metadata)))
-    (assoc :title (first (:title metadata)))
+  (json/write-str
+    (cond-> metadata
+      (-> metadata :type csl-type)
+      (assoc :type (csl-type (:type metadata)))
 
-    (not (empty? (:container-title metadata)))
-    (assoc :container-title (first (:container-title metadata)))
+      (seq (:title metadata))
+      (assoc :title (first (:title metadata)))
 
-    (not (empty? (:short-container-title metadata)))
-    (assoc :container-title-short (first (:short-container-title metadata)))
+      (seq (:container-title metadata))
+      (assoc :container-title (first (:container-title metadata)))
 
-    (not (empty? (:event metadata)))
-    (assoc :event (get-in metadata [:event :name]))
+      (seq (:short-container-title metadata))
+      (assoc :container-title-short (first (:short-container-title metadata)))
 
-    :always
-    (dissoc :short-container-title)
+      (seq (:event metadata))
+      (assoc :event (get-in metadata [:event :name]))
 
-    :always
-    (dissoc :archive)
-
-    :always
-    (dissoc :issn-type)
-
-    :always
-    json/write-str))
+      :always
+      (dissoc :short-container-title :archive :issn-type))))
 
 (defmethod ->format "application/x-research-info-systems" [representation metadata]
   (ris/->ris metadata))

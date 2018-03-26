@@ -33,7 +33,7 @@
   [task-fn parser-fn]
   (fn [record]
     (let [parsed-record (parser-fn record)]
-      (if-not (nil? (second parsed-record))
+      (if (second parsed-record)
         (task-fn parsed-record)
         (throw (Exception. "Parsed 0 records from an OAI file."))))))
 

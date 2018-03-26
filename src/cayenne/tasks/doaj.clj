@@ -9,7 +9,7 @@
 ;; At some point should be periodically downloading DOAJ info.
 
 (defn get-oa-status [issn]
-  (if (nil? issn)
+  (if-not issn
     "Other"
     (let [norm-issn (normalize-issn issn)
           result (m/with-mongo (conf/get-service :mongo)

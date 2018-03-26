@@ -212,7 +212,7 @@
                       (get-in [:message :items])
                       first)
                   (catch Exception e nil))]
-      (if (nil? match)
+      (if-not match
         {:text (:text %) :number (:number %)}
         {:text (:text %) :number (:number %) :match match}))
    citations))

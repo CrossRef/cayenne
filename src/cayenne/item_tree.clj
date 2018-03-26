@@ -92,7 +92,7 @@
       (concat children (follow-rel-children item-tree rel))])))
 
 (defn has-id? [item]
-  (and (not (nil? (:id item))) (not (empty? (:id item)))))
+  (and (:id item) (not (empty? (:id item)))))
 
 (defn item-seq
   [item]

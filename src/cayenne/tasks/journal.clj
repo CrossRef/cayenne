@@ -21,7 +21,7 @@
   (let [normalized-pissn (issn-id/normalize-issn pissn)
         normalized-eissn (issn-id/normalize-issn eissn)
         normalized-issns (->> [normalized-eissn, normalized-pissn]
-                              (filter (complement nil?)))
+                              (remove nil?))
         normalized-doi (doi-id/normalize-long-doi doi)
         journal-id (Integer/parseInt id)
         doc {:title name

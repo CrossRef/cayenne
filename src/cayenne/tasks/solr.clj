@@ -104,7 +104,7 @@
 
 (defn get-contributor-orcids [item]
   (let [contributors (mapcat #(get-item-rel item %) contributor-rels)]
-    (filter (complement nil?) (mapcat :id contributors))))
+    (remove nil? (mapcat :id contributors))))
 
 (defn get-contributor-affiliations [item]
   (->> contributor-rels
@@ -291,9 +291,9 @@
 
 (defn ->license-start-date [license pub-date]
   (let [start-date (first (get-item-rel license :start))]
-    (cond (not (nil? start-date))
+    (cond start-date
           (as-datetime-string start-date)
-          (not (nil? pub-date))
+          pub-date
           (as-datetime-string pub-date))))
 
 (defn ->license-delay [license pub-date]

@@ -460,7 +460,7 @@
        (map #(string/split % #":" 2))))
 
 (defn validate-pair-list-form [context s & {:keys [also]}]
-  (if (and also (some #{s} also))
+  (if (some #{s} also)
     (pass context)
     (try
       (let [parsed (->> (parse-pair-list-form s)
