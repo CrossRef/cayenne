@@ -53,11 +53,11 @@
     (assoc item :id (conj existing-ids id))))
 
 (defn add-relation [item rel-type rel-item]
-  (let [existing-items (or (get-in item [:rel rel-type]) [])]
+  (let [existing-items (get-in item [:rel rel-type] [])]
     (assoc-in item [:rel rel-type] (conj existing-items rel-item))))
 
 (defn add-relations [item rel-type rel-items]
-  (let [existing-items (or (get-in item [:rel rel-type]) [])]
+  (let [existing-items (get-in item [:rel rel-type] [])]
     (assoc-in item [:rel rel-type] (concat existing-items rel-items))))
 
 (defn delete-relation [item rel-type]

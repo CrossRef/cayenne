@@ -21,7 +21,7 @@
 (def shutdown-tasks (atom {}))
 
 (defn get-param [path & default]
-  (or (get-in @cores (concat [*core-name* :parameters] path) default)))
+  (get-in @cores (concat [*core-name* :parameters] path) default))
 
 (defn set-param! [path value]
   (swap! cores assoc-in (concat [*core-name* :parameters] path) value))

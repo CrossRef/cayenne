@@ -232,7 +232,7 @@
 (defn as-grant-map [item]
   (letfn [(combine [memo nxt]
             (let [funder-name (:name nxt)
-                  awards (or (get memo funder-name) [])
+                  awards (get memo funder-name [])
                   new-awards (mapcat :id (get-item-rel nxt :awarded))]
               (assoc memo funder-name (concat awards new-awards))))]
     (reduce combine {} (get-tree-rel item :funder))))

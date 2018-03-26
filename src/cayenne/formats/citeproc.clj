@@ -165,7 +165,7 @@
 
 (defn ->citeproc-contribs [solr-doc]
   (reduce #(let [t (get %2 :type)]
-             (assoc %1 t (conj (or (get %1 t) []) (dissoc %2 :type))))
+             (assoc %1 t (conj (get %1 t []) (dissoc %2 :type))))
           {}
           (map-indexed #(let [affils
                               (-> solr-doc
@@ -279,9 +279,9 @@
 
 (defn ->content-domains [{:keys [crossmark-unaware?]} solr-doc]
   (merge 
-    {:domain (or (get solr-doc "domains") [])}
+    {:domain (get solr-doc "domains" [])}
     (if-not crossmark-unaware?
-      {:crossmark-restriction (or (get solr-doc "domain_exclusive") false)})))
+      {:crossmark-restriction (get solr-doc "domain_exclusive" false)})))
 
 (defn ->issn-types [solr-doc]
   (concat
