@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doi_records>
+  <doi_record owner="10.7287" timestamp="2018-01-09 18:59:03">
+    <crossref>
+      <peer_review stage="pre-publication" revision-round="2">
+        <contributors>
+          <anonymous contributor_role="reviewer" sequence="additional" />
+        </contributors>
+        <titles>
+          <title>Peer Review #2 of "Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)"</title>
+        </titles>
+        <review_date>
+          <month>07</month>
+          <day>26</day>
+          <year>2016</year>
+        </review_date>
+        <program>
+          <related_item>
+            <inter_work_relation relationship-type="isReviewOf" identifier-type="doi">10.7717/peerj.2196</inter_work_relation>
+          </related_item>
+        </program>
+        <doi_data>
+          <doi>10.7287/peerj.2196v0.1/reviews/2</doi>
+          <timestamp>1515539304</timestamp>
+          <resource>https://peerj.com/articles/2196v0.1/reviews/2/</resource>
+        </doi_data>
+      </peer_review>
+    </crossref>
+  </doi_record>
+</doi_records>

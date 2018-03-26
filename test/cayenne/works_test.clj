@@ -1,5 +1,6 @@
 (ns cayenne.works-test
   (:require [cayenne.api-fixture :refer [api-root api-get api-with-works]]
+            [clj-http.client :as http]
             [clojure.data.json :refer [write-str]]
             [clojure.test :refer [use-fixtures deftest testing is]]
             [clojure.java.io :refer [resource]]))
@@ -26,9 +27,10 @@
         (is (= expected-response response) (str "unexpected result for select " select)))))
 
   (testing "works endpoint returns expected result for filter"
-    (doseq [q-filter ["member:78" "from-created-date:2018" 
-                      "from-deposit-date:2018" "from-pub-date:2018"]]
-      (let [response (api-get (str "/v1/works?rows=1000&filter=" q-filter))
+    (doseq [q-filter ["type:peer-review" "from-created-date:2018" 
+                      "from-deposit-date:2018" "from-pub-date:2018"
+                      "member:78"]]
+      (let [response (api-get (str "/v1/works?rows=1000filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
 
@@ -37,6 +39,28 @@
           member-work-count (:total-results (api-get (str "/v1/members/78/works")))
           member-doi-count (-> (api-get (str "/v1/members/78")) :counts :total-dois)]
       (is (= work-count member-work-count member-doi-count))))
+
+  (testing "works endpoint returns expected result for transform"
+    (doseq [doi ["10.1016/j.psyneuen.2016.10.018" "10.7287/peerj.2196v0.1/reviews/2"]]
+      (doseq [content-type (->> cayenne.api.v1.types/work-transform
+                                (remove #{"application/x-bibtex" 
+                                          "application/json" 
+                                          "application/citeproc+json" 
+                                          "application/vnd.citationstyles.csl+json"}))]
+        (with-redefs 
+          [org.httpkit.client/get 
+           (fn [_ _]
+             ;; trasforming to unixref and unixsd xml results in a call to an upstream http
+             ;; service, here we mock it out to slurp from a file instead
+             (let [file (if (clojure.string/ends-with? content-type "unixref+xml")
+                            "application/vnd.crossref.unixref+xml"
+                            "application/vnd.crossref.unixsd+xml")]
+                 (atom {:body (slurp (resource (str "works/" doi "/" file)))})))]
+          (let [response (->> {:accept content-type} 
+                              (http/get (str api-root "/v1/works/" doi "/transform"))
+                              :body)
+                expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
+            (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type)))))))
 
   (testing "works endpoint returns expected result for DOI agency"
     (with-redefs 
