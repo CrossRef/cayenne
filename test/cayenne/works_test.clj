@@ -9,7 +9,8 @@
   (testing "works endpoint returns expected result for DOI"
     (doseq [doi ["10.1016/j.psyneuen.2016.10.018" 
                  "10.7287/peerj.2196v0.1/reviews/2" 
-                 "10.7287/peerj.1078v0.2/reviews/1"]]
+                 "10.7287/peerj.1078v0.2/reviews/1"
+                 "10.1084/jem.20151673"]]
       (let [response (api-get (str "/v1/works/" doi))
             expected-response (read-string (slurp (resource (str "works/" doi ".edn"))))]
         (is (= expected-response response) (str "Unexpected response for DOI " doi)))))

@@ -25,6 +25,9 @@
               (count (get solr-doc field-name)))
            "-")))
 
+(defn some-dateparts? [{:keys [date-parts]}]
+  (seq (remove nil? (flatten date-parts))))
+
 (defn assoc-exists 
   "Like assoc except only performs the assoc if value is
    a non-empty string, non-empty list or a non-nil value."
@@ -407,6 +410,37 @@
     (when (or body-name body-acronym)
       {:name body-name :acronym body-acronym})))
 
+(defn ->citeproc-journal-issue [solr-doc]
+  (let [published-online (->date-parts 
+                           (get solr-doc "issue_online_year")
+                           (get solr-doc "issue_online_month")
+                           (get solr-doc "issue_online_day"))
+        published-print (->date-parts 
+                          (get solr-doc "issue_print_year")
+                          (get solr-doc "issue_print_month")
+                          (get solr-doc "issue_print_day"))
+        issue (get solr-doc "hl_issue")]
+    (when issue
+      (cond-> {}
+        (some-dateparts? published-online) (assoc :published-online published-online)
+        (some-dateparts? published-print) (assoc :published-print published-print)
+        issue (assoc :issue issue)))))
+
+(defn ->citeproc-free-to-read [solr-doc]
+  (let [start (->date-parts 
+                (get solr-doc "free_to_read_start_year")
+                (get solr-doc "free_to_read_start_month")
+                (get solr-doc "free_to_read_start_day"))
+        end (->date-parts 
+              (get solr-doc "free_to_read_end_year")
+              (get solr-doc "free_to_read_end_month")
+              (get solr-doc "free_to_read_end_day"))]
+
+    (when (or (some-dateparts? start) (some-dateparts? end))
+      (cond-> {}
+        (some-dateparts? start) (assoc :start-date start)
+        (some-dateparts? end) (assoc :end-date end)))))
+
 (defn ->citeproc [solr-doc]
   (let [type-id (type-id/->type-id (get solr-doc "type"))
         type-key (keyword type-id)
@@ -443,6 +477,7 @@
         (assoc-exists :article-number (get solr-doc "article_number"))
         (assoc-exists :volume (get solr-doc "hl_volume"))
         (assoc-exists :issue (get solr-doc "hl_issue"))
+        (assoc-exists :language (get solr-doc "language"))
         (assoc-exists :ISBN (map isbn-id/extract-isbn (get solr-doc "isbn")))
         (assoc-exists :ISSN (map issn-id/extract-issn (get solr-doc "issn")))
         (assoc-exists :alternative-id (map ids/extract-supplementary-id
@@ -472,5 +507,7 @@
         (assoc-exists :review (->review solr-doc))
         (assoc-exists :reference (->citeproc-citations solr-doc))
         (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
+        (assoc-exists :free-to-read (->citeproc-free-to-read solr-doc))
+        (assoc-exists :journal-issue (->citeproc-journal-issue solr-doc))
         (merge (->citeproc-contribs solr-doc)))))
 

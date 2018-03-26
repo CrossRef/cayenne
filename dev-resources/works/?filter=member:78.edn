@@ -425,6 +425,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Alcohol"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0741832916300714?httpAccept=text/plain",
@@ -510,6 +511,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Brain, Behavior, and Immunity"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0889159116304706?httpAccept=text/plain",
@@ -601,6 +603,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Behavioural Brain Research"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0166432816309007?httpAccept=text/plain",
@@ -701,6 +704,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Biological Psychology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0301051116303738?httpAccept=text/plain",
@@ -814,6 +818,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Bioorganic & Medicinal Chemistry"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0968089616310872?httpAccept=text/plain",
@@ -832,6 +837,8 @@
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
    :references-count 53,
+   :journal-issue
+   {:published-print {:date-parts [[2017 1]]}, :issue "1"},
    :alternative-id ["S0968089616310872"],
    :URL "http://dx.doi.org/10.1016/j.bmc.2016.10.035",
    :ISSN ["0968-0896"],
@@ -897,6 +904,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["EXPLORE: The Journal of Science and Healing"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S1550830716301707?httpAccept=text/plain",
@@ -915,6 +923,8 @@
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
    :references-count 19,
+   :journal-issue
+   {:published-print {:date-parts [[2017 1]]}, :issue "1"},
    :alternative-id ["S1550830716301707"],
    :URL "http://dx.doi.org/10.1016/j.explore.2016.10.009",
    :ISSN ["1550-8307"],
@@ -1008,6 +1018,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Infant Behavior and Development"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0163638316300455?httpAccept=text/plain",
@@ -1099,6 +1110,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Journal of Affective Disorders"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0165032716312022?httpAccept=text/xml",
@@ -1187,6 +1199,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Journal of Affective Disorders"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0165032716312113?httpAccept=text/plain",
@@ -1299,6 +1312,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Journal of Affective Disorders"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0165032716317256?httpAccept=text/plain",
@@ -1385,6 +1399,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Journal of Oral and Maxillofacial Surgery"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0278239116310667?httpAccept=text/plain",
@@ -1403,6 +1418,8 @@
    :score 1.0,
    :issued {:date-parts [[2017 5]]},
    :references-count 34,
+   :journal-issue
+   {:published-print {:date-parts [[2017 5]]}, :issue "5"},
    :alternative-id ["S0278239116310667"],
    :URL "http://dx.doi.org/10.1016/j.joms.2016.10.033",
    :ISSN ["0278-2391"],
@@ -1476,6 +1493,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neuroscience & Biobehavioral Reviews"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0149763416306285?httpAccept=text/plain",
@@ -1592,6 +1610,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neuroscience & Biobehavioral Reviews"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0149763416302792?httpAccept=text/plain",
@@ -1697,6 +1716,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neuroscience & Biobehavioral Reviews"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0149763416301713?httpAccept=text/plain",
@@ -1804,6 +1824,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neuroscience Letters"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0304394016309351?httpAccept=text/xml",
@@ -1924,6 +1945,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["NeuroToxicology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0161813X16302443?httpAccept=text/xml",
@@ -2030,6 +2052,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neurobiology of Aging"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0197458016303013?httpAccept=text/plain",
@@ -2123,6 +2146,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["NeuroImage"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S1053811916307650?httpAccept=text/plain",
@@ -2218,6 +2242,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neuron"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0896627316306407?httpAccept=text/xml",
@@ -2236,6 +2261,8 @@
    :score 1.0,
    :issued {:date-parts [[2016 10]]},
    :references-count 204,
+   :journal-issue
+   {:published-print {:date-parts [[2016 10]]}, :issue "1"},
    :alternative-id ["S0896627316306407"],
    :URL "http://dx.doi.org/10.1016/j.neuron.2016.09.039",
    :ISSN ["0896-6273"],
@@ -2324,6 +2351,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["NeuroImage: Clinical"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S2213158216302224?httpAccept=text/xml",
@@ -2420,6 +2448,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neurobiology of Learning and Memory"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S1074742716302519?httpAccept=text/plain",
@@ -2505,6 +2534,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neurobiology of Learning and Memory"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S107474271630315X?httpAccept=text/xml",
@@ -2597,6 +2627,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Peptides"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0196978116302157?httpAccept=text/plain",
@@ -2710,6 +2741,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Physiology & Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0031938416307041?httpAccept=text/plain",
@@ -2832,6 +2864,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Physiology & Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0031938416309064?httpAccept=text/plain",
@@ -2937,6 +2970,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Physiology & Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0031938416305728?httpAccept=text/plain",
@@ -3030,6 +3064,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychosomatics"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0033318216301426?httpAccept=text/plain",
@@ -3048,6 +3083,8 @@
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
    :references-count 5,
+   :journal-issue
+   {:published-print {:date-parts [[2017 3]]}, :issue "2"},
    :alternative-id ["S0033318216301426"],
    :URL "http://dx.doi.org/10.1016/j.psym.2016.11.008",
    :ISSN ["0033-3182"],
@@ -3125,6 +3162,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307545?httpAccept=text/xml",
@@ -3233,6 +3271,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307594?httpAccept=text/plain",
@@ -3366,6 +3405,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307144?httpAccept=text/plain",
@@ -3478,6 +3518,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307715?httpAccept=text/plain",
@@ -3587,6 +3628,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307740?httpAccept=text/xml",
@@ -3695,6 +3737,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307867?httpAccept=text/xml",
@@ -3779,6 +3822,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307880?httpAccept=text/xml",
@@ -3881,6 +3925,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307892?httpAccept=text/xml",
@@ -3981,6 +4026,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307909?httpAccept=text/xml",
@@ -4093,6 +4139,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305327?httpAccept=text/xml",
@@ -4189,6 +4236,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302190?httpAccept=text/xml",
@@ -4288,6 +4336,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307983?httpAccept=text/xml",
@@ -4420,6 +4469,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308022?httpAccept=text/xml",
@@ -4545,6 +4595,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630806X?httpAccept=text/plain",
@@ -4649,6 +4700,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308083?httpAccept=text/xml",
@@ -4737,6 +4789,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302128?httpAccept=text/xml",
@@ -4829,6 +4882,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308216?httpAccept=text/xml",
@@ -4957,6 +5011,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308332?httpAccept=text/plain",
@@ -5078,6 +5133,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305595?httpAccept=text/xml",
@@ -5186,6 +5242,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302025?httpAccept=text/xml",
@@ -5290,6 +5347,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308447?httpAccept=text/xml",
@@ -5397,6 +5455,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308435?httpAccept=text/xml",
@@ -5509,6 +5568,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308459?httpAccept=text/xml",
@@ -5617,6 +5677,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304668?httpAccept=text/plain",
@@ -5726,6 +5787,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308587?httpAccept=text/xml",
@@ -5823,6 +5885,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308605?httpAccept=text/plain",
@@ -5937,6 +6000,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308630?httpAccept=text/xml",
@@ -6046,6 +6110,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308563?httpAccept=text/xml",
@@ -6171,6 +6236,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308654?httpAccept=text/xml",
@@ -6299,6 +6365,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304528?httpAccept=text/plain",
@@ -6387,6 +6454,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304723?httpAccept=text/plain",
@@ -6522,6 +6590,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630470X?httpAccept=text/plain",
@@ -6639,6 +6708,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308757?httpAccept=text/plain",
@@ -6740,6 +6810,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308824?httpAccept=text/xml",
@@ -6848,6 +6919,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308836?httpAccept=text/xml",
@@ -6957,6 +7029,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630511X?httpAccept=text/plain",
@@ -7073,6 +7146,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308903?httpAccept=text/xml",
@@ -7177,6 +7251,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308915?httpAccept=text/plain",
@@ -7305,6 +7380,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302293?httpAccept=text/plain",
@@ -7430,6 +7506,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308952?httpAccept=text/plain",
@@ -7538,6 +7615,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305005?httpAccept=text/plain",
@@ -7630,6 +7708,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630899X?httpAccept=text/plain",
@@ -7749,6 +7828,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305923?httpAccept=text/xml",
@@ -7861,6 +7941,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309015?httpAccept=text/plain",
@@ -7985,6 +8066,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305601?httpAccept=text/plain",
@@ -8092,6 +8174,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305996?httpAccept=text/plain",
@@ -8207,6 +8290,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302049?httpAccept=text/xml",
@@ -8303,6 +8387,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305066?httpAccept=text/plain",
@@ -8427,6 +8512,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309210?httpAccept=text/xml",
@@ -8523,6 +8609,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304267?httpAccept=text/xml",
@@ -8635,6 +8722,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630703X?httpAccept=text/xml",
@@ -8764,6 +8852,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307600?httpAccept=text/xml",
@@ -8856,6 +8945,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309362?httpAccept=text/plain",
@@ -8965,6 +9055,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306503?httpAccept=text/xml",
@@ -9082,6 +9173,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630498X?httpAccept=text/xml",
@@ -9171,6 +9263,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304711?httpAccept=text/xml",
@@ -9305,6 +9398,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305364?httpAccept=text/xml",
@@ -9393,6 +9487,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305583?httpAccept=text/xml",
@@ -9501,6 +9596,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306199?httpAccept=text/xml",
@@ -9618,6 +9714,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307922?httpAccept=text/xml",
@@ -9714,6 +9811,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308125?httpAccept=text/xml",
@@ -9863,6 +9961,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306862?httpAccept=text/plain",
@@ -9959,6 +10058,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309623?httpAccept=text/plain",
@@ -10088,6 +10188,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309635?httpAccept=text/plain",
@@ -10216,6 +10317,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309659?httpAccept=text/plain",
@@ -10340,6 +10442,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307466?httpAccept=text/xml",
@@ -10444,6 +10547,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304735?httpAccept=text/xml",
@@ -10545,6 +10649,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309660?httpAccept=text/plain",
@@ -10641,6 +10746,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308678?httpAccept=text/xml",
@@ -10754,6 +10860,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304279?httpAccept=text/xml",
@@ -10861,6 +10968,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305315?httpAccept=text/xml",
@@ -10985,6 +11093,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307132?httpAccept=text/xml",
@@ -11077,6 +11186,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302268?httpAccept=text/xml",
@@ -11204,6 +11314,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309994?httpAccept=text/plain",
@@ -11300,6 +11411,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306801?httpAccept=text/xml",
@@ -11393,6 +11505,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016310289?httpAccept=text/xml",
@@ -11485,6 +11598,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Schizophrenia Research"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0920996416304959?httpAccept=text/plain",
@@ -11591,6 +11705,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Schizophrenia Research"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0920996416305904?httpAccept=text/xml",
@@ -11683,6 +11798,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Steroids"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0039128X16301969?httpAccept=text/plain",
@@ -11792,6 +11908,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Frontiers in Neuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0091302216300619?httpAccept=text/plain",
@@ -11887,6 +12004,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Frontiers in Neuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0091302216300632?httpAccept=text/xml",
@@ -11985,6 +12103,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Hormones and Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0018506X1630280X?httpAccept=text/xml",
@@ -12081,6 +12200,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Hormones and Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0018506X16301039?httpAccept=text/xml",
@@ -12183,6 +12303,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Hormones and Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0018506X16300277?httpAccept=text/xml",
@@ -12268,6 +12389,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Hormones and Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0018506X1630023X?httpAccept=text/xml",
@@ -12344,6 +12466,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Hormones and Behavior"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0018506X16300848?httpAccept=text/xml",
@@ -12453,6 +12576,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Neurobiology of Stress"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S2352289516300224?httpAccept=text/xml",
@@ -12549,6 +12673,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Preventive Medicine"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0091743516303486?httpAccept=text/plain",
