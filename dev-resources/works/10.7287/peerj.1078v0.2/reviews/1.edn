@@ -1,4 +1,6 @@
-{:reference-count 0,
+{:title-xml
+ ["Peer Review #1 of \"Multimodal Imaging <b>Brain</b> Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
+ :reference-count 0,
  :publisher nil,
  :content-domain {:domain []},
  :short-container-title [],

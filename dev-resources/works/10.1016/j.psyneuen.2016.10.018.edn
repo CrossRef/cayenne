@@ -1,4 +1,6 @@
-{:reference-count 83,
+{:title-xml
+ ["Effects of mineralocorticoid-receptor stimulation on risk taking behavior in young healthy men and women"],
+ :reference-count 83,
  :publisher "Elsevier BV",
  :license
  [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -19,7 +21,6 @@
    "elsevier.com"
    "sciencedirect.com"],
   :crossmark-restriction true},
- :language "en"
  :short-container-title ["Psychoneuroendocrinology"],
  :published-print {:date-parts [[2017 1]]},
  :DOI "10.1016/j.psyneuen.2016.10.018",
@@ -37,15 +38,34 @@
  :prefix "10.1016",
  :volume "75",
  :author
- [{:given "Christian Eric", :family "Deuter", :sequence "first" :affiliation []}
-  {:given "Katja", :family "Wingenfeld", :sequence "additional" :affiliation []}
-  {:given "Katharina", :family "Schultebraucks", :sequence "additional" :affiliation []}
-  {:given "Julian", :family "Hellmann-Regen", :sequence "additional" :affiliation []}
-  {:given "Dominique", :family "Piber", :sequence "additional" :affiliation []}
-  {:given "Christian", :family "Otte", :sequence "additional" :affiliation []}],
+ [{:given "Christian Eric",
+   :family "Deuter",
+   :sequence "first",
+   :affiliation []}
+  {:given "Katja",
+   :family "Wingenfeld",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Katharina",
+   :family "Schultebraucks",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Julian",
+   :family "Hellmann-Regen",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Dominique",
+   :family "Piber",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Christian",
+   :family "Otte",
+   :sequence "additional",
+   :affiliation []}],
  :member "78",
  :container-title ["Psychoneuroendocrinology"],
  :original-title [],
+ :language "en",
  :link
  [{:URL
    "http://api.elsevier.com/content/article/PII:S0306453016308447?httpAccept=text/xml",

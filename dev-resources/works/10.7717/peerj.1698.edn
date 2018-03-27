@@ -1,0 +1,156 @@
+{:title-xml
+ ["\n                    NeisseriaBase: a specialised\n                    <i>Neisseria</i>\n                    genomic resource and analysis platform\n                  "],
+ :reference-count 61,
+ :publisher "PeerJ",
+ :license
+ [{:URL "http://creativecommons.org/licenses/by/4.0/",
+   :start
+   {:date-parts [[2016 3 17]],
+    :date-time "2016-03-17T00:00:00Z",
+    :timestamp 1458172800000},
+   :delay-in-days 0,
+   :content-version "unspecified"}],
+ :funder
+ [{:name "University of Malaya and Ministry of Education", :award []}
+  {:name "High Impact Research (HIR)",
+   :award ["UM.C/625/1/HIR/MOE/CHAN/08"]}
+  {:name "University of Malaya Research Grant",
+   :award ["RG541-13HTM"]}],
+ :content-domain {:domain [], :crossmark-restriction false},
+ :short-container-title [],
+ :abstract
+ "<jats:p>\n                    <jats:bold>Background.</jats:bold>\n                    The gram-negative\n                    <jats:italic>Neisseria</jats:italic>\n                    is associated with two of the most potent human epidemic diseases: meningococcal meningitis and gonorrhoea. In both cases, disease is caused by bacteria colonizing human mucosal membrane surfaces. Overall, the genus shows great diversity and genetic variation mainly due to its ability to acquire and incorporate genetic material from a diverse range of sources through horizontal gene transfer. Although a number of databases exist for the\n                    <jats:italic>Neisseria</jats:italic>\n                    genomes, they are mostly focused on the pathogenic species. In this present study we present the freely available NeisseriaBase, a database dedicated to the genus\n                    <jats:italic>Neisseria</jats:italic>\n                    encompassing the complete and draft genomes of 15 pathogenic and commensal\n                    <jats:italic>Neisseria</jats:italic>\n                    species.\n                  </jats:p>\n                  <jats:p>\n                    <jats:bold>Methods.</jats:bold>\n                    The genomic data were retrieved from National Center for Biotechnology Information (NCBI) and annotated using the RAST server which were then stored into the MySQL database. The protein-coding genes were further analyzed to obtain information such as calculation of GC content (%), predicted hydrophobicity and molecular weight (Da) using in-house Perl scripts. The web application was developed following the secure four-tier web application architecture: (1) client workstation, (2) web server, (3) application server, and (4) database server. The web interface was constructed using PHP, JavaScript, jQuery, AJAX and CSS, utilizing the model-view-controller (MVC) framework. The in-house developed bioinformatics tools implemented in NeisseraBase were developed using Python, Perl, BioPerl and R languages.\n                  </jats:p>\n                  <jats:p>\n                    <jats:bold>Results.</jats:bold>\n                    Currently, NeisseriaBase houses 603,500 Coding Sequences (CDSs), 16,071 RNAs and 13,119 tRNA genes from 227\n                    <jats:italic>Neisseria</jats:italic>\n                    genomes. The database is equipped with interactive web interfaces. Incorporation of the JBrowse genome browser in the database enables fast and smooth browsing of\n                    <jats:italic>Neisseria</jats:italic>\n                    genomes. NeisseriaBase includes the standard BLAST program to facilitate homology searching, and for Virulence Factor Database (VFDB) specific homology searches, the VFDB BLAST is also incorporated into the database. In addition, NeisseriaBase is equipped with in-house designed tools such as the Pairwise Genome Comparison tool (PGC) for comparative genomic analysis and the Pathogenomics Profiling Tool (PathoProT) for the comparative pathogenomics analysis of\n                    <jats:italic>Neisseria</jats:italic>\n                    strains.\n                  </jats:p>\n                  <jats:p>\n                    <jats:bold>Discussion.</jats:bold>\n                    This user-friendly database not only provides access to a host of genomic resources on\n                    <jats:italic>Neisseria</jats:italic>\n                    but also enables high-quality comparative genome analysis, which is crucial for the expanding scientific community interested in\n                    <jats:italic>Neisseria</jats:italic>\n                    research. This database is freely available at\n                    <jats:uri xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"http://neisseria.um.edu.my\">http://neisseria.um.edu.my</jats:uri>\n                    .\n                  </jats:p>",
+ :DOI "10.7717/peerj.1698",
+ :type "journal-article",
+ :created
+ {:date-parts [[2016 3 17]],
+  :date-time "2016-03-17T08:06:16Z",
+  :timestamp 1458201976000},
+ :page "e1698",
+ :source "Crossref",
+ :is-referenced-by-count 0,
+ :title
+ ["\n                    NeisseriaBase: a specialised\n                    Neisseria\n                    genomic resource and analysis platform\n                  "],
+ :prefix "10.7717",
+ :volume "4",
+ :author
+ [{:given "Wenning",
+   :family "Zheng",
+   :sequence "first",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Naresh V.R.",
+   :family "Mutha",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Hamed",
+   :family "Heydari",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Computer Science and Engineering Department, University of NE-Lincoln, Lincoln NE, United States of America"}]}
+  {:given "Avirup",
+   :family "Dutta",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Cheuk Chuen",
+   :family "Siow",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Nicholas S.",
+   :family "Jakubovics",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Centre for Oral Health Research, School of Dental Sciences, Newcastle University, Newcastle upon Tyne, United Kingdom"}]}
+  {:given "Wei Yee",
+   :family "Wee",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Shi Yang",
+   :family "Tan",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Mia Yang",
+   :family "Ang",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Guat Jah",
+   :family "Wong",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}]}
+  {:given "Siew Woh",
+   :family "Choo",
+   :sequence "additional",
+   :affiliation
+   [{:name
+     "Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia"}
+    {:name
+     "Genome Solutions Sdn Bhd, Suite 8, Innovation Incubator UM, Level 5, Research Management & Innovation Complex, University of Malaya, Kuala Lumpur, Malaysia"}]}],
+ :member "4443",
+ :published-online {:date-parts [[2016 3 17]]},
+ :container-title ["PeerJ"],
+ :original-title [],
+ :language "en",
+ :link
+ [{:URL "https://peerj.com/articles/1698.pdf",
+   :content-type "application/pdf",
+   :content-version "vor",
+   :intended-application "text-mining"}
+  {:URL "https://peerj.com/articles/1698.xml",
+   :content-type "application/xml",
+   :content-version "vor",
+   :intended-application "text-mining"}
+  {:URL "https://peerj.com/articles/1698.html",
+   :content-type "text/html",
+   :content-version "vor",
+   :intended-application "text-mining"}
+  {:URL "https://peerj.com/articles/1698.pdf",
+   :content-type "unspecified",
+   :content-version "vor",
+   :intended-application "similarity-checking"}],
+ :deposited
+ {:date-parts [[2017 6 24]],
+  :date-time "2017-06-24T08:28:32Z",
+  :timestamp 1498292912000},
+ :score 1.0,
+ :subtitle [],
+ :short-title [],
+ :issued {:date-parts [[2016 3 17]]},
+ :references-count 61,
+ :alternative-id ["10.7717/peerj.1698"],
+ :URL "http://dx.doi.org/10.7717/peerj.1698",
+ :archive ["CLOCKSS" "LOCKSS" "Portico"],
+ :relation {},
+ :ISSN ["2167-8359"],
+ :issn-type [{:value "2167-8359", :type "electronic"}],
+ :article-number "e1698"}

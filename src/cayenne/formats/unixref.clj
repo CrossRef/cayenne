@@ -308,6 +308,10 @@
   (when-let [title (xml/xselect1 item-loc "titles" "title" :text)]
     {:type :title :subtype :long :value title}))
 
+(defn parse-title-xml [item-loc]
+  (when-let [title (xml/xselect1 item-loc "titles" "title" :xml)]
+    {:type :title :subtype :long-xml :value title}))
+
 (defn parse-subtitle [item-loc]
   (if-let [title (xml/xselect1 item-loc "titles" "subtitle" :text)]
     {:type :title :subtype :secondary :value title}))
@@ -528,6 +532,7 @@
       (if-conj (parse-group-title item-loc))
       (if-conj (parse-proceedings-title item-loc))
       (if-conj (parse-title item-loc))
+      (if-conj (parse-title-xml item-loc))
       (if-conj (parse-subtitle item-loc))
       (if-conj (parse-language-title item-loc))))
 

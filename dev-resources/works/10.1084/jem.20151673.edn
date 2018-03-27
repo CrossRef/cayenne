@@ -1,23 +1,13 @@
-{:reference-count 3,
+{:title-xml
+ ["Deubiquitinase USP13 maintains glioblastoma stem cells by antagonizing FBXL14-mediated Myc ubiquitination"],
+ :reference-count 3,
  :publisher "Rockefeller University Press",
  :issue "1",
- :language "en"
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title ["J. Exp. Med."],
  :published-print {:date-parts [[2017 1]]},
  :DOI "10.1084/jem.20151673",
  :type "journal-article",
- :journal-issue
- {:issue "1"
-  :published-print
-  {:date-parts [[2017 1 2]]}
-  :published-online
-  {:date-parts [[2017 2 9]]}}
- :free-to-read
- {:start-date
-  {:date-parts [[2015 1 15]]}
-  :end-date 
-  {:date-parts [[2025 1 1]]}}
  :created
  {:date-parts [[2016 12 7]],
   :date-time "2016-12-07T15:10:13Z",
@@ -40,6 +30,7 @@
  :published-online {:date-parts [[2016 12 6]]},
  :container-title ["The Journal of Experimental Medicine"],
  :original-title [],
+ :language "en",
  :link
  [{:URL
    "https://syndication.highwire.org/content/doi/10.1084/jem.20151673",
@@ -52,9 +43,16 @@
   :timestamp 1492645805000},
  :score 1.0,
  :subtitle [],
+ :free-to-read
+ {:start-date {:date-parts [[2015 1 15]]},
+  :end-date {:date-parts [[2025 1 1]]}},
  :short-title [],
  :issued {:date-parts [[2016 12 6]]},
  :references-count 3,
+ :journal-issue
+ {:published-online {:date-parts [[2017 2 9]]},
+  :published-print {:date-parts [[2017 1 2]]},
+  :issue "1"},
  :alternative-id ["10.1084/jem.20151673"],
  :URL "http://dx.doi.org/10.1084/jem.20151673",
  :relation {},
