@@ -1,7 +1,34 @@
 {:facets {},
- :total-results 1,
+ :total-results 2,
  :items
- ({:institution
+ ({:reference-count 0,
+   :content-domain {:domain []},
+   :published-print {:date-parts [[2015 7 14]]},
+   :DOI "10.7287/peerj.1078v0.2/reviews/1",
+   :type "peer-review",
+   :created
+   {:date-parts [[2018 1 10]],
+    :date-time "2018-01-10T17:22:19Z",
+    :timestamp 1515604939000},
+   :source "Crossref",
+   :is-referenced-by-count 0,
+   :title
+   ["Peer Review #1 of \"Multimodal Imaging Brain Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
+   :prefix "10.7287",
+   :deposited
+   {:date-parts [[2018 1 10]],
+    :date-time "2018-01-10T17:22:19Z",
+    :timestamp 1515604939000},
+   :score 1.0,
+   :issued {:date-parts [[2015 7 14]]},
+   :references-count 0,
+   :URL "http://dx.doi.org/10.7287/peerj.1078v0.2/reviews/1",
+   :relation
+   {:is-review-of
+    [{:id-type "doi",
+      :id "10.7717/peerj.1078",
+      :asserted-by "subject"}]}}
+  {:institution
    {:name "Psychoceramics Institute",
     :place ["Pittsburg, Arizona"],
     :department ["Soft furnishings"],
