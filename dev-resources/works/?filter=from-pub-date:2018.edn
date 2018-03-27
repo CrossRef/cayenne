@@ -1,5 +1,5 @@
 {:facets {},
  :total-results 0,
  :items (),
- :items-per-page 1000,
+ :items-per-page 20,
  :query {:start-index 0, :search-terms nil}}
