@@ -2,18 +2,32 @@
   (:require [cayenne.conf :refer [set-param! with-core cores start-core! stop-core!]]
             [cayenne.tasks :refer [load-funders]]
             [cayenne.rdf :as rdf]
-            [cayenne.tasks :refer [load-journals]]
+            [cayenne.tasks :refer [load-members load-journals]]
             [cayenne.tasks.funder :refer [select-country-stmts]]
+            [cayenne.tasks.coverage :refer [check-journals check-members]]
+            [cayenne.tasks.solr :refer [start-insert-list-processing]]
+            [cayenne.api.v1.feed :refer [start-feed-processing]]
             [clojure.java.io :refer [resource]]
             [clojure.java.shell :refer [sh]]
             [clj-http.client :as http]
-            [somnium.congomongo :as m]))
+            [somnium.congomongo :as m]
+            [me.raynes.fs :refer [copy-dir delete-dir]]
+            [nio2.io :refer [path]]
+            [nio2.dir-seq :refer [dir-seq-glob]]))
 
 (defn- solr-ready? []
   (try
     (= 200 (:status (http/get "http://localhost:8983/solr/crmds1/admin/ping")))
     (catch Exception e
       false)))
+
+(defn solr-doc-count []
+  (-> (http/get "http://localhost:8983/solr/admin/cores?action=STATUS&wt=json" {:as :json})
+      :body
+      :status
+      :crmds1
+      :index
+      :numDocs))
 
 (defn- mongo-ready? []
   (try
@@ -77,5 +91,44 @@
   (with-core :default 
     (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
   (load-journals))
+
+(defn process-feed []
+  (let [feed-dir (.getPath (resource "feeds"))
+        feed-source-dir (str feed-dir "/source")
+        feed-in-dir (str feed-dir "/feed-in")
+        feed-processed-dir (str feed-dir "/feed-processed")
+        feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
+    (when-not (= feed-file-count 179) 
+      (throw (Exception. 
+               (str "The number of feed input files is not as expected. Expected to find " 
+                    179 
+                    " files in " 
+                    feed-source-dir
+                    " but found "
+                    feed-file-count))))
+    (delete-dir feed-processed-dir)
+    (delete-dir feed-in-dir)
+    (copy-dir feed-source-dir feed-in-dir)
+    (with-core :default 
+      (set-param! [:dir :data] feed-dir)
+      (set-param! [:dir :test-data] feed-dir)
+      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+      (set-param! [:service :solr :insert-list-max-size] 0))
+    (load-journals)
+    (with-redefs
+      [cayenne.tasks.publisher/get-member-list
+       (fn get-member-list []
+         (read-string (slurp (resource "get-member-list.edn"))))
+       cayenne.tasks.publisher/get-prefix-info
+       (fn get-prefix-info [prefix]
+         (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
+      (load-members)
+      (start-insert-list-processing)
+      (start-feed-processing)
+      (while (not= (solr-doc-count) feed-file-count)
+        (println "Waiting for solr to finish indexing....")
+        (Thread/sleep 1000))
+      (check-journals "journals")
+      (check-members "members"))))
 
 (def system @cores)

@@ -483,6 +483,7 @@
         (assoc-exists :alternative-id (map ids/extract-supplementary-id
                                            (get solr-doc "supplementary_id")))
         (assoc-exists :title (set (get solr-doc "hl_title")))
+        (assoc-exists :title-xml (set (get solr-doc "hl_title_xml")))
         (assoc-exists :short-title (set (get solr-doc "hl_short_title")))
         (assoc-exists :original-title (set (get solr-doc "hl_original_title")))
         (assoc-exists :subtitle (set (get solr-doc "hl_subtitle")))

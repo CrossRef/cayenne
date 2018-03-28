@@ -1,7 +1,9 @@
 {:facets {},
  :total-results 76,
  :items
- ({:reference-count 34,
+ ({:title-xml
+   ["Socioeconomic status, perceived control, diurnal cortisol, and physical symptoms: A moderated mediation model"],
+   :reference-count 34,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -11,7 +13,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -54,6 +55,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307545?httpAccept=text/xml",
@@ -94,7 +96,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:title-xml
+   ["Associations among integrated psychoneuroimmunological factors and metabolic syndrome"],
+   :reference-count 55,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -104,7 +108,6 @@
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -163,6 +166,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307594?httpAccept=text/plain",
@@ -203,7 +207,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:title-xml
+   ["Subcortical gray matter changes in transgender subjects after long-term cross-sex hormone administration"],
+   :reference-count 67,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -218,7 +224,6 @@
      :name "Austrian Science Fund",
      :doi-asserted-by "publisher",
      :award ["FWF P23021"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -297,6 +302,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307144?httpAccept=text/plain",
@@ -337,7 +343,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 80,
+  {:title-xml
+   ["Exploring the neural mechanisms of finasteride: a proteomic analysis in the nucleus accumbens"],
+   :reference-count 80,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -347,7 +355,6 @@
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -410,6 +417,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307715?httpAccept=text/plain",
@@ -450,7 +458,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 13,
+  {:title-xml
+   ["Testing the ecological validity of the Trier Social Stress Test: Association with real-life exam stress"],
+   :reference-count 13,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -461,7 +471,6 @@
      :delay-in-days 0,
      :content-version "tdm"}],
    :funder [{:name "Fabienne Ropeter", :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -520,6 +529,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307740?httpAccept=text/xml",
@@ -560,7 +570,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 59,
+  {:title-xml
+   ["Do sex hormones or hormone therapy modify the relation of n-3 fatty acids with incident depressive symptoms in postmenopausal women? The MESA Study"],
+   :reference-count 59,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -570,7 +582,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -629,6 +640,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307867?httpAccept=text/xml",
@@ -669,7 +681,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 95,
+  {:title-xml
+   ["Optimizing laboratory animal stress paradigms: The H-H* experimental design"],
+   :reference-count 95,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -679,7 +693,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -714,6 +727,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307880?httpAccept=text/xml",
@@ -754,7 +768,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 74,
+  {:title-xml
+   ["Prenatal maternal cortisol concentrations predict neurodevelopment in middle childhood"],
+   :reference-count 74,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -770,7 +786,6 @@
      :doi-asserted-by "publisher",
      :award
      ["HD065823" "NS041298" "P50MH096889" "HD51852" "HD50662"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -817,6 +832,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307892?httpAccept=text/xml",
@@ -857,7 +873,9 @@
     {:value "© 2016 Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 15,
+  {:title-xml
+   ["Cortisol profiles differ by race/ethnicity among young sexual minority men"],
+   :reference-count 15,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -867,7 +885,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -918,6 +935,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307909?httpAccept=text/xml",
@@ -958,7 +976,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:title-xml
+   ["Acute stress impairs frontocingulate activation during error monitoring in remitted depression"],
+   :reference-count 54,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -968,7 +988,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1031,6 +1050,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305327?httpAccept=text/xml",
@@ -1071,7 +1091,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 51,
+  {:title-xml
+   ["High estradiol and low progesterone are associated with high assertiveness in women"],
+   :reference-count 51,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1081,7 +1103,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1128,6 +1149,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302190?httpAccept=text/xml",
@@ -1168,7 +1190,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:title-xml
+   ["Menstrual cycle-related variation in autonomic nervous system functioning in women in the early menopausal transition with and without insomnia disorder"],
+   :reference-count 48,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1181,7 +1205,6 @@
    :funder
    [{:name "Eunice Kennedy Shriver NICHD/NIH (NCTRI)",
      :award ["P50-HD28934"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1228,6 +1251,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307983?httpAccept=text/xml",
@@ -1268,7 +1292,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 83,
+  {:title-xml
+   ["How to: Measuring blood cytokines in biological psychiatry using commercially available multiplex immunoassays"],
+   :reference-count 83,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1278,7 +1304,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1361,6 +1386,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308022?httpAccept=text/xml",
@@ -1401,7 +1427,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 70,
+  {:title-xml
+   ["Adrenocortical sensitivity, moderated by ongoing stress, predicts drinking intensity in alcohol-dependent men"],
+   :reference-count 70,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1424,7 +1452,6 @@
     {:name
      "Development and the UT Southwestern Center for Translational Medicine",
      :award ["UL1TR000451"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1487,6 +1514,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630806X?httpAccept=text/plain",
@@ -1527,7 +1555,9 @@
     {:value "Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 64,
+  {:title-xml
+   ["The impact of daily and trait loneliness on diurnal cortisol and sleep among children affected by parental HIV/AIDS"],
+   :reference-count 64,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1537,7 +1567,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1592,6 +1621,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308083?httpAccept=text/xml",
@@ -1632,7 +1662,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 88,
+  {:title-xml
+   ["Effects of intranasal oxytocin on symptoms of schizophrenia: A multivariate Bayesian meta-analysis"],
+   :reference-count 88,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1642,7 +1674,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1681,6 +1712,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302128?httpAccept=text/xml",
@@ -1721,7 +1753,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:title-xml
+   ["Trait hostility and cortisol sensitivity following a stressor: The moderating role of stress-induced heart rate variability"],
+   :reference-count 45,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1731,7 +1765,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1774,6 +1807,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308216?httpAccept=text/xml",
@@ -1814,7 +1848,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 39,
+  {:title-xml
+   ["Differential cytokine levels between early withdrawal and remission states in patients with alcohol dependence"],
+   :reference-count 39,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1824,7 +1860,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -1903,6 +1938,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308332?httpAccept=text/plain",
@@ -1943,7 +1979,9 @@
     {:value "© 2016 Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:title-xml
+   ["Spatial memory is impaired by peripubertal GnRH agonist treatment and testosterone replacement in sheep"],
+   :reference-count 45,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -1965,7 +2003,6 @@
      :name "BBSRC",
      :doi-asserted-by "publisher",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2025,6 +2062,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305595?httpAccept=text/xml",
@@ -2065,7 +2103,9 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:title-xml
+   ["The impact of perceived intensity and frequency of police work occupational stressors on the cortisol awakening response (CAR): Findings from the BCOPS study"],
+   :reference-count 36,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2075,7 +2115,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2134,6 +2173,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302025?httpAccept=text/xml",
@@ -2174,7 +2214,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 83,
+  {:title-xml
+   ["Effects of mineralocorticoid-receptor stimulation on risk taking behavior in young healthy men and women"],
+   :reference-count 83,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2184,7 +2226,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2239,6 +2280,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308447?httpAccept=text/xml",
@@ -2279,7 +2321,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 41,
+  {:title-xml
+   ["Cortisol reactivity and suicidal behavior: Investigating the role of hypothalamic-pituitary-adrenal axis responses to stress in suicide attempters and ideators"],
+   :reference-count 41,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2296,7 +2340,6 @@
       :timestamp 1510185600000},
      :delay-in-days 312,
      :content-version "am"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2347,6 +2390,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308435?httpAccept=text/xml",
@@ -2387,7 +2431,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 43,
+  {:title-xml
+   ["Impairment of the executive attention network in premenopausal women with hormone receptor-positive breast cancer treated with tamoxifen"],
+   :reference-count 43,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2397,7 +2443,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2460,6 +2505,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308459?httpAccept=text/xml",
@@ -2500,7 +2546,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 47,
+  {:title-xml
+   ["The role of oxytocin in modulating interpersonal space: A pharmacological fMRI study"],
+   :reference-count 47,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2510,7 +2558,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2569,6 +2616,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304668?httpAccept=text/plain",
@@ -2609,7 +2657,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 51,
+  {:title-xml
+   ["Histone deacetylase and acetyltransferase inhibitors modulate behavioral responses to social stress"],
+   :reference-count 51,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2624,7 +2674,6 @@
      :name "Georgia State University",
      :doi-asserted-by "crossref",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2679,6 +2728,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308587?httpAccept=text/xml",
@@ -2719,7 +2769,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:title-xml
+   ["Motherhood and infant contact regulate neuroplasticity in the serotonergic midbrain dorsal raphe"],
+   :reference-count 54,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2738,7 +2790,6 @@
      :name "NRSA",
      :doi-asserted-by "crossref",
      :award ["MH099892"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2777,6 +2828,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308605?httpAccept=text/plain",
@@ -2817,7 +2869,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 63,
+  {:title-xml
+   ["A specific profile of luteal phase progesterone is associated with the development of premenstrual symptoms"],
+   :reference-count 63,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2833,7 +2887,6 @@
      :award ["401898/2013-0"]}
     {:name "RCUK/FAPESP Newton grant",
      :award ["MR/M026574/1" "2014/50829-4"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -2892,6 +2945,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308630?httpAccept=text/xml",
@@ -2933,7 +2987,9 @@
      "Crown Copyright © 2016 Published by Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 44,
+  {:title-xml
+   ["Selective corticotropin-releasing factor 1 receptor antagonist E2508 reduces restraint stress-induced defecation and visceral pain in rat models"],
+   :reference-count 44,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -2943,7 +2999,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3002,6 +3057,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308563?httpAccept=text/xml",
@@ -3042,7 +3098,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:title-xml
+   ["Frontal brain asymmetry, childhood maltreatment, and low-grade inflammation at midlife"],
+   :reference-count 67,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3065,7 +3123,6 @@
      :name "National Institute on Drug Abuse",
      :doi-asserted-by "publisher",
      :award ["DA027827"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3128,6 +3185,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308654?httpAccept=text/xml",
@@ -3168,7 +3226,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:title-xml
+   ["Sex-specific association between functional neuropeptide S receptor gene (NPSR1) variants and cortisol and central stress responses"],
+   :reference-count 54,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3178,7 +3238,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3257,6 +3316,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304528?httpAccept=text/plain",
@@ -3297,7 +3357,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 56,
+  {:title-xml
+   ["Maternal care and affective behavior in female offspring: Implication of the neurosteroid/GABAergic system"],
+   :reference-count 56,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3307,7 +3369,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3346,6 +3407,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304723?httpAccept=text/plain",
@@ -3386,7 +3448,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:title-xml
+   ["Social regulation of the lymph node transcriptome in rhesus macaques (Macaca mulatta)"],
+   :reference-count 45,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3430,7 +3494,6 @@
       "CA160890"
       "AI52737"
       "AG033590"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3482,6 +3545,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630470X?httpAccept=text/plain",
@@ -3530,6 +3594,8 @@
      :DOI "10.1016/j.psyneuen.2015.09.028",
      :type "erratum",
      :label "Erratum"}],
+   :title-xml
+   ["Corrigendum to “Determinants of brain-derived neurotrophic factor (BDNF) in umbilical cord and maternal serum” [Psychoneuroendocrinology 63 (2016) 191–197]"],
    :reference-count 0,
    :publisher "Elsevier BV",
    :license
@@ -3540,7 +3606,6 @@
       :timestamp 1491004800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3600,6 +3665,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308757?httpAccept=text/plain",
@@ -3645,7 +3711,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 64,
+  {:title-xml
+   ["Intrinsic functional connectivity between amygdala and hippocampus during rest predicts enhanced memory under stress"],
+   :reference-count 64,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3655,7 +3723,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3702,6 +3769,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308824?httpAccept=text/xml",
@@ -3742,7 +3810,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 81,
+  {:title-xml
+   ["Prenatal stress changes courtship vocalizations and bone mineral density in mice"],
+   :reference-count 81,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3752,7 +3822,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3811,6 +3880,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308836?httpAccept=text/xml",
@@ -3851,7 +3921,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 50,
+  {:title-xml
+   ["Perinatal hypothalamic-pituitary-adrenal axis regulation among women with eating disorders and their infants"],
+   :reference-count 50,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3861,7 +3933,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -3921,6 +3992,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630511X?httpAccept=text/plain",
@@ -3962,7 +4034,9 @@
      "Crown Copyright © 2016 Published by Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:title-xml
+   ["Do women tend while men fight or flee? Differential emotive reactions of stressed men and women while viewing newborn infants"],
+   :reference-count 54,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -3983,7 +4057,6 @@
    [{:name
      "Swiss National Science Foundation awarded to J.S. Lobmaier",
      :award ["PP00P1_139072/1"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4038,6 +4111,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308903?httpAccept=text/xml",
@@ -4078,7 +4152,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 19,
+  {:title-xml
+   ["Copeptin – A potential endocrine surrogate marker of CCK-4-induced panic symptoms?"],
+   :reference-count 19,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4088,7 +4164,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4143,6 +4218,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308915?httpAccept=text/plain",
@@ -4183,7 +4259,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 52,
+  {:title-xml
+   ["Hypothalamic-pituitary-adrenal axis activity and cognition in major depression: The role of remission status"],
+   :reference-count 52,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4193,7 +4271,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4272,6 +4349,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302293?httpAccept=text/plain",
@@ -4312,7 +4390,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:title-xml
+   ["In 6- to 8-year-old children, hair cortisol is associated with body mass index and somatic complaints, but not with stress, health-related quality of life, blood pressure, retinal vessel diameters, and cardiorespiratory fitness"],
+   :reference-count 67,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4327,7 +4407,6 @@
      :name "Department of Education",
      :doi-asserted-by "crossref",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4398,6 +4477,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308952?httpAccept=text/plain",
@@ -4438,7 +4518,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 19,
+  {:title-xml
+   ["Lower cortisol level in response to a psychosocial stressor in young females with self-harm"],
+   :reference-count 19,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4448,7 +4530,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4507,6 +4588,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305005?httpAccept=text/plain",
@@ -4547,7 +4629,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 17,
+  {:title-xml
+   ["Fifteen-month-old infants’ cortisol levels decrease after a 30-min-warm-up procedure"],
+   :reference-count 17,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4557,7 +4641,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4600,6 +4683,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630899X?httpAccept=text/plain",
@@ -4640,7 +4724,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:title-xml
+   ["Sociodemographic, lifestyle, and psychosocial determinants of hair cortisol in a South London community sample"],
+   :reference-count 36,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4657,7 +4743,6 @@
       :timestamp 1512345600000},
      :delay-in-days 306,
      :content-version "am"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4720,6 +4805,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305923?httpAccept=text/xml",
@@ -4760,7 +4846,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 92,
+  {:title-xml
+   ["Trauma exposure relates to heightened stress, altered amygdala morphology and deficient extinction learning: Implications for psychopathology"],
+   :reference-count 92,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4770,7 +4858,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4833,6 +4920,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309015?httpAccept=text/plain",
@@ -4873,7 +4961,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 18,
+  {:title-xml
+   ["Association between dehydroepiandrosterone-sulfate and attention in long-term survivors of childhood acute lymphoblastic leukemia treated with only chemotherapy"],
+   :reference-count 18,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -4883,7 +4973,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -4958,6 +5047,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305601?httpAccept=text/plain",
@@ -4998,7 +5088,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 69,
+  {:title-xml
+   ["Serotonin 2A receptor (5-HT2A) gene promoter variant interacts with chronic perceived stress to modulate resting parasympathetic activity in humans"],
+   :reference-count 69,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5011,7 +5103,6 @@
    :funder
    [{:name "Tri-Service General Hospital, Taipei, Taiwan",
      :award ["TSGH-C105-122" "TSGH-C103-130"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5066,6 +5157,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305996?httpAccept=text/plain",
@@ -5106,7 +5198,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 20,
+  {:title-xml
+   ["Heterogeneity in HPA axis dysregulation and serotonergic vulnerability to depression"],
+   :reference-count 20,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5123,7 +5217,6 @@
       :timestamp 1481068800000},
      :delay-in-days 0,
      :content-version "vor"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5182,6 +5275,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302049?httpAccept=text/xml",
@@ -5222,7 +5316,9 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 47,
+  {:title-xml
+   ["Women recovering from social rejection: The effect of the person and the situation on a hormonal mechanism of affiliation"],
+   :reference-count 47,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5232,7 +5328,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5279,6 +5374,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305066?httpAccept=text/plain",
@@ -5319,7 +5415,9 @@
     {:value "Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 68,
+  {:title-xml
+   ["Increased anxiety-like behaviors, but blunted cortisol stress response after neonatal hippocampal lesions in monkeys"],
+   :reference-count 68,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5353,7 +5451,6 @@
     {:name
      "National Institutes of Health, Office of Research Infrastructure Programs",
      :award ["ORIP/OD P51-OD011132"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5404,6 +5501,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309210?httpAccept=text/xml",
@@ -5444,7 +5542,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 49,
+  {:title-xml
+   ["Rapid effects of dorsal hippocampal G-protein coupled estrogen receptor on learning in female mice"],
+   :reference-count 49,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5454,7 +5554,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5501,6 +5600,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304267?httpAccept=text/xml",
@@ -5541,7 +5641,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 15,
+  {:title-xml
+   ["Female nurses’ burnout symptoms: No association with the Hypothalamic-pituitary-thyroid (HPT) axis"],
+   :reference-count 15,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5551,7 +5653,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5614,6 +5715,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630703X?httpAccept=text/xml",
@@ -5654,7 +5756,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:title-xml
+   ["Allostatic load and reduced cortical thickness in schizophrenia"],
+   :reference-count 48,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5681,7 +5785,6 @@
      :doi-asserted-by "publisher",
      :award []}
     {:name "State of Maryland", :award ["M00B6400091"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5744,6 +5847,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307600?httpAccept=text/xml",
@@ -5784,7 +5888,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 71,
+  {:title-xml
+   ["The roles of testosterone and cortisol in friendship formation"],
+   :reference-count 71,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5794,7 +5900,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5837,6 +5942,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309362?httpAccept=text/plain",
@@ -5877,7 +5983,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 18,
+  {:title-xml
+   ["Validation of autonomic and endocrine reactivity to a laboratory stressor in young children"],
+   :reference-count 18,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -5892,7 +6000,6 @@
      :name "NIH",
      :doi-asserted-by "publisher",
      :award ["R01 HD075716" "P50 DA035763"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -5947,6 +6054,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306503?httpAccept=text/xml",
@@ -5987,7 +6095,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 46,
+  {:title-xml
+   ["The impact of the severity of early life stress on diurnal cortisol: The role of puberty"],
+   :reference-count 46,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6006,7 +6116,6 @@
      :name "Brain & Behavior Research Foundation",
      :doi-asserted-by "crossref",
      :award ["23582" "22337" "23819"]}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6065,6 +6174,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S030645301630498X?httpAccept=text/xml",
@@ -6105,7 +6215,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:title-xml
+   ["Association between anxiety and metabolic syndrome: A systematic review and meta-analysis of epidemiological studies"],
+   :reference-count 48,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6115,7 +6227,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6155,6 +6266,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304711?httpAccept=text/xml",
@@ -6195,7 +6307,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:title-xml
+   ["Aromatase changes in depression: A postmortem and animal experimental study"],
+   :reference-count 36,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6215,7 +6329,6 @@
     {:name
      "Key Laboratory of Mental Disorder’s Management of Zhejiang Province",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6290,6 +6403,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305364?httpAccept=text/xml",
@@ -6330,7 +6444,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 66,
+  {:title-xml
+   ["Stress disrupts the reconsolidation of fear memories in men"],
+   :reference-count 66,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6340,7 +6456,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6379,6 +6494,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305583?httpAccept=text/xml",
@@ -6419,7 +6535,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 52,
+  {:title-xml
+   ["Altered cerebral insulin response in transgenic mice expressing the epsilon-4 allele of the human apolipoprotein E gene"],
+   :reference-count 52,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6429,7 +6547,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6488,6 +6605,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306199?httpAccept=text/xml",
@@ -6528,7 +6646,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 30,
+  {:title-xml
+   ["A reduction in long-term spatial memory persists after discontinuation of peripubertal GnRH agonist treatment in sheep"],
+   :reference-count 30,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6550,7 +6670,6 @@
      :name "BBSRC",
      :doi-asserted-by "publisher",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6606,6 +6725,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307922?httpAccept=text/xml",
@@ -6646,7 +6766,9 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 73,
+  {:title-xml
+   ["Effects of the cortisol stress response on the psychotherapy outcome of panic disorder patients"],
+   :reference-count 73,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6656,7 +6778,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6703,6 +6824,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308125?httpAccept=text/xml",
@@ -6743,7 +6865,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:title-xml
+   ["Oxidative stress, inflammation and treatment response in major depression"],
+   :reference-count 55,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6770,7 +6894,6 @@
     {:name
      "National Institutes of Health/National Center for Research Resources",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6853,6 +6976,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306862?httpAccept=text/plain",
@@ -6893,7 +7017,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 35,
+  {:title-xml
+   ["Adolescent binge alcohol exposure increases risk assessment behaviors in male Wistar rats after exposure to an acute psychological stressor in adulthood"],
+   :reference-count 35,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -6903,7 +7029,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -6950,6 +7075,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309623?httpAccept=text/plain",
@@ -6990,7 +7116,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 37,
+  {:title-xml
+   ["Combined oral contraceptive use is associated with both improvement and worsening of mood in the different phases of the treatment cycle—A double-blind, placebo-controlled randomized trial"],
+   :reference-count 37,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7005,7 +7133,6 @@
      :name "The Swedish Research Council",
      :doi-asserted-by "crossref",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7080,6 +7207,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309635?httpAccept=text/plain",
@@ -7120,7 +7248,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 13,
+  {:title-xml
+   ["Corticotropin-releasing hormone and dopamine release in healthy individuals"],
+   :reference-count 13,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7130,7 +7260,6 @@
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7209,6 +7338,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309659?httpAccept=text/plain",
@@ -7249,7 +7379,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 44,
+  {:title-xml
+   ["Higher serum DHEA concentrations before and after SSRI treatment are associated with remission of major depression"],
+   :reference-count 44,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7259,7 +7391,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7334,6 +7465,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307466?httpAccept=text/xml",
@@ -7374,7 +7506,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 60,
+  {:title-xml
+   ["Cortisol stress reactivity across psychiatric disorders: A systematic review and meta-analysis"],
+   :reference-count 60,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7384,7 +7518,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7439,6 +7572,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304735?httpAccept=text/xml",
@@ -7479,7 +7613,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 63,
+  {:title-xml
+   ["Mineralocorticoid receptor haplotype, estradiol, progesterone and emotional information processing"],
+   :reference-count 63,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7490,7 +7626,6 @@
      :delay-in-days 0,
      :content-version "tdm"}],
    :funder [{:name "COST Action ADMIRE BM1301", :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7541,6 +7676,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309660?httpAccept=text/plain",
@@ -7581,7 +7717,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:title-xml
+   ["Oxytocin modulates third-party sanctioning of selfish and generous behavior within and between groups"],
+   :reference-count 55,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7591,7 +7729,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7638,6 +7775,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308678?httpAccept=text/xml",
@@ -7678,7 +7816,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 53,
+  {:title-xml
+   ["Behavioral and physiological consequences of enrichment loss in rats"],
+   :reference-count 53,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7693,7 +7833,6 @@
      :name "National Institutes of Health",
      :doi-asserted-by "publisher",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7752,6 +7891,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016304279?httpAccept=text/xml",
@@ -7792,7 +7932,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 24,
+  {:title-xml
+   ["The stress hormone cortisol blocks perceptual learning in humans"],
+   :reference-count 24,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7809,7 +7951,6 @@
       :timestamp 1481155200000},
      :delay-in-days 0,
      :content-version "vor"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7860,6 +8001,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016305315?httpAccept=text/xml",
@@ -7900,7 +8042,9 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 42,
+  {:title-xml
+   ["OXTR  polymorphism in depression and completed suicide—A study on a large population sample"],
+   :reference-count 42,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -7910,7 +8054,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -7935,7 +8078,7 @@
    :source "Crossref",
    :is-referenced-by-count 0,
    :title
-   ["OXTR  polymorphism in depression and completed suicide—A study on a large population sample"],
+   ["OXTR polymorphism in depression and completed suicide—A study on a large population sample"],
    :prefix "10.1016",
    :volume "77",
    :author
@@ -7985,6 +8128,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307132?httpAccept=text/xml",
@@ -8025,7 +8169,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 49,
+  {:title-xml
+   ["Effects of the combination of metyrapone and oxazepam on cocaine-induced increases in corticosterone in the medial prefrontal cortex and nucleus accumbens"],
+   :reference-count 49,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -8035,7 +8181,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -8078,6 +8223,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016302268?httpAccept=text/xml",
@@ -8118,7 +8264,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 73,
+  {:title-xml
+   ["Sex-specific associations of testosterone with prefrontal-hippocampal development and executive function"],
+   :reference-count 73,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -8139,7 +8287,6 @@
     {:name
      "National Institute on Drug Abuse, the National Institute of Mental Health",
      :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -8206,6 +8353,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016309994?httpAccept=text/plain",
@@ -8246,7 +8394,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 66,
+  {:title-xml
+   ["Forced swimming-induced oxytocin release into blood and brain: Effects of adrenalectomy and corticosterone treatment"],
+   :reference-count 66,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -8256,7 +8406,6 @@
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -8303,6 +8452,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016306801?httpAccept=text/xml",
@@ -8343,7 +8493,9 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:title-xml
+   ["Effects of psychosocial stress on the goal-directed and habit memory systems during learning and later execution"],
+   :reference-count 48,
    :publisher "Elsevier BV",
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
@@ -8354,7 +8506,6 @@
      :delay-in-days 0,
      :content-version "tdm"}],
    :funder [{:name "CIFRE scholarship", :award []}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -8397,6 +8548,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016310289?httpAccept=text/xml",
@@ -8437,5 +8589,5 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}),
- :items-per-page 76,
+ :items-per-page 1000,
  :query {:start-index 0, :search-terms nil}}

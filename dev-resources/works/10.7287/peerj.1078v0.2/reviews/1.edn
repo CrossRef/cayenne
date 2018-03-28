@@ -1,4 +1,6 @@
-{:reference-count 0,
+{:title-xml
+ ["Peer Review #1 of \"Multimodal Imaging <b>Brain</b> Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
+ :reference-count 0,
  :publisher nil,
  :content-domain {:domain []},
  :short-container-title [],
@@ -12,7 +14,7 @@
  :source "Crossref",
  :is-referenced-by-count 0,
  :title
- ["Peer Review #1 of \"Multimodal Imaging Brain Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
+ ["Peer Review #1 of \"Multimodal Imaging <b>Brain</b> Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
  :prefix "10.7287",
  :member nil,
  :container-title [],
