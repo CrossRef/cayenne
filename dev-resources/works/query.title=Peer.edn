@@ -15,13 +15,13 @@
    :source "Crossref",
    :is-referenced-by-count 0,
    :title
-   ["Peer Review #1 of \"Multimodal Imaging Brain Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
+   ["Peer Review #1 of \"Multimodal Imaging <b>Brain</b> Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
    :prefix "10.7287",
    :deposited
    {:date-parts [[2018 1 10]],
     :date-time "2018-01-10T17:22:19Z",
     :timestamp 1515604939000},
-   :score 5.049763,
+   :score 5.054712,
    :issued {:date-parts [[2015 7 14]]},
    :references-count 0,
    :URL "http://dx.doi.org/10.7287/peerj.1078v0.2/reviews/1",
@@ -50,7 +50,7 @@
    :source "Crossref",
    :is-referenced-by-count 0,
    :title
-   ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\""],
+   ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate <i>infection</i> and white band disease in three reef-building coral species (v0.1)\""],
    :prefix "10.7287",
    :author
    [{:ORCID "http://orcid.org/0000-0002-3368-4133",
@@ -73,7 +73,7 @@
    {:date-parts [[2018 1 9]],
     :date-time "2018-01-09T18:42:21Z",
     :timestamp 1515523341000},
-   :score 4.0164347,
+   :score 4.0213175,
    :subtitle ["The Subtitle"],
    :issued {:date-parts [[2017 4 19]]},
    :references-count 0,

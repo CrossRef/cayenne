@@ -30,7 +30,7 @@
  :source "Crossref",
  :is-referenced-by-count 0,
  :title
- ["\n                    NeisseriaBase: a specialised\n                    Neisseria\n                    genomic resource and analysis platform\n                  "],
+ ["NeisseriaBase: a specialised <i>Neisseria</i> genomic resource and analysis platform"],
  :prefix "10.7717",
  :volume "4",
  :author

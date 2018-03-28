@@ -710,117 +710,6 @@
      :name "copyright",
      :label "Copyright"}]}
   {:title-xml
-   ["Associations among integrated psychoneuroimmunological factors and metabolic syndrome"],
-   :reference-count 55,
-   :publisher "Elsevier BV",
-   :license
-   [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
-     :start
-     {:date-parts [[2016 12 1]],
-      :date-time "2016-12-01T00:00:00Z",
-      :timestamp 1480550400000},
-     :delay-in-days 0,
-     :content-version "tdm"}],
-   :content-domain
-   {:domain
-    ["psyneuen-journal.com"
-     "clinicalkey.jp"
-     "clinicalkey.com"
-     "clinicalkey.es"
-     "clinicalkey.com.au"
-     "clinicalkey.fr"
-     "elsevier.com"
-     "sciencedirect.com"],
-    :crossmark-restriction true},
-   :short-container-title ["Psychoneuroendocrinology"],
-   :published-print {:date-parts [[2016 12]]},
-   :DOI "10.1016/j.psyneuen.2016.09.027",
-   :type "journal-article",
-   :created
-   {:date-parts [[2016 10 8]],
-    :date-time "2016-10-08T17:45:26Z",
-    :timestamp 1475948726000},
-   :page "342-349",
-   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
-   :source "Crossref",
-   :is-referenced-by-count 1,
-   :title
-   ["Associations among integrated psychoneuroimmunological factors and metabolic syndrome"],
-   :prefix "10.1016",
-   :volume "74",
-   :author
-   [{:given "Yu-Ju",
-     :family "Chen",
-     :sequence "first",
-     :affiliation []}
-    {:given "Chin-Ling",
-     :family "Lin",
-     :sequence "additional",
-     :affiliation []}
-    {:given "Chi-Rong",
-     :family "Li",
-     :sequence "additional",
-     :affiliation []}
-    {:given "Shih-Ming",
-     :family "Huang",
-     :sequence "additional",
-     :affiliation []}
-    {:given "James Yi-Hsin",
-     :family "Chan",
-     :sequence "additional",
-     :affiliation []}
-    {:given "Wen-Hui",
-     :family "Fang",
-     :sequence "additional",
-     :affiliation []}
-    {:given "Wei-Liang",
-     :family "Chen",
-     :sequence "additional",
-     :affiliation []}],
-   :member "78",
-   :container-title ["Psychoneuroendocrinology"],
-   :language "en",
-   :link
-   [{:URL
-     "http://api.elsevier.com/content/article/PII:S0306453016307594?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
-     "http://api.elsevier.com/content/article/PII:S0306453016307594?httpAccept=text/xml",
-     :content-type "text/xml",
-     :content-version "vor",
-     :intended-application "text-mining"}],
-   :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T00:40:57Z",
-    :timestamp 1498351257000},
-   :score 1.0,
-   :issued {:date-parts [[2016 12]]},
-   :references-count 55,
-   :alternative-id ["S0306453016307594"],
-   :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.027",
-   :ISSN ["0306-4530"],
-   :issn-type [{:value "0306-4530", :type "print"}],
-   :assertion
-   [{:value "Elsevier",
-     :name "publisher",
-     :label "This article is maintained by"}
-    {:value
-     "Associations among integrated psychoneuroimmunological factors and metabolic syndrome",
-     :name "articletitle",
-     :label "Article Title"}
-    {:value "Psychoneuroendocrinology",
-     :name "journaltitle",
-     :label "Journal Title"}
-    {:value "http://dx.doi.org/10.1016/j.psyneuen.2016.09.027",
-     :name "articlelink",
-     :label "CrossRef DOI link to publisher maintained version"}
-    {:value "article", :name "content_type", :label "Content Type"}
-    {:value "© 2016 Elsevier Ltd. All rights reserved.",
-     :name "copyright",
-     :label "Copyright"}]}
-  {:title-xml
    ["Exploring the neural mechanisms of finasteride: a proteomic analysis in the nucleus accumbens"],
    :reference-count 80,
    :publisher "Elsevier BV",
@@ -1807,6 +1696,158 @@
      :name "copyright",
      :label "Copyright"}]}
   {:title-xml
+   ["Oxidative stress, inflammation and treatment response in major depression"],
+   :reference-count 55,
+   :publisher "Elsevier BV",
+   :license
+   [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
+     :start
+     {:date-parts [[2017 2 1]],
+      :date-time "2017-02-01T00:00:00Z",
+      :timestamp 1485907200000},
+     :delay-in-days 0,
+     :content-version "tdm"}],
+   :funder
+   [{:DOI "10.13039/100000025",
+     :name "National Institute of Mental Health",
+     :doi-asserted-by "publisher",
+     :award ["R01-MH083784"]}
+    {:DOI "10.13039/100006108",
+     :name "National Center for Advancing Translational Sciences",
+     :doi-asserted-by "publisher",
+     :award ["UL1 RR024131"]}
+    {:name "O'Shaughnessy Foundation", :award []}
+    {:name "Tinberg family, and grants from the UCSF Academic Senate",
+     :award []}
+    {:name "UCSF Research Evaluation and Allocation Committee",
+     :award []}
+    {:name
+     "National Institutes of Health/National Center for Research Resources",
+     :award []}],
+   :content-domain
+   {:domain
+    ["psyneuen-journal.com"
+     "clinicalkey.jp"
+     "clinicalkey.com"
+     "clinicalkey.es"
+     "clinicalkey.com.au"
+     "clinicalkey.fr"
+     "elsevier.com"
+     "sciencedirect.com"],
+    :crossmark-restriction true},
+   :short-container-title ["Psychoneuroendocrinology"],
+   :published-print {:date-parts [[2017 2]]},
+   :DOI "10.1016/j.psyneuen.2016.11.031",
+   :type "journal-article",
+   :created
+   {:date-parts [[2016 11 30]],
+    :date-time "2016-11-30T17:39:59Z",
+    :timestamp 1480527599000},
+   :page "197-205",
+   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
+   :source "Crossref",
+   :is-referenced-by-count 19,
+   :title
+   ["Oxidative stress, inflammation and treatment response in major depression"],
+   :prefix "10.1016",
+   :volume "76",
+   :author
+   [{:given "Daniel",
+     :family "Lindqvist",
+     :sequence "first",
+     :affiliation []}
+    {:given "Firdaus S.",
+     :family "Dhabhar",
+     :sequence "additional",
+     :affiliation []}
+    {:given "S. Jill",
+     :family "James",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Christina M.",
+     :family "Hough",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Felipe A.",
+     :family "Jain",
+     :sequence "additional",
+     :affiliation []}
+    {:given "F. Saverio",
+     :family "Bersani",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Victor I.",
+     :family "Reus",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Josine E.",
+     :family "Verhoeven",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Elissa S.",
+     :family "Epel",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Laura",
+     :family "Mahan",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Rebecca",
+     :family "Rosser",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Owen M.",
+     :family "Wolkowitz",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Synthia H.",
+     :family "Mellon",
+     :sequence "additional",
+     :affiliation []}],
+   :member "78",
+   :container-title ["Psychoneuroendocrinology"],
+   :language "en",
+   :link
+   [{:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016306862?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016306862?httpAccept=text/xml",
+     :content-type "text/xml",
+     :content-version "vor",
+     :intended-application "text-mining"}],
+   :deposited
+   {:date-parts [[2017 6 25]],
+    :date-time "2017-06-25T04:53:05Z",
+    :timestamp 1498366385000},
+   :score 1.0,
+   :issued {:date-parts [[2017 2]]},
+   :references-count 55,
+   :alternative-id ["S0306453016306862"],
+   :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.031",
+   :ISSN ["0306-4530"],
+   :issn-type [{:value "0306-4530", :type "print"}],
+   :assertion
+   [{:value "Elsevier",
+     :name "publisher",
+     :label "This article is maintained by"}
+    {:value
+     "Oxidative stress, inflammation and treatment response in major depression",
+     :name "articletitle",
+     :label "Article Title"}
+    {:value "Psychoneuroendocrinology",
+     :name "journaltitle",
+     :label "Journal Title"}
+    {:value "http://dx.doi.org/10.1016/j.psyneuen.2016.11.031",
+     :name "articlelink",
+     :label "CrossRef DOI link to publisher maintained version"}
+    {:value "article", :name "content_type", :label "Content Type"}
+    {:value "© 2016 Elsevier Ltd. All rights reserved.",
+     :name "copyright",
+     :label "Copyright"}]}
+  {:title-xml
    ["The stress hormone cortisol blocks perceptual learning in humans"],
    :reference-count 24,
    :publisher "Elsevier BV",
@@ -2032,7 +2073,7 @@
    :source "Crossref",
    :is-referenced-by-count 0,
    :title
-   ["The role of testosterone and estrogen in consumer behavior and social & economic decision making: A review"],
+   ["The role of testosterone and estrogen in consumer behavior and social &amp; economic decision making: A review"],
    :prefix "10.1016",
    :volume "92",
    :author

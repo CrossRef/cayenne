@@ -157,6 +157,21 @@
       (string/replace #"&" "& and")
       (string/split #"\s+")))
 
+(defn only-facemark
+  "Given a string s returns only the parts of s that are plain
+  or supported by facemark including:
+  
+  <b><i><u><ovl><sup><sub><scp><tt><font>
+  
+  Also trims and replaces any double spacing with single spacing."
+  [s]
+  (when s
+    (-> s
+        (clojure.string/trim)
+        (clojure.string/replace 
+          #"(?!</?([biu]|ovl|sup|sub|scp|tt|font)>)<[^>]+>.*?</[^>]+>" "")
+        (clojure.string/replace #"\s{2,}" " "))))
+
 (defn slugify [uri]
   (when uri
     (string/replace uri #"[^a-zA-Z0-9]" "_")))
