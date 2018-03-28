@@ -21,15 +21,26 @@
         (= type :issn)
         {:issn (map issn-id/to-issn-uri id)}))
 
-(defn get-work-count 
-  "Get a count of works, with optional filters. timing may be one of :current, 
+(defn get-types
+  "Get types for member"
+  [id]
+  (let [combined-filters (make-id-filter :member id)]
+    ;(println "filters: " (assoc {:rows (int 0) :facets [{:field "type-name" :count "*" }]} :filters combined-filters))
+    (-> (assoc {:rows (int 0) :facets [{:field "type-name" :count "*" }]} :filters combined-filters)
+        (works/fetch)
+        (get-in [:message :facets "type-name" :values]))))
+
+(defn get-work-count
+  "Get a count of works, with optional filters. timing may be one of :current,
    :backfile or :all."
   [type id & {:keys [filters timing] :or {:timing :all}}]
+  ;(println "plain filters: " filters)
   (let [combined-filters
         (-> (make-id-filter type id)
             (?> filters merge filters)
             (?> (= timing :current) assoc :from-pub-date (back-file-cut-off))
             (?> (= timing :backfile) assoc :until-pub-date (back-file-cut-off)))]
+    ;(println "combined filters: " combined-filters)
     (-> (assoc {:rows (int 0)} :filters combined-filters)
         (works/fetch)
         (get-in [:message :total-results]))))
@@ -55,9 +66,27 @@
                   (keyword (str check-name "-backfile"))
                   (coverage total-back-file-count filter-back-file-count)}})))
 
+(defn make-filter-check-for-type [member-action check-name filter-name filter-value]
+  (fn [type id total]
+      (let
+        [filter-current-count (get-work-count :member id :filters {filter-name filter-value "type-name" type})
+         result  {:coverage {(keyword  check-name)
+                             (coverage total filter-current-count)}}]
+        result)))
+
+(defn make-filter-check-new [member-action check-name filter-name filter-value]
+  (fn [type id]
+      (let
+        [total (get-work-count type id)
+         filter-current-count (get-work-count type id :filters {filter-name filter-value})
+         result  {:coverage {(keyword  check-name)
+                             (coverage total filter-current-count)}}]
+        result)))
+
+
 (defn check-deposits [type id]
-  {:flags 
-   {:deposits 
+  {:flags
+   {:deposits
     (-> (get-work-count type id)
         (zero?)
         (not))}})
@@ -70,7 +99,7 @@
         (not))}})
 
 (def checkles
-  [check-deposits 
+  [check-deposits
    check-deposits-articles
    (make-filter-check "deposits" "affiliations" :has-affiliation "true")
    (make-filter-check "deposits" "abstracts" :has-abstract "true")
@@ -80,18 +109,83 @@
    (make-filter-check "deposits" "resource-links" :has-full-text "true")
    (make-filter-check "deposits" "orcids" :has-orcid "true")
    (make-filter-check "deposits" "award-numbers" :has-award "true")
-   (make-filter-check "deposits" "funders" :has-funder "true")])
+   (make-filter-check "deposits" "funders" :has-funder "true")
+   (make-filter-check "deposits" "open-references" :reference-visibility "open")
+   (make-filter-check "deposits" "similarity-checking" :full-text.application "similarity-checking")])
+(def checklesnew
+  [check-deposits
+   check-deposits-articles
+   (make-filter-check-new "deposits" "affiliations" :has-affiliation "true")
+   (make-filter-check-new "deposits" "abstracts" :has-abstract "true")
+   (make-filter-check-new "deposits" "update-policies" :has-update-policy "true")
+   (make-filter-check-new "deposits" "references" :has-references "true")
+   (make-filter-check-new "deposits" "licenses" :has-license "true")
+   (make-filter-check-new "deposits" "resource-links" :has-full-text "true")
+   (make-filter-check-new "deposits" "orcids" :has-orcid "true")
+   (make-filter-check-new "deposits" "award-numbers" :has-award "true")
+   (make-filter-check-new "deposits" "funders" :has-funder "true")
+   (make-filter-check-new "deposits" "open-references" :reference-visibility "open")
+   (make-filter-check-new "deposits" "similarity-checking" :full-text.application "similarity-checking")])
+
+(def checklestype
+  [(make-filter-check-for-type "deposits" "affiliations" :has-affiliation "true")
+   (make-filter-check-for-type "deposits" "abstracts" :has-abstract "true")
+   (make-filter-check-for-type "deposits" "update-policies" :has-update-policy "true")
+   (make-filter-check-for-type "deposits" "references" :has-references "true")
+   (make-filter-check-for-type "deposits" "licenses" :has-license "true")
+   (make-filter-check-for-type "deposits" "resource-links" :has-full-text "true")
+   (make-filter-check-for-type "deposits" "orcids" :has-orcid "true")
+   (make-filter-check-for-type "deposits" "award-numbers" :has-award "true")
+   (make-filter-check-for-type "deposits" "funders" :has-funder "true")
+   (make-filter-check-for-type "deposits" "open-references" :reference-visibility "open")
+   (make-filter-check-for-type "deposits" "similarity-checking" :full-text.application "similarity-checking")])
 
 (defn check-record-coverage [record & {:keys [type id-field]}]
   (-> {:last-status-check-time (dc/to-long (dt/now))}
       (merge
-       (reduce (fn [rslt chk-fn] 
+       (reduce (fn [rslt chk-fn]
                  (let [check-result (chk-fn type (get record id-field))]
                    {:last-status-check-time (dc/to-long (dt/now))
                     :flags (merge (:flags rslt) (:flags check-result))
                     :coverage (merge (:coverage rslt) (:coverage check-result))}))
-               {} 
+               {}
                checkles))))
+(defn check-record-coverage-per-type [record types & {:keys [id-field]}]
+  ;(println "doing per type for types:" types)
+  (if (> (count types) 0)
+      (let [reslt (map (fn [[typestr valnum]]
+                        ;(println "doing per type:" typestr " val: " valnum)
+                        (hash-map (keyword typestr) (-> {:last-status-check-time (dc/to-long (dt/now))}
+                                                      (merge
+                                                        (reduce (fn [rslt chk-fn]
+                                                                  (let [check-result (chk-fn typestr (get record id-field) valnum)
+                                                                        content {:last-status-check-time (dc/to-long (dt/now))
+                                                                                 :total valnum}]
+                                                                       ;(println "coverage result:" (:coverage rslt))
+                                                                       ;(println "check result:" (:coverage check-result))
+
+                                                                     ;:flags (merge (:flags rslt) (:flags check-result))
+                                                                     (merge content  rslt (:coverage check-result))))
+                                                            {}
+                                                            checklestype)))))
+
+                    types)]
+        ;(println "got coverage for member: " (get record id-field))
+        ;(println  (into {} reslt))
+        (into {} reslt))
+
+    (println "No types for member: " (get record id-field))))
+
+(defn check-record-coverage-new [record & {:keys [type id-field]}]
+  (-> {:last-status-check-time (dc/to-long (dt/now))}
+      (merge
+       (reduce (fn [rslt chk-fn]
+                 (let [check-result (chk-fn type (get record id-field))]
+                   {:last-status-check-time (dc/to-long (dt/now))
+                    :flags (merge (:flags rslt) (:flags check-result))
+                    :coverage (merge (:coverage rslt) (:coverage check-result))}))
+               {}
+               checklesnew))))
 
 (defn check-breakdowns [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
@@ -118,33 +212,39 @@
 (defn check-members
   "Calculate and insert member metadata coverage metrics into a collection."
   [collection]
+  (println "start check journals:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [member (m/fetch collection :options [:notimeout])]
-      (try
-        (m/update! 
-         collection
-         {:id (:id member)}
-         (merge member
-                (check-breakdowns member :type :member :id-field :id)
-                (check-record-coverage member :type :member :id-field :id)
-                (check-record-counts member :type :member :id-field :id)))
-        (catch Exception e
-          (error e "Failed to update coverage for member with ID " (:id member)))))))
+    (doseq [member  (m/fetch collection :options [:notimeout])]
+        ;(doall (map (fn [[key val]] (println "in check members key:" key "val:" val) ) (get-types (:id member))))
+        (try
+          (m/update!
+           collection
+           {:id (:id member)}
+           (merge member
+                  (check-breakdowns member :type :member :id-field :id)
+                  {:coverage-current (check-record-coverage-per-type member (get-types (:id member)) :id-field :id)}
+                  (check-record-counts member :type :member :id-field :id)))
+          (catch Exception e
+            (error e "Failed to update coverage for member with ID " (:id member))
+            (.printStackTrace e)))))
+  (println "end check journals:" (dc/to-long (dt/now))))
+
 
 (defn check-journals
   "Calculate and insert journal metadata coverage metrics into a collection. Only consider
    journals that have an ISSN."
   [collection]
+  (println "start check journals:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
     (doseq [journal (m/fetch collection :where {:issn {:$exists true :$ne []}} :options [:notimeout])]
       (try
-        (m/update! 
-         collection 
+        (m/update!
+         collection
          {:id (:id journal)}
          (merge journal
                 (check-breakdowns journal :type :issn :id-field :issn)
-                (check-record-coverage journal :type :issn :id-field :issn)
+                (check-record-coverage-new journal :type :issn :id-field :issn)
                 (check-record-counts journal :type :issn :id-field :issn)))
         (catch Exception e
-          (error e "Failed to update coverage for journal with ID " (:id journal)))))))
-          
+          (error e "Failed to update coverage for journal with ID " (:id journal)))))
+    (println "end check journals:" (dc/to-long (dt/now)))))
