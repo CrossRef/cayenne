@@ -54,7 +54,7 @@
                    (not (mongo-ready?)))
           (println "Waiting for solr and mongo to be ready..")
           (Thread/sleep 500))
-        (start-core! :default :api)))))
+        (start-core! :default :api :feed-api)))))
 
 (defn stop []
   (stop-core! :default)
@@ -63,7 +63,7 @@
 
 (defn reset []
   (stop-core! :default)
-  (start-core! :default :api))
+  (start-core! :default :api :feed-api))
 
 (defn load-test-funders []
   (with-core :default
@@ -98,10 +98,10 @@
         feed-in-dir (str feed-dir "/feed-in")
         feed-processed-dir (str feed-dir "/feed-processed")
         feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
-    (when-not (= feed-file-count 176) 
+    (when-not (= feed-file-count 177) 
       (throw (Exception. 
                (str "The number of feed input files is not as expected. Expected to find " 
-                    176 
+                    177 
                     " files in " 
                     feed-source-dir
                     " but found "
@@ -130,5 +130,19 @@
         (Thread/sleep 1000))
       (check-journals "journals")
       (check-members "members"))))
+
+(defn setup-for-feeds []
+  (let [feed-dir (.getPath (resource "feeds"))
+        feed-source-dir (str feed-dir "/source")
+        feed-in-dir (str feed-dir "/feed-in")
+        feed-processed-dir (str feed-dir "/feed-processed")
+        feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
+    (delete-dir feed-processed-dir)
+    (delete-dir feed-in-dir)
+    (with-core :default 
+      (set-param! [:dir :data] feed-dir)
+      (set-param! [:dir :test-data] feed-dir)
+      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+      (set-param! [:service :solr :insert-list-max-size] 0))))
 
 (def system @cores)
