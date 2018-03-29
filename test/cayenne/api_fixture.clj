@@ -24,3 +24,6 @@
 
 (def api-with-works
   (api-with user/process-feed))
+
+(def feed-ready-api
+  (api-with user/setup-for-feeds))
