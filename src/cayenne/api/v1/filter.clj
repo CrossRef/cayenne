@@ -120,6 +120,11 @@
 
 ;; Filter definitions
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(def compound-fields
+  {:full-text ["type" "application" "version"]
+   :license ["url" "version" "delay"]
+   :award ["funder_doi" "number"]
+   :relation ["type" "object_type" "object"]})
 
 (def std-filters
   {"from-update-date"          (date-range :deposited :from)

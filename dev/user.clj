@@ -1,64 +1,50 @@
 (ns user
-  (:require [cayenne.conf :refer [set-param! with-core cores start-core! stop-core!]]
-            [cayenne.tasks :refer [load-funders]]
+  (:require [cayenne.conf :refer [get-param set-param! with-core cores start-core! stop-core!]]
+            [cayenne.elastic.mappings :as elastic-mappings]
+            [cayenne.elastic.convert :as elastic-convert]
             [cayenne.rdf :as rdf]
-            [cayenne.tasks :refer [load-members load-journals]]
-            [cayenne.tasks.funder :refer [select-country-stmts]]
+            [cayenne.tasks :refer [index-members index-journals]]
+            [cayenne.tasks.funder :refer [select-country-stmts index-funders]]
             [cayenne.tasks.coverage :refer [check-journals check-members]]
-            [cayenne.tasks.solr :refer [start-insert-list-processing]]
             [cayenne.api.v1.feed :refer [start-feed-processing]]
             [clojure.java.io :refer [resource]]
             [clojure.java.shell :refer [sh]]
             [clj-http.client :as http]
-            [somnium.congomongo :as m]
             [me.raynes.fs :refer [copy-dir delete-dir]]
             [nio2.io :refer [path]]
             [nio2.dir-seq :refer [dir-seq-glob]]))
 
-(defn- solr-ready? []
+(defn- elastic-ready? []
   (try
-    (= 200 (:status (http/get "http://localhost:8983/solr/crmds1/admin/ping")))
+    (= 200 (:status (http/get "http://localhost:9200")))
     (catch Exception e
       false)))
 
-(defn solr-doc-count []
-  (-> (http/get "http://localhost:8983/solr/admin/cores?action=STATUS&wt=json" {:as :json})
+(defn elastic-doc-count []
+  (-> (http/get "http://localhost:9200/work/_search" {:as :json})
       :body
-      :status
-      :crmds1
-      :index
-      :numDocs))
+      :hits
+      :total))
 
-(defn- mongo-ready? []
-  (try
-    (let [conn (m/make-connection "crossref" :host "127.0.0.1" :port 27017)
-          databases (m/with-mongo conn
-                      (m/databases))]
-      (m/close-connection conn)
-      databases)
-    (catch Exception e
-      false)))
+(defn create-elastic-indexes []
+  (elastic-mappings/create-indexes
+   (qbits.spandex/client {:hosts (get-param [:service :elastic :urls])})))
 
 (def core-started? (atom false))
 
 (defn start []
   (let [result
-        (sh "docker-compose" "up" "-d" "mongo" "solr"
-            :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
-                  "PATH" (System/getenv "PATH")
-                  "MONGO_HOST" "cayenne_mongo_1:27017"})]
+        (sh "docker-compose" "up" "-d" "elasticsearch"
+            :env {"PATH" (System/getenv "PATH")})]
     (if-not (-> result :exit zero?)
       (do (println "Error starting Docker Compose:")
           (println result))
       (do
-        ;; wait for solr to start, sometimes takes a while to load the core
-        (while (or (not (solr-ready?))
-                   (not (mongo-ready?)))
-          (println "Waiting for solr and mongo to be ready..")
+        (while (not (elastic-ready?))
+          (println "Waiting for elasticsearch to be ready..")
           (Thread/sleep 500))
-        (when-not @core-started?
-          (when (start-core! :default :api :feed-api)
-            (reset! core-started? true)))))))
+        (create-elastic-indexes)
+        (start-core! :default :api :feed-api)))))
 
 (defn stop []
   (sh "docker-compose" "down"))
@@ -87,43 +73,12 @@
           "http://sws.geonames.org/2661886/" "Sweden"
           "http://sws.geonames.org/1861060/" "Japan"
           url)))]
-    (load-funders)))
+    (index-funders)))
 
 (defn load-test-journals []
   (with-core :default
     (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
-  (load-journals))
-
-(defn process-feed []
-  (let [feed-dir (.getPath (resource "feeds"))
-        feed-source-dir (str feed-dir "/corpus")
-        feed-in-dir (str feed-dir "/feed-in")
-        feed-processed-dir (str feed-dir "/feed-processed")
-        feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
-    (delete-dir feed-processed-dir)
-    (delete-dir feed-in-dir)
-    (copy-dir feed-source-dir feed-in-dir)
-    (with-core :default
-      (set-param! [:dir :data] feed-dir)
-      (set-param! [:dir :test-data] feed-dir)
-      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
-      (set-param! [:service :solr :insert-list-max-size] 0))
-    (load-journals)
-    (with-redefs
-     [cayenne.tasks.publisher/get-member-list
-      (fn get-member-list []
-        (read-string (slurp (resource "get-member-list.edn"))))
-      cayenne.tasks.publisher/get-prefix-info
-      (fn get-prefix-info [prefix]
-        (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
-      (load-members)
-      (start-insert-list-processing)
-      (start-feed-processing)
-      (while (not= (solr-doc-count) feed-file-count)
-        (println "Waiting for solr to finish indexing....")
-        (Thread/sleep 1000))
-      (check-journals "journals")
-      (check-members "members"))))
+  (index-journals))
 
 (defn setup-for-feeds []
   (let [feed-dir (.getPath (resource "feeds"))
@@ -136,8 +91,46 @@
     (with-core :default
       (set-param! [:dir :data] feed-dir)
       (set-param! [:dir :test-data] feed-dir)
-      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
-      (set-param! [:service :solr :insert-list-max-size] 0))))
+      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
+    {:feed-source-dir feed-source-dir
+     :feed-in-dir feed-in-dir
+     :feed-file-count feed-file-count}))
+
+(defn process-feed []
+  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-for-feeds)]
+    (when-not (= feed-file-count 177)
+      (throw (Exception.
+              (str "The number of feed input files is not as expected. Expected to find "
+                   177
+                   " files in "
+                   feed-source-dir
+                   " but found "
+                   feed-file-count))))
+    (copy-dir feed-source-dir feed-in-dir)
+    (index-journals)
+    (with-redefs
+     [cayenne.tasks.publisher/get-member-list
+      (fn get-member-list []
+        (read-string (slurp (resource "get-member-list.edn"))))
+      cayenne.tasks.publisher/get-prefix-info
+      (fn get-prefix-info [_ prefix]
+        (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
+      (index-members)
+      (start-feed-processing)
+      (while (not= (elastic-doc-count) 171)
+        (println "Waiting for elasticsearch to finish indexing....")
+        (Thread/sleep 1000))
+      (check-journals)
+      (check-members))))
+
+(defn elastic-work-hits []
+  (map elastic-convert/es-doc->citeproc
+       (-> (qbits.spandex/client {:hosts (get-param [:service :elastic :urls])})
+           (qbits.spandex/request
+            {:url [:work :_search]
+             :method :get
+             :body {:query {:match_all {}}}})
+           :body :hits :hits)))
 
 (def system @cores)
 

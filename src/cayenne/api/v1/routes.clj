@@ -143,7 +143,7 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :exists? (->1 #(when-let [agency (work/parse-agency (work/get-agency doi))] {:agency agency}))
+  :exists? (->1 #(when-let [agency (work/get-agency doi)] {:agency agency}))
   :handle-ok #(work/->agency-response doi (:agency %)))
 
 (defn force-exact-request-doi
