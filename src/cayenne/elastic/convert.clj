@@ -354,8 +354,9 @@
      :content-created  (item-date item :content-created)
      :content-updated  (item-date item :content-updated)
      :approved         (item-date item :approved)
-     :deposited        (item-date item :deposited)
-     :first-deposited  (item-date item :first-deposited)
+     :deposited        (-> item (itree/get-tree-rel :deposited) first particle->date-time)
+     :first-deposited  (or (-> item (itree/get-tree-rel :first-deposited) first particle->date-time)
+                           (-> item (itree/get-tree-rel :deposited) first particle->date-time))
      :indexed          (t/now)
 
      :is-referenced-by-count (-> item (itree/get-tree-rel :cited-count) first)
