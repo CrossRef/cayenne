@@ -17,8 +17,27 @@
   (assert (even? (count kvs)))
   (into m
         (for [[k v] (partition 2 kvs)
-         :when (not (string/blank? v))]
+              :when (not (string/blank? v))]
           [k (string/trim v)])))
+
+(defn assoc-exists
+  "Like assoc except only performs the assoc if value is
+   a non-empty string, non-empty list or a non-nil value."
+  ([m key value]
+   (assoc-exists m key value value))
+  ([m key value assoc-value]
+   (cond (= (type value) java.lang.String)
+         (if (clojure.string/blank? value)
+           m
+           (assoc m key assoc-value))
+         (sequential? value)
+         (if (empty? value)
+           m
+           (assoc m key assoc-value))
+         (nil? value)
+         m
+         :else
+         (assoc m key assoc-value))))
 
 (declare parse-int-safe)
 
