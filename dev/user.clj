@@ -33,6 +33,7 @@
 (def core-started? (atom false))
 
 (defn start []
+  (sh "docker-compose" "down")
   (let [result
         (sh "docker-compose" "up" "-d" "elasticsearch"
             :env {"PATH" (System/getenv "PATH")})]
