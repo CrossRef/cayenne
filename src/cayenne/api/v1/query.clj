@@ -258,22 +258,22 @@
 
     ;; todo could be rewritten to use /type/type/id
     id-field
-    (assoc-in [:query :bool :filter :term] {id-field (:id query-context)})
-    
+    (update-in [:query :bool :should] conj {:term {id-field (:id query-context)}})
+
     ;; todo only considering first filter value
     (-> query-context :filters empty? not)
     (with-filters query-context :filters filters)))
-    
+
 (defn with-paging [es-body query-context & {:keys [paged count-only]}]
   (cond
     paged
     (-> es-body
         (assoc :from (or (:offset query-context) 0))
         (assoc :size (:rows query-context)))
-    
+
     count-only
     (assoc :size 0)
-    
+
     :else
     es-body))
 
