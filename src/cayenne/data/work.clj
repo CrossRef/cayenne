@@ -169,7 +169,7 @@
          [:data :value])))))
 
 (defn ->agency-response [doi agency]
-  (r/api-response 
+  (r/api-response
    :work-agency
    :content {:DOI (doi-id/normalize-long-doi doi)
              :agency {:id (or (agency-id agency) agency)

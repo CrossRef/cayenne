@@ -23,7 +23,7 @@
         (= type :journal)
         {:journal [(str id)]}))
 
-(defn get-work-count 
+(defn get-work-count
   "Get a count of works, with optional filters. timing may be one of :current, 
    :backfile or :all."
   [type id & {:keys [filters timing] :or {:timing :all}}]
@@ -62,8 +62,8 @@
                   (coverage total-back-file-count filter-back-file-count)}})))
 
 (defn check-deposits [type id]
-  {:flags 
-   {:deposits 
+  {:flags
+   {:deposits
     (-> (get-work-count type id)
         (zero?)
         (not))}})
@@ -76,7 +76,7 @@
         (not))}})
 
 (def checkles
-  [check-deposits 
+  [check-deposits
    check-deposits-articles
    (make-filter-check "deposits" "affiliations" :has-affiliation "true")
    (make-filter-check "deposits" "abstracts" :has-abstract "true")
@@ -91,11 +91,11 @@
 (defn check-record-coverage [record & {:keys [type id-field]}]
   (-> {}
       (merge
-       (reduce (fn [rslt chk-fn] 
+       (reduce (fn [rslt chk-fn]
                  (let [check-result (chk-fn type (get record id-field))]
                    {:flags (merge (:flags rslt) (:flags check-result))
                     :coverage (merge (:coverage rslt) (:coverage check-result))}))
-               {} 
+               {}
                checkles))))
 
 (defn check-breakdowns [record & {:keys [type id-field]}]
@@ -106,10 +106,10 @@
     {:breakdowns
      {:dois-by-issued-year
       (reduce
-              (fn [a [k v]] (conj a [(util/parse-int k) v]))
-              []
-              (-> works
-                  (get-in [:message :facets "published" :values])))}}))
+       (fn [a [k v]] (conj a [(util/parse-int k) v]))
+       []
+       (-> works
+           (get-in [:message :facets "published" :values])))}}))
 
 (defn check-record-counts [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
@@ -140,12 +140,12 @@
 (defn check-index [index-name id-field]
   (doseq [some-records
           (as->
-              (elastic/request
-               (conf/get-service :elastic)
-               {:method :get
-                :url (str "/" (name index-name) "/" (name index-name) "/_search")
-                :body {:_source [id-field] :query {:match_all {}} :size 10000}})
-              $
+           (elastic/request
+            (conf/get-service :elastic)
+            {:method :get
+             :url (str "/" (name index-name) "/" (name index-name) "/_search")
+             :body {:_source [id-field] :query {:match_all {}} :size 10000}})
+           $
             (get-in $ [:body :hits :hits])
             (partition-all 100 $))]
     (elastic/request

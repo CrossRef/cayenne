@@ -95,7 +95,7 @@
    "translator"             [:contributor.*]
    "standards-body"         [:standards-body.*]})
 
-(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
+(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}]
   (if-not remove-syntax
     terms
     (-> terms
@@ -108,27 +108,27 @@
 
 (defn parse-rows-val [val]
   (int (cond
-        (nil? val)
-        default-rows
-        (= (type val) java.lang.String)
-        (util/parse-int-safe val))))
+         (nil? val)
+         default-rows
+         (= (type val) java.lang.String)
+         (util/parse-int-safe val))))
 
 (defn parse-offset-val [val]
   (int (cond
-        (nil? val)
-        default-offset
-        (= (type val) java.lang.String)
-        (util/parse-int-safe val))))
+         (nil? val)
+         default-offset
+         (= (type val) java.lang.String)
+         (util/parse-int-safe val))))
 
 (defn parse-sample-val
   "Returns a sample count or 0, indicating that no sample
    is to be taken."
   [val]
   (int (cond
-        (nil? val)
-        0
-        (= (type val) java.lang.String)
-        (util/parse-int-safe val))))
+         (nil? val)
+         0
+         (= (type val) java.lang.String)
+         (util/parse-int-safe val))))
 
 (defn get-filters
   "Turns a filter value string such as a.b:val,c:val2 into
@@ -159,9 +159,9 @@
          :count (if (= count "*")
                   "*"
                   (max 1
-                     (min (or (util/parse-int-safe count)
-                              default-facet-rows)
-                          max-facet-rows)))})
+                       (min (or (util/parse-int-safe count)
+                                default-facet-rows)
+                            max-facet-rows)))})
      (string/split facet-params #","))
     []))
 
@@ -188,7 +188,7 @@
             :else
             :desc))
     :desc))
-  
+
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
     (-> sort-params
@@ -204,7 +204,7 @@
   (->> params
        (filter #(.startsWith (-> % first name) "query."))
        (map #(vector (-> % first name (string/replace #"query." ""))
-                    (-> % second (clean-terms :remove-syntax true))))))
+                     (-> % second (clean-terms :remove-syntax true))))))
 
 (defn ->query-context [resource-context & {:keys [id filters]
                                            :or {id nil filters {}}}]
@@ -232,19 +232,19 @@
                                  (apply concat)))))
 
 (defn with-filters [es-body query-context & {:keys [filters]}]
-   (let [filter-clauses (map #((-> % first name filters)
-                               (-> % second first))
-                             (:filters query-context))
-         filter-occurrence (->> filter-clauses
-                                (filter #(= (:occurrence %) :filter))
-                                (map :clause))
-         must-not-occurrence (->> filter-clauses
-                                  (filter #(= (:occurrence %) :must-not))
-                                  (map :clause))]
-     (-> es-body
-         (assoc-in [:query :bool :filter] filter-occurrence)
-         (assoc-in [:query :bool :must_not] must-not-occurrence))))
-  
+  (let [filter-clauses (map #((-> % first name filters)
+                              (-> % second first))
+                            (:filters query-context))
+        filter-occurrence (->> filter-clauses
+                               (filter #(= (:occurrence %) :filter))
+                               (map :clause))
+        must-not-occurrence (->> filter-clauses
+                                 (filter #(= (:occurrence %) :must-not))
+                                 (map :clause))]
+    (-> es-body
+        (assoc-in [:query :bool :filter] filter-occurrence)
+        (assoc-in [:query :bool :must_not] must-not-occurrence))))
+
 (defn with-query [es-body query-context & {:keys [id-field filters]}]
   (cond-> es-body
     (-> query-context :terms string/blank? not)
@@ -288,7 +288,7 @@
     (let [current-query (:query es-body)]
       (-> es-body
           (dissoc :query)
-          (assoc-in [:query :function_score :query] current-query) 
+          (assoc-in [:query :function_score :query] current-query)
           (assoc-in [:query :function_score :functions]
                     [{:random_score {:seed (tc/to-long (t/now))
                                      :field :_seq_no}}])
@@ -300,10 +300,10 @@
   (cond
     (-> query-context :cursor string/blank?)
     es-body
-    
+
     (-> query-context :cursor (= "*"))
     (assoc es-body :sort [:_doc])
-    
+
     (and (-> query-context :cursor string/blank? not)
          (-> query-context :cursor (not= "*")))
     {:scroll "1m"
@@ -322,7 +322,7 @@
           "/_search/scroll"
           (-> query-context :cursor (= "*"))
           (str "/" index "/" index "/_search?scroll=1m"))
-   :body 
+   :body
    (-> {}
        (with-source-fields query-context)
        (with-sort-fields query-context)
@@ -338,4 +338,3 @@
       (assoc :prefix-terms (:terms query-context))
       (assoc :prefix-field prefix-field)
       (dissoc :terms)))
-

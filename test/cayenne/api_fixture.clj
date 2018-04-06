@@ -5,8 +5,8 @@
 
 (defn api-with [with-f]
   (fn [f]
-    (try 
-      (user/start) 
+    (try
+      (user/start)
       (with-f)
       (f)
       (finally
@@ -23,7 +23,7 @@
                            (update :items (partial sort-by :DOI))))))
 
 (def api-with-works
-  (api-with user/process-feed))
+  (api-with user/index-feed))
 
 (def feed-ready-api
-  (api-with user/setup-for-feeds))
+  (api-with user/setup-feed))

@@ -202,7 +202,7 @@
 (defn item-links [item]
   (map
    #(hash-map
-     :content-type    (:content-type %)         
+     :content-type    (:content-type %)
      :url             (:value %)
      :version         (:content-version %)
      :application     (:intended-application %))
@@ -221,8 +221,8 @@
          :url     (:value %)
          :delay   (difference-in-days issued-date start-date)
          :start   start-date})
-        (itree/get-tree-rel item :license))))
-    
+     (itree/get-tree-rel item :license))))
+
 (defn item-assertions [item]
   (map
    #(select-keys % [:name :label :group-name
@@ -372,7 +372,7 @@
      :subtitle              (item-titles item :subtype :secondary)
      :container-title       (item-container-titles item :subtype :long)
      :short-container-title (item-container-titles item :subtype :short)
-     
+
      :first-page         (:first-page item)
      :last-page          (:last-page item)
      :issue              (:issue journal-issue)
@@ -392,7 +392,7 @@
 
      :abstract              (item-plain-abstract item)
      :abstract-xml          (item-xml-abstract item)
-     
+
      :metadata-content-text      (item-metadata-content item)
      :bibliographic-content-text (item-bibliographic-content item)
      :author-text                (item-contributor-names item :contribution :author)
