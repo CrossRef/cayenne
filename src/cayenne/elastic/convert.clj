@@ -329,9 +329,11 @@
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
+        journal        (itree/find-item-of-subtype item :journal)
         journal-issue  (itree/find-item-of-subtype item :journal-issue)
         journal-volume (itree/find-item-of-subtype item :journal-volume)]
     {:doi              doi
+     :source           "Crossref"
      :type             (item-type item)
      :prefix           (doi-id/extract-long-prefix doi)
      :owner-prefix     (item-owner-prefix publisher)
@@ -380,6 +382,7 @@
      ;; :edition-number
      ;; :part-number
      ;; :component-number
+     :language           (:language journal)
 
      :update-policy      (item-update-policy item)
      :domain             (itree/get-item-rel item :domains)
