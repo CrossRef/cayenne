@@ -429,19 +429,20 @@
 
 (defn citeproc-contributors [es-doc & {:keys [contribution]}]
   (cond->> (:contributor es-doc)
-    :always
-    (map #(hash-map
-           :type (:contribution %)
-           :ORCID (:orcid %)
-           :authenticated-orcid (:authenticated-orcid %)
-           :prefix (:prefix %)
-           :suffix (:suffix %)
-           :name (:org-name %)
-           :given (:given-name %)
-           :family (:family-name %)
-           :affiliation (map (fn [affil] {:name affil}) (:affiliation %))))
     contribution
-    (filter #(= (-> % :type keyword) contribution))))
+    (filter #(= contribution  (-> % :contribution keyword)))
+    :always
+    (map
+     #(-> {}
+          (util/assoc-exists :ORCID (:orcid %))
+          (util/assoc-exists :authenticated-orcid (:authenticated-orcid %))
+          (util/assoc-exists :prefix (:prefix %))
+          (util/assoc-exists :suffix (:suffix %))
+          (util/assoc-exists :name (:org-name %))
+          (util/assoc-exists :given (:given-name %))
+          (util/assoc-exists :family (:family-name %))
+          (util/assoc-exists :sequence (:sequence %))
+          (assoc :affiliation (map (fn [affil] {:name affil}) (:affiliation %)))))))
 
 (defn citeproc-events [es-doc]
   (map #(-> %
