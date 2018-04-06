@@ -8,6 +8,7 @@
    :org-name            {:type "text"}
    :prefix              {:type "text"}
    :suffix              {:type "text"}
+   :sequence            {:type "text"}
    :orcid               {:type "keyword" :copy_to :contributor-orcid}
    :affiliation         {:type "keyword" :copy_to [:affiliation :affiliation-text]}
    :authenticated-orcid {:type "boolean"}})
@@ -105,6 +106,7 @@
 
 (def work-properties
   {:metadata-content-text      {:type "text"}
+   :source                     {:type "text"}
    :bibliographic-content-text {:type "text"}
    :title-text                 {:type "text"}
    :container-title-text       {:type "text"}
@@ -149,6 +151,7 @@
    :deposited                  {:type "date"}
    :indexed                    {:type "date"}
    :issued                     {:type "date"}
+   :published                  {:type "date"}
    :published-online           {:type "date"}
    :published-print            {:type "date"}
    :published-other            {:type "date"}
@@ -166,6 +169,7 @@
    :edition-number             {:type "keyword"}
    :part-number                {:type "keyword"}
    :component-number           {:type "keyword"}
+   :language                   {:type "text"}
    :update-policy              {:type "keyword"}
    :domain                     {:type "keyword"}
    :domain-exclusive           {:type "boolean"}
@@ -253,7 +257,7 @@
    :current-dois  {:type "long"}
    :breakdowns    {:type "object"}
    :coverage      {:type "object"}})
-   
+
 (def index-mappings
   {"work"     {"_all" {:enabled false} :properties work-properties}
    "member"   {"_all" {:enabled false} :properties member-properties}
@@ -269,7 +273,7 @@
    "subject"  {:number_of_shards 1  :number_of_replicas 3}
    "coverage" {:number_of_shards 1  :number_of_replicas 3}
    "journal"  {:number_of_shards 1  :number_of_replicas 3}})
-  
+
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
    compatibility (which will remove multi-type per fields, making
