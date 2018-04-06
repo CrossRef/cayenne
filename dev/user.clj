@@ -81,7 +81,7 @@
     (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
   (index-journals))
 
-(defn setup-for-feeds []
+(defn setup-feed []
   (let [feed-dir (.getPath (resource "feeds"))
         feed-source-dir (str feed-dir "/corpus")
         feed-in-dir (str feed-dir "/feed-in")
@@ -97,8 +97,8 @@
      :feed-in-dir feed-in-dir
      :feed-file-count feed-file-count}))
 
-(defn process-feed []
-  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-for-feeds)]
+(defn index-feed []
+  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed)]
     (when-not (= feed-file-count 177)
       (throw (Exception.
               (str "The number of feed input files is not as expected. Expected to find "
