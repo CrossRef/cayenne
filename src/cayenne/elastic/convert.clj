@@ -72,15 +72,20 @@
         (itree/get-item-rel item :published-online)
         (itree/get-item-rel item :published-other)
         (itree/get-item-rel item :published)
-        (itree/get-item-rel item :content-created)
-        (itree/get-tree-rel item :posted)
-        (itree/get-tree-rel item :published-print)
-        (itree/get-tree-rel item :published-online)
-        (itree/get-tree-rel item :published-other)
-        (itree/get-tree-rel item :published)
         (itree/get-tree-rel item :content-created)
-        (itree/get-tree-rel item :first-deposited)
         (itree/get-tree-rel item :deposited))
+       (sort-by particle->date-time)
+       first
+       particle->date-time))
+
+(defn item-published-date [item]
+  (->> (concat
+        (itree/get-item-rel item :posted)
+        (itree/get-item-rel item :published-print)
+        (itree/get-item-rel item :published-online)
+        (itree/get-item-rel item :published-other)
+        (itree/get-item-rel item :published)
+        (itree/get-tree-rel item :content-created))
        (sort-by particle->date-time)
        first
        particle->date-time))
@@ -335,8 +340,9 @@
      :book-id          (maybe-int (:book-id publisher))
      :supplementary-id (itree/get-item-ids item :supplementary)
      :issued-year      (t/year (item-issued-date item))
-     
+
      :issued           (item-issued-date item)
+     :published        (item-published-date item)
      :published-online (item-date item :published-online)
      :published-print  (item-date item :published-print)
      :published-other  (item-date item :published-other)
