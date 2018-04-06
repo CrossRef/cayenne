@@ -32,20 +32,23 @@
                                                          :total-dois])
       :last-status-check-time (-> coverage-doc :finished dc/to-long)})))
 
-(defn get-coverage [subject-type subject-id]
-  (-> (elastic/request
-       (conf/get-service :elastic)
-       {:method :get
-        :url "/coverage/coverage/_search"
-        :body (-> {}
+(defn get-coverage [subject-type subject-ids]
+  (let [query (-> {}
                   (assoc-in [:query :bool :must]
-                            [{:term {:subject-type subject-type}}
-                             {:term {:subject-id subject-id}}])
-                  (assoc :size 1)
-                  (assoc :sort {:finished :desc}))})
-      (get-in [:body :hits :hits])
-      first
-      :_source))
+                            [{:term {:subject-type subject-type}}])
+                  (assoc-in [:query :bool :minimum_should_match] 1)
+                  (assoc-in [:query :bool :should]
+                            (map (fn [subject-id]
+                                   {:term {:subject-id subject-id}}) subject-ids))
+                  (assoc :size (count subject-ids))
+                  (assoc :sort {:finished :desc}))]
+    (-> (elastic/request
+         (conf/get-service :elastic)
+         {:method :get
+          :url "/coverage/coverage/_search"
+          :body query})
+        (get-in [:body :hits :hits])
+        (->> (map :_source)))))
 
 (defn fetch-one [query-context]
   (let [response (elastic/request
@@ -61,7 +64,7 @@
                       :content
                       (->response-doc member-doc
                                       :coverage-doc
-                                      (get-coverage :member (:id member-doc)))))))
+                                      (first (get-coverage :member [(:id member-doc)])))))))
 
 (defn fetch-works [query-context]
   (work/fetch query-context :id-field :member-id))
@@ -75,12 +78,20 @@
         response (elastic/request
                   (conf/get-service :elastic)
                   es-request)
-        docs (->> (get-in response [:body :hits :hits])
-                  (map :_source))]
+        docs (->> [:body :hits :hits]
+                  (get-in response)
+                  (map :_source))
+        find-coverage (->> docs
+                           (map :id)
+                           (get-coverage :member)
+                           (partial (fn [coverages id]
+                                      (some
+                                       #(if (= (:subject-id %) id) %) coverages))))]
     (-> (r/api-response :member-list)
         (r/with-query-context-info query-context)
         (r/with-debug-info query-context es-request)
         (r/with-result-items
           (get-in response [:body :hits :total])
-          (map ->response-doc docs)))))
-                        
+          (map #(->response-doc
+                 %
+                 :coverage-doc (find-coverage (:id %))) docs)))))
