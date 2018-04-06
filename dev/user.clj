@@ -117,9 +117,14 @@
         (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
       (index-members)
       (start-feed-processing)
-      (while (not= (elastic-doc-count) 171)
-        (println "Waiting for elasticsearch to finish indexing....")
-        (Thread/sleep 1000))
+      (let [tries (atom 1)]
+        (while (and (not= (elastic-doc-count) 177)
+                    (< @tries 50))
+          (println "Waiting for elasticsearch to finish indexing....")
+          (Thread/sleep 1000)
+          (swap! tries inc))
+        (if (>= @tries 50)
+          (println "Gave up waiting for elasticsearch to finish indexing....")))
       (check-journals)
       (check-members))))
 
