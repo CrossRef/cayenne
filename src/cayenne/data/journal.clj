@@ -25,6 +25,7 @@
                   subject-docs)
    :flags (:flags journal-doc)
    :coverage (:coverage journal-doc)
+   :coverage-type (:coverage-type journal-doc)
    :breakdowns (:breakdowns journal-doc)
    :counts (:counts journal-doc)
    :last-status-check-time (:last-status-check-time journal-doc)})
