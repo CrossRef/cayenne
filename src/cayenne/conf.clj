@@ -153,7 +153,7 @@
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 
 (with-core :default
-  (add-startup-task 
+  (add-startup-task
    :base
    (fn [profiles]
      (set-service! :executor
@@ -172,4 +172,3 @@
       (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
-
