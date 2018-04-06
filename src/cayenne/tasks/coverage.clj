@@ -39,7 +39,7 @@
 (defn coverage [total-count check-count]
   (if (zero? total-count)
     0
-    (float (/ check-count total-count))))
+    (double (/ check-count total-count))))
 
 (defn make-filter-check [member-action check-name filter-name filter-value]
   (fn [type id]
