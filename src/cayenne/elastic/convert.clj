@@ -18,8 +18,13 @@
 (defn particle->date-time [particle]
   (let [year (-> particle :year util/parse-int-safe)
         month (-> particle :month util/parse-int-safe)
-        day (-> particle :day util/parse-int-safe)]
-    (cond (and year month day)
+        day (-> particle :day util/parse-int-safe)
+        hour (-> particle :hour util/parse-int-safe)
+        minute (-> particle :minute util/parse-int-safe)
+        sec (-> particle :second util/parse-int-safe)]
+    (cond (and hour minute sec)
+          (t/date-time year month day hour minute sec)
+          (and year month day)
           (if (< (t/number-of-days-in-the-month year month) day)
             (t/date-time year month)
             (t/date-time year month day))
