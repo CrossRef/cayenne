@@ -123,12 +123,12 @@
   (set-param! [:id :isbn :path] "http://id.crossref.org/isbn/")
   (set-param! [:id :orcid :path] "http://orcid.org/")
   (set-param! [:id :owner-prefix :path] "http://id.crossref.org/prefix/")
-  (set-param! [:id :long-doi :path] "https://doi.org/")
-  (set-param! [:id :short-doi :path] "https://doi.org/")
+  (set-param! [:id :long-doi :path] "http://dx.doi.org/")
+  (set-param! [:id :short-doi :path] "http://doi.org/")
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")
   (set-param! [:id :contributor :path] "http://id.crossref.org/contributor/")
   (set-param! [:id :member :path] "http://id.crossref.org/member/")
-  
+
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
