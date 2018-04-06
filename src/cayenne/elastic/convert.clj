@@ -164,9 +164,10 @@
         :prefix              (:prefix %)
         :orcid               (item-orcid %)
         :orcid-authenticated (:orcid-authenticated %)
+        :sequence            (:sequence %)
         :affiliation         (as-> % $
-                                 (itree/get-item-rel $ :affiliation)
-                                 (map :name $)))
+                               (itree/get-item-rel $ :affiliation)
+                               (map :name $)))
       (itree/get-tree-rel item contributor-rel)))
    contributions))
 
