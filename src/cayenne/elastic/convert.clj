@@ -418,7 +418,7 @@
   (when date-str
     (let [instant (tf/parse (tf/formatters :date-time) date-str)]
       {:date-parts [[(t/year instant) (t/month instant) (t/day instant)]]
-       :date-time (.toString instant)
+       :date-time (tf/unparse (tf/formatters :date-time-no-ms) instant)
        :timestamp (tc/to-long instant)})))
 
 (defn citeproc-pages [{:keys [first-page last-page]}]
