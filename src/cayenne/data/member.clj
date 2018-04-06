@@ -15,10 +15,13 @@
 (defn ->response-doc [member-doc & {:keys [coverage-doc]}]
   (cond-> {:id           (:id member-doc)
            :primary-name (:primary-name member-doc)
-           :names        (map :name (:prefix member-doc))
+           :names        (->> (:prefix member-doc)
+                              (map (comp string/trim :name))
+                              (cons (:primary-name member-doc))
+                              distinct)
            :prefixes     (map :value (:prefix member-doc))
-           :prefix       (:prefix member-doc)
-           :location     (:location member-doc)
+           :prefix       (map #(select-keys % [:reference-visibility :public-references :name :value]) (:prefix member-doc))
+           :location     (-> member-doc :location string/trim)
            :tokens       (:token member-doc)}
     (not (nil? coverage-doc))
     (merge
