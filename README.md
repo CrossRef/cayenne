@@ -41,7 +41,7 @@ OAI-PMH:
 
 Run as a production service with some profiles:
 
-    $ lein run :api :index :update-members :update-journals :update-funders
+    $ lein with-profiles prod run :api :index :update-members :update-journals :update-funders
 
 - :api - Run the resource HTTP API.
 - :index - Run an OAI download and index once daily.
@@ -58,12 +58,12 @@ Run as a production service with some profiles:
 
 Run as a daemonized production service with lein-daemon:
 
-    $ lein daemon start cayenne :api :index :update-members
+    $ lein with-profiles prod daemon start cayenne :api :index :update-members
 
 Accepts the same arguments as lein run. Also available are:
 
-    $ lein daemon stop cayenne
-    $ lein daemon check cayenne
+    $ lein with-profiles prod daemon stop cayenne
+    $ lein with-profiles prod daemon check cayenne
 
 In daemonized mode, feature logging will still go to `log/log.txt`, however,
 standard out from the daemonized process's start up phase will be sent to
@@ -72,7 +72,7 @@ standard out from the daemonized process's start up phase will be sent to
 When running as a daemon it is sometimes useful to start an nrepl server
 to later connect a repl:
 
-    $ lein daemon start cayenne :api :nrepl
+    $ lein with-profiles prod daemon start cayenne :api :nrepl
 
 ## Run within a Docker Container
 
