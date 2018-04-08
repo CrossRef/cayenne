@@ -15,7 +15,7 @@
   {:info
    {:version "0.1"
     :title "Crossref Unified Resource API"
-    :description (slurp (resource "description.md"))
+    :description (slurp (resource "swagger/description.md"))
     :termsOfService "https://github.com/CrossRef/rest-api-doc"
     :contact {:name "Crossref"
               :email "support@crossref.org"
@@ -54,28 +54,28 @@
 
 (defn- filters-description []
   (fields-description
-    (slurp (resource "filters-description.md"))
+    (slurp (resource "swagger/filters-description.md"))
     std-filters
     compound-fields))
 
 (defn- facets-description []
   (fields-description
-    (slurp (resource "facets-description.md"))
+    (slurp (resource "swagger/facets-description.md"))
     (reduce merge (map (comp #(assoc {} % []) :external-field val) std-facets))))
 
 (defn- selects-description []
   (fields-description
-    (slurp (resource "selects-description.md"))
+    (slurp (resource "swagger/selects-description.md"))
     select-fields))
 
 (defn- sorts-description []
   (fields-description
-    (slurp (resource "sorts-description.md"))
+    (slurp (resource "swagger/sorts-description.md"))
     sort-fields))
 
 (defn- query-description []
   (fields-description
-    (slurp (resource "query-description.md"))
+    (slurp (resource "swagger/query-description.md"))
     work-fields))
 
 (defn- works-description [title]
