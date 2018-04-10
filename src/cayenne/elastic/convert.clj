@@ -607,18 +607,20 @@
         type-key (keyword (:type source-doc))]
     (-> source-doc
 
-        (select-keys [:source :group-title
-                      :container-title :short-container-title :issue :volume
-                      :description :degree :update-policy :archive :type :prefix
+        (select-keys [:source :group-title :issue :volume :description
+                      :degree :update-policy :archive :type :prefix
                       :references-count :is-referenced-by-count :language
-                      :publisher :publisher-location :article-number :edition-number
+                      :publisher-location :article-number :edition-number
                       :part-number :component-number])
 
         (->> (reduce (fn [acc i] (util/assoc-exists acc (first i) (last i))) {}))
 
+        (assoc :publisher              (:publisher source-doc))
         (assoc :title                  (:title source-doc))
         (assoc :subtitle               (:subtitle source-doc))
         (assoc :short-title            (:short-title source-doc))
+        (assoc :container-title        (get source-doc :container-title []))
+        (assoc :short-container-title  (get source-doc :short-container-title []))
         (assoc :original-title         (:original-title source-doc))
         (assoc :reference-count        (:references-count source-doc))
         (assoc :DOI                    (:doi source-doc))
