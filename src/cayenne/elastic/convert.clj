@@ -345,6 +345,12 @@
             :place [(:location i)]
             :department (map :name (itree/get-item-rel i :component))})  institutions)))
 
+(defn item-journal-issue [journal-issue]
+  (when journal-issue
+    {:published-print (-> journal-issue :published-print particle->date-time)
+     :published-online (-> journal-issue :published-online particle->date-time)
+     :issue (:issue journal-issue)}))
+
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
@@ -363,6 +369,7 @@
      :supplementary-id (itree/get-item-ids item :supplementary)
      :issued-year      (t/year (item-issued-date item))
 
+     :journal-issue    (item-journal-issue journal-issue)
      :issued           (item-issued-date item)
      :published        (item-published-date item)
      :published-online (item-date item :published-online)
@@ -442,6 +449,11 @@
       {:date-parts [[(t/year instant) (t/month instant) (t/day instant)]]
        :date-time (tf/unparse (tf/formatters :date-time-no-ms) instant)
        :timestamp (tc/to-long instant)})))
+
+(defn citeproc-date-parts
+  [date-str]
+  (when-let [citeproc-date (citeproc-date date-str)]
+    (select-keys citeproc-date [:date-parts])))
 
 (defn citeproc-pages [{:keys [first-page last-page]}]
   (cond (and (not (string/blank? last-page))
@@ -561,6 +573,15 @@
         (util/assoc-exists :competing-interest-statement competing-interest-statement)
         (util/assoc-exists :recommendation recommendation)
         (util/assoc-exists :language language))))
+
+(defn citeproc-journal-issue [es-doc]
+  (when-let [{:keys [issue published-online published-print]} (:journal-issue es-doc)]
+    (when issue
+      (-> {}
+          (util/assoc-exists :issue issue)
+          (util/assoc-exists :published-online published-online (citeproc-date-parts published-online))
+          (util/assoc-exists :published-print published-print (citeproc-date-parts published-print))))))
+
 (defn es-doc->citeproc [es-doc]
   (let [source-doc (:_source es-doc)]
     (-> source-doc
@@ -622,6 +643,7 @@
         (util/assoc-exists :update-to              (citeproc-updates (:update-to source-doc)))
 
         (util/assoc-exists :review                 (citeproc-peer-review source-doc))
+        (util/assoc-exists :journal-issue          (citeproc-journal-issue source-doc))
         (util/assoc-exists :institution            (first (:institution source-doc)))
 
         (assoc :score (:_score es-doc)))))

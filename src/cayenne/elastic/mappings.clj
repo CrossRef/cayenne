@@ -112,6 +112,12 @@
    :competing-interest-statement {:type "text" :index false}
    :type {:type "text" :index false}
    :language {:type "text" :index false}})
+
+(def journal-issue-properties
+  {:published-print {:type "date"}
+   :published-online {:type "date"}
+   :issue {:type "text"}})
+
 (def work-properties
   {:metadata-content-text      {:type "text"}
    :source                     {:type "text"}
@@ -205,8 +211,9 @@
    :license                    {:type "nested" :properties license-properties}
    :assertion                  {:type "nested" :properties assertion-properties}
    :relation                   {:type "nested" :properties relation-properties}
-   :reference                  {:type "object" :properties reference-properties}})
+   :reference                  {:type "object" :properties reference-properties}
    :peer-review                {:type "object" :properties peer-review-properties}
+   :journal-issue              {:type "object" :properties journal-issue-properties}})
 
 (def prefix-properties
   {:value                {:type "keyword"}
