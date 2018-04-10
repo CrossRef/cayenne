@@ -8,6 +8,7 @@
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.orcid :as orcid-id]
+            [cayenne.ids.type :as type-id]
             [cayenne.ids :as ids]
             [clojure.string :as string]
             [clj-time.format :as tf]
@@ -595,8 +596,15 @@
           (util/assoc-exists :start-date (citeproc-date-parts start))
           (util/assoc-exists :end-date (citeproc-date-parts end))))))
 
+(defn citeproc-content-domains [{:keys [crossmark-unaware?] :as m} es-doc]
+  (merge
+   {:domain (or (get es-doc :domain) [])}
+   (if-not crossmark-unaware?
+     {:crossmark-restriction (:domain-exclusive es-doc)})))
+
 (defn es-doc->citeproc [es-doc]
-  (let [source-doc (:_source es-doc)]
+  (let [source-doc (:_source es-doc)
+        type-key (keyword (:type source-doc))]
     (-> source-doc
 
         (select-keys [:source :group-title
@@ -620,8 +628,9 @@
         (assoc :member                 (when (:member-id source-doc) (str (:member-id source-doc))))
         (assoc :indexed                (-> source-doc :indexed citeproc-date))
         (assoc :relation               (citeproc-relations source-doc))
-        (assoc :content-domain         {:crossmark-restriction (:domain-exclusive source-doc)
-                                        :domain (:domain source-doc)})
+        (assoc :content-domain         (-> type-id/type-dictionary
+                                           (get type-key)
+                                           (citeproc-content-domains source-doc)))
 
         (util/assoc-exists :abstract               (:abstract-xml source-doc))
         (util/assoc-exists :alternative-id         (->> source-doc :supplementary-id (map ids/extract-supplementary-id)))
