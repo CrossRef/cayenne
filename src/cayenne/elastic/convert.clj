@@ -508,7 +508,9 @@
               :id-type (:object-type %)
               :asserted-by (:claimed-by %)
               :rel (:type %)))
-       (group-by :rel)))
+       (group-by :rel)
+       (map #(vector (first %) (map (fn [a] (dissoc a :rel)) (second %))))
+       (into {})))
 
 (defn citeproc-licenses [es-doc]
   (map #(-> %
