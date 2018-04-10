@@ -86,7 +86,7 @@
    :author               {:type "text" :index false}
    :issue                {:type "text" :index false}
    :first-page           {:type "text" :index false}
-   :year                 {:type "integer" :index false}
+   :year                 {:type "text" :index false}
    :isbn                 {:type "keyword" :index false}
    :isbn-type            {:type "keyword" :index false}
    :series-title         {:type "text" :index false}
