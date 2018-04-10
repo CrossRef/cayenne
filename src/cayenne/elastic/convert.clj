@@ -336,6 +336,15 @@
      :competing-interest-statement competing-interest-statement
      :type review-type
      :language language}))
+
+(defn item-institution [item]
+  (if-let [institutions (itree/get-tree-rel item :institution)]
+    (map (fn [i]
+           {:name (:name i)
+            :acronym [(:acronym i)]
+            :place [(:location i)]
+            :department (map :name (itree/get-item-rel i :component))})  institutions)))
+
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
@@ -423,8 +432,9 @@
      :funder           (item-funders item)
      :clinical-trial   (item-clinical-trials item)
      :event            (item-events item)
-     :standards-body   (item-standards-body item)}))
+     :standards-body   (item-standards-body item)
      :peer-review      (item-peer-review item)
+     :institution      (item-institution item)}))
 
 (defn citeproc-date [date-str]
   (when date-str
@@ -612,4 +622,6 @@
         (util/assoc-exists :update-to              (citeproc-updates (:update-to source-doc)))
 
         (util/assoc-exists :review                 (citeproc-peer-review source-doc))
+        (util/assoc-exists :institution            (first (:institution source-doc)))
+
         (assoc :score (:_score es-doc)))))
