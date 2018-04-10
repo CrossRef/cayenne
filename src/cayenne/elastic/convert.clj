@@ -475,8 +475,8 @@
     :always
     (map
      #(-> {}
-          (util/assoc-exists :ORCID (:orcid %))
-          (util/assoc-exists :authenticated-orcid (:authenticated-orcid %))
+          (util/assoc-exists :ORCID (orcid-id/to-orcid-uri  (:orcid %)))
+          (util/assoc-exists :authenticated-orcid (:orcid %) (boolean (:authenticated-orcid %)))
           (util/assoc-exists :prefix (:prefix %))
           (util/assoc-exists :suffix (:suffix %))
           (util/assoc-exists :name (:org-name %))
