@@ -213,6 +213,7 @@
    :relation                   {:type "nested" :properties relation-properties}
    :reference                  {:type "object" :properties reference-properties}
    :peer-review                {:type "object" :properties peer-review-properties}
+   :institution                {:type "nested"}
    :free-to-read               {:type "object"}
    :journal-issue              {:type "object" :properties journal-issue-properties}})
 
