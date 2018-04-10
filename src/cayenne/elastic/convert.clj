@@ -326,6 +326,16 @@
     :always
     (mapcat #(vector (:given-name %) (:family-name %) (:org-name %)))))
 
+(defn item-peer-review [item]
+  (if-let [{:keys [running-number revision-round stage recommendation
+                   competing-interest-statement review-type language]} (:review item)]
+    {:running-number running-number
+     :revision-round revision-round
+     :stage stage
+     :recommendation recommendation
+     :competing-interest-statement competing-interest-statement
+     :type review-type
+     :language language}))
 (defn item->es-doc [item]
   (let [doi            (item-doi item)
         publisher      (-> item (itree/get-tree-rel :publisher) first)
@@ -414,6 +424,7 @@
      :clinical-trial   (item-clinical-trials item)
      :event            (item-events item)
      :standards-body   (item-standards-body item)}))
+     :peer-review      (item-peer-review item)
 
 (defn citeproc-date [date-str]
   (when date-str
@@ -528,6 +539,18 @@
           (util/assoc-exists :doi-asserted-by (:doi-asserted-by %))
           (util/assoc-exists :award (map (fn [award] {:name award}) (:award %)))) funders)))
 
+(defn citeproc-peer-review [es-doc]
+  (when-let [{:keys [running-number revision-round stage
+                     competing-interest-statement recommendation
+                     language] :as peer-review} (:peer-review es-doc)]
+    (-> {}
+        (util/assoc-exists :type (:type peer-review))
+        (util/assoc-exists :running-number running-number)
+        (util/assoc-exists :revision-round revision-round)
+        (util/assoc-exists :stage stage)
+        (util/assoc-exists :competing-interest-statement competing-interest-statement)
+        (util/assoc-exists :recommendation recommendation)
+        (util/assoc-exists :language language))))
 (defn es-doc->citeproc [es-doc]
   (let [source-doc (:_source es-doc)]
     (-> source-doc
@@ -588,4 +611,5 @@
         (util/assoc-exists :updated-by             (citeproc-updates (:updated-by source-doc)))
         (util/assoc-exists :update-to              (citeproc-updates (:update-to source-doc)))
 
+        (util/assoc-exists :review                 (citeproc-peer-review source-doc))
         (assoc :score (:_score es-doc)))))
