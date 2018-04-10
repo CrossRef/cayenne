@@ -410,6 +410,8 @@
      ;; :part-number
      ;; :component-number
      :language           (:language journal)
+     :free-to-read       {:start (-> item (itree/get-tree-rel :free-to-read-start) first particle->date-time)
+                          :end (-> item (itree/get-tree-rel :free-to-read-end) first particle->date-time)}
 
      :update-policy      (item-update-policy item)
      :domain             (itree/get-item-rel item :domains)
@@ -582,6 +584,13 @@
           (util/assoc-exists :published-online published-online (citeproc-date-parts published-online))
           (util/assoc-exists :published-print published-print (citeproc-date-parts published-print))))))
 
+(defn citeproc-free-to-read [es-doc]
+  (when-let [{:keys [start end]} (:free-to-read es-doc)]
+    (when (or start end)
+      (-> {}
+          (util/assoc-exists :start-date (citeproc-date-parts start))
+          (util/assoc-exists :end-date (citeproc-date-parts end))))))
+
 (defn es-doc->citeproc [es-doc]
   (let [source-doc (:_source es-doc)]
     (-> source-doc
@@ -644,6 +653,7 @@
 
         (util/assoc-exists :review                 (citeproc-peer-review source-doc))
         (util/assoc-exists :journal-issue          (citeproc-journal-issue source-doc))
+        (util/assoc-exists :free-to-read           (citeproc-free-to-read source-doc))
         (util/assoc-exists :institution            (first (:institution source-doc)))
 
         (assoc :score (:_score es-doc)))))
