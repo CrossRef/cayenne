@@ -371,10 +371,12 @@
 
      :journal-issue    (item-journal-issue journal-issue)
      :issued           (item-issued-date item)
+
      :published        (item-published-date item)
      :published-online (item-date item :published-online)
-     :published-print  (item-date item :published-print)
+     :published-print  (or (item-date item :published-print) (item-published-date item))
      :published-other  (item-date item :published-other)
+
      :posted           (item-date item :posted)
      :accepted         (item-date item :accepted)
      :content-created  (item-date item :content-created)
