@@ -36,4 +36,6 @@
     base-query
     (let [field-query-parts
           (map #((work-fields (first %)) (second %)) field-queries)]
-      (str "(" base-query ") AND " (str/join " AND " field-query-parts)))))
+      (if base-query  ;don't add a query term if base-query is empty
+        (str "(" base-query ") AND " (str/join " AND " field-query-parts))
+        (str (str/join " AND " field-query-parts))))))
