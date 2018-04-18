@@ -328,7 +328,7 @@
       (doto query
         (.setRows (int 0))))
     (when
-      (and (> (.getRows query) 0)) ;only add the boost query when we want rows
+      (and (.getRows query) (> (.getRows query) 0)) ;only add the boost query when we want rows
       (.setParam query "bq" (into-array String ["(*:* -type:\"Posted Content\")"])))
 
     query))
