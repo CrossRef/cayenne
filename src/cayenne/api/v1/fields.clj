@@ -23,12 +23,17 @@
    "contributor"            :contributor-text})
 
 (defn with-field-queries [es-body {:keys [field-terms]}]
-  (update-in
-   es-body
-   [:query :bool :should]
-   (fn [shoulds]
-     (concat
-      shoulds
-      (map #(hash-map :term {(-> % first work-fields)
-                             (-> % second)})
-           field-terms)))))
+  (if (not-empty field-terms)
+    (update-in
+     es-body
+     [:query :match]
+     (fn [matches]
+       (merge
+        matches
+        (apply
+         merge
+         (map (fn [t]
+                {(-> t first work-fields)
+                 (-> t second)})
+              field-terms)))))
+    es-body))
