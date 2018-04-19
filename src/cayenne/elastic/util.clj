@@ -9,4 +9,3 @@
                   (interpose "\n")))
       (str "\n")
       elastic/raw))
-
