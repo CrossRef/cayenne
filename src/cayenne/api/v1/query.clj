@@ -93,7 +93,8 @@
    "editor"                 [:contributor.*]
    "chair"                  [:contributor.*]
    "translator"             [:contributor.*]
-   "standards-body"         [:standards-body.*]})
+   "standards-body"         [:standards-body.*]
+   "score"                  [:_score]})
 
 (defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}]
   (if-not remove-syntax
