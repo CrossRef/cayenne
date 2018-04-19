@@ -12,7 +12,7 @@
       (finally
         (user/stop)))))
 
-(defn api-get [route]
+(defn api-get [route & {:keys [sorter] :or {sorter :DOI}}]
   (let [message (-> (http/get (str api-root route) {:as :json})
                     :body
                     :message)]
@@ -20,7 +20,7 @@
       (:last-status-check-time message) (dissoc :last-status-check-time)
       (:indexed message) (dissoc :indexed)
       (:items message) (-> (update :items (partial map #(dissoc % :indexed :last-status-check-time)))
-                           (update :items (partial sort-by :DOI))))))
+                           (update :items (partial sort-by sorter))))))
 
 (def api-with-works
   (api-with user/index-feed))
