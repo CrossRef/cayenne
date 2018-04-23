@@ -54,6 +54,7 @@
    :location (:location pub-doc)
    :flags (:flags pub-doc)
    :coverage (:coverage pub-doc)
+   :coverage-type (:coverage-type pub-doc)
    :breakdowns (:breakdowns pub-doc)
    :counts (:counts pub-doc)
    :last-status-check-time (:last-status-check-time pub-doc)
