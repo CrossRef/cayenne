@@ -24,14 +24,14 @@
                               (remove nil?))
         normalized-doi (doi-id/normalize-long-doi doi)
         journal-id (Integer/parseInt id)
-        doc {:title name
+        doc { "$set"{:title name   ;adding the $set makes it an update instead of a replace
              :id journal-id
              :doi normalized-doi
              :token (util/tokenize-name name)
              :publisher publisher
              :pissn normalized-pissn
              :eissn normalized-eissn
-             :issn normalized-issns}]
+             :issn normalized-issns}}]
     (m/update! collection {:id journal-id} doc)))
 
 (def title-column 0)
