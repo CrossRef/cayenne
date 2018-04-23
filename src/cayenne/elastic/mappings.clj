@@ -147,11 +147,11 @@
    :supplementary-id           {:type "keyword"}
    :issued-year                {:type "integer"}
    :title                      {:type "keyword" :copy_to :title-text}
-   :original-title             {:type "keyword" :copy_to :title-text}
+   :original-title             {:type "text"}
    :container-title            {:type "keyword" :copy_to :container-title-text}
-   :short-container-title      {:type "keyword" :copy_to :container-title-text}
-   :short-title                {:type "keyword" :copy_to :title-text}
-   :group-title                {:type "keyword" :copy_to :container-title-text}
+   :short-container-title      {:type "text"}
+   :short-title                {:type "text"}
+   :group-title                {:type "text"}
    :subtitle                   {:type "keyword" :copy_to :title-text}
    :volume                     {:type "keyword"}
    :issue                      {:type "keyword"}
