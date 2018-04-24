@@ -9,7 +9,8 @@
                      :pidfile "cayenne.pid"}}
   :profiles {:uberjar {:aot :all}
              :dev {:source-paths ["dev"]
-                   :resource-paths ["dev-resources"]}
+                   :resource-paths ["dev-resources"]
+                   :dependencies [[marge "0.11.0"]]}
              :prod {}
              :datomic
              {:repositories {"my.datomic.com" {:url "https://my.datomic.com/repo"
@@ -29,6 +30,7 @@
                  [metrics-clojure-ring "1.0.1"]
                  [me.raynes/fs "1.4.6"]
                  [com.taoensso/timbre "3.4.0"]
+                 [com.cemerick/url "0.1.1"]
                  [irclj "0.5.0-alpha2"]
                  [clojurewerkz/quartzite "1.0.1"]
                  [congomongo "0.5.0"]
