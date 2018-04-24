@@ -1,18 +1,18 @@
 (ns user
-  (:require [cayenne.conf :refer [get-param set-param! with-core cores start-core! stop-core!]]
-            [cayenne.elastic.mappings :as elastic-mappings]
+  (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
+            [cayenne.conf :refer [cores get-param set-param! start-core! stop-core! with-core]]
             [cayenne.elastic.convert :as elastic-convert]
+            [cayenne.elastic.mappings :as elastic-mappings]
             [cayenne.rdf :as rdf]
-            [cayenne.tasks :refer [index-members index-journals]]
-            [cayenne.tasks.funder :refer [select-country-stmts index-funders]]
+            [cayenne.tasks :refer [index-journals index-members]]
             [cayenne.tasks.coverage :refer [check-journals check-members]]
-            [cayenne.api.v1.feed :refer [start-feed-processing]]
+            [cayenne.tasks.funder :refer [index-funders select-country-stmts]]
+            [clj-http.client :as http]
             [clojure.java.io :refer [resource]]
             [clojure.java.shell :refer [sh]]
-            [clj-http.client :as http]
             [me.raynes.fs :refer [copy-dir delete-dir]]
-            [nio2.io :refer [path]]
-            [nio2.dir-seq :refer [dir-seq-glob]]))
+            [nio2.dir-seq :refer [dir-seq-glob]]
+            [nio2.io :refer [path]]))
 
 (defn- elastic-ready? []
   (try
@@ -81,9 +81,9 @@
     (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
   (index-journals))
 
-(defn setup-feed []
+(defn setup-feed [& {:keys [source-dir] :or {source-dir "/source"}}]
   (let [feed-dir (.getPath (resource "feeds"))
-        feed-source-dir (str feed-dir "/corpus")
+        feed-source-dir (str feed-dir source-dir)
         feed-in-dir (str feed-dir "/feed-in")
         feed-processed-dir (str feed-dir "/feed-processed")
         feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
@@ -93,20 +93,14 @@
       (set-param! [:dir :data] feed-dir)
       (set-param! [:dir :test-data] feed-dir)
       (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
+    (println "Feed source dir is " feed-source-dir)
     {:feed-source-dir feed-source-dir
      :feed-in-dir feed-in-dir
      :feed-file-count feed-file-count}))
 
-(defn index-feed []
-  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed)]
-    (when-not (= feed-file-count 177)
-      (throw (Exception.
-              (str "The number of feed input files is not as expected. Expected to find "
-                   177
-                   " files in "
-                   feed-source-dir
-                   " but found "
-                   feed-file-count))))
+(defn index-feed [& {:keys [source-dir]
+                     :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/source")}}]
+  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed :source-dir source-dir)]
     (copy-dir feed-source-dir feed-in-dir)
     (index-journals)
     (with-redefs
@@ -124,7 +118,7 @@
           (println "Waiting for elasticsearch to finish indexing....")
           (reset! doc-count (elastic-doc-count))
           (Thread/sleep 10000))
-        (if (not= (elastic-doc-count) 177)
+        (if (not= (elastic-doc-count) feed-file-count)
           (println "Gave up waiting for elasticsearch to finish indexing....")))
       (check-journals)
       (check-members))))
