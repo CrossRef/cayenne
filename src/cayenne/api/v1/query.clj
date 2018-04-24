@@ -22,7 +22,7 @@
 (def default-facet-rows 20)
 (def max-facet-rows 1000)
 
-(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}] 
+(defn clean-terms [terms & {:keys [remove-syntax] :or {remove-syntax false}}]
   (if-not remove-syntax
     terms
     (-> terms
@@ -59,8 +59,8 @@
         0
         (= (type val) java.lang.String)
         (util/parse-int-safe val))))
-    
-(defn get-filters 
+
+(defn get-filters
   "Turns a filter value string such as a.b:val,c:val2 into
    a map representation, such as {\"a\" {\"b\" val} \"c\" val2}."
   [params]
@@ -83,14 +83,14 @@
 (defn get-facets
   [params]
   (if-let [facet-params (get params :facet)]
-    (map 
+    (map
      #(let [[field count] (string/split % #":")]
         {:field field
          :count (if (= count "*")
                   "*"
                   (max 1
-                     (min (or (util/parse-int-safe count) 
-                              default-facet-rows) 
+                     (min (or (util/parse-int-safe count)
+                              default-facet-rows)
                           max-facet-rows)))})
      (string/split facet-params #","))
     []))
@@ -195,14 +195,14 @@
    "chair" ["contributor_*"]
    "translator" ["contributor_*"]
    "standards-body" ["standards_body_*"]})
-  
+
 (defn parse-sort [params]
   (when-let [sort-params (get params :sort)]
     (-> sort-params
         string/trim
         string/lower-case
         sort-fields)))
-    
+
 (defn get-selectors [params]
   (when (get params :select)
     (string/split (get params :select) #",")))
@@ -213,7 +213,7 @@
        (map #(vector (-> % first name (string/replace #"query." ""))
                     (-> % second (clean-terms :remove-syntax true))))))
 
-(defn ->query-context [resource-context & {:keys [id filters] 
+(defn ->query-context [resource-context & {:keys [id filters]
                                            :or {id nil filters {}}}]
   (let [params (p/get-parameters resource-context)]
     {:id id
@@ -239,13 +239,15 @@
         (str (-> query-context :terms (clean-terms :remove-syntax true))
              " "
              (-> query-context :raw-terms))
-        
+
         (not (string/blank? (:terms query-context)))
         (-> query-context :terms (clean-terms :remove-syntax true))
-        
+
         (not (string/blank? (:raw-terms query-context)))
         (-> query-context :raw-terms)
-        
+
+        (> (count (:field-terms query-context)) 0) ;don't return *:* if we have field-terms
+        nil
         :else
         "*:*"))
 
@@ -261,8 +263,8 @@
 
 (defn ->solr-query [query-context &
                     {:keys [paged id-field filters count-only]
-                     :or {paged true 
-                          id-field nil 
+                     :or {paged true
+                          id-field nil
                           filters {}
                           count-only false}}]
   (let [query (set-query-fields
@@ -286,12 +288,12 @@
         (when (filters filter-name-s)
           (if (not (sequential? filter-val))
               (doto query
-                 (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)] ))) 
-            
+                 (.addFilterQuery (into-array String [((filters filter-name-s) filter-val)] )))
+
             (let [filter-fn (filters filter-name-s)
-                  filter-query-str (->> filter-val 
+                  filter-query-str (->> filter-val
                                         (map filter-fn)
-                                        (string/join " OR "))]  
+                                        (string/join " OR "))]
                 (doto query
                   (.addFilterQuery (into-array String [(str "(" filter-query-str ")")]))))))))
 
@@ -325,13 +327,15 @@
     (when count-only
       (doto query
         (.setRows (int 0))))
-    (.setParam query "bq" (into-array String ["(*:* -type:\"Posted Content\")"]))
+    (when (pos? (or (.getRows query) 0)) ;only add the boost query when we want rows
+      (.setParam query "bq" (into-array String ["(*:* -type:\"Posted Content\")"])))
+
     query))
 
 (defn ->mongo-query [query-context
-                     & {:keys [where filters id-field] 
+                     & {:keys [where filters id-field]
                         :or {where {} filters {} id-field nil}}]
-  (let [filter-where (into {} 
+  (let [filter-where (into {}
                            (map (fn [[n v]]
                                     ((filters (name n)) v))
                                 (:filters query-context)))]
@@ -347,4 +351,3 @@
        [:limit (:rows query-context)])
      (when (:offset query-context)
        [:skip (:offset query-context)]))))
-
