@@ -209,11 +209,11 @@
    :event                      {:type "object" :properties event-properties}
    :link                       {:type "nested" :properties link-properties}
    :license                    {:type "nested" :properties license-properties}
-   :assertion                  {:type "nested" :properties assertion-properties}
+   :assertion                  {:type "object" :properties assertion-properties}
    :relation                   {:type "nested" :properties relation-properties}
    :reference                  {:type "object" :properties reference-properties}
    :peer-review                {:type "object" :properties peer-review-properties}
-   :institution                {:type "nested"}
+   :institution                {:type "object"}
    :free-to-read               {:type "object"}
    :journal-issue              {:type "object" :properties journal-issue-properties}})
 
