@@ -20,13 +20,13 @@
       (let [response (api-get (str "/v1/journals/" issn))
             expected-response (read-string (slurp (resource (str "titles/" issn ".edn"))))]
         (is (= expected-response response)))))
-  
+
   (testing "journals endpoint returns expected result for ISSN works"
     (doseq [issn ["0306-4530"]]
       (let [response (api-get (str "/v1/journals/" issn "/works?rows=76"))
             expected-response (read-string (slurp (resource (str "titles/" issn "-works.edn"))))]
         (is (= expected-response response))))))
 
-(use-fixtures 
-  :once 
+(use-fixtures
+  :once
   api-with-works)
