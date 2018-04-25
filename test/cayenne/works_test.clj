@@ -11,7 +11,8 @@
                  "10.7287/peerj.2196v0.1/reviews/2"
                  "10.7287/peerj.1078v0.2/reviews/1"
                  "10.1084/jem.20151673"
-                 "10.1101/026963"]]
+                 "10.1101/026963"
+                 "10.5555/test5"]]
       (let [response (api-get (str "/v1/works/" doi))
             expected-response (read-string (slurp (resource (str "works/" doi ".edn"))))]
         (is (= expected-response response) (str "Unexpected response for DOI " doi)))))
@@ -32,7 +33,7 @@
     (doseq [q-filter ["type:peer-review" "from-created-date:2018"
                       "from-deposit-date:2018" "from-pub-date:2018"
                       "member:78"]]
-      (let [response (api-get (str "/v1/works?filter=" q-filter))
+      (let [response (api-get (str "/v1/works?rows=1000&filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
 
