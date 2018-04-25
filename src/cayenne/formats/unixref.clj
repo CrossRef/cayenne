@@ -812,7 +812,8 @@
 (defn parse-posted-content [item-loc]
   (when item-loc
     (conj (parse-item item-loc)
-          {:subtype :posted-content})))
+          {:subtype :posted-content
+           :content-type (xml/xselect1 item-loc ["type"])})))
 
 (defn parse-journal-article [article-loc]
   (when article-loc

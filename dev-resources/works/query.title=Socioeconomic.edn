@@ -11,7 +11,6 @@
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
-   :language "en",
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -54,6 +53,7 @@
      :affiliation []}],
    :member "78",
    :container-title ["Psychoneuroendocrinology"],
+   :language "en",
    :link
    [{:URL
      "http://api.elsevier.com/content/article/PII:S0306453016307545?httpAccept=text/xml",
@@ -69,7 +69,7 @@
    {:date-parts [[2017 11 30]],
     :date-time "2017-11-30T15:51:07Z",
     :timestamp 1512057067000},
-   :score 5.535772,
+   :score 4.5370054,
    :issued {:date-parts [[2017 1]]},
    :references-count 34,
    :alternative-id ["S0306453016307545"],

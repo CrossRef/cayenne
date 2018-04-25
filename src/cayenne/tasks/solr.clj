@@ -526,6 +526,7 @@
          "first_author_surname" (:last-name primary-author)
          "content" (as-solr-content-field item)
          "content_citation" (as-solr-citation-field item)
+         "content_type" (:content-type item)
          "publication" (->> container-titles
                             (filter #(= (:subtype %) :long))
                             (map :value))
