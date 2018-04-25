@@ -37,6 +37,11 @@
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
 
+  (testing "works endpoint returns results for sample"
+    (let [response (api-get "/v1/works?sample=100")
+          expected-count 100]
+      (is (= (count (:items response)) expected-count))))
+
   (testing "works related endpoints agree on work counts"
     (let [work-count (:total-results (api-get (str "/v1/works?filter=member:78")))
           member-work-count (:total-results (api-get (str "/v1/members/78/works")))
