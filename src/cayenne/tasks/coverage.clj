@@ -115,7 +115,8 @@
    (make-filter-check "deposits" "award-numbers" :has-award "true")
    (make-filter-check "deposits" "funders" :has-funder "true")
    (make-filter-check "deposits" "open-references" :reference-visibility "open")
-   (make-filter-check "deposits" "similarity-checking" :full-text.application "similarity-checking")])
+   (make-filter-check "deposits" "similarity-checking" :full-text {"application" ["similarity-checking"]})])
+
 (def checklesnew
   [;check-deposits
    ;check-deposits-articles
@@ -129,7 +130,7 @@
    (make-filter-check-new "deposits" "award-numbers" :has-award "true")
    (make-filter-check-new "deposits" "funders" :has-funder "true")
    (make-filter-check-new "deposits" "open-references" :reference-visibility "open")
-   (make-filter-check-new "deposits" "similarity-checking" :full-text.application "similarity-checking")])
+   (make-filter-check "deposits" "similarity-checking" :full-text {"application" ["similarity-checking"]})])
 
 (def checklestype
   [(make-filter-check-for-type "deposits" "affiliations" :has-affiliation "true")
@@ -142,7 +143,7 @@
    (make-filter-check-for-type "deposits" "award-numbers" :has-award "true")
    (make-filter-check-for-type "deposits" "funders" :has-funder "true")
    (make-filter-check-for-type "deposits" "open-references" :reference-visibility "open")
-   (make-filter-check-for-type "deposits" "similarity-checking" :full-text.application "similarity-checking")])
+   (make-filter-check "deposits" "similarity-checking" :full-text {"application" ["similarity-checking"]})])
 
 (defn check-record-coverage [record & {:keys [type id-field]}]
   (-> {:last-status-check-time (dc/to-long (dt/now))}
@@ -248,6 +249,7 @@
            (merge member
                   (check-breakdowns member :type :member :id-field :id)
                   (checks-for-timespans member)
+                  (check-record-coverage member :type :member :id-field :id)
                   (check-record-counts member :type :member :id-field :id)))
           (catch Exception e
             (error e "Failed to update coverage for member with ID " (:id member))
@@ -270,6 +272,7 @@
          (merge journal
                 (check-breakdowns journal :type :issn :id-field :issn)
                 (checks-for-timespans-journals journal)
+                (check-record-coverage journal :type :issn :id-field :issn)
                 (check-record-counts journal :type :issn :id-field :issn)))
         (catch Exception e
           (error e "Failed to update coverage for journal with ID " (:id journal)))))
