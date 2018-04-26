@@ -7,10 +7,12 @@
 
 (deftest querying-works
   (testing "works endpoint returns expected result for DOI"
-    (doseq [doi ["10.1016/j.psyneuen.2016.10.018" 
-                 "10.7287/peerj.2196v0.1/reviews/2" 
+    (doseq [doi ["10.1016/j.psyneuen.2016.10.018"
+                 "10.7287/peerj.2196v0.1/reviews/2"
                  "10.7287/peerj.1078v0.2/reviews/1"
-                 "10.1084/jem.20151673"]]
+                 "10.1084/jem.20151673"
+                 "10.1101/026963"
+                 "10.5555/test5"]]
       (let [response (api-get (str "/v1/works/" doi))
             expected-response (read-string (slurp (resource (str "works/" doi ".edn"))))]
         (is (= expected-response response) (str "Unexpected response for DOI " doi)))))
@@ -28,10 +30,10 @@
         (is (= expected-response response) (str "unexpected result for select " select)))))
 
   (testing "works endpoint returns expected result for filter"
-    (doseq [q-filter ["type:peer-review" "from-created-date:2018" 
+    (doseq [q-filter ["type:peer-review" "from-created-date:2018"
                       "from-deposit-date:2018" "from-pub-date:2018"
                       "member:78"]]
-      (let [response (api-get (str "/v1/works?filter=" q-filter))
+      (let [response (api-get (str "/v1/works?rows=1000&filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
 
@@ -44,38 +46,38 @@
   (testing "works endpoint returns expected result for transform"
     (doseq [doi ["10.1016/j.psyneuen.2016.10.018" "10.7287/peerj.2196v0.1/reviews/2"]]
       (doseq [content-type (->> cayenne.api.v1.types/work-transform
-                                (remove #{"application/x-bibtex" 
-                                          "application/json" 
-                                          "application/citeproc+json" 
+                                (remove #{"application/x-bibtex"
+                                          "application/json"
+                                          "application/citeproc+json"
                                           "application/vnd.citationstyles.csl+json"}))]
-        (with-redefs 
-          [org.httpkit.client/get 
-           (fn [_ _]
+        (with-redefs
+         [org.httpkit.client/get
+          (fn [_ _]
              ;; trasforming to unixref and unixsd xml results in a call to an upstream http
              ;; service, here we mock it out to slurp from a file instead
-             (let [file (if (clojure.string/ends-with? content-type "unixref+xml")
-                            "application/vnd.crossref.unixref+xml"
-                            "application/vnd.crossref.unixsd+xml")]
-                 (atom {:body (slurp (resource (str "works/" doi "/" file)))})))]
-          (let [response (->> {:accept content-type} 
+            (let [file (if (clojure.string/ends-with? content-type "unixref+xml")
+                         "application/vnd.crossref.unixref+xml"
+                         "application/vnd.crossref.unixsd+xml")]
+              (atom {:body (slurp (resource (str "works/" doi "/" file)))})))]
+          (let [response (->> {:accept content-type}
                               (http/get (str api-root "/v1/works/" doi "/transform"))
                               :body)
                 expected-response (slurp (resource (str "works/" doi "/transform/" content-type)))]
             (is (= expected-response response) (str "unexpected result for transform of " doi " to " content-type)))))))
 
   (testing "works endpoint returns expected result for DOI agency"
-    (with-redefs 
-      [cayenne.data.work/get-agency 
-       (fn [d]
-         (case d
-           "10.1016/j.psyneuen.2016.10.018" {:body (write-str [{:RA "Crossref"}])}
-           "10.5167/UZH-30455" {:body (write-str [{:RA "DataCite"}])}
-           {:body (write-str [{:RA "Unknown Agency"}])}))]
+    (with-redefs
+     [cayenne.data.work/get-agency
+      (fn [d]
+        (case d
+          "10.1016/j.psyneuen.2016.10.018" {:body (write-str [{:RA "Crossref"}])}
+          "10.5167/UZH-30455" {:body (write-str [{:RA "DataCite"}])}
+          {:body (write-str [{:RA "Unknown Agency"}])}))]
       (doseq [doi ["10.1016/j.psyneuen.2016.10.018" "10.5167/UZH-30455"]]
         (let [response (api-get (str "/v1/works/" doi "/agency"))
               expected-response (read-string (slurp (resource (str "works/" doi "-agency.edn"))))]
           (is (= expected-response response)))))))
 
-(use-fixtures 
-  :once 
+(use-fixtures
+  :once
   api-with-works)

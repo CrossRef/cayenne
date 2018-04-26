@@ -295,6 +295,15 @@
    (when-let [issn (get solr-doc "issn_type_link")]
      (map #(hash-map :value (issn-id/extract-issn %) :type :link) issn))))
 
+(defn ->isbn-types [solr-doc]
+  (concat
+   (when-let [isbn (get solr-doc "isbn_type_print")]
+     (map #(hash-map :value (isbn-id/extract-isbn %) :type :print) isbn))
+   (when-let [isbn (get solr-doc "isbn_type_electronic")]
+     (map #(hash-map :value (isbn-id/extract-isbn %) :type :electronic) isbn))
+   (when-let [isbn (get solr-doc "isbn_type_link")]
+     (map #(hash-map :value (isbn-id/extract-isbn %) :type :link) isbn))))
+
 (defn ->event [solr-doc]
   (when-let [event-name (get solr-doc "event_name")]
     (-> {:name event-name}
@@ -472,6 +481,7 @@
         (assoc-date solr-doc :content-created "content_created")
         (assoc-date solr-doc :content-updated "content_updated")
         (assoc-date solr-doc :approved "approved")
+        (assoc-exists :subtype (get solr-doc "content_type"))
         (assoc-exists :publisher-location (get solr-doc "publisher_location"))
         (assoc-exists :abstract (get solr-doc "abstract_xml"))
         (assoc-exists :article-number (get solr-doc "article_number"))
@@ -502,6 +512,9 @@
         (assoc-exists :assertion (->citeproc-assertions solr-doc))
         (assoc-exists :clinical-trial-number (->clinical-trial-numbers solr-doc))
         (assoc-exists :issn-type (->issn-types solr-doc))
+        (assoc-exists :isbn-type (->isbn-types solr-doc))
+        (assoc-exists :edition-number (get solr-doc "edition_number"))
+        (assoc-exists :part-number (get solr-doc "part_number"))
         (assoc-exists :event (->event solr-doc))
         (assoc-exists :institution (->institution solr-doc))
         (assoc-exists :review (->review solr-doc))

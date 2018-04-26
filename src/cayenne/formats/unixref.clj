@@ -742,6 +742,9 @@
 (defn parse-item-issn-details [item-loc]
   (map parse-issn (find-issns item-loc)))
 
+(defn parse-item-isbn-details [item-loc]
+  (map parse-isbn (find-isbns item-loc)))
+
 (declare parse-item)
 
 (defn parse-component [component-loc]
@@ -802,6 +805,7 @@
         (parse-attach :abstract item-loc :single parse-item-abstract)
         (parse-attach :number item-loc :multi parse-item-numbers)
         (parse-attach :issn item-loc :multi parse-item-issn-details)
+        (parse-attach :isbn item-loc :multi parse-item-isbn-details)
         (parse-attach :approved item-loc :multi parse-item-approval-dates))))
 
 ;; crawler should be 'crawler-based' - but we may not want to include those anyway
@@ -812,7 +816,8 @@
 (defn parse-posted-content [item-loc]
   (when item-loc
     (conj (parse-item item-loc)
-          {:subtype :posted-content})))
+          {:subtype :posted-content
+           :content-type (xml/xselect1 item-loc ["type"])})))
 
 (defn parse-journal-article [article-loc]
   (when article-loc

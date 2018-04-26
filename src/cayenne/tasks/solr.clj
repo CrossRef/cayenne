@@ -404,6 +404,12 @@
                        (:value %)))
        (apply merge)))
 
+(defn as-isbn-types [item]
+  (->> (get-tree-rel item :isbn)
+       (map #(hash-map (str "isbn_type_" (-> % :kind name))
+                       (:value %)))
+       (apply merge)))
+
 (defn as-event [item]
   (when-let [event (-> item (get-tree-rel :about) first)]
     (let [start-date (-> event (get-item-rel :start) first)
@@ -526,6 +532,7 @@
          "first_author_surname" (:last-name primary-author)
          "content" (as-solr-content-field item)
          "content_citation" (as-solr-citation-field item)
+         "content_type" (:content-type item)
          "publication" (->> container-titles
                             (filter #(= (:subtype %) :long))
                             (map :value))
@@ -624,6 +631,8 @@
          "full_text_url" (map (util/?- :value) full-text-resources)
          "full_text_version" (map (util/?- :content-version) full-text-resources)
          "full_text_application" (map (util/?- :intended-application) full-text-resources)
+         "edition_number" (:edition-number (find-first-item-of-subtypes item [:edited-book :monograph :reference-book :book]))
+         "part_number" (:part-number (find-item-of-subtype item :book-set))
          "publisher" (:name publisher)
          "publisher_str" (:name publisher)
          "hl_publisher" (:name publisher)
@@ -655,6 +664,7 @@
         (merge (as-peer-review item))
         (merge (as-citations item))
         (merge (as-event item))
+        (merge (as-isbn-types item))
         (merge (as-issn-types item))
         (merge (as-assertion-list assertions))
         (merge (as-contributor-affiliation-lists contrib-details))
