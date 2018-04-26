@@ -13,7 +13,7 @@
 (def date-format (df/formatter "yyyy-MM-dd"))
 
 (defn back-file-cut-off []
-  (df/unparse date-format (dt/date-time (-(dt.core/year (dt/now) ) 2))))
+  (df/unparse date-format (dt/date-time (-(dt/year (dt/now) ) 2))))
 
 (defn make-id-filter [type id]
   (cond (= type :member)
