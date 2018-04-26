@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1126/science.aah3580</doi>
+        <crm-item name="publisher-name" type="string">American Association for the Advancement of Science (AAAS)</crm-item>
+        <crm-item name="prefix-name" type="string">American Association for the Advancement of Science (AAAS)</crm-item>
+        <crm-item name="member-id" type="number">221</crm-item>
+        <crm-item name="citation-id" type="number">86524772</crm-item>
+        <crm-item name="journal-id" type="number">5530</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016122908251044000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1126</crm-item>
+        <crm-item name="last-update" type="date">2017-05-08T15:03:02Z</crm-item>
+        <crm-item name="created" type="date">2016-11-24T18:45:13Z</crm-item>
+        <crm-item name="citedby-count" type="number">27</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Science</full_title>
+                <abbrev_title>Science</abbrev_title>
+                <issn media_type="print">0036-8075</issn>
+                <issn media_type="electronic">1095-9203</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>24</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <day>25</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>354</volume>
+                </journal_volume>
+                <issue>6315</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Social status alters immune regulation and response to infection in macaques</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Noah</given_name>
+                    <surname>Snyder-Mackler</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Joaquín</given_name>
+                    <surname>Sanz</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jordan N.</given_name>
+                    <surname>Kohn</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jessica F.</given_name>
+                    <surname>Brinkworth</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Shauna</given_name>
+                    <surname>Morrow</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Amanda O.</given_name>
+                    <surname>Shaver</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jean-Christophe</given_name>
+                    <surname>Grenier</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Roger</given_name>
+                    <surname>Pique-Regi</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Zachary P.</given_name>
+                    <surname>Johnson</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mark E.</given_name>
+                    <surname>Wilson</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Luis B.</given_name>
+                    <surname>Barreiro</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jenny</given_name>
+                    <surname>Tung</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>24</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <day>25</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1041</first_page>
+                  <last_page>1045</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="atom">/sci/354/6315/1041.atom</item_number>
+                  <identifier id_type="doi">10.1126/science.aah3580</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      NIH
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000002</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">R01-GM102562</fr:assertion>
+                    <fr:assertion name="award_number">P51-OD011132</fr:assertion>
+                    <fr:assertion name="award_number">T32-AG000139</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      NSF
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000001</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">SMA-1306134</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Canada Research Chairs Program
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100001804</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">950-228993</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      NSERC
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100000038</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">RGPIN/435917-2013</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Fonds de recherche du Quebec
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100008240</fr:assertion>
+                    </fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="vor" start_date="2017-11-25">http://www.sciencemag.org/about/science-licenses-journal-article-reuse</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1126/science.aah3580</doi>
+                  <timestamp>2016122908251044000</timestamp>
+                  <resource>http://www.sciencemag.org/lookup/doi/10.1126/science.aah3580</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://syndication.highwire.org/content/doi/10.1126/science.aah3580</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="2016122908251044000_354.6315.1041.1">
+                    <doi>10.1016/S0140-6736(05)71146-6</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.2">
+                    <doi>10.2307/2626958</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.3">
+                    <doi>10.1001/jama.2016.4226</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.4">
+                    <doi>10.1126/science.1106477</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.5">
+                    <doi>10.1073/pnas.1202734109</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.6">
+                    <doi>10.1016/j.yhbeh.2012.07.014</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.7">
+                    <doi>10.1016/0021-9150(89)90011-7</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.8">
+                    <doi>10.1371/journal.pgen.1004601</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.9">
+                    <doi>10.1038/nri3042</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.10">
+                    <doi>10.1016/j.physbeh.2007.11.042</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.11">
+                    <doi>10.1016/j.anbehav.2011.07.016</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.12">
+                    <doi>10.1016/0952-7915(93)90065-Z</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.13">
+                    <doi>10.1371/journal.pgen.1003486</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.14">
+                    <doi>10.1126/science.1262110</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.15">
+                    <doi>10.1016/j.anbehav.2015.10.033</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.16">
+                    <doi>10.1098/rspb.2014.1261</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.17">
+                    <doi>10.1016/j.cub.2010.05.067</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.18">
+                    <doi>10.1371/journal.pmed.1000316</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.19">
+                    <doi>10.1016/j.psyneuen.2016.09.005</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.20">
+                    <doi>10.1101/cshperspect.a001651</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.21">
+                    <doi>10.1016/j.immuni.2008.03.002</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.22">
+                    <doi>10.1038/nri1391</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.23">
+                    <doi>10.1371/journal.pcbi.1000021</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.24">
+                    <unstructured_citation>M. G. Marmot, R. Sapolsky, in Sociality, Hierarchy, Health: Comparative Biodemography, M. Weinstein, M. A. Lane, Eds. (National Academies Press, 2014), pp. 365–388.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.25">
+                    <doi>10.1098/rspb.2007.1574</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.26">
+                    <unstructured_citation>J. Teas, T. Richie, H. Taylor, C. Southwick, in The Macaques: Studies in Ecology, Behavior and Evolution (Van Nostrand Reinhold Company, 1980), pp. 247–262.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.27">
+                    <unstructured_citation>A. E. Elo, The Rating of Chess Players, Past and Present (Arco, 1978).</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.28">
+                    <unstructured_citation>C. Neumann, L. Kulik, Package ‘EloRating’: Animal Dominance Hierarchies by Elo Rating, version 0.43 (2014); https://cran.r-project.org/web/packages/EloRating/EloRating.pdf.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.29">
+                    <doi>10.1006/anbe.2000.1571</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.30">
+                    <doi>10.1016/j.physbeh.2016.04.023</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.31">
+                    <doi>10.1186/1745-6150-9-20</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.32">
+                    <doi>10.1002/0471250953.bi1114s51</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.33">
+                    <doi>10.1093/bioinformatics/btu638</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.34">
+                    <doi>10.1093/nar/gkv007</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.35">
+                    <unstructured_citation>Lipatov M. Sanjeev K. Patro R. Veeramah K. , http://biorxiv.org/content/early/2015/07/29/023374 (2015).</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.36">
+                    <doi>10.1038/ng1702</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.37">
+                    <doi>10.1038/ng.2310</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.38">
+                    <doi>10.1534/genetics.107.080101</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.39">
+                    <unstructured_citation>D. Akdemir, O. U. Godfrey, Package ‘EMMREML’: Fitting Mixed Models with Known Covariance Structures, version 3.1 (2015); https://cran.r-project.org/web/packages/EMMREML/EMMREML.pdf.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.40">
+                    <doi>10.1038/ng.2951</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.41">
+                    <doi>10.7554/eLife.04729</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.42">
+                    <doi>10.1073/pnas.1530509100</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.43">
+                    <doi>10.1093/bioinformatics/btp101</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.44">
+                    <journal_title>J. R. Stat. Soc. B</journal_title>
+                    <author>Benjamini</author>
+                    <volume>57</volume>
+                    <first_page>289</first_page>
+                    <cYear>1995</cYear>
+                    <article_title>Controlling the false discovery rate: A practical and powerful approach to multiple testing</article_title>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.45">
+                    <doi>10.1214/13-AOAS695</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.46">
+                    <doi>10.1002/0471142727.mb2129s109</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.47">
+                    <unstructured_citation>Li H. , https://arxiv.org/abs/1303.3997 (2013).</unstructured_citation>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.48">
+                    <doi>10.1186/gb-2008-9-9-r137</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.49">
+                    <doi>10.1093/nar/gkh012</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.50">
+                    <doi>10.1093/nar/gkj143</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.51">
+                    <doi>10.1101/gr.112623.110</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.52">
+                    <doi>10.1093/bioinformatics/btq033</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.53">
+                    <doi>10.1111/j.1467-9868.2005.00503.x</doi>
+                  </citation>
+                  <citation key="2016122908251044000_354.6315.1041.54">
+                    <doi>10.1038/nmeth.1439</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

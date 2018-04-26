@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.4111/icu.2016.57.6.384</doi>
+        <crm-item name="publisher-name" type="string">The Korean Urological Association (KAMJE)</crm-item>
+        <crm-item name="prefix-name" type="string">The Korean Urological Association (KAMJE)</crm-item>
+        <crm-item name="member-id" type="number">2595</crm-item>
+        <crm-item name="citation-id" type="number">86263500</crm-item>
+        <crm-item name="journal-id" type="number">297209</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161110141832</crm-item>
+        <crm-item name="owner-prefix" type="string">10.4111</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:16:22Z</crm-item>
+        <crm-item name="created" type="date">2016-11-10T09:26:55Z</crm-item>
+        <crm-item name="citedby-count" type="number">6</crm-item>
+        <crm-item name="relation" type="doi" claim="erratum">10.4111/icu.2017.58.1.77</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Investigative and Clinical Urology</full_title>
+                <abbrev_title>Investig Clin Urol</abbrev_title>
+                <issn media_type="print">2466-0493</issn>
+                <issn media_type="electronic">2466-054X</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>57</volume>
+                </journal_volume>
+                <issue>6</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Testosterone therapy in men with testosterone deficiency: Are we beyond the point of no return?</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Abdulmaged</given_name>
+                    <surname>Traish</surname>
+                    <affiliation>Departments of Biochemistry and Urology, Boston University School of Medicine, Boston, MA, USA.</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>384</first_page>
+                </pages>
+                <crossmark>
+                  <crossmark_policy>10.4111/crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>synapse.koreamed.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion group_label="Full text available at:" group_name="multiple_resolution" label="Synapse" name="synapse" href="https://synapse.koreamed.org/DOIx.php?id=10.4111/icu.2016.57.6.384">https://synapse.koreamed.org/DOIx.php?id=10.4111/icu.2016.57.6.384</assertion>
+                    <assertion group_label="Full text available at:" group_name="multiple_resolution" label="the Journal" name="the_journal" href="http://icurology.org/DOIx.php?id=10.4111/icu.2016.57.6.384">http://icurology.org/DOIx.php?id=10.4111/icu.2016.57.6.384</assertion>
+                    <assertion group_label="Publication History" group_name="publication_history" label="Received" name="received">2016-08-25</assertion>
+                    <assertion group_label="Publication History" group_name="publication_history" label="Accepted" name="accepted">2016-10-05</assertion>
+                    <assertion group_label="Publication History" group_name="publication_history" label="Published online" name="published_online">2016-11-07</assertion>
+                    <assertion group_label="Copyright and Licensing" group_name="Copyright_and_licensing" label="Copyright" name="copyright">© The Korean Urological Association, 2016</assertion>
+                    <assertion group_label="Copyright and Licensing" group_name="Copyright_and_licensing" label="License" name="license" explanation="http://creativecommons.org/licenses/by-nc/4.0">This is an Open Access article distributed under the terms of the Creative Commons Attribution Non-Commercial License (http://creativecommons.org/licenses/by-nc/4.0) which permits unrestricted non-commercial use, distribution, and reproduction in any medium, provided the original work is properly cited.</assertion>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://creativecommons.org/licenses/by-nc/4.0</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.4111/icu.2016.57.6.384</doi>
+                  <resource>https://synapse.koreamed.org/DOIx.php?id=10.4111/icu.2016.57.6.384</resource>
+                  <collection property="text-mining" setbyID="kamje">
+                    <item>
+                      <resource mime_type="application/pdf">http://synapse.koreamed.org/pdf/10.4111/icu.2016.57.6.384</resource>
+                    </item>
+                    <item>
+                      <resource>http://synapse.koreamed.org/DOIx.php?id=10.4111/icu.2016.57.6.384</resource>
+                    </item>
+                  </collection>
+                  <collection property="crawler-based" setbyID="kamje">
+                    <item crawler="iParadigms">
+                      <resource>http://synapse.koreamed.org/DOIx.php?id=10.4111/icu.2016.57.6.384</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

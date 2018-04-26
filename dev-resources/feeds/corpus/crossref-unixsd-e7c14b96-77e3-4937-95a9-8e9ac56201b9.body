@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1017/S0954579416000973</doi>
+        <crm-item name="publisher-name" type="string">Cambridge University Press (CUP)</crm-item>
+        <crm-item name="prefix-name" type="string">Cambridge University Press</crm-item>
+        <crm-item name="member-id" type="number">56</crm-item>
+        <crm-item name="citation-id" type="number">85895711</crm-item>
+        <crm-item name="journal-id" type="number">6012</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017071302560200586</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1017</crm-item>
+        <crm-item name="last-update" type="date">2017-07-13T13:57:13Z</crm-item>
+        <crm-item name="created" type="date">2016-10-20T08:44:21Z</crm-item>
+        <crm-item name="citedby-count" type="number">1</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Development and Psychopathology</full_title>
+                <abbrev_title>Dev Psychopathol</abbrev_title>
+                <issn media_type="print">0954-5794</issn>
+                <issn media_type="electronic">1469-2198</issn>
+                <coden>applab</coden>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>08</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>29</volume>
+                </journal_volume>
+                <issue>03</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The endocrinology of human caregiving and its intergenerational transmission</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Peter A.</given_name>
+                    <surname>Bos</surname>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1" abstract-type="normal">
+                  <jats:title>Abstract</jats:title>
+                  <jats:p>Variation in the quality of parental care has a tremendous impact on a child's social–emotional development. Research investigating the predictors of this variability in human caregiving behavior has mostly focused on learning mechanisms. Evidence is currently accumulating for the complementary underlying role of steroid hormones and neuropeptides. An overview is provided of the hormones and neuropeptides relevant for human caregiving behavior. Then the developmental factors are described that stimulate variability in sensitivity to these hormones and neuropeptides, which may result in variability in the behavioral repertoire of caregiving. The role of genetic variation in neuropeptide and steroid receptors, the role of testosterone and oxytocin during fetal development and parturition, and the impact of experienced caregiving in childhood on functioning of the neuroendocrine stress and oxytocin system are discussed. Besides providing a heuristic framework for further research on the ontogenetic development of human caregiving, a neuroendocrine model is also presented for the intergenerational transmission of caregiving practices. Insight into the underlying biological mechanisms that bring about maladaptive caregiving behavior, such as neglect and insensitive parenting, will hopefully result in more efficient approaches to reduce the high prevalence of such behavior and to minimize the impact on those affected.</jats:p>
+                </jats:abstract>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>20</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>08</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>971</first_page>
+                  <last_page>999</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">S0954579416000973</identifier>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.1017/S0954579416000973</doi>
+                  <resource>https://www.cambridge.org/core/product/identifier/S0954579416000973/type/journal_article</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S0954579416000973</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="S0954579416000973_ref191">
+                    <doi>10.1038/nn.2270</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref190">
+                    <journal_title>Endocrine Reviews</journal_title>
+                    <volume>20</volume>
+                    <first_page>279</first_page>
+                    <cYear>1999</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref229">
+                    <doi>10.1523/JNEUROSCI.3422-03.2004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref228">
+                    <doi>10.1002/da.22392</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref227">
+                    <doi>10.1016/j.neuroscience.2009.12.016</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref226">
+                    <doi>10.1080/14616734.2012.706394</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref225">
+                    <doi>10.1093/cercor/bhs163</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref224">
+                    <doi>10.1162/jocn_a_00445</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref171">
+                    <doi>10.1016/j.biopsych.2012.05.027</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref170">
+                    <doi>10.1016/j.psyneuen.2013.02.014</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref209">
+                    <doi>10.1002/hbm.22866</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref208">
+                    <doi>10.1016/j.biopsycho.2012.10.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref207">
+                    <doi>10.1016/j.yfrne.2009.04.012</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref206">
+                    <volume_title>An introduction to behavioral endocrinology</volume_title>
+                    <cYear>2005</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref205">
+                    <doi>10.1016/S0149-7634(97)00052-3</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref204">
+                    <doi>10.1016/j.psyneuen.2010.04.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref203">
+                    <doi>10.1016/j.dcn.2012.04.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref223">
+                    <doi>10.1002/hbm.22684</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref222">
+                    <doi>10.1016/j.neuroscience.2011.02.014</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref189">
+                    <doi>10.1111/j.1749-6632.2010.05568.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref221">
+                    <doi>10.1037/a0035959</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref188">
+                    <doi>10.1016/j.neubiorev.2013.04.018</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref220">
+                    <doi>10.1007/s00213-010-2009-2</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref187">
+                    <doi>10.1038/nn.3084</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref186">
+                    <doi>10.1017/S0954579410000222</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref185">
+                    <doi>10.1073/pnas.1305579110</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref184">
+                    <doi>10.1093/scan/nst166</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref183">
+                    <doi>10.1016/j.psyneuen.2016.01.025</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref182">
+                    <doi>10.1007/s00213-012-2775-0</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref181">
+                    <doi>10.1016/j.psyneuen.2009.04.013</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref180">
+                    <doi>10.1177/0956797610362676</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref219">
+                    <doi>10.1111/j.1749-6632.1997.tb51914.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref218">
+                    <doi>10.1016/j.biopsych.2009.02.004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref217">
+                    <doi>10.1006/hbeh.1998.1461</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref216">
+                    <doi>10.1016/j.chiabu.2010.05.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref215">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref214">
+                    <doi>10.1038/npp.2014.145</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref213">
+                    <doi>10.1016/j.yfrne.2014.03.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref212">
+                    <doi>10.1037/a0039765</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref179">
+                    <doi>10.1016/j.pnpbp.2012.10.005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref211">
+                    <doi>10.1016/j.neubiorev.2009.07.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref178">
+                    <doi>10.1002/da.22245</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref210">
+                    <doi>10.1016/j.mehy.2013.07.044</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref177">
+                    <doi>10.1001/archpsyc.1985.01790270095011</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref176">
+                    <doi>10.1038/nrn2639</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref175">
+                    <doi>10.1016/j.neuroimage.2015.01.042</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref174">
+                    <doi>10.1002/dev.21328</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref173">
+                    <doi>10.1016/j.ijpsycho.2012.10.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref172">
+                    <doi>10.1523/JNEUROSCI.4389-11.2012</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref202">
+                    <doi>10.1037/13948-000</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref169">
+                    <doi>10.1016/j.biopsych.2006.06.021</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref201">
+                    <journal_title>Schizophrenia Bulletin</journal_title>
+                    <volume>33</volume>
+                    <first_page>3</first_page>
+                    <cYear>2007</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref168">
+                    <doi>10.1080/87565649809540714</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref200">
+                    <doi>10.1016/j.psyneuen.2014.04.022</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref167">
+                    <doi>10.1016/j.brainres.2007.04.042</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref166">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <cYear>2016</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref165">
+                    <volume_title>The impact of early life trauma on health and disease: The hidden epidemic</volume_title>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref164">
+                    <doi>10.1016/j.yfrne.2004.05.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref163">
+                    <doi>10.1016/j.neulet.2012.07.016</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref162">
+                    <doi>10.1016/j.yhbeh.2010.01.014</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref161">
+                    <doi>10.1073/pnas.1323099111</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref160">
+                    <doi>10.1002/dev.21370</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref159">
+                    <doi>10.1016/j.biopsycho.2012.08.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref158">
+                    <doi>10.1038/npp.2014.140</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref157">
+                    <journal_title>Nature Neuroscience</journal_title>
+                    <author>Pariante</author>
+                    <volume>16</volume>
+                    <first_page>33</first_page>
+                    <cYear>2013</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref156">
+                    <doi>10.1523/JNEUROSCI.3984-05.2005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref155">
+                    <doi>10.1016/j.bbr.2011.04.025</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref154">
+                    <doi>10.1192/bjp.bp.111.093062</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref153">
+                    <journal_title>Acta Paediatrica</journal_title>
+                    <volume>83</volume>
+                    <first_page>47</first_page>
+                    <cYear>1994</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref152">
+                    <volume_title>The Oxford handbook of childhood and education in the classical world</volume_title>
+                    <author>Bell</author>
+                    <first_page>381</first_page>
+                    <cYear>2013</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref151">
+                    <doi>10.1111/j.1469-445X.2000.tb00014.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref150">
+                    <doi>10.1016/S0166-4328(03)00077-9</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref149">
+                    <doi>10.1080/14616734.2012.661217</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref148">
+                    <doi>10.1177/1088868314541858</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref147">
+                    <doi>10.1016/j.tics.2006.02.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref146">
+                    <doi>10.1111/jcpp.12287</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref145">
+                    <doi>10.1210/edrv-12-2-118</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref144">
+                    <doi>10.1038/35053579</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref143">
+                    <doi>10.1093/scan/nsw006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref142">
+                    <doi>10.1007/s10519-010-9404-7</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref141">
+                    <doi>10.1016/j.yhbeh.2012.11.008</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref140">
+                    <doi>10.1038/mp.2013.96</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref139">
+                    <volume_title>Mothers and others: The evolutionary origins of mutual understanding</volume_title>
+                    <cYear>2009</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref138">
+                    <volume_title>Attachment and bonding: A new synthesis</volume_title>
+                    <author>Carter</author>
+                    <first_page>9</first_page>
+                    <cYear>2005</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref137">
+                    <doi>10.1080/15374416.2013.804387</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref136">
+                    <doi>10.1016/j.jpsychires.2013.03.009</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref135">
+                    <doi>10.1038/nature13028</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref134">
+                    <doi>10.1016/j.biopsych.2013.04.021</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref133">
+                    <doi>10.1126/science.1243091</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref132">
+                    <doi>10.1016/j.biopsycho.2008.12.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref131">
+                    <doi>10.1016/j.biopsych.2007.05.013</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref130">
+                    <doi>10.1016/j.tins.2014.03.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref129">
+                    <doi>10.1016/j.neuroimage.2010.04.019</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref128">
+                    <doi>10.1080/1025389021000010530</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref127">
+                    <doi>10.1016/S0006-3223(03)00465-7</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref126">
+                    <doi>10.1038/mp.2008.112</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref125">
+                    <doi>10.1016/j.psyneuen.2008.03.008</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref124">
+                    <doi>10.1016/S0006-3223(01)01157-X</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref123">
+                    <doi>10.1038/npp.2014.120</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref122">
+                    <doi>10.1016/j.yhbeh.2014.11.010</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref121">
+                    <doi>10.1017/S0954579401003066</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref120">
+                    <doi>10.1017/S095457940100311X</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref119">
+                    <doi>10.1016/j.yhbeh.2012.01.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref118">
+                    <doi>10.1016/j.psyneuen.2009.01.005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref117">
+                    <doi>10.1016/j.biopsych.2015.06.028</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref116">
+                    <doi>10.1093/scan/nsu020</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref115">
+                    <doi>10.1186/1741-7015-7-62</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref114">
+                    <volume_title>Fatherhood: Evolution and human paternal behavior</volume_title>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref113">
+                    <doi>10.1016/j.yhbeh.2010.04.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref112">
+                    <doi>10.1016/j.yfrne.2009.05.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref111">
+                    <doi>10.1016/j.yhbeh.2007.03.028</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref110">
+                    <doi>10.1016/j.jaac.2012.04.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref109">
+                    <doi>10.1016/j.psyneuen.2012.11.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref108">
+                    <doi>10.1016/S0140-6736(08)61706-7</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref107">
+                    <doi>10.1073/pnas.1105403108</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref106">
+                    <doi>10.1038/nn.3695</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref105">
+                    <doi>10.3109/10673229.2011.549771</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref104">
+                    <doi>10.1073/pnas.0504767102</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref103">
+                    <journal_title>Journal of Human Lactation</journal_title>
+                    <cYear>2016</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref102">
+                    <doi>10.1006/hbeh.1997.1407</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref101">
+                    <doi>10.1006/hbeh.1997.1376</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref100">
+                    <doi>10.1006/hbeh.2002.1840</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref91">
+                    <doi>10.1016/j.yhbeh.2016.01.016</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref90">
+                    <doi>10.1016/j.biopsycho.2009.09.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref89">
+                    <doi>10.1016/j.psyneuen.2007.11.004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref88">
+                    <doi>10.1017/S0954579410000611</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref87">
+                    <doi>10.1037/0033-2909.130.6.920</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref86">
+                    <doi>10.1126/science.7209510</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref85">
+                    <doi>10.1111/j.1749-6632.2009.04541.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref84">
+                    <doi>10.1080/17470919.2013.807301</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref83">
+                    <doi>10.1016/j.yfrne.2015.04.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref82">
+                    <doi>10.1016/j.infbeh.2008.04.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref81">
+                    <doi>10.1016/j.biopsych.2008.10.011</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref80">
+                    <doi>10.1016/S0079-6123(08)00402-0</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref79">
+                    <doi>10.1073/pnas.93.21.11980</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref78">
+                    <doi>10.1016/j.euroneuro.2008.08.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref77">
+                    <doi>10.1016/j.dcn.2011.06.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref76">
+                    <volume_title>Handbook of developmental social neuroscience</volume_title>
+                    <cYear>2009</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref75">
+                    <doi>10.1073/pnas.1015316108</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref74">
+                    <doi>10.1126/science.1189047</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref73">
+                    <doi>10.1016/j.psyneuen.2011.10.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref72">
+                    <journal_title>Biological Psychiatry</journal_title>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref71">
+                    <volume_title>Heroes, rogues, and lovers: Testosterone and behavior</volume_title>
+                    <cYear>2000</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref70">
+                    <doi>10.1016/j.tree.2005.05.018</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref69">
+                    <doi>10.1037/a0022939</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref68">
+                    <doi>10.1016/j.psyneuen.2010.06.005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref67">
+                    <doi>10.1038/nrn3313</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref66">
+                    <doi>10.1016/j.infbeh.2015.06.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref65">
+                    <doi>10.1016/j.psyneuen.2012.10.017</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref64">
+                    <doi>10.1111/j.1469-7610.2008.01979.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref63">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <volume>18</volume>
+                    <first_page>623</first_page>
+                    <cYear>2006</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref62">
+                    <journal_title>Translational Psychiatry</journal_title>
+                    <volume>5</volume>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref61">
+                    <doi>10.1038/mp.2014.1</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref60">
+                    <doi>10.1016/j.yhbeh.2011.02.016</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref59">
+                    <doi>10.1093/nar/22.15.3181</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref58">
+                    <doi>10.1177/0956797611435528</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref57">
+                    <doi>10.1038/mp.2014.95</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref56">
+                    <volume_title>Handbook of attachment: Theory, research, and clinical applications</volume_title>
+                    <cYear>2008</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref55">
+                    <doi>10.1196/annals.1384.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref54">
+                    <doi>10.1146/annurev-psych-010213-115110</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref53">
+                    <doi>10.1016/S0306-4530(98)00055-9</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref52">
+                    <doi>10.1111/j.1523-536X.2009.00307.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref51">
+                    <journal_title>Nature Neuroscience</journal_title>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref99">
+                    <doi>10.1111/j.1467-9280.2007.02010.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref98">
+                    <doi>10.1017/S0954579415000048</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref97">
+                    <doi>10.1007/s00213-014-3631-1</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref96">
+                    <doi>10.1086/303323</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref95">
+                    <doi>10.1177/2167702614527948</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref94">
+                    <doi>10.1038/npp.2015.123</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref93">
+                    <doi>10.1002/hbm.22553</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref92">
+                    <doi>10.1016/j.yfrne.2004.09.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref50">
+                    <doi>10.1073/pnas.1518825113</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref49">
+                    <doi>10.1016/j.yhbeh.2009.03.022</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref48">
+                    <doi>10.1016/0169-328X(94)00260-L</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref47">
+                    <doi>10.1523/JNEUROSCI.2633-14.2015</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref46">
+                    <doi>10.1016/j.yfrne.2014.11.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref45">
+                    <volume_title>Handbook of attachment: Theory, research, and clinical applications</volume_title>
+                    <author>Cassidy</author>
+                    <cYear>2008</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref44">
+                    <doi>10.1210/en.2010-0041</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref43">
+                    <volume_title>Attachment: Vol. 1. Attachment and loss</volume_title>
+                    <cYear>1983</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref42">
+                    <doi>10.1038/npp.2015.247</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref41">
+                    <doi>10.1016/j.yhbeh.2011.11.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref40">
+                    <doi>10.1073/pnas.0807412105</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref39">
+                    <doi>10.1523/JNEUROSCI.1342-05.2005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref38">
+                    <doi>10.1016/j.psyneuen.2012.09.005</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref37">
+                    <doi>10.1073/pnas.0911700107</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref20">
+                    <doi>10.1073/pnas.1012669107</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref299">
+                    <doi>10.1016/j.biopsych.2012.06.011</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref298">
+                    <doi>10.1016/j.psyneuen.2015.04.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref297">
+                    <doi>10.1016/j.bbr.2015.02.028</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref296">
+                    <doi>10.1073/pnas.0812612106</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref295">
+                    <doi>10.1073/pnas.91.1.400</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref294">
+                    <doi>10.1523/JNEUROSCI.1526-14.2014</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref293">
+                    <doi>10.1046/j.1365-2826.2002.00798.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref292">
+                    <doi>10.1016/j.physbeh.2010.05.004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref36">
+                    <doi>10.1016/j.yfrne.2011.01.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref35">
+                    <doi>10.1002/hbm.22537</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref34">
+                    <doi>10.1016/j.neuroimage.2015.03.049</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref33">
+                    <doi>10.1016/j.neuroimage.2012.04.002</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref32">
+                    <doi>10.1016/j.psyneuen.2009.09.013</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref31">
+                    <doi>10.1136/bmj.h2410</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref30">
+                    <journal_title>Personality and Individual Differences</journal_title>
+                    <volume>60</volume>
+                    <first_page>S47</first_page>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref29">
+                    <doi>10.1002/syn.20791</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref28">
+                    <doi>10.1080/17470919.2014.932307</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref27">
+                    <doi>10.1016/j.physbeh.2014.04.028</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref26">
+                    <doi>10.1007/978-94-007-7208-3</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref25">
+                    <journal_title>Psychological Science</journal_title>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref24">
+                    <doi>10.1016/j.psyneuen.2015.09.004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref23">
+                    <journal_title>Nature Reviews Neuroscience</journal_title>
+                    <volume>16</volume>
+                    <first_page>498</first_page>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref22">
+                    <doi>10.1017/S0954579400000481</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref21">
+                    <volume_title>Attachment and bonding: A new synthesis</volume_title>
+                    <author>Carter</author>
+                    <first_page>169</first_page>
+                    <cYear>2005</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref291">
+                    <doi>10.1016/j.yfrne.2009.03.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref290">
+                    <doi>10.1037/0735-7044.116.2.206</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref19">
+                    <journal_title>Trends in Cognitive Science</journal_title>
+                    <volume>15</volume>
+                    <first_page>301</first_page>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref18">
+                    <doi>10.1093/scan/nsq085</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref17">
+                    <doi>10.1038/mp.2014.48</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref16">
+                    <doi>10.1111/j.1749-6632.2009.04467.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref15">
+                    <doi>10.1016/j.yfrne.2013.07.008</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref14">
+                    <doi>10.1111/j.1749-6632.2008.03637.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref13">
+                    <doi>10.1007/s11920-009-0010-4</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref12">
+                    <doi>10.1093/scan/nsr067</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref11">
+                    <doi>10.1097/YPG.0b013e3283643684</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref10">
+                    <doi>10.1038/tp.2013.34</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref289">
+                    <doi>10.1016/j.psyneuen.2009.09.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref288">
+                    <journal_title>Frontiers in Psychology</journal_title>
+                    <volume>2</volume>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref287">
+                    <journal_title>Journal of Neuroendocrinology</journal_title>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref286">
+                    <doi>10.1016/j.psyneuen.2011.07.008</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref285">
+                    <doi>10.1111/j.1750-8606.2010.00127.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref284">
+                    <doi>10.1037/0033-2909.117.3.387</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref283">
+                    <doi>10.1073/pnas.1011891108</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref282">
+                    <journal_title>Hormones and Behavior</journal_title>
+                    <volume>6</volume>
+                    <first_page>31</first_page>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref281">
+                    <doi>10.1016/j.psyneuen.2011.06.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref280">
+                    <doi>10.1016/j.yhbeh.2014.11.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref9">
+                    <doi>10.1093/scan/nsn004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref8">
+                    <doi>10.1037/a0016129</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref7">
+                    <doi>10.1016/j.psyneuen.2012.09.015</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref6">
+                    <doi>10.1111/j.1467-9280.2009.02279.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref5">
+                    <doi>10.1016/j.brainres.2013.10.052</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref4">
+                    <doi>10.1176/appi.ajp.2013.12121597</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref3">
+                    <doi>10.1016/j.neubiorev.2008.09.009</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref2">
+                    <doi>10.1016/j.amepre.2010.03.015</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref1">
+                    <doi>10.1098/rspb.1980.0116</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref279">
+                    <journal_title>Translational Psychiatry</journal_title>
+                    <volume>2</volume>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref278">
+                    <journal_title>PLOS ONE</journal_title>
+                    <volume>7</volume>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref277">
+                    <doi>10.1016/j.biopsych.2008.01.011</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref276">
+                    <doi>10.1093/scan/nsr037</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref275">
+                    <volume_title>Sexual selection and the descent of man</volume_title>
+                    <first_page>136</first_page>
+                    <cYear>1972</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref274">
+                    <journal_title>Child Maltreatment</journal_title>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref273">
+                    <doi>10.1098/rspb.2001.1954</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref272">
+                    <doi>10.1016/j.psyneuen.2014.01.012</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref271">
+                    <doi>10.1073/pnas.0600406103</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref270">
+                    <doi>10.1097/DBP.0b013e318257fac3</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref307">
+                    <doi>10.1177/0956797615615868</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref306">
+                    <doi>10.1016/j.yhbeh.2010.12.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref305">
+                    <doi>10.1146/annurev.psych.60.110707.163625</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref304">
+                    <doi>10.1038/npp.2012.149</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref303">
+                    <doi>10.1016/j.biopsych.2011.05.016</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref302">
+                    <doi>10.1016/j.yhbeh.2006.08.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref301">
+                    <doi>10.1038/npp.2014.36</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref269">
+                    <doi>10.1016/j.psyneuen.2014.10.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref268">
+                    <doi>10.1111/j.1469-7610.2008.01963.x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref267">
+                    <doi>10.1016/j.brainres.2014.03.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref266">
+                    <doi>10.1016/j.neubiorev.2013.10.015</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref265">
+                    <doi>10.1038/npp.2009.103</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref264">
+                    <doi>10.1016/j.yhbeh.2015.07.024</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref263">
+                    <doi>10.1016/j.yhbeh.2011.07.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref262">
+                    <doi>10.1007/s00127-012-0549-y</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref261">
+                    <doi>10.1207/S15327922PAR011&amp;2_5</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref260">
+                    <doi>10.1017/S1461145712000533</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref259">
+                    <doi>10.1038/npp.2011.74</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref258">
+                    <doi>10.1016/j.yhbeh.2011.06.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref257">
+                    <doi>10.1073/pnas.1121259109</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref256">
+                    <doi>10.1038/522410a</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref255">
+                    <doi>10.1038/npp.2013.86</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref254">
+                    <volume_title>Cesarean section—A brief history</volume_title>
+                    <cYear>1993</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref253">
+                    <doi>10.1111/cdev.12136</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref252">
+                    <volume_title>Handbook of developmental research methods</volume_title>
+                    <author>Laursen</author>
+                    <first_page>265</first_page>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref251">
+                    <doi>10.1016/j.neuroimage.2016.04.009</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref250">
+                    <journal_title>Frontiers in Psychology</journal_title>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref249">
+                    <journal_title>PLOS ONE</journal_title>
+                    <volume>6</volume>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref248">
+                    <doi>10.1080/14616734.2015.1029951</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref247">
+                    <doi>10.1016/j.pnpbp.2010.09.017</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref246">
+                    <doi>10.1098/rstb.2012.0344</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref245">
+                    <volume_title>Attachment and bonding: A new synthesis</volume_title>
+                    <author>Carter</author>
+                    <first_page>119</first_page>
+                    <cYear>2005</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref244">
+                    <doi>10.1002/dev.21138</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref243">
+                    <doi>10.1016/j.yfrne.2009.05.004</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref242">
+                    <doi>10.1098/rspb.2009.1538</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref241">
+                    <doi>10.1037/0022-3514.92.4.678</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref240">
+                    <doi>10.1126/science.1252723</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref239">
+                    <doi>10.1016/j.psyneuen.2013.09.022</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref238">
+                    <doi>10.1016/j.neuropsychologia.2012.12.017</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref237">
+                    <doi>10.1016/j.euroneuro.2013.01.011</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref236">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>37</volume>
+                    <first_page>1257</first_page>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref235">
+                    <doi>10.1016/j.biopsych.2011.02.006</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref234">
+                    <doi>10.1016/j.psyneuen.2012.12.023</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref233">
+                    <doi>10.1037/0033-2909.128.2.330</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref232">
+                    <doi>10.1016/j.jpsychires.2015.03.012</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref199">
+                    <doi>10.1007/s11031-011-9264-3</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref231">
+                    <doi>10.1016/j.psyneuen.2010.12.001</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref198">
+                    <doi>10.1007/s00406-013-0452-x</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref230">
+                    <doi>10.1073/pnas.1422096112</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref197">
+                    <doi>10.1016/S0145-2134(02)00506-9</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref196">
+                    <journal_title>Frontiers in Endocrinology</journal_title>
+                    <volume>6</volume>
+                    <first_page>76</first_page>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref195">
+                    <doi>10.1016/j.yhbeh.2015.06.003</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref194">
+                    <journal_title>Frontiers in Behavioral Neuroscience</journal_title>
+                    <volume>8</volume>
+                    <first_page>21</first_page>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="S0954579416000973_ref193">
+                    <doi>10.1016/j.biopsych.2006.09.007</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref192">
+                    <doi>10.1146/annurev.neuro.24.1.1161</doi>
+                  </citation>
+                  <citation key="S0954579416000973_ref300">
+                    <doi>10.1126/science.1259917</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1002/jnr.23820</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (John Wiley &amp; Sons)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86186561</crm-item>
+        <crm-item name="journal-id" type="number">1</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171110080141188</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1002</crm-item>
+        <crm-item name="last-update" type="date">2017-11-10T13:04:33Z</crm-item>
+        <crm-item name="created" type="date">2016-11-07T05:28:47Z</crm-item>
+        <crm-item name="citedby-count" type="number">1</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Journal of Neuroscience Research</full_title>
+                <abbrev_title>Journal of Neuroscience Research</abbrev_title>
+                <issn>03604012</issn>
+              </journal_metadata>
+              <journal_issue>
+                <contributors>
+                  <person_name contributor_role="editor" sequence="first">
+                    <given_name>Larry</given_name>
+                    <surname>Cahill</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <day>02</day>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>95</volume>
+                </journal_volume>
+                <issue>1-2</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Sex differences in associations of arginine vasopressin and oxytocin with resting-state functional brain connectivity</title>
+                  <subtitle>Sex Differences, Hormones, and Resting-State</subtitle>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Leah H.</given_name>
+                    <surname>Rubin</surname>
+                    <affiliation>Department of Psychiatry; University of Illinois at Chicago; Chicago Illinois</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Li</given_name>
+                    <surname>Yao</surname>
+                    <affiliation>Department of Radiology; West China Hospital of Sichuan University; Chengdu People's Republic of China</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sarah K.</given_name>
+                    <surname>Keedy</surname>
+                    <affiliation>Psychiatry; University of Chicago; Chicago Illinois</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>James L.</given_name>
+                    <surname>Reilly</surname>
+                    <affiliation>Department of Psychiatry and Behavioral Sciences; Northwestern University; Chicago Illinois</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jeffrey R.</given_name>
+                    <surname>Bishop</surname>
+                    <affiliation>Pharmacy and Psychiatry; University of Minnesota; Minneapolis Minnesota</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>C. Sue</given_name>
+                    <surname>Carter</surname>
+                    <affiliation>Kinsey Institute; Bloomington Indiana</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Hossein</given_name>
+                    <surname>Pournajafi-Nazarloo</surname>
+                    <affiliation>Kinsey Institute; Bloomington Indiana</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Lauren L.</given_name>
+                    <surname>Drogos</surname>
+                    <affiliation>Departments of Physiology and Pharmacology; Hotchkiss Brain Institute, University of Calgary; Calgary Alberta Canada</affiliation>
+                    <ORCID>http://orcid.org/0000-0003-1160-9391</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Carol A.</given_name>
+                    <surname>Tamminga</surname>
+                    <affiliation>Psychiatry; University of Texas Southwestern Medical Center; Dallas Texas</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Godfrey D.</given_name>
+                    <surname>Pearlson</surname>
+                    <affiliation>Departments of Psychiatry and Neurobiology; Yale University and Olin Neuropsychiatric Research Center; Hartford Connecticut</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Matcheri S.</given_name>
+                    <surname>Keshavan</surname>
+                    <affiliation>Department of Psychiatry; Beth Israel Deaconess Medical Center and Harvard Medical School; Boston Massachusetts</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Brett A.</given_name>
+                    <surname>Clementz</surname>
+                    <affiliation>Department of Psychology; University of Georgia; Athens Georgia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Scot K.</given_name>
+                    <surname>Hill</surname>
+                    <affiliation>Department of Psychology; Rosalind Franklin University of Medicine and Science; North Chicago Illinois</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Wei</given_name>
+                    <surname>Liao</surname>
+                    <affiliation>Center for Information in Biomedicine, Key Laboratory for Neuroinformation of Ministry of Education, School of Life Science and Technology; University of Electronic Science and Technology of China; Chengdu People's Republic of China</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Gong-Jun</given_name>
+                    <surname>Ji</surname>
+                    <affiliation>Laboratory of Cognitive Neuropsychology, Department of Medical Psychology; Anhui Medical University; Hefei People's Republic of China</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Su</given_name>
+                    <surname>Lui</surname>
+                    <affiliation>Department of Radiology; West China Hospital of Sichuan University; Chengdu People's Republic of China</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>John A.</given_name>
+                    <surname>Sweeney</surname>
+                    <affiliation>Department of Radiology; West China Hospital of Sichuan University; Chengdu People's Republic of China</affiliation>
+                    <affiliation>Psychiatry; University of Texas Southwestern Medical Center; Dallas Texas</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <day>02</day>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>07</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>576</first_page>
+                  <last_page>586</last_page>
+                </pages>
+                <archive_locations>
+                  <archive name="Portico" />
+                </archive_locations>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Brain and Behavior Research Foundation
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000874</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">2012 NARSAD Young Investigator</fr:assertion>
+                    <fr:assertion name="award_number">Program for Changjiang Scholars and Innovative Res</fr:assertion>
+                    <fr:assertion name="award_number">National Natural Science Foundation of China; 8137</fr:assertion>
+                    <fr:assertion name="award_number">MH083126</fr:assertion>
+                    <fr:assertion name="award_number">MH078113</fr:assertion>
+                    <fr:assertion name="award_number">MH077945</fr:assertion>
+                    <fr:assertion name="award_number">MH077862</fr:assertion>
+                    <fr:assertion name="award_number">MH077852</fr:assertion>
+                    <fr:assertion name="award_number">MH077851</fr:assertion>
+                    <fr:assertion name="award_number">K12HD055892</fr:assertion>
+                    <fr:assertion name="award_number">K08MH083888</fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="tdm">http://doi.wiley.com/10.1002/tdm_license_1.1</ai:license_ref>
+                  <ai:license_ref applies_to="vor" start_date="2016-11-07">http://onlinelibrary.wiley.com/termsAndConditions#vor</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1002/jnr.23820</doi>
+                  <resource>http://doi.wiley.com/10.1002/jnr.23820</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1002/jnr.23820/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fjnr.23820</resource>
+                    </item>
+                    <item>
+                      <resource content_version="vor">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fjnr.23820</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1002/jnr.23820-BIB0001|jnr23820-cit-0001">
+                    <author>Achard</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1371/journal.pcbi.0030017</doi>
+                    <article_title>Efficiency and cost of economical brain functional networks</article_title>
+                    <journal_title>PLoS Comp Biol</journal_title>
+                    <volume>3</volume>
+                    <first_page>e17</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0002|jnr23820-cit-0002">
+                    <author>Allen</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.3389/fnsys.2011.00002</doi>
+                    <article_title>A baseline for the multivariate comparison of resting-state networks</article_title>
+                    <journal_title>Front Syst Neurosci</journal_title>
+                    <volume>5</volume>
+                    <first_page>2</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0003|jnr23820-cit-0003">
+                    <author>Andreano</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1101/lm.918309</doi>
+                    <article_title>Sex influences on the neurobiology of learning and memory</article_title>
+                    <journal_title>Learn Mem</journal_title>
+                    <volume>16</volume>
+                    <first_page>248</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0004|jnr23820-cit-0004">
+                    <author>Biswal</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1073/pnas.0911855107</doi>
+                    <article_title>Toward discovery science of human brain function</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>107</volume>
+                    <first_page>4734</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0005|jnr23820-cit-0005">
+                    <author>Bluhm</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1097/WNR.0b013e328300ebbf</doi>
+                    <article_title>Default mode network connectivity: effects of age, sex, and analytic approach</article_title>
+                    <journal_title>Neuroreport</journal_title>
+                    <volume>19</volume>
+                    <first_page>887</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0006|jnr23820-cit-0006">
+                    <author>Bullmore</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1109/42.750253</doi>
+                    <article_title>Global, voxel, and cluster tests, by theory and permutation, for a difference between two groups of structural MR images of the brain</article_title>
+                    <journal_title>IEEE Trans Med Imaging</journal_title>
+                    <volume>18</volume>
+                    <first_page>32</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0007|jnr23820-cit-0007">
+                    <author>Cahill</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1111/j.1749-6632.2003.tb07080.x</doi>
+                    <article_title>Sex-related influences on the neurobiology of emotionally influenced memory</article_title>
+                    <journal_title>Ann N Y Acad Sci</journal_title>
+                    <volume>985</volume>
+                    <first_page>163</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0008|jnr23820-cit-0008">
+                    <author>Carter</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2006.08.025</doi>
+                    <article_title>Sex differences in oxytocin and vasopressin: implications for autism spectrum disorders?</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>176</volume>
+                    <first_page>170</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0009|jnr23820-cit-0009">
+                    <author>Carter</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1196/annals.1384.006</doi>
+                    <article_title>Oxytocin: behavioral associations and potential as a salivary biomarker</article_title>
+                    <journal_title>Ann N Y Acad Sci</journal_title>
+                    <volume>1098</volume>
+                    <first_page>312</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0010|jnr23820-cit-0010">
+                    <author>Carter</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/S0079-6123(08)00427-5</doi>
+                    <article_title>Oxytocin, vasopressin, and sociality</article_title>
+                    <journal_title>Prog Brain Res</journal_title>
+                    <volume>170</volume>
+                    <first_page>331</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0011|jnr23820-cit-0011">
+                    <author>Carter</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1159/000216544</doi>
+                    <article_title>Consequences of early experiences and exposure to oxytocin and vasopressin are sexually dimorphic</article_title>
+                    <journal_title>Dev Neurosci</journal_title>
+                    <volume>31</volume>
+                    <first_page>332</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0012|jnr23820-cit-0012">
+                    <author>Costafreda</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1002/hbm.20221</doi>
+                    <article_title>A systematic review and quantitative appraisal of fMRI studies of verbal fluency: role of the left inferior frontal gyrus</article_title>
+                    <journal_title>Hum Brain Mapp</journal_title>
+                    <volume>27</volume>
+                    <first_page>799</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0013|jnr23820-cit-0013">
+                    <author>Frias</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1080/13825580600678418</doi>
+                    <article_title>Sex differences in cognition are stable over a 10-year period in adulthood and old age</article_title>
+                    <journal_title>Neuropsychol Dev Cogn B Aging Neuropsychol Cogn</journal_title>
+                    <volume>13</volume>
+                    <first_page>574</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0014|jnr23820-cit-0014">
+                    <author>Vries</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2005.07.050</doi>
+                    <article_title>Sexual differentiation of central vasopressin and vasotocin systems in vertebrates: different mechanisms, similar endpoints</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>138</volume>
+                    <first_page>947</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0015|jnr23820-cit-0015">
+                    <author>Domes</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2007.03.025</doi>
+                    <article_title>Oxytocin attenuates amygdala responses to emotional faces regardless of valence</article_title>
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <volume>62</volume>
+                    <first_page>1187</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0016|jnr23820-cit-0016">
+                    <author>Domes</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2009.06.016</doi>
+                    <article_title>Effects of intranasal oxytocin on emotional face processing in women</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>35</volume>
+                    <first_page>83</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0017|jnr23820-cit-0017">
+                    <author>Ebner</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.03.013</doi>
+                    <article_title>Oxytocin's effect on resting-state functional connectivity varies by age and sex</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>69</volume>
+                    <first_page>50</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0018|jnr23820-cit-0018">
+                    <author>Fernandez-Guasti</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1002/1096-9861(20000925)425:3&lt;422::AID-CNE7&gt;3.0.CO;2-H</doi>
+                    <article_title>Sex differences in the distribution of androgen receptors in the human hypothalamus</article_title>
+                    <journal_title>J Comp Neurol</journal_title>
+                    <volume>425</volume>
+                    <first_page>422</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0019|jnr23820-cit-0019">
+                    <author>Filippi</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1002/hbm.21514</doi>
+                    <article_title>The organization of intrinsic brain activity differs between genders: a resting-state fMRI study in a large cohort of young healthy subjects</article_title>
+                    <journal_title>Hum Brain Mapp</journal_title>
+                    <volume>34</volume>
+                    <first_page>1330</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0020|jnr23820-cit-0020">
+                    <author>Frederikse</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1093/cercor/9.8.896</doi>
+                    <article_title>Sex differences in the inferior parietal lobule</article_title>
+                    <journal_title>Cereb Cortex</journal_title>
+                    <volume>9</volume>
+                    <first_page>896</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0021|jnr23820-cit-0021">
+                    <author>Freeman</author>
+                    <cYear>1977</cYear>
+                    <doi provider="crossref">10.2307/3033543</doi>
+                    <article_title>A set of measures of centrality based upon betweenness</article_title>
+                    <journal_title>Sociometry</journal_title>
+                    <volume>40</volume>
+                    <first_page>35</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0022|jnr23820-cit-0022">
+                    <author>Freeman</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2014.04.055</doi>
+                    <article_title>Neuroanatomical distribution of oxytocin and vasopressin 1a receptors in the socially monogamous coppery titi monkey (Callicebus cupreus)</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>273</volume>
+                    <first_page>12</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0023|jnr23820-cit-0023">
+                    <author>Friston</author>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1002/mrm.1910350312</doi>
+                    <article_title>Movement-related effects in fMRI time-series</article_title>
+                    <journal_title>Magn Reson Med</journal_title>
+                    <volume>35</volume>
+                    <first_page>346</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0024|jnr23820-cit-0024">
+                    <author>Goldstein</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1001/archpsyc.59.2.154</doi>
+                    <article_title>Impact of normal sexual dimorphisms on sex differences in structural brain abnormalities in schizophrenia assessed by magnetic resonance imaging</article_title>
+                    <journal_title>Arch Gen Psychiatry</journal_title>
+                    <volume>59</volume>
+                    <first_page>480</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0025|jnr23820-cit-0025">
+                    <author>Goldstein</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1093/cercor/11.6.490</doi>
+                    <article_title>Normal sexual dimorphism of the adult human brain assessed by in vivo magnetic resonance imaging</article_title>
+                    <journal_title>Cereb Cortex</journal_title>
+                    <volume>11</volume>
+                    <first_page>490</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0026|jnr23820-cit-0026">
+                    <author>Gur</author>
+                    <cYear>2013</cYear>
+                    <article_title>Memory in health and in schizophrenia</article_title>
+                    <journal_title>Dialog Clin Neurosci</journal_title>
+                    <volume>15</volume>
+                    <first_page>399</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0027|jnr23820-cit-0027">
+                    <author>Gur</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0165-0270(02)00006-7</doi>
+                    <article_title>A method for obtaining 3-dimensional facial expressions and its standardization for use in neurocognitive studies</article_title>
+                    <journal_title>J Neurosci Methods</journal_title>
+                    <volume>115</volume>
+                    <first_page>137</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0028|jnr23820-cit-0028">
+                    <author>Gur</author>
+                    <cYear>2002</cYear>
+                    <article_title>Gender differences in aging: cognition, emotions, and neuroimaging studies</article_title>
+                    <journal_title>Dialog Clin Neurosci</journal_title>
+                    <volume>4</volume>
+                    <first_page>197</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0029|jnr23820-cit-0029">
+                    <author>Heinrichs</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/S0079-6123(08)00428-7</doi>
+                    <article_title>Neuropeptides and social behaviour: effects of oxytocin and vasopressin in humans</article_title>
+                    <journal_title>Prog Brain Res</journal_title>
+                    <volume>170</volume>
+                    <first_page>337</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0030|jnr23820-cit-0030">
+                    <author>Hjelmervik</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0103492</doi>
+                    <article_title>Resting states are resting traits-an fMRI study of sex differences and menstrual cycle effects in resting-state cognitive control networks</article_title>
+                    <journal_title>PLoS One</journal_title>
+                    <volume>9</volume>
+                    <first_page>e103492</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0031|jnr23820-cit-0031">
+                    <author>Kimura</author>
+                    <cYear>1999</cYear>
+                    <volume_title>Sex and cognition</volume_title>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0032|jnr23820-cit-0032">
+                    <author>Kirsch</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3984-05.2005</doi>
+                    <article_title>Oxytocin modulates neural circuitry for social cognition and fear in humans</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>25</volume>
+                    <first_page>11489</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0033|jnr23820-cit-0033">
+                    <author>Kong</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2010.03.042</doi>
+                    <article_title>Intrinsic functional connectivity of the periaqueductal gray, a resting fMRI study</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>211</volume>
+                    <first_page>215</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0034|jnr23820-cit-0034">
+                    <author>Kramer</author>
+                    <cYear>1988</cYear>
+                    <doi provider="crossref">10.1002/1097-4679(198811)44:6&lt;907::AID-JCLP2270440610&gt;3.0.CO;2-8</doi>
+                    <article_title>Sex differences in verbal learning</article_title>
+                    <journal_title>J Clin Psychol</journal_title>
+                    <volume>44</volume>
+                    <first_page>907</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0035|jnr23820-cit-0035">
+                    <author>Kramer</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1037/0894-4105.11.4.577</doi>
+                    <article_title>Developmental sex differences in verbal learning</article_title>
+                    <journal_title>Neuropsychology</journal_title>
+                    <volume>11</volume>
+                    <first_page>577</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0036|jnr23820-cit-0036">
+                    <author>Kumar</author>
+                    <cYear>2015</cYear>
+                    <article_title>Oxytocin affects the connectivity of the precuneus and the amygdala: a randomized, double-blinded, placebo-controlled neuroimaging trial</article_title>
+                    <journal_title>Int J Neuropsychopharmacol</journal_title>
+                    <first_page>18</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0037|jnr23820-cit-0037">
+                    <author>Lancaster</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.3389/fnhum.2015.00132</doi>
+                    <article_title>Plasma oxytocin explains individual differences in neural substrates of social perception</article_title>
+                    <journal_title>Front Hum Neurosci</journal_title>
+                    <volume>9</volume>
+                    <first_page>132</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0038|jnr23820-cit-0038">
+                    <author>Landgraf</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2004.05.001</doi>
+                    <article_title>Vasopressin and oxytocin release within the brain: a dynamic concept of multiple and variable modes of neuropeptide communication</article_title>
+                    <journal_title>Front Neuroendocrinol</journal_title>
+                    <volume>25</volume>
+                    <first_page>150</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0039|jnr23820-cit-0039">
+                    <author>Latora</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1103/PhysRevLett.87.198701</doi>
+                    <article_title>Efficient behavior of small-world networks</article_title>
+                    <journal_title>Phys Rev Lett</journal_title>
+                    <volume>87</volume>
+                    <first_page>198701</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0040|jnr23820-cit-0040">
+                    <author>Lee</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.3389/fnsys.2013.00100</doi>
+                    <article_title>A novel V1a receptor antagonist blocks vasopressin-induced changes in the CNS response to emotional stimuli: an fMRI study</article_title>
+                    <journal_title>Front Syst Neurosci</journal_title>
+                    <volume>7</volume>
+                    <first_page>100</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0041|jnr23820-cit-0041">
+                    <author>Lischke</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2012.01.011</doi>
+                    <article_title>Oxytocin increases amygdala reactivity to threatening scenes in females</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>37</volume>
+                    <first_page>1431</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0042|jnr23820-cit-0042">
+                    <author>Liu</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1073/pnas.0908073106</doi>
+                    <article_title>Evidence from intrinsic activity that asymmetry of the human brain is controlled by multiple factors</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>106</volume>
+                    <first_page>20499</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0043|jnr23820-cit-0043">
+                    <author>Mann</author>
+                    <cYear>1990</cYear>
+                    <doi provider="crossref">10.1016/0028-3932(90)90141-A</doi>
+                    <article_title>Sex differences in cognitive abilities: a cross-cultural perspective</article_title>
+                    <journal_title>Neuropsychologia</journal_title>
+                    <volume>28</volume>
+                    <first_page>1063</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0044|jnr23820-cit-0044">
+                    <author>Meyer-Lindenberg</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1038/nrn3044</doi>
+                    <article_title>Oxytocin and vasopressin in the human brain: social neuropeptides for translational medicine</article_title>
+                    <journal_title>Nat Rev Neurosci</journal_title>
+                    <volume>12</volume>
+                    <first_page>524</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0045|jnr23820-cit-0045">
+                    <author>Motoki</author>
+                    <cYear>2016</cYear>
+                    <article_title>Are plasma oxytocin and vasopressin levels reflective of amygdala activation during the processing of negative emotions?</article_title>
+                    <journal_title>A preliminary study. Front Psychol</journal_title>
+                    <volume>7</volume>
+                    <first_page>480</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0046|jnr23820-cit-0046">
+                    <author>Ochsner</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2004.06.030</doi>
+                    <article_title>For better or for worse: neural systems supporting the cognitive down- and upregulation of negative emotion</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>23</volume>
+                    <first_page>483</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0047|jnr23820-cit-0047">
+                    <author>Onnela</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1103/PhysRevE.71.065103</doi>
+                    <article_title>Intensity and coherence of motifs in weighted complex networks</article_title>
+                    <journal_title>Phys Rev E Stat Nonlin Soft Matter Phys</journal_title>
+                    <volume>71</volume>
+                    <first_page>065103</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0048|jnr23820-cit-0048">
+                    <author>Petersen</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2013.12.016</doi>
+                    <article_title>Oral contraceptive pill use and menstrual cycle phase are associated with altered resting-state functional connectivity</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>90</volume>
+                    <first_page>24</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0049|jnr23820-cit-0049">
+                    <author>Petrovic</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.4572-07.2008</doi>
+                    <article_title>Oxytocin attenuates affective evaluations of conditioned faces and amygdala activity</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>28</volume>
+                    <first_page>6607</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0050|jnr23820-cit-0050">
+                    <author>Power</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2010.08.017</doi>
+                    <article_title>The development of human functional brain networks</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>67</volume>
+                    <first_page>735</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0051|jnr23820-cit-0051">
+                    <author>Rilling</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2013.09.022</doi>
+                    <article_title>Sex differences in the neural and behavioral response to intranasal oxytocin and vasopressin during human social interaction</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>39</volume>
+                    <first_page>237</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0052|jnr23820-cit-0052">
+                    <author>Ross</author>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1016/S0166-2236(96)10022-9</doi>
+                    <article_title>Schizophrenia, the heteromodal association neocortex, and development: potential for a neurogenetic approach</article_title>
+                    <journal_title>Trends Neurosci</journal_title>
+                    <volume>19</volume>
+                    <first_page>171</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0053|jnr23820-cit-0053">
+                    <author>Rubin</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.schres.2011.06.002</doi>
+                    <article_title>Sex-specific associations between peripheral oxytocin and emotion perception in schizophrenia</article_title>
+                    <journal_title>Schizophr Res</journal_title>
+                    <volume>130</volume>
+                    <first_page>266</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0054|jnr23820-cit-0054">
+                    <author>Rubin</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1093/schbul/sbu027</doi>
+                    <article_title>Reduced levels of vasopressin and reduced behavioral modulation of oxytocin in psychotic disorders</article_title>
+                    <journal_title>Schizophr Bull</journal_title>
+                    <volume>40</volume>
+                    <first_page>1374</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0055|jnr23820-cit-0055">
+                    <author>Rubinov</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2009.10.003</doi>
+                    <article_title>Complex network measures of brain connectivity: uses and interpretations</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>52</volume>
+                    <first_page>1059</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0056|jnr23820-cit-0056">
+                    <author>Ruigrok</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2013.12.004</doi>
+                    <article_title>A meta-analysis of sex differences in human brain structure</article_title>
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <volume>39</volume>
+                    <first_page>34</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0057|jnr23820-cit-0057">
+                    <author>Sacher</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.mri.2012.06.007</doi>
+                    <article_title>Sexual dimorphism in the human brain: evidence from neuroimaging</article_title>
+                    <journal_title>Magn Reson Imag</journal_title>
+                    <volume>31</volume>
+                    <first_page>366</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0058|jnr23820-cit-0058">
+                    <author>Satterthwaite</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2012.08.052</doi>
+                    <article_title>An improved framework for confound regression and filtering for control of motion artifact in the preprocessing of resting-state functional connectivity data</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>64</volume>
+                    <first_page>240</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0059|jnr23820-cit-0059">
+                    <author>Singer</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1037/a0014195</doi>
+                    <article_title>Effects of oxytocin and prosocial behavior on brain responses to direct and vicariously experienced pain</article_title>
+                    <journal_title>Emotion</journal_title>
+                    <volume>8</volume>
+                    <first_page>781</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0060|jnr23820-cit-0060">
+                    <author>Smeltzer</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2005.10.019</doi>
+                    <article_title>Dopamine, oxytocin, and vasopressin receptor binding in the medial prefrontal cortex of monogamous and promiscuous voles</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>394</volume>
+                    <first_page>146</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0061|jnr23820-cit-0061">
+                    <author>Sripada</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1017/S1461145712000533</doi>
+                    <article_title>Oxytocin enhances resting-state connectivity between amygdala and medial frontal cortex</article_title>
+                    <journal_title>Int J Neuropsychopharmacol</journal_title>
+                    <volume>16</volume>
+                    <first_page>255</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0062|jnr23820-cit-0062">
+                    <author>Stevens</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuropsychologia.2012.03.011</doi>
+                    <article_title>Sex differences in brain activation to emotional stimuli: a meta-analysis of neuroimaging studies</article_title>
+                    <journal_title>Neuropsychologia</journal_title>
+                    <volume>50</volume>
+                    <first_page>1578</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0063|jnr23820-cit-0063">
+                    <author>Tomasino</author>
+                    <cYear>2015</cYear>
+                    <article_title>Effects of stimulus type and strategy on mental rotation network: an activation likelihood estimation meta-analysis</article_title>
+                    <journal_title>Front Hum Neurosci</journal_title>
+                    <volume>9</volume>
+                    <first_page>693</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0064|jnr23820-cit-0064">
+                    <author>Tzourio-Mazoyer</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1006/nimg.2001.0978</doi>
+                    <article_title>Automated anatomical labeling of activations in SPM using a macroscopic anatomical parcellation of the MNI MRI single-subject brain</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>15</volume>
+                    <first_page>273</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0065|jnr23820-cit-0065">
+                    <author>Voyer</author>
+                    <cYear>1995</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.117.2.250</doi>
+                    <article_title>Magnitude of sex differences in spatial abilities: a meta-analysis and consideration of critical variables</article_title>
+                    <journal_title>Psychol Bull</journal_title>
+                    <volume>117</volume>
+                    <first_page>250</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0066|jnr23820-cit-0066">
+                    <author>Wagner</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1186/1471-2202-15-19</doi>
+                    <article_title>A coordinate-based ALE functional MRI meta-analysis of brain activation during verbal fluency tasks in healthy control subjects</article_title>
+                    <journal_title>BMC Neurosci</journal_title>
+                    <volume>15</volume>
+                    <first_page>19</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0067|jnr23820-cit-0067">
+                    <author>Wang</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2014.01.003</doi>
+                    <article_title>Action planning and predictive coding when speaking</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>91</volume>
+                    <first_page>91</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0068|jnr23820-cit-0068">
+                    <author>Watts</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1038/30918</doi>
+                    <article_title>Collective dynamics of “small-world” networks</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>393</volume>
+                    <first_page>440</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0069|jnr23820-cit-0069">
+                    <author>Weiss</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0191-8869(02)00288-X</doi>
+                    <article_title>Sex differences in cognitive function</article_title>
+                    <journal_title>Pers Individ Differ</journal_title>
+                    <volume>35</volume>
+                    <first_page>863</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0070|jnr23820-cit-0070">
+                    <author>Weiss</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1017/S1355617706060656</doi>
+                    <article_title>Sex differences in clustering and switching in verbal fluency tasks</article_title>
+                    <journal_title>J Int Neuropsychol Soc</journal_title>
+                    <volume>12</volume>
+                    <first_page>502</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0071|jnr23820-cit-0071">
+                    <author>Weissman-Fogel</author>
+                    <cYear>2010</cYear>
+                    <article_title>Cognitive and default-mode resting-state networks: do male and female brains “rest” differently?</article_title>
+                    <journal_title>Hum Brain Mapp</journal_title>
+                    <volume>31</volume>
+                    <first_page>1713</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0072|jnr23820-cit-0072">
+                    <author>Welton</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1089/brain.2014.0313</doi>
+                    <article_title>Reproducibility of graph-theoretic brain network metrics: a systematic review</article_title>
+                    <journal_title>Brain Connect</journal_title>
+                    <volume>5</volume>
+                    <first_page>193</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0073|jnr23820-cit-0073">
+                    <author>Whittle</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.biopsycho.2011.05.003</doi>
+                    <article_title>Sex differences in the neural correlates of emotion: evidence from neuroimaging</article_title>
+                    <journal_title>Biol Psychol</journal_title>
+                    <volume>87</volume>
+                    <first_page>319</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0074|jnr23820-cit-0074">
+                    <author>Wig</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1111/j.1749-6632.2010.05947.x</doi>
+                    <article_title>Concepts and principles in the analysis of brain networks</article_title>
+                    <journal_title>Ann N Y Acad Sci</journal_title>
+                    <volume>1224</volume>
+                    <first_page>126</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0075|jnr23820-cit-0075">
+                    <author>Williams</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1080/13803390802255635</doi>
+                    <article_title>Explicit identification and implicit recognition of facial emotions. I. Age effects in males and females across 10 decades</article_title>
+                    <journal_title>J Clin Exp Neuropsychol</journal_title>
+                    <volume>31</volume>
+                    <first_page>257</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0076|jnr23820-cit-0076">
+                    <author>Yan</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2013.03.004</doi>
+                    <article_title>A comprehensive assessment of regional variation in the impact of head micromovements on functional connectomics</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>76</volume>
+                    <first_page>183</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0077|jnr23820-cit-0077">
+                    <author>Zhang</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2011.05.018</doi>
+                    <article_title>Disrupted brain connectivity networks in drug-naive, first-episode major depressive disorder</article_title>
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <volume>70</volume>
+                    <first_page>334</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0078|jnr23820-cit-0078">
+                    <author>Zink</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.4899-09.2010</doi>
+                    <article_title>Vasopressin modulates medial prefrontal cortex-amygdala circuitry during emotion processing in humans</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>30</volume>
+                    <first_page>7017</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23820-BIB0079|jnr23820-cit-0079">
+                    <author>Zuo</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2612-10.2010</doi>
+                    <article_title>Growing together and growing apart: regional and sex differences in the lifespan developmental trajectories of functional homotopy</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>30</volume>
+                    <first_page>15034</first_page>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

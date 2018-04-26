@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1007/s00213-016-4480-x</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer-Verlag</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86302853</crm-item>
+        <crm-item name="journal-id" type="number">720</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170111025655662</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1007</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:22:48Z</crm-item>
+        <crm-item name="created" type="date">2016-11-11T10:35:51Z</crm-item>
+        <crm-item name="citedby-count" type="number">9</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Psychopharmacology</full_title>
+                <abbrev_title>Psychopharmacology</abbrev_title>
+                <issn media_type="print">0033-3158</issn>
+                <issn media_type="electronic">1432-2072</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>2</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>234</volume>
+                </journal_volume>
+                <issue>3</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Acute oxytocin improves memory and gaze following in male but not female nursery-reared infant macaques</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Elizabeth A.</given_name>
+                    <surname>Simpson</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Annika</given_name>
+                    <surname>Paukner</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Valentina</given_name>
+                    <surname>Sclafani</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Stefano S. K.</given_name>
+                    <surname>Kaburu</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Stephen J.</given_name>
+                    <surname>Suomi</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Pier F.</given_name>
+                    <surname>Ferrari</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>11</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>2</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>497</first_page>
+                  <last_page>506</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">4480</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Eunice Kennedy Shriver National Institute of Child Health and Human Development
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100009633</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">P01HD064653</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">Division of Intramural Research, Eunice Kennedy Shriver National Institute of Child Health and Human Development</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          University of Miami
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100006686</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">James W. McLamore Provost Research Award in Social</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1007/s00213-016-4480-x</doi>
+                  <timestamp>20170111025655662</timestamp>
+                  <resource>http://link.springer.com/10.1007/s00213-016-4480-x</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s00213-016-4480-x.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s00213-016-4480-x.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://link.springer.com/article/10.1007/s00213-016-4480-x/fulltext.html</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="4480_CR1">
+                    <journal_title>Psychopharmacology</journal_title>
+                    <author>TG Aigner</author>
+                    <volume>92</volume>
+                    <first_page>292</first_page>
+                    <cYear>1987</cYear>
+                    <doi provider="crossref">10.1007/BF00210833</doi>
+                    <unstructured_citation>Aigner TG, Mitchell SJ, Aggleton JP, DeLong MR, Struble RG, Price DL, Wenk GL, Mishkin M (1987) Effects of scopolamine and physostigmine on recognition memory in monkeys with ibotenic-acid lesions of the nucleus basalis of Meynert. Psychopharmacology 92:292–300</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR2">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>J Bachevalier</author>
+                    <volume>16</volume>
+                    <first_page>177</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1016/0306-4530(91)90077-7</doi>
+                    <unstructured_citation>Bachevalier J, Hagger C (1991) Sex differences in the development of learning abilities in primates. Psychoneuroendocrinology 16:177–188</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR3">
+                    <journal_title>Horm Behav</journal_title>
+                    <author>KL Bales</author>
+                    <volume>44</volume>
+                    <first_page>178</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0018-506X(03)00154-5</doi>
+                    <unstructured_citation>Bales KL, Carter CS (2003) Sex differences and developmental effects of oxytocin on aggression and social behavior in prairie voles (Microtus ochrogaster). Horm Behav 44:178–184</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR4">
+                    <journal_title>Q J Exp Psychol</journal_title>
+                    <author>AP Bayliss</author>
+                    <volume>58</volume>
+                    <first_page>631</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1080/02724980443000124</doi>
+                    <unstructured_citation>Bayliss AP, Pellegrino GD, Tipper SP (2005) Sex differences in eye gaze and symbolic cueing of attention. Q J Exp Psychol 58:631–650</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR5">
+                    <journal_title>J Exper Child Psychol</journal_title>
+                    <author>R Brooks</author>
+                    <volume>130</volume>
+                    <first_page>67</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.jecp.2014.09.010</doi>
+                    <unstructured_citation>Brooks R, Meltzoff AN (2015) Connecting the dots from infancy to childhood: a longitudinal study connecting gaze following, language, and explicit theory of mind. J Exper Child Psychol 130:67–78</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR6">
+                    <journal_title>Neurobiol Aging</journal_title>
+                    <author>A Campbell</author>
+                    <volume>35</volume>
+                    <first_page>2246</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neurobiolaging.2014.04.021</doi>
+                    <unstructured_citation>Campbell A, Ruffman T, Murray JE, Glue P (2014) Oxytocin improves emotion recognition for older males. Neurobiol Aging 35:2246–2248</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR7">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>DS Carson</author>
+                    <volume>20</volume>
+                    <first_page>1085</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/mp.2014.132</doi>
+                    <unstructured_citation>Carson DS, Berquist SW, Trujillo TH, Garner JP, Hannah SL, Hyde SA et al (2015) Cerebrospinal fluid and plasma oxytocin concentrations are positively correlated and negatively predict anxiety in children. Mol Psychiatry 20:1085–1090</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR8">
+                    <journal_title>Behav Brain Res</journal_title>
+                    <author>CS Carter</author>
+                    <volume>176</volume>
+                    <first_page>170</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2006.08.025</doi>
+                    <unstructured_citation>Carter CS (2007) Sex differences in oxytocin and vasopressin: implications for autism spectrum disorders? Behav Brain Res 176:170–186</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR9">
+                    <journal_title>Brain Res</journal_title>
+                    <author>SW Chang</author>
+                    <volume>1580</volume>
+                    <first_page>57</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2013.11.006</doi>
+                    <unstructured_citation>Chang SW, Platt ML (2014) Oxytocin and social cognition in rhesus macaques: implications for understanding and treating human psychopathology. Brain Res 1580:57–68</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR10">
+                    <journal_title>Philos Trans Roy Soc B Biol Sci</journal_title>
+                    <author>T Charman</author>
+                    <volume>358</volume>
+                    <first_page>315</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1098/rstb.2002.1199</doi>
+                    <unstructured_citation>Charman T (2003) Why is joint attention a pivotal skill in autism? Philos Trans Roy Soc B Biol Sci 358:315–324</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR11">
+                    <journal_title>Dev Psychol</journal_title>
+                    <author>T Charman</author>
+                    <volume>33</volume>
+                    <first_page>781</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1037/0012-1649.33.5.781</doi>
+                    <unstructured_citation>Charman T, Swettenham J, Baron-Cohen S, Cox A, Baird G, Drew A (1997) Infants with autism: an investigation of empathy, pretend play, joint attention, and imitation. Dev Psychol 33:781–789</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR12">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>E Choleris</author>
+                    <volume>100</volume>
+                    <first_page>6192</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1073/pnas.0631699100</doi>
+                    <unstructured_citation>Choleris E, Gustafsson JA, Korach KS, Muglia LJ, Pfaff DW, Ogawa S (2003) An estrogen-dependent four-gene micronet regulating social recognition: a study with oxytocin and estrogen receptor-α and-β knockout mice. Proc Natl Acad Sci U S A 100:6192–6197</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR13">
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <author>L Christov-Moore</author>
+                    <volume>46</volume>
+                    <first_page>604</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2014.09.001</doi>
+                    <unstructured_citation>Christov-Moore L, Simpson EA, Coudé G, Grigaityte K, Iacoboni M, Ferrari PF (2014) Empathy: gender effects in brain and behavior. Neurosci Biobehav Rev 46:604–627</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR14">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>CL Clark</author>
+                    <volume>38</volume>
+                    <first_page>1208</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2012.10.017</doi>
+                    <unstructured_citation>Clark CL, St. John N, Pasca AM, Hyde SA, Hornbeak K, Abramova M et al (2013) Neonatal CSF oxytocin levels are associated with parent report of infant soothability and sociability. Psychoneuroendocrinology 38:1208–1212</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR15">
+                    <journal_title>Infant Behav Dev</journal_title>
+                    <author>J Connellan</author>
+                    <volume>23</volume>
+                    <first_page>113</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0163-6383(00)00032-1</doi>
+                    <unstructured_citation>Connellan J, Baron-Cohen S, Wheelwright S, Batki A, Ahluwalia J (2000) Sex differences in human neonatal social perception. Infant Behav Dev 23:113–118</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR16">
+                    <journal_title>Dev Psychobiol</journal_title>
+                    <author>CA Corcoran</author>
+                    <volume>54</volume>
+                    <first_page>546</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/dev.20613</doi>
+                    <unstructured_citation>Corcoran CA, Pierre PJ, Haddad T, Bice C, Suomi SJ, Grant KA, Friedman DP, Bennett AJ (2012) Long-term effects of differential early rearing in rhesus macaques: behavioral reactivity in adulthood. Dev Psychobiol 54:546–555</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR17">
+                    <journal_title>Mem Cogn</journal_title>
+                    <author>N Cowan</author>
+                    <volume>34</volume>
+                    <first_page>1754</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.3758/BF03195936</doi>
+                    <unstructured_citation>Cowan N, Fristoe NM, Elliott EM, Brunner RP, Saults JS (2006) Scope of attention, control of attention, and intelligence in children and adults. Mem Cogn 34:1754–1768</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR18">
+                    <journal_title>J Abnorm Child Psychol</journal_title>
+                    <author>A Wilde de</author>
+                    <volume>44</volume>
+                    <first_page>19</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s10802-015-0053-4</doi>
+                    <unstructured_citation>de Wilde A, Koot HM, van Lier PA (2016) Developmental links between children’s working memory and their social relations with teachers and peers in the early school years. J Abnorm Child Psychol 44:19–30</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR19">
+                    <journal_title>Biol Lett</journal_title>
+                    <author>RO Deaner</author>
+                    <volume>3</volume>
+                    <first_page>65</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1098/rsbl.2006.0564</doi>
+                    <unstructured_citation>Deaner RO, Shepherd SV, Platt ML (2007) Familiarity accentuates gaze cuing in women but not men. Biol Lett 3:65–68</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR20">
+                    <journal_title>Nat Comm</journal_title>
+                    <author>AM Dettmer</author>
+                    <volume>7</volume>
+                    <first_page>11940</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/ncomms11940</doi>
+                    <unstructured_citation>Dettmer AM, Kaburu SSK, Simpson EA, Paukner A, Sclafani V, Byers KL, Murphy AM, Miller M, Marquez N, Miller GM, Suomi SJ, Ferrari PF (2016) Neonatal face-to-face interactions promote later social behaviour in infant rhesus monkeys. Nat Comm 7:11940</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR21">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>G Domes</author>
+                    <volume>61</volume>
+                    <first_page>731</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2006.07.015</doi>
+                    <unstructured_citation>Domes G, Heinrichs M, Michel A, Berger C, Herpertz SC (2007) Oxytocin improves “mind reading” in humans. Biol Psychiatry 61:731–733</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR22">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>RB Ebitz</author>
+                    <volume>110</volume>
+                    <first_page>11630</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1073/pnas.1305230110</doi>
+                    <unstructured_citation>Ebitz RB, Watson KK, Platt ML (2013) Oxytocin blunts social vigilance in the rhesus macaque. Proc Natl Acad Sci U S A 110:11630–11635</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR23">
+                    <journal_title>J Comp Psychol</journal_title>
+                    <author>NJ Emery</author>
+                    <volume>111</volume>
+                    <first_page>286</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1037/0735-7036.111.3.286</doi>
+                    <unstructured_citation>Emery NJ, Lorincz EN, Perrett DI, Oram MW, Baker CI (1997) Gaze following and joint attention in rhesus monkeys (Macaca mulatta). J Comp Psychol 111:286–293</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR24">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>D Feifel</author>
+                    <volume>36</volume>
+                    <first_page>S324</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1038/npp.2011.293</doi>
+                    <unstructured_citation>Feifel D, MacDonald K, McKinney R, Heisserer N, Serrano V (2011) A randomized, placebo-controlled investigation of intranasal oxytocin in patients with anxiety. Neuropsychopharmacology 36:S324–S449</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR25">
+                    <journal_title>Brain Imaging Behav</journal_title>
+                    <author>C Feng</author>
+                    <volume>9</volume>
+                    <first_page>754</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/s11682-014-9333-9</doi>
+                    <unstructured_citation>Feng C, Hackett PD, DeMarco AC, Chen X, Stair S, Haroon E, Ditzen B, Pagnoni G, Rilling JK (2014) Oxytocin and vasopressin effects on the neural response to social cooperation are modulated by sex in humans. Brain Imaging Behav 9:754–764</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR26">
+                    <journal_title>Nat Genet</journal_title>
+                    <author>JN Ferguson</author>
+                    <volume>25</volume>
+                    <first_page>284</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/77040</doi>
+                    <unstructured_citation>Ferguson JN, Young LJ, Hearn EF, Matzuk MM, Insel TR, Winslow JT (2000) Social amnesia in mice lacking the oxytocin gene. Nat Genet 25:284–288</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR27">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>PF Ferrari</author>
+                    <volume>97</volume>
+                    <first_page>13997</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1073/pnas.250241197</doi>
+                    <unstructured_citation>Ferrari PF, Kohler E, Fogassi L, Gallese V (2000) The ability to follow eye gaze and its emergence during development in macaque monkeys. Proc Natl Acad Sci U S A 97:13997–14002</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR28">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>SM Freeman</author>
+                    <volume>45</volume>
+                    <first_page>128</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.03.023</doi>
+                    <unstructured_citation>Freeman SM, Inoue K, Smith AL, Goodman MM, Young LJ (2014) The neuroanatomical distribution of oxytocin receptor binding and mRNA in the male rhesus macaque (Macaca mulatta). Psychoneuroendocrinology 45:128–141</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR29">
+                    <journal_title>Psychol Bull</journal_title>
+                    <author>A Frischen</author>
+                    <volume>133</volume>
+                    <first_page>694</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.133.4.694</doi>
+                    <unstructured_citation>Frischen A, Bayliss AP, Tipper SP (2007) Gaze cueing of attention: visual attention, social cognition, and individual differences. Psychol Bull 133:694–724</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR30">
+                    <journal_title>Behav Neurosci</journal_title>
+                    <author>CS Gabor</author>
+                    <volume>126</volume>
+                    <first_page>97</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1037/a0026464</doi>
+                    <unstructured_citation>Gabor CS, Phan A, Clipperton-Allen AE, Kavaliers M, Choleris E (2012) Interplay of oxytocin, vasopressin, and sex hormones in the regulation of social recognition. Behav Neurosci 126:97–109</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR31">
+                    <journal_title>Proc Natl Academ Sci USA</journal_title>
+                    <author>S Gao</author>
+                    <volume>113</volume>
+                    <first_page>7650</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1073/pnas.1602620113</doi>
+                    <unstructured_citation>Gao S, Becker B, Luo L, Geng Y, Zhao W, Yin Y et al (2016) Oxytocin, the peptide that bonds the sexes also divides them. Proc Natl Academ Sci USA 113:7650–7654</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR32">
+                    <journal_title>J Cog Neurosci</journal_title>
+                    <author>R Gattass</author>
+                    <volume>26</volume>
+                    <first_page>1208</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1162/jocn_a_00570</doi>
+                    <unstructured_citation>Gattass R, Desimone R (2014) Effect of microstimulation of the superior colliculus on visual space attention. J Cog Neurosci 26:1208–1219</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR33">
+                    <journal_title>Horm Behav</journal_title>
+                    <author>AJ Guastella</author>
+                    <volume>61</volume>
+                    <first_page>410</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.yhbeh.2012.04.008</doi>
+                    <unstructured_citation>Guastella AJ, MacLeod C (2012) A critical review of the influence of oxytocin nasal spray on social cognition in humans: evidence and future directions. Horm Behav 61:410–418</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR34">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>AJ Guastella</author>
+                    <volume>64</volume>
+                    <first_page>256</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2008.02.008</doi>
+                    <unstructured_citation>Guastella AJ, Mitchell PB, Mathews F (2008) Oxytocin enhances the encoding of positive social memories in humans. Biol Psychiatry 64:256–258</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR35">
+                    <journal_title>Merrill Palmer Q Behav Dev</journal_title>
+                    <author>JH Hittelman</author>
+                    <volume>25</volume>
+                    <first_page>171</first_page>
+                    <cYear>1979</cYear>
+                    <unstructured_citation>Hittelman JH, Dickes R (1979) Sex differences in neonatal eye contact time. Merrill Palmer Q Behav Dev 25:171–184</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR36">
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <author>A Lefevre</author>
+                    <volume>63</volume>
+                    <first_page>168</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2016.01.011</doi>
+                    <unstructured_citation>Lefevre A, Sirigu A (2016) The two fold role of oxytocin in social developmental disorders: a cause and a remedy? Neurosci Biobehav Rev 63:168–176</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR37">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>N Liu</author>
+                    <volume>112</volume>
+                    <first_page>E3123</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1073/pnas.1508097112</doi>
+                    <unstructured_citation>Liu N, Hadj-Bouziane F, Jones KB, Turchi JN, Averbeck BB, Ungerleider LG (2015) Oxytocin modulates fMRI responses to facial expression in macaques. Proc Natl Acad Sci U S A 112:E3123–E3130</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR38">
+                    <journal_title>Front Neurosci</journal_title>
+                    <author>KS MacDonald</author>
+                    <volume>6</volume>
+                    <first_page>194</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.3389/fnins.2012.00194</doi>
+                    <unstructured_citation>MacDonald KS (2013) Sex, receptors, and attachment: a review of individual factors influencing response to oxytocin. Front Neurosci 6:194</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR39">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>M Maroun</author>
+                    <volume>79</volume>
+                    <first_page>203</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2015.07.016</doi>
+                    <unstructured_citation>Maroun M, Wagner S (2016) Oxytocin and memory of emotional stimuli: some dance to remember, some dance to forget. Biol Psychiatry 79:203–212</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR40">
+                    <journal_title>J Exper Child Psychol</journal_title>
+                    <author>JD McQuade</author>
+                    <volume>115</volume>
+                    <first_page>422</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.jecp.2013.03.002</doi>
+                    <unstructured_citation>McQuade JD, Murray-Close D, Shoulberg EK, Hoza B (2013) Working memory and social functioning in children. J Exper Child Psychol 115:422–435</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR41">
+                    <journal_title>Science</journal_title>
+                    <author>AN Meltzoff</author>
+                    <volume>325</volume>
+                    <first_page>284</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1126/science.1175626</doi>
+                    <unstructured_citation>Meltzoff AN, Kuhl PK, Movellan J, Sejnowski TJ (2009) Foundations for a new science of learning. Science 325:284–288</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR42">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>ME Modi</author>
+                    <volume>45</volume>
+                    <first_page>49</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.02.011</doi>
+                    <unstructured_citation>Modi ME, Connor-Stroud F, Landgraf R, Young LJ, Parr LA (2014) Aerosolized oxytocin increases cerebrospinal fluid oxytocin in rhesus macaques. Psychoneuroendocrinology 45:49–57</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR43">
+                    <journal_title>Dev Sci</journal_title>
+                    <author>JS Noland</author>
+                    <volume>13</volume>
+                    <first_page>244</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1111/j.1467-7687.2009.00882.x</doi>
+                    <unstructured_citation>Noland JS, Reznick JS, Stone WL, Walden T, Sheridan EH (2010) Better working memory for non-social targets in infant siblings of children with autism spectrum disorder. Dev Sci 13:244–251</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR44">
+                    <journal_title>Child Dev</journal_title>
+                    <author>JD Osofsky</author>
+                    <volume>48</volume>
+                    <first_page>532</first_page>
+                    <cYear>1977</cYear>
+                    <doi provider="crossref">10.2307/1128650</doi>
+                    <unstructured_citation>Osofsky JD, O’Connell EJ (1977) Patterning of newborn behavior in an urban population. Child Dev 48:532–536</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR45">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>KJ Parker</author>
+                    <volume>111</volume>
+                    <first_page>12258</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1073/pnas.1402236111</doi>
+                    <unstructured_citation>Parker KJ, Garner JP, Libove RA, Hyde SA, Hornbeak KB, Carson DS et al (2014) Plasma oxytocin concentrations and OXTR polymorphisms predict social impairments in children with and without autism spectrum disorder. Proc Natl Acad Sci U S A 111:12258–12263</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR46">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>LA Parr</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.08.028</doi>
+                    <unstructured_citation>Parr LA, Brooks JM, Jonesteller T, Moss S, Jordano JO, Heitz TR (2016) Effects of chronic oxytocin on attention to dynamic facial expressions in infant macaques. Psychoneuroendocrinology . doi: 10.1016/j.psyneuen.2016.08.028 Advance Online Publication</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR47">
+                    <journal_title>Am J Primatol</journal_title>
+                    <author>KA Phillips</author>
+                    <volume>76</volume>
+                    <first_page>801</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1002/ajp.22281</doi>
+                    <unstructured_citation>Phillips KA, Bales KL, Capitanio JP, Conley A, Czoty PW, ‘t Hart BA et al. (2014) Why primate models matter. Am J Primatol 76:801–827.</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR48">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>PT Putnam</author>
+                    <volume>72</volume>
+                    <first_page>47</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.05.016</doi>
+                    <unstructured_citation>Putnam PT, Roman JM, Zimmerman PE, Gothard KM (2016) Oxytocin enhances gaze-following responses to videos of natural social behavior in adult male rhesus monkeys. Psychoneuroendocrinology 72:47–53</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR49">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>DS Quintana</author>
+                    <volume>79</volume>
+                    <first_page>e49</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2015.06.021</doi>
+                    <unstructured_citation>Quintana DS, Woolley JD (2016) Intranasal oxytocin mechanisms can be better understood but its effects on social cognition and behavior are not to be sniffed at. Biol Psychiatry 79:e49–350</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR50">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>JL Rault</author>
+                    <volume>112</volume>
+                    <first_page>40</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2013.02.007</doi>
+                    <unstructured_citation>Rault JL, Carter CS, Garner JP, Marchant-Forde JN, Richert BT, Lay DC Jr (2013) Repeated intranasal oxytocin administration in early life dysregulates the HPA axis and alters social behavior. Physiol Behav 112:40–48</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR51">
+                    <journal_title>Proc R Soc B</journal_title>
+                    <author>AG Rosati</author>
+                    <volume>283</volume>
+                    <first_page>20160376</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1098/rspb.2016.0376</doi>
+                    <unstructured_citation>Rosati AG, Arre AM, Platt ML, Santos LR (2016) Rhesus monkeys show human-like changes in gaze following across the lifespan. Proc R Soc B 283:20160376</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR52">
+                    <journal_title>Nature</journal_title>
+                    <author>M Scaif</author>
+                    <volume>253</volume>
+                    <first_page>265</first_page>
+                    <cYear>1975</cYear>
+                    <doi provider="crossref">10.1038/253265a0</doi>
+                    <unstructured_citation>Scaif M, Bruner JS (1975) The capacity for joint visual attention in the infant. Nature 253:265–266</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR53">
+                    <journal_title>Dev Sci</journal_title>
+                    <author>V Sclafani</author>
+                    <volume>18</volume>
+                    <first_page>614</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1111/desc.12237</doi>
+                    <unstructured_citation>Sclafani V, Paukner A, Suomi SJ, Ferrari PF (2015) Imitation promotes affiliation in infant macaques at risk for impaired social behaviors. Dev Sci 18:614–621</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR54">
+                    <doi provider="crossref">10.1371/journal.pone.0165401</doi>
+                    <unstructured_citation>Sclafani V, Del Rosso LA, Seil SK, Calonder LA, Madreid JE, Bone KJ, Sherr EH, Garner JP, Capitanio JP, Parker KJ (2016) Early predictors of impaired social functioning in male rhesus macaques (Macaca mulatta). PLOS ONE</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR55">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>EA Simpson</author>
+                    <volume>111</volume>
+                    <first_page>6922</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1073/pnas.1402471111</doi>
+                    <unstructured_citation>Simpson EA, Sclafani V, Paukner A, Hamel AF, Novak MA, Meyer JS et al (2014) Inhaled oxytocin increases positive social behaviors in newborn macaques. Proc Natl Acad Sci U S A 111:6922–6927</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR56">
+                    <journal_title>Sci Rep</journal_title>
+                    <author>EA Simpson</author>
+                    <volume>6</volume>
+                    <first_page>20233</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/srep20233</doi>
+                    <unstructured_citation>Simpson EA, Miller G, Ferrari PF, Suomi SJ, Paukner A (2016a) Neonatal imitation and early social experience predict gaze following abilities in infant macaques. Sci Rep 6:20233</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR57">
+                    <journal_title>Sci Rep</journal_title>
+                    <author>EA Simpson</author>
+                    <volume>6</volume>
+                    <first_page>19669</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/srep19669</doi>
+                    <unstructured_citation>Simpson EA, Nicolini Y, Shetler M, Suomi SJ, Ferrari PF, Paukner A (2016b) Experience-independent sex differences in newborn macaques: females are more social than males. Sci Rep 6:19669</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR58">
+                    <journal_title>Front Behav Neurosci</journal_title>
+                    <author>AE Taylor</author>
+                    <volume>8</volume>
+                    <first_page>360</first_page>
+                    <cYear>2015</cYear>
+                    <unstructured_citation>Taylor AE, Lee HE, Buisman-Pijlman FT (2015) Oxytocin treatment in pediatric populations. Front Behav Neurosci 8:360</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR59">
+                    <journal_title>Dev Sci</journal_title>
+                    <author>J Triesch</author>
+                    <volume>9</volume>
+                    <first_page>125</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1111/j.1467-7687.2006.00470.x</doi>
+                    <unstructured_citation>Triesch J, Teuscher C, Deák GO, Carlson E (2006) Gaze following: why (not) learn it? Dev Sci 9:125–147</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR60">
+                    <journal_title>Child Neuropsychol</journal_title>
+                    <author>SV Wass</author>
+                    <volume>21</volume>
+                    <first_page>150</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1080/09297049.2014.882888</doi>
+                    <unstructured_citation>Wass SV (2015) Applying cognitive training to target executive functions during early development. Child Neuropsychol 21:150–166</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR61">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>JT Winslow</author>
+                    <volume>28</volume>
+                    <first_page>910</first_page>
+                    <cYear>2003</cYear>
+                    <unstructured_citation>Winslow JT, Noble PL, Lyons CK, Sterk SM, Insel TR (2003) Rearing effects on cerebrospinal fluid oxytocin concentration and social buffering in rhesus monkeys. Neuropsychopharmacology 28:910–918</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR62">
+                    <journal_title>Investig Ophthalmol</journal_title>
+                    <author>RH Wurtz</author>
+                    <volume>11</volume>
+                    <first_page>441</first_page>
+                    <cYear>1972</cYear>
+                    <unstructured_citation>Wurtz RH, Goldberg ME (1972) The primate superior colliculus and the shift of visual attention. Investig Ophthalmol 11:441–450</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR63">
+                    <journal_title>J Neurosci</journal_title>
+                    <author>M Yoshida</author>
+                    <volume>29</volume>
+                    <first_page>2259</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5593-08.2009</doi>
+                    <unstructured_citation>Yoshida M, Takayanagi Y, Inoue K, Kimura T, Young LJ, Onaka T, Nishimori K (2009) Evidence that oxytocin exerts anxiolytic effects via oxytocin receptor expressed in serotonergic neurons in mice. J Neurosci 29:2259–2271</unstructured_citation>
+                  </citation>
+                  <citation key="4480_CR64">
+                    <journal_title>Psychiatry Res</journal_title>
+                    <author>JB Zik</author>
+                    <volume>226</volume>
+                    <first_page>31</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psychres.2014.11.048</doi>
+                    <unstructured_citation>Zik JB, Roberts DL (2015) The many faces of oxytocin: implications for psychiatry. Psychiatry Res 226:31–37</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

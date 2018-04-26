@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.3389/fnhum.2016.00583</doi>
+        <crm-item name="publisher-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="prefix-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="member-id" type="number">1965</crm-item>
+        <crm-item name="citation-id" type="number">86388781</crm-item>
+        <crm-item name="journal-id" type="number">74878</crm-item>
+        <crm-item name="deposit-timestamp" type="number">201611170325</crm-item>
+        <crm-item name="owner-prefix" type="string">10.3389</crm-item>
+        <crm-item name="last-update" type="date">2016-11-17T03:26:28Z</crm-item>
+        <crm-item name="created" type="date">2016-11-17T03:26:26Z</crm-item>
+        <crm-item name="citedby-count" type="number">4</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>Frontiers in Human Neuroscience</full_title>
+                <abbrev_title>Front. Hum. Neurosci.</abbrev_title>
+                <issn media_type="electronic">1662-5161</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>17</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>10</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Prefrontal Cortex Activity Is Associated with Biobehavioral Components of the Stress Response</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Muriah D.</given_name>
+                    <surname>Wheelock</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Nathaniel G.</given_name>
+                    <surname>Harnett</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Kimberly H.</given_name>
+                    <surname>Wood</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Tyler R.</given_name>
+                    <surname>Orem</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Douglas A.</given_name>
+                    <surname>Granger</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Sylvie</given_name>
+                    <surname>Mrug</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>David C.</given_name>
+                    <surname>Knight</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>17</day>
+                  <year>2016</year>
+                </publication_date>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.3389/crossmark-policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>frontiersin.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="funder_name">
+                        Foundation for the National Institutes of Health
+                        <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000009</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="award_number">MH098348</fr:assertion>
+                    </fr:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.3389/fnhum.2016.00583</doi>
+                  <resource>http://journal.frontiersin.org/article/10.3389/fnhum.2016.00583/full</resource>
+                  <collection property="crawler-based" setbyID="fron">
+                    <item crawler="iParadigms">
+                      <resource>http://journal.frontiersin.org/article/10.3389/fnhum.2016.00583/full</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Albert</author>
+                    <volume>59</volume>
+                    <first_page>14</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.psyneuen.2015.04.022</doi>
+                    <article_title>Estradiol levels modulate brain activity and negative responses to psychosocial stress across the menstrual cycle.</article_title>
+                  </citation>
+                  <citation key="B2">
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <author>Allen</author>
+                    <volume>74</volume>
+                    <first_page>243</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.biopsycho.2006.08.005</doi>
+                    <article_title>The many metrics of cardiac chronotropy: a pragmatic primer and a brief comparison of metrics.</article_title>
+                  </citation>
+                  <citation key="B3">
+                    <journal_title>Epilepsy Behav.</journal_title>
+                    <author>Allendorfer</author>
+                    <volume>36</volume>
+                    <first_page>115</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.yebeh.2014.05.003</doi>
+                    <article_title>Physiologic and cortical response to acute psychosocial stress in left temporal lobe epilepsy – A pilot cross-sectional fMRI study.</article_title>
+                  </citation>
+                  <citation key="B4">
+                    <journal_title>J. Neurosci. Methods</journal_title>
+                    <author>Bach</author>
+                    <volume>184</volume>
+                    <first_page>224</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.jneumeth.2009.08.005</doi>
+                    <article_title>Time-series analysis for rapid event-related skin conductance responses.</article_title>
+                  </citation>
+                  <citation key="B5">
+                    <journal_title>Cogn Affect. Behav. Neurosci.</journal_title>
+                    <author>Basten</author>
+                    <volume>12</volume>
+                    <first_page>571</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.3758/s13415-012-0100-3</doi>
+                    <article_title>Trait anxiety and the neural efficiency of manipulation in working memory.</article_title>
+                  </citation>
+                  <citation key="B6">
+                    <journal_title>Soc. Cogn. Affect. Neurosci.</journal_title>
+                    <author>Beauchamp</author>
+                    <volume>11</volume>
+                    <first_page>1374</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1093/scan/nsw1061</doi>
+                    <article_title>Does inhibitory control training transfer?: behavioral and neural effects on an untrained emotion regulation task.</article_title>
+                  </citation>
+                  <citation key="B7">
+                    <journal_title>J. Psychosom. Res.</journal_title>
+                    <author>Bohen</author>
+                    <volume>35</volume>
+                    <first_page>141</first_page>
+                    <cYear>1991</cYear>
+                    <doi>10.1016/0022-3999(91)90068-Y</doi>
+                    <article_title>Coping style, trait anxiety, and cortisol reactivty during mental stress.</article_title>
+                  </citation>
+                  <citation key="B8">
+                    <journal_title>Brain Behav.</journal_title>
+                    <author>Brydges</author>
+                    <volume>4</volume>
+                    <first_page>4</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1002/brb3.182</doi>
+                    <article_title>Juvenile stress enhances anxiety and alters corticosteroid receptor expression in adulthood.</article_title>
+                  </citation>
+                  <citation key="B9">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Campbell</author>
+                    <volume>37</volume>
+                    <first_page>1111</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.psyneuen.2011.12.010</doi>
+                    <article_title>Acute psychosocial stress: does the emotional stress response correspond with physiological responses?</article_title>
+                  </citation>
+                  <citation key="B10">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Chung</author>
+                    <volume>68</volume>
+                    <first_page>126</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.02.026</doi>
+                    <article_title>The influence of androstadienone during psychosocial stress is modulated by gender, trait anxiety and subjective stress: an fMRI study.</article_title>
+                  </citation>
+                  <citation key="B11">
+                    <journal_title>Comput. Biomed. Res.</journal_title>
+                    <author>Cox</author>
+                    <volume>29</volume>
+                    <first_page>162</first_page>
+                    <cYear>1996</cYear>
+                    <doi>10.1006/cbmr.1996.0014</doi>
+                    <article_title>AFNI: software for analysis and visualization of functional magnetic resonance neuroimages.</article_title>
+                  </citation>
+                  <citation key="B12">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Danese</author>
+                    <volume>106</volume>
+                    <first_page>29</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.physbeh.2011.08.019</doi>
+                    <article_title>Adverse childhood experiences, allostasis, allostatic load, and age-related disease.</article_title>
+                  </citation>
+                  <citation key="B13">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>Dedovic</author>
+                    <volume>47</volume>
+                    <first_page>864</first_page>
+                    <cYear>2009a</cYear>
+                    <doi>10.1016/j.neuroimage.2009.05.074</doi>
+                    <article_title>The brain and the stress axis: the neural correlates of cortisol regulation in response to stress.</article_title>
+                  </citation>
+                  <citation key="B14">
+                    <journal_title>J. Psychiatry Neurosci.</journal_title>
+                    <author>Dedovic</author>
+                    <volume>30</volume>
+                    <first_page>319</first_page>
+                    <cYear>2005</cYear>
+                    <article_title>The montreal imaging stress task: using functional imaging to investigate the effects of perceiving and processing psychosocial stress in the human brain.</article_title>
+                  </citation>
+                  <citation key="B15">
+                    <journal_title>Brain Res.</journal_title>
+                    <author>Dedovic</author>
+                    <volume>1293</volume>
+                    <first_page>49</first_page>
+                    <cYear>2009b</cYear>
+                    <doi>10.1016/j.brainres.2009.06.044</doi>
+                    <article_title>Neural correlates of processing stressful information: an event-related fMRI study.</article_title>
+                  </citation>
+                  <citation key="B16">
+                    <journal_title>Neuron</journal_title>
+                    <author>Delgado</author>
+                    <volume>59</volume>
+                    <first_page>829</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.neuron.2008.06.029</doi>
+                    <article_title>Neural circuitry underlying the regulation of conditioned fear and its relation to extinction.</article_title>
+                  </citation>
+                  <citation key="B17">
+                    <journal_title>Biol. Res. Nurs.</journal_title>
+                    <author>Granger</author>
+                    <volume>14</volume>
+                    <first_page>347</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1177/1099800412443892</doi>
+                    <article_title>Incorporating salivary biomarkers into nursing research: an overview and review of best practices.</article_title>
+                  </citation>
+                  <citation key="B18">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>Harnett</author>
+                    <volume>121</volume>
+                    <first_page>217</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.neuroimage.2015.07.034</doi>
+                    <article_title>Affective state and locus of control modulate the neural response to threat.</article_title>
+                  </citation>
+                  <citation key="B19">
+                    <journal_title>Social cognitive and affective neuroscience</journal_title>
+                    <author>Henckens</author>
+                    <volume>11</volume>
+                    <first_page>663</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1093/scan/nsv149</doi>
+                    <article_title>Interindividual differences in stress sensitivity: basal and stress-induced cortisol levels differentially predict neural vigilance processing under stress.</article_title>
+                  </citation>
+                  <citation key="B20">
+                    <journal_title>Prog. Neuropsychopharmacol. Biol. Psychiatry</journal_title>
+                    <author>Herman</author>
+                    <volume>29</volume>
+                    <first_page>1201</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1016/j.pnpbp.2005.08.006</doi>
+                    <article_title>Limbic system mechanisms of stress regulation: hypothalamo-pituitary-adrenocortical axis.</article_title>
+                  </citation>
+                  <citation key="B21">
+                    <journal_title>Neuron</journal_title>
+                    <author>Indovina</author>
+                    <volume>69</volume>
+                    <first_page>563</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.neuron.2010.12.034</doi>
+                    <article_title>Fear-conditioning mechanisms associated with trait vulnerability to anxiety in humans.</article_title>
+                  </citation>
+                  <citation key="B22">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Jahn</author>
+                    <volume>67</volume>
+                    <first_page>175</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1016/j.biopsych.2009.07.039</doi>
+                    <article_title>Subgenual prefrontal cortex activity predicts individual differences in hypothalamic-pituitary-adrenal activity across different contexts.</article_title>
+                  </citation>
+                  <citation key="B23">
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <author>Karatsoreos</author>
+                    <volume>15</volume>
+                    <first_page>576</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.tics.2011.10.005</doi>
+                    <article_title>Psychobiological allostasis: resistance, resilience and vulnerability.</article_title>
+                  </citation>
+                  <citation key="B24">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Kern</author>
+                    <volume>33</volume>
+                    <first_page>517</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.psyneuen.2008.01.010</doi>
+                    <article_title>Glucose metabolic changes in the prefrontal cortex are associated with HPA axis response to a psychosocial stressor.</article_title>
+                  </citation>
+                  <citation key="B25">
+                    <journal_title>Neuropsychobiology</journal_title>
+                    <author>Kirschbaum</author>
+                    <volume>28</volume>
+                    <first_page>76</first_page>
+                    <cYear>1993</cYear>
+                    <doi>10.1159/000119004</doi>
+                    <article_title>The ‘Trier Social Stress Test’ – a tool for investigating psychobiological stress responses in a laboratory setting.</article_title>
+                  </citation>
+                  <citation key="B26">
+                    <journal_title>J. Vis. Exp.</journal_title>
+                    <author>Knight</author>
+                    <volume>56</volume>
+                    <issue>3083</issue>
+                    <cYear>2011</cYear>
+                    <article_title>Investigating the neural mechanisms of aware and unaware fear memory with fMRI.</article_title>
+                  </citation>
+                  <citation key="B27">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Kudielka</author>
+                    <volume>34</volume>
+                    <first_page>2</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.psyneuen.2008.10.004</doi>
+                    <article_title>Why do we respond so differently? Reviewing determinants of human salivary cortisol responses to challenge.</article_title>
+                  </citation>
+                  <citation key="B28">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Laird</author>
+                    <volume>29</volume>
+                    <first_page>14496</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1523/JNEUROSCI.4004-09.2009</doi>
+                    <article_title>Investigating the functional heterogeneity of the default mode network using coordinate-based meta-analytic modeling.</article_title>
+                  </citation>
+                  <citation key="B29">
+                    <journal_title>Metabolism</journal_title>
+                    <author>McEwen</author>
+                    <volume>57(Suppl. 2)</volume>
+                    <first_page>S11</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.metabol.2008.07.006</doi>
+                    <article_title>Understanding the potency of stressful early life experiences on brain and body function.</article_title>
+                  </citation>
+                  <citation key="B30">
+                    <journal_title>Annu. Rev. Med.</journal_title>
+                    <author>McEwen</author>
+                    <volume>62</volume>
+                    <first_page>431</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1146/annurev-med-052209-100430</doi>
+                    <article_title>Stress- and allostasis-induced brain plasticity.</article_title>
+                  </citation>
+                  <citation key="B31">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>McEwen</author>
+                    <volume>43</volume>
+                    <first_page>2</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1016/S0018-506X(02)00024-7</doi>
+                    <article_title>The concept of allostasis in biology and biomedicine.</article_title>
+                  </citation>
+                  <citation key="B32">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Motzkin</author>
+                    <volume>77</volume>
+                    <first_page>276</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.biopsych.2014.02.014</doi>
+                    <article_title>Ventromedial prefrontal cortex is critical for the regulation of amygdala activity in humans.</article_title>
+                  </citation>
+                  <citation key="B33">
+                    <journal_title>Int. J. Psychophysiol.</journal_title>
+                    <author>Muehlhan</author>
+                    <volume>79</volume>
+                    <first_page>118</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.ijpsycho.2010.09.009</doi>
+                    <article_title>The scanner as a stressor: evidence from subjective and neuroendocrine stress parameters in the time course of a functional magnetic resonance imaging session.</article_title>
+                  </citation>
+                  <citation key="B34">
+                    <journal_title>Biomed. Pharmacother.</journal_title>
+                    <author>Negrao</author>
+                    <volume>54</volume>
+                    <first_page>122</first_page>
+                    <cYear>2000</cYear>
+                    <doi>10.1016/S0753-3322(00)89044-7</doi>
+                    <article_title>Individual reactivity and physiology of the stress response.</article_title>
+                  </citation>
+                  <citation key="B35">
+                    <journal_title>J. Cogn. Neurosci.</journal_title>
+                    <author>Ochsner</author>
+                    <volume>14</volume>
+                    <first_page>1215</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1162/089892902760807212</doi>
+                    <article_title>Rethinking feelings: an fMRI study of the cognitive regulation of emotion.</article_title>
+                  </citation>
+                  <citation key="B36">
+                    <journal_title>Ann. N. Y. Acad. Sci.</journal_title>
+                    <author>Ochsner</author>
+                    <volume>1251</volume>
+                    <first_page>E1</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1111/j.1749-6632.2012.06751.x</doi>
+                    <article_title>Functional imaging studies of emotion regulation: a synthetic review and evolving model of the cognitive control of emotion.</article_title>
+                  </citation>
+                  <citation key="B37">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Pruessner</author>
+                    <volume>63</volume>
+                    <first_page>234</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.biopsych.2007.04.041</doi>
+                    <article_title>Deactivation of the limbic system during acute psychosocial stress: evidence from positron emission tomography and functional magnetic resonance imaging studies.</article_title>
+                  </citation>
+                  <citation key="B38">
+                    <journal_title>Brain Struct. Funct.</journal_title>
+                    <author>Soares</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1007/s00429-00016-01203-00423</doi>
+                    <article_title>The association between stress and mood across the adult lifespan on default mode network.</article_title>
+                  </citation>
+                  <citation key="B39">
+                    <journal_title>State-Trait Anxiety Inventory for Adutls.</journal_title>
+                    <author>Spielberger</author>
+                    <cYear>1983</cYear>
+                  </citation>
+                  <citation key="B40">
+                    <journal_title>Neuroendocrinol. Lett.</journal_title>
+                    <author>Takahashi</author>
+                    <volume>26</volume>
+                    <first_page>351</first_page>
+                    <cYear>2005</cYear>
+                    <article_title>Anxiety, reactivity, and social stress-induced cortisol elevation in humans.</article_title>
+                  </citation>
+                  <citation key="B41">
+                    <journal_title>Arch. Oral. Biol.</journal_title>
+                    <author>Takai</author>
+                    <volume>49</volume>
+                    <first_page>963</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1016/j.archoralbio.2004.06.007</doi>
+                    <article_title>Effect of psychological stress on the salivary cortisol and amylase levels in healthy young adults.</article_title>
+                  </citation>
+                  <citation key="B42">
+                    <journal_title>Hum. Brain Mapp.</journal_title>
+                    <author>Tessner</author>
+                    <volume>27</volume>
+                    <first_page>889</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1002/hbm.20229</doi>
+                    <article_title>Cortisol responses of healthy volunteers undergoing magnetic resonance imaging.</article_title>
+                  </citation>
+                  <citation key="B43">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Ulrich-Lai</author>
+                    <volume>10</volume>
+                    <first_page>397</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1038/nrn2647</doi>
+                    <article_title>Neural regulation of endocrine and autonomic stress responses.</article_title>
+                  </citation>
+                  <citation key="B44">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Urry</author>
+                    <volume>26</volume>
+                    <first_page>4415</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1523/JNEUROSCI.3215-05.2006</doi>
+                    <article_title>Amygdala and ventromedial prefrontal cortex are inversely coupled during regulation of negative affect and predict the diurnal pattern of cortisol secretion among older adults.</article_title>
+                  </citation>
+                  <citation key="B45">
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <author>Vedhara</author>
+                    <volume>62</volume>
+                    <first_page>89</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1016/S0301-0511(02)00128-X</doi>
+                    <article_title>An investigation into the relationship between salivary cortisol, stress, anxiety and depression.</article_title>
+                  </citation>
+                  <citation key="B46">
+                    <journal_title>Proc. Natl. Acad. Sci. U.S.A.</journal_title>
+                    <author>Wang</author>
+                    <volume>102</volume>
+                    <first_page>17804</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1073/pnas.0503082102</doi>
+                    <article_title>Perfusion functional MRI reveals cerebral blood flow pattern under psychological stress.</article_title>
+                  </citation>
+                  <citation key="B47">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>Wood</author>
+                    <volume>60</volume>
+                    <first_page>787</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.neuroimage.2011.12.048</doi>
+                    <article_title>Neural mechanisms underlying the conditioned diminution of the unconditioned fear response.</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

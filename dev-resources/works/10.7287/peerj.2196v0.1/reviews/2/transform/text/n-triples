@@ -1,14 +1,8 @@
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> <http://xmlns.com/foaf/0.1/name> "Xiaoguang Fang" .
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> <http://xmlns.com/foaf/0.1/familyName> "Fang" .
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> <http://xmlns.com/foaf/0.1/givenName> "Xiaoguang" .
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> <http://www.w3.org/2002/07/owl#sameAs> <http://orcid.org/0000-0002-3368-4133> .
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
-<http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/creator> <http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> .
-<http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/publisher> "Rockefeller University Press" .
+<http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/publisher> "PeerJ" .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/title> "Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\"" .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/ontology/bibo/doi> "10.7287/peerj.2196v0.1/reviews/2" .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://prismstandard.org/namespaces/basic/2.1/doi> "10.7287/peerj.2196v0.1/reviews/2" .
-<http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/date> "2017-04-19"^^<http://www.w3.org/2001/XMLSchema#date> .
+<http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/date> "2016-07-26"^^<http://www.w3.org/2001/XMLSchema#date> .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://www.w3.org/2002/07/owl#sameAs> <info:doi/10.7287/peerj.2196v0.1/reviews/2> .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://www.w3.org/2002/07/owl#sameAs> <doi:10.7287/peerj.2196v0.1/reviews/2> .
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2> <http://purl.org/dc/terms/identifier> "10.7287/peerj.2196v0.1/reviews/2" .

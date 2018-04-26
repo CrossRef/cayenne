@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1084/jem.20151673</doi>
+        <crm-item name="publisher-name" type="string">Rockefeller University Press</crm-item>
+        <crm-item name="prefix-name" type="string">The Rockefeller University Press</crm-item>
+        <crm-item name="member-id" type="number">291</crm-item>
+        <crm-item name="citation-id" type="number">86726998</crm-item>
+        <crm-item name="journal-id" type="number">4869</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017041916485093000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1084</crm-item>
+        <crm-item name="last-update" type="date">2017-04-19T23:50:05Z</crm-item>
+        <crm-item name="created" type="date">2016-12-07T15:10:13Z</crm-item>
+        <crm-item name="citedby-count" type="number">7</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>The Journal of Experimental Medicine</full_title>
+                <abbrev_title>J. Exp. Med.</abbrev_title>
+                <issn media_type="print">0022-1007</issn>
+                <issn media_type="electronic">1540-9538</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>01</month>
+                  <day>02</day>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>214</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Deubiquitinase USP13 maintains glioblastoma stem cells by antagonizing FBXL14-mediated Myc ubiquitination</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Xiaoguang</given_name>
+                    <surname>Fang</surname>
+                    <ORCID>http://orcid.org/0000-0002-3368-4133</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Wenchao</given_name>
+                    <surname>Zhou</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Qiulian</given_name>
+                    <surname>Wu</surname>
+                    <ORCID>http://orcid.org/0000-0002-2040-4577</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Zhi</given_name>
+                    <surname>Huang</surname>
+                    <ORCID>http://orcid.org/0000-0002-8658-7732</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Yu</given_name>
+                    <surname>Shi</surname>
+                    <ORCID>http://orcid.org/0000-0002-3380-4545</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Kailin</given_name>
+                    <surname>Yang</surname>
+                    <ORCID>http://orcid.org/0000-0001-5968-6738</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Cong</given_name>
+                    <surname>Chen</surname>
+                    <ORCID>http://orcid.org/0000-0001-6552-791X</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Qi</given_name>
+                    <surname>Xie</surname>
+                    <ORCID>http://orcid.org/0000-0002-2370-2078</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Stephen C.</given_name>
+                    <surname>Mack</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Xiuxing</given_name>
+                    <surname>Wang</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Angel M.</given_name>
+                    <surname>Carcaboso</surname>
+                    <ORCID>http://orcid.org/0000-0002-8485-426X</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Andrew E.</given_name>
+                    <surname>Sloan</surname>
+                    <ORCID>http://orcid.org/0000-0001-9607-5063</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Gaoliang</given_name>
+                    <surname>Ouyang</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Roger E.</given_name>
+                    <surname>McLendon</surname>
+                    <ORCID>http://orcid.org/0000-0001-6682-4588</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Xiu-wu</given_name>
+                    <surname>Bian</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jeremy N.</given_name>
+                    <surname>Rich</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Shideng</given_name>
+                    <surname>Bao</surname>
+                    <ORCID>http://orcid.org/0000-0002-4236-2662</ORCID>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1">
+                  <jats:p>Glioblastoma is the most lethal brain tumor and harbors glioma stem cells (GSCs) with potent tumorigenic capacity. The function of GSCs in tumor propagation is maintained by several core transcriptional regulators including c-Myc. c-Myc protein is tightly regulated by posttranslational modification. However, the posttranslational regulatory mechanisms for c-Myc in GSCs have not been defined. In this study, we demonstrate that the deubiquitinase USP13 stabilizes c-Myc by antagonizing FBXL14-mediated ubiquitination to maintain GSC self-renewal and tumorigenic potential. USP13 was preferentially expressed in GSCs, and its depletion potently inhibited GSC proliferation and tumor growth by promoting c-Myc ubiquitination and degradation. In contrast, overexpression of the ubiquitin E3 ligase FBXL14 induced c-Myc degradation, promoted GSC differentiation, and inhibited tumor growth. Ectopic expression of the ubiquitin-insensitive mutant T58A–c-Myc rescued the effects caused by FBXL14 overexpression or USP13 disruption. These data suggest that USP13 and FBXL14 play opposing roles in the regulation of GSCs through reversible ubiquitination of c-Myc.</jats:p>
+                </jats:abstract>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>06</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>245</first_page>
+                  <last_page>267</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="atom">/jem/214/1/245.atom</item_number>
+                  <identifier id_type="doi">10.1084/jem.20151673</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1.0</crossmark_version>
+                  <crossmark_policy>10.1084/jem.crossmarkpolicy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>rupress.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          National Institutes of Health
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/https://doi.org/10.13039/100000002</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">CA184090</fr:assertion>
+                        <fr:assertion name="award_number">NS091080</fr:assertion>
+                        <fr:assertion name="award_number">NS099175</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          National Institutes of Health
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/https://doi.org/10.13039/100000002</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">S10OD018205</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:free_to_read start_date="2017-07-03" />
+                      <ai:license_ref applies_to="vor">http://www.rupress.org/terms/</ai:license_ref>
+                      <ai:license_ref applies_to="vor" start_date="2017-07-03">https://creativecommons.org/licenses/by-nc-sa/4.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1084/jem.20151673</doi>
+                  <timestamp>2017041916485093000</timestamp>
+                  <resource>http://www.jem.org/lookup/doi/10.1084/jem.20151673</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://syndication.highwire.org/content/doi/10.1084/jem.20151673</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="2017041916485093000_214.1.245.1">
+                    <doi>10.1016/j.ejmg.2010.11.010</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.2">
+                    <doi>10.1016/j.cell.2005.08.016</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.3">
+                    <doi>10.1038/ncomms5632</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.4">
+                    <doi>10.1038/nature05236</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.5">
+                    <doi>10.1158/0008-5472.CAN-06-1010</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.6">
+                    <doi>10.1038/ng0993-56</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.7">
+                    <doi>10.1126/science.2006410</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.8">
+                    <doi>10.1016/j.ccr.2006.11.020</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.9">
+                    <doi>10.1002/glia.21264</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.10">
+                    <doi>10.1038/nature11287</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.11">
+                    <doi>10.1073/pnas.1100028108</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.12">
+                    <doi>10.1016/j.ccr.2009.12.049</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.13">
+                    <doi>10.1016/j.cell.2013.02.021</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.14">
+                    <doi>10.1016/j.cell.2010.11.012</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.15">
+                    <doi>10.1038/nrm2467</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.16">
+                    <doi>10.1016/j.cell.2012.03.003</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.17">
+                    <doi>10.1038/nature08697</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.18">
+                    <doi>10.1016/j.cell.2011.08.017</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.19">
+                    <doi>10.1002/stem.1730</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.20">
+                    <journal_title>Oncogene.</journal_title>
+                    <author>Field</author>
+                    <volume>4</volume>
+                    <first_page>1463</first_page>
+                    <cYear>1989</cYear>
+                    <article_title>Elevated expression of the c-myc oncoprotein correlates with poor prognosis in head and neck squamous cell carcinoma</article_title>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.21">
+                    <doi>10.1371/journal.pone.0007632</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.22">
+                    <doi>10.1038/nature07823</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.23">
+                    <doi>10.1016/j.ccr.2013.03.030</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.24">
+                    <doi>10.1038/nrc2246</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.25">
+                    <doi>10.1016/j.ccr.2007.02.006</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.26">
+                    <doi>10.1016/j.ccr.2007.07.006</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.27">
+                    <doi>10.1016/j.ccr.2011.03.004</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.28">
+                    <doi>10.1038/sj.bjc.6605551</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.29">
+                    <doi>10.1073/pnas.2036535100</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.30">
+                    <doi>10.1038/onc.2012.142</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.31">
+                    <doi>10.1038/ncb2153</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.32">
+                    <doi>10.1101/gad.1255304</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.33">
+                    <doi>10.1038/onc.2011.236</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.34">
+                    <doi>10.1016/j.cell.2013.05.041</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.35">
+                    <doi>10.1073/pnas.1501967112</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.36">
+                    <doi>10.1016/j.stem.2014.02.006</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.37">
+                    <doi>10.1083/jcb.201012085</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.38">
+                    <doi>10.1016/j.ccr.2006.03.030</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.39">
+                    <doi>10.1101/gad.1140403</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.40">
+                    <doi>10.1016/j.ccr.2009.03.018</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.41">
+                    <doi>10.1016/j.cell.2012.08.026</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.42">
+                    <doi>10.1186/1476-4598-5-67</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.43">
+                    <doi>10.1016/j.cell.2011.08.037</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.44">
+                    <doi>10.7554/eLife.01369</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.45">
+                    <doi>10.1016/j.cmet.2013.09.013</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.46">
+                    <doi>10.1242/jcs.091777</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.47">
+                    <doi>10.1038/nrc1881</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.48">
+                    <doi>10.1016/j.cell.2012.08.033</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.49">
+                    <doi>10.1038/sj.emboj.7601551</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.50">
+                    <doi>10.1038/onc.2014.327</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.51">
+                    <doi>10.1038/nature05349</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.52">
+                    <doi>10.1038/ncb1601</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.53">
+                    <doi>10.1016/j.cell.2010.03.030</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.54">
+                    <doi>10.1016/j.cell.2006.02.038</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.55">
+                    <doi>10.1101/gad.232082.113</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.56">
+                    <doi>10.1074/jbc.M111.218214</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.57">
+                    <doi>10.1101/gad.836800</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.58">
+                    <doi>10.1038/nature03128</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.59">
+                    <doi>10.1016/j.stem.2009.03.003</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.60">
+                    <doi>10.1056/NEJMoa043330</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.61">
+                    <doi>10.1016/S1470-2045(09)70025-7</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.62">
+                    <doi>10.1073/pnas.1411713112</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.63">
+                    <doi>10.1016/j.cell.2014.02.030</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.64">
+                    <doi>10.1172/JCI71180</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.65">
+                    <doi>10.1073/pnas.83.2.470</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.66">
+                    <journal_title>Oncogene.</journal_title>
+                    <author>Varley</author>
+                    <volume>1</volume>
+                    <first_page>423</first_page>
+                    <cYear>1987</cYear>
+                    <article_title>Alterations to either c-erbB-2(neu) or c-myc proto-oncogenes in breast carcinomas correlate with poor short-term prognosis</article_title>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.67">
+                    <doi>10.1074/jbc.M109.065995</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.68">
+                    <doi>10.1016/S1097-2765(03)00193-X</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.69">
+                    <doi>10.1371/journal.pone.0003769</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.70">
+                    <doi>10.1158/0008-5472.CAN-10-1032</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.71">
+                    <journal_title>Cancer Res.</journal_title>
+                    <author>Wasson</author>
+                    <volume>50</volume>
+                    <first_page>2987</first_page>
+                    <cYear>1990</cYear>
+                    <article_title>Oncogene amplification in pediatric brain tumors</article_title>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.72">
+                    <doi>10.1073/pnas.0402770101</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.73">
+                    <doi>10.1056/NEJMra0708126</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.74">
+                    <doi>10.1038/sj.emboj.7600217</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.75">
+                    <doi>10.1101/gad.235515.113</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.76">
+                    <doi>10.1038/ncb1110</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.77">
+                    <doi>10.4049/jimmunol.1300225</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.78">
+                    <doi>10.1038/ncb2874</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.79">
+                    <doi>10.1371/journal.pone.0029362</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.80">
+                    <doi>10.1038/ncomms1421</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.81">
+                    <doi>10.1101/sqb.2008.73.047</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.82">
+                    <doi>10.1038/cr.2012.37</doi>
+                  </citation>
+                  <citation key="2017041916485093000_214.1.245.83">
+                    <doi>10.1038/ncb3090</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

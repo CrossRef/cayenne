@@ -1,0 +1,845 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1038/tp.2016.212</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer Nature</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86217832</crm-item>
+        <crm-item name="journal-id" type="number">127945</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171230005451326</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1038</crm-item>
+        <crm-item name="last-update" type="date">2017-12-29T23:55:39Z</crm-item>
+        <crm-item name="created" type="date">2016-11-08T14:44:34Z</crm-item>
+        <crm-item name="citedby-count" type="number">21</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Translational Psychiatry</full_title>
+                <abbrev_title>Transl Psychiatry</abbrev_title>
+                <issn media_type="electronic">2158-3188</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>6</volume>
+                </journal_volume>
+                <issue>11</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Neuropathology of mood disorders: do we see the stigmata of inflammation?</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>N</given_name>
+                    <surname>Mechawar</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>J</given_name>
+                    <surname>Savitz</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>8</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>e946</first_page>
+                  <last_page>e946</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">BFtp2016212</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1038/tp.2016.212</doi>
+                  <timestamp>20171230005451326</timestamp>
+                  <resource>http://www.nature.com/articles/tp2016212</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/tp2016212.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/tp2016212.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://www.nature.com/articles/tp2016212</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="tp2016212-bib1">
+                    <doi>10.1016/j.neubiorev.2014.02.008</doi>
+                  </citation>
+                  <citation key="tp2016212-bib2">
+                    <doi>10.1176/appi.ajp.2015.15060753</doi>
+                  </citation>
+                  <citation key="tp2016212-bib3">
+                    <doi>10.1093/schbul/sbs135</doi>
+                  </citation>
+                  <citation key="tp2016212-bib4">
+                    <doi>10.4088/JCP.14r09007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib5">
+                    <doi>10.1016/j.jpsychires.2013.05.018</doi>
+                  </citation>
+                  <citation key="tp2016212-bib6">
+                    <doi>10.1016/j.biopsych.2013.01.007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib7">
+                    <doi>10.1016/j.bbi.2015.06.001</doi>
+                  </citation>
+                  <citation key="tp2016212-bib8">
+                    <doi>10.1016/j.biopsych.2009.09.033</doi>
+                  </citation>
+                  <citation key="tp2016212-bib9">
+                    <doi>10.1016/j.jad.2015.08.036</doi>
+                  </citation>
+                  <citation key="tp2016212-bib10">
+                    <doi>10.1016/j.bbi.2014.09.021</doi>
+                  </citation>
+                  <citation key="tp2016212-bib11">
+                    <doi>10.1001/archpsyc.65.4.395</doi>
+                  </citation>
+                  <citation key="tp2016212-bib12">
+                    <doi>10.1016/j.bbi.2011.03.013</doi>
+                  </citation>
+                  <citation key="tp2016212-bib13">
+                    <doi>10.1111/bdi.12320</doi>
+                  </citation>
+                  <citation key="tp2016212-bib14">
+                    <doi>10.1016/j.bbi.2012.10.007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib15">
+                    <doi>10.1016/j.psychres.2016.04.049</doi>
+                  </citation>
+                  <citation key="tp2016212-bib16">
+                    <doi>10.1002/hup.2450</doi>
+                  </citation>
+                  <citation key="tp2016212-bib17">
+                    <doi>10.1111/bdi.12259</doi>
+                  </citation>
+                  <citation key="tp2016212-bib18">
+                    <doi>10.1016/j.psyneuen.2016.02.011</doi>
+                  </citation>
+                  <citation key="tp2016212-bib19">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="tp2016212-bib20">
+                    <doi>10.1192/bjp.bp.109.076430</doi>
+                  </citation>
+                  <citation key="tp2016212-bib21">
+                    <doi>10.1001/jamapsychiatry.2014.1332</doi>
+                  </citation>
+                  <citation key="tp2016212-bib22">
+                    <doi>10.1016/j.physbeh.2014.11.058</doi>
+                  </citation>
+                  <citation key="tp2016212-bib23">
+                    <doi>10.1176/appi.ajp.160.7.1342</doi>
+                  </citation>
+                  <citation key="tp2016212-bib24">
+                    <doi>10.1016/S0889-1591(02)00007-7</doi>
+                  </citation>
+                  <citation key="tp2016212-bib25">
+                    <doi>10.1017/S1461145702003103</doi>
+                  </citation>
+                  <citation key="tp2016212-bib26">
+                    <doi>10.1016/j.biopsych.2004.02.009</doi>
+                  </citation>
+                  <citation key="tp2016212-bib27">
+                    <doi>10.1016/j.pharmthera.2011.01.014</doi>
+                  </citation>
+                  <citation key="tp2016212-bib28">
+                    <doi>10.1073/pnas.1511003112</doi>
+                  </citation>
+                  <citation key="tp2016212-bib29">
+                    <doi>10.1016/j.biopsych.2010.06.010</doi>
+                  </citation>
+                  <citation key="tp2016212-bib30">
+                    <doi>10.2967/jnumed.111.097014</doi>
+                  </citation>
+                  <citation key="tp2016212-bib31">
+                    <doi>10.1016/j.biopsych.2009.03.015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib32">
+                    <doi>10.1016/j.jad.2014.12.015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib33">
+                    <doi>10.1016/j.biopsych.2008.04.022</doi>
+                  </citation>
+                  <citation key="tp2016212-bib34">
+                    <doi>10.1136/bmjopen-2011-000643</doi>
+                  </citation>
+                  <citation key="tp2016212-bib35">
+                    <doi>10.1001/2013.jamapsychiatry.4</doi>
+                  </citation>
+                  <citation key="tp2016212-bib36">
+                    <doi>10.1001/jamapsychiatry.2014.2427</doi>
+                  </citation>
+                  <citation key="tp2016212-bib37">
+                    <doi>10.1016/j.bbi.2014.03.016</doi>
+                  </citation>
+                  <citation key="tp2016212-bib38">
+                    <doi>10.1038/nri.2015.5</doi>
+                  </citation>
+                  <citation key="tp2016212-bib39">
+                    <doi>10.1016/j.biopsych.2014.01.005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib40">
+                    <doi>10.1001/archgenpsychiatry.2011.2094</doi>
+                  </citation>
+                  <citation key="tp2016212-bib41">
+                    <doi>10.1038/mp.2015.168</doi>
+                  </citation>
+                  <citation key="tp2016212-bib42">
+                    <doi>10.1002/eji.1830220936</doi>
+                  </citation>
+                  <citation key="tp2016212-bib43">
+                    <doi>10.1186/1742-2094-9-275</doi>
+                  </citation>
+                  <citation key="tp2016212-bib44">
+                    <doi>10.4049/jimmunol.1401108</doi>
+                  </citation>
+                  <citation key="tp2016212-bib45">
+                    <doi>10.1093/jnen/63.9.964</doi>
+                  </citation>
+                  <citation key="tp2016212-bib46">
+                    <doi>10.1111/j.1471-4159.2008.05305.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib47">
+                    <doi>10.1016/j.expneurol.2011.10.025</doi>
+                  </citation>
+                  <citation key="tp2016212-bib48">
+                    <doi>10.1007/s00702-014-1187-1</doi>
+                  </citation>
+                  <citation key="tp2016212-bib49">
+                    <doi>10.1111/jnc.13200</doi>
+                  </citation>
+                  <citation key="tp2016212-bib50">
+                    <doi>10.1016/j.psyneuen.2010.09.012</doi>
+                  </citation>
+                  <citation key="tp2016212-bib51">
+                    <doi>10.1111/j.1471-4159.1989.tb01881.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib52">
+                    <doi>10.1126/science.6849138</doi>
+                  </citation>
+                  <citation key="tp2016212-bib53">
+                    <doi>10.1016/S0301-0082(00)00032-0</doi>
+                  </citation>
+                  <citation key="tp2016212-bib54">
+                    <doi>10.1080/10715760100300391</doi>
+                  </citation>
+                  <citation key="tp2016212-bib55">
+                    <doi>10.1097/00001756-200002070-00005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib56">
+                    <doi>10.1371/journal.pone.0006344</doi>
+                  </citation>
+                  <citation key="tp2016212-bib57">
+                    <doi>10.1002/glia.10175</doi>
+                  </citation>
+                  <citation key="tp2016212-bib58">
+                    <doi>10.1016/j.bbi.2014.07.012</doi>
+                  </citation>
+                  <citation key="tp2016212-bib59">
+                    <doi>10.1016/j.psyneuen.2014.11.015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib60">
+                    <doi>10.1038/npp.2014.194</doi>
+                  </citation>
+                  <citation key="tp2016212-bib61">
+                    <doi>10.1089/neu.2015.4118</doi>
+                  </citation>
+                  <citation key="tp2016212-bib62">
+                    <doi>10.1038/nri1571</doi>
+                  </citation>
+                  <citation key="tp2016212-bib63">
+                    <doi>10.1016/j.psyneuen.2015.07.001</doi>
+                  </citation>
+                  <citation key="tp2016212-bib64">
+                    <doi>10.1371/journal.pgen.1004601</doi>
+                  </citation>
+                  <citation key="tp2016212-bib65">
+                    <doi>10.1073/pnas.1014218108</doi>
+                  </citation>
+                  <citation key="tp2016212-bib66">
+                    <doi>10.1016/j.cmet.2016.01.015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib67">
+                    <doi>10.1097/01.olq.0000145852.43262.c3</doi>
+                  </citation>
+                  <citation key="tp2016212-bib68">
+                    <doi>10.1186/1471-2334-7-71</doi>
+                  </citation>
+                  <citation key="tp2016212-bib69">
+                    <doi>10.1007/BF00870312</doi>
+                  </citation>
+                  <citation key="tp2016212-bib70">
+                    <doi>10.1016/S0002-9149(02)02863-1</doi>
+                  </citation>
+                  <citation key="tp2016212-bib71">
+                    <doi>10.1097/00006842-200009000-00001</doi>
+                  </citation>
+                  <citation key="tp2016212-bib72">
+                    <doi>10.1016/j.bbi.2014.01.012</doi>
+                  </citation>
+                  <citation key="tp2016212-bib73">
+                    <doi>10.1016/j.psyneuen.2014.08.002</doi>
+                  </citation>
+                  <citation key="tp2016212-bib74">
+                    <doi>10.1038/mp.2008.5</doi>
+                  </citation>
+                  <citation key="tp2016212-bib75">
+                    <doi>10.1093/schbul/sbl050</doi>
+                  </citation>
+                  <citation key="tp2016212-bib76">
+                    <doi>10.1371/journal.pone.0148435</doi>
+                  </citation>
+                  <citation key="tp2016212-bib77">
+                    <doi>10.1097/NMD.0b013e3181c29a23</doi>
+                  </citation>
+                  <citation key="tp2016212-bib78">
+                    <doi>10.7205/MILMED-D-14-00488</doi>
+                  </citation>
+                  <citation key="tp2016212-bib79">
+                    <doi>10.1111/bdi.12123</doi>
+                  </citation>
+                  <citation key="tp2016212-bib80">
+                    <doi>10.1093/schbul/sbm008</doi>
+                  </citation>
+                  <citation key="tp2016212-bib81">
+                    <doi>10.1016/j.schres.2013.11.011</doi>
+                  </citation>
+                  <citation key="tp2016212-bib82">
+                    <doi>10.1007/s12016-015-8493-8</doi>
+                  </citation>
+                  <citation key="tp2016212-bib83">
+                    <doi>10.1007/s00125-011-2240-3</doi>
+                  </citation>
+                  <citation key="tp2016212-bib84">
+                    <doi>10.1016/j.biopsych.2006.08.041</doi>
+                  </citation>
+                  <citation key="tp2016212-bib85">
+                    <doi>10.1111/j.1399-5618.2010.00853.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib86">
+                    <doi>10.1155/2012/894128</doi>
+                  </citation>
+                  <citation key="tp2016212-bib87">
+                    <doi>10.1192/bjp.bp.111.104471</doi>
+                  </citation>
+                  <citation key="tp2016212-bib88">
+                    <doi>10.1001/jamapsychiatry.2013.1111</doi>
+                  </citation>
+                  <citation key="tp2016212-bib89">
+                    <journal_title>J Clin Endocrinol Metab</journal_title>
+                    <author>Pop VJ</author>
+                    <first_page>3194</first_page>
+                    <volume>83</volume>
+                    <cYear>1998</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib90">
+                    <doi>10.1016/S0006-3223(01)01217-3</doi>
+                  </citation>
+                  <citation key="tp2016212-bib91">
+                    <doi>10.1016/j.jneuroim.2010.02.015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib92">
+                    <doi>10.1016/S1474-4422(10)70253-2</doi>
+                  </citation>
+                  <citation key="tp2016212-bib93">
+                    <doi>10.1001/jamaneurol.2013.3216</doi>
+                  </citation>
+                  <citation key="tp2016212-bib94">
+                    <doi>10.1001/2013.jamapsychiatry.86</doi>
+                  </citation>
+                  <citation key="tp2016212-bib95">
+                    <doi>10.1176/appi.ajp.2015.14101332</doi>
+                  </citation>
+                  <citation key="tp2016212-bib96">
+                    <doi>10.1192/bjp.bp.111.095042</doi>
+                  </citation>
+                  <citation key="tp2016212-bib97">
+                    <doi>10.1016/j.tins.2006.08.004</doi>
+                  </citation>
+                  <citation key="tp2016212-bib98">
+                    <doi>10.1523/JNEUROSCI.4707-08.2009</doi>
+                  </citation>
+                  <citation key="tp2016212-bib99">
+                    <doi>10.1038/mp.2015.65</doi>
+                  </citation>
+                  <citation key="tp2016212-bib100">
+                    <doi>10.1523/JNEUROSCI.4037-13.2014</doi>
+                  </citation>
+                  <citation key="tp2016212-bib101">
+                    <doi>10.1111/j.1600-0447.2007.01128.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib102">
+                    <doi>10.4049/jimmunol.1202246</doi>
+                  </citation>
+                  <citation key="tp2016212-bib103">
+                    <doi>10.4049/jimmunol.177.2.1323</doi>
+                  </citation>
+                  <citation key="tp2016212-bib104">
+                    <doi>10.1016/j.jpsychires.2011.08.006</doi>
+                  </citation>
+                  <citation key="tp2016212-bib105">
+                    <doi>10.1016/j.jpsychires.2014.01.021</doi>
+                  </citation>
+                  <citation key="tp2016212-bib106">
+                    <doi>10.1016/j.jad.2009.04.027</doi>
+                  </citation>
+                  <citation key="tp2016212-bib107">
+                    <doi>10.1038/mp.2012.95</doi>
+                  </citation>
+                  <citation key="tp2016212-bib108">
+                    <doi>10.1038/mp.2009.47</doi>
+                  </citation>
+                  <citation key="tp2016212-bib109">
+                    <doi>10.1038/mp.2010.52</doi>
+                  </citation>
+                  <citation key="tp2016212-bib110">
+                    <journal_title>J Mol Neurosci</journal_title>
+                    <author>Elashoff M</author>
+                    <first_page>221</first_page>
+                    <volume>31</volume>
+                    <cYear>2007</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib111">
+                    <doi>10.1038/tp.2014.8</doi>
+                  </citation>
+                  <citation key="tp2016212-bib112">
+                    <doi>10.1503/jpn.150226</doi>
+                  </citation>
+                  <citation key="tp2016212-bib113">
+                    <doi>10.1371/journal.pbio.1000527</doi>
+                  </citation>
+                  <citation key="tp2016212-bib114">
+                    <doi>10.1189/jlb.0303114</doi>
+                  </citation>
+                  <citation key="tp2016212-bib115">
+                    <doi>10.1152/physrev.00011.2010</doi>
+                  </citation>
+                  <citation key="tp2016212-bib116">
+                    <doi>10.1186/1742-2094-11-12</doi>
+                  </citation>
+                  <citation key="tp2016212-bib117">
+                    <doi>10.1016/j.neulet.2008.09.081</doi>
+                  </citation>
+                  <citation key="tp2016212-bib118">
+                    <doi>10.1016/j.jpsychires.2006.10.013</doi>
+                  </citation>
+                  <citation key="tp2016212-bib119">
+                    <doi>10.1186/1742-2094-8-94</doi>
+                  </citation>
+                  <citation key="tp2016212-bib120">
+                    <doi>10.1016/j.bbi.2014.05.007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib121">
+                    <doi>10.1523/JNEUROSCI.1671-13.2013</doi>
+                  </citation>
+                  <citation key="tp2016212-bib122">
+                    <doi>10.1097/00001756-199701200-00011</doi>
+                  </citation>
+                  <citation key="tp2016212-bib123">
+                    <doi>10.1097/NEN.0000000000000107</doi>
+                  </citation>
+                  <citation key="tp2016212-bib124">
+                    <doi>10.1038/npp.2014.25</doi>
+                  </citation>
+                  <citation key="tp2016212-bib125">
+                    <doi>10.1016/j.biopsych.2007.03.017</doi>
+                  </citation>
+                  <citation key="tp2016212-bib126">
+                    <doi>10.1016/j.biopsych.2010.06.016</doi>
+                  </citation>
+                  <citation key="tp2016212-bib127">
+                    <doi>10.1111/j.1399-5618.2012.01033.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib128">
+                    <doi>10.1038/sj.mp.4001711</doi>
+                  </citation>
+                  <citation key="tp2016212-bib129">
+                    <doi>10.2174/13894501113149990156</doi>
+                  </citation>
+                  <citation key="tp2016212-bib130">
+                    <doi>10.1038/npp.2011.154</doi>
+                  </citation>
+                  <citation key="tp2016212-bib131">
+                    <doi>10.1016/j.neuroscience.2005.02.037</doi>
+                  </citation>
+                  <citation key="tp2016212-bib132">
+                    <doi>10.1016/j.neuroscience.2015.12.044</doi>
+                  </citation>
+                  <citation key="tp2016212-bib133">
+                    <doi>10.1001/archpsyc.66.1.22</doi>
+                  </citation>
+                  <citation key="tp2016212-bib134">
+                    <doi>10.1016/j.biopsych.2011.03.038</doi>
+                  </citation>
+                  <citation key="tp2016212-bib135">
+                    <doi>10.1038/mp.2014.21</doi>
+                  </citation>
+                  <citation key="tp2016212-bib136">
+                    <doi>10.1007/s00401-013-1102-0</doi>
+                  </citation>
+                  <citation key="tp2016212-bib137">
+                    <doi>10.1111/j.1471-4159.2006.03913.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib138">
+                    <doi>10.1073/pnas.0507901102</doi>
+                  </citation>
+                  <citation key="tp2016212-bib139">
+                    <doi>10.1038/mp.2010.44</doi>
+                  </citation>
+                  <citation key="tp2016212-bib140">
+                    <doi>10.1016/j.jpsychires.2013.04.007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib141">
+                    <doi>10.1503/jpn.120110</doi>
+                  </citation>
+                  <citation key="tp2016212-bib142">
+                    <doi>10.1016/j.jad.2011.08.017</doi>
+                  </citation>
+                  <citation key="tp2016212-bib143">
+                    <doi>10.1176/appi.ajp.161.1.171</doi>
+                  </citation>
+                  <citation key="tp2016212-bib144">
+                    <doi>10.1016/S0893-133X(01)00370-0</doi>
+                  </citation>
+                  <citation key="tp2016212-bib145">
+                    <doi>10.1002/ajmg.b.32125</doi>
+                  </citation>
+                  <citation key="tp2016212-bib146">
+                    <doi>10.1038/ejhg.2014.261</doi>
+                  </citation>
+                  <citation key="tp2016212-bib147">
+                    <doi>10.1002/ana.24189</doi>
+                  </citation>
+                  <citation key="tp2016212-bib148">
+                    <doi>10.1016/j.biopsych.2014.09.011</doi>
+                  </citation>
+                  <citation key="tp2016212-bib149">
+                    <doi>10.1084/jem.20081241</doi>
+                  </citation>
+                  <citation key="tp2016212-bib150">
+                    <doi>10.1111/j.1742-4658.2012.08485.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib151">
+                    <doi>10.1371/journal.pone.0006585</doi>
+                  </citation>
+                  <citation key="tp2016212-bib152">
+                    <doi>10.1038/nrneurol.2010.53</doi>
+                  </citation>
+                  <citation key="tp2016212-bib153">
+                    <doi>10.1016/S0149-7634(96)00005-X</doi>
+                  </citation>
+                  <citation key="tp2016212-bib154">
+                    <journal_title>J Neurosci</journal_title>
+                    <author>Lehnardt S</author>
+                    <first_page>2478</first_page>
+                    <volume>22</volume>
+                    <cYear>2002</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib155">
+                    <doi>10.1073/pnas.1432609100</doi>
+                  </citation>
+                  <citation key="tp2016212-bib156">
+                    <doi>10.1523/JNEUROSCI.0849-14.2015</doi>
+                  </citation>
+                  <citation key="tp2016212-bib157">
+                    <doi>10.1016/j.bbi.2016.01.005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib158">
+                    <doi>10.1001/archgenpsychiatry.2011.1374</doi>
+                  </citation>
+                  <citation key="tp2016212-bib159">
+                    <doi>10.1038/tp.2012.34</doi>
+                  </citation>
+                  <citation key="tp2016212-bib160">
+                    <doi>10.1073/pnas.95.22.13290</doi>
+                  </citation>
+                  <citation key="tp2016212-bib161">
+                    <doi>10.1001/archpsyc.58.6.545</doi>
+                  </citation>
+                  <citation key="tp2016212-bib162">
+                    <doi>10.1093/cercor/12.4.386</doi>
+                  </citation>
+                  <citation key="tp2016212-bib163">
+                    <journal_title>J Psychiatry Neurosci</journal_title>
+                    <author>Hercher C</author>
+                    <first_page>281</first_page>
+                    <volume>34</volume>
+                    <cYear>2009</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib164">
+                    <doi>10.1016/S0006-3223(01)01080-0</doi>
+                  </citation>
+                  <citation key="tp2016212-bib165">
+                    <doi>10.1016/S0006-3223(02)01404-X</doi>
+                  </citation>
+                  <citation key="tp2016212-bib166">
+                    <doi>10.1016/j.schres.2007.04.014</doi>
+                  </citation>
+                  <citation key="tp2016212-bib167">
+                    <doi>10.1016/S0920-9964(03)00181-6</doi>
+                  </citation>
+                  <citation key="tp2016212-bib168">
+                    <doi>10.1016/j.biopsych.2003.11.006</doi>
+                  </citation>
+                  <citation key="tp2016212-bib169">
+                    <doi>10.1016/S0361-9230(01)00528-7</doi>
+                  </citation>
+                  <citation key="tp2016212-bib170">
+                    <doi>10.1007/s11064-004-7039-x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib171">
+                    <doi>10.1016/j.psychres.2006.12.019</doi>
+                  </citation>
+                  <citation key="tp2016212-bib172">
+                    <doi>10.1038/mp.2011.152</doi>
+                  </citation>
+                  <citation key="tp2016212-bib173">
+                    <doi>10.1016/S0140-6736(03)14289-4</doi>
+                  </citation>
+                  <citation key="tp2016212-bib174">
+                    <doi>10.1038/tp.2016.110</doi>
+                  </citation>
+                  <citation key="tp2016212-bib175">
+                    <doi>10.1038/sj.mp.4002010</doi>
+                  </citation>
+                  <citation key="tp2016212-bib176">
+                    <doi>10.1016/j.biopsych.2008.07.026</doi>
+                  </citation>
+                  <citation key="tp2016212-bib177">
+                    <doi>10.1111/j.1399-5618.2008.00646.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib178">
+                    <doi>10.1016/j.jad.2016.05.047</doi>
+                  </citation>
+                  <citation key="tp2016212-bib179">
+                    <doi>10.1016/j.eurpsy.2007.07.006</doi>
+                  </citation>
+                  <citation key="tp2016212-bib180">
+                    <doi>10.1016/S0006-3223(02)01744-4</doi>
+                  </citation>
+                  <citation key="tp2016212-bib181">
+                    <doi>10.1176/appi.ajp.162.11.2109</doi>
+                  </citation>
+                  <citation key="tp2016212-bib182">
+                    <doi>10.1038/mp.2012.46</doi>
+                  </citation>
+                  <citation key="tp2016212-bib183">
+                    <doi>10.1016/j.neuron.2015.10.046</doi>
+                  </citation>
+                  <citation key="tp2016212-bib184">
+                    <doi>10.1016/j.bbadis.2010.07.007</doi>
+                  </citation>
+                  <citation key="tp2016212-bib185">
+                    <doi>10.4088/PCC.v10n0408</doi>
+                  </citation>
+                  <citation key="tp2016212-bib186">
+                    <doi>10.1017/S1478951514000376</doi>
+                  </citation>
+                  <citation key="tp2016212-bib187">
+                    <journal_title>Ther Clin Risk Manag</journal_title>
+                    <author>Ahmed A</author>
+                    <first_page>483</first_page>
+                    <volume>9</volume>
+                    <cYear>2013</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib188">
+                    <doi>10.1016/j.neubiorev.2014.08.017</doi>
+                  </citation>
+                  <citation key="tp2016212-bib189">
+                    <doi>10.1523/JNEUROSCI.3338-07.2008</doi>
+                  </citation>
+                  <citation key="tp2016212-bib190">
+                    <doi>10.1016/j.neuroscience.2008.04.072</doi>
+                  </citation>
+                  <citation key="tp2016212-bib191">
+                    <doi>10.1093/brain/awn271</doi>
+                  </citation>
+                  <citation key="tp2016212-bib192">
+                    <doi>10.1089/jir.2014.0105</doi>
+                  </citation>
+                  <citation key="tp2016212-bib193">
+                    <doi>10.1016/j.neuropharm.2015.06.009</doi>
+                  </citation>
+                  <citation key="tp2016212-bib194">
+                    <doi>10.1016/j.brainres.2013.01.031</doi>
+                  </citation>
+                  <citation key="tp2016212-bib195">
+                    <doi>10.1016/j.pnpbp.2008.10.005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib196">
+                    <doi>10.1038/sj.npp.1300781</doi>
+                  </citation>
+                  <citation key="tp2016212-bib197">
+                    <doi>10.1017/S1461145708008985</doi>
+                  </citation>
+                  <citation key="tp2016212-bib198">
+                    <doi>10.1038/mp.2015.91</doi>
+                  </citation>
+                  <citation key="tp2016212-bib199">
+                    <doi>10.1034/j.1399-5618.2003.00024.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib200">
+                    <doi>10.1016/j.brainres.2006.09.011</doi>
+                  </citation>
+                  <citation key="tp2016212-bib201">
+                    <doi>10.1073/pnas.0810153105</doi>
+                  </citation>
+                  <citation key="tp2016212-bib202">
+                    <doi>10.1038/sj.npp.1301604</doi>
+                  </citation>
+                  <citation key="tp2016212-bib203">
+                    <doi>10.1038/npp.2013.71</doi>
+                  </citation>
+                  <citation key="tp2016212-bib204">
+                    <doi>10.1038/npp.2013.4</doi>
+                  </citation>
+                  <citation key="tp2016212-bib205">
+                    <doi>10.1016/j.neuron.2005.11.032</doi>
+                  </citation>
+                  <citation key="tp2016212-bib206">
+                    <doi>10.1111/j.1399-5618.2009.00752.x</doi>
+                  </citation>
+                  <citation key="tp2016212-bib207">
+                    <doi>10.3389/fnana.2015.00023</doi>
+                  </citation>
+                  <citation key="tp2016212-bib208">
+                    <doi>10.1016/j.biopsych.2009.12.004</doi>
+                  </citation>
+                  <citation key="tp2016212-bib209">
+                    <doi>10.1016/j.neulet.2012.09.032</doi>
+                  </citation>
+                  <citation key="tp2016212-bib210">
+                    <doi>10.1001/archpsyc.61.7.649</doi>
+                  </citation>
+                  <citation key="tp2016212-bib211">
+                    <doi>10.1016/j.schres.2007.06.023</doi>
+                  </citation>
+                  <citation key="tp2016212-bib212">
+                    <doi>10.1016/S0006-3223(01)01243-4</doi>
+                  </citation>
+                  <citation key="tp2016212-bib213">
+                    <doi>10.1016/j.brainres.2008.03.092</doi>
+                  </citation>
+                  <citation key="tp2016212-bib214">
+                    <doi>10.1001/archpsyc.57.11.1061</doi>
+                  </citation>
+                  <citation key="tp2016212-bib215">
+                    <doi>10.1073/pnas.0409665102</doi>
+                  </citation>
+                  <citation key="tp2016212-bib216">
+                    <doi>10.1016/j.jpsychires.2009.02.005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib217">
+                    <doi>10.1001/archpsyc.59.6.521</doi>
+                  </citation>
+                  <citation key="tp2016212-bib218">
+                    <doi>10.1038/mp.2008.99</doi>
+                  </citation>
+                  <citation key="tp2016212-bib219">
+                    <doi>10.1038/sj.npp.1301234</doi>
+                  </citation>
+                  <citation key="tp2016212-bib220">
+                    <doi>10.1016/j.biopsych.2009.10.027</doi>
+                  </citation>
+                  <citation key="tp2016212-bib221">
+                    <doi>10.1016/j.jchemneu.2015.10.008</doi>
+                  </citation>
+                  <citation key="tp2016212-bib222">
+                    <doi>10.1016/j.biopsych.2015.03.010</doi>
+                  </citation>
+                  <citation key="tp2016212-bib223">
+                    <doi>10.1093/schbul/sbn070</doi>
+                  </citation>
+                  <citation key="tp2016212-bib224">
+                    <doi>10.1016/j.cell.2014.04.009</doi>
+                  </citation>
+                  <citation key="tp2016212-bib225">
+                    <doi>10.1001/jamapsychiatry.2015.0533</doi>
+                  </citation>
+                  <citation key="tp2016212-bib226">
+                    <doi>10.1016/j.bbi.2016.02.001</doi>
+                  </citation>
+                  <citation key="tp2016212-bib227">
+                    <doi>10.1007/s00221-008-1317-9</doi>
+                  </citation>
+                  <citation key="tp2016212-bib228">
+                    <doi>10.1016/j.bbi.2012.11.012</doi>
+                  </citation>
+                  <citation key="tp2016212-bib229">
+                    <doi>10.1016/j.bbi.2014.04.005</doi>
+                  </citation>
+                  <citation key="tp2016212-bib230">
+                    <doi>10.1128/mBio.01428-15</doi>
+                  </citation>
+                  <citation key="tp2016212-bib231">
+                    <doi>10.1038/nri2565</doi>
+                  </citation>
+                  <citation key="tp2016212-bib232">
+                    <doi>10.1146/annurev.immunol.021908.132528</doi>
+                  </citation>
+                  <citation key="tp2016212-bib233">
+                    <doi>10.1016/j.expneurol.2015.08.018</doi>
+                  </citation>
+                  <citation key="tp2016212-bib234">
+                    <doi>10.1189/jlb.0306153</doi>
+                  </citation>
+                  <citation key="tp2016212-bib235">
+                    <doi>10.1523/JNEUROSCI.0730-12.2012</doi>
+                  </citation>
+                  <citation key="tp2016212-bib236">
+                    <journal_title>Nat Commun</journal_title>
+                    <author>Chen Z</author>
+                    <first_page>4486</first_page>
+                    <volume>5</volume>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="tp2016212-bib237">
+                    <doi>10.1038/nature16549</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1002/nur.21773</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (John Wiley &amp; Sons)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86757169</crm-item>
+        <crm-item name="journal-id" type="number">271</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170112174903940</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1002</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T05:34:27Z</crm-item>
+        <crm-item name="created" type="date">2016-12-09T06:52:46Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Research in Nursing &amp; Health</full_title>
+                <abbrev_title>Res Nurs Health</abbrev_title>
+                <issn>01606891</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>40</volume>
+                </journal_volume>
+                <issue>1</issue>
+                <doi_data>
+                  <doi>10.1002/nur.v40.1</doi>
+                  <resource>http://doi.wiley.com/10.1002/nur.v40.1</resource>
+                </doi_data>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Resilience Mediates Impact of Some Childhood Maltreatment on Post-Traumatic Stress Symptoms in Conscripted Marines in the Republic of Korea</title>
+                  <subtitle>RESILIENCE IN SOUTH KOREAN MARINES</subtitle>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Heejung</given_name>
+                    <surname>Kim</surname>
+                    <affiliation>Assistant Professor; College of Nursing and Mo-Im Kim Nursing Research Institute; Yonsei University</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sun Ah</given_name>
+                    <surname>Kim</surname>
+                    <affiliation>Professor; College of Nursing and Mo-Im Kim Nursing Research Institute; Yonsei University</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Seongsook</given_name>
+                    <surname>Kong</surname>
+                    <affiliation>Professor; School of Nursing; College of Medicine; Soonchunhyang University; 31 Suncheonhyang 6-gil; Dongnam-gu; Cheonan Republic of Korea Zip code: 31151</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>09</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>51</first_page>
+                  <last_page>62</last_page>
+                </pages>
+                <archive_locations>
+                  <archive name="Portico" />
+                </archive_locations>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Soonchunhyang University
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100002560</fr:assertion>
+                    </fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="tdm">http://doi.wiley.com/10.1002/tdm_license_1</ai:license_ref>
+                  <ai:license_ref applies_to="vor" start_date="2016-12-09">http://onlinelibrary.wiley.com/termsAndConditions</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1002/nur.21773</doi>
+                  <resource>http://doi.wiley.com/10.1002/nur.21773</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1002/nur.21773/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fnur.21773</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1002/nur.21773-BIB0001|nur21773-cit-0001">
+                    <author>Baek</author>
+                    <cYear>2010</cYear>
+                    <article_title>Reliability and validity of the Korean version of the Connor-Davidson Resilience Scale</article_title>
+                    <journal_title>Psychiatry Investigation</journal_title>
+                    <volume>7</volume>
+                    <first_page>109</first_page>
+                    <doi>10.4306/pi.2010.7.2.109</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0002|nur21773-cit-0002">
+                    <author>Behrendt</author>
+                    <cYear>2013</cYear>
+                    <article_title>Conscious experience and episodic memory: Hippocampus at the crossroads</article_title>
+                    <journal_title>Frontiers in Psychology</journal_title>
+                    <volume>4</volume>
+                    <first_page>304</first_page>
+                    <doi>10.3389/fpsyg.2013.00304</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0003|nur21773-cit-0003">
+                    <author>Bernstein</author>
+                    <cYear>1998</cYear>
+                    <volume_title>Childhood Trauma Questionnaire. A retrospective self-report. Manual</volume_title>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0004|nur21773-cit-0004">
+                    <author>Booth-Kewley</author>
+                    <cYear>2010</cYear>
+                    <article_title>Correlates of posttraumatic stress disorder symptoms in marines back from war</article_title>
+                    <journal_title>Journal of Traumatic Stress</journal_title>
+                    <volume>23</volume>
+                    <first_page>69</first_page>
+                    <doi>10.1002/jts.20485</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0005|nur21773-cit-0005">
+                    <author>Buckner</author>
+                    <cYear>2008</cYear>
+                    <article_title>The brain's default network: Anatomy, function, and relevance to disease</article_title>
+                    <journal_title>Annals of the New York Academy of Sciences</journal_title>
+                    <volume>1124</volume>
+                    <first_page>1</first_page>
+                    <doi>10.1196/annals.1440.011</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0006|nur21773-cit-0006">
+                    <author>Charney</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.161.2.195</doi>
+                    <article_title>Psychobiological mechanisms of resilience and vulnerabil­ity: Implications for successful adaptation to extreme stress</article_title>
+                    <journal_title>American Journal of Psychi­atry</journal_title>
+                    <volume>161</volume>
+                    <first_page>195</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0007|nur21773-cit-0007">
+                    <author>Choi</author>
+                    <cYear>2013</cYear>
+                    <article_title>Relationship of early-life stress and resilience to military adjustment in a young adulthood population</article_title>
+                    <journal_title>Social Psychiatry and Psychiatric Epidemiology</journal_title>
+                    <volume>48</volume>
+                    <first_page>1767</first_page>
+                    <doi>10.1007/s00127-012-0647-x</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0008|nur21773-cit-0008">
+                    <author>DeYoung</author>
+                    <cYear>2011</cYear>
+                    <article_title>Moderation of the association between childhood maltreatment and neuroticism by the corticotropin-releasing hormone receptor 1 gene</article_title>
+                    <journal_title>Journal of Child Psychology and Psychiatry</journal_title>
+                    <volume>52</volume>
+                    <first_page>898</first_page>
+                    <doi>10.1111/j.1469-7610.2011.02404</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0009|nur21773-cit-0009">
+                    <author>Dong</author>
+                    <cYear>2004</cYear>
+                    <article_title>The interrelatedness of multiple forms of childhood abuse, neglect, and household dysfunction</article_title>
+                    <journal_title>Child Abuse &amp; Neglect</journal_title>
+                    <volume>28</volume>
+                    <first_page>771</first_page>
+                    <doi>10.1016/j.chiabu.2004.01.008</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0010|nur21773-cit-0010">
+                    <author>Earvolino-Ramirez</author>
+                    <cYear>2007</cYear>
+                    <article_title>Resilience: A concept analysis</article_title>
+                    <journal_title>Nursing Forum</journal_title>
+                    <volume>42</volume>
+                    <first_page>73</first_page>
+                    <doi>10.1111/j.1744-6198.2007.00070.x</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0011|nur21773-cit-0011">
+                    <author>Eun</author>
+                    <cYear>2005</cYear>
+                    <article_title>A study on reliability and validity of the Korean version of Impact of Event Scale-Revised</article_title>
+                    <journal_title>Journal of the Korean Neuropsychiatric Association</journal_title>
+                    <volume>44</volume>
+                    <first_page>303</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0012|nur21773-cit-0012">
+                    <author>Felitti</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S0749-3797(98)00017-8</doi>
+                    <article_title>Relationship of childhood abuse and household dysfunction to many of the leading causes of death in adults: The Adverse Childhood Experiences (ACE) Study</article_title>
+                    <journal_title>American Journal of Preventive Medicine</journal_title>
+                    <volume>14</volume>
+                    <first_page>245</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0013|nur21773-cit-0013">
+                    <author>Fergus</author>
+                    <cYear>2005</cYear>
+                    <article_title>Adolescent resilience: A framework for understanding healthy development in the face of risk</article_title>
+                    <journal_title>Annual Review of Public Health</journal_title>
+                    <volume>26</volume>
+                    <first_page>399</first_page>
+                    <doi>10.1146/annurev.publhealth.26.021304.144357</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0014|nur21773-cit-0014">
+                    <author>Fritz</author>
+                    <cYear>2007</cYear>
+                    <article_title>Required sample size to detect the mediated effect</article_title>
+                    <journal_title>Psychological Science</journal_title>
+                    <volume>18</volume>
+                    <first_page>233</first_page>
+                    <doi>10.1111/j.1467-9280.2007.01882</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0015|nur21773-cit-0015">
+                    <author>Gates</author>
+                    <cYear>2012</cYear>
+                    <article_title>Posttraumatic stress disorder in veterans and military personnel: Epidemiology, screening, and case recognition</article_title>
+                    <journal_title>Psychological Services</journal_title>
+                    <volume>9</volume>
+                    <first_page>361</first_page>
+                    <doi>10.1037/a0027649</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0016|nur21773-cit-0016">
+                    <author>Gillespie</author>
+                    <cYear>2009</cYear>
+                    <article_title>Risk and resilience: Genetic and environmental influences on development of the stress response</article_title>
+                    <journal_title>Depression and Anxiety</journal_title>
+                    <volume>26</volume>
+                    <first_page>984</first_page>
+                    <doi>10.1002/da.20605</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0017|nur21773-cit-0017">
+                    <author>Goh</author>
+                    <cYear>2010</cYear>
+                    <article_title>The stress-vulnerability model: How does stress impact on mental illness at the level of the brain and what are the consequences</article_title>
+                    <journal_title>Psychiatria Danubina</journal_title>
+                    <volume>22</volume>
+                    <first_page>198</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0018|nur21773-cit-0018">
+                    <author>Han</author>
+                    <cYear>2009</cYear>
+                    <article_title>The relationship on traumatic events experienced by soldiers in public service and PTSD symptoms, depression, and social support</article_title>
+                    <journal_title>Korean Academy of Military Social Welfare</journal_title>
+                    <volume>2</volume>
+                    <first_page>25</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0019|nur21773-cit-0019">
+                    <author>Higgins</author>
+                    <cYear>2001</cYear>
+                    <article_title>Multiple forms of child abuse and neglect: Adult retrospective reports</article_title>
+                    <journal_title>Aggression and Violent Behavior</journal_title>
+                    <volume>6</volume>
+                    <first_page>547</first_page>
+                    <doi>10.1016/S1359-1789(00)00030-6</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0020|nur21773-cit-0020">
+                    <author>Hoge</author>
+                    <cYear>2007</cYear>
+                    <article_title>Resilience: Research evidence and conceptual considerations for posttraumatic stress disorder</article_title>
+                    <journal_title>Depression and Anxiety</journal_title>
+                    <volume>24</volume>
+                    <first_page>139</first_page>
+                    <doi>10.1002/da.20175</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0021|nur21773-cit-0021">
+                    <author>Hourani</author>
+                    <cYear>2015</cYear>
+                    <article_title>Gender differences in posttraumatic stress disorder and help seeking in the U.S. Army</article_title>
+                    <journal_title>Journal of Women's Health</journal_title>
+                    <volume>25</volume>
+                    <first_page>22</first_page>
+                    <doi>10.1089/jwh.2014.5078</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0022|nur21773-cit-0022">
+                    <author>Hu</author>
+                    <cYear>1999</cYear>
+                    <article_title>Cutoff criteria for fit indexes in covariance structure analysis: Conventional criteria versus new alternatives</article_title>
+                    <journal_title>Structural Equation Modeling: A Multidisciplinary Journal</journal_title>
+                    <volume>6</volume>
+                    <issue>1</issue>
+                    <first_page>1</first_page>
+                    <doi>10.1080/10705519909540118</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0023|nur21773-cit-0023">
+                    <cYear>2013a</cYear>
+                    <volume_title>A ready and resilient workforce for the Department of Homeland Security: Protecting America's front line</volume_title>
+                    <first_page>59</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0024|nur21773-cit-0024">
+                    <cYear>2013b</cYear>
+                    <volume_title>A ready and resilient workforce for the Department of Homeland Security: Protecting America's front line</volume_title>
+                    <first_page>159</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0025|nur21773-cit-0025">
+                    <author>Jensen</author>
+                    <cYear>2005</cYear>
+                    <volume_title>Social policy for children and families: A risk and resilience perspective</volume_title>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0026|nur21773-cit-0026">
+                    <author>Kang</author>
+                    <cYear>2016</cYear>
+                    <article_title>A life-span perspective on combat exposure and PTSD symptoms in later life: Findings from the VA Normative Aging study</article_title>
+                    <journal_title>The Gerontologist</journal_title>
+                    <volume>56</volume>
+                    <first_page>22</first_page>
+                    <doi>10.1093/geront/gnv120</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0027|nur21773-cit-0027">
+                    <author>Kelly</author>
+                    <cYear>2011</cYear>
+                    <article_title>More than military sexual trauma: Interpersonal violence, PTSD, and mental health in women veterans</article_title>
+                    <journal_title>Research in Nursing &amp; Health</journal_title>
+                    <volume>34</volume>
+                    <first_page>457</first_page>
+                    <doi>10.1002/nur.20453</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0028|nur21773-cit-0028">
+                    <author>Kim</author>
+                    <cYear>2011</cYear>
+                    <article_title>Reliability and validity of the Korean version of the Childhood Trauma Questionnaire-Short Form for psychiatric outpatients</article_title>
+                    <journal_title>Psychiatric Investigation</journal_title>
+                    <volume>8</volume>
+                    <first_page>305</first_page>
+                    <doi>10.4306/pi.2011.8.4.305</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0029|nur21773-cit-0029">
+                    <author>Kim</author>
+                    <cYear>2015</cYear>
+                    <article_title>The analytical examination of introducing recovery program for mental health of military personnel: Focusing on recovery program of US army</article_title>
+                    <journal_title>Journal of Military Nursing Research</journal_title>
+                    <volume>33</volume>
+                    <first_page>99</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0030|nur21773-cit-0030">
+                    <author>Kim</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.3346/jkms.2015.30.11.1667</doi>
+                    <article_title>The protective role of resilience in attenuating emotional distress and aggression associated with early-life stress in young enlisted military service candidates</article_title>
+                    <journal_title>Journal of Korean Medical Science</journal_title>
+                    <volume>30</volume>
+                    <first_page>1667</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0031|nur21773-cit-0031">
+                    <author>LeardMann</author>
+                    <cYear>2010</cYear>
+                    <article_title>Do adverse childhood experiences increase the risk of postdeployment posttraumatic stress disorder in US marines</article_title>
+                    <journal_title>BMC Public Health</journal_title>
+                    <volume>10</volume>
+                    <first_page>437</first_page>
+                    <doi>10.1186/1471-2458-10-437</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0032|nur21773-cit-0032">
+                    <unstructured_citation>Leeb , R. T. Paulozzi , L. Melanson , C. Simon , T. Arias , I. 2008 Maltreatment surveillance: Uniform definitions for public health and recommended data elements, version 1.0</unstructured_citation>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0033|nur21773-cit-0033">
+                    <author>Liberzon</author>
+                    <cYear>2014</cYear>
+                    <article_title>Interaction of the ADRB2 gene polymorphism with childhood trauma in predicting adult symptoms of posttraumatic stress disorder</article_title>
+                    <journal_title>JAMA Psychiatry</journal_title>
+                    <volume>71</volume>
+                    <first_page>1174</first_page>
+                    <doi>10.1001/jamapsychiatry.2014.999</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0034|nur21773-cit-0034">
+                    <author>Lim</author>
+                    <cYear>2009</cYear>
+                    <article_title>Reliability and validity of the Korean version of the Impact of Event Scale-Revised</article_title>
+                    <journal_title>Comprehensive Psychiatry</journal_title>
+                    <volume>50</volume>
+                    <first_page>385</first_page>
+                    <doi>10.3346/jkms.2016.31.5.777</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0035|nur21773-cit-0035">
+                    <author>Melvin</author>
+                    <cYear>2012</cYear>
+                    <article_title>Couple functioning and post-traumatic stress symptoms in US army couples: The role of resilience</article_title>
+                    <journal_title>Research in Nursing &amp; Health</journal_title>
+                    <volume>35</volume>
+                    <first_page>164</first_page>
+                    <doi>10.1002/nur.21459</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0036|nur21773-cit-0036">
+                    <author>Meredith</author>
+                    <cYear>2011</cYear>
+                    <volume_title>Promoting psychological resilience in the U.S. military</volume_title>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0037|nur21773-cit-0037">
+                    <author>Miller-Graff</author>
+                    <cYear>2015</cYear>
+                    <article_title>Posttraumatic stress symptom trajectories among children exposed to violence</article_title>
+                    <journal_title>Journal of Traumatic Stress</journal_title>
+                    <volume>28</volume>
+                    <first_page>17</first_page>
+                    <doi>10.1002/jts.21989</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0038|nur21773-cit-0038">
+                    <author>Pechtel</author>
+                    <cYear>2011</cYear>
+                    <article_title>Effects of early life stress on cognitive and affective function: An integrated review of human literature</article_title>
+                    <journal_title>Psychopharmacology</journal_title>
+                    <volume>214</volume>
+                    <first_page>55</first_page>
+                    <doi>10.1007/s00213-010-2009-2</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0039|nur21773-cit-0039">
+                    <author>Philip</author>
+                    <cYear>2013</cYear>
+                    <article_title>Decreased default network connectivity is associated with early life stress in medication-free healthy adults</article_title>
+                    <journal_title>European Neuropsychopharmacology</journal_title>
+                    <volume>23</volume>
+                    <first_page>24</first_page>
+                    <doi>10.1016/j.euroneuro</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0040|nur21773-cit-0040">
+                    <author>Ramchand</author>
+                    <cYear>2015</cYear>
+                    <article_title>Prevalence of, risk factors for, and consequences of posttraumatic stress disorder and other mental health problems in military populations deployed to Iraq and Afghanistan</article_title>
+                    <journal_title>Current Psychiatry Reports</journal_title>
+                    <volume>17</volume>
+                    <first_page>37</first_page>
+                    <doi>10.1007/s11920-015-0575-z</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0041|nur21773-cit-0041">
+                    <cYear>2007</cYear>
+                    <volume_title>Republic of Korea Marines’ culture and value: Marines’ history, tradition, customs, and future value</volume_title>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0042|nur21773-cit-0042">
+                    <author>Schulz</author>
+                    <cYear>2014</cYear>
+                    <article_title>The impact of childhood trauma on depression: Does resilience matter? Population-based results from the Study of Health in Pomerania</article_title>
+                    <journal_title>Journal of Psychosomatic Research</journal_title>
+                    <volume>77</volume>
+                    <first_page>97</first_page>
+                    <doi>10.1016/j.jpsychores.2014.06.008</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0043|nur21773-cit-0043">
+                    <author>Seo</author>
+                    <cYear>2014</cYear>
+                    <article_title>A study on effectiveness of personal competence and communication for Marines misfit soldiers: Centered on transactional analysis group counseling</article_title>
+                    <journal_title>Korean Academy of Military Social Welfare</journal_title>
+                    <volume>7</volume>
+                    <first_page>5</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0044|nur21773-cit-0044">
+                    <author>Sexton</author>
+                    <cYear>2015</cYear>
+                    <article_title>The roles of resilience and childhood trauma history: Main and moderating effects on postpartum maternal mental health and functioning</article_title>
+                    <journal_title>Journal of Affective Disorders</journal_title>
+                    <volume>174</volume>
+                    <first_page>562</first_page>
+                    <doi>10.1016/j.jad.2014.12.036</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0045|nur21773-cit-0045">
+                    <author>Smith</author>
+                    <cYear>2008</cYear>
+                    <article_title>Prior assault and posttraumatic stress disorder after combat deployment</article_title>
+                    <journal_title>Epidemiology</journal_title>
+                    <volume>19</volume>
+                    <first_page>505</first_page>
+                    <doi>10.1097/EDE.0b013e31816a9dff</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0046|nur21773-cit-0046">
+                    <author>Solomon</author>
+                    <cYear>2003</cYear>
+                    <volume_title>Healing trauma: Attachment, mind, body, and brain</volume_title>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0047|nur21773-cit-0047">
+                    <author>Song</author>
+                    <cYear>2010</cYear>
+                    <article_title>The influence of the enlistment-motivation on the South Korean military life</article_title>
+                    <journal_title>Korean Journal of Culture and Special Issues</journal_title>
+                    <volume>16</volume>
+                    <first_page>469</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0048|nur21773-cit-0048">
+                    <author>Toth</author>
+                    <cYear>2013</cYear>
+                    <article_title>A developmental psychopathology perspective on child maltreatment</article_title>
+                    <journal_title>Child Maltreatment</journal_title>
+                    <volume>18</volume>
+                    <first_page>135</first_page>
+                    <doi>10.1177/1077559513500380</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0049|nur21773-cit-0049">
+                    <unstructured_citation>2015 PTSD: National Center for PTSD http://www.ptsd.va.gov/public/PTSD-overview/basics/how-common-is-ptsd.asp</unstructured_citation>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0050|nur21773-cit-0050">
+                    <author>Van Voorhees</author>
+                    <cYear>2012</cYear>
+                    <article_title>Childhood trauma exposure in Iraq and Afghanistan war era veterans: Implications for posttraumatic stress disorder symptoms and adult functional social support</article_title>
+                    <journal_title>Child Abuse &amp; Neglect</journal_title>
+                    <volume>36</volume>
+                    <first_page>423</first_page>
+                    <doi>10.1016/j.chiabu.2012.03.004</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0051|nur21773-cit-0051">
+                    <author>Vrana</author>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1002/jts.2490070209</doi>
+                    <article_title>Prevalence of traumatic events and post-traumatic psychological symptoms in a nonclinical sample of college students</article_title>
+                    <journal_title>Journal of Traumatic Stress</journal_title>
+                    <volume>7</volume>
+                    <first_page>289</first_page>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0052|nur21773-cit-0052">
+                    <author>Watkins</author>
+                    <cYear>2016</cYear>
+                    <article_title>FKBP5 polymorphisms, childhood abuse, and PTSD symptoms: Results from the National Health and Resilience in Veterans Study</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>69</volume>
+                    <first_page>98</first_page>
+                    <doi>10.1016/j.psyneuen.2016.04.001</doi>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0053|nur21773-cit-0053">
+                    <author>Won</author>
+                    <cYear>1998</cYear>
+                    <volume_title>The final report on the development of Korea Military Personality Test</volume_title>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0054|nur21773-cit-0054">
+                    <unstructured_citation>2014 Child maltreatment http://www.who.int/mediacentre/factsheets/fs150/en/</unstructured_citation>
+                  </citation>
+                  <citation key="10.1002/nur.21773-BIB0055|nur21773-cit-0055">
+                    <author>Zubin</author>
+                    <cYear>1977</cYear>
+                    <doi provider="crossref">10.1037/0021-843X.86.2.103</doi>
+                    <article_title>Vulnerability: A new view of schizophrenia</article_title>
+                    <journal_title>Journal of Abnormal Psychology</journal_title>
+                    <volume>86</volume>
+                    <first_page>103</first_page>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

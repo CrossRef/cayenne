@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.3389/fendo.2016.00160</doi>
+        <crm-item name="publisher-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="prefix-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="member-id" type="number">1965</crm-item>
+        <crm-item name="citation-id" type="number">86967120</crm-item>
+        <crm-item name="journal-id" type="number">111805</crm-item>
+        <crm-item name="deposit-timestamp" type="number">201612200634</crm-item>
+        <crm-item name="owner-prefix" type="string">10.3389</crm-item>
+        <crm-item name="last-update" type="date">2016-12-20T06:34:24Z</crm-item>
+        <crm-item name="created" type="date">2016-12-20T06:34:24Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>Frontiers in Endocrinology</full_title>
+                <abbrev_title>Front. Endocrinol.</abbrev_title>
+                <issn media_type="electronic">1664-2392</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>19</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>7</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Emerging Role of Corticosteroid-Binding Globulin in Glucocorticoid-Driven Metabolic Disorders</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Marie-Pierre</given_name>
+                    <surname>Moisan</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Nathalie</given_name>
+                    <surname>Castanon</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>19</day>
+                  <year>2016</year>
+                </publication_date>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.3389/crossmark-policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>frontiersin.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                </crossmark>
+                <doi_data>
+                  <doi>10.3389/fendo.2016.00160</doi>
+                  <resource>http://journal.frontiersin.org/article/10.3389/fendo.2016.00160/full</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://journal.frontiersin.org/article/10.3389/fendo.2016.00160/full</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <journal_title>Mol Cell Endocrinol</journal_title>
+                    <author>Rose</author>
+                    <volume>380</volume>
+                    <issue>1–2</issue>
+                    <first_page>65</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1016/j.mce.2013.03.007</doi>
+                    <article_title>Metabolic control through glucocorticoid hormones: an update</article_title>
+                  </citation>
+                  <citation key="B2">
+                    <journal_title>Acta Physiol Scand Suppl</journal_title>
+                    <author>Dallman</author>
+                    <volume>583</volume>
+                    <first_page>27</first_page>
+                    <cYear>1989</cYear>
+                    <article_title>Corticosteroids in homeostasis</article_title>
+                  </citation>
+                  <citation key="B3">
+                    <journal_title>Trends in Endocrinol Metab</journal_title>
+                    <author>Hammond</author>
+                    <volume>6</volume>
+                    <issue>9/10</issue>
+                    <first_page>298</first_page>
+                    <cYear>1995</cYear>
+                    <doi>10.1016/1043-2760(95)00162-X</doi>
+                    <article_title>Potential functions of plasma steroid-binding proteins</article_title>
+                  </citation>
+                  <citation key="B4">
+                    <journal_title>J Endocrinol</journal_title>
+                    <author>Breuner</author>
+                    <volume>175</volume>
+                    <issue>1</issue>
+                    <first_page>99</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1677/joe.0.1750099</doi>
+                    <article_title>Plasma binding proteins as mediators of corticosteroid action in vertebrates</article_title>
+                  </citation>
+                  <citation key="B5">
+                    <journal_title>Ann N Y Acad Sci</journal_title>
+                    <author>McEwen</author>
+                    <volume>840</volume>
+                    <first_page>33</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1111/j.1749-6632.1998.tb09546.x</doi>
+                    <article_title>Stress, adaptation, and disease. Allostasis and allostatic load</article_title>
+                  </citation>
+                  <citation key="B6">
+                    <journal_title>Am J Psychiatry</journal_title>
+                    <author>Raison</author>
+                    <volume>160</volume>
+                    <issue>9</issue>
+                    <first_page>1554</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1176/appi.ajp.160.9.1554</doi>
+                    <article_title>When not enough is too much: the role of insufficient glucocorticoid signaling in the pathophysiology of stress-related disorders</article_title>
+                  </citation>
+                  <citation key="B7">
+                    <journal_title>Mol Cell Endocrinol</journal_title>
+                    <author>Moisan</author>
+                    <volume>316</volume>
+                    <first_page>35</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1016/j.mce.2009.07.017</doi>
+                    <article_title>Genotype-phenotype associations in understanding the role of corticosteroid-binding globulin in health and disease animal models</article_title>
+                  </citation>
+                  <citation key="B8">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Mormede</author>
+                    <volume>27</volume>
+                    <issue>5</issue>
+                    <first_page>563</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1016/S0306-4530(01)00093-2</doi>
+                    <article_title>Molecular genetic approaches to investigate individual variations in behavioral and neuroendocrine stress responses</article_title>
+                  </citation>
+                  <citation key="B9">
+                    <journal_title>Ann Med</journal_title>
+                    <author>Redei</author>
+                    <volume>40</volume>
+                    <issue>2</issue>
+                    <first_page>139</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1080/07853890701724863</doi>
+                    <article_title>Molecular genetics of the stress-responsive adrenocortical axis</article_title>
+                  </citation>
+                  <citation key="B10">
+                    <journal_title>J Anim Sci</journal_title>
+                    <author>Desautes</author>
+                    <volume>80</volume>
+                    <issue>9</issue>
+                    <first_page>2276</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.2527/2002.8092276x</doi>
+                    <article_title>Genetic linkage mapping of quantitative trait loci for behavioral and neuroendocrine stress response traits in pigs</article_title>
+                  </citation>
+                  <citation key="B11">
+                    <journal_title>Domest Anim Endocrinol</journal_title>
+                    <author>Désautés</author>
+                    <volume>16</volume>
+                    <issue>4</issue>
+                    <first_page>193</first_page>
+                    <cYear>1999</cYear>
+                    <doi>10.1016/S0739-7240(99)00014-4</doi>
+                    <article_title>Behavior and pituitary-adrenal function in Large White and Meishan pigs</article_title>
+                  </citation>
+                  <citation key="B12">
+                    <journal_title>J Anim Sci</journal_title>
+                    <author>Désautés</author>
+                    <volume>80</volume>
+                    <issue>9</issue>
+                    <first_page>2276</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.2527/2002.8092276x</doi>
+                    <article_title>Genetic linkage mapping of quantitative trait loci for behavioral and neuroendocrine stress response traits in pigs</article_title>
+                  </citation>
+                  <citation key="B13">
+                    <journal_title>Mol Endocrinol</journal_title>
+                    <author>Ousova</author>
+                    <volume>18</volume>
+                    <issue>7</issue>
+                    <first_page>1687</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1210/me.2004-0005</doi>
+                    <article_title>Corticosteroid binding globulin: a new target for cortisol-driven obesity</article_title>
+                  </citation>
+                  <citation key="B14">
+                    <journal_title>Physiol Genomics</journal_title>
+                    <author>Solberg</author>
+                    <volume>27</volume>
+                    <issue>3</issue>
+                    <first_page>362</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1152/physiolgenomics.00052.2006</doi>
+                    <article_title>Genetic analysis of the stress-responsive adrenocortical axis</article_title>
+                  </citation>
+                  <citation key="B15">
+                    <journal_title>Animal</journal_title>
+                    <author>Sanchez</author>
+                    <volume>5</volume>
+                    <issue>2</issue>
+                    <first_page>167</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1017/S1751731110001722</doi>
+                    <article_title>Microsatellite mapping of quantitative trait loci affecting meat quality, stress hormones and production traits in Duroc x Large White F2 pigs</article_title>
+                  </citation>
+                  <citation key="B16">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Murani</author>
+                    <volume>7</volume>
+                    <issue>9</issue>
+                    <first_page>e45518</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1371/journal.pone.0045518</doi>
+                    <article_title>A substitution in the ligand binding domain of the porcine glucocorticoid receptor affects activity of the adrenal gland</article_title>
+                  </citation>
+                  <citation key="B17">
+                    <journal_title>Anim Genet</journal_title>
+                    <author>Okamura</author>
+                    <volume>43</volume>
+                    <issue>6</issue>
+                    <first_page>721</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1111/j.1365-2052.2012.02359.x</doi>
+                    <article_title>A genome-wide scan for quantitative trait loci affecting respiratory disease and immune capacity in Landrace pigs</article_title>
+                  </citation>
+                  <citation key="B18">
+                    <journal_title>Genetics</journal_title>
+                    <author>Ponsuksili</author>
+                    <volume>192</volume>
+                    <issue>3</issue>
+                    <first_page>1109</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1534/genetics.112.143081</doi>
+                    <article_title>Elucidating molecular networks that either affect or respond to plasma cortisol concentration in target tissues of liver and muscle</article_title>
+                  </citation>
+                  <citation key="B19">
+                    <journal_title>PLoS Genet</journal_title>
+                    <author>Bolton</author>
+                    <volume>10</volume>
+                    <issue>7</issue>
+                    <first_page>e1004474</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1371/journal.pgen.1004474</doi>
+                    <article_title>Genome wide association identifies common variants at the SERPINA6/SERPINA1 locus influencing plasma cortisol and corticosteroid binding globulin</article_title>
+                  </citation>
+                  <citation key="B20">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Anderson</author>
+                    <volume>9</volume>
+                    <issue>4</issue>
+                    <first_page>e92957</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1371/journal.pone.0092957</doi>
+                    <article_title>Investigation of genetic variants, birthweight and hypothalamic-pituitary-adrenal axis function suggests a genetic variant in the SERPINA6 gene is associated with corticosteroid binding globulin in the western Australia pregnancy cohort (Raine) study</article_title>
+                  </citation>
+                  <citation key="B21">
+                    <journal_title>J Anim Sci</journal_title>
+                    <author>Geverink</author>
+                    <volume>84</volume>
+                    <issue>1</issue>
+                    <first_page>204</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.2527/2006.841204x</doi>
+                    <article_title>Cortisol-binding globulin and meat quality in five European lines of pigs</article_title>
+                  </citation>
+                  <citation key="B22">
+                    <journal_title>Obes Res</journal_title>
+                    <author>Barat</author>
+                    <volume>13</volume>
+                    <issue>9</issue>
+                    <first_page>1485</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1038/oby.2005.179</doi>
+                    <article_title>Corticosteroid binding globulin gene polymorphism influences cortisol driven fat distribution in obese women</article_title>
+                  </citation>
+                  <citation key="B23">
+                    <journal_title>Int J Genet Mol Biol</journal_title>
+                    <author>Richard</author>
+                    <volume>1</volume>
+                    <issue>4</issue>
+                    <first_page>59</first_page>
+                    <cYear>2009</cYear>
+                    <article_title>Corticosteroid binding globulin and glucocorticoid receptor genotypes influence body composition in a male population</article_title>
+                  </citation>
+                  <citation key="B24">
+                    <journal_title>J Physiol Biochem</journal_title>
+                    <author>Barat</author>
+                    <volume>68</volume>
+                    <issue>4</issue>
+                    <first_page>645</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1007/s13105-012-0176-9</doi>
+                    <article_title>Associations of glucocorticoid receptor and corticosteroid-binding globulin gene polymorphisms on fat mass and fat mass distribution in prepubertal obese children</article_title>
+                  </citation>
+                  <citation key="B25">
+                    <journal_title>Horm Metab Res</journal_title>
+                    <author>Grasa</author>
+                    <volume>30</volume>
+                    <issue>12</issue>
+                    <first_page>699</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1055/s-2007-978962</doi>
+                    <article_title>Corticosterone binding to tissues of adrenalectomized lean and obese Zucker rats</article_title>
+                  </citation>
+                  <citation key="B26">
+                    <journal_title>Horm Metab Res</journal_title>
+                    <author>Grasa</author>
+                    <volume>33</volume>
+                    <issue>7</issue>
+                    <first_page>407</first_page>
+                    <cYear>2001</cYear>
+                    <doi>10.1055/s-2001-16228</doi>
+                    <article_title>Modulation of corticosterone availability to white adipose tissue of lean and obese Zucker rats by corticosteroid-binding globulin</article_title>
+                  </citation>
+                  <citation key="B27">
+                    <journal_title>J Immunol</journal_title>
+                    <author>Fassler</author>
+                    <volume>136</volume>
+                    <issue>10</issue>
+                    <first_page>3657</first_page>
+                    <cYear>1986</cYear>
+                    <article_title>Elevation of corticosteroid-binding globulin in obese strain (OS) chickens: possible implications for the disturbed immunoregulation and the development of spontaneous autoimmune thyroiditis</article_title>
+                  </citation>
+                  <citation key="B28">
+                    <journal_title>Mol Cell Biol</journal_title>
+                    <author>Petersen</author>
+                    <volume>26</volume>
+                    <issue>19</issue>
+                    <first_page>7236</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1128/MCB.00400-06</doi>
+                    <article_title>Hyporesponsiveness to glucocorticoids in mice genetically deficient for the corticosteroid binding globulin</article_title>
+                  </citation>
+                  <citation key="B29">
+                    <journal_title>Obesity (Silver Spring)</journal_title>
+                    <author>Gulfo</author>
+                    <volume>24</volume>
+                    <issue>8</issue>
+                    <first_page>1677</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1002/oby.21543</doi>
+                    <article_title>Altered lipid partitioning and glucocorticoid availability in CBG-deficient male mice with diet-induced obesity</article_title>
+                  </citation>
+                  <citation key="B30">
+                    <journal_title>Endocrinology</journal_title>
+                    <author>Richard</author>
+                    <volume>151</volume>
+                    <issue>2</issue>
+                    <first_page>649</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1210/en.2009-0862</doi>
+                    <article_title>Plasma transcortin influences endocrine and behavioral stress responses in mice</article_title>
+                  </citation>
+                  <citation key="B31">
+                    <journal_title>Endocrinology</journal_title>
+                    <author>Minni</author>
+                    <volume>153</volume>
+                    <issue>10</issue>
+                    <first_page>4766</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1210/en.2012-1485</doi>
+                    <article_title>Critical role of plasma corticosteroid-binding-globulin during stress to promote glucocorticoid delivery to the brain: impact on memory retrieval</article_title>
+                  </citation>
+                  <citation key="B32">
+                    <journal_title>Nat Rev Endocrinol</journal_title>
+                    <author>Moisan</author>
+                    <volume>9</volume>
+                    <issue>2</issue>
+                    <first_page>78</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1038/nrendo.2012.134-c1</doi>
+                    <article_title>CBG: a cortisol reservoir rather than a transporter</article_title>
+                  </citation>
+                  <citation key="B33">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>de Medeiros</author>
+                    <volume>70</volume>
+                    <first_page>33</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.04.014</doi>
+                    <article_title>Chronic stress does not further exacerbate the abnormal psychoneuroendocrine phenotype of Cbg-deficient male mice</article_title>
+                  </citation>
+                  <citation key="B34">
+                    <journal_title>Clin Endocrinol (Oxf)</journal_title>
+                    <author>Fernandez-Real</author>
+                    <volume>52</volume>
+                    <issue>1</issue>
+                    <first_page>93</first_page>
+                    <cYear>2000</cYear>
+                    <doi>10.1046/j.1365-2265.2000.00864.x</doi>
+                    <article_title>The insulin resistance syndrome and the binding capacity of cortisol binding globulin (CBG) in men and women</article_title>
+                  </citation>
+                  <citation key="B35">
+                    <journal_title>Metabolism</journal_title>
+                    <author>Fernandez-Real</author>
+                    <volume>50</volume>
+                    <issue>10</issue>
+                    <first_page>1248</first_page>
+                    <cYear>2001</cYear>
+                    <doi>10.1053/meta.2001.25647</doi>
+                    <article_title>Study of the effect of changing glucose, insulin, and insulin-like growth factor-I levels on serum corticosteroid binding globulin in lean, obese, and obese subjects with glucose intolerance</article_title>
+                  </citation>
+                  <citation key="B36">
+                    <journal_title>J Clin Endocrinol Metab</journal_title>
+                    <author>Crave</author>
+                    <volume>80</volume>
+                    <issue>4</issue>
+                    <first_page>1283</first_page>
+                    <cYear>1995</cYear>
+                    <doi>10.1210/jc.80.4.1283</doi>
+                    <article_title>Differential effects of insulin and insulin-like growth factor I on the production of plasma steroid-binding globulins by human hepatoblastoma-derived (Hep G2) cells</article_title>
+                  </citation>
+                  <citation key="B37">
+                    <journal_title>J Clin Endocrinol Metab</journal_title>
+                    <author>Fernandez-Real</author>
+                    <volume>87</volume>
+                    <issue>10</issue>
+                    <first_page>4686</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1210/jc.2001-011843</doi>
+                    <article_title>Serum corticosteroid-binding globulin concentration and insulin resistance syndrome: a population study</article_title>
+                  </citation>
+                  <citation key="B38">
+                    <journal_title>Metabolism</journal_title>
+                    <author>Fernandez-Real</author>
+                    <volume>54</volume>
+                    <issue>5</issue>
+                    <first_page>584</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1016/j.metabol.2004.11.015</doi>
+                    <article_title>Corticosteroid-binding globulin affects the relationship between circulating adiponectin and cortisol in men and women</article_title>
+                  </citation>
+                  <citation key="B39">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>Manco</author>
+                    <volume>30</volume>
+                    <issue>6</issue>
+                    <first_page>1494</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.2337/dc06-1353</doi>
+                    <article_title>Massive weight loss decreases corticosteroid-binding globulin levels and increases free cortisol in healthy obese patients: an adaptive phenomenon?</article_title>
+                  </citation>
+                  <citation key="B40">
+                    <journal_title>Nature</journal_title>
+                    <author>Pemberton</author>
+                    <volume>336</volume>
+                    <issue>6196</issue>
+                    <first_page>257</first_page>
+                    <cYear>1988</cYear>
+                    <doi>10.1038/336257a0</doi>
+                    <article_title>Hormone binding globulins undergo serpin conformational change in inflammation</article_title>
+                  </citation>
+                  <citation key="B41">
+                    <journal_title>Cell Metab</journal_title>
+                    <author>Mansuy-Aubert</author>
+                    <volume>17</volume>
+                    <issue>4</issue>
+                    <first_page>534</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1016/j.cmet.2013.03.005</doi>
+                    <article_title>Imbalance between neutrophil elastase and its inhibitor alpha1-antitrypsin in obesity alters insulin sensitivity, inflammation, and energy expenditure</article_title>
+                  </citation>
+                  <citation key="B42">
+                    <journal_title>Horm Metab Res</journal_title>
+                    <author>Nenke</author>
+                    <volume>48</volume>
+                    <issue>9</issue>
+                    <first_page>620</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1055/s-0036-1593824</doi>
+                    <article_title>Evidence of reduced CBG cleavage in abdominal obesity: a potential factor in development of the metabolic syndrome</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

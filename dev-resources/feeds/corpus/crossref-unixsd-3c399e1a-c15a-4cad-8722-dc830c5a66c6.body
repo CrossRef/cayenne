@@ -1,0 +1,1709 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1111/ejn.13478</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (Blackwell Publishing)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86343900</crm-item>
+        <crm-item name="journal-id" type="number">3482</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170212213044685</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1111</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:35:05Z</crm-item>
+        <crm-item name="created" type="date">2016-11-15T03:32:59Z</crm-item>
+        <crm-item name="citedby-count" type="number">8</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>European Journal of Neuroscience</full_title>
+                <abbrev_title>Eur J Neurosci</abbrev_title>
+                <issn>0953816X</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>45</volume>
+                </journal_volume>
+                <issue>4</issue>
+                <doi_data>
+                  <doi>10.1111/ejn.2017.45.issue-4</doi>
+                  <resource>http://doi.wiley.com/10.1111/ejn.2017.45.issue-4</resource>
+                </doi_data>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Memory under stress: from single systems to network changes</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Lars</given_name>
+                    <surname>Schwabe</surname>
+                    <affiliation>Department of Cognitive Psychology; Institute of Psychology; University of Hamburg; Von-Melle-Park 5 20146 Hamburg Germany</affiliation>
+                  </person_name>
+                  <person_name contributor_role="editor" sequence="additional">
+                    <given_name>Paul</given_name>
+                    <surname>Bolam</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>25</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>478</first_page>
+                  <last_page>489</last_page>
+                </pages>
+                <archive_locations>
+                  <archive name="Portico" />
+                </archive_locations>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Deutsche Forschungsgemeinschaft
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100001659</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">SCHW1357/10-1</fr:assertion>
+                    <fr:assertion name="award_number">SCHW1357/12-1</fr:assertion>
+                    <fr:assertion name="award_number">SCHW1357/14-1</fr:assertion>
+                    <fr:assertion name="award_number">TRR58/4</fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="tdm">http://doi.wiley.com/10.1002/tdm_license_1</ai:license_ref>
+                  <ai:license_ref applies_to="vor" start_date="2016-11-25">http://onlinelibrary.wiley.com/termsAndConditions</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1111/ejn.13478</doi>
+                  <resource>http://doi.wiley.com/10.1111/ejn.13478</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1111/ejn.13478/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1111%2Fejn.13478</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1111/ejn.13478-BIB0001|ejn13478-cit-0001">
+                    <author>Addis</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1002/hipo.20405</doi>
+                    <article_title>Constructive episodic simulation: temporal distance and detail of past and future events modulate hippocampal engagement</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>18</volume>
+                    <first_page>227</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0002|ejn13478-cit-0002">
+                    <author>Akirav</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1101/lm.61704</doi>
+                    <article_title>A facilitative role for corticosterone in the acquisition of a spatial task under moderate stress</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>11</volume>
+                    <first_page>188</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0003|ejn13478-cit-0003">
+                    <author>Andreano</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1111/j.1467-9280.2006.01729.x</doi>
+                    <article_title>Glucocorticoid release and memory consolidation in men and women</article_title>
+                    <journal_title>Psych. Sci.</journal_title>
+                    <volume>17</volume>
+                    <first_page>466</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0004|ejn13478-cit-0004">
+                    <author>Arnsten</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S1364-6613(98)01240-6</doi>
+                    <article_title>Catecholamine modulation of prefrontal cortical cognitive function</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>2</volume>
+                    <first_page>436</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0005|ejn13478-cit-0005">
+                    <author>Arnsten</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nrn2648</doi>
+                    <article_title>Stress signalling pathways that impair prefrontal cortex structure and function</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>10</volume>
+                    <first_page>410</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0006|ejn13478-cit-0006">
+                    <author>Arnsten</author>
+                    <cYear>1984</cYear>
+                    <doi provider="crossref">10.1016/0006-8993(84)90351-2</doi>
+                    <article_title>Selective prefrontal cortical projections to the region of the locus coeruleus and raphe nuclei in the rhesus monkey</article_title>
+                    <journal_title>Brain Res.</journal_title>
+                    <volume>306</volume>
+                    <first_page>9</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0007|ejn13478-cit-0007">
+                    <author>Ast</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2013.06.022</doi>
+                    <article_title>Time-dependent effects of cortisol on the contextualization of emotional memories</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>74</volume>
+                    <first_page>809</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0008|ejn13478-cit-0008">
+                    <author>Atsak</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.08.047</doi>
+                    <article_title>Role of the endocannabinoid system in regulating glucocorticoid effects on memory for emotional experiences</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>204</volume>
+                    <first_page>104</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0009|ejn13478-cit-0009">
+                    <author>Atsak</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/npp.2014.334</doi>
+                    <article_title>Endocannabinoid signaling within the basolateral amygdala integrates multiple stress hormone effects on memory consolidation</article_title>
+                    <journal_title>Neuropsychopharmacol.</journal_title>
+                    <volume>40</volume>
+                    <first_page>1485</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0010|ejn13478-cit-0010">
+                    <author>Atsak</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.02.006</doi>
+                    <article_title>Glucocorticoids mediate stress-induced impairment of retrieval of stimulus - response memory</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>67</volume>
+                    <first_page>207</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0011|ejn13478-cit-0011">
+                    <author>Barsegyan</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1073/pnas.1011975107</doi>
+                    <article_title>Glucocorticoids in the prefrontal cortex enhance memory consolidation and impair working memory by a common neural mechanism</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>107</volume>
+                    <first_page>16655</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0012|ejn13478-cit-0012">
+                    <author>Bassett</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1073/pnas.1018985108</doi>
+                    <article_title>Dynamic network reconfiguration of human brain networks during learning</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>108</volume>
+                    <first_page>7641</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0013|ejn13478-cit-0013">
+                    <author>Binder</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1093/cercor/bhp055</doi>
+                    <article_title>Where is the semantic system? A critical review and meta-analysis of 120 functional neuroimaging studies</article_title>
+                    <journal_title>Cereb. Cortex</journal_title>
+                    <volume>19</volume>
+                    <first_page>2767</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0014|ejn13478-cit-0014">
+                    <author>Bogdanov</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3687-15.2016</doi>
+                    <article_title>Transcranial stimulation of the dorsolateral prefrontal cortex prevents stress-induced working memory deficits</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>36</volume>
+                    <first_page>1429</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0015|ejn13478-cit-0015">
+                    <author>Bos</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.04.011</doi>
+                    <article_title>Stress enhances reconsolidation of declarative memory</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>46</volume>
+                    <first_page>102</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0016|ejn13478-cit-0016">
+                    <author>Bressler</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2010.04.004</doi>
+                    <article_title>Large-scale brain networks in cognition: emerging methods and principles</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>14</volume>
+                    <first_page>277</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0017|ejn13478-cit-0017">
+                    <author>Brunet</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.jpsychires.2007.05.006</doi>
+                    <article_title>Effect of post-retrieval propranolol on psychophysiologic responding during subsequent script-driven traumatic imagery in post-traumatic stress disorder</article_title>
+                    <journal_title>J. Psychiatr. Res.</journal_title>
+                    <volume>42</volume>
+                    <first_page>503</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0018|ejn13478-cit-0018">
+                    <author>Buchanan</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(00)00058-5</doi>
+                    <article_title>Enhanced memory for emotional material following stress-level cortisol treatment in humans</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>26</volume>
+                    <first_page>307</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0019|ejn13478-cit-0019">
+                    <author>Buchanan</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2007.07.003</doi>
+                    <article_title>Stress and emotional memory retrieval: effects of sex and cortisol response</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>89</volume>
+                    <first_page>134</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0020|ejn13478-cit-0020">
+                    <author>Buchanan</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1101/lm.206306</doi>
+                    <article_title>Impaired memory retrieval correlates with individual differences in cortisol response but not autonomic response</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>13</volume>
+                    <first_page>382</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0021|ejn13478-cit-0021">
+                    <author>Buckner</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1038/35090048</doi>
+                    <article_title>The cognitive neuroscience of remembering</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>2</volume>
+                    <first_page>624</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0022|ejn13478-cit-0022">
+                    <author>Burgess</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0896-6273(02)00830-9</doi>
+                    <article_title>The human hippocampus and spatial and episodic memory</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>35</volume>
+                    <first_page>625</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0023|ejn13478-cit-0023">
+                    <author>Cahill</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1101/lm.62403</doi>
+                    <article_title>Enhanced human memory consolidation with post-learning stress: interaction with the degree of arousal at encoding</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>10</volume>
+                    <first_page>270</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0024|ejn13478-cit-0024">
+                    <author>Campolongo</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1073/pnas.0900835106</doi>
+                    <article_title>Endocannabinoids in the rat basolateral amygdala enhance memory consolidation and enable glucocorticoid modulation of memory</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>106</volume>
+                    <first_page>4888</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0025|ejn13478-cit-0025">
+                    <author>Carr</author>
+                    <cYear>2000</cYear>
+                    <article_title>Projections from the rat prefrontal cortex to the ventral tegmental area: target specificity in the synaptic associations with mesoaccumbens and mesocortical neurons</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>20</volume>
+                    <first_page>3864</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0026|ejn13478-cit-0026">
+                    <author>Christianson</author>
+                    <cYear>1987</cYear>
+                    <doi provider="crossref">10.1002/acp.2350010402</doi>
+                    <article_title>Memory of traumatic events</article_title>
+                    <journal_title>Appl. Cognitive Psychol.</journal_title>
+                    <volume>1</volume>
+                    <first_page>225</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0027|ejn13478-cit-0027">
+                    <author>Coccoz</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.04.023</doi>
+                    <article_title>The enhancement of reconsolidation with a naturalistic mild stressor improves the expression of a declarative memory in humans</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>185</volume>
+                    <first_page>61</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0028|ejn13478-cit-0028">
+                    <author>Dalgleish</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.130.2.228</doi>
+                    <article_title>Cognitive approaches to posttraumatic stress disorder: the evolution of multirepresentational theorizing</article_title>
+                    <journal_title>Psychol. Bull.</journal_title>
+                    <volume>130</volume>
+                    <first_page>228</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0029|ejn13478-cit-0029">
+                    <author>Dandolo</author>
+                    <cYear>2016</cYear>
+                    <article_title>Stress-induced cortisol hampers memory generalization</article_title>
+                    <journal_title>Learn. Mem.</journal_title>
+                    <volume>23</volume>
+                    <first_page>679</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0030|ejn13478-cit-0030">
+                    <author>Diamond</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1002/hipo.20188</doi>
+                    <article_title>Influence of predator stress on the consolidation versus retrieval of the long-term spatial memory and hippocampal spinogenesis</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>16</volume>
+                    <first_page>571</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0031|ejn13478-cit-0031">
+                    <author>Diamond</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1155/2007/60803</doi>
+                    <article_title>The temporal dynamics model of emotional memory processing: a synthesis on the neurobiological basis of stress-induced amnesia, flashbulb and traumatic memories, and the Yerkes-Dodson law</article_title>
+                    <journal_title>Neural. Plast.</journal_title>
+                    <volume>2007</volume>
+                    <first_page>60803</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0032|ejn13478-cit-0032">
+                    <author>Dominguez</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3389/fnbeh.2014.00166</doi>
+                    <article_title>Stress induced a shift from dorsal hippocampus to prefrontal cortex dependent memory retrieval: role of regional corticosterone</article_title>
+                    <journal_title>Front. Behav. Neurosci.</journal_title>
+                    <volume>8</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0033|ejn13478-cit-0033">
+                    <author>Ehlers</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0005-7967(99)00123-0</doi>
+                    <article_title>A cognitive model of posttraumatic stress disorder</article_title>
+                    <journal_title>Behav. Res. Ther.</journal_title>
+                    <volume>38</volume>
+                    <first_page>319</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0034|ejn13478-cit-0034">
+                    <author>Eichenbaum</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/35036213</doi>
+                    <article_title>A cortical-hippocampal system for declarative memory</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>1</volume>
+                    <first_page>41</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0035|ejn13478-cit-0035">
+                    <author>Eichenbaum</author>
+                    <cYear>2001</cYear>
+                    <volume_title>From Conditioning to Conscious Recollection: Memory Systems of the Brain</volume_title>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0036|ejn13478-cit-0036">
+                    <author>Elzinga</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.psychres.2004.11.007</doi>
+                    <article_title>Stress-induced cortisol elevations are associated with impaired delayed, but not immediate recall</article_title>
+                    <journal_title>Psychiatry Res.</journal_title>
+                    <volume>134</volume>
+                    <first_page>211</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0037|ejn13478-cit-0037">
+                    <author>Everitt</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1038/nn1579</doi>
+                    <article_title>Neural systems of reinforcement for drug addiction: from actions to habits to compulsion</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>8</volume>
+                    <first_page>1481</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0038|ejn13478-cit-0038">
+                    <author>Everitt</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1146/annurev-psych-122414-033457</doi>
+                    <article_title>Drug addiction: updating actions to habits to compulsions ten years on</article_title>
+                    <journal_title>Annu. Rev. Psychol.</journal_title>
+                    <volume>67</volume>
+                    <first_page>23</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0039|ejn13478-cit-0039">
+                    <author>Fornari</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.3389/fnbeh.2012.00010</doi>
+                    <article_title>Involvement of the insular cortex in regulating glucocorticoid effects on memory consolidation of inhibitory avoidance training</article_title>
+                    <journal_title>Front. Behav. Neurosci.</journal_title>
+                    <volume>6</volume>
+                    <first_page>10</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0040|ejn13478-cit-0040">
+                    <author>Gold</author>
+                    <cYear>1975</cYear>
+                    <doi provider="crossref">10.1016/S0091-6773(75)91784-8</doi>
+                    <article_title>Facilitation of time-dependent memory processes with posttrial epinephrine injections</article_title>
+                    <journal_title>Behav. Biol.</journal_title>
+                    <volume>13</volume>
+                    <first_page>145</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0041|ejn13478-cit-0041">
+                    <author>Gold</author>
+                    <cYear>1978</cYear>
+                    <doi provider="crossref">10.1016/S0091-6773(78)91614-0</doi>
+                    <article_title>Post-training brain norepinephrine concentrations: correlation with retention performance of avoidance training with peripheral epinephrine modulation of memory processing</article_title>
+                    <journal_title>Behav. Biol.</journal_title>
+                    <volume>23</volume>
+                    <first_page>509</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0042|ejn13478-cit-0042">
+                    <author>Goodman</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1515/revneuro-2012-0049</doi>
+                    <article_title>Emotional modulation of multiple memory systems: implications for the neurobiology of post-traumatic stress disorder</article_title>
+                    <journal_title>Rev. Neurosci.</journal_title>
+                    <volume>23</volume>
+                    <first_page>627</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0043|ejn13478-cit-0043">
+                    <author>Goodman</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2015.10.014</doi>
+                    <article_title>Glucocorticoid enhancement of dorsolateral striatum-dependent habit memory requires concurrent noradrenergic activity</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>311</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0044|ejn13478-cit-0044">
+                    <author>Gourley</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1073/pnas.1208342109</doi>
+                    <article_title>Action control is mediated by prefrontal BDNF and glucocorticoid receptor binding</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>109</volume>
+                    <first_page>20714</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0045|ejn13478-cit-0045">
+                    <author>Gray</author>
+                    <cYear>1987</cYear>
+                    <doi provider="crossref">10.1038/327620a0</doi>
+                    <article_title>Noradrenaline and beta-adrenoceptor agonists increase activity of voltage-dependent calcium channels in hippocampal neurons</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>327</volume>
+                    <first_page>620</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0046|ejn13478-cit-0046">
+                    <author>Guenzel</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2012.12.010</doi>
+                    <article_title>Stress disrupts response memory retrieval</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>38</volume>
+                    <first_page>1460</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0047|ejn13478-cit-0047">
+                    <author>Guenzel</author>
+                    <cYear>2014a</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.02.015</doi>
+                    <article_title>Glucocorticoids boost stimulus-response memory formation in humans</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>45</volume>
+                    <first_page>21</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0048|ejn13478-cit-0048">
+                    <author>Guenzel</author>
+                    <cYear>2014b</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2013.11.020</doi>
+                    <article_title>Sex differences in stress effects on response and spatial memory formation</article_title>
+                    <journal_title>Neurobiol. Learn. Memory</journal_title>
+                    <volume>109</volume>
+                    <first_page>46</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0049|ejn13478-cit-0049">
+                    <author>Henckens</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1184-09.2009</doi>
+                    <article_title>Stressed memories: How acute stress affects memory formation in humans</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>29</volume>
+                    <first_page>10111</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0050|ejn13478-cit-0050">
+                    <author>Henckens</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3112-10.2010</doi>
+                    <article_title>Time-dependent effects of corticosteroids on human amygdala processing</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>30</volume>
+                    <first_page>12725</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0051|ejn13478-cit-0051">
+                    <author>Henckens</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1073/pnas.1019128108</doi>
+                    <article_title>Time-dependent corticosteroid modulation of prefrontal working memory processing</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>108</volume>
+                    <first_page>5801</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0052|ejn13478-cit-0052">
+                    <author>Henckens</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/hbm.21409</doi>
+                    <article_title>Dynamically changing effects of corticosteroids on human hippocampal and prefrontal processing</article_title>
+                    <journal_title>Hum. Brain Mapp.</journal_title>
+                    <volume>33</volume>
+                    <first_page>2885</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0053|ejn13478-cit-0053">
+                    <author>Hermans</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1126/science.1209603</doi>
+                    <article_title>Stress-related noradrenergic activity prompts large-scale neural network reconfiguration</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>334</volume>
+                    <first_page>1151</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0054|ejn13478-cit-0054">
+                    <author>Hermans</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.tins.2014.03.006</doi>
+                    <article_title>Dynamic adaptation of large-scale brain networks in response to acute stressors</article_title>
+                    <journal_title>Trends Neurosci.</journal_title>
+                    <volume>37</volume>
+                    <first_page>304</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0055|ejn13478-cit-0055">
+                    <author>Introini-Collison</author>
+                    <cYear>1986</cYear>
+                    <doi provider="crossref">10.1016/S0163-1047(86)80024-3</doi>
+                    <article_title>Epinephrine modulates long-term retention of an aversivelymotivated discrimination task</article_title>
+                    <journal_title>Behav. Neural. Biol.</journal_title>
+                    <volume>45</volume>
+                    <first_page>379</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0056|ejn13478-cit-0056">
+                    <author>Joëls</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2006.02.002</doi>
+                    <article_title>Learning under stress: how does it work?</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>10</volume>
+                    <first_page>152</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0057|ejn13478-cit-0057">
+                    <author>Joëls</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.tins.2007.10.005</doi>
+                    <article_title>The coming out of the brain mineralocorticoid receptor</article_title>
+                    <journal_title>Trends Neurosci.</journal_title>
+                    <volume>31</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0058|ejn13478-cit-0058">
+                    <author>Joëls</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2011.04.004</doi>
+                    <article_title>Stress and emotional memory: a matter of timing</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>15</volume>
+                    <first_page>280</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0059|ejn13478-cit-0059">
+                    <author>Joëls</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1124/pr.112.005892</doi>
+                    <article_title>Unraveling the time domains of corticosteroid hormone influences on brain activity: rapid, slow, and chronic modes</article_title>
+                    <journal_title>Pharmacol. Rev.</journal_title>
+                    <volume>64</volume>
+                    <first_page>901</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0060|ejn13478-cit-0060">
+                    <author>Kesteren</author>
+                    <cYear>2010a</cYear>
+                    <doi provider="crossref">10.1073/pnas.0914892107</doi>
+                    <article_title>Persistent schema-dependent hippocampal-neocortical connectivity during memory encoding and postencoding rest in humans</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>107</volume>
+                    <first_page>7550</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0061|ejn13478-cit-0061">
+                    <author>Kesteren</author>
+                    <cYear>2010b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2674-10.2010</doi>
+                    <article_title>Retrieval of associative information congruent with prior knowledge is related to increased medial prefrontal activity and connectivity</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>30</volume>
+                    <first_page>15888</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0062|ejn13478-cit-0062">
+                    <author>Kesteren</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.tins.2012.02.001</doi>
+                    <article_title>How schema and novelty augment memory formation</article_title>
+                    <journal_title>Trends Neurosci.</journal_title>
+                    <volume>35</volume>
+                    <first_page>211</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0063|ejn13478-cit-0063">
+                    <author>Kim</author>
+                    <cYear>2002</cYear>
+                    <article_title>The stressed hippocampus, synaptic plasticity and lost memories</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>3</volume>
+                    <first_page>453</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0064|ejn13478-cit-0064">
+                    <author>Kim</author>
+                    <cYear>2001</cYear>
+                    <article_title>Amygdala is critical for stress-induced modulation of hippocampal long-term potentiation and learning</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>21</volume>
+                    <first_page>5222</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0065|ejn13478-cit-0065">
+                    <author>Kirschbaum</author>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1016/0024-3205(96)00118-X</doi>
+                    <article_title>Stress- and treatment-induced elevations of cortisol levels associated with impaired declarative memory in healthy adults</article_title>
+                    <journal_title>Life Sci.</journal_title>
+                    <volume>58</volume>
+                    <first_page>1475</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0066|ejn13478-cit-0066">
+                    <author>Kleim</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1017/S1352465807004080</doi>
+                    <article_title>Are trauma memories disjointed from other autobiographical memories in posttraumatic stress disorder? An experimental investigation</article_title>
+                    <journal_title>Behav Cogn Psychoth.</journal_title>
+                    <volume>36</volume>
+                    <first_page>221</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0067|ejn13478-cit-0067">
+                    <author>Knowlton</author>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1126/science.273.5280.1399</doi>
+                    <article_title>A neostriatal habit learning system in humans</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>273</volume>
+                    <first_page>1399</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0068|ejn13478-cit-0068">
+                    <author>Koob</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.2007.05030503</doi>
+                    <article_title>Stress, dysregulation of drug reward pathways, and the transition to drug dependence</article_title>
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <volume>164</volume>
+                    <first_page>1149</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0069|ejn13478-cit-0069">
+                    <author>Korz</author>
+                    <cYear>2003</cYear>
+                    <article_title>Stress-related modulation of hippocampal long-term potentiation in rats: Involvement of adrenal steroid receptors</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>23</volume>
+                    <first_page>7281</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0070|ejn13478-cit-0070">
+                    <author>Kuhlmann</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5139-04.2005</doi>
+                    <article_title>Impaired memory retrieval after psychosocial stress in healthy young men</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>25</volume>
+                    <first_page>2977</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0071|ejn13478-cit-0071">
+                    <author>Lazarus</author>
+                    <cYear>1952</cYear>
+                    <doi provider="crossref">10.1037/h0061145</doi>
+                    <article_title>The effects of psychological stress upon performance</article_title>
+                    <journal_title>Psychol. Bull.</journal_title>
+                    <volume>49</volume>
+                    <first_page>293</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0072|ejn13478-cit-0072">
+                    <author>Liberzon</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(98)00246-7</doi>
+                    <article_title>Brain activation in PTSD in response to trauma-related stimuli</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>45</volume>
+                    <first_page>817</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0073|ejn13478-cit-0073">
+                    <author>Liu</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0006-8993(99)01085-9</doi>
+                    <article_title>Adrenocortical suppression blocks the enhancement of memory storage produced by exposure to psychological stress in rats</article_title>
+                    <journal_title>Brain Res.</journal_title>
+                    <volume>821</volume>
+                    <first_page>134</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0074|ejn13478-cit-0074">
+                    <author>Lovallo</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2009.09.010</doi>
+                    <article_title>Acute effects of hydrocortisone on the human brain: an fMRI study</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>35</volume>
+                    <first_page>15</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0075|ejn13478-cit-0075">
+                    <author>Lupien</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0166-4328(01)00361-8</doi>
+                    <article_title>Stress, memory, and the hippocampus: can't live with it, can't live without it</article_title>
+                    <journal_title>Behav. Brain Res.</journal_title>
+                    <volume>127</volume>
+                    <first_page>137</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0076|ejn13478-cit-0076">
+                    <author>Lupien</author>
+                    <cYear>1997</cYear>
+                    <article_title>Stress-induced declarative memory impairment in healthy elderly subjects: relationship to cortisol reactivity</article_title>
+                    <journal_title>J. Clin. Endocr. Metab.</journal_title>
+                    <volume>82</volume>
+                    <first_page>2070</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0077|ejn13478-cit-0077">
+                    <author>Lupien</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.113.3.420</doi>
+                    <article_title>Working memory is more sensitive than declarative memory to the acute effects of corticosteroids: a dose-response study in humans</article_title>
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <volume>113</volume>
+                    <first_page>420</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0078|ejn13478-cit-0078">
+                    <author>Maheu</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1210/jc.2004-0009</doi>
+                    <article_title>Declarative memory after stress in humans: differential involvement of the beta-adrenergic and corticosteroid systems</article_title>
+                    <journal_title>J. Clin. Endocr. Metab.</journal_title>
+                    <volume>90</volume>
+                    <first_page>1697</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0079|ejn13478-cit-0079">
+                    <author>Maroun</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1038/sj.npp.1301401</doi>
+                    <article_title>Arousal and stress effects on consolidation and reconsolidation of recognition memory</article_title>
+                    <journal_title>Neuropsychopharmacol.</journal_title>
+                    <volume>33</volume>
+                    <first_page>394</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0080|ejn13478-cit-0080">
+                    <author>McDonald</author>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1016/S0163-1047(05)80009-3</doi>
+                    <article_title>Parallel information processing in the water maze: evidence for independent memory systems involving dorsal striatum and hippocampus</article_title>
+                    <journal_title>Behav. Neural. Biol.</journal_title>
+                    <volume>61</volume>
+                    <first_page>260</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0081|ejn13478-cit-0081">
+                    <author>McEwen</author>
+                    <cYear>1986</cYear>
+                    <article_title>Adrenal steroid receptors and actions in the nervous system</article_title>
+                    <journal_title>Physiol. Rev.</journal_title>
+                    <volume>66</volume>
+                    <first_page>1121</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0082|ejn13478-cit-0082">
+                    <author>McGaugh</author>
+                    <cYear>1966</cYear>
+                    <doi provider="crossref">10.1126/science.153.3742.1351</doi>
+                    <article_title>Time-dependent processes in memory storage</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>153</volume>
+                    <first_page>1351</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0083|ejn13478-cit-0083">
+                    <author>Medina</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1101/lm.654407</doi>
+                    <article_title>Glucocorticoid administration into the dorsal striatum facilitates memory consolidation of inhibitory avoidance training but not of the context or food shock components</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>14</volume>
+                    <first_page>673</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0084|ejn13478-cit-0084">
+                    <author>Menon</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2011.08.003</doi>
+                    <article_title>Large-scale brain networks and psychopathology: a unifying triple network model</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>15</volume>
+                    <first_page>483</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0085|ejn13478-cit-0085">
+                    <author>Miranda</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1101/lm.964708</doi>
+                    <article_title>Glucocorticoids enhance taste aversion memory via actions in the insular cortex and basolateral amygdala</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>15</volume>
+                    <first_page>468</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0086|ejn13478-cit-0086">
+                    <author>Mitchell</author>
+                    <cYear>1988</cYear>
+                    <article_title>Caudate-putamen lesions in the rat may impair or potentiate learning depending upon availability of stimulus cues and relevance of response cues</article_title>
+                    <journal_title>Q. J. Exp. Psychol.</journal_title>
+                    <volume>40</volume>
+                    <first_page>243</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0087|ejn13478-cit-0087">
+                    <author>Murchison</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/S0092-8674(04)00259-4</doi>
+                    <article_title>A distinct role for norepinephrine in memory retrieval</article_title>
+                    <journal_title>Cell</journal_title>
+                    <volume>117</volume>
+                    <first_page>131</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0088|ejn13478-cit-0088">
+                    <author>Nader</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nrn2590</doi>
+                    <article_title>A single standard for memory: the case for reconsolidation</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>10</volume>
+                    <first_page>224</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0089|ejn13478-cit-0089">
+                    <author>Nader</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/35021052</doi>
+                    <article_title>Fear memories require protein synthesis in the amygdala for reconsolidation after retrieval</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>406</volume>
+                    <first_page>722</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0090|ejn13478-cit-0090">
+                    <author>O'Keefe</author>
+                    <cYear>1987</cYear>
+                    <doi provider="crossref">10.1007/BF00255230</doi>
+                    <article_title>Single unit activity in the rat hippocampus during a spatial memory task</article_title>
+                    <journal_title>Exp. Brain Res.</journal_title>
+                    <volume>68</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0091|ejn13478-cit-0091">
+                    <author>Packard</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1073/pnas.96.22.12881</doi>
+                    <article_title>Glutamate infused posttraining into the hippocampus or caudate-putamen differentially strengthens place and response learning</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>96</volume>
+                    <first_page>12881</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0092|ejn13478-cit-0092">
+                    <author>Packard</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1146/annurev.neuro.25.112701.142937</doi>
+                    <article_title>Learning and memory functions of the basal ganglia</article_title>
+                    <journal_title>Ann. Rev. Neurosci.</journal_title>
+                    <volume>25</volume>
+                    <first_page>563</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0093|ejn13478-cit-0093">
+                    <author>Packard</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2004.06.008</doi>
+                    <article_title>Amygdala and “emotional” modulation of the relative use of multiple memory systems</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>82</volume>
+                    <first_page>243</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0094|ejn13478-cit-0094">
+                    <author>Packard</author>
+                    <cYear>1989</cYear>
+                    <article_title>Differantial effects of fornix and caudate nucleus lesions on two radial maze tasks: evidence for multiple memory systems</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>9</volume>
+                    <first_page>1465</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0095|ejn13478-cit-0095">
+                    <author>Payne</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1080/09658210143000119</doi>
+                    <article_title>The effects of experimentally induced stress on false recognition</article_title>
+                    <journal_title>Memory</journal_title>
+                    <volume>10</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0096|ejn13478-cit-0096">
+                    <author>Payne</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1101/lm.743507</doi>
+                    <article_title>Stress administered prior to encoding impairs neutral but enhances emotional long-term episodic memories</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>14</volume>
+                    <first_page>861</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0097|ejn13478-cit-0097">
+                    <author>Pedraza</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1002/hipo.22527</doi>
+                    <article_title>The dynamic nature of systems consolidation: stress during learning as a swicth guiding the rate of the hippocampal dependency and memory quality</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>26</volume>
+                    <first_page>362</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0098|ejn13478-cit-0098">
+                    <author>Piazza</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S0165-6147(97)01115-2</doi>
+                    <article_title>The role of stress in drug self-administration</article_title>
+                    <journal_title>Trends Pharmacol. Sci.</journal_title>
+                    <volume>19</volume>
+                    <first_page>67</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0099|ejn13478-cit-0099">
+                    <author>Pikänen</author>
+                    <cYear>2000</cYear>
+                    <volume_title>The Amygdala</volume_title>
+                    <first_page>31</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0100|ejn13478-cit-0100">
+                    <author>Pitman</author>
+                    <cYear>1989</cYear>
+                    <doi provider="crossref">10.1016/0006-3223(89)90033-4</doi>
+                    <article_title>Post-traumatic stress disorder, hormones, and memory</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>26</volume>
+                    <first_page>221</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0101|ejn13478-cit-0101">
+                    <author>Poldrack</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0028-3932(02)00157-4</doi>
+                    <article_title>Competition among multiple memory systems: converging evidence from animal and human brain studies</article_title>
+                    <journal_title>Neuropsychologia</journal_title>
+                    <volume>41</volume>
+                    <first_page>245</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0102|ejn13478-cit-0102">
+                    <author>Poldrack</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1038/35107080</doi>
+                    <article_title>Interactive memory systems in the human brain</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>414</volume>
+                    <first_page>546</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0103|ejn13478-cit-0103">
+                    <author>Pruessner</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2007.04.041</doi>
+                    <article_title>Deactivation of the limbic system during acute psychosocial stress: evidence from positron emission tomography and functional magnetic resonance imaging studies</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>63</volume>
+                    <first_page>234</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0104|ejn13478-cit-0104">
+                    <author>Qin</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2009.03.006</doi>
+                    <article_title>Acute psychosocial stress reduces working memory-related activity in the dorsolateral prefrontal cortex</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>66</volume>
+                    <first_page>25</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0105|ejn13478-cit-0105">
+                    <author>Qin</author>
+                    <cYear>2012a</cYear>
+                    <doi provider="crossref">10.3389/fnint.2012.00016</doi>
+                    <article_title>The effect of moderate acute psychological stress on working memory-related neural activity is modulated by a genetic variation in catecholaminergic function in humans</article_title>
+                    <journal_title>Front Integr. Neurosci.</journal_title>
+                    <volume>6</volume>
+                    <first_page>16</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0106|ejn13478-cit-0106">
+                    <author>Qin</author>
+                    <cYear>2012b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3101-11.2012</doi>
+                    <article_title>Understanding low reliability of memories for neutral information encoded under stress: alterations in memory-related activation in the hippocampus and midbrain</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>32</volume>
+                    <first_page>4032</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0107|ejn13478-cit-0107">
+                    <author>Quervain</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2007.11.068</doi>
+                    <article_title>Glucocorticoids for the treatment of post-traumatic stress disorder and phobias: a novel therapeutic approach</article_title>
+                    <journal_title>Eur. J. Pharmacol.</journal_title>
+                    <volume>583</volume>
+                    <first_page>365</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0108|ejn13478-cit-0108">
+                    <author>Quervain</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1038/29542</doi>
+                    <article_title>Stress and glucocorticoids impair retrieval of long-term spatial memory</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>394</volume>
+                    <first_page>787</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0109|ejn13478-cit-0109">
+                    <author>Quervain</author>
+                    <article_title>Stress, glucocorticoids and memory: implications for treating fear-related disorders</article_title>
+                    <journal_title>Nat Rev Neurosci.</journal_title>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0110|ejn13478-cit-0110">
+                    <author>Quervain</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/73873</doi>
+                    <article_title>Acute cortisone administration impairs retrieval of long-term declarative memory in humans</article_title>
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <volume>3</volume>
+                    <first_page>313</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0111|ejn13478-cit-0111">
+                    <author>Quervain</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.2003.02542.x</doi>
+                    <article_title>Glucocorticoid-induced impairment of declarative memory retrieval is associated with reduced blood flow in the medial temporal lobe</article_title>
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <volume>17</volume>
+                    <first_page>1296</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0112|ejn13478-cit-0112">
+                    <author>Quervain</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1176/ajp.2007.164.6.967</doi>
+                    <article_title>Preventive effect of ß-adrenoceptor blockade on glucocorticoid-induced memory retrieval deficits</article_title>
+                    <journal_title>Am. J. Psychiat.</journal_title>
+                    <volume>164</volume>
+                    <first_page>967</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0113|ejn13478-cit-0113">
+                    <author>Quervain</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2009.03.002</doi>
+                    <article_title>Glucocorticoids and the regulation of memory in health and disease</article_title>
+                    <journal_title>Front. Neuroendocrinol.</journal_title>
+                    <volume>30</volume>
+                    <first_page>358</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0114|ejn13478-cit-0114">
+                    <author>Quirarte</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1101/lm.1493609</doi>
+                    <article_title>Corticosterone infused into the dorsal striatum selectively enhances memory consolidation of cued water-maze training</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>16</volume>
+                    <first_page>586</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0115|ejn13478-cit-0115">
+                    <author>Reul</author>
+                    <cYear>1985</cYear>
+                    <doi provider="crossref">10.1210/endo-117-6-2505</doi>
+                    <article_title>Two receptor systems for corticosterone in rat brain: microdistribution and differential occupation</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>117</volume>
+                    <first_page>2505</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0116|ejn13478-cit-0116">
+                    <author>Roozendaal</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.1997.tb01355.x</doi>
+                    <article_title>Basolateral amygdala lesions block the memory-enhancing effect of glucocorticoid administration in the dorsal hippocampus of rats</article_title>
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <volume>9</volume>
+                    <first_page>76</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0117|ejn13478-cit-0117">
+                    <author>Roozendaal</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1037/a0026187</doi>
+                    <article_title>Memory modulation</article_title>
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <volume>125</volume>
+                    <first_page>797</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0118|ejn13478-cit-0118">
+                    <author>Roozendaal</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1073/pnas.96.20.11642</doi>
+                    <article_title>Basolateral amygdala noradrenergic influence enables enhancement of memory consolidation induced by hippocampal glucocorticoid receptor activation</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>96</volume>
+                    <first_page>11642</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0119|ejn13478-cit-0119">
+                    <author>Roozendaal</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2574-04.2004</doi>
+                    <article_title>Glucocorticoid effects on memory retrieval require concurrent noradrenergic activity in the hippocampus and basolateral amygdala</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>24</volume>
+                    <first_page>8161</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0120|ejn13478-cit-0120">
+                    <author>Roozendaal</author>
+                    <cYear>2006a</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2005.07.049</doi>
+                    <article_title>Glucocorticoids interact with emotion-induced noradrenergic activation in influencing different memory functions</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>138</volume>
+                    <first_page>901</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0121|ejn13478-cit-0121">
+                    <author>Roozendaal</author>
+                    <cYear>2006b</cYear>
+                    <doi provider="crossref">10.1073/pnas.0601874103</doi>
+                    <article_title>Glucocorticoid enhancement of memory requires arousal-induced noradrenergic activation in the basolateral amygdala</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>103</volume>
+                    <first_page>6741</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0122|ejn13478-cit-0122">
+                    <author>Roozendaal</author>
+                    <cYear>2009a</cYear>
+                    <doi provider="crossref">10.1038/nrn2651</doi>
+                    <article_title>Stress, memory and the amygdala</article_title>
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <volume>10</volume>
+                    <first_page>423</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0123|ejn13478-cit-0123">
+                    <author>Roozendaal</author>
+                    <cYear>2009b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3626-09.2009</doi>
+                    <article_title>Glucocorticoid effects on memory consolidation depend on functional interactions between the medial prefrontal cortex and basolateral amygdala</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>29</volume>
+                    <first_page>14299</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0124|ejn13478-cit-0124">
+                    <author>Roozendaal</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5717-09.2010</doi>
+                    <article_title>Membrane-associated glucocorticoid activity is necessary for modulation of long-term memory via chromatin modification</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>30</volume>
+                    <first_page>5037</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0125|ejn13478-cit-0125">
+                    <author>Sandi</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.1997.tb01412.x</doi>
+                    <article_title>Experience-dependent facilitating effect of corticosterone on spatial memory formation in the water maze</article_title>
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <volume>9</volume>
+                    <first_page>637</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0126|ejn13478-cit-0126">
+                    <author>Sara</author>
+                    <cYear>1989</cYear>
+                    <doi provider="crossref">10.1016/S0163-1047(89)91039-X</doi>
+                    <article_title>Idazoxan, an alpha-2 antagonist, facilitates memory retrieval in the rat</article_title>
+                    <journal_title>Behav. Neural. Biol.</journal_title>
+                    <volume>51</volume>
+                    <first_page>401</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0127|ejn13478-cit-0127">
+                    <author>Schilling</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2013.01.001</doi>
+                    <article_title>For whom the bell (curve) tolls: cortisol rapidly affects memory retrieval by an inverted u-shaped dose-response relationship</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>38</volume>
+                    <first_page>1565</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0128|ejn13478-cit-0128">
+                    <author>Schmidt</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1101/lm.033043.113</doi>
+                    <article_title>Stress reduces the incorporation of misinformation into an established memory</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>21</volume>
+                    <first_page>744</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0129|ejn13478-cit-0129">
+                    <author>Schönfeld</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2013.09.020</doi>
+                    <article_title>Remembering under stress: different roles of autonomic arousal and glucocorticoids in memory retrieval</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>39</volume>
+                    <first_page>249</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0130|ejn13478-cit-0130">
+                    <author>Schroeder</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1002/hipo.10024</doi>
+                    <article_title>Post-training reversible inactivation of hippocampus reveals interference between memory systems</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>12</volume>
+                    <first_page>280</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0131|ejn13478-cit-0131">
+                    <author>Schwabe</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1002/hipo.22175</doi>
+                    <article_title>Stress and the engagement of multiple memory systems: integration of animal and human studies</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>23</volume>
+                    <first_page>1035</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0132|ejn13478-cit-0132">
+                    <author>Schwabe</author>
+                    <cYear>2009a</cYear>
+                    <doi provider="crossref">10.3758/CABN.9.3.229</doi>
+                    <article_title>The context counts: Congruent learning and testing environments prevent memory retrieval impairment following stress</article_title>
+                    <journal_title>Cogn. Affect Behav. Ne.</journal_title>
+                    <volume>9</volume>
+                    <first_page>229</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0133|ejn13478-cit-0133">
+                    <author>Schwabe</author>
+                    <cYear>2009b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0979-09.2009</doi>
+                    <article_title>Stress prompts habit behavior in humans</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>29</volume>
+                    <first_page>7191</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0134|ejn13478-cit-0134">
+                    <author>Schwabe</author>
+                    <cYear>2010a</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2009.09.009</doi>
+                    <article_title>Learning under stress impairs memory formation</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>93</volume>
+                    <first_page>183</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0135|ejn13478-cit-0135">
+                    <author>Schwabe</author>
+                    <cYear>2010b</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2009.12.010</doi>
+                    <article_title>Socially evaluated cold pressor stress after instrumental learning favors habits over goal-directed action</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>35</volume>
+                    <first_page>977</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0136|ejn13478-cit-0136">
+                    <author>Schwabe</author>
+                    <cYear>2010c</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2010.05.001</doi>
+                    <article_title>Stress impairs the reconsolidation of autobiographical memories</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>94</volume>
+                    <first_page>153</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0137|ejn13478-cit-0137">
+                    <author>Schwabe</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1484-12.2012</doi>
+                    <article_title>Stress modulates the engagement of multiple memory systems in classification learning</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>32</volume>
+                    <first_page>11042</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0138|ejn13478-cit-0138">
+                    <author>Schwabe</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2012.12.001</doi>
+                    <article_title>Stress and multiple memory systems: from ‘thinking’ to ‘doing’</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>17</volume>
+                    <first_page>60</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0139|ejn13478-cit-0139">
+                    <author>Schwabe</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3758/s13415-014-0256-0</doi>
+                    <article_title>Timing matters: temporal dynamics of stress effects on memory retrieval</article_title>
+                    <journal_title>Cogn. Affect Behav. Ne.</journal_title>
+                    <volume>14</volume>
+                    <first_page>1041</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0140|ejn13478-cit-0140">
+                    <author>Schwabe</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1101/lm.435807</doi>
+                    <article_title>Stress modulates the use of spatial and stimulus-response learning strategies in humans</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>14</volume>
+                    <first_page>109</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0141|ejn13478-cit-0141">
+                    <author>Schwabe</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2008.02.002</doi>
+                    <article_title>Effects of pre-learning stress on memory for neutral, positive and negative words: Different roles of cortisol and autonomic arousal</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>90</volume>
+                    <first_page>44</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0142|ejn13478-cit-0142">
+                    <author>Schwabe</author>
+                    <cYear>2009a</cYear>
+                    <doi provider="crossref">10.1101/lm.1257509</doi>
+                    <article_title>Stress disrupts context-dependent memory</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>16</volume>
+                    <first_page>110</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0143|ejn13478-cit-0143">
+                    <author>Schwabe</author>
+                    <cYear>2009b</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2008.10.009</doi>
+                    <article_title>Stress effects on declarative memory retrieval are blocked by a β-adrenoceptor antagonist in humans</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>34</volume>
+                    <first_page>446</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0144|ejn13478-cit-0144">
+                    <author>Schwabe</author>
+                    <cYear>2010a</cYear>
+                    <doi provider="crossref">10.1162/jocn.2009.21278</doi>
+                    <article_title>Corticosteroids operate as switch between memory systems</article_title>
+                    <journal_title>J. Cogn. Neurosci.</journal_title>
+                    <volume>22</volume>
+                    <first_page>1362</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0145|ejn13478-cit-0145">
+                    <author>Schwabe</author>
+                    <cYear>2010b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0734-10.2010</doi>
+                    <article_title>Concurrent glucocorticoid and noradrenergic activity shifts instrumental behavior from goal-directed to habitual control</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>30</volume>
+                    <first_page>8190</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0146|ejn13478-cit-0146">
+                    <author>Schwabe</author>
+                    <cYear>2010c</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2009.11.015</doi>
+                    <article_title>Memory formation under stress: quantity and quality</article_title>
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <volume>34</volume>
+                    <first_page>584</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0147|ejn13478-cit-0147">
+                    <author>Schwabe</author>
+                    <cYear>2011a</cYear>
+                    <doi provider="crossref">10.1037/a0022212</doi>
+                    <article_title>Stress, habits and drug addiction: a psychoneuroendocrinological perspective</article_title>
+                    <journal_title>Exp. Clin. Psychopharmacol.</journal_title>
+                    <volume>19</volume>
+                    <first_page>53</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0148|ejn13478-cit-0148">
+                    <author>Schwabe</author>
+                    <cYear>2011b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3304-11.2011</doi>
+                    <article_title>Preventing the stress-induced shift from goal-directed to habit action with a beta-adrenergic antagonist</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>31</volume>
+                    <first_page>17317</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0149|ejn13478-cit-0149">
+                    <author>Schwabe</author>
+                    <cYear>2012a</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2011.07.002</doi>
+                    <article_title>Stress effects on memory: an update and integration</article_title>
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <volume>36</volume>
+                    <first_page>1740</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0150|ejn13478-cit-0150">
+                    <author>Schwabe</author>
+                    <cYear>2012b</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1304-12.2012</doi>
+                    <article_title>Simultaneous glucocorticoid and noradrenergic activity disrupts the neural basis of goal-directed action in the human brain</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>32</volume>
+                    <first_page>10146</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0151|ejn13478-cit-0151">
+                    <author>Schwabe</author>
+                    <cYear>2013a</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2013.01.057</doi>
+                    <article_title>Opposite effects of noradrenergic arousal on amygdala processing of fearful faces in men and women</article_title>
+                    <journal_title>NeuroImage</journal_title>
+                    <volume>73</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0152|ejn13478-cit-0152">
+                    <author>Schwabe</author>
+                    <cYear>2013b</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2013.06.001</doi>
+                    <article_title>Mineralocorticoid receptor blockade prevents stress-induced modulation of multiple memory systems in the human brain</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>74</volume>
+                    <first_page>801</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0153|ejn13478-cit-0153">
+                    <author>Schwabe</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2014.03.008</doi>
+                    <article_title>Reconsolidation of human memory: brain mechanisms and clinical relevance</article_title>
+                    <journal_title>Biol. Psychiat.</journal_title>
+                    <volume>76</volume>
+                    <first_page>274</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0154|ejn13478-cit-0154">
+                    <author>Scoville</author>
+                    <cYear>1957</cYear>
+                    <doi provider="crossref">10.1136/jnnp.20.1.11</doi>
+                    <article_title>Loss of recent memory after bilateral hippocampal lesions</article_title>
+                    <journal_title>J. Neurol. Neurosur. Ps.</journal_title>
+                    <volume>20</volume>
+                    <first_page>11</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0155|ejn13478-cit-0155">
+                    <author>Seehagen</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1073/pnas.1508345112</doi>
+                    <article_title>Stress impairs cognitive flexibility in infants</article_title>
+                    <journal_title>Proc. Natl. Acad. Sci. USA</journal_title>
+                    <volume>112</volume>
+                    <first_page>12882</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0156|ejn13478-cit-0156">
+                    <author>Seeley</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5587-06.2007</doi>
+                    <article_title>Dissociable intrinsic connectivity networks for salience processing and executive control</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>27</volume>
+                    <first_page>2349</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0157|ejn13478-cit-0157">
+                    <author>Sinha</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1007/s11920-007-0050-6</doi>
+                    <article_title>The role of stress in addiction relapse</article_title>
+                    <journal_title>Curr. Psychiatr Rep.</journal_title>
+                    <volume>9</volume>
+                    <first_page>388</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0158|ejn13478-cit-0158">
+                    <author>Smeets</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.biopsycho.2007.07.001</doi>
+                    <article_title>Context-dependent enhancement of declarative memory performance following acute psychosocial stress</article_title>
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <volume>76</volume>
+                    <first_page>116.123</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0159|ejn13478-cit-0159">
+                    <author>Smeets</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2008.07.009</doi>
+                    <article_title>True or false? memory is differentially affected by stress-induced cortisol elevations and sympathetic activity at consolidation and retrieval</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>33</volume>
+                    <first_page>1378</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0160|ejn13478-cit-0160">
+                    <author>Spreng</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1162/jocn_a_00281</doi>
+                    <article_title>Intrinsic architecture underlying the relations among the default, dorsal attention, and frontoparietal control networks of the human brain</article_title>
+                    <journal_title>J. Cogn. Neurosci.</journal_title>
+                    <volume>25</volume>
+                    <first_page>74</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0161|ejn13478-cit-0161">
+                    <author>Squire</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3575-09.2009</doi>
+                    <article_title>Memory and brain systems: 1969-2009</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>29</volume>
+                    <first_page>12711</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0162|ejn13478-cit-0162">
+                    <author>Stanton</author>
+                    <cYear>1985</cYear>
+                    <article_title>Depletion of norepinephrine, but not serotonin, reduces long-term potentiation in the dentate gyrus of rat hippocampal slices</article_title>
+                    <journal_title>J. Neurosci.</journal_title>
+                    <volume>5</volume>
+                    <first_page>2169</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0163|ejn13478-cit-0163">
+                    <author>Tronche</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2009.11.009</doi>
+                    <article_title>Increased stress-induced intra-hippocampus corticosterone rise associated with memory impairments in middle-aged mice</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>93</volume>
+                    <first_page>343</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0164|ejn13478-cit-0164">
+                    <author>Tse</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1126/science.1135935</doi>
+                    <article_title>Schemas and memory consolidation</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>316</volume>
+                    <first_page>76</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0165|ejn13478-cit-0165">
+                    <author>Tse</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1126/science.1205274</doi>
+                    <article_title>Schema-dependent gene activation and memory encoding in neocortex</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>333</volume>
+                    <first_page>891</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0166|ejn13478-cit-0166">
+                    <author>Voermans</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2004.07.009</doi>
+                    <article_title>Interaction between the Human Hippocampus and the Caudate Nucleus during Route Recognition</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>43</volume>
+                    <first_page>427</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0167|ejn13478-cit-0167">
+                    <author>Vogel</author>
+                    <cYear>2016a</cYear>
+                    <doi provider="crossref">10.1038/npjscilearn.2016.11</doi>
+                    <article_title>Learning and memory under stress: implications for the classroom</article_title>
+                    <journal_title>Sci. Learn.</journal_title>
+                    <volume>1</volume>
+                    <first_page>16011</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0168|ejn13478-cit-0168">
+                    <author>Vogel</author>
+                    <cYear>2016b</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.027</doi>
+                    <article_title>Stress in the zoo: tracking the impact of stress on memory formation over time</article_title>
+                    <journal_title>Psychoneuroendocrino.</journal_title>
+                    <volume>71</volume>
+                    <first_page>64</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0169|ejn13478-cit-0169">
+                    <author>Vogel</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1038/npp.2014.271</doi>
+                    <article_title>Blocking the mineralocorticoid receptor in humans prevents the stress-induced enhancement of centromedial amygdala connectivity with the dorsal striatum</article_title>
+                    <journal_title>Neuropsychopharmacol.</journal_title>
+                    <volume>40</volume>
+                    <first_page>947</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0170|ejn13478-cit-0170">
+                    <author>Vogel</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2015.12.003</doi>
+                    <article_title>Cognitive adaptation under stress: a case for the mineralocorticoid receptor</article_title>
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <volume>20</volume>
+                    <first_page>192</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0171|ejn13478-cit-0171">
+                    <author>Wagner</author>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1126/science.281.5380.1188</doi>
+                    <article_title>Building memories: remembering and forgetting of verbal experiences as predicted by brain activity</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>281</volume>
+                    <first_page>1188</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0172|ejn13478-cit-0172">
+                    <author>White</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1006/nlme.2001.4008</doi>
+                    <article_title>Multiple parallel memory systems in the brain of the rat</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>77</volume>
+                    <first_page>125</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0173|ejn13478-cit-0173">
+                    <author>Wiegert</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1101/lm.87706</doi>
+                    <article_title>Timing is essential for rapid effects of corticosterone on synaptic potentiation in the mouse hippocampus</article_title>
+                    <journal_title>Learn. Memory</journal_title>
+                    <volume>13</volume>
+                    <first_page>110</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0174|ejn13478-cit-0174">
+                    <author>Williams</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1037/10413-008</doi>
+                    <volume_title>Memory Consolidation: Essays in Honor of James L. McGaugh</volume_title>
+                    <first_page>141</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0175|ejn13478-cit-0175">
+                    <author>Zhao</author>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1007/s00213-008-1406-2</doi>
+                    <article_title>Psychosocial stress after reactivation of drug-related memory impairs later recall in abstinent heroin addicts</article_title>
+                    <journal_title>Psychopharmacology</journal_title>
+                    <volume>203</volume>
+                    <first_page>599</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0176|ejn13478-cit-0176">
+                    <author>Zoladz</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2011.01.016</doi>
+                    <article_title>Pre-learning stress differentially affects long-term memory for emotional words, depending on temporal proximity to the learning experience</article_title>
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <volume>103</volume>
+                    <first_page>467</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0177|ejn13478-cit-0177">
+                    <author>Zoladz</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/hipo.20922</doi>
+                    <article_title>Differential expression of molecular markers of synaptic plasticity in the hippocampus, prefrontal cortex, and amygdala in response to spatial learning, predator exposure, and stress-induced amnesia</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>22</volume>
+                    <first_page>577</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0178|ejn13478-cit-0178">
+                    <author>Zoladz</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2012.12.012</doi>
+                    <article_title>Pre-learning stress that is temporally removed from acquisition exerts sex-specific effects on long-term memory</article_title>
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <volume>100</volume>
+                    <first_page>77</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0179|ejn13478-cit-0179">
+                    <author>Zoladz</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2014.02.028</doi>
+                    <article_title>Brief, pre-learning stress reduces false memory production and enhances true memory selectively in females</article_title>
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <volume>128</volume>
+                    <first_page>270</first_page>
+                  </citation>
+                  <citation key="10.1111/ejn.13478-BIB0180|ejn13478-cit-0180">
+                    <author>Zoladz</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.actpsy.2015.07.008</doi>
+                    <article_title>Post-learning stress enhances long-term memory and differentially influences memory in females depending on menstrual stage</article_title>
+                    <journal_title>Acta Psychol. (Amst)</journal_title>
+                    <volume>160</volume>
+                    <first_page>127</first_page>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

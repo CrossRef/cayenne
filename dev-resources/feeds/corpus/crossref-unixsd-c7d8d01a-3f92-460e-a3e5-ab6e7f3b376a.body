@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.2217/epi-2016-0075</doi>
+        <crm-item name="publisher-name" type="string">Future Medicine Ltd</crm-item>
+        <crm-item name="prefix-name" type="string">Future Medicine</crm-item>
+        <crm-item name="member-id" type="number">1057</crm-item>
+        <crm-item name="citation-id" type="number">86460340</crm-item>
+        <crm-item name="journal-id" type="number">89465</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016120502532300963</crm-item>
+        <crm-item name="owner-prefix" type="string">10.2217</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T04:06:29Z</crm-item>
+        <crm-item name="created" type="date">2016-11-21T16:42:23Z</crm-item>
+        <crm-item name="citedby-count" type="number">8</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Epigenomics</full_title>
+                <abbrev_title>Epigenomics</abbrev_title>
+                <issn media_type="print">1750-1911</issn>
+                <issn media_type="electronic">1750-192X</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>8</volume>
+                </journal_volume>
+                <issue>12</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The epigenetic impacts of social stress: how does social adversity become biologically embedded?</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Vincent T</given_name>
+                    <surname>Cunliffe</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1653</first_page>
+                  <last_page>1669</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="doi">10.2217/epi-2016-0075</identifier>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.2217/epi-2016-0075</doi>
+                  <resource>http://www.futuremedicine.com/doi/10.2217/epi-2016-0075</resource>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <doi>10.1016/j.yhbeh.2009.09.011</doi>
+                  </citation>
+                  <citation key="B2">
+                    <doi>10.1016/j.ynstr.2014.09.001</doi>
+                  </citation>
+                  <citation key="B3">
+                    <doi>10.1038/nrg3964</doi>
+                  </citation>
+                  <citation key="B4">
+                    <journal_title>Dialogues Clin. Neurosci.</journal_title>
+                    <author>Anacker C</author>
+                    <first_page>321</first_page>
+                    <volume>16</volume>
+                    <issue>3</issue>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="B5">
+                    <doi>10.1111/jne.12175</doi>
+                  </citation>
+                  <citation key="B6">
+                    <doi>10.1038/npp.2014.140</doi>
+                  </citation>
+                  <citation key="B7">
+                    <doi>10.1038/nn1276</doi>
+                  </citation>
+                  <citation key="B8">
+                    <doi>10.1073/pnas.0507526103</doi>
+                  </citation>
+                  <citation key="B9">
+                    <doi>10.1371/journal.pone.0014739</doi>
+                  </citation>
+                  <citation key="B10">
+                    <doi>10.1073/pnas.1121260109</doi>
+                  </citation>
+                  <citation key="B11">
+                    <doi>10.1038/nn.2436</doi>
+                  </citation>
+                  <citation key="B12">
+                    <doi>10.1016/j.biopsych.2010.05.036</doi>
+                  </citation>
+                  <citation key="B13">
+                    <doi>10.1016/j.neuron.2012.08.016</doi>
+                  </citation>
+                  <citation key="B14">
+                    <doi>10.1523/JNEUROSCI.1470-12.2012</doi>
+                  </citation>
+                  <citation key="B15">
+                    <doi>10.1073/pnas.1218253109</doi>
+                  </citation>
+                  <citation key="B16">
+                    <journal_title>J. Can. Acad. Child. Adolesc. Psychiatry</journal_title>
+                    <author>Suomi SJ</author>
+                    <first_page>289</first_page>
+                    <volume>20</volume>
+                    <issue>4</issue>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="B17">
+                    <doi>10.1093/ilar/ilu025</doi>
+                  </citation>
+                  <citation key="B18">
+                    <doi>10.1002/ajpa.22565</doi>
+                  </citation>
+                  <citation key="B19">
+                    <doi>10.1038/tp.2014.75</doi>
+                  </citation>
+                  <citation key="B20">
+                    <doi>10.1038/npp.2015.171</doi>
+                  </citation>
+                  <citation key="B21">
+                    <doi>10.1159/000350716</doi>
+                  </citation>
+                  <citation key="B22">
+                    <doi>10.1002/dev.21218</doi>
+                  </citation>
+                  <citation key="B23">
+                    <doi>10.1016/j.bbr.2015.05.028</doi>
+                  </citation>
+                  <citation key="B24">
+                    <doi>10.1210/en.2013-1868</doi>
+                  </citation>
+                  <citation key="B25">
+                    <doi>10.1080/15592294.2015.1017199</doi>
+                  </citation>
+                  <citation key="B26">
+                    <doi>10.3389/fnbeh.2015.00145</doi>
+                  </citation>
+                  <citation key="B27">
+                    <doi>10.1017/S0954579415000103</doi>
+                  </citation>
+                  <citation key="B28">
+                    <doi>10.1016/j.biopsych.2014.11.022</doi>
+                  </citation>
+                  <citation key="B29">
+                    <doi>10.1038/nn.2270</doi>
+                  </citation>
+                  <citation key="B30">
+                    <doi>10.1038/tp.2011.21</doi>
+                  </citation>
+                  <citation key="B31">
+                    <doi>10.4161/epi.21180</doi>
+                  </citation>
+                  <citation key="B32">
+                    <doi>10.1016/j.biopsych.2012.01.034</doi>
+                  </citation>
+                  <citation key="B33">
+                    <doi>10.1017/S0954579415000176</doi>
+                  </citation>
+                  <citation key="B34">
+                    <doi>10.1016/j.jaac.2013.12.025</doi>
+                  </citation>
+                  <citation key="B35">
+                    <doi>10.1038/tp.2014.22</doi>
+                  </citation>
+                  <citation key="B36">
+                    <doi>10.1080/15592294.2015.1039221</doi>
+                  </citation>
+                  <citation key="B37">
+                    <doi>10.1038/tp.2014.140</doi>
+                  </citation>
+                  <citation key="B38">
+                    <doi>10.1038/tp.2015.63</doi>
+                  </citation>
+                  <citation key="B39">
+                    <doi>10.1111/cdev.12487</doi>
+                  </citation>
+                  <citation key="B40">
+                    <journal_title>Sci. Signal.</journal_title>
+                    <author>Kino T</author>
+                    <first_page>ra8</first_page>
+                    <volume>3</volume>
+                    <issue>107</issue>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="B41">
+                    <doi>10.1038/ncomms6395</doi>
+                  </citation>
+                  <citation key="B42">
+                    <doi>10.1210/en.2008-1335</doi>
+                  </citation>
+                  <citation key="B43">
+                    <doi>10.1186/s13041-015-0128-8</doi>
+                  </citation>
+                  <citation key="B44">
+                    <doi>10.1017/S1461145713000102</doi>
+                  </citation>
+                  <citation key="B45">
+                    <doi>10.1371/journal.pone.0107653</doi>
+                  </citation>
+                  <citation key="B46">
+                    <doi>10.1038/tp.2014.94</doi>
+                  </citation>
+                  <citation key="B47">
+                    <doi>10.1002/ajpa.23010</doi>
+                  </citation>
+                  <citation key="B48">
+                    <doi>10.1038/ncomms10967</doi>
+                  </citation>
+                  <citation key="B49">
+                    <doi>10.1186/1755-8794-7-13</doi>
+                  </citation>
+                  <citation key="B50">
+                    <doi>10.1126/science.1106477</doi>
+                  </citation>
+                  <citation key="B51">
+                    <volume_title>Of Baboons And Men: Social Circumstances, Biology And The Social Gradient In Health</volume_title>
+                    <author>Marmot MG</author>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="B52">
+                    <doi>10.1098/rspb.2006.0051</doi>
+                  </citation>
+                  <citation key="B53">
+                    <doi>10.1098/rstb.2014.0103</doi>
+                  </citation>
+                  <citation key="B54">
+                    <volume_title>The Physiology of Dominance in Stable Versus Unstable Social Hierarchies</volume_title>
+                    <author>Sapolsky R</author>
+                    <cYear>1993</cYear>
+                  </citation>
+                  <citation key="B55">
+                    <doi>10.1016/0889-1591(91)90024-5</doi>
+                  </citation>
+                  <citation key="B56">
+                    <doi>10.1161/01.ATV.14.5.721</doi>
+                  </citation>
+                  <citation key="B57">
+                    <doi>10.1371/journal.pbio.0020106</doi>
+                  </citation>
+                  <citation key="B58">
+                    <doi>10.1073/pnas.1206391109</doi>
+                  </citation>
+                  <citation key="B59">
+                    <doi>10.1016/0022-5193(76)90072-2</doi>
+                  </citation>
+                  <citation key="B60">
+                    <doi>10.1016/j.physbeh.2007.11.042</doi>
+                  </citation>
+                  <citation key="B61">
+                    <doi>10.1073/pnas.1202734109</doi>
+                  </citation>
+                  <citation key="B62">
+                    <doi>10.1016/j.bbi.2008.10.006</doi>
+                  </citation>
+                  <citation key="B63">
+                    <doi>10.1016/j.physbeh.2010.07.010</doi>
+                  </citation>
+                  <citation key="B64">
+                    <doi>10.1097/PSY.0b013e31817eaf0b</doi>
+                  </citation>
+                  <citation key="B65">
+                    <doi>10.1038/oby.2009.74</doi>
+                  </citation>
+                  <citation key="B66">
+                    <doi>10.1093/humrep/deq288</doi>
+                  </citation>
+                  <citation key="B67">
+                    <doi>10.1016/j.neubiorev.2008.06.006</doi>
+                  </citation>
+                  <citation key="B68">
+                    <doi>10.1002/ajp.20706</doi>
+                  </citation>
+                  <citation key="B69">
+                    <doi>10.1007/s10764-010-9461-z</doi>
+                  </citation>
+                  <citation key="B70">
+                    <doi>10.1016/j.anbehav.2015.10.033</doi>
+                  </citation>
+                  <citation key="B71">
+                    <doi>10.1016/j.socscimed.2014.12.031</doi>
+                  </citation>
+                  <citation key="B72">
+                    <doi>10.1038/nature05511</doi>
+                  </citation>
+                  <citation key="B73">
+                    <doi>10.1073/pnas.1202552109</doi>
+                  </citation>
+                  <citation key="B74">
+                    <doi>10.1111/j.1095-8649.2012.03477.x</doi>
+                  </citation>
+                  <citation key="B75">
+                    <doi>10.1242/jeb.106997</doi>
+                  </citation>
+                  <citation key="B76">
+                    <doi>10.1371/journal.pone.0096632</doi>
+                  </citation>
+                  <citation key="B77">
+                    <doi>10.1111/j.1365-2826.2012.02382.x</doi>
+                  </citation>
+                  <citation key="B78">
+                    <doi>10.1016/j.yhbeh.2005.02.003</doi>
+                  </citation>
+                  <citation key="B79">
+                    <doi>10.1242/jeb.088617</doi>
+                  </citation>
+                  <citation key="B80">
+                    <doi>10.1371/journal.pone.0144750</doi>
+                  </citation>
+                  <citation key="B81">
+                    <doi>10.3389/fnbeh.2016.00016</doi>
+                  </citation>
+                  <citation key="B82">
+                    <doi>10.1073/pnas.1514292113</doi>
+                  </citation>
+                  <citation key="B83">
+                    <doi>10.1089/zeb.2009.0618</doi>
+                  </citation>
+                  <citation key="B84">
+                    <doi>10.1016/j.physbeh.2010.09.004</doi>
+                  </citation>
+                  <citation key="B85">
+                    <doi>10.1126/science.1218889</doi>
+                  </citation>
+                  <citation key="B86">
+                    <doi>10.1038/srep12678</doi>
+                  </citation>
+                  <citation key="B87">
+                    <doi>10.1371/journal.pone.0145801</doi>
+                  </citation>
+                  <citation key="B88">
+                    <doi>10.3389/fncir.2013.00079</doi>
+                  </citation>
+                  <citation key="B89">
+                    <doi>10.1016/j.bbr.2014.05.055</doi>
+                  </citation>
+                  <citation key="B90">
+                    <doi>10.1038/mp.2014.128</doi>
+                  </citation>
+                  <citation key="B91">
+                    <volume_title>The Spirit Level: Why Equality is Better for Everyone</volume_title>
+                    <author>Wilkinson R</author>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="B92">
+                    <volume_title>The Health Gap: the Challenge of an Unequal World</volume_title>
+                    <author>Marmot M</author>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="B93">
+                    <volume_title>Handbook Of Theory And Research For The Sociology Of Education</volume_title>
+                    <author>Bourdieu P</author>
+                    <first_page>241</first_page>
+                    <cYear>1986</cYear>
+                  </citation>
+                  <citation key="B94">
+                    <volume_title>Foundations of Social Theory</volume_title>
+                    <author>Coleman J</author>
+                    <cYear>1994</cYear>
+                  </citation>
+                  <citation key="B95">
+                    <volume_title>Bowling Alone: The Collapse and Revival of American Community</volume_title>
+                    <author>Putnam RD</author>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="B96">
+                    <doi>10.1037/0033-2909.130.3.355</doi>
+                  </citation>
+                  <citation key="B97">
+                    <doi>10.1348/147608308X379806</doi>
+                  </citation>
+                  <citation key="B98">
+                    <doi>10.1093/esr/jcr012</doi>
+                  </citation>
+                  <citation key="B99">
+                    <doi>10.1093/esr/jcu057</doi>
+                  </citation>
+                  <citation key="B100">
+                    <doi>10.1073/pnas.1113194109</doi>
+                  </citation>
+                  <citation key="B101">
+                    <doi>10.1177/016502548000300305</doi>
+                  </citation>
+                  <citation key="B102">
+                    <doi>10.1111/j.1467-9280.2009.02437.x</doi>
+                  </citation>
+                  <citation key="B103">
+                    <doi>10.1073/pnas.1120972109</doi>
+                  </citation>
+                  <citation key="B104">
+                    <doi>10.1186/1471-2458-11-42</doi>
+                  </citation>
+                  <citation key="B105">
+                    <doi>10.1210/jc.2010-2137</doi>
+                  </citation>
+                  <citation key="B106">
+                    <doi>10.1097/PSY.0b013e3181c85712</doi>
+                  </citation>
+                  <citation key="B107">
+                    <doi>10.1371/journal.pmed.1001479</doi>
+                  </citation>
+                  <citation key="B108">
+                    <doi>10.1177/0956797612471954</doi>
+                  </citation>
+                  <citation key="B109">
+                    <doi>10.1073/pnas.1310655110</doi>
+                  </citation>
+                  <citation key="B110">
+                    <doi>10.1016/j.psyneuen.2016.02.003</doi>
+                  </citation>
+                  <citation key="B111">
+                    <doi>10.1016/j.neubiorev.2009.09.003</doi>
+                  </citation>
+                  <citation key="B112">
+                    <doi>10.1186/1471-2458-10-715</doi>
+                  </citation>
+                  <citation key="B113">
+                    <doi>10.1186/1475-9276-13-22</doi>
+                  </citation>
+                  <citation key="B114">
+                    <doi>10.1186/1471-2318-14-102</doi>
+                  </citation>
+                  <citation key="B115">
+                    <doi>10.1186/1475-9276-12-54</doi>
+                  </citation>
+                  <citation key="B116">
+                    <doi>10.1097/00004583-200011000-00009</doi>
+                  </citation>
+                  <citation key="B117">
+                    <doi>10.1037/0012-1649.43.2.341</doi>
+                  </citation>
+                  <citation key="B118">
+                    <doi>10.1038/mp.2010.53</doi>
+                  </citation>
+                  <citation key="B119">
+                    <doi>10.1073/pnas.1406578111</doi>
+                  </citation>
+                  <citation key="B120">
+                    <doi>10.1037/a0032671</doi>
+                  </citation>
+                  <citation key="B121">
+                    <doi>10.1093/ije/dyr147</doi>
+                  </citation>
+                  <citation key="B122">
+                    <doi>10.1073/pnas.1121249109</doi>
+                  </citation>
+                  <citation key="B123">
+                    <doi>10.1093/ije/dyr215</doi>
+                  </citation>
+                  <citation key="B124">
+                    <doi>10.1093/ije/dyv168</doi>
+                  </citation>
+                  <citation key="B125">
+                    <doi>10.1080/15592294.2015.1085139</doi>
+                  </citation>
+                  <citation key="B126">
+                    <doi>10.1093/ije/dyv060</doi>
+                  </citation>
+                  <citation key="B127">
+                    <doi>10.1186/1745-0179-1-14</doi>
+                  </citation>
+                  <citation key="B128">
+                    <journal_title>Mol. Psychiatry</journal_title>
+                    <author>Swartz JR</author>
+                    <cYear>2016</cYear>
+                  </citation>
+                  <citation key="B129">
+                    <journal_title>Am. J. Med. Genet. B Neuropsychiatr. Genet.</journal_title>
+                    <author>Beach SR</author>
+                    <first_page>710</first_page>
+                    <volume>153</volume>
+                    <issue>2</issue>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1002/ajmg.b.31028</doi>
+                  </citation>
+                  <citation key="B130">
+                    <doi>10.1017/S0954579413000990</doi>
+                  </citation>
+                  <citation key="B131">
+                    <doi>10.1097/PSY.0b013e3182924cf4</doi>
+                  </citation>
+                  <citation key="B132">
+                    <doi>10.1038/nn.3778</doi>
+                  </citation>
+                  <citation key="B133">
+                    <doi>10.1016/j.neuron.2014.12.055</doi>
+                  </citation>
+                  <citation key="B134">
+                    <doi>10.1176/appi.ajp.2014.14020195</doi>
+                  </citation>
+                  <citation key="B135">
+                    <doi>10.1111/cdev.12486</doi>
+                  </citation>
+                  <citation key="B136">
+                    <doi>10.1111/jcpp.12495</doi>
+                  </citation>
+                  <citation key="B137">
+                    <doi>10.1177/0956797615626703</doi>
+                  </citation>
+                  <citation key="B138">
+                    <doi>10.1016/j.molcel.2012.10.016</doi>
+                  </citation>
+                  <citation key="B139">
+                    <doi>10.1186/gb-2013-14-10-r115</doi>
+                  </citation>
+                  <citation key="B140">
+                    <doi>10.1038/mp.2009.82</doi>
+                  </citation>
+                  <citation key="B141">
+                    <doi>10.1093/hmg/ddv456</doi>
+                  </citation>
+                  <citation key="B142">
+                    <doi>10.1093/ije/dyu277</doi>
+                  </citation>
+                  <citation key="B143">
+                    <doi>10.1186/s13059-015-0584-6</doi>
+                  </citation>
+                  <citation key="B144">
+                    <doi>10.1186/s13059-015-0828-5</doi>
+                  </citation>
+                  <citation key="B145">
+                    <doi>10.1073/pnas.1505063112</doi>
+                  </citation>
+                  <citation key="B146">
+                    <doi>10.1038/srep25170</doi>
+                  </citation>
+                  <citation key="B147">
+                    <doi>10.1523/JNEUROSCI.1526-14.2014</doi>
+                  </citation>
+                  <citation key="B148">
+                    <doi>10.1016/j.biopsych.2014.02.006</doi>
+                  </citation>
+                  <citation key="B149">
+                    <doi>10.1038/mp.2015.134</doi>
+                  </citation>
+                  <citation key="B150">
+                    <doi>10.1038/npp.2015.286</doi>
+                  </citation>
+                  <citation key="B151">
+                    <doi>10.1176/appi.ajp.2014.14010008</doi>
+                  </citation>
+                  <citation key="B152">
+                    <doi>10.1038/tp.2015.105</doi>
+                  </citation>
+                  <citation key="B153">
+                    <doi>10.2217/epi.15.11</doi>
+                  </citation>
+                  <citation key="B154">
+                    <doi>10.1176/appi.ajp.2014.13121571</doi>
+                  </citation>
+                  <citation key="B155">
+                    <doi>10.1016/j.biopsych.2015.08.005</doi>
+                  </citation>
+                  <citation key="B156">
+                    <doi>10.1038/mp.2014.80</doi>
+                  </citation>
+                  <citation key="B157">
+                    <doi>10.1038/npp.2016.87</doi>
+                  </citation>
+                  <citation key="B158">
+                    <doi>10.1038/nn.3695</doi>
+                  </citation>
+                  <citation key="B159">
+                    <doi>10.1038/tp.2016.109</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1109/ACCESS.2016.2628407</doi>
+        <crm-item name="publisher-name" type="string">Institute of Electrical and Electronics Engineers (IEEE)</crm-item>
+        <crm-item name="prefix-name" type="string">Institute of Electrical and Electronics Engineers</crm-item>
+        <crm-item name="member-id" type="number">263</crm-item>
+        <crm-item name="citation-id" type="number">86488194</crm-item>
+        <crm-item name="journal-id" type="number">190125</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161215160003148</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1109</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T04:14:34Z</crm-item>
+        <crm-item name="created" type="date">2016-11-23T01:09:44Z</crm-item>
+        <crm-item name="citedby-count" type="number">27</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>IEEE Access</full_title>
+                <abbrev_title>IEEE Access</abbrev_title>
+                <issn media_type="electronic">2169-3536</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>4</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article>
+                <titles>
+                  <title>Facial Emotion Recognition Based on Biorthogonal Wavelet Entropy, Fuzzy Support Vector Machine, and Stratified Cross Validation</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Yu-Dong</given_name>
+                    <surname>Zhang</surname>
+                    <ORCID>http://orcid.org/0000-0002-4870-1493</ORCID>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Zhang-Jing</given_name>
+                    <surname>Yang</surname>
+                    <ORCID>http://orcid.org/0000-0003-2860-1329</ORCID>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Hui-Min</given_name>
+                    <surname>Lu</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Xing-Xing</given_name>
+                    <surname>Zhou</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Preetha</given_name>
+                    <surname>Phillips</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Qing-Ming</given_name>
+                    <surname>Liu</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Shui-Hua</given_name>
+                    <surname>Wang</surname>
+                    <ORCID>http://orcid.org/0000-0003-2238-6808</ORCID>
+                  </person_name>
+                </contributors>
+                <publication_date>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>8375</first_page>
+                  <last_page>8385</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="arNumber">7752782</item_number>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      NSFC
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100001809</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">61602250</fr:assertion>
+                    <fr:assertion name="award_number">61503195</fr:assertion>
+                    <fr:assertion name="award_number">61462064</fr:assertion>
+                    <fr:assertion name="award_number">61203243</fr:assertion>
+                    <fr:assertion name="award_number">61402231</fr:assertion>
+                    <fr:assertion name="award_number">61603192</fr:assertion>
+                    <fr:assertion name="award_number">61272077</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Natural Science Foundation of Jiangsu Province
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100004608</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">BK20150983</fr:assertion>
+                    <fr:assertion name="award_number">BK20161580</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">Program of Natural Science Research of Jiangsu Higher Education Institutions</fr:assertion>
+                    <fr:assertion name="award_number">16KJB520025</fr:assertion>
+                    <fr:assertion name="award_number">16KJB520020</fr:assertion>
+                    <fr:assertion name="award_number">15KJB470010</fr:assertion>
+                    <fr:assertion name="award_number">15KJB520018</fr:assertion>
+                    <fr:assertion name="award_number">2KJA63001</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Open Project Program of the State Key Laboratory of CAD&amp;CG, Zhejiang University
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100004835</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">A1616</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">Open Research Fund of Key Laboratory of Network Crime Investigation of Hunan Provincial Colleges</fr:assertion>
+                    <fr:assertion name="award_number">2015HNWLFZ058</fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <doi_data>
+                  <doi>10.1109/ACCESS.2016.2628407</doi>
+                  <resource>http://ieeexplore.ieee.org/document/7752782/</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://xplorestaging.ieee.org/ielx7/6287639/7419931/07752782.pdf?arnumber=7752782</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>
