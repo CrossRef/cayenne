@@ -59,6 +59,7 @@
     (->> (.getPath (resource "registry.rdf"))
          (str "file://")
          (set-param! [:location :cr-funder-registry])))
+  (println "Loading test funders from" (get-param [:location :cr-funder-registry]))
   (with-redefs
    [cayenne.tasks.funder/get-country-literal-name
     (fn [model node]
