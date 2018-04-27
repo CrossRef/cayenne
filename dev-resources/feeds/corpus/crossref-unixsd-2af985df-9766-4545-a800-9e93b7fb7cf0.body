@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1186/s13148-016-0279-1</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer (Biomed Central Ltd.)</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86127915</crm-item>
+        <crm-item name="journal-id" type="number">99966</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161103113020816</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1186</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T02:42:28Z</crm-item>
+        <crm-item name="created" type="date">2016-11-03T10:30:22Z</crm-item>
+        <crm-item name="citedby-count" type="number">5</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Clinical Epigenetics</full_title>
+                <abbrev_title>Clin Epigenet</abbrev_title>
+                <issn media_type="print">1868-7075</issn>
+                <issn media_type="electronic">1868-7083</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>8</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Discovery and replication of a peripheral tissue DNA methylation biosignature to augment a suicide prediction model</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Makena L.</given_name>
+                    <surname>Clive</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Marco P.</given_name>
+                    <surname>Boks</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Christiaan H.</given_name>
+                    <surname>Vinkers</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Lauren M.</given_name>
+                    <surname>Osborne</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jennifer L.</given_name>
+                    <surname>Payne</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Kerry J.</given_name>
+                    <surname>Ressler</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Alicia K.</given_name>
+                    <surname>Smith</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Holly C.</given_name>
+                    <surname>Wilcox</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Zachary</given_name>
+                    <surname>Kaminsky</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>3</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <publisher_item>
+                  <item_number item_number_type="article-number">113</item_number>
+                  <identifier id_type="pii">279</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          National Institute of Mental Health
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000025</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">1R21MH094771-01</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">Johns Hopkins Military and Veterans Health Institute</fr:assertion>
+                        <fr:assertion name="award_number">Russell Military Scholars Award</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          National Institute of Environmental Health Sciences
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000066</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">ES07141</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1186/s13148-016-0279-1</doi>
+                  <timestamp>20161103113020816</timestamp>
+                  <resource>http://clinicalepigeneticsjournal.biomedcentral.com/articles/10.1186/s13148-016-0279-1</resource>
+                  <collection property="crawler-based" setbyID="biomedcen">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1186/s13148-016-0279-1.pdf</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="279_CR1">
+                    <author>Suicide Data [online]</author>
+                    <cYear>2016</cYear>
+                    <volume_title>World Health Organization</volume_title>
+                    <unstructured_citation>Suicide Data [online]. World Health Organization. 2016. Available from URL: http://www.who.int/mental_health/prevention/suicide/suicideprevent/en/ . Accessed 30 June 2016.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR2">
+                    <author>Web-based Injury Statistics Query and Reporting System (WISQARS) [online]</author>
+                    <cYear>2016</cYear>
+                    <volume_title>Centers for Disease Control and Prevention: National Center for Injury Prevention and Control</volume_title>
+                    <unstructured_citation>Web-based Injury Statistics Query and Reporting System (WISQARS) [online]. Centers for Disease Control and Prevention: National Center for Injury Prevention and Control. 2016. Available from URL: http://www.cdc.gov/injury/wisqars . Accessed 30 June 2016.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR3">
+                    <journal_title>Psychiatr Serv</journal_title>
+                    <author>B Pringle</author>
+                    <volume>64</volume>
+                    <issue>1</issue>
+                    <first_page>71</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1176/appi.ps.201100512</doi>
+                    <unstructured_citation>Pringle B, Colpe LJ, Heinssen RK, Schoenbaum M, Sherrill JT, Claassen CA, et al. A strategic approach for prioritizing research and action to prevent suicide. Psychiatr Serv. 2013;64(1):71–5.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR4">
+                    <journal_title>Am J Psychiatry</journal_title>
+                    <author>J Guintivano</author>
+                    <volume>171</volume>
+                    <issue>12</issue>
+                    <first_page>1287</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.2014.14010008</doi>
+                    <unstructured_citation>Guintivano J, Brown T, Newcomer A, Jones M, Cox O, Maher BS, et al. Identification and replication of a combined epigenetic and genetic biomarker predicting suicide and suicidal behaviors. Am J Psychiatry. 2014;171(12):1287–96.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR5">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>AB Niculescu</author>
+                    <volume>20</volume>
+                    <first_page>286</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/mp.2014.180</doi>
+                    <unstructured_citation>Niculescu AB, Levey D, Le-Niculescu H, Niculescu E, Kurian SM, Salomon D. Psychiatric blood biomarkers: avoiding jumping to premature negative or positive conclusions. Mol Psychiatry. 2015;20:286–8.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR6">
+                    <journal_title>Int J Neuropsychopharmacology</journal_title>
+                    <author>GN Pandey</author>
+                    <volume>19</volume>
+                    <issue>8</issue>
+                    <first_page>1</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1093/ijnp/pyw015</doi>
+                    <unstructured_citation>Pandey GN, Rizavi HS, Zhang H, Bhaumik R, Ren X. The expression of the suicide-associated gene SKA2 is decreased in the prefrontal cortex of suicide victims but not of nonsuicidal patients. Int J Neuropsychopharmacology. 2016;19(8):1–10.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR7">
+                    <journal_title>J. Endocrinol.</journal_title>
+                    <author>L Rice</author>
+                    <volume>198</volume>
+                    <first_page>499</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1677/JOE-08-0019</doi>
+                    <unstructured_citation>Rice L, Charlotte E, Eccles J, Garside H, Sommer P, Kay P, Blackhall FH, et al. Identification and functional analysis of SKA2 interaction with the glucocorticoid receptor. J Endocrinol. 2008;198:499–509.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR8">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>MP Boks</author>
+                    <volume>41</volume>
+                    <issue>5</issue>
+                    <first_page>1350</first_page>
+                    <cYear>2015</cYear>
+                    <unstructured_citation>Boks MP, Rutten BP, Geuze E, Houtepen LC, Vermetten E, Kaminsky Z, et al. SKA2 methylation is involved in cortisol stress reactivity and predicts the development of posttraumatic stress disorder (PTSD) after military deployment. Neuropsychopharmacology. 2015;41(5):1350–6.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR9">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>Z Kaminsky</author>
+                    <volume>5</volume>
+                    <first_page>e627</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/tp.2015.105</doi>
+                    <unstructured_citation>Kaminsky Z, Wilcox HC, Eaton WW, Van Eck K, Kilaru V, Jovanovic T, et al. Epigenetic and genetic variation at SKA2 predict suicidal behavior and post-traumatic stress disorder. Transl Psychiatry. 2015;5:e627.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR10">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>KC Chung</author>
+                    <volume>68</volume>
+                    <first_page>126</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.02.026</doi>
+                    <unstructured_citation>Chung KC, Springer I, Kogler L, Turetsky B, Freiherr J, Derntl B. The influence of androstadienone during psychosocial stress is modulated by gender, trait anxiety and subjective stress: an fMRI study. Psychoneuroendocrinology. 2016;68:126–39.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR11">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>AB Niculescu</author>
+                    <volume>20</volume>
+                    <issue>11</issue>
+                    <first_page>1266</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/mp.2015.112</doi>
+                    <unstructured_citation>Niculescu AB, Levey DF, Phalen PL, Le-Niculescu H, Dainton HD, Jain N, et al. Understanding and predicting suicidality using a combined genomic and clinical risk assessment approach. Mol Psychiatry. 2015;20(11):1266–85.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR12">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>N Sadeh</author>
+                    <volume>21</volume>
+                    <issue>3</issue>
+                    <first_page>357</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/mp.2015.134</doi>
+                    <unstructured_citation>Sadeh N, Spielberg JM, Logue MW, Wolf EJ, Smith AK, Lusk J, et al. SKA2 methylation is associated with decreased prefrontal cortical thickness and greater PTSD severity among trauma-exposed veterans. Mol Psychiatry. 2016;21(3):357–63.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR13">
+                    <journal_title>Depress Anxiety</journal_title>
+                    <author>N Sadeh</author>
+                    <volume>33</volume>
+                    <issue>4</issue>
+                    <first_page>308</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1002/da.22480</doi>
+                    <unstructured_citation>Sadeh N, Wolf EJ, Logue MW, Hayes JP, Stone A, Griffin LM, et al. Epigenetic variation at Ska2 predicts suicide phenotypes and internalizing psychopathology. Depress Anxiety. 2016;33(4):308–15.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR14">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>DF Levey</author>
+                    <volume>21</volume>
+                    <issue>6</issue>
+                    <first_page>768</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/mp.2016.31</doi>
+                    <unstructured_citation>Levey DF, Niculescu EM, Le-Niculescu H, Dainton HL, Phalen PL, Ladd TB, et al. Towards understanding and predicting suicidality in women: biomarkers and clinical risk assessment. Mol Psychiatry. 2016;21(6):768–85.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR15">
+                    <journal_title>Neurosci Res.</journal_title>
+                    <author>J Guintivano</author>
+                    <volume>102</volume>
+                    <first_page>56</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.neures.2014.08.003</doi>
+                    <unstructured_citation>Guintivano J, Kaminsky ZA. Role of epigenetic factors in the development of mental illness throughout life. Neurosci Res. 2016;102:56–66.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR16">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>M Kimmel</author>
+                    <volume>69</volume>
+                    <first_page>150</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.008</doi>
+                    <unstructured_citation>Kimmel M, Clive M, Gispen F, Guintivano J, Brown T, Cox O, et al. Oxytocin receptor DNA methylation in postpartum depression. Psychoneuroendocrinology. 2016;69:150–60.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR17">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>L Osborne</author>
+                    <volume>41</volume>
+                    <issue>6</issue>
+                    <first_page>1648</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.333</doi>
+                    <unstructured_citation>Osborne L, Clive M, Kimmel M, Gispen F, Guintivano J, Brown T, et al. Replication of epigenetic postpartum depression biomarkers and variation with hormone levels. Neuropsychopharmacology. 2016;41(6):1648–58.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR18">
+                    <journal_title>Nucleic Acids Res</journal_title>
+                    <author>J Reimand</author>
+                    <volume>35</volume>
+                    <issue>Web Server issu</issue>
+                    <first_page>W193</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1093/nar/gkm226</doi>
+                    <unstructured_citation>Reimand J, Kull M, Peterson H, Hansen J, Vilo J. g:Profiler—a web-based toolset for functional profiling of gene lists from large-scale experiments. Nucleic Acids Res. 2007;35(Web Server issue):W193–200.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR19">
+                    <journal_title>Nucleic Acids Res</journal_title>
+                    <author>J Reimand</author>
+                    <volume>39</volume>
+                    <issue>suppl 2</issue>
+                    <first_page>W307</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1093/nar/gkr378</doi>
+                    <unstructured_citation>Reimand J, Arak T, Vilo J. g:Profiler—a web server for functional interpretation of gene lists (2011 update). Nucleic Acids Res. 2011;39(suppl 2):W307–15.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR20">
+                    <journal_title>Nat Commun</journal_title>
+                    <author>LC Houtepen</author>
+                    <volume>7</volume>
+                    <first_page>10967</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/ncomms10967</doi>
+                    <unstructured_citation>Houtepen LC, Vinkers CH, Carrillo-Roa T, Hiemstra M, van Lier PA, Meeus W, et al. Genome-wide DNA methylation levels and altered cortisol stress reactivity following childhood trauma in humans. Nat Commun. 2016;7:10967.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR21">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>MP Boks</author>
+                    <volume>41</volume>
+                    <issue>5</issue>
+                    <first_page>1350</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.286</doi>
+                    <unstructured_citation>Boks MP, Rutten BP, Geuze E, Houtepen LC, Vermetten E, Kaminsky Z, et al. SKA2 methylation is Involved in cortisol stress reactivity and predicts the development of posttraumatic stress disorder (PTSD) After Military Deployment. Neuropsychopharmacology. 2015;41(5):1350–6.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR22">
+                    <journal_title>Prog. Neuro-Psychopharmacol. Biol. Psychiatry</journal_title>
+                    <author>JD Rosenblat</author>
+                    <volume>53</volume>
+                    <first_page>23</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.pnpbp.2014.01.013</doi>
+                    <unstructured_citation>Rosenblat JD, Cha DS, Mansur RB, McIntyre RS. Inflamed moods: a review of the interactions between inflammation and mood disorders. Prog Neuro-Psychopharmacol Biol Psychiatry. 2014;53:23–34.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR23">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>EFG Naninck</author>
+                    <volume>25</volume>
+                    <issue>3</issue>
+                    <first_page>309</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1002/hipo.22374</doi>
+                    <unstructured_citation>Naninck EFG, Hoeijmakers L, Kakava-Georgiadou N, Meesters A, Lazic SE, Lucassen PJ, et al. Chronic early life stress alters developmental and adult neurogenesis and impairs cognitive function in mice. Hippocampus. 2015;25(3):309–28.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR24">
+                    <journal_title>Epigenetics</journal_title>
+                    <author>Y Bockmühl</author>
+                    <volume>10</volume>
+                    <issue>3</issue>
+                    <first_page>247</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1080/15592294.2015.1017199</doi>
+                    <unstructured_citation>Bockmühl Y, Patchev AV, Madejska A, Hoffmann A, Sousa JC, Sousa N, et al. Methylation at the CpG island shore region upregulates Nr3c1 promoter activity after early-life stress. Epigenetics. 2015;10(3):247–57.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR25">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Y-M Hsiao</author>
+                    <volume>67</volume>
+                    <first_page>86</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.02.004</doi>
+                    <unstructured_citation>Hsiao Y-M, Tsai T-C, Lin Y-T, Chen C-C, Huang C-C, Hsu K-S. Early life stress dampens stress responsiveness in adolescence: evaluation of neuroendocrine reactivity and coping behavior. Psychoneuroendocrinology. 2016;67:86–99.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR26">
+                    <journal_title>Front Psychiatry.</journal_title>
+                    <author>CW Baes</author>
+                    <volume>5</volume>
+                    <first_page>2</first_page>
+                    <cYear>2014</cYear>
+                    <unstructured_citation>Baes CW, Martins CMS, Tofoli SMC, Juruena MF. Early life stress in depressive patients: HPA axis response to GR and MR agonist. Front Psychiatry. 2014;5:2.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR27">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>D Lindqvist</author>
+                    <volume>66</volume>
+                    <issue>3</issue>
+                    <first_page>287</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2009.01.030</doi>
+                    <unstructured_citation>Lindqvist D, Janelidze S, Hagell P, Erhardt S, Samuelsson M, Lennart M, et al. Interleukin-6 is elevated in the cerebrospinal fluid of suicide attempters and related to symptom severity. Biol Psychiatry. 2009;66(3):287–92.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR28">
+                    <journal_title>Acta Psychiatr Scand</journal_title>
+                    <author>LH Tonelli</author>
+                    <volume>117</volume>
+                    <issue>3</issue>
+                    <first_page>198</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1111/j.1600-0447.2007.01128.x</doi>
+                    <unstructured_citation>Tonelli LH, Stiller J, Rujescu D, Giegling I, Schneider B, Maurer K, et al. Elevated cytokine expression in the orbitoprefrontal cortex of victims of suicide. Acta Psychiatr Scand. 2008;117(3):198–206.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR29">
+                    <journal_title>J Psychiatr Res</journal_title>
+                    <author>GN Pandey</author>
+                    <volume>46</volume>
+                    <issue>1</issue>
+                    <first_page>57</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.jpsychires.2011.08.006</doi>
+                    <unstructured_citation>Pandey GN, Rizavi HS, Ren X, Fareen J, Hoppensteadt DA, Roberts RC, et al. Proinflammatory cytokines in the prefrontal cortex of teenage suicide victims. J Psychiatr Res. 2012;46(1):57–63.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR30">
+                    <journal_title>Psychiatry Res</journal_title>
+                    <author>J Gill</author>
+                    <volume>216</volume>
+                    <issue>1</issue>
+                    <first_page>116</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psychres.2014.01.046</doi>
+                    <unstructured_citation>Gill J, Lee H, Barr T, Baxter T, Heinzelmann M, Rak H, et al. Lower health related quality of life in U.S. military personnel is associated with service-related disorders and inflammation. Psychiatry Res. 2014;216(1):116–22.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR31">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>A O’Donovan</author>
+                    <volume>51</volume>
+                    <first_page>557</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.11.010</doi>
+                    <unstructured_citation>O’Donovan A, Chao LL, Paulson J, Samuelson KW, Shigenaga JK, Grunfeld C, et al. Altered inflammatory activity associated with reduced hippocampal volume and more severe posttraumatic stress symptoms in Gulf War veterans. Psychoneuroendocrinology. 2015;51:557–66.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR32">
+                    <journal_title>Cytokine</journal_title>
+                    <author>NM Heath</author>
+                    <volume>63</volume>
+                    <issue>2</issue>
+                    <first_page>172</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.cyto.2013.04.030</doi>
+                    <unstructured_citation>Heath NM, Chesney SA, Gerhart JI, Goldsmith RE, Luborsky JL, Stevens NR, et al. Interpersonal violence, PTSD, and inflammation: potential psychogenic pathways to higher C-reactive protein levels. Cytokine. 2013;63(2):172–8.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR33">
+                    <journal_title>Am J Psychiatry</journal_title>
+                    <author>V Michopoulos</author>
+                    <volume>172</volume>
+                    <issue>4</issue>
+                    <first_page>353</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.2014.14020263</doi>
+                    <unstructured_citation>Michopoulos V, Rothbaum AO, Jovanovic T, Almli LM, Bradley B, Rothbaum BO, et al. Association of CRP genetic variation and CRP level with elevated PTSD symptoms and physiological responses in a civilian population with high levels of trauma. Am J Psychiatry. 2014;172(4):353–62.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR34">
+                    <journal_title>JAMA Psychiatry</journal_title>
+                    <author>SA Eraly</author>
+                    <volume>71</volume>
+                    <issue>4</issue>
+                    <first_page>423</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1001/jamapsychiatry.2013.4374</doi>
+                    <unstructured_citation>Eraly SA, Nievergelt CM, Maihofer AX, et al. Assessment of plasma c-reactive protein as a biomarker of posttraumatic stress disorder risk. JAMA Psychiatry. 2014;71(4):423–31.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR35">
+                    <journal_title>Brain Behav Immun</journal_title>
+                    <author>L Plantinga</author>
+                    <volume>30</volume>
+                    <first_page>125</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.bbi.2013.01.081</doi>
+                    <unstructured_citation>Plantinga L, Bremner JD, Miller AH, Jones DP, Veledar E, Goldberg J, et al. Association between posttraumatic stress disorder and inflammation: a twin study. Brain Behav Immun. 2013;30:125–32.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR36">
+                    <journal_title>Prog Neuropsychopharmacol Biol Psychiatry.</journal_title>
+                    <author>A Gladkevich</author>
+                    <volume>28</volume>
+                    <first_page>559</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.pnpbp.2004.01.009</doi>
+                    <unstructured_citation>Gladkevich A, Kauffman HF, Korf J. Lymphocytes as a neural probe: potential for studying psychiatric disorders. Prog Neuropsychopharmacol Biol Psychiatry. 2004;28:559–76.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR37">
+                    <journal_title>Bipolar Disord</journal_title>
+                    <author>GN Pandey</author>
+                    <volume>15</volume>
+                    <first_page>524</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1111/bdi.12089</doi>
+                    <unstructured_citation>Pandey GN. Biological basis of suicide and suicidal behavior. Bipolar Disord. 2013;15:524–41.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR38">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>R Tabares-Seisdedos</author>
+                    <volume>14</volume>
+                    <first_page>563</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/mp.2009.2</doi>
+                    <unstructured_citation>Tabares-Seisdedos R, Rubenstein J. Chromosome 8p as a potential hub for developmental neuropsychiatric disorders: implications for schizophrenia, autism and cancer. Mol Psychiatry. 2009;14:563–89.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR39">
+                    <journal_title>Cancer Res</journal_title>
+                    <author>S Das</author>
+                    <volume>66</volume>
+                    <issue>16</issue>
+                    <first_page>8123</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1158/0008-5472.CAN-06-1215</doi>
+                    <unstructured_citation>Das S, Ongusaha PP, Yang YS, Park J-M, Aaronson SA, Lee SW. Discoidin domain receptor 1 receptor tyrosine kinase induces cyclooxygenase-2 and promotes chemoresistance through nuclear factor-κB pathway activation. Cancer Res. 2006;66(16):8123–30.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR40">
+                    <journal_title>Am J Pathol</journal_title>
+                    <author>D Guerrot</author>
+                    <volume>179</volume>
+                    <issue>1</issue>
+                    <first_page>83</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.ajpath.2011.03.023</doi>
+                    <unstructured_citation>Guerrot D, Kerroch M, Placier S, Vandermeersch S, Trivin C, Mael-Ainin M, et al. Discoidin domain receptor 1 is a major mediator of inflammation and fibrosis in obstructive nephropathy. Am J Pathol. 2011;179(1):83–91.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR41">
+                    <journal_title>J Immunol</journal_title>
+                    <author>A Stadtmann</author>
+                    <volume>195</volume>
+                    <issue>3</issue>
+                    <first_page>1152</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.4049/jimmunol.1500606</doi>
+                    <unstructured_citation>Stadtmann A, Block H, Volmering S, Abram C, Sohlbach C, Boras M, et al. Cross-talk between Shp1 and PIPKIgamma controls leukocyte recruitment. J Immunol. 2015;195(3):1152–61.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR42">
+                    <journal_title>J Immunol</journal_title>
+                    <author>NB Watson</author>
+                    <volume>194</volume>
+                    <issue>6</issue>
+                    <first_page>2796</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.4049/jimmunol.1402210</doi>
+                    <unstructured_citation>Watson NB, Schneider KM, Massa PT. SHP-1-dependent macrophage differentiation exacerbates virus-induced myositis. J Immunol. 2015;194(6):2796–809.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR43">
+                    <journal_title>J Clin Invest</journal_title>
+                    <author>C Bousquet</author>
+                    <volume>104</volume>
+                    <issue>9</issue>
+                    <first_page>1277</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1172/JCI7924</doi>
+                    <unstructured_citation>Bousquet C, Susini C, Melmed S. Inhibitory roles for SHP-1 and SOCS-3 following pituitary proopiomelanocortin induction by leukemia inhibitory factor. J Clin Invest. 1999;104(9):1277–85.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR44">
+                    <author>H Lodish</author>
+                    <cYear>2003</cYear>
+                    <volume_title>Molecular cell biology</volume_title>
+                    <edition_number>5</edition_number>
+                    <unstructured_citation>Lodish H. Molecular cell biology. 5th ed. New York: W. H. Freeman and Co; 2003.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR45">
+                    <journal_title>J Psychiatr Res</journal_title>
+                    <author>CS Kloet de</author>
+                    <volume>40</volume>
+                    <issue>6</issue>
+                    <first_page>550</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.jpsychires.2005.08.002</doi>
+                    <unstructured_citation>de Kloet CS, Vermetten E, Geuze E, Kavelaars A, Heijnen CJ, Westenberg HGM. Assessment of HPA-axis function in posttraumatic stress disorder: pharmacological and non-pharmacological challenge tests, a review. J Psychiatr Res. 2006;40(6):550–67.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR46">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>M Zuiden van</author>
+                    <volume>51</volume>
+                    <first_page>513</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.09.014</doi>
+                    <unstructured_citation>van Zuiden M, Kavelaars A, Vermetten E, Olff M, Geuze E, Heijnen C. Pre-deployment differences in glucocorticoid sensitivity of leukocytes in soldiers developing symptoms of PTSD, depression or fatigue persist after return from military deployment. Psychoneuroendocrinology. 2015;51:513–24.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR47">
+                    <journal_title>Neurobiol Dis</journal_title>
+                    <author>LA Papale</author>
+                    <volume>96</volume>
+                    <first_page>54</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.nbd.2016.08.014</doi>
+                    <unstructured_citation>Papale LA, Li S, Madrid A, Zhang Q, Chen L, Chopra P, et al. Sex-specific hippocampal 5-hydroxymethylcytosine is disrupted in response to acute stress. Neurobiol Dis. 2016;96:54–66.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR48">
+                    <journal_title>Neurobiol Dis</journal_title>
+                    <author>S Li</author>
+                    <volume>86</volume>
+                    <first_page>99</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.nbd.2015.11.010</doi>
+                    <unstructured_citation>Li S, Papale LA, Zhang Q, Madrid A, Chen L, Chopra P, et al. Genome-wide alterations in hippocampal 5-hydroxymethylcytosine links plasticity genes to acute stress. Neurobiol Dis. 2016;86:99–108.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR49">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>E Dong</author>
+                    <volume>2</volume>
+                    <first_page>e159</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1038/tp.2012.86</doi>
+                    <unstructured_citation>Dong E, Gavin DP, Chen Y, Davis J. Upregulation of TET1 and downregulation of APOBEC3A and APOBEC3C in the parietal cortex of psychotic patients. Transl Psychiatry. 2012;2:e159.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR50">
+                    <journal_title>Neuropsychiatr. Dis. Treat.</journal_title>
+                    <author>PT Tseng</author>
+                    <volume>10</volume>
+                    <first_page>2105</first_page>
+                    <cYear>2014</cYear>
+                    <unstructured_citation>Tseng PT, Lin PY, Lee Y, Hung CF, Lung FW, Chen CS, et al. Age-associated decrease in global DNA methylation in patients with major depression. Neuropsychiatr Dis Treat. 2014;10:2105–14.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR51">
+                    <journal_title>Chonnam Med J</journal_title>
+                    <author>HJ Kang</author>
+                    <volume>51</volume>
+                    <issue>1</issue>
+                    <first_page>8</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.4068/cmj.2015.51.1.8</doi>
+                    <unstructured_citation>Kang HJ, Kim SY, Bae KY, Kim SW, Shin IS, Yoon JS, et al. Comorbidity of depression with physical disorders: research and clinical implications. Chonnam Med J. 2015;51(1):8–18.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR52">
+                    <journal_title>Nervenarzt</journal_title>
+                    <author>HP Kapfhammer</author>
+                    <volume>86</volume>
+                    <issue>3</issue>
+                    <first_page>291–292, 294–29</first_page>
+                    <cYear>2015</cYear>
+                    <unstructured_citation>Kapfhammer HP. Comorbid depressive and anxiety disorders in patients with cancer. Nervenarzt. 2015;86(3):291–292, 294–298, 300–291.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR53">
+                    <journal_title>Nucleic Acids Res</journal_title>
+                    <author>R Edgar</author>
+                    <volume>30</volume>
+                    <issue>1</issue>
+                    <first_page>207</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1093/nar/30.1.207</doi>
+                    <unstructured_citation>Edgar R, Domrachev M, Lash AE. Gene Expression Omnibus: NCBI gene expression and hybridization array data repository. Nucleic Acids Res. 2002;30(1):207–10.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR54">
+                    <journal_title>Gen Hosp Psychiatry</journal_title>
+                    <author>CF Gillespie</author>
+                    <volume>31</volume>
+                    <issue>6</issue>
+                    <first_page>505</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.genhosppsych.2009.05.003</doi>
+                    <unstructured_citation>Gillespie CF, Bradley B, Mercer K, Smith AK, Conneely K, Gapen M, et al. Trauma exposure and stress-related disorders in inner city primary care patients. Gen Hosp Psychiatry. 2009;31(6):505–14.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR55">
+                    <journal_title>Nature</journal_title>
+                    <author>KJ Ressler</author>
+                    <volume>470</volume>
+                    <issue>7335</issue>
+                    <first_page>492</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1038/nature09856</doi>
+                    <unstructured_citation>Ressler KJ, Mercer KB, Bradley B, Jovanovic T, Mahan A, Kerley K, et al. Post-traumatic stress disorder is associated with PACAP and the PAC1 receptor. Nature. 2011;470(7335):492–7.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR56">
+                    <journal_title>JAMA</journal_title>
+                    <author>EB Binder</author>
+                    <volume>299</volume>
+                    <issue>11</issue>
+                    <first_page>1291</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1001/jama.299.11.1291</doi>
+                    <unstructured_citation>Binder EB, Bradley RG, Liu W, Epstein MP, Deveau TC, Mercer KB, et al. Association of FKBP5 polymorphisms and childhood abuse with risk of posttraumatic stress disorder symptoms in adults. JAMA. 2008;299(11):1291–305.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR57">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>J Guintivano</author>
+                    <volume>19</volume>
+                    <first_page>560</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1038/mp.2013.62</doi>
+                    <unstructured_citation>Guintivano J, Arad M, Gould TD, Payne JL, Kaminsky ZA. Antenatal prediction of postpartum depression with blood DNA methylation biomarkers. Mol Psychiatry. 2014;19:560–7.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR58">
+                    <journal_title>Bioinformatics</journal_title>
+                    <author>MJ Aryee</author>
+                    <volume>30</volume>
+                    <issue>10</issue>
+                    <first_page>1363</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1093/bioinformatics/btu049</doi>
+                    <unstructured_citation>Aryee MJ, Jaffe AE, Corrada-Bravo H, Ladd-Acosta C, Feinberg AP, Hansen KD, et al. Minfi: a flexible and comprehensive Bioconductor package for the analysis of Infinium DNA methylation microarrays. Bioinformatics. 2014;30(10):1363–9.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR59">
+                    <journal_title>BMC Genomics.</journal_title>
+                    <author>R Pidsley</author>
+                    <volume>14</volume>
+                    <first_page>293</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1186/1471-2164-14-293</doi>
+                    <unstructured_citation>Pidsley R, Wong CCY, Volta M, Lunnon K, Mill J, Schalkwyk LC. A data-driven approach to preprocessing Illumina 450K methylation array data. BMC Genomics. 2013;14:293.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR60">
+                    <journal_title>Chest</journal_title>
+                    <author>CA Dinarello</author>
+                    <volume>118</volume>
+                    <issue>2</issue>
+                    <first_page>503</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1378/chest.118.2.503</doi>
+                    <unstructured_citation>Dinarello CA. Proinflammatory cytokines. Chest. 2000;118(2):503–8.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR61">
+                    <journal_title>Epigenetics</journal_title>
+                    <author>C Y-a</author>
+                    <volume>8</volume>
+                    <issue>2</issue>
+                    <first_page>203</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.4161/epi.23470</doi>
+                    <unstructured_citation>Y-a C, Lemire M, Choufani S, Butcher DT, Grafodatskaya D, Zanke BW, et al. Discovery of cross-reactive probes and polymorphic CpGs in the Illumina Infinium HumanMethylation450 microarray. Epigenetics. 2013;8(2):203–9.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR62">
+                    <author>J Gross</author>
+                    <cYear>2015</cYear>
+                    <volume_title>nortest: tests for normality. R package version 1.0-4 edn</volume_title>
+                    <unstructured_citation>Gross J, Ligges U. nortest: tests for normality. R package version 1.0-4 edn. 2015.</unstructured_citation>
+                  </citation>
+                  <citation key="279_CR63">
+                    <journal_title>BMC Bioinformatics</journal_title>
+                    <author>EA Houseman</author>
+                    <volume>13</volume>
+                    <issue>1</issue>
+                    <first_page>86</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1186/1471-2105-13-86</doi>
+                    <unstructured_citation>Houseman EA, Accomando WP, Koestler DC, Christensen BC, Marsit CJ, Nelson HH, et al. DNA methylation arrays as surrogate measures of cell mixture distribution. BMC Bioinformatics. 2012;13(1):86.</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

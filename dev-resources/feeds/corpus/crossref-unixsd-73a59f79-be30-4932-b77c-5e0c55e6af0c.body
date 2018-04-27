@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.neuron.2016.09.039</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">85598399</crm-item>
+        <crm-item name="journal-id" type="number">2419</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171028163114000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-10-28T20:46:11Z</crm-item>
+        <crm-item name="created" type="date">2016-10-05T17:06:26Z</crm-item>
+        <crm-item name="citedby-count" type="number">39</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Neuron</full_title>
+                <abbrev_title>Neuron</abbrev_title>
+                <issn media_type="print">08966273</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>10</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>92</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Context Processing and the Neurobiology of Post-Traumatic Stress Disorder</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Israel</given_name>
+                    <surname>Liberzon</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>James L.</given_name>
+                    <surname>Abelson</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>10</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>14</first_page>
+                  <last_page>30</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0896627316306407</item_number>
+                  <identifier id_type="pii">S0896627316306407</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>cell.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion label="This article is maintained by " name="publisher">Elsevier</assertion>
+                    <assertion label="Article Title" name="articletitle">Context Processing and the Neurobiology of Post-Traumatic Stress Disorder</assertion>
+                    <assertion label="Journal Title" name="journaltitle">Neuron</assertion>
+                    <assertion label="CrossRef DOI link to publisher maintained version" name="articlelink">http://dx.doi.org/10.1016/j.neuron.2016.09.039</assertion>
+                    <assertion label="Content Type" name="content_type">article</assertion>
+                    <assertion label="Copyright" name="copyright">Published by Elsevier Inc.</assertion>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000005</fr:assertion>
+                          Department of Defense
+                        </fr:assertion>
+                        <fr:assertion name="award_number">W81XWH-13-1-0377</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000025</fr:assertion>
+                          National Institute of Mental Health
+                        </fr:assertion>
+                        <fr:assertion name="award_number">R24 MH075999</fr:assertion>
+                        <fr:assertion name="award_number">RO1 MH093486</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                      <ai:license_ref applies_to="vor" start_date="2017-10-05">http://www.elsevier.com/open-access/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.neuron.2016.09.039</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0896627316306407</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0896627316306407?httpAccept=text/xml</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0896627316306407?httpAccept=text/plain</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

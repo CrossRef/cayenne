@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1097/JCN.0000000000000382</doi>
+        <crm-item name="publisher-name" type="string">Ovid Technologies (Wolters Kluwer Health)</crm-item>
+        <crm-item name="prefix-name" type="string">Ovid Technologies (Wolters Kluwer)  - Lippincott Williams &amp; Wilkins</crm-item>
+        <crm-item name="member-id" type="number">276</crm-item>
+        <crm-item name="citation-id" type="number">86438807</crm-item>
+        <crm-item name="journal-id" type="number">220686</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017100815445400000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1097</crm-item>
+        <crm-item name="last-update" type="date">2017-10-08T22:51:45Z</crm-item>
+        <crm-item name="created" type="date">2016-11-18T22:03:22Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>The Journal of Cardiovascular Nursing</full_title>
+                <abbrev_title>The Journal of Cardiovascular Nursing</abbrev_title>
+                <issn media_type="print">0889-4655</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>32</volume>
+                </journal_volume>
+                <issue>6</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text" language="en">
+                <titles>
+                  <title>Influence of Baseline Psychological Health on Muscle Pain During Atorvastatin Treatment</title>
+                  <subtitle />
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Amanda L.</given_name>
+                    <surname>Zaleski</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Beth A.</given_name>
+                    <surname>Taylor</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Linda S.</given_name>
+                    <surname>Pescatello</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Ellen A.</given_name>
+                    <surname>Dornelas</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Charles Michael</given_name>
+                    <surname>White</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Paul D.</given_name>
+                    <surname>Thompson</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>544</first_page>
+                  <last_page>550</last_page>
+                </pages>
+                <doi_data>
+                  <doi>10.1097/JCN.0000000000000382</doi>
+                  <resource>http://Insights.ovid.com/crossref?an=00005082-201711000-00007</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://Insights.ovid.com/crossref?an=00005082-201711000-00007</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

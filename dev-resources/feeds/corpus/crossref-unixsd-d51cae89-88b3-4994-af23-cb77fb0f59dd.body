@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1089/vio.2016.29006.lit</doi>
+        <crm-item name="publisher-name" type="string">Mary Ann Liebert Inc</crm-item>
+        <crm-item name="prefix-name" type="string">Mary Ann Liebert</crm-item>
+        <crm-item name="member-id" type="number">278</crm-item>
+        <crm-item name="citation-id" type="number">85982231</crm-item>
+        <crm-item name="journal-id" type="number">297432</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016120912171700567</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1089</crm-item>
+        <crm-item name="last-update" type="date">2016-12-09T20:19:06Z</crm-item>
+        <crm-item name="created" type="date">2016-10-25T15:50:46Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Violence and Gender</full_title>
+                <abbrev_title>Violence and Gender</abbrev_title>
+                <issn media_type="print">2326-7836</issn>
+                <issn media_type="electronic">2326-7852</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>3</volume>
+                </journal_volume>
+                <issue>4</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Selected Literature Watch</title>
+                </titles>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>216</first_page>
+                  <last_page>216</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="doi">10.1089/vio.2016.29006.lit</identifier>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.1089/vio.2016.29006.lit</doi>
+                  <resource>http://online.liebertpub.com/doi/10.1089/vio.2016.29006.lit</resource>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

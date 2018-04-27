@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1038/tp.2016.222</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer Nature</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86353640</crm-item>
+        <crm-item name="journal-id" type="number">127945</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171230005451326</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1038</crm-item>
+        <crm-item name="last-update" type="date">2017-12-29T23:55:24Z</crm-item>
+        <crm-item name="created" type="date">2016-11-15T13:45:35Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Translational Psychiatry</full_title>
+                <abbrev_title>Transl Psychiatry</abbrev_title>
+                <issn media_type="electronic">2158-3188</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>6</volume>
+                </journal_volume>
+                <issue>11</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Serum metabolite profile associates with the development of metabolic co-morbidities in first-episode psychosis</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>T</given_name>
+                    <surname>Suvitaival</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>O</given_name>
+                    <surname>Mantere</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>T</given_name>
+                    <surname>Kieseppä</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>I</given_name>
+                    <surname>Mattila</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>P</given_name>
+                    <surname>Pöhö</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>T</given_name>
+                    <surname>Hyötyläinen</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>J</given_name>
+                    <surname>Suvisaari</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>M</given_name>
+                    <surname>Orešič</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>15</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>11</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>e951</first_page>
+                  <last_page>e951</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">BFtp2016222</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1038/tp.2016.222</doi>
+                  <timestamp>20171230005451326</timestamp>
+                  <resource>http://www.nature.com/articles/tp2016222</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/tp2016222.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/tp2016222.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://www.nature.com/articles/tp2016222</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="tp2016222-bib1">
+                    <doi>10.1001/archgenpsychiatry.2011.2</doi>
+                  </citation>
+                  <citation key="tp2016222-bib2">
+                    <doi>10.1016/S2215-0366(15)00115-7</doi>
+                  </citation>
+                  <citation key="tp2016222-bib3">
+                    <doi>10.1093/schbul/sbq058</doi>
+                  </citation>
+                  <citation key="tp2016222-bib4">
+                    <doi>10.1001/jamapsychiatry.2014.1314</doi>
+                  </citation>
+                  <citation key="tp2016222-bib5">
+                    <doi>10.1017/S1461145713001053</doi>
+                  </citation>
+                  <citation key="tp2016222-bib6">
+                    <doi>10.1016/S0140-6736(13)60733-3</doi>
+                  </citation>
+                  <citation key="tp2016222-bib7">
+                    <doi>10.1016/j.schres.2015.11.002</doi>
+                  </citation>
+                  <citation key="tp2016222-bib8">
+                    <doi>10.1371/journal.pone.0094112</doi>
+                  </citation>
+                  <citation key="tp2016222-bib9">
+                    <doi>10.1038/sj.mp.4002133</doi>
+                  </citation>
+                  <citation key="tp2016222-bib10">
+                    <doi>10.1007/s00213-011-2211-x</doi>
+                  </citation>
+                  <citation key="tp2016222-bib11">
+                    <doi>10.1038/tp.2013.26</doi>
+                  </citation>
+                  <citation key="tp2016222-bib12">
+                    <doi>10.1038/sj.mp.4002000</doi>
+                  </citation>
+                  <citation key="tp2016222-bib13">
+                    <doi>10.1186/gm233</doi>
+                  </citation>
+                  <citation key="tp2016222-bib14">
+                    <doi>10.1186/gm300</doi>
+                  </citation>
+                  <citation key="tp2016222-bib15">
+                    <doi>10.1038/tp.2012.76</doi>
+                  </citation>
+                  <citation key="tp2016222-bib16">
+                    <doi>10.1371/journal.pone.0068717</doi>
+                  </citation>
+                  <citation key="tp2016222-bib17">
+                    <doi>10.1017/S1461145714000157</doi>
+                  </citation>
+                  <citation key="tp2016222-bib18">
+                    <doi>10.1016/j.nbd.2009.02.019</doi>
+                  </citation>
+                  <citation key="tp2016222-bib19">
+                    <doi>10.1016/j.psyneuen.2016.04.017</doi>
+                  </citation>
+                  <citation key="tp2016222-bib20">
+                    <doi>10.1038/srep00667</doi>
+                  </citation>
+                  <citation key="tp2016222-bib21">
+                    <doi>10.1038/tp.2011.55</doi>
+                  </citation>
+                  <citation key="tp2016222-bib22">
+                    <doi>10.1371/journal.pone.0021643</doi>
+                  </citation>
+                  <citation key="tp2016222-bib23">
+                    <doi>10.1016/j.jalz.2010.06.001</doi>
+                  </citation>
+                  <citation key="tp2016222-bib24">
+                    <doi>10.1371/journal.pone.0063644</doi>
+                  </citation>
+                  <citation key="tp2016222-bib25">
+                    <doi>10.1186/1423-0127-16-63</doi>
+                  </citation>
+                  <citation key="tp2016222-bib26">
+                    <doi>10.1093/brain/awm304</doi>
+                  </citation>
+                  <citation key="tp2016222-bib27">
+                    <doi>10.1136/jnnp-2014-309676</doi>
+                  </citation>
+                  <citation key="tp2016222-bib28">
+                    <doi>10.1007/s00125-009-1282-2</doi>
+                  </citation>
+                  <citation key="tp2016222-bib29">
+                    <doi>10.1007/s00125-013-2981-2</doi>
+                  </citation>
+                  <citation key="tp2016222-bib30">
+                    <doi>10.1172/JCI44442</doi>
+                  </citation>
+                  <citation key="tp2016222-bib31">
+                    <doi>10.1038/nm.2307</doi>
+                  </citation>
+                  <citation key="tp2016222-bib32">
+                    <doi>10.1371/journal.pone.0125112</doi>
+                  </citation>
+                  <citation key="tp2016222-bib33">
+                    <journal_title>Int J Methods Psychiatr Res</journal_title>
+                    <author>Ventura J</author>
+                    <first_page>227</first_page>
+                    <volume>3</volume>
+                    <cYear>1993</cYear>
+                  </citation>
+                  <citation key="tp2016222-bib34">
+                    <doi>10.1021/ac103308x</doi>
+                  </citation>
+                  <citation key="tp2016222-bib35">
+                    <journal_title>Methods Mol Biol</journal_title>
+                    <author>Nygren H</author>
+                    <first_page>247</first_page>
+                    <volume>708</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1007/978-1-61737-985-7_15</doi>
+                  </citation>
+                  <citation key="tp2016222-bib36">
+                    <doi>10.1186/1471-2105-11-395</doi>
+                  </citation>
+                  <citation key="tp2016222-bib37">
+                    <journal_title>R: A Language and Environment for Statistical Computing</journal_title>
+                    <first_page>223</first_page>
+                    <volume>10</volume>
+                    <cYear>2015</cYear>
+                  </citation>
+                  <citation key="tp2016222-bib38">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="tp2016222-bib39">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="tp2016222-bib40">
+                    <doi>10.1093/bioinformatics/btq500</doi>
+                  </citation>
+                  <citation key="tp2016222-bib41">
+                    <journal_title>J Royal Stat Soc B</journal_title>
+                    <author>Benjamini Y</author>
+                    <first_page>289</first_page>
+                    <volume>57</volume>
+                    <cYear>1995</cYear>
+                  </citation>
+                  <citation key="tp2016222-bib42">
+                    <doi>10.1007/s00213-013-3193-7</doi>
+                  </citation>
+                  <citation key="tp2016222-bib43">
+                    <doi>10.1016/S0920-9964(01)00334-6</doi>
+                  </citation>
+                  <citation key="tp2016222-bib44">
+                    <doi>10.1002/jnr.21822</doi>
+                  </citation>
+                  <citation key="tp2016222-bib45">
+                    <doi>10.2741/3822</doi>
+                  </citation>
+                  <citation key="tp2016222-bib46">
+                    <doi>10.1007/s11481-015-9605-1</doi>
+                  </citation>
+                  <citation key="tp2016222-bib47">
+                    <journal_title>J Lipid Res</journal_title>
+                    <author>Svennerholm L</author>
+                    <first_page>145</first_page>
+                    <volume>5</volume>
+                    <cYear>1964</cYear>
+                  </citation>
+                  <citation key="tp2016222-bib48">
+                    <doi>10.1021/pr2006796</doi>
+                  </citation>
+                  <citation key="tp2016222-bib49">
+                    <doi>10.1016/S0026-0495(00)91455-0</doi>
+                  </citation>
+                  <citation key="tp2016222-bib50">
+                    <doi>10.1177/1932296814553622</doi>
+                  </citation>
+                  <citation key="tp2016222-bib51">
+                    <doi>10.2337/db08-1074</doi>
+                  </citation>
+                  <citation key="tp2016222-bib52">
+                    <doi>10.1093/schbul/sbu030</doi>
+                  </citation>
+                  <citation key="tp2016222-bib53">
+                    <doi>10.1038/msb.2011.57</doi>
+                  </citation>
+                  <citation key="tp2016222-bib54">
+                    <doi>10.1371/journal.pone.0021103</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

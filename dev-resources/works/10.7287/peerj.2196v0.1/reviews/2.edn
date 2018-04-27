@@ -1,54 +1,32 @@
-{:created
- {:date-parts [[2018 1 9]],
-  :date-time "2018-01-09T18:42:21Z",
-  :timestamp 1515523341000}
- :URL "http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2"
- :short-container-title [], ;; container is not applicable for peer review
- :container-title [], ;; container is not applicable for peer review
- :score 1.0 ;; check if score is applicable for peer review
- :institution
- {:name "Psychoceramics Institute",
-  :acronym ["PI"],
-  :place ["Pittsburg, Arizona"],
-  :department ["Soft furnishings"]},
- :publisher "Rockefeller University Press",
+{:reference-count 0,
+ :publisher "PeerJ",
  :content-domain {:domain []},
+ :short-container-title [],
+ :published-print {:date-parts [[2016 7 26]]},
  :DOI "10.7287/peerj.2196v0.1/reviews/2",
  :type "peer-review",
+ :created
+ {:date-parts [[2018 1 9]],
+  :date-time "2018-01-09T23:59:03Z",
+  :timestamp 1515542343000},
  :source "Crossref",
- :references-count 0,
- :reference-count 0,
  :is-referenced-by-count 0,
  :title
  ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\""],
- :subtitle ["The Subtitle"]
- :original-title ["Der Titel"]
- :short-title []
  :prefix "10.7287",
- :author
- [{:ORCID "http://orcid.org/0000-0002-3368-4133",
-   :authenticated-orcid false,
-   :given "Xiaoguang",
-   :family "Fang",
-   :sequence "first"
-   :affiliation []}],
- :member "291",
- :review
- {:running-number "RC1",
-  :revision-round "2",
-  :stage "pre-publication",
-  :recommendation "major-revision",
-  :type "referee-report",
-  :competing-interest-statement "There were no competing interests",
-  :language "en"},
+ :member "4443",
+ :container-title [],
+ :original-title [],
  :deposited
  {:date-parts [[2018 1 9]],
-  :date-time "2018-01-09T18:42:21Z",
-  :timestamp 1515523341000},
- :issued {:date-parts [[2017 4 19]]},
- :published-print {:date-parts [[2017 4 19]]},
+  :date-time "2018-01-09T23:59:03Z",
+  :timestamp 1515542343000},
+ :score 1.0,
+ :subtitle [],
+ :short-title [],
+ :issued {:date-parts [[2016 7 26]]},
+ :references-count 0,
+ :URL "http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2",
  :relation
  {:is-review-of
-  [{:id-type "doi",
-    :id "10.7717/peerj.2196",
-    :asserted-by "subject"}]}}
+  [{:id-type "doi", :id "10.7717/peerj.2196", :asserted-by "subject"}]}}

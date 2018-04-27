@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.psyneuen.2016.10.021</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">86279632</crm-item>
+        <crm-item name="journal-id" type="number">1841</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170216083203000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:19:26Z</crm-item>
+        <crm-item name="created" type="date">2016-11-10T18:31:09Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Psychoneuroendocrinology</full_title>
+                <abbrev_title>Psychoneuroendocrinology</abbrev_title>
+                <issn media_type="print">03064530</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>76</volume>
+                </journal_volume>
+                <special_numbering>C</special_numbering>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The role of oxytocin in modulating interpersonal space: A pharmacological fMRI study</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Daniela</given_name>
+                    <surname>Cohen</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Anat</given_name>
+                    <surname>Perry</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Gadi</given_name>
+                    <surname>Gilam</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Naama</given_name>
+                    <surname>Mayseless</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Tal</given_name>
+                    <surname>Gonen</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Talma</given_name>
+                    <surname>Hendler</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Simone G.</given_name>
+                    <surname>Shamay-Tsoory</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>77</first_page>
+                  <last_page>83</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0306453016304668</item_number>
+                  <identifier id_type="pii">S0306453016304668</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>psyneuen-journal.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.jp</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.es</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.com.au</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.fr</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion label="This article is maintained by " name="publisher">Elsevier</assertion>
+                    <assertion label="Article Title" name="articletitle">The role of oxytocin in modulating interpersonal space: A pharmacological fMRI study</assertion>
+                    <assertion label="Journal Title" name="journaltitle">Psychoneuroendocrinology</assertion>
+                    <assertion label="CrossRef DOI link to publisher maintained version" name="articlelink">http://dx.doi.org/10.1016/j.psyneuen.2016.10.021</assertion>
+                    <assertion label="Content Type" name="content_type">article</assertion>
+                    <assertion label="Copyright" name="copyright">© 2016 Elsevier Ltd. All rights reserved.</assertion>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.psyneuen.2016.10.021</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0306453016304668</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0306453016304668?httpAccept=text/plain</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0306453016304668?httpAccept=text/xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

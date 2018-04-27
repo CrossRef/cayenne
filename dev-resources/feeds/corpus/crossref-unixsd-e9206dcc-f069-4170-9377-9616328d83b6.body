@@ -1,0 +1,1527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="book_content">10.1002/cphy.c160005</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (John Wiley &amp; Sons)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86852361</crm-item>
+        <crm-item name="book-id" type="number">614144</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170718044004821</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1002</crm-item>
+        <crm-item name="last-update" type="date">2017-07-18T08:53:37Z</crm-item>
+        <crm-item name="created" type="date">2016-12-15T00:12:27Z</crm-item>
+        <crm-item name="citedby-count" type="number">1</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <book book_type="reference">
+              <book_metadata language="en">
+                <contributors>
+                  <person_name contributor_role="editor" sequence="first">
+                    <given_name>Ronald</given_name>
+                    <surname>Terjung</surname>
+                  </person_name>
+                </contributors>
+                <titles>
+                  <title>Comprehensive Physiology</title>
+                </titles>
+                <publication_date media_type="online">
+                  <month>01</month>
+                  <day>17</day>
+                  <year>2011</year>
+                </publication_date>
+                <isbn media_type="electronic">9780470650714</isbn>
+                <publisher>
+                  <publisher_name>John Wiley &amp; Sons, Inc.</publisher_name>
+                  <publisher_place>Hoboken, NJ, USA</publisher_place>
+                </publisher>
+              </book_metadata>
+              <content_item component_type="reference_entry">
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Cecilia J.</given_name>
+                    <surname>Hillard</surname>
+                    <affiliation>Department of Pharmacology and Toxicology, and Neuroscience Research Center, Medical College of Wisconsin; Milwaukee Wisconsin USA</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Margaret</given_name>
+                    <surname>Beatka</surname>
+                    <affiliation>Department of Pharmacology and Toxicology, and Neuroscience Research Center, Medical College of Wisconsin; Milwaukee Wisconsin USA</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jenna</given_name>
+                    <surname>Sarvaideo</surname>
+                    <affiliation>Department of Medicine, and Neuroscience Research Center, Medical College of Wisconsin; Milwaukee Wisconsin USA</affiliation>
+                  </person_name>
+                </contributors>
+                <titles>
+                  <title>Endocannabinoid Signaling and the Hypothalamic-Pituitary-Adrenal Axis</title>
+                </titles>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>06</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1</first_page>
+                  <last_page>15</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number>c160005</item_number>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.1002/cphy.c160005</doi>
+                  <resource>http://doi.wiley.com/10.1002/cphy.c160005</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1002/cphy.c160005/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fcphy.c160005</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1002/cphy.c160005-BIB0001|c160005-cit-0001">
+                    <author>Achterberg</author>
+                    <article_title>Glucocorticoid receptor antagonism disrupts the reconsolidation of social reward-related memories in rats</article_title>
+                    <journal_title>Behav Pharmacol</journal_title>
+                    <volume>25</volume>
+                    <first_page>216</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1097/FBP.0000000000000039</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0002|c160005-cit-0002">
+                    <author>Azad</author>
+                    <article_title>Circuitry for associative plasticity in the amygdala involves endocannabinoid signaling</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>24</volume>
+                    <first_page>9953</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2134-04.2004</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0003|c160005-cit-0003">
+                    <author>Bitencourt</author>
+                    <article_title>Lack of presynaptic interaction between glucocorticoid and CB1 cannabinoid receptors in GABA- and glutamatergic terminals in the frontal cortex of laboratory rodents</article_title>
+                    <journal_title>Neurochem Int</journal_title>
+                    <volume>90</volume>
+                    <first_page>72</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.neuint.2015.07.014</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0004|c160005-cit-0004">
+                    <author>Block</author>
+                    <article_title>Effects of chronic marijuana use on testosterone, luteinizing hormone, follicle stimulating hormone, prolactin and cortisol in men and women</article_title>
+                    <journal_title>Drug Alcohol Depend</journal_title>
+                    <volume>28</volume>
+                    <first_page>121</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1016/0376-8716(91)90068-A</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0005|c160005-cit-0005">
+                    <author>Bloom</author>
+                    <article_title>Interaction of ambient temperature with the effects of delta 9-tetrahydrocannabinol on brain catecholamine synthesis and plasma corticosterone levels</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>67</volume>
+                    <first_page>215</first_page>
+                    <cYear>1980</cYear>
+                    <doi provider="crossref">10.1007/BF00431259</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0006|c160005-cit-0006">
+                    <author>Bortolato</author>
+                    <article_title>Antidepressant-like activity of the fatty acid amide hydrolase inhibitor URB597 in a rat model of chronic mild stress</article_title>
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <volume>62</volume>
+                    <first_page>1103</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2006.12.001</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0007|c160005-cit-0007">
+                    <author>Bouaboula</author>
+                    <article_title>Cannabinoid-receptor expression in human leukocytes</article_title>
+                    <journal_title>Eur J Biochem</journal_title>
+                    <volume>214</volume>
+                    <first_page>173</first_page>
+                    <cYear>1993</cYear>
+                    <doi provider="crossref">10.1111/j.1432-1033.1993.tb17910.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0008|c160005-cit-0008">
+                    <author>Boulware</author>
+                    <article_title>Caveolin proteins are essential for distinct effects of membrane estrogen receptors in neurons</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>27</volume>
+                    <first_page>9941</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1647-07.2007</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0009|c160005-cit-0009">
+                    <author>Bowles</author>
+                    <article_title>Chronic, noninvasive glucocorticoid administration suppresses limbic endocannabinoid signaling in mice</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>204</volume>
+                    <first_page>83</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.08.048</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0010|c160005-cit-0010">
+                    <author>Bowles</author>
+                    <article_title>A peripheral endocannabinoid mechanism contributes to glucocorticoid-mediated metabolic syndrome</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>112</volume>
+                    <first_page>285</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1073/pnas.1421420112</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0011|c160005-cit-0011">
+                    <author>Buckley</author>
+                    <article_title>Expression of the CB1 and CB2 receptor messenger RNAs during embryonic development in the rat</article_title>
+                    <journal_title>Neurosci</journal_title>
+                    <volume>82</volume>
+                    <first_page>1131</first_page>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S0306-4522(97)00348-5</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0012|c160005-cit-0012">
+                    <author>Buckner</author>
+                    <article_title>Cannabis craving in response to laboratory-induced social stress among racially diverse cannabis users: The impact of social anxiety disorder</article_title>
+                    <journal_title>J Psychopharmacol</journal_title>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1177/0269881116629115</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0013|c160005-cit-0013">
+                    <author>Bujarski</author>
+                    <article_title>Marijuana use among traumatic event-exposed adolescents: Posttraumatic stress symptom frequency predicts coping motivations for use</article_title>
+                    <journal_title>Addict Behav</journal_title>
+                    <volume>37</volume>
+                    <first_page>53</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.addbeh.2011.08.009</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0014|c160005-cit-0014">
+                    <author>Campolongo</author>
+                    <article_title>Endocannabinoids in the rat basolateral amygdala enhance memory consolidation and enable glucocorticoid modulation of memory</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>106</volume>
+                    <first_page>4888</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1073/pnas.0900835106</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0015|c160005-cit-0015">
+                    <author>Campos</author>
+                    <article_title>Predator threat stress promotes long lasting anxiety-like behaviors and modulates synaptophysin and CB1 receptors expression in brain areas associated with PTSD symptoms</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>533</volume>
+                    <first_page>34</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2012.11.016</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0016|c160005-cit-0016">
+                    <author>Caulfield</author>
+                    <article_title>Cannabinoid receptor agonists inhibit Ca current in NG108-15 neuroblastoma cells via a pertussis toxin-sensitive mechanism</article_title>
+                    <journal_title>Br J Pharmacol</journal_title>
+                    <volume>106</volume>
+                    <first_page>231</first_page>
+                    <cYear>1992</cYear>
+                    <doi provider="crossref">10.1111/j.1476-5381.1992.tb14321.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0017|c160005-cit-0017">
+                    <author>Christensen</author>
+                    <article_title>Efficacy and safety of the weight-loss drug rimonabant: A meta-analysis of randomised trials</article_title>
+                    <journal_title>Lancet</journal_title>
+                    <volume>370</volume>
+                    <first_page>1706</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/S0140-6736(07)61721-8</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0018|c160005-cit-0018">
+                    <author>Cone</author>
+                    <article_title>Acute effects of smoking marijuana on hormones, subjective effects and performance in male human subjects</article_title>
+                    <journal_title>Pharmacol Biochem Behav</journal_title>
+                    <volume>24</volume>
+                    <first_page>1749</first_page>
+                    <cYear>1986</cYear>
+                    <doi provider="crossref">10.1016/0091-3057(86)90515-0</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0019|c160005-cit-0019">
+                    <author>Cota</author>
+                    <article_title>Requirement of cannabinoid receptor type 1 for the basal modulation of hypothalamic-pituitary-adrenal axis function</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>148</volume>
+                    <first_page>1574</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1210/en.2005-1649</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0020|c160005-cit-0020">
+                    <author>Coutts</author>
+                    <article_title>Localisation of cannabinoid CB(1) receptor immunoreactivity in the guinea pig and rat myenteric plexus</article_title>
+                    <journal_title>J Comp Neurol</journal_title>
+                    <volume>448</volume>
+                    <first_page>410</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1002/cne.10270</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0021|c160005-cit-0021">
+                    <author>Craft</author>
+                    <article_title>Sex differences in cannabinoid pharmacology: A reflection of differences in the endocannabinoid system</article_title>
+                    <journal_title>Life Sci</journal_title>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0022|c160005-cit-0022">
+                    <author>Cravatt</author>
+                    <article_title>Supersensitivity to anandamide and enhanced endogenous cannabinoid signaling in mice lacking fatty acid amide hydrolase</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>98</volume>
+                    <first_page>9371</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1073/pnas.161191698</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0023|c160005-cit-0023">
+                    <author>Cravatt</author>
+                    <article_title>Molecular characterization of an enzyme that degrades neuromodulatory fatty-acid amides</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>384</volume>
+                    <first_page>83</first_page>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1038/384083a0</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0024|c160005-cit-0024">
+                    <author>D'Souza</author>
+                    <article_title>The psychotomimetic effects of intravenous delta-9-tetrahydrocannabinol in healthy individuals: Implications for psychosis</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>29</volume>
+                    <first_page>1558</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1038/sj.npp.1300496</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0025|c160005-cit-0025">
+                    <author>D'Souza</author>
+                    <article_title>Blunted psychotomimetic and amnestic effects of delta-9-tetrahydrocannabinol in frequent users of cannabis</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>33</volume>
+                    <first_page>2505</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1038/sj.npp.1301643</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0026|c160005-cit-0026">
+                    <author>de Kloet</author>
+                    <article_title>Stress, genes and the mechanism of programming the brain for later life</article_title>
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <volume>29</volume>
+                    <first_page>271</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2004.10.008</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0027|c160005-cit-0027">
+                    <author>de Quervain</author>
+                    <article_title>Glucocorticoids and the regulation of memory in health and disease</article_title>
+                    <journal_title>Front Neuroendocrinol</journal_title>
+                    <volume>30</volume>
+                    <first_page>358</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2009.03.002</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0028|c160005-cit-0028">
+                    <author>Di</author>
+                    <article_title>Nongenomic glucocorticoid inhibition via endocannabinoid release in the hypothalamus: A fast feedback mechanism</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>23</volume>
+                    <first_page>4850</first_page>
+                    <cYear>2003</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0029|c160005-cit-0029">
+                    <author>Di</author>
+                    <article_title>Rapid glucocorticoid-mediated endocannabinoid release and opposing regulation of glutamate and GABA inputs to hypothalamic magnocellular neurons</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>146</volume>
+                    <first_page>4292</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1210/en.2005-0610</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0030|c160005-cit-0030">
+                    <author>Dinh</author>
+                    <article_title>Brain monoglyceride lipase participating in endocannabinoid inactivation</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>99</volume>
+                    <first_page>10819</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1073/pnas.152334899</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0031|c160005-cit-0031">
+                    <author>Diorio</author>
+                    <article_title>The role of the medial prefrontal cortex (cingulate gyrus) in the regulation of hypothalamic-pituitary-adrenal responses to stress</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>13</volume>
+                    <first_page>3839</first_page>
+                    <cYear>1993</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0032|c160005-cit-0032">
+                    <author>Evanson</author>
+                    <article_title>Metabotropic glutamate receptor-mediated signaling dampens the HPA axis response to restraint stress</article_title>
+                    <journal_title>Physiol Behav</journal_title>
+                    <volume>150</volume>
+                    <first_page>2</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2015.02.027</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0033|c160005-cit-0033">
+                    <author>Evanson</author>
+                    <article_title>Fast feedback inhibition of the HPA axis by glucocorticoids is mediated by endocannabinoid signaling</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>151</volume>
+                    <first_page>4811</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1210/en.2010-0285</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0034|c160005-cit-0034">
+                    <author>Fernandez-Ruiz</author>
+                    <article_title>Time course of the effects of different cannabimimetics on prolactin and gonadotrophin secretion: Evidence for the presence of CB1 receptors in hypothalamic structures and their involvement in the effects of cannabimimetics</article_title>
+                    <journal_title>Biochem Pharmacol</journal_title>
+                    <volume>53</volume>
+                    <first_page>1919</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1016/S0006-2952(97)00168-8</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0035|c160005-cit-0035">
+                    <author>Forray</author>
+                    <article_title>Role of noradrenergic projections to the bed nucleus of the stria terminalis in the regulation of the hypothalamic-pituitary-adrenal axis</article_title>
+                    <journal_title>Brain Res Brain Res Rev</journal_title>
+                    <volume>47</volume>
+                    <first_page>145</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.brainresrev.2004.07.011</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0036|c160005-cit-0036">
+                    <author>Fox</author>
+                    <article_title>Motives for cannabis use in high-risk adolescent users</article_title>
+                    <journal_title>Psychol Addict Behav</journal_title>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1037/a0024331</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0037|c160005-cit-0037">
+                    <author>Freund</author>
+                    <article_title>Role of endogenous cannabinoids in synaptic signaling</article_title>
+                    <journal_title>Physiol Rev</journal_title>
+                    <volume>83</volume>
+                    <first_page>1017</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1152/physrev.00004.2003</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0038|c160005-cit-0038">
+                    <author>Frick</author>
+                    <article_title>Molecular mechanisms underlying the memory-enhancing effects of estradiol</article_title>
+                    <journal_title>Horm Behav</journal_title>
+                    <volume>74</volume>
+                    <first_page>4</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.yhbeh.2015.05.001</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0039|c160005-cit-0039">
+                    <author>Ganon-Elazar</author>
+                    <article_title>Cannabinoid receptor activation in the basolateral amygdala blocks the effects of stress on the conditioning and extinction of inhibitory avoidance</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>29</volume>
+                    <first_page>11078</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1223-09.2009</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0040|c160005-cit-0040">
+                    <author>Gobbi</author>
+                    <article_title>Antidepressant-like activity and modulation of brain monoaminergic transmission by blockade of anandamide hydrolysis</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>102</volume>
+                    <first_page>18620</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1073/pnas.0509591102</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0041|c160005-cit-0041">
+                    <author>Gray</author>
+                    <article_title>Corticotropin-releasing hormone drives anandamide hydrolysis in the amygdala to promote anxiety</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>35</volume>
+                    <first_page>3879</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2737-14.2015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0042|c160005-cit-0042">
+                    <author>Gray</author>
+                    <article_title>Sustained glucocorticoid exposure recruits cortico-limbic CRH signaling to modulate endocannabinoid function</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>66</volume>
+                    <first_page>151</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.01.004</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0043|c160005-cit-0043">
+                    <author>Gulyas</author>
+                    <article_title>Segregation of two endocannabinoid-hydrolyzing enzymes into pre- and postsynaptic compartments in the rat hippocampus, cerebellum and amygdala</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>20</volume>
+                    <first_page>441</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2004.03428.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0044|c160005-cit-0044">
+                    <author>Hartmann</author>
+                    <article_title>Molecular actions of glucocorticoids in cartilage and bone during health, disease, and steroid therapy</article_title>
+                    <journal_title>Physiol Rev</journal_title>
+                    <volume>96</volume>
+                    <first_page>409</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1152/physrev.00011.2015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0045|c160005-cit-0045">
+                    <author>Herkenham</author>
+                    <article_title>Neuronal localization of cannabinoid receptors and second messengers in mutant mouse cerebellum</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>552</volume>
+                    <first_page>301</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1016/0006-8993(91)90096-E</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0046|c160005-cit-0046">
+                    <author>Herkenham</author>
+                    <article_title>Characterization and localization of cannabinoid receptors in rat brain: A quantitative in vitro autoradiographic study</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>11</volume>
+                    <first_page>563</first_page>
+                    <cYear>1991</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0047|c160005-cit-0047">
+                    <author>Herman</author>
+                    <article_title>Central mechanisms of stress integration: Hierarchical circuitry controlling hypothalamo-pituitary-adrenocortical responsiveness</article_title>
+                    <journal_title>Front Neuroendocrinol</journal_title>
+                    <volume>24</volume>
+                    <first_page>151</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2003.07.001</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0048|c160005-cit-0048">
+                    <author>Herman</author>
+                    <article_title>Regulation of the hypothalamic-pituitary-adrenocortical stress response</article_title>
+                    <journal_title>Compr Physiol</journal_title>
+                    <volume>6</volume>
+                    <first_page>603</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1002/cphy.c150015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0049|c160005-cit-0049">
+                    <author>Herman</author>
+                    <article_title>Limbic system mechanisms of stress regulation: Hypothalamo-pituitary-adrenocortical axis</article_title>
+                    <journal_title>Prog Neuropsychopharmacol Biol Psychiatry</journal_title>
+                    <volume>29</volume>
+                    <first_page>1201</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.pnpbp.2005.08.006</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0050|c160005-cit-0050">
+                    <author>Hermann</author>
+                    <article_title>Coexpression of the cannabinoid receptor type 1 with dopamine and serotonin receptors in distinct neuronal subpopulations of the adult mouse forebrain</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>109</volume>
+                    <first_page>451</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0306-4522(01)00509-7</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0051|c160005-cit-0051">
+                    <author>Hermanson</author>
+                    <article_title>Substrate-selective COX-2 inhibition as a novel strategy for therapeutic endocannabinoid augmentation</article_title>
+                    <journal_title>Trends Pharmacol Sci</journal_title>
+                    <volume>35</volume>
+                    <first_page>358</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.tips.2014.04.006</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0052|c160005-cit-0052">
+                    <author>Hill</author>
+                    <article_title>Prolonged glucocorticoid treatment decreases cannabinoid CB1 receptor density in the hippocampus</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>18</volume>
+                    <first_page>221</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1002/hipo.20386</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0053|c160005-cit-0053">
+                    <author>Hill</author>
+                    <article_title>Rapid elevations in limbic endocannabinoid content by glucocorticoid hormones in vivo</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>35</volume>
+                    <first_page>1333</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2010.03.005</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0054|c160005-cit-0054">
+                    <author>Hill</author>
+                    <article_title>Endocannabinoids: The silent partner of glucocorticoids in the synapse</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>106</volume>
+                    <first_page>4579</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1073/pnas.0901519106</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0055|c160005-cit-0055">
+                    <author>Hill</author>
+                    <article_title>Endogenous cannabinoid signaling is essential for stress adaptation</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>107</volume>
+                    <first_page>9406</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1073/pnas.0914661107</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0056|c160005-cit-0056">
+                    <author>Hill</author>
+                    <article_title>Suppression of amygdalar endocannabinoid signaling by stress contributes to activation of the hypothalamic-pituitary-adrenal axis</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>34</volume>
+                    <first_page>2733</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/npp.2009.114</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0057|c160005-cit-0057">
+                    <author>Hill</author>
+                    <article_title>Recruitment of prefrontal cortical endocannabinoid signaling by glucocorticoids contributes to termination of the stress response</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>31</volume>
+                    <first_page>10506</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0496-11.2011</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0058|c160005-cit-0058">
+                    <author>Hillard</author>
+                    <volume_title>Cannabinoids</volume_title>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0059|c160005-cit-0059">
+                    <author>Hillard</author>
+                    <article_title>Biochemistry and pharmacology of the endocannabinoids arachidonylethanolamide and 2-arachidonylglycerol</article_title>
+                    <journal_title>Prostaglandins Other Lipid Mediat</journal_title>
+                    <volume>61</volume>
+                    <first_page>3</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0090-6980(00)00051-4</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0060|c160005-cit-0060">
+                    <author>Hillard</author>
+                    <article_title>The endocannabinoid signaling system in the CNS: A primer</article_title>
+                    <journal_title>Int Rev Neurobiol</journal_title>
+                    <volume>125</volume>
+                    <first_page>1</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/bs.irn.2015.10.001</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0061|c160005-cit-0061">
+                    <author>Hillard</author>
+                    <article_title>Synthesis and characterization of potent and selective agonists of the neuronal cannabinoid receptor (CB1)</article_title>
+                    <journal_title>J Pharmacol Exp Ther</journal_title>
+                    <volume>289</volume>
+                    <first_page>1427</first_page>
+                    <cYear>1999</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0062|c160005-cit-0062">
+                    <author>Hong</author>
+                    <article_title>Epigenetic regulation of genes that modulate chronic stress-induced visceral pain in the peripheral nervous system</article_title>
+                    <journal_title>Gastroenterology</journal_title>
+                    <volume>148</volume>
+                    <first_page>148</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1053/j.gastro.2014.09.032</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0063|c160005-cit-0063">
+                    <author>Hong</author>
+                    <article_title>Corticosterone mediates reciprocal changes in CB 1 and TRPV1 receptors in primary sensory neurons in the chronically stressed rat</article_title>
+                    <journal_title>Gastroenterology</journal_title>
+                    <volume>140</volume>
+                    <first_page>627</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1053/j.gastro.2010.11.003</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0064|c160005-cit-0064">
+                    <author>Howlett</author>
+                    <article_title>Cannabinoid inhibition of adenylate cyclase. Biochemistry of the response in neuroblastoma cell membranes</article_title>
+                    <journal_title>Mol Pharmacol</journal_title>
+                    <volume>27</volume>
+                    <first_page>429</first_page>
+                    <cYear>1985</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0065|c160005-cit-0065">
+                    <author>Huang</author>
+                    <article_title>Estradiol acutely suppresses inhibition in the hippocampus through a sex-specific endocannabinoid and mGluR-dependent mechanism</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>74</volume>
+                    <first_page>801</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2012.03.035</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0066|c160005-cit-0066">
+                    <author>Huizink</author>
+                    <article_title>Maternal smoking, drinking or cannabis use during pregnancy and neurobehavioral and cognitive functioning in human offspring</article_title>
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <volume>30</volume>
+                    <first_page>24</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2005.04.005</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0067|c160005-cit-0067">
+                    <author>Hyman</author>
+                    <article_title>Stress-related factors in cannabis use and misuse: Implications for prevention and treatment</article_title>
+                    <journal_title>J Subst Abuse Treat</journal_title>
+                    <volume>36</volume>
+                    <first_page>400</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.jsat.2008.08.005</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0068|c160005-cit-0068">
+                    <author>Idris</author>
+                    <article_title>Cannabinoid receptor type 1 protects against age-related osteoporosis by regulating osteoblast and adipocyte differentiation in marrow stromal cells</article_title>
+                    <journal_title>Cell Metab</journal_title>
+                    <volume>10</volume>
+                    <first_page>139</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.cmet.2009.07.006</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0069|c160005-cit-0069">
+                    <author>Idris</author>
+                    <article_title>Regulation of bone mass, bone loss and osteoclast activity by cannabinoid receptors</article_title>
+                    <journal_title>Nat Med</journal_title>
+                    <volume>11</volume>
+                    <first_page>774</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1038/nm1255</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0070|c160005-cit-0070">
+                    <author>Jin</author>
+                    <article_title>Glucocorticoid receptors in the basolateral nucleus of amygdala are required for postreactivation reconsolidation of auditory fear memory</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>25</volume>
+                    <first_page>3702</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2007.05621.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0071|c160005-cit-0071">
+                    <author>Joels</author>
+                    <article_title>Unraveling the time domains of corticosteroid hormone influences on brain activity: Rapid, slow, and chronic modes</article_title>
+                    <journal_title>Pharmacol Rev</journal_title>
+                    <volume>64</volume>
+                    <first_page>901</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1124/pr.112.005892</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0072|c160005-cit-0072">
+                    <author>Kamprath</author>
+                    <article_title>Cannabinoid CB1 receptor mediates fear extinction via habituation-like processes</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>26</volume>
+                    <first_page>6677</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0153-06.2006</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0073|c160005-cit-0073">
+                    <author>Kamprath</author>
+                    <article_title>Endocannabinoids mediate acute fear adaptation via glutamatergic neurons independently of corticotropin-releasing hormone signaling</article_title>
+                    <journal_title>Genes Brain Behav</journal_title>
+                    <volume>8</volume>
+                    <first_page>203</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1111/j.1601-183X.2008.00463.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0074|c160005-cit-0074">
+                    <author>Kamprath</author>
+                    <article_title>Short-term adaptation of conditioned fear responses through endocannabinoid signaling in the central amygdala</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>36</volume>
+                    <first_page>652</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1038/npp.2010.196</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0075|c160005-cit-0075">
+                    <author>Kano</author>
+                    <article_title>Control of synaptic function by endocannabinoid-mediated retrograde signaling</article_title>
+                    <journal_title>Proc Jpn Acad Ser B Phys Biol Sci</journal_title>
+                    <volume>90</volume>
+                    <first_page>235</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.2183/pjab.90.235</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0076|c160005-cit-0076">
+                    <author>Kaplan</author>
+                    <article_title>Escalation of marijuana use: Application of a general theory of deviant behavior</article_title>
+                    <journal_title>J Health Soc Behav</journal_title>
+                    <volume>27</volume>
+                    <first_page>44</first_page>
+                    <cYear>1986</cYear>
+                    <doi provider="crossref">10.2307/2136502</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0077|c160005-cit-0077">
+                    <author>Karst</author>
+                    <article_title>Metaplasticity of amygdalar responses to the stress hormone corticosterone</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>107</volume>
+                    <first_page>14449</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1073/pnas.0914381107</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0078|c160005-cit-0078">
+                    <author>Karst</author>
+                    <article_title>Mineralocorticoid receptors are indispensable for nongenomic modulation of hippocampal glutamate transmission by corticosterone</article_title>
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <volume>102</volume>
+                    <first_page>19204</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1073/pnas.0507572102</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0079|c160005-cit-0079">
+                    <author>Katona</author>
+                    <article_title>Distribution of CB1 cannabinoid receptors in the amygdala and their role in the control of GABAergic transmission</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>21</volume>
+                    <first_page>9506</first_page>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0080|c160005-cit-0080">
+                    <author>Katona</author>
+                    <article_title>Presynaptically located CB1 cannabinoid receptors regulate GABA release from axon terminals of specific hippocampal interneurons</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>19</volume>
+                    <first_page>4544</first_page>
+                    <cYear>1999</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0081|c160005-cit-0081">
+                    <author>Kearn</author>
+                    <article_title>Relationships between ligand affinities for the cerebellar cannabinoid receptor CB1 and the induction of GDP/GTP exchange</article_title>
+                    <journal_title>J Neurochem</journal_title>
+                    <volume>72</volume>
+                    <first_page>2379</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1046/j.1471-4159.1999.0722379.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0082|c160005-cit-0082">
+                    <author>King</author>
+                    <article_title>Altered brain activation during visuomotor integration in chronic active cannabis users: Relationship to cortisol levels</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>31</volume>
+                    <first_page>17923</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.4148-11.2011</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0083|c160005-cit-0083">
+                    <author>Kleinloog</author>
+                    <article_title>Does olanzapine inhibit the psychomimetic effects of Delta(9)-tetrahydrocannabinol</article_title>
+                    <journal_title>J Psychopharmacol</journal_title>
+                    <volume>26</volume>
+                    <first_page>1307</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1177/0269881112446534</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0084|c160005-cit-0084">
+                    <author>Klumpers</author>
+                    <article_title>Manipulating brain connectivity with delta(9)-tetrahydrocannabinol: A pharmacological resting state FMRI study</article_title>
+                    <journal_title>Neuroimage</journal_title>
+                    <volume>63</volume>
+                    <first_page>1701</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2012.07.051</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0085|c160005-cit-0085">
+                    <author>Ko</author>
+                    <article_title>Cannabinoid receptor 1 mediates glucocorticoid-induced bone loss in rats by perturbing bone mineral acquisition and marrow adipogenesis</article_title>
+                    <journal_title>Arthritis Rheum</journal_title>
+                    <volume>64</volume>
+                    <first_page>1204</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/art.33457</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0086|c160005-cit-0086">
+                    <author>Konturek</author>
+                    <article_title>Stress and the gut: Pathophysiology, clinical consequences, diagnostic approach and treatment options</article_title>
+                    <journal_title>J Physiol Pharmacol</journal_title>
+                    <volume>62</volume>
+                    <first_page>591</first_page>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0087|c160005-cit-0087">
+                    <author>Kreitzer</author>
+                    <article_title>Retrograde inhibition of presynaptic calcium influx by endogenous cannabinoids at excitatory synapses onto Purkinje cells</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>29</volume>
+                    <first_page>717</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0896-6273(01)00246-X</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0088|c160005-cit-0088">
+                    <author>Kulkarni-Narla</author>
+                    <article_title>Localization of CB1-cannabinoid receptor immunoreactivity in the porcine enteric nervous system</article_title>
+                    <journal_title>Cell Tissue Res</journal_title>
+                    <volume>302</volume>
+                    <first_page>73</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1007/s004410000261</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0089|c160005-cit-0089">
+                    <author>Lightman</author>
+                    <article_title>The neuroendocrinology of stress: A never ending story</article_title>
+                    <journal_title>J Neuroendocrinol</journal_title>
+                    <volume>20</volume>
+                    <first_page>880</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1111/j.1365-2826.2008.01711.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0090|c160005-cit-0090">
+                    <author>Lowette</author>
+                    <article_title>Role of corticosterone in the murine enteric nervous system during fasting</article_title>
+                    <journal_title>Am J Physiol Gastrointest Liver Physiol</journal_title>
+                    <volume>307</volume>
+                    <first_page>G905</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1152/ajpgi.00233.2014</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0091|c160005-cit-0091">
+                    <author>Mackie</author>
+                    <article_title>Cannabinoid receptors: Where they are and what they do</article_title>
+                    <journal_title>J Neuroendocrinol</journal_title>
+                    <volume>20</volume>
+                    <issue>Suppl 1</issue>
+                    <first_page>10</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1111/j.1365-2826.2008.01671.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0092|c160005-cit-0092">
+                    <author>Mackie</author>
+                    <article_title>Cannabinoids inhibit N-type calcium channels in neuroblastoma-glioma cells</article_title>
+                    <journal_title>Proc Natl Acad Sci</journal_title>
+                    <volume>89</volume>
+                    <first_page>3825</first_page>
+                    <cYear>1992</cYear>
+                    <doi provider="crossref">10.1073/pnas.89.9.3825</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0093|c160005-cit-0093">
+                    <author>Mailleux</author>
+                    <article_title>Glucocorticoid regulation of cannabinoid receptor messenger RNA levels in the rat caudate-putamen. An in situ hybridization study</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>156</volume>
+                    <first_page>51</first_page>
+                    <cYear>1993</cYear>
+                    <doi provider="crossref">10.1016/0304-3940(93)90437-P</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0094|c160005-cit-0094">
+                    <author>Malcher-Lopes</author>
+                    <article_title>Glucocorticoids shift arachidonic acid metabolism toward endocannabinoid synthesis: A non-genomic anti-inflammatory switch</article_title>
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <volume>583</volume>
+                    <first_page>322</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2007.12.033</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0095|c160005-cit-0095">
+                    <author>Malfitano</author>
+                    <article_title>What we know and do not know about the cannabinoid receptor 2 (CB2)</article_title>
+                    <journal_title>Semin Immunol</journal_title>
+                    <volume>26</volume>
+                    <first_page>369</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.smim.2014.04.002</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0096|c160005-cit-0096">
+                    <author>Manzanares</author>
+                    <article_title>Opioid and cannabinoid receptor-mediated regulation of the increase in adrenocorticotropin hormone and corticosterone plasma concentrations induced by central administration of delta(9)-tetrahydrocannabinol in rats</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>839</volume>
+                    <first_page>173</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0006-8993(99)01756-4</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0097|c160005-cit-0097">
+                    <author>Marrs</author>
+                    <article_title>The serine hydrolase ABHD6 controls the accumulation and efficacy of 2-AG at cannabinoid receptors</article_title>
+                    <journal_title>Nat Neurosci</journal_title>
+                    <volume>13</volume>
+                    <first_page>951</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1038/nn.2601</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0098|c160005-cit-0098">
+                    <author>Matthews</author>
+                    <article_title>Caveolin mediates rapid glucocorticoid effects and couples glucocorticoid action to the antiproliferative program</article_title>
+                    <journal_title>Mol Endocrinol</journal_title>
+                    <volume>22</volume>
+                    <first_page>1320</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1210/me.2007-0154</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0099|c160005-cit-0099">
+                    <author>McEwen</author>
+                    <article_title>Steroid hormone actions on the brain: When is the genome involved?</article_title>
+                    <journal_title>Horm Behav</journal_title>
+                    <volume>28</volume>
+                    <first_page>396</first_page>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1006/hbeh.1994.1036</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0100|c160005-cit-0100">
+                    <author>McLaughlin</author>
+                    <article_title>Prefrontal cortical anandamide signaling coordinates coping responses to stress through a serotonergic pathway</article_title>
+                    <journal_title>Eur Neuropsychopharmacol</journal_title>
+                    <volume>22</volume>
+                    <first_page>664</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.euroneuro.2012.01.004</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0101|c160005-cit-0101">
+                    <author>McLaughlin</author>
+                    <article_title>Monoaminergic neurotransmission contributes to cannabinoid-induced activation of the hypothalamic-pituitary-adrenal axis</article_title>
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <volume>624</volume>
+                    <first_page>71</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2009.09.055</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0102|c160005-cit-0102">
+                    <author>McReynolds</author>
+                    <article_title>CB1 receptor antagonism blocks stress-potentiated reinstatement of cocaine seeking in rats</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>233</volume>
+                    <first_page>99</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s00213-015-4092-x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0103|c160005-cit-0103">
+                    <author>McReynolds</author>
+                    <article_title>Neurobiological mechanisms underlying relapse to cocaine use: Contributions of CRF and noradrenergic systems and regulation by glucocorticoids</article_title>
+                    <journal_title>Stress</journal_title>
+                    <volume>17</volume>
+                    <first_page>22</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3109/10253890.2013.872617</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0104|c160005-cit-0104">
+                    <author>Nahar</author>
+                    <article_title>Rapid nongenomic glucocorticoid actions in male mouse hypothalamic neuroendocrine cells are dependent on the nuclear glucocorticoid receptor</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>156</volume>
+                    <first_page>2831</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1210/en.2015-1273</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0105|c160005-cit-0105">
+                    <author>Newsom</author>
+                    <article_title>Cannabinoid receptor type 1 antagonism significantly modulates basal and loud noise induced neural and hypothalamic-pituitary-adrenal axis responses in male Sprague-Dawley rats</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>204</volume>
+                    <first_page>64</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.11.043</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0106|c160005-cit-0106">
+                    <author>Niederhoffer</author>
+                    <article_title>Effects of cannabinoids on adrenaline release from adrenal medullary cells</article_title>
+                    <journal_title>Br J Pharmacol</journal_title>
+                    <volume>134</volume>
+                    <first_page>1319</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1038/sj.bjp.0704359</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0107|c160005-cit-0107">
+                    <author>Nieman</author>
+                    <article_title>Cushing's syndrome: Update on signs, symptoms and biochemical screening</article_title>
+                    <journal_title>Eur J Endocrinol</journal_title>
+                    <volume>173</volume>
+                    <first_page>M33</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1530/EJE-15-0464</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0108|c160005-cit-0108">
+                    <author>Nomura</author>
+                    <article_title>Endocannabinoid hydrolysis generates brain prostaglandins that promote neuroinflammation</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>334</volume>
+                    <first_page>809</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1126/science.1209200</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0109|c160005-cit-0109">
+                    <author>Oropeza</author>
+                    <article_title>Cannabinoid receptors are localized to noradrenergic axon terminals in the rat frontal cortex</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>1127</volume>
+                    <first_page>36</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2006.09.110</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0110|c160005-cit-0110">
+                    <author>Pagotto</author>
+                    <article_title>Normal human pituitary gland and pituitary adenomas express cannabinoid receptor type 1 and synthesize endogenous cannabinoids: First evidence for a direct role of cannabinoids on hormone modulation at the human pituitary level</article_title>
+                    <journal_title>J Clin Endocrinol Metab</journal_title>
+                    <volume>86</volume>
+                    <first_page>2687</first_page>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0111|c160005-cit-0111">
+                    <author>Pan</author>
+                    <article_title>Blockade of 2-arachidonoylglycerol hydrolysis by selective monoacylglycerol lipase inhibitor 4-nitrophenyl 4-(dibenzo[d][1,3]dioxol-5-yl(hydroxy)methyl)piperidine-1-carboxylate (JZL184) Enhances retrograde endocannabinoid signaling</article_title>
+                    <journal_title>J Pharmacol Exp Ther</journal_title>
+                    <volume>331</volume>
+                    <first_page>591</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1124/jpet.109.158162</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0112|c160005-cit-0112">
+                    <author>Patel</author>
+                    <article_title>The postmortal accumulation of brain N-arachidonylethanolamine (anandamide) is dependent upon fatty acid amide hydrolase activity</article_title>
+                    <journal_title>J Lipid Res</journal_title>
+                    <volume>46</volume>
+                    <first_page>342</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1194/jlr.M400377-JLR200</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0113|c160005-cit-0113">
+                    <author>Patel</author>
+                    <article_title>Endocannabinoid signaling negatively modulates stress-induced activation of the hypothalamic-pituitary-adrenal axis</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>145</volume>
+                    <first_page>5431</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1210/en.2004-0638</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0114|c160005-cit-0114">
+                    <author>Patel</author>
+                    <article_title>Inhibition of restraint stress-induced neural and behavioural activation by endogenous cannabinoid signalling</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>21</volume>
+                    <first_page>1057</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2005.03916.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0115|c160005-cit-0115">
+                    <author>Pereira</author>
+                    <article_title>FKBP5 expression in human adipose tissue increases following dexamethasone exposure and is associated with insulin resistance</article_title>
+                    <journal_title>Metabolism</journal_title>
+                    <volume>63</volume>
+                    <first_page>1198</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.metabol.2014.05.015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0116|c160005-cit-0116">
+                    <author>Pertwee</author>
+                    <article_title>Tolerance to the effect of delta1-tetrahydrocannabinol on corticosterone levels in mouse plasma produced by repeated administration of cannabis extract or delta1-tetrahydrocannabinol</article_title>
+                    <journal_title>Br J Pharmacol</journal_title>
+                    <volume>51</volume>
+                    <first_page>391</first_page>
+                    <cYear>1974</cYear>
+                    <doi provider="crossref">10.1111/j.1476-5381.1974.tb10674.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0117|c160005-cit-0117">
+                    <author>Pertwee</author>
+                    <article_title>Ligands that target cannabinoid receptors in the brain: From THC to anandamide and beyond</article_title>
+                    <journal_title>Addict Biol</journal_title>
+                    <volume>13</volume>
+                    <first_page>147</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1111/j.1369-1600.2008.00108.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0118|c160005-cit-0118">
+                    <author>Pertwee</author>
+                    <article_title>International Union of Basic and Clinical Pharmacology. LXXIX. Cannabinoid receptors and their ligands: Beyond CB and CB</article_title>
+                    <journal_title>Pharmacol Rev</journal_title>
+                    <volume>62</volume>
+                    <first_page>588</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1124/pr.110.003004</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0119|c160005-cit-0119">
+                    <author>Pickel</author>
+                    <article_title>Cannabinoid-1 receptors in the mouse ventral pallidum are targeted to axonal profiles expressing functionally opposed opioid peptides and contacting N-acylphosphatidylethanolamine-hydrolyzing phospholipase D terminals</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>227C</volume>
+                    <first_page>10</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2012.07.050</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0120|c160005-cit-0120">
+                    <author>Qin</author>
+                    <article_title>Chronic stress induces anxiety via an amygdalar intracellular cascade that impairs endocannabinoid signaling</article_title>
+                    <journal_title>Neuron</journal_title>
+                    <volume>85</volume>
+                    <first_page>1319</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2015.02.015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0121|c160005-cit-0121">
+                    <author>Rademacher</author>
+                    <article_title>Interactions between endocannabinoids and stress-induced decreased sensitivity to natural reward</article_title>
+                    <journal_title>Prog Neuropsychopharmacol Biol Psychiatry</journal_title>
+                    <volume>31</volume>
+                    <first_page>633</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.pnpbp.2006.12.013</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0122|c160005-cit-0122">
+                    <author>Rademacher</author>
+                    <article_title>Effects of acute and repeated restraint stress on endocannabinoid content in the amygdala, ventral striatum and medial prefrontal cortex in mice</article_title>
+                    <journal_title>Neuropharmacol</journal_title>
+                    <volume>54</volume>
+                    <first_page>108</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.neuropharm.2007.06.012</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0124|c160005-cit-0124">
+                    <author>Ranganathan</author>
+                    <article_title>The effects of cannabinoids on serum cortisol and prolactin in humans</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>203</volume>
+                    <first_page>737</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1007/s00213-008-1422-2</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0125|c160005-cit-0125">
+                    <author>Rauch</author>
+                    <article_title>Glucocorticoids suppress bone formation by attenuating osteoblast differentiation via the monomeric glucocorticoid receptor</article_title>
+                    <journal_title>Cell Metab</journal_title>
+                    <volume>11</volume>
+                    <first_page>517</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.cmet.2010.05.005</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0126|c160005-cit-0126">
+                    <author>Reich</author>
+                    <article_title>Differential effects of chronic unpredictable stress on hippocampal CB1 receptors in male and female rats</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>203</volume>
+                    <first_page>264</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2009.05.013</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0127|c160005-cit-0127">
+                    <author>Rice</author>
+                    <article_title>Expression of a brain-type cannabinoid receptor (CB1) in alveolar Type II cells in the lung: Regulation by hydrocortisone</article_title>
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <volume>327</volume>
+                    <first_page>227</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1016/S0014-2999(97)89665-3</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0128|c160005-cit-0128">
+                    <author>Roberts</author>
+                    <article_title>Endocannabinoid signaling in hypothalamic-pituitary-adrenocortical axis recovery following stress: Effects of indirect agonists and comparison of male and female mice</article_title>
+                    <journal_title>Pharmacol Biochem Behav</journal_title>
+                    <volume>117</volume>
+                    <first_page>17</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.pbb.2013.11.026</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0129|c160005-cit-0129">
+                    <author>Robinson</author>
+                    <article_title>The effect of social isolation on rat brain expression of genes associated with endocannabinoid signalling</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>1343</volume>
+                    <first_page>153</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2010.04.031</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0130|c160005-cit-0130">
+                    <author>Rodriguez de Fonseca</author>
+                    <article_title>Cannabinoid receptors in rat brain areas: Sexual differences, fluctuations during estrous cycle and changes after gonadectomy and sex steroid replacement</article_title>
+                    <journal_title>Life Sci</journal_title>
+                    <volume>54</volume>
+                    <first_page>159</first_page>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1016/0024-3205(94)00585-0</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0131|c160005-cit-0131">
+                    <author>Roozendaal</author>
+                    <article_title>Basolateral amygdala-nucleus accumbens interactions in mediating glucocorticoid enhancement of memory consolidation</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>21</volume>
+                    <first_page>2518</first_page>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0132|c160005-cit-0132">
+                    <author>Roozendaal</author>
+                    <article_title>Corticotropin-releasing factor in the basolateral amygdala enhances memory consolidation via an interaction with the beta-adrenoceptor-cAMP pathway: Dependence on glucocorticoid receptor activation</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>28</volume>
+                    <first_page>6642</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1336-08.2008</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0133|c160005-cit-0133">
+                    <author>Roozendaal</author>
+                    <article_title>Glucocorticoid receptor activation in the rat nucleus of the solitary tract facilitates memory consolidation: Involvement of the basolateral amygdala</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>11</volume>
+                    <first_page>1317</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.1999.00537.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0134|c160005-cit-0134">
+                    <author>Sadie-Van Gijsen</author>
+                    <article_title>The interrelationship between bone and fat: From cellular see-saw to endocrine reciprocity</article_title>
+                    <journal_title>Cell Mol Life Sci</journal_title>
+                    <volume>70</volume>
+                    <first_page>2331</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1007/s00018-012-1211-2</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0135|c160005-cit-0135">
+                    <author>Samir</author>
+                    <article_title>Effect of cannabinoid receptors 1 modulation on osteoporosis in a rat model of different ages</article_title>
+                    <journal_title>J Physiol Pharmacol</journal_title>
+                    <volume>65</volume>
+                    <first_page>687</first_page>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0136|c160005-cit-0136">
+                    <author>Shen</author>
+                    <article_title>Cannabinoid receptor agonists inhibit glutamatergic synaptic transmission in rat hippocampal cultures</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>16</volume>
+                    <first_page>4322</first_page>
+                    <cYear>1996</cYear>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0137|c160005-cit-0137">
+                    <author>Solomon</author>
+                    <article_title>Neuroendocrine function After hypothalamic depletion of glucocorticoid receptors in male and female mice</article_title>
+                    <journal_title>Endocrinology</journal_title>
+                    <volume>156</volume>
+                    <first_page>2843</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1210/en.2015-1276</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0138|c160005-cit-0138">
+                    <author>Somaini</author>
+                    <article_title>Psychobiological responses to unpleasant emotions in cannabis users</article_title>
+                    <journal_title>Eur Arch Psychiatry Clin Neurosci</journal_title>
+                    <volume>262</volume>
+                    <first_page>47</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1007/s00406-011-0223-5</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0139|c160005-cit-0139">
+                    <author>Steiner</author>
+                    <article_title>Role of the endocannabinoid system in regulation of the hypothalamic-pituitary-adrenocortical axis</article_title>
+                    <journal_title>Prog Brain Res</journal_title>
+                    <volume>170</volume>
+                    <first_page>397</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/S0079-6123(08)00433-0</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0140|c160005-cit-0140">
+                    <author>Sumislawski</author>
+                    <article_title>Reversible gating of endocannabinoid plasticity in the amygdala by chronic stress: A potential role for monoacylglycerol lipase inhibition in the prevention of stress-induced behavioral adaptation</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>36</volume>
+                    <first_page>2750</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1038/npp.2011.166</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0141|c160005-cit-0141">
+                    <author>Szallasi</author>
+                    <article_title>New perspectives on enigmatic vanilloid receptors</article_title>
+                    <journal_title>Trends Neurosci</journal_title>
+                    <volume>23</volume>
+                    <first_page>491</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0166-2236(00)01630-1</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0142|c160005-cit-0142">
+                    <author>Tabatadze</author>
+                    <article_title>Sex differences in molecular signaling at inhibitory synapses in the hippocampus</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>35</volume>
+                    <first_page>11252</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1067-15.2015</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0143|c160005-cit-0143">
+                    <author>Tasker</author>
+                    <article_title>Mechanisms of rapid glucocorticoid feedback inhibition of the hypothalamic-pituitary-adrenal axis</article_title>
+                    <journal_title>Stress</journal_title>
+                    <volume>14</volume>
+                    <first_page>398</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.3109/10253890.2011.586446</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0144|c160005-cit-0144">
+                    <author>Tsou</author>
+                    <article_title>Fatty acid amide hydrolase is located preferentially in large neurons in the rat central nervous system as revealed by immunohistochemistry</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>254</volume>
+                    <first_page>137</first_page>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S0304-3940(98)00700-9</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0145|c160005-cit-0145">
+                    <author>Ueda</author>
+                    <article_title>N-acylethanolamine metabolism with special reference to N-acylethanolamine-hydrolyzing acid amidase (NAAA)</article_title>
+                    <journal_title>Prog Lipid Res</journal_title>
+                    <volume>49</volume>
+                    <first_page>299</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.plipres.2010.02.003</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0146|c160005-cit-0146">
+                    <author>van Leeuwen</author>
+                    <article_title>Can the gateway hypothesis, the common liability model and/or, the route of administration model predict initiation of cannabis use during adolescence? A survival analysis-the TRAILS study</article_title>
+                    <journal_title>J Adolesc Health</journal_title>
+                    <volume>48</volume>
+                    <first_page>73</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.jadohealth.2010.05.008</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0147|c160005-cit-0147">
+                    <author>Van Sickle</author>
+                    <article_title>Identification and functional characterization of brainstem cannabinoid CB2 receptors</article_title>
+                    <journal_title>Science</journal_title>
+                    <volume>310</volume>
+                    <first_page>329</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1126/science.1115740</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0148|c160005-cit-0148">
+                    <author>Vaughn</author>
+                    <article_title>Cannabinoid receptor involvement in stress-induced cocaine reinstatement: Potential interaction with noradrenergic pathways</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>204</volume>
+                    <first_page>117</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.08.021</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0149|c160005-cit-0149">
+                    <author>Verkuyl</author>
+                    <article_title>GABAergic transmission in the rat paraventricular nucleus of the hypothalamus is suppressed by corticosterone and stress</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>21</volume>
+                    <first_page>113</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2004.03846.x</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0150|c160005-cit-0150">
+                    <author>Wade</author>
+                    <article_title>Cannabinoid CB1 receptor antagonism modulates plasma corticosterone in rodents</article_title>
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <volume>551</volume>
+                    <first_page>162</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2006.08.083</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0151|c160005-cit-0151">
+                    <author>Waleh</author>
+                    <article_title>Transcriptional regulation of the mouse fatty acid amide hydrolase gene</article_title>
+                    <journal_title>Gene</journal_title>
+                    <volume>291</volume>
+                    <first_page>203</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0378-1119(02)00598-X</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0152|c160005-cit-0152">
+                    <author>Wang</author>
+                    <article_title>Endocannabinoids mediate the glucocorticoid-induced inhibition of excitatory synaptic transmission to dorsal raphe serotonin neurons</article_title>
+                    <journal_title>J Physiol</journal_title>
+                    <volume>590</volume>
+                    <first_page>5795</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1113/jphysiol.2012.238659</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0153|c160005-cit-0153">
+                    <author>Wang</author>
+                    <article_title>Acute restraint stress enhances hippocampal endocannabinoid function via glucocorticoid receptor activation</article_title>
+                    <journal_title>J Psychopharmacol</journal_title>
+                    <volume>26</volume>
+                    <first_page>56</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1177/0269881111409606</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0154|c160005-cit-0154">
+                    <author>Wang</author>
+                    <article_title>Central glucocorticoid receptors regulate the upregulation of spinal cannabinoid-1 receptors after peripheral nerve injury in rats</article_title>
+                    <journal_title>Pain</journal_title>
+                    <volume>131</volume>
+                    <first_page>96</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.pain.2006.12.019</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0155|c160005-cit-0155">
+                    <author>Watts</author>
+                    <article_title>The impact of physiological stimuli on the expression of corticotropin-releasing hormone (CRH) and other neuropeptide genes</article_title>
+                    <journal_title>Front Neuroendocrinol</journal_title>
+                    <volume>17</volume>
+                    <first_page>281</first_page>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1006/frne.1996.0008</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0156|c160005-cit-0156">
+                    <author>Wittmann</author>
+                    <article_title>Distribution of type 1 cannabinoid receptor (CB1)-immunoreactive axons in the mouse hypothalamus</article_title>
+                    <journal_title>J Comp Neurol</journal_title>
+                    <volume>503</volume>
+                    <first_page>270</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1002/cne.21383</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0157|c160005-cit-0157">
+                    <author>Wu</author>
+                    <article_title>Cannabinoid receptor 1 regulates ERK and GSK-3beta-dependent glucocorticoid inhibition of osteoblast differentiation in murine MC3T3-E1 cells</article_title>
+                    <journal_title>Bone</journal_title>
+                    <volume>49</volume>
+                    <first_page>1255</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.bone.2011.08.022</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0158|c160005-cit-0158">
+                    <author>Yoshida</author>
+                    <article_title>Localization of diacylglycerol lipase-alpha around postsynaptic spine suggests close proximity between production site of an endocannabinoid, 2-arachidonoyl-glycerol, and presynaptic cannabinoid CB1 receptor</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>26</volume>
+                    <first_page>4740</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0054-06.2006</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0159|c160005-cit-0159">
+                    <author>Zheng</author>
+                    <article_title>Dexamethasone alleviates motion sickness in rats in part by enhancing the endocannabinoid system</article_title>
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <volume>727</volume>
+                    <first_page>99</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2014.01.047</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0160|c160005-cit-0160">
+                    <author>Zias</author>
+                    <article_title>Early medical use of cannabis</article_title>
+                    <journal_title>Nature</journal_title>
+                    <volume>363</volume>
+                    <first_page>215</first_page>
+                    <cYear>1993</cYear>
+                    <doi provider="crossref">10.1038/363215a0</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0161|c160005-cit-0161">
+                    <author>Ziegler</author>
+                    <article_title>Expression and function of endocannabinoid receptors in the human adrenal cortex</article_title>
+                    <journal_title>Horm Metab Res</journal_title>
+                    <volume>42</volume>
+                    <first_page>88</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1055/s-0029-1241860</doi>
+                  </citation>
+                  <citation key="10.1002/cphy.c160005-BIB0162|c160005-cit-0162">
+                    <author>Zoppi</author>
+                    <article_title>Endogenous cannabinoid system regulates intestinal barrier function in vivo through cannabinoid type 1 receptor activation</article_title>
+                    <journal_title>Am J Physiol Gastrointest Liver Physiol</journal_title>
+                    <volume>302</volume>
+                    <first_page>G565</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1152/ajpgi.00158.2011</doi>
+                  </citation>
+                </citation_list>
+              </content_item>
+            </book>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

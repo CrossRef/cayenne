@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1073/pnas.1609811114</doi>
+        <crm-item name="publisher-name" type="string">Proceedings of the National Academy of Sciences</crm-item>
+        <crm-item name="prefix-name" type="string">Proceedings of the National Academy of Sciences</crm-item>
+        <crm-item name="member-id" type="number">341</crm-item>
+        <crm-item name="citation-id" type="number">86965256</crm-item>
+        <crm-item name="journal-id" type="number">4172</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017010309354629000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1073</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T06:19:16Z</crm-item>
+        <crm-item name="created" type="date">2016-12-20T03:00:44Z</crm-item>
+        <crm-item name="citedby-count" type="number">6</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Proceedings of the National Academy of Sciences</full_title>
+                <abbrev_title>Proc Natl Acad Sci USA</abbrev_title>
+                <issn media_type="print">0027-8424</issn>
+                <issn media_type="electronic">1091-6490</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>01</month>
+                  <day>03</day>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <day>03</day>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>114</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Hierarchy stability moderates the effect of status on stress and performance in humans</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Erik L.</given_name>
+                    <surname>Knight</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Pranjal H.</given_name>
+                    <surname>Mehta</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <day>03</day>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>19</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>78</first_page>
+                  <last_page>83</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="atom">/pnas/114/1/78.atom</item_number>
+                  <identifier id_type="doi">10.1073/pnas.1609811114</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1.0</crossmark_version>
+                  <crossmark_policy>10.1073/pnas.cm10313</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>pnas.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          National Science Foundation (NSF)
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000001</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">1451848</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:free_to_read start_date="2017-07-03" />
+                      <ai:license_ref applies_to="vor" start_date="2017-07-03">http://www.pnas.org/site/misc/userlicense.xhtml</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1073/pnas.1609811114</doi>
+                  <timestamp>2017010309354629000</timestamp>
+                  <resource>http://www.pnas.org/lookup/doi/10.1073/pnas.1609811114</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://syndication.highwire.org/content/doi/10.1073/pnas.1609811114</resource>
+                    </item>
+                  </collection>
+                  <collection property="syndication">
+                    <item>
+                      <resource content_version="vor">http://www.pnas.org/syndication/doi/10.1073/pnas.1609811114</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="2017010309354629000_114.1.78.1">
+                    <doi>10.1037/0003-066X.49.1.15</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.2">
+                    <doi>10.1126/science.1106477</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.3">
+                    <journal_title>Soc Psychol Personal Sci</journal_title>
+                    <author>Akinola</author>
+                    <volume>5</volume>
+                    <issue>1</issue>
+                    <first_page>43</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1177/1948550613485604</doi>
+                    <article_title>It’s good to be the king: Neurobiological benefits of higher social standing</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.4">
+                    <doi>10.1037/0278-6133.19.6.586</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.5">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Fiocco</author>
+                    <volume>32</volume>
+                    <issue>8</issue>
+                    <first_page>1158</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2007.08.008</doi>
+                    <article_title>Education modulates cortisol reactivity to the Trier Social Stress Test in middle-aged adults</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.6">
+                    <unstructured_citation>Carney DR (2015) Power buffers stress – for better and for worse. Working paper (University of California, Berkeley, CA). Avaliable at faculty.haas.berkeley.edu/dana_carney/DRCarney-PBS.doc .</unstructured_citation>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.7">
+                    <doi>10.1196/annals.1314.001</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.8">
+                    <doi>10.1073/pnas.1207042109</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.9">
+                    <doi>10.1097/01.psy.0000221236.37158.b9</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.10">
+                    <doi>10.1016/0306-4530(92)90029-7</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.11">
+                    <doi>10.1017/S0140525X98001228</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.12">
+                    <unstructured_citation>Sapolsky RM (1993) in The physiology of dominance in stable versus unstable social hierarchies. Primate Social Conflict, eds Mason W Mendoza S (SUNY Press, New York), pp 171–204.</unstructured_citation>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.13">
+                    <doi>10.1016/j.beproc.2014.09.010</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.14">
+                    <doi>10.1126/science.1207120</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.15">
+                    <doi>10.1016/j.jesp.2013.02.008</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.16">
+                    <doi>10.1002/ejsp.1937</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.17">
+                    <journal_title>Res Organ Behav</journal_title>
+                    <author>Cuddy</author>
+                    <volume>31</volume>
+                    <first_page>73</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.riob.2011.10.004</doi>
+                    <article_title>The dynamics of warmth and competence judgments, and their outcomes in organizations</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.18">
+                    <doi>10.1037/a0030398</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.19">
+                    <doi>10.1037/0033-295X.110.2.265</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.20">
+                    <journal_title>Adm Sci Q</journal_title>
+                    <author>Jordan</author>
+                    <volume>56</volume>
+                    <issue>4</issue>
+                    <first_page>530</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1177/0001839212441928</doi>
+                    <article_title>Something to lose and nothing to gain the role of stress in the interactive effect of power and stability on risk taking</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.21">
+                    <doi>10.1111/j.1467-9280.2008.02123.x</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.22">
+                    <doi>10.1111/j.1467-9280.2009.02311.x</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.23">
+                    <doi>10.1037/a0026657</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.24">
+                    <doi>10.1016/j.psyneuen.2009.04.016</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.25">
+                    <doi>10.1371/journal.pone.0006002</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.26">
+                    <doi>10.1111/1467-9280.t01-1-01435</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.27">
+                    <doi>10.1016/j.yhbeh.2004.09.008</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.28">
+                    <doi>10.1037/0022-3514.90.6.999</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.29">
+                    <doi>10.1159/000119004</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.30">
+                    <doi>10.1111/0022-4537.00233</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.31">
+                    <unstructured_citation>Hayes AF (2013) Introduction to mediation, moderation, and conditional process analysis: A regression-based approach (The Guilford Press, New York).</unstructured_citation>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.32">
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <author>Allen</author>
+                    <volume>38</volume>
+                    <first_page>94</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2013.11.005</doi>
+                    <article_title>Biological and psychological markers of stress in humans: Focus on the Trier Social Stress Test</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.33">
+                    <doi>10.1038/ncomms1696</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.34">
+                    <unstructured_citation>Marmot G Sapolsky R (2014) Of baboons and men: Social circumstances, biology, and the social gradient in health. Sociality, hierarchy, health: Comparative biodemography: Papers from a workshop, eds Weinstien M, Lane M (National Academies Press, Washington, DC).</unstructured_citation>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.35">
+                    <doi>10.1177/1745691612436694</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.36">
+                    <doi>10.1016/j.jesp.2013.08.007</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.37">
+                    <doi>10.1146/annurev-psych-010416-044153</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.38">
+                    <doi>10.1037/a0026651</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.39">
+                    <journal_title>J Pers Soc Psychol</journal_title>
+                    <author>Case</author>
+                    <volume>107</volume>
+                    <issue>6</issue>
+                    <first_page>1033</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1037/a0038201</doi>
+                    <article_title>Divide and conquer: When and why leaders undermine the cohesive fabric of their group</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.40">
+                    <unstructured_citation>Schouten ME (2016) The ups and downs of hierarchy: The causes and consequences of hierarchy struggles and positional loss. Available at repub.eur.nl/pub/80059. Accessed August 28, 2016.</unstructured_citation>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.41">
+                    <doi>10.1159/000006610</doi>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.42">
+                    <journal_title>J Men’s Health</journal_title>
+                    <author>Yasuda</author>
+                    <volume>5</volume>
+                    <issue>1</issue>
+                    <first_page>56</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.jomh.2007.12.004</doi>
+                    <article_title>Diagnostic significance of salivary testosterone measurement revisited: Using liquid chromatography/mass spectrometry and enzyme-linked immunosorbent assay</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.43">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Welker</author>
+                    <volume>71</volume>
+                    <first_page>180</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.05.022</doi>
+                    <article_title>A comparison of salivary testosterone measurement using immunoassays and tandem mass spectrometry</article_title>
+                  </citation>
+                  <citation key="2017010309354629000_114.1.78.44">
+                    <doi>10.1016/j.psyneuen.2012.04.019</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

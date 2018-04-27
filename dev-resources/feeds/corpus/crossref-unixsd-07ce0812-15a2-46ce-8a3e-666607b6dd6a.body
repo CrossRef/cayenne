@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="book_title">10.5555/test5</doi>
+        <crm-item name="publisher-name" type="string">Test accounts</crm-item>
+        <crm-item name="member-id" type="number">7822</crm-item>
+        <crm-item name="citation-id" type="number">36537799</crm-item>
+        <crm-item name="series-id" type="number">3012786</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2018030508120001</crm-item>
+        <crm-item name="owner-prefix" type="string">10.5555</crm-item>
+        <crm-item name="last-update" type="date">2018-03-19T20:42:34Z</crm-item>
+        <crm-item name="created" type="date">2009-03-10T18:21:05Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <book book_type="edited_book">
+              <book_set_metadata language="en">
+                <set_metadata>
+                  <titles>
+                    <title>Sample Set Title</title>
+                  </titles>
+                  <isbn media_type="electronic">057108989 5</isbn>
+                  <isbn media_type="print">0064410145</isbn>
+                  <part_number>33-6</part_number>
+                  <doi_data>
+                    <doi>10.5555/test5</doi>
+                    <resource>http://www.example.org/crossref</resource>
+                    <collection property="crawler-based">
+                      <item crawler="iParadigms">
+                        <resource>http://www.crossref.org/test5</resource>
+                      </item>
+                    </collection>
+                  </doi_data>
+                </set_metadata>
+                <titles>
+                  <title>Sample Volume Title</title>
+                </titles>
+                <volume>1</volume>
+                <edition_number>2</edition_number>
+                <publication_date media_type="print">
+                  <year>2007</year>
+                </publication_date>
+                <publisher>
+                  <publisher_name>Sample Publisher</publisher_name>
+                </publisher>
+                <doi_data>
+                  <doi>10.5555/test2</doi>
+                  <resource>http://www.example.org/crossref</resource>
+                </doi_data>
+              </book_set_metadata>
+            </book>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.psyneuen.2016.11.034</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">86645128</crm-item>
+        <crm-item name="journal-id" type="number">1841</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170216083203000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T05:03:55Z</crm-item>
+        <crm-item name="created" type="date">2016-12-01T20:03:06Z</crm-item>
+        <crm-item name="citedby-count" type="number">2</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Psychoneuroendocrinology</full_title>
+                <abbrev_title>Psychoneuroendocrinology</abbrev_title>
+                <issn media_type="print">03064530</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>76</volume>
+                </journal_volume>
+                <special_numbering>C</special_numbering>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Corticotropin-releasing hormone and dopamine release in healthy individuals</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Doris</given_name>
+                    <surname>Payer</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Belinda</given_name>
+                    <surname>Williams</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Esmaeil</given_name>
+                    <surname>Mansouri</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Suzanna</given_name>
+                    <surname>Stevanovski</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Shinichiro</given_name>
+                    <surname>Nakajima</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Bernard</given_name>
+                    <surname>Le Foll</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Stephen</given_name>
+                    <surname>Kish</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sylvain</given_name>
+                    <surname>Houle</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Romina</given_name>
+                    <surname>Mizrahi</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Susan R.</given_name>
+                    <surname>George</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Tony P.</given_name>
+                    <surname>George</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Isabelle</given_name>
+                    <surname>Boileau</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>192</first_page>
+                  <last_page>196</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0306453016309659</item_number>
+                  <identifier id_type="pii">S0306453016309659</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>psyneuen-journal.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.jp</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.es</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.com.au</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>clinicalkey.fr</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion label="This article is maintained by " name="publisher">Elsevier</assertion>
+                    <assertion label="Article Title" name="articletitle">Corticotropin-releasing hormone and dopamine release in healthy individuals</assertion>
+                    <assertion label="Journal Title" name="journaltitle">Psychoneuroendocrinology</assertion>
+                    <assertion label="CrossRef DOI link to publisher maintained version" name="articlelink">http://dx.doi.org/10.1016/j.psyneuen.2016.11.034</assertion>
+                    <assertion label="Content Type" name="content_type">article</assertion>
+                    <assertion label="Copyright" name="copyright">© 2016 Elsevier Ltd. All rights reserved.</assertion>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.psyneuen.2016.11.034</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0306453016309659</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0306453016309659?httpAccept=text/plain</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0306453016309659?httpAccept=text/xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

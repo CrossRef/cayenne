@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1093/ijnp/pyw101</doi>
+        <crm-item name="publisher-name" type="string">Oxford University Press (OUP)</crm-item>
+        <crm-item name="prefix-name" type="string">Oxford University Press</crm-item>
+        <crm-item name="member-id" type="number">286</crm-item>
+        <crm-item name="citation-id" type="number">86173393</crm-item>
+        <crm-item name="journal-id" type="number">6040</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016120817451613000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1093</crm-item>
+        <crm-item name="last-update" type="date">2017-08-24T09:57:32Z</crm-item>
+        <crm-item name="created" type="date">2016-11-04T20:05:38Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>International Journal of Neuropsychopharmacology</full_title>
+                <abbrev_title>IJNPPY</abbrev_title>
+                <issn media_type="print">1461-1457</issn>
+                <issn media_type="electronic">1469-5111</issn>
+              </journal_metadata>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Does Methylphenidate Reduce Testosterone Levels in Humans? A Prospective Study in Children with Attention-Deficit/Hyperactivity Disorder</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Liang-Jen</given_name>
+                    <surname>Wang</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Miao-Chun</given_name>
+                    <surname>Chou</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Wen-Jiun</given_name>
+                    <surname>Chou</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Min-Jing</given_name>
+                    <surname>Lee</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Pao-Yen</given_name>
+                    <surname>Lin</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sheng-Yu</given_name>
+                    <surname>Lee</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Yi-Hsuan</given_name>
+                    <surname>Lee</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>05</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>pyw101</first_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="pisa">ijnp;pyw101v2</item_number>
+                  <identifier id_type="doi">10.1093/ijnp/pyw101</identifier>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.1093/ijnp/pyw101</doi>
+                  <timestamp>2016120817451613000</timestamp>
+                  <resource>https://academic.oup.com/ijnp/article-lookup/doi/10.1093/ijnp/pyw101</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://academic.oup.com/ijnp/article-pdf/20/3/219/14095692/pyw101.pdf</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="2016120817451613000_pyw101v2.1">
+                    <doi>10.1196/annals.1369.005</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.2">
+                    <journal_title>J Child Adolesc Psychopharmacol</journal_title>
+                    <author>Akaltun</author>
+                    <volume>26</volume>
+                    <first_page>181</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1089/cap.2015.0209</doi>
+                    <article_title>Report of a 14-year-old boy whose testosterone level decreased after starting on methylphenidate</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.3">
+                    <journal_title>Horm Res Paediatr</journal_title>
+                    <author>Albin</author>
+                    <volume>80</volume>
+                    <first_page>100</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1159/000353761</doi>
+                    <article_title>Pubertal growth and serum testosterone and estradiol levels in boys</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.4">
+                    <journal_title>Pediatr Endocrinol Rev</journal_title>
+                    <author>Albrecht</author>
+                    <volume>5</volume>
+                    <first_page>599</first_page>
+                    <cYear>2007</cYear>
+                    <article_title>Laboratory testing of gonadal steroids in children</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.5">
+                    <doi>10.1371/journal.pone.0022059</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.6">
+                    <doi>10.1080/09297040590951587</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.7">
+                    <journal_title>JAMA Psychiatry</journal_title>
+                    <author>Burcu</author>
+                    <volume>73</volume>
+                    <first_page>992</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1001/jamapsychiatry.2016.1182</doi>
+                    <article_title>Trends in stimulant medication use in commercially insured youths and adults, 2010–2014</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.8">
+                    <doi>10.1177/1073191107313888</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.9">
+                    <doi>10.1177/0960327110394224</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.10">
+                    <doi>10.1016/j.fertnstert.2005.03.071</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.11">
+                    <journal_title>Psychopharmacol Bull</journal_title>
+                    <author>Conners</author>
+                    <volume>21</volume>
+                    <first_page>891</first_page>
+                    <cYear>1985</cYear>
+                    <article_title>The computerized continuous performance test</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.12">
+                    <unstructured_citation>Conners CK (2004) Conners’ Continuous Performance Test II (CPT-II) for Windows Technical Guide and Software Manual. MHS, NY.</unstructured_citation>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.13">
+                    <doi>10.1111/jcpp.12036</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.14">
+                    <doi>10.1016/j.biopsycho.2009.01.004</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.15">
+                    <doi>10.1001/jama.1992.03490170092032</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.16">
+                    <journal_title>J Reprod Infertil</journal_title>
+                    <author>Fazelipour</author>
+                    <volume>13</volume>
+                    <first_page>232</first_page>
+                    <cYear>2012</cYear>
+                    <article_title>The effect of chronic administration of methylphenidate on morphometric parameters of testes and fertility in male mice</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.17">
+                    <journal_title>Turk J Med Sci</journal_title>
+                    <author>Fazelipour</author>
+                    <volume>44</volume>
+                    <first_page>554</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3906/sag-1301-109</doi>
+                    <article_title>Evaluation of histopathologic and histomorphometric changes of testicular tissue and gonadotropin levels following consumption of methylphenidate in male mice</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.18">
+                    <doi>10.1056/NEJMcp1307215</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.19">
+                    <doi>10.1016/j.ntt.2010.03.007</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.20">
+                    <doi>10.1080/j.1440-1614.1999.00610.x</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.21">
+                    <doi>10.1002/mpr.237</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.22">
+                    <doi>10.1093/jpepsy/jsn133</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.23">
+                    <doi>10.1111/j.1467-8624.2007.01041.x</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.24">
+                    <journal_title>Endocrinol Jpn</journal_title>
+                    <author>Kaneyuki</author>
+                    <volume>26</volume>
+                    <first_page>345</first_page>
+                    <cYear>1979</cYear>
+                    <doi provider="crossref">10.1507/endocrj1954.26.345</doi>
+                    <article_title>Sex hormones metabolism in the brain: influence of central acting drugs on 5 alpha-reduction in rat diencephalon</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.25">
+                    <doi>10.1097/00004583-199707000-00021</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.26">
+                    <doi>10.1016/j.bone.2012.03.011</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.27">
+                    <doi>10.1007/s10578-007-0081-6</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.28">
+                    <doi>10.1159/000073626</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.29">
+                    <doi>10.1007/s40263-012-0019-9</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.30">
+                    <doi>10.1073/pnas.1102187108</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.31">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>Montagnini</author>
+                    <volume>133</volume>
+                    <first_page>122</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2014.05.016</doi>
+                    <article_title>Effects of repeated administration of methylphenidate on reproductive parameters in male rats</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.32">
+                    <doi>10.1016/j.ntt.2014.01.004</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.33">
+                    <doi>10.5694/mja12.10931</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.34">
+                    <journal_title>F1000Res</journal_title>
+                    <author>Ramasamy</author>
+                    <volume>3</volume>
+                    <first_page>207</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Case report: testicular failure possibly associated with chronic use of methylphenidate</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.35">
+                    <doi provider="crossref">10.1515/ijamh-2015-0047</doi>
+                    <unstructured_citation>Rice TR (2015) Postnatal testosterone may be an important mediator of the association between prematurity and male neurodevelopmental disorders: a hypothesis. Int J Adolesc Med Health.</unstructured_citation>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.36">
+                    <doi>10.1016/j.euroneuro.2014.11.020</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.37">
+                    <doi>10.1159/000364879</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.38">
+                    <doi>10.1016/S0149-7634(99)00061-5</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.39">
+                    <doi provider="crossref">10.1002/14651858.CD009885.pub2</doi>
+                    <unstructured_citation>Storebo OJ Ramstad E Krogh HB Nilausen TD Skoog M Holmskov M Rosendal S Groth C Magnusson FL Moreira-Maia CR Gillies D Buch Rasmussen K Gauci D Zwi M Kirubakaran R Forsbol B Simonsen E Gluud C (2015) Methylphenidate for children and adolescents with attention deficit hyperactivity disorder (ADHD). Cochrane Database Syst Rev:CD009885.</unstructured_citation>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.40">
+                    <unstructured_citation>Thapar A Cooper M (2015) Attention deficit hyperactivity disorder. Lancet.</unstructured_citation>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.41">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>van der Meij</author>
+                    <volume>72</volume>
+                    <first_page>72</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.06.005</doi>
+                    <article_title>Basal testosterone, leadership and dominance: a field study and meta-analysis</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.42">
+                    <doi>10.1017/S1461145711000095</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.43">
+                    <doi>10.1016/j.psyneuen.2011.02.014</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.44">
+                    <journal_title>J Child Adolesc Psychopharmacol</journal_title>
+                    <author>Wang</author>
+                    <volume>24</volume>
+                    <first_page>336</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1089/cap.2013.0122</doi>
+                    <article_title>Salivary neurosteroid levels and behavioural profiles of children with attention-deficit/hyperactivity disorder during six months of methylphenidate treatment</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.45">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Welker</author>
+                    <volume>71</volume>
+                    <first_page>180</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.05.022</doi>
+                    <article_title>A comparison of salivary testosterone measurement using immunoassays and tandem mass spectrometry</article_title>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.46">
+                    <doi>10.1097/JCP.0b013e318173312f</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.47">
+                    <doi>10.1111/pcn.12014</doi>
+                  </citation>
+                  <citation key="2016120817451613000_pyw101v2.48">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Yang</author>
+                    <volume>9</volume>
+                    <first_page>e106101</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0106101</doi>
+                    <article_title>Development of a physiologically based model to describe the pharmacokinetics of methylphenidate in juvenile and adult humans and nonhuman primates</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

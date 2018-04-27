@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1002/erv.2485</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (John Wiley &amp; Sons)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86039934</crm-item>
+        <crm-item name="journal-id" type="number">36</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161214032832144</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1002</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T02:17:39Z</crm-item>
+        <crm-item name="created" type="date">2016-10-28T02:02:36Z</crm-item>
+        <crm-item name="citedby-count" type="number">2</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>European Eating Disorders Review</full_title>
+                <abbrev_title>Eur. Eat. Disorders Rev.</abbrev_title>
+                <issn>10724133</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>25</volume>
+                </journal_volume>
+                <issue>1</issue>
+                <doi_data>
+                  <doi>10.1002/erv.v25.1</doi>
+                  <resource>http://doi.wiley.com/10.1002/erv.v25.1</resource>
+                </doi_data>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Differences in Cortisol Awakening Response between Binge-Purging and Restrictive Patients with Anorexia Nervosa</title>
+                  <subtitle>CAR in Binge-Purging Anorexia Nervosa</subtitle>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Alessio Maria</given_name>
+                    <surname>Monteleone</surname>
+                    <affiliation>Department of Psychiatry; University of Naples SUN; Naples Italy</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Palmiero</given_name>
+                    <surname>Monteleone</surname>
+                    <affiliation>Department of Psychiatry; University of Naples SUN; Naples Italy</affiliation>
+                    <affiliation>Department of Medicine, Surgery and Dentistry ‘Scuola Medica Salernitana’, Section of Neurosciences; University of Salerno; Salerno Italy</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Francesca</given_name>
+                    <surname>Marciello</surname>
+                    <affiliation>Department of Medicine, Surgery and Dentistry ‘Scuola Medica Salernitana’, Section of Neurosciences; University of Salerno; Salerno Italy</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Francesca</given_name>
+                    <surname>Pellegrino</surname>
+                    <affiliation>Department of Psychiatry; University of Naples SUN; Naples Italy</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Giovanni</given_name>
+                    <surname>Castellini</surname>
+                    <affiliation>Department of Neurosciences, Unit of Psychiatry; University of Florence; Florence Italy</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mario</given_name>
+                    <surname>Maj</surname>
+                    <affiliation>Department of Psychiatry; University of Naples SUN; Naples Italy</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>27</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>13</first_page>
+                  <last_page>18</last_page>
+                </pages>
+                <archive_locations>
+                  <archive name="Portico" />
+                </archive_locations>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="tdm">http://doi.wiley.com/10.1002/tdm_license_1</ai:license_ref>
+                  <ai:license_ref applies_to="vor" start_date="2016-10-27">http://onlinelibrary.wiley.com/termsAndConditions</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1002/erv.2485</doi>
+                  <resource>http://doi.wiley.com/10.1002/erv.2485</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1002/erv.2485/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Ferv.2485</resource>
+                    </item>
+                    <item>
+                      <resource content_version="vor">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Ferv.2485</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1002/erv.2485-BIB0001|erv2485-cit-0001">
+                    <author>Bernstein</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0145-2134(02)00541-0</doi>
+                    <article_title>Development and validation of a brief screening version of the Childhood Trauma Questionnaire</article_title>
+                    <journal_title>Child Abuse and Neglect</journal_title>
+                    <volume>27</volume>
+                    <first_page>169</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0002|erv2485-cit-0002">
+                    <author>Chapman</author>
+                    <cYear>2007</cYear>
+                    <article_title>Adverse childhood events as risk factors for negative mental health outcomes</article_title>
+                    <journal_title>Psychiatric Annals</journal_title>
+                    <volume>37</volume>
+                    <first_page>359</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0003|erv2485-cit-0003">
+                    <author>Dallman</author>
+                    <cYear>2010</cYear>
+                    <article_title>Stress-induced obesity and the emotional nervous system</article_title>
+                    <journal_title>Trends in Endocrinology and Metabolism</journal_title>
+                    <volume>21</volume>
+                    <first_page>59</first_page>
+                    <doi>10.1016/j.tem.2009.10.004</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0004|erv2485-cit-0004">
+                    <author>Daskalakis</author>
+                    <cYear>2013</cYear>
+                    <article_title>Endocrine aspects of post-traumatic stress disorder and implications for diagnosis and treatment</article_title>
+                    <journal_title>Endocrinology and Metabolism Clinics of North America</journal_title>
+                    <volume>42</volume>
+                    <first_page>503</first_page>
+                    <doi>10.1016/j.ecl.2013.05.004</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0005|erv2485-cit-0005">
+                    <author>Díaz-Marsá</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1017/S1092852900021507</doi>
+                    <article_title>Findings with 025 mg dexamethasone suppression test in eating disorders: Association with childhood trauma</article_title>
+                    <journal_title>CNS Spectrums</journal_title>
+                    <volume>12</volume>
+                    <first_page>675</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0006|erv2485-cit-0006">
+                    <author>Díaz-Marsá</author>
+                    <cYear>2008</cYear>
+                    <article_title>Enhanced cortisol suppression in eating disorders with impulsive personality features</article_title>
+                    <journal_title>Psychiatry Research</journal_title>
+                    <volume>28</volume>
+                    <first_page>93</first_page>
+                    <doi>10.1016/j.psychres.2007.06.020</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0007|erv2485-cit-0007">
+                    <author>Dixon</author>
+                    <cYear>1985</cYear>
+                    <volume_title>BMDP statistical software</volume_title>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0008|erv2485-cit-0008">
+                    <author>Dube</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0091-7435(03)00123-3</doi>
+                    <article_title>The impact of adverse childhood experiences on health problems: Evidence from four birth cohorts dating back to 1900</article_title>
+                    <journal_title>Preventive Medicine</journal_title>
+                    <volume>37</volume>
+                    <first_page>268</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0009|erv2485-cit-0009">
+                    <author>Duong</author>
+                    <cYear>2012</cYear>
+                    <article_title>High cortisol levels are associated with low quality food choice in type 2 diabetes</article_title>
+                    <journal_title>Endocrine</journal_title>
+                    <volume>41</volume>
+                    <first_page>76</first_page>
+                    <doi>10.1007/s12020-011-9527-5</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0010|erv2485-cit-0010">
+                    <author>Epel</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(00)00035-4</doi>
+                    <article_title>Stress may add bite to appetite in women: A laboratory study of stress-induced cortisol and eating behaviour</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>26</volume>
+                    <first_page>37</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0011|erv2485-cit-0011">
+                    <author>Fekedulegn</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1097/PSY.0b013e31814c405c</doi>
+                    <article_title>Area under the curve and other summary indicators of repeated waking cortisol measurements</article_title>
+                    <journal_title>Psychosomatic Medicine</journal_title>
+                    <volume>69</volume>
+                    <first_page>651</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0012|erv2485-cit-0012">
+                    <author>First</author>
+                    <cYear>1995</cYear>
+                    <volume_title>Structured Clinical Interview for DSM-IV Axis I Disorders-Patient Ed (SCID-I/P Version 2)</volume_title>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0013|erv2485-cit-0013">
+                    <author>First</author>
+                    <cYear>1996</cYear>
+                    <volume_title>Structured Clinical Interview for DSM-IV Axis I Disorders-Non-Patient Ed (SCID-I/NP Version 2)</volume_title>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0014|erv2485-cit-0014">
+                    <author>Garner</author>
+                    <cYear>1991</cYear>
+                    <volume_title>Eating Disorder Inventory-2 Professional Manual</volume_title>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0015|erv2485-cit-0015">
+                    <author>Gluck</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.appet.2005.05.004</doi>
+                    <article_title>Stress response and binge eating disorder</article_title>
+                    <journal_title>Appetite</journal_title>
+                    <volume>46</volume>
+                    <first_page>26</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0016|erv2485-cit-0016">
+                    <author>Heim</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(01)01157-X</doi>
+                    <article_title>The role of childhood trauma in the neurobiology of mood and anxiety disorders: Preclinical and clinical studies</article_title>
+                    <journal_title>Biological Psychiatry</journal_title>
+                    <volume>49</volume>
+                    <first_page>1023</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0017|erv2485-cit-0017">
+                    <author>Jacobi</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.130.1.19</doi>
+                    <article_title>Coming to terms with risk factors for eating disorders: Application of risk terminology and suggestions for a general taxonomy</article_title>
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <volume>130</volume>
+                    <first_page>19</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0018|erv2485-cit-0018">
+                    <author>Kessler</author>
+                    <cYear>2010</cYear>
+                    <article_title>Childhood adversities and adult psychopathology in the WHO World Mental Health Surveys</article_title>
+                    <journal_title>British Journal of Psychiatry</journal_title>
+                    <volume>197</volume>
+                    <first_page>378</first_page>
+                    <doi>10.1192/bjp.bp.110.080499</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0019|erv2485-cit-0019">
+                    <author>Levine</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1007/BF02883330</doi>
+                    <article_title>Eating behavior following stress in women with and without bulimic symptoms</article_title>
+                    <journal_title>Annals of Behavioral Medecine Spring</journal_title>
+                    <volume>19</volume>
+                    <first_page>132</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0020|erv2485-cit-0020">
+                    <author>Lo Sauro</author>
+                    <cYear>2008</cYear>
+                    <article_title>Stress, hypothalamic-pituitary-adrenal axis and eating disorders</article_title>
+                    <journal_title>Neuropsychobiology</journal_title>
+                    <volume>57</volume>
+                    <first_page>95</first_page>
+                    <doi>10.1159/000138912</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0021|erv2485-cit-0021">
+                    <author>Monteleone</author>
+                    <cYear>2016</cYear>
+                    <article_title>Underweight subjects with anorexia nervosa have an enhanced salivary cortisol response not seen in weight restored subjects with anorexia nervosa</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>70</volume>
+                    <first_page>118</first_page>
+                    <doi>10.1016/j.psyneuen.2016.05.004</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0022|erv2485-cit-0022">
+                    <author>Monteleone</author>
+                    <cYear>2015</cYear>
+                    <article_title>Childhood trauma and cortisol awakening response in symptomatic patients with anorexia nervosa and bulimia nervosa</article_title>
+                    <journal_title>International Journal of Eating Disorders</journal_title>
+                    <volume>48</volume>
+                    <first_page>615</first_page>
+                    <doi>10.1002/eat.22375</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0023|erv2485-cit-0023">
+                    <author>Monteleone</author>
+                    <cYear>2014</cYear>
+                    <article_title>Cortisol awakening response in patients with anorexia nervosa or bulimia nervosa: Relationships to sensitivity to reward and sensitivity to punishment</article_title>
+                    <journal_title>Psychological Medicine</journal_title>
+                    <volume>44</volume>
+                    <first_page>2653</first_page>
+                    <doi>10.1017/S0033291714000270</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0024|erv2485-cit-0024">
+                    <author>Newman</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2006.11.006</doi>
+                    <article_title>Daily hassles and eating behaviour: The role of cortisol reactivity status</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>32</volume>
+                    <first_page>125</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0025|erv2485-cit-0025">
+                    <author>Nunez-Navarro</author>
+                    <cYear>2011</cYear>
+                    <article_title>Differentiating purging and nonpurging bulimia nervosa and binge eating disorder</article_title>
+                    <journal_title>International Journal Eating Disorders</journal_title>
+                    <volume>44</volume>
+                    <first_page>488</first_page>
+                    <doi>10.1002/eat.20823</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0026|erv2485-cit-0026">
+                    <author>Pike</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.psychres.2005.10.006</doi>
+                    <article_title>Antecedent life events of binge-eating disorder</article_title>
+                    <journal_title>Psychiatry Research</journal_title>
+                    <volume>142</volume>
+                    <first_page>19</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0027|erv2485-cit-0027">
+                    <author>Pruessner</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1097/01.PSY.0000040950.22044.10</doi>
+                    <article_title>Self-reported depressive symptoms and stress levels in healthy young men: Associations with the cortisol response to awakening</article_title>
+                    <journal_title>Psychosomatic Medicine</journal_title>
+                    <volume>65</volume>
+                    <first_page>92</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0028|erv2485-cit-0028">
+                    <author>Rojo</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1097/01.psy.0000227749.58726.41</doi>
+                    <article_title>Influence of stress in the onset of eating disorders: Data from a two-stage epidemiologic controlled study</article_title>
+                    <journal_title>Psychosomatic Medicine</journal_title>
+                    <volume>68</volume>
+                    <first_page>628</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0029|erv2485-cit-0029">
+                    <author>Rosenberg</author>
+                    <cYear>2013</cYear>
+                    <article_title>Cortisol response and desire to binge following psychological stress: Comparison between obese subjects with and without binge eating disorder</article_title>
+                    <journal_title>Psychiatry Research</journal_title>
+                    <volume>208</volume>
+                    <first_page>156</first_page>
+                    <doi>10.1016/j.psychres.2012.09.050</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0030|erv2485-cit-0030">
+                    <author>Rosmond</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/sj.ijo.0801173</doi>
+                    <article_title>Food-induced cortisol secretion in relation to anthropometric, metabolic and haemodynamic variables in men</article_title>
+                    <journal_title>International Journal of Obesity and Related Metabolic Disorders</journal_title>
+                    <volume>24</volume>
+                    <first_page>416</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0031|erv2485-cit-0031">
+                    <author>Stalder</author>
+                    <cYear>2016</cYear>
+                    <article_title>Assessment of the cortisol awakening response: Expert consensus guidelines</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>63</volume>
+                    <first_page>414</first_page>
+                    <doi>10.1016/j.psyneuen.2015.10.010</doi>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0032|erv2485-cit-0032">
+                    <author>Steiger</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1001/archpsyc.58.9.837</doi>
+                    <article_title>Association of serotonin and cortisol indices with childhood abuse in bulimia nervosa</article_title>
+                    <journal_title>Archives of General Psychiatry</journal_title>
+                    <volume>58</volume>
+                    <first_page>837</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0033|erv2485-cit-0033">
+                    <author>Tataranni</author>
+                    <cYear>1996</cYear>
+                    <article_title>Effects of glucocorticoids on energy metabolism and food intake in humans</article_title>
+                    <journal_title>American Journal of Physiology</journal_title>
+                    <volume>271</volume>
+                    <first_page>E317</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0034|erv2485-cit-0034">
+                    <author>Wade</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1002/eat.20314</doi>
+                    <article_title>A retrospective comparison of purging type disorders, eating disorder not otherwise specified and bulimia nervosa</article_title>
+                    <journal_title>International Journal Eating Disorders</journal_title>
+                    <volume>40</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0035|erv2485-cit-0035">
+                    <author>Walker</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0002-9343(99)00235-1</doi>
+                    <article_title>Adult health status of women with histories of childhood abuse and neglect</article_title>
+                    <journal_title>The American Journal of Medicine</journal_title>
+                    <volume>107</volume>
+                    <first_page>332</first_page>
+                  </citation>
+                  <citation key="10.1002/erv.2485-BIB0036|erv2485-cit-0036">
+                    <author>Wild</author>
+                    <cYear>2014</cYear>
+                    <article_title>Trajectories of the cortisol awakening responses during weight gain in anorexia nervosa patients with severe and less severe symptoms</article_title>
+                    <journal_title>International Journal of Psychophysiology</journal_title>
+                    <volume>94</volume>
+                    <first_page>272</first_page>
+                    <doi>10.1016/j.ijpsycho.2014.09.010</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

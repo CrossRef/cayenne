@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.3389/fnbeh.2016.00221</doi>
+        <crm-item name="publisher-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="prefix-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="member-id" type="number">1965</crm-item>
+        <crm-item name="citation-id" type="number">86323393</crm-item>
+        <crm-item name="journal-id" type="number">74885</crm-item>
+        <crm-item name="deposit-timestamp" type="number">201611140308</crm-item>
+        <crm-item name="owner-prefix" type="string">10.3389</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:29:44Z</crm-item>
+        <crm-item name="created" type="date">2016-11-14T03:08:14Z</crm-item>
+        <crm-item name="citedby-count" type="number">9</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>Frontiers in Behavioral Neuroscience</full_title>
+                <abbrev_title>Front. Behav. Neurosci.</abbrev_title>
+                <issn media_type="electronic">1662-5153</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>14</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>10</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Challenges to the Pair Bond: Neural and Hormonal Effects of Separation and Reunion in a Monogamous Primate</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Katie</given_name>
+                    <surname>Hinde</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Chelsea</given_name>
+                    <surname>Muth</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Nicole</given_name>
+                    <surname>Maninger</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Benjamin J.</given_name>
+                    <surname>Ragen</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Rebecca H.</given_name>
+                    <surname>Larke</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Michael R.</given_name>
+                    <surname>Jarcho</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Sally P.</given_name>
+                    <surname>Mendoza</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>William A.</given_name>
+                    <surname>Mason</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Emilio</given_name>
+                    <surname>Ferrer</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Simon R.</given_name>
+                    <surname>Cherry</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Marina L.</given_name>
+                    <surname>Fisher-Phelps</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Karen L.</given_name>
+                    <surname>Bales</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>14</day>
+                  <year>2016</year>
+                </publication_date>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.3389/crossmark-policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>frontiersin.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="funder_name">
+                        National Institutes of Health
+                        <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000002</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="award_number">HD053555</fr:assertion>
+                      <fr:assertion name="award_number">OD011107</fr:assertion>
+                    </fr:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.3389/fnbeh.2016.00221</doi>
+                  <resource>http://journal.frontiersin.org/article/10.3389/fnbeh.2016.00221/full</resource>
+                  <collection property="crawler-based" setbyID="fron">
+                    <item crawler="iParadigms">
+                      <resource>http://journal.frontiersin.org/article/10.3389/fnbeh.2016.00221/full</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <volume_title>Patterns of Attachment.</volume_title>
+                    <author>Ainsworth</author>
+                    <cYear>1978</cYear>
+                  </citation>
+                  <citation key="B3">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Bales</author>
+                    <volume>66</volume>
+                    <first_page>73</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1002/ajp.20151</doi>
+                    <article_title>Validation of oxytocin and vasopressin plasma assays for primate: what can blood tell us?</article_title>
+                  </citation>
+                  <citation key="B4">
+                    <volume_title>New Directions in Relationship Research: Integrating Across Disciplines and Theoretical Approaches</volume_title>
+                    <author>Bales</author>
+                    <first_page>91</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>New directions in the neurobiology and physiology of paternal care</article_title>
+                  </citation>
+                  <citation key="B5">
+                    <journal_title>Brain Res.</journal_title>
+                    <author>Bales</author>
+                    <volume>1184</volume>
+                    <first_page>245</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.brainres.2007.09.087</doi>
+                    <article_title>Neural correlates of pair-bonding in a monogamous primate</article_title>
+                  </citation>
+                  <citation key="B2">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Bales</author>
+                    <volume>77</volume>
+                    <first_page>249</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.yhbeh.2015.05.021</doi>
+                    <article_title>Fathering in rodents: neurobiological substrates and consequences for offspring</article_title>
+                  </citation>
+                  <citation key="B6">
+                    <journal_title>Crit. Rev. Neurobiol.</journal_title>
+                    <author>Barberis</author>
+                    <volume>10</volume>
+                    <first_page>119</first_page>
+                    <cYear>1996</cYear>
+                    <doi>10.1615/critrevneurobiol.v10.i1.60</doi>
+                    <article_title>Vasopressin and oxytocin receptors in the central nervous system</article_title>
+                  </citation>
+                  <citation key="B7">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>Born</author>
+                    <volume>5</volume>
+                    <first_page>514</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1038/nn849</doi>
+                    <article_title>Sniffing neuropeptides: a transnasal approach to the human brain</article_title>
+                  </citation>
+                  <citation key="B8">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Bosch</author>
+                    <volume>64</volume>
+                    <first_page>66</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2015.11.011</doi>
+                    <article_title>Oxytocin in the nucleus accumbens shell reverses CRFR2-evoked passive stress-coping after partner loss in monogamous male prairie voles</article_title>
+                  </citation>
+                  <citation key="B9">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Bosch</author>
+                    <volume>34</volume>
+                    <first_page>1406</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1038/npp.2008.154</doi>
+                    <article_title>The CRF system mediates increased passive stress-coping behavior following the loss of a bonded partner in a monogamous rodent</article_title>
+                  </citation>
+                  <citation key="B10">
+                    <volume_title>Attachment and Loss.</volume_title>
+                    <author>Bowlby</author>
+                    <cYear>1969</cYear>
+                  </citation>
+                  <citation key="B11">
+                    <journal_title>Stat. Med.</journal_title>
+                    <author>Burton</author>
+                    <volume>17</volume>
+                    <first_page>1261</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1002/(SICI)1097-0258(19980615)17:111261::AID-SIM8463.0.CO;2-Z</doi>
+                    <article_title>Extending the simple linear regression model to account for correlated responses: an introduction to generalized estimating equations and multi-level mixed modeling</article_title>
+                  </citation>
+                  <citation key="B12">
+                    <journal_title>Perspect. Psychol. Sci.</journal_title>
+                    <author>Cacioppo</author>
+                    <volume>10</volume>
+                    <first_page>202</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1177/1745691614564876</doi>
+                    <article_title>Loneliness across phylogeny and a call for comparative studies and animal models</article_title>
+                  </citation>
+                  <citation key="B13">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Campbell</author>
+                    <volume>98</volume>
+                    <first_page>367</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.physbeh.2009.06.014</doi>
+                    <article_title>Costs of pair-bonding and parenting in male prairie voles (Microtus ochrogaster)</article_title>
+                  </citation>
+                  <citation key="B14">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Carp</author>
+                    <volume>78</volume>
+                    <first_page>326</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1002/ajp.22450</doi>
+                    <article_title>Development of a partner preference test that differentiates between established pair bonds and other relationships in socially monogamous titi monkeys (Callicebus cupreus)</article_title>
+                  </citation>
+                  <citation key="B15">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Carter</author>
+                    <volume>23</volume>
+                    <first_page>779</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1016/s0306-4530(98)00055-9</doi>
+                    <article_title>Neuroendocrine perspectives on social attachment and love</article_title>
+                  </citation>
+                  <citation key="B16">
+                    <volume_title>Neurobiological Basis of Energetic Demands of Paternal Care in Prairie Voles.</volume_title>
+                    <author>Conley</author>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="B17">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Ebner</author>
+                    <volume>30</volume>
+                    <first_page>223</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1038/sj.npp.1300607</doi>
+                    <article_title>Release of oxytocin in the rat central amygdala modulates stress-coping behavior and the release of excitatory amino acids</article_title>
+                  </citation>
+                  <citation key="B18">
+                    <journal_title>Annu Rev. Psychol.</journal_title>
+                    <author>Eisenberger</author>
+                    <volume>66</volume>
+                    <first_page>601</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1146/annurev-psych-010213-115146</doi>
+                    <article_title>Social pain and the brain: controversies, questions and where to go from here</article_title>
+                  </citation>
+                  <citation key="B19">
+                    <journal_title>Proc. Biol. Sci.</journal_title>
+                    <author>Engh</author>
+                    <volume>273</volume>
+                    <first_page>707</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1098/rspb.2005.3378</doi>
+                    <article_title>Behavioural and hormonal responses to predation in female chacma baboons (Papio hamadryas ursinus)</article_title>
+                  </citation>
+                  <citation key="B20">
+                    <journal_title>Dev. Sci.</journal_title>
+                    <author>Feldman</author>
+                    <volume>14</volume>
+                    <first_page>752</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1111/j.1467-7687.2010.01021.x</doi>
+                    <article_title>Maternal and paternal plasma, salivary and urinary oxytocin and parent-infant synchrony: considering stress and affiliation components of human bonding</article_title>
+                  </citation>
+                  <citation key="B21">
+                    <journal_title>Annu. Rev. Anthropol.</journal_title>
+                    <author>Fernandez-Duque</author>
+                    <volume>38</volume>
+                    <first_page>115</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1146/annurev-anthro-091908-164334</doi>
+                    <article_title>The biology of paternal care in human and non-human primates</article_title>
+                  </citation>
+                  <citation key="B23">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Freeman</author>
+                    <volume>66</volume>
+                    <first_page>185</first_page>
+                    <cYear>2016a</cYear>
+                    <doi>10.1016/j.psyneuen.2016.01.014</doi>
+                    <article_title>Plasma and CSF oxytocin levels after intranasal and intravenous oxytocin in awake macaques</article_title>
+                  </citation>
+                  <citation key="B24">
+                    <journal_title>Soc. Neurosci.</journal_title>
+                    <author>Freeman</author>
+                    <volume>20</volume>
+                    <first_page>1</first_page>
+                    <cYear>2016b</cYear>
+                    <doi>10.1080/17470919.2016.1156570</doi>
+                    <article_title>Selective localization of oxytocin receptors and vasopressin 1a receptors in the human brainstem</article_title>
+                  </citation>
+                  <citation key="B25">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Freeman</author>
+                    <volume>273</volume>
+                    <first_page>12</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.neuroscience.2014.04.055</doi>
+                    <article_title>Neuroanatomical distribution of oxytocin and vasopressin 1a receptors in the socially monogamous coppery titi monkey (Callicebus cupreus)</article_title>
+                  </citation>
+                  <citation key="B22">
+                    <journal_title>J. Neuroendocrinol.</journal_title>
+                    <author>Freeman</author>
+                    <volume>28</volume>
+                    <first_page>4</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1111/jne.12382</doi>
+                    <article_title>Comparative perspectives on oxytocin and vasopressin receptor research in rodents and primates: translational implications</article_title>
+                  </citation>
+                  <citation key="B26">
+                    <journal_title>Brain Res.</journal_title>
+                    <author>Ge</author>
+                    <volume>927</volume>
+                    <first_page>204</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1016/s0006-8993(01)03346-7</doi>
+                    <article_title>Blockade effect of mu and kappa opioid antagonists on the anti-nociception induced by intra-periaqueductal grey injection of oxytocin in rats</article_title>
+                  </citation>
+                  <citation key="B27">
+                    <journal_title>Evol. Anthropol.</journal_title>
+                    <author>Gettler</author>
+                    <volume>23</volume>
+                    <first_page>146</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1002/evan.21412</doi>
+                    <article_title>Applying socioendocrinology to evolutionary models: fatherhood and physiology</article_title>
+                  </citation>
+                  <citation key="B28">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Gobrogge</author>
+                    <volume>76</volume>
+                    <first_page>91</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.yhbeh.2015.08.010</doi>
+                    <article_title>Neuropeptidergic regulation of pair-bonding and stress buffering: lessons from voles</article_title>
+                  </citation>
+                  <citation key="B29">
+                    <journal_title>Mol. Psychiatry</journal_title>
+                    <author>Gold</author>
+                    <volume>20</volume>
+                    <first_page>32</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1038/mp.2014.163</doi>
+                    <article_title>The organization of the stress system and its dysregulation in depressive illness</article_title>
+                  </citation>
+                  <citation key="B30">
+                    <journal_title>Psychophysiology</journal_title>
+                    <author>Gordon</author>
+                    <volume>45</volume>
+                    <first_page>349</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1111/j.1469-8986.2008.00649.x</doi>
+                    <article_title>Oxytocin and cortisol in romantically unattached young adults: associations with bonding and psychological distress</article_title>
+                  </citation>
+                  <citation key="B31">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Grippo</author>
+                    <volume>32</volume>
+                    <first_page>966</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.psyneuen.2007.07.004</doi>
+                    <article_title>Social isolation induces behavioral and neuroendocrine disturbances relevant to depression in female and male prairie voles</article_title>
+                  </citation>
+                  <citation key="B32">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>Gundel</author>
+                    <volume>160</volume>
+                    <first_page>1946</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1176/appi.ajp.160.11.1946</doi>
+                    <article_title>Functional neuroanatomy of grief: an FMRI study</article_title>
+                  </citation>
+                  <citation key="B33">
+                    <journal_title>J. Pers. Soc. Psychol.</journal_title>
+                    <author>Hazan</author>
+                    <volume>52</volume>
+                    <first_page>511</first_page>
+                    <cYear>1987</cYear>
+                    <doi>10.1037/0022-3514.52.3.511</doi>
+                    <article_title>Romantic love conceptualized as an attachment process</article_title>
+                  </citation>
+                  <citation key="B34">
+                    <volume_title>Longitudinal Data Analysis (Vol. 451).</volume_title>
+                    <author>Hedeker</author>
+                    <cYear>2006</cYear>
+                  </citation>
+                  <citation key="B35">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Hennessy</author>
+                    <volume>57</volume>
+                    <first_page>331</first_page>
+                    <cYear>1995</cYear>
+                    <doi>10.1016/0031-9384(94)00250-9</doi>
+                    <article_title>Endocrine sensitivity to novelty in squirrel monkeys and titi monkeys: species differences in characteristic modes of responding to the environment</article_title>
+                  </citation>
+                  <citation key="B36">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Johnson</author>
+                    <volume>79</volume>
+                    <first_page>8</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.yhbeh.2015.11.011</doi>
+                    <article_title>Central oxytocin receptors mediate mating-induced partner preferences and enhance correlated activaton across forebrain nuclei in male prairie voles</article_title>
+                  </citation>
+                  <citation key="B37">
+                    <journal_title>J. Neuroendocrinol.</journal_title>
+                    <author>Kenkel</author>
+                    <volume>24</volume>
+                    <first_page>874</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1111/j.1365-2826.2012.02301.x</doi>
+                    <article_title>Neuroendocrine and behavioural responses to exposure to an infant in male prairie voles</article_title>
+                  </citation>
+                  <citation key="B38">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>Kersting</author>
+                    <volume>166</volume>
+                    <first_page>1402</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1176/appi.ajp.2009.08121875</doi>
+                    <article_title>Neural activation underlying acute grief in women after the loss of an unborn child</article_title>
+                  </citation>
+                  <citation key="B39">
+                    <journal_title>Front. Neuroendocrinol.</journal_title>
+                    <author>Landgraf</author>
+                    <volume>25</volume>
+                    <first_page>150</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1016/j.yfrne.2004.05.001</doi>
+                    <article_title>Vasopressin and oxytocin release within the brain: a dynamic concept of multiple and variable modes of neuropeptide communication</article_title>
+                  </citation>
+                  <citation key="B40">
+                    <journal_title>Prostaglandins Leukot. Essent. Fatty Acids</journal_title>
+                    <author>Laugero</author>
+                    <volume>84</volume>
+                    <first_page>71</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.plefa.2010.12.003</doi>
+                    <article_title>Plasma omega 3 polyunsaturated fatty acid status and monounsaturated fatty acids are altered by chronic social stress and predict endocrine responses to acute stress in titi monkeys</article_title>
+                  </citation>
+                  <citation key="B42">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Mason</author>
+                    <volume>23</volume>
+                    <first_page>765</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1016/s0306-4530(98)00054-7</doi>
+                    <article_title>Generic aspects of primate attachments: parents, offspring and mates</article_title>
+                  </citation>
+                  <citation key="B43">
+                    <journal_title>Auton. Neurosci.</journal_title>
+                    <author>McNeal</author>
+                    <volume>180</volume>
+                    <first_page>9</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.autneu.2013.10.001</doi>
+                    <article_title>Disruption of social bonds induces behavioral and physiological dysregulation in male and female prairie voles</article_title>
+                  </citation>
+                  <citation key="B44">
+                    <volume_title>Primate Responses to Environmental Change</volume_title>
+                    <author>Mendoza</author>
+                    <first_page>311</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1007/978-94-011-3110-0_17</doi>
+                    <article_title>Behavioural and physiological indices of social relationships: comparative studies of New World monkeys</article_title>
+                  </citation>
+                  <citation key="B45">
+                    <volume_title>The UFAW Handbook on the Care and Management of Laboratory Animals, Seventh Edition, Volume 1</volume_title>
+                    <author>Mendoza</author>
+                    <first_page>591</first_page>
+                    <cYear>1999</cYear>
+                    <article_title>Squirrel monkeys</article_title>
+                  </citation>
+                  <citation key="B46">
+                    <volume_title>Hormones, Brain and Behavior</volume_title>
+                    <author>Mendoza</author>
+                    <edition_number>3rd Edn.</edition_number>
+                    <cYear>2017</cYear>
+                    <doi provider="crossref">10.1016/B978-0-12-803592-4.00009-2</doi>
+                    <article_title>Social stress: concepts, assumptions and animal models</article_title>
+                  </citation>
+                  <citation key="B49">
+                    <volume_title>Biology of Animal Stress: Basic Principles and Implications for Animal Welfare</volume_title>
+                    <author>Mendoza</author>
+                    <first_page>227</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1079/9780851993591.0227</doi>
+                    <article_title>Chronic social stress: studies in non-human primates</article_title>
+                  </citation>
+                  <citation key="B47">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Mendoza</author>
+                    <volume>38</volume>
+                    <first_page>795</first_page>
+                    <cYear>1986a</cYear>
+                    <doi>10.1016/0031-9384(86)90045-4</doi>
+                    <article_title>Contrasting responses to intruders and to involuntary separation by monogamous and polygynous New World monkeys</article_title>
+                  </citation>
+                  <citation key="B48">
+                    <journal_title>Anim. Behav.</journal_title>
+                    <author>Mendoza</author>
+                    <volume>34</volume>
+                    <first_page>1336</first_page>
+                    <cYear>1986b</cYear>
+                    <doi>10.1016/s0003-3472(86)80205-6</doi>
+                    <article_title>Parental division of labour and differentiation of attachments in a monogamous primate (Callicebus moloch)</article_title>
+                  </citation>
+                  <citation key="B50">
+                    <journal_title>Educ. Psychol. Meas.</journal_title>
+                    <author>Muth</author>
+                    <volume>76</volume>
+                    <first_page>64</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1177/0013164415580432</doi>
+                    <article_title>Alternative models for small samples in psychological research: applying linear mixed effects models and generalized estimating equations to repeated measures data</article_title>
+                  </citation>
+                  <citation key="B51">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Numan</author>
+                    <volume>77</volume>
+                    <first_page>98</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.yhbeh.2015.05.015</doi>
+                    <article_title>Neural mechanisms of mother-infant bonding and pair bonding: similarities, differences and broader implications</article_title>
+                  </citation>
+                  <citation key="B52">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>O’Connor</author>
+                    <volume>42</volume>
+                    <first_page>969</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.neuroimage.2008.04.256</doi>
+                    <article_title>Craving love? Enduring grief activates brain’s reward center</article_title>
+                  </citation>
+                  <citation key="B53">
+                    <volume_title>Oxytocin, Vasopressin and Related Peptides in the Regulation of Behavior</volume_title>
+                    <author>Ragen</author>
+                    <first_page>288</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1017/CBO9781139017855.019</doi>
+                    <article_title>Oxytocin and vasopressin in non-human primates</article_title>
+                  </citation>
+                  <citation key="B54">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Ragen</author>
+                    <volume>290</volume>
+                    <first_page>421</first_page>
+                    <cYear>2015a</cYear>
+                    <doi>10.1016/j.neuroscience.2015.01.023</doi>
+                    <article_title>μ and κ opioid receptor distribution in the monogamous titi monkey (Callicebus cupreus): implications for social behavior and endocrine functioning</article_title>
+                  </citation>
+                  <citation key="B55">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Ragen</author>
+                    <volume>287</volume>
+                    <first_page>32</first_page>
+                    <cYear>2015b</cYear>
+                    <doi>10.1016/j.neuroscience.2014.11.053</doi>
+                    <article_title>The effects of morphine, naloxone and κ opioid manipulation on endocrine functioning and social behavior in monogamous titi monkeys (Callicebus cupreus)</article_title>
+                  </citation>
+                  <citation key="B56">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Ragen</author>
+                    <volume>74</volume>
+                    <first_page>758</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1002/ajp.22026</doi>
+                    <article_title>Differences in titi monkey (Callicebus cupreus) social bonds affect arousal, affiliation and response to reward</article_title>
+                  </citation>
+                  <citation key="B57">
+                    <journal_title>Rev. Neurosci.</journal_title>
+                    <author>Resendez</author>
+                    <volume>24</volume>
+                    <first_page>51</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1515/revneuro-2012-0068</doi>
+                    <article_title>Aversive motivation and the maintenance of monogamous pair bonding</article_title>
+                  </citation>
+                  <citation key="B58">
+                    <journal_title>ELife</journal_title>
+                    <author>Resendez</author>
+                    <volume>5</volume>
+                    <first_page>e15325</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.7554/eLife.15325</doi>
+                    <article_title>Dopamine and opioid systems interact within the nucleus accumbens to maintain monogamous pair bonds</article_title>
+                  </citation>
+                  <citation key="B59">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Resendez</author>
+                    <volume>32</volume>
+                    <first_page>6771</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1523/JNEUROSCI.5779-11.2012</doi>
+                    <article_title>κ-opioid receptors within the nucleus accumbens shell mediate pair bond maintenance</article_title>
+                  </citation>
+                  <citation key="B60">
+                    <journal_title>Neuron</journal_title>
+                    <author>Roitman</author>
+                    <volume>45</volume>
+                    <first_page>587</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1016/j.neuron.2004.12.055</doi>
+                    <article_title>Nucleus accumbens neurons are innately tuned for rewarding and aversive taste stimuli, encode their predictors and are linked to motor output</article_title>
+                  </citation>
+                  <citation key="B61">
+                    <journal_title>Cereb. Cortex</journal_title>
+                    <author>Saga</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1093/cercor/bhw107</doi>
+                    <article_title>Ventral pallidum encodes contextual information and controls aversive behaviors</article_title>
+                  </citation>
+                  <citation key="B63">
+                    <journal_title>J. Zool. (1987)</journal_title>
+                    <author>Saltzman</author>
+                    <volume>296</volume>
+                    <first_page>23</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1111/jzo.12211</doi>
+                    <article_title>Effects of parental status on male body mass in the monogamous, biparental California mouse</article_title>
+                  </citation>
+                  <citation key="B62">
+                    <journal_title>J. Neuroendocrinol.</journal_title>
+                    <author>Saltzman</author>
+                    <volume>26</volume>
+                    <first_page>685</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1111/jne.12176</doi>
+                    <article_title>Functional significance of hormonal changes in mammalian fathers</article_title>
+                  </citation>
+                  <citation key="B64">
+                    <journal_title>Folia Primatol. (Basel)</journal_title>
+                    <author>Sánchez</author>
+                    <volume>79</volume>
+                    <first_page>458</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1159/000151718</doi>
+                    <article_title>Changes in body mass of expectant male cotton-top tamarins (Saguinus oedipus)</article_title>
+                  </citation>
+                  <citation key="B65">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Sánchez</author>
+                    <volume>48</volume>
+                    <first_page>99</first_page>
+                    <cYear>1999</cYear>
+                    <doi>10.1002/(SICI)1098-2345(1999)48:299::AID-AJP23.0.CO;2-6</doi>
+                    <article_title>Costs of infant-carrying in the cotton-top tamarin (Saguinus oedipus)</article_title>
+                  </citation>
+                  <citation key="B66">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Scheele</author>
+                    <volume>32</volume>
+                    <first_page>16074</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1523/JNEUROSCI.2755-12.2012</doi>
+                    <article_title>Oxytocin modulates social distance between males and females</article_title>
+                  </citation>
+                  <citation key="B67">
+                    <journal_title>Proc. Natl. Acad. Sci. U S A</journal_title>
+                    <author>Scheele</author>
+                    <volume>110</volume>
+                    <first_page>20308</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1073/pnas.1314190110</doi>
+                    <article_title>Oxytocin enhances brain reward system responses in men viewing the face of their female partner</article_title>
+                  </citation>
+                  <citation key="B68">
+                    <journal_title>Soc. Cogn. Affect. Neurosci.</journal_title>
+                    <author>Schneiderman</author>
+                    <volume>9</volume>
+                    <first_page>1524</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1093/scan/nst142</doi>
+                    <article_title>Cumulative risk on the oxytocin receptor gene (OXTR) underpins empathic communication difficulties at the first stages of romantic love</article_title>
+                  </citation>
+                  <citation key="B69">
+                    <journal_title>Brain Res. Rev.</journal_title>
+                    <author>Sheehan</author>
+                    <volume>46</volume>
+                    <first_page>71</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1016/j.brainresrev.2004.04.009</doi>
+                    <article_title>Regulation of affect by the lateral septum: implications for neuropsychiatry</article_title>
+                  </citation>
+                  <citation key="B70">
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <author>Soares-Cunha</author>
+                    <volume>68</volume>
+                    <first_page>370</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.neubiorev.2016.05.021</doi>
+                    <article_title>Reappraising striatal D1- and D2-neurons in reward and aversion</article_title>
+                  </citation>
+                  <citation key="B71">
+                    <journal_title>Behav. Brain Res.</journal_title>
+                    <author>Sun</author>
+                    <volume>265</volume>
+                    <first_page>22</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.bbr.2014.02.016</doi>
+                    <article_title>Breaking bonds in male prairie voles: long-term effects on emotional and social behavior, physiology and neurochemistry</article_title>
+                  </citation>
+                  <citation key="B72">
+                    <journal_title>ILAR J.</journal_title>
+                    <author>Tardif</author>
+                    <volume>47</volume>
+                    <first_page>307</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1093/ilar.47.4.307</doi>
+                    <article_title>Preparing new world monkeys for laboratory research</article_title>
+                  </citation>
+                  <citation key="B73">
+                    <journal_title>Psychol. Rev.</journal_title>
+                    <author>Taylor</author>
+                    <volume>107</volume>
+                    <first_page>411</first_page>
+                    <cYear>2000</cYear>
+                    <doi>10.1037/0033-295x.107.3.411</doi>
+                    <article_title>Bio-behavioral responses to stress in females: tend-and-befriend, not fight-or-flight</article_title>
+                  </citation>
+                  <citation key="B74">
+                    <journal_title>Psychol. Sci.</journal_title>
+                    <author>Taylor</author>
+                    <volume>21</volume>
+                    <first_page>3</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1177/0956797609356507</doi>
+                    <article_title>Are plasma oxytocin in women and plasma vasopressin in men biomarkers of distressed pair-bond relationships?</article_title>
+                  </citation>
+                  <citation key="B75">
+                    <journal_title>J. Behav. Med.</journal_title>
+                    <author>Uchino</author>
+                    <volume>29</volume>
+                    <first_page>377</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1007/s10865-006-9056-5</doi>
+                    <article_title>Social support and health: a review of physiological processes potentially underlying links to disease outcomes</article_title>
+                  </citation>
+                  <citation key="B77">
+                    <journal_title>Heart</journal_title>
+                    <author>Valtorta</author>
+                    <volume>102</volume>
+                    <first_page>1009</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1136/heartjnl-2015-308790</doi>
+                    <article_title>Loneliness and social isolation as risk factors for coronary heart disease and stroke: systematic review and meta-analysis of longitudinal observational studies</article_title>
+                  </citation>
+                  <citation key="B76">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Valeggia</author>
+                    <volume>47</volume>
+                    <first_page>183</first_page>
+                    <cYear>1999</cYear>
+                    <doi>10.1002/(SICI)1098-2345(1999)47:3183::AID-AJP13.0.CO;2-J</doi>
+                    <article_title>Reproductive biology of female titi monkeys (Callicebus moloch) in captivity</article_title>
+                  </citation>
+                  <citation key="B78">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>Van Belle</author>
+                    <volume>78</volume>
+                    <first_page>204</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1002/ajp.22493</doi>
+                    <article_title>Demography and life history of wild red titi monkeys (Callicebus discolor) and equatorial sakis (Pithecia aequatorialis) in Amazonian Ecuador: a 12-year study</article_title>
+                  </citation>
+                  <citation key="B79">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Walum</author>
+                    <volume>71</volume>
+                    <first_page>419</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.biopsych.2011.09.002</doi>
+                    <article_title>Variation in the oxytocin receptor gene is associated with pair-bonding and social behavior</article_title>
+                  </citation>
+                  <citation key="B80">
+                    <journal_title>Proc. Natl. Acad. Sci. U S A</journal_title>
+                    <author>Walum</author>
+                    <volume>105</volume>
+                    <first_page>14153</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1073/pnas.0803081105</doi>
+                    <article_title>Genetic variation in the vasopressin receptor 1a gene (AVPR1a) associates with pair-bonding behavior in humans</article_title>
+                  </citation>
+                  <citation key="B81">
+                    <journal_title>Peptides</journal_title>
+                    <author>Yang</author>
+                    <volume>32</volume>
+                    <first_page>1255</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.peptides.2011.03.007</doi>
+                    <article_title>Oxytocin in the periaqueductal gray participates in pain modulation in the rat by influencing endogenous opioid peptides</article_title>
+                  </citation>
+                  <citation key="B82">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>Yokoyama</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.neuroimage.2016.09.052</doi>
+                    <article_title>Neural bases of the adaptive mechanisms associated with reciprocal partner choice</article_title>
+                  </citation>
+                  <citation key="B83">
+                    <journal_title>J. Comp. Neurol.</journal_title>
+                    <author>Young</author>
+                    <volume>493</volume>
+                    <first_page>51</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1002/cne.20771</doi>
+                    <article_title>Anatomy and neurochemistry of the pair bond</article_title>
+                  </citation>
+                  <citation key="B84">
+                    <journal_title>Biol. Lett.</journal_title>
+                    <author>Ziegler</author>
+                    <volume>2</volume>
+                    <first_page>181</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1098/rsbl.2005.0426</doi>
+                    <article_title>Pregnancy weight gain: marmoset and tamarin dads show it too</article_title>
+                  </citation>
+                  <citation key="B85">
+                    <volume_title>Hormones, Brain and Behavior</volume_title>
+                    <author>Zingg</author>
+                    <first_page>779</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/B978-012532104-4/50059-7</doi>
+                    <article_title>Oxytocin</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1038/npp.2016.188</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer Nature</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86652711</crm-item>
+        <crm-item name="journal-id" type="number">2255</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171226152951042</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1038</crm-item>
+        <crm-item name="last-update" type="date">2017-12-26T14:32:17Z</crm-item>
+        <crm-item name="created" type="date">2016-12-02T06:25:19Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Neuropsychopharmacology</full_title>
+                <abbrev_title>Neuropsychopharmacol</abbrev_title>
+                <issn media_type="print">0893-133X</issn>
+                <issn media_type="electronic">1740-634X</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>42</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Oxytocin-Augmented Psychotherapy: Beware of Context</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>René</given_name>
+                    <surname>Hurlemann</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>2</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>377</first_page>
+                  <last_page>377</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">npp.2016.188</item_number>
+                  <identifier id_type="pii">BFnpp2016188</identifier>
+                </publisher_item>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1038/npp.2016.188</doi>
+                  <timestamp>20171226152951042</timestamp>
+                  <resource>http://www.nature.com/articles/npp2016188</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/npp2016188.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/npp2016188.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://www.nature.com/articles/npp2016188</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="npp2016188-bib1">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>Eckstein M</author>
+                    <first_page>194</first_page>
+                    <volume>78</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2014.10.015</doi>
+                  </citation>
+                  <citation key="npp2016188-bib2">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Eckstein M</author>
+                    <first_page>932</first_page>
+                    <volume>41</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.245</doi>
+                  </citation>
+                  <citation key="npp2016188-bib3">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Freeman SM</author>
+                    <first_page>185</first_page>
+                    <volume>66</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.01.014</doi>
+                  </citation>
+                  <citation key="npp2016188-bib4">
+                    <journal_title>Proc Natl Acad Sci USA</journal_title>
+                    <author>Liu N</author>
+                    <first_page>E3123</first_page>
+                    <volume>112</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1073/pnas.1508097112</doi>
+                  </citation>
+                  <citation key="npp2016188-bib5">
+                    <journal_title>J Neurosci</journal_title>
+                    <author>Marsh N</author>
+                    <first_page>15696</first_page>
+                    <volume>35</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3199-15.2015</doi>
+                  </citation>
+                  <citation key="npp2016188-bib6">
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <author>Quattrocki E</author>
+                    <first_page>410</first_page>
+                    <volume>47</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2014.09.012</doi>
+                  </citation>
+                  <citation key="npp2016188-bib7">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Scheele D</author>
+                    <first_page>2078</first_page>
+                    <volume>39</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1038/npp.2014.78</doi>
+                  </citation>
+                  <citation key="npp2016188-bib8">
+                    <journal_title>Sci Rep</journal_title>
+                    <author>Striepens N</author>
+                    <first_page>3440</first_page>
+                    <volume>3</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1038/srep03440</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

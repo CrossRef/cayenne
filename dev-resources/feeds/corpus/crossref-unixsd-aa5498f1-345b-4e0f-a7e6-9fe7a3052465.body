@@ -1,0 +1,865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.7717/peerj.1698</doi>
+        <crm-item name="publisher-name" type="string">PeerJ</crm-item>
+        <crm-item name="prefix-name" type="string">PeerJ</crm-item>
+        <crm-item name="member-id" type="number">4443</crm-item>
+        <crm-item name="citation-id" type="number">81216081</crm-item>
+        <crm-item name="journal-id" type="number">202465</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20160317080605</crm-item>
+        <crm-item name="owner-prefix" type="string">10.7717</crm-item>
+        <crm-item name="last-update" type="date">2017-06-24T08:28:32Z</crm-item>
+        <crm-item name="created" type="date">2016-03-17T08:06:16Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en" reference_distribution_opts="any" metadata_distribution_opts="any">
+                <full_title>PeerJ</full_title>
+                <issn media_type="electronic">2167-8359</issn>
+                <archive_locations>
+                  <archive name="CLOCKSS" />
+                  <archive name="LOCKSS" />
+                  <archive name="Portico" />
+                </archive_locations>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>4</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>
+                    NeisseriaBase: a specialised
+                    <i>Neisseria</i>
+                    genomic resource and analysis platform
+                  </title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Wenning</given_name>
+                    <surname>Zheng</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Naresh V.R.</given_name>
+                    <surname>Mutha</surname>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Hamed</given_name>
+                    <surname>Heydari</surname>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Computer Science and Engineering Department, University of NE-Lincoln, Lincoln NE, United States of America</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Avirup</given_name>
+                    <surname>Dutta</surname>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Cheuk Chuen</given_name>
+                    <surname>Siow</surname>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Nicholas S.</given_name>
+                    <surname>Jakubovics</surname>
+                    <affiliation>Centre for Oral Health Research, School of Dental Sciences, Newcastle University, Newcastle upon Tyne, United Kingdom</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Wei Yee</given_name>
+                    <surname>Wee</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Shi Yang</given_name>
+                    <surname>Tan</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mia Yang</given_name>
+                    <surname>Ang</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Guat Jah</given_name>
+                    <surname>Wong</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Siew Woh</given_name>
+                    <surname>Choo</surname>
+                    <affiliation>Department of Oral Biology and Biomedical Sciences, Faculty of Dentistry, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Informatics Research Laboratory, HIR Building, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                    <affiliation>Genome Solutions Sdn Bhd, Suite 8, Innovation Incubator UM, Level 5, Research Management &amp; Innovation Complex, University of Malaya, Kuala Lumpur, Malaysia</affiliation>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1">
+                  <jats:p>
+                    <jats:bold>Background.</jats:bold>
+                    The gram-negative
+                    <jats:italic>Neisseria</jats:italic>
+                    is associated with two of the most potent human epidemic diseases: meningococcal meningitis and gonorrhoea. In both cases, disease is caused by bacteria colonizing human mucosal membrane surfaces. Overall, the genus shows great diversity and genetic variation mainly due to its ability to acquire and incorporate genetic material from a diverse range of sources through horizontal gene transfer. Although a number of databases exist for the
+                    <jats:italic>Neisseria</jats:italic>
+                    genomes, they are mostly focused on the pathogenic species. In this present study we present the freely available NeisseriaBase, a database dedicated to the genus
+                    <jats:italic>Neisseria</jats:italic>
+                    encompassing the complete and draft genomes of 15 pathogenic and commensal
+                    <jats:italic>Neisseria</jats:italic>
+                    species.
+                  </jats:p>
+                  <jats:p>
+                    <jats:bold>Methods.</jats:bold>
+                    The genomic data were retrieved from National Center for Biotechnology Information (NCBI) and annotated using the RAST server which were then stored into the MySQL database. The protein-coding genes were further analyzed to obtain information such as calculation of GC content (%), predicted hydrophobicity and molecular weight (Da) using in-house Perl scripts. The web application was developed following the secure four-tier web application architecture: (1) client workstation, (2) web server, (3) application server, and (4) database server. The web interface was constructed using PHP, JavaScript, jQuery, AJAX and CSS, utilizing the model-view-controller (MVC) framework. The in-house developed bioinformatics tools implemented in NeisseraBase were developed using Python, Perl, BioPerl and R languages.
+                  </jats:p>
+                  <jats:p>
+                    <jats:bold>Results.</jats:bold>
+                    Currently, NeisseriaBase houses 603,500 Coding Sequences (CDSs), 16,071 RNAs and 13,119 tRNA genes from 227
+                    <jats:italic>Neisseria</jats:italic>
+                    genomes. The database is equipped with interactive web interfaces. Incorporation of the JBrowse genome browser in the database enables fast and smooth browsing of
+                    <jats:italic>Neisseria</jats:italic>
+                    genomes. NeisseriaBase includes the standard BLAST program to facilitate homology searching, and for Virulence Factor Database (VFDB) specific homology searches, the VFDB BLAST is also incorporated into the database. In addition, NeisseriaBase is equipped with in-house designed tools such as the Pairwise Genome Comparison tool (PGC) for comparative genomic analysis and the Pathogenomics Profiling Tool (PathoProT) for the comparative pathogenomics analysis of
+                    <jats:italic>Neisseria</jats:italic>
+                    strains.
+                  </jats:p>
+                  <jats:p>
+                    <jats:bold>Discussion.</jats:bold>
+                    This user-friendly database not only provides access to a host of genomic resources on
+                    <jats:italic>Neisseria</jats:italic>
+                    but also enables high-quality comparative genome analysis, which is crucial for the expanding scientific community interested in
+                    <jats:italic>Neisseria</jats:italic>
+                    research. This database is freely available at
+                    <jats:uri xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="http://neisseria.um.edu.my">http://neisseria.um.edu.my</jats:uri>
+                    .
+                  </jats:p>
+                </jats:abstract>
+                <publication_date media_type="online">
+                  <month>03</month>
+                  <day>17</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>e1698</first_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="article-number">e1698</item_number>
+                  <identifier id_type="doi">10.7717/peerj.1698</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">University of Malaya and Ministry of Education</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">High Impact Research (HIR)</fr:assertion>
+                    <fr:assertion name="award_number">UM.C/625/1/HIR/MOE/CHAN/08</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">University of Malaya Research Grant</fr:assertion>
+                    <fr:assertion name="award_number">RG541-13HTM</fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref>http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.7717/peerj.1698</doi>
+                  <resource>https://peerj.com/articles/1698</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://peerj.com/articles/1698.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://peerj.com/articles/1698.pdf</resource>
+                    </item>
+                    <item>
+                      <resource content_version="vor" mime_type="application/xml">https://peerj.com/articles/1698.xml</resource>
+                    </item>
+                    <item>
+                      <resource content_version="vor" mime_type="text/html">https://peerj.com/articles/1698.html</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.7717/peerj.1698/ref-1">
+                    <journal_title>Journal of Molecular Biology</journal_title>
+                    <author>Altschul</author>
+                    <volume>215</volume>
+                    <issue>3</issue>
+                    <first_page>403</first_page>
+                    <cYear>1990</cYear>
+                    <doi>10.1016/S0022-2836(05)80360-2</doi>
+                    <article_title>Basic local alignment search tool</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-2">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Altschul</author>
+                    <volume>25</volume>
+                    <issue>17</issue>
+                    <first_page>3389</first_page>
+                    <cYear>1997</cYear>
+                    <doi>10.1093/nar/25.17.3389</doi>
+                    <article_title>Gapped BLAST and PSI-BLAST: a new generation of protein database search programs</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-3">
+                    <journal_title>MBio</journal_title>
+                    <author>Anderson</author>
+                    <volume>2</volume>
+                    <issue>1</issue>
+                    <first_page>e00005</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1128/mBio.00005-11</doi>
+                    <article_title>Opportunity and means: horizontal gene transfer from the human host to a bacterial pathogen</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-4">
+                    <journal_title>BMC Genomics</journal_title>
+                    <author>Aziz</author>
+                    <volume>9</volume>
+                    <first_page>75</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1186/1471-2164-9-75</doi>
+                    <article_title>The RAST Server: rapid annotations using subsystems technology</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-5">
+                    <volume_title>Society for General Microbiology Symposium</volume_title>
+                    <volume>52</volume>
+                    <cYear>1995</cYear>
+                    <article_title>The population genetics of bacteria</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-6">
+                    <journal_title>International Journal of Systematic and Evolutionary Microbiology</journal_title>
+                    <author>Bennett</author>
+                    <volume>63</volume>
+                    <issue>Pt 10</issue>
+                    <first_page>3920</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1099/ijs.0.052431-0</doi>
+                    <article_title>Genome sequence analyses show that Neisseria oralis is the same species as ‘Neisseria mucosa var. heidelbergensis’</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-7">
+                    <journal_title>Journal of Bacteriology</journal_title>
+                    <author>Bowler</author>
+                    <volume>176</volume>
+                    <issue>2</issue>
+                    <first_page>333</first_page>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1128/jb.176.2.333-337.1994</doi>
+                    <article_title>Interspecies recombination between the penA genes of Neisseria meningitidis and commensal Neisseria species during the emergence of penicillin resistance in N. meningitidis: natural events and laboratory simulation</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-8">
+                    <journal_title>BMC Bioinformatics</journal_title>
+                    <author>Camacho</author>
+                    <volume>10</volume>
+                    <first_page>421</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1186/1471-2105-10-421</doi>
+                    <article_title>BLAST+: architecture and applications</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-9">
+                    <volume_title>Sexually transmitted disease surveillance 2012</volume_title>
+                    <author>Centers for Disease Control and Prevention</author>
+                    <cYear>2013</cYear>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-10">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Chen</author>
+                    <volume>40</volume>
+                    <issue>Database issue</issue>
+                    <first_page>D641</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1093/nar/gkr989</doi>
+                    <article_title>VFDB 2012 update: toward the genetic diversity and molecular evolution of bacterial virulence factors</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-11">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Chen</author>
+                    <volume>33</volume>
+                    <issue>D1</issue>
+                    <first_page>D325</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1093/nar/gki177</doi>
+                    <article_title>VFDB: a reference database for bacterial virulence factors</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-12">
+                    <journal_title>Journal of Medical Microbiology</journal_title>
+                    <author>Chung</author>
+                    <volume>56</volume>
+                    <issue>11</issue>
+                    <first_page>1561</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1099/jmm.0.47192-0</doi>
+                    <article_title>Liver abscess due to Neisseria sicca after repeated transcatheter arterial embolization</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-13">
+                    <journal_title>South African Medical Journal</journal_title>
+                    <author>Coovadia</author>
+                    <volume>66</volume>
+                    <issue>8</issue>
+                    <first_page>308</first_page>
+                    <cYear>1984</cYear>
+                    <article_title>Neisseria flavescens septicaemia with meningitis. A case report</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-14">
+                    <journal_title>Bioinformatics</journal_title>
+                    <author>Darzentas</author>
+                    <volume>26</volume>
+                    <first_page>2620</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1093/bioinformatics/btq484</doi>
+                    <article_title>Circoletto: visualizing sequence similarity with Circos</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-15">
+                    <journal_title>Proceedings of the National Academy of Sciences of the United States of America</journal_title>
+                    <author>Feil</author>
+                    <volume>92</volume>
+                    <issue>23</issue>
+                    <first_page>10535</first_page>
+                    <cYear>1995</cYear>
+                    <doi>10.1073/pnas.92.23.10535</doi>
+                    <article_title>Electrophoretic variation in adenylate kinase of Neisseria meningitidis is due to inter- and intraspecies recombination</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-16">
+                    <journal_title>Genome Research</journal_title>
+                    <author>Geoffroy</author>
+                    <volume>13</volume>
+                    <issue>3</issue>
+                    <first_page>391</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1101/gr.664303</doi>
+                    <article_title>Large-scale analysis of the meningococcus genome by gene disruption: resistance to complement-mediated lysis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-17">
+                    <journal_title>Journal of Pathology</journal_title>
+                    <author>Gordon</author>
+                    <volume>31</volume>
+                    <first_page>185</first_page>
+                    <cYear>1928</cYear>
+                    <doi>10.1002/path.1700310206</doi>
+                    <article_title>The practical application of the direct oxidase reaction in bacteriology</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-18">
+                    <journal_title>Annales de l’Institut Pasteur/Microbiologie</journal_title>
+                    <author>Guibourdenche</author>
+                    <volume>137B</volume>
+                    <issue>2</issue>
+                    <first_page>177</first_page>
+                    <cYear>1986</cYear>
+                    <doi provider="crossref">10.1016/S0769-2609(86)80106-5</doi>
+                    <article_title>Deoxyribonucleic acid relatedness among Neisseria gonorrhoeae, N. meningitidis, N. lactamica, N. cinerea and “Neisseria polysaccharea”</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-19">
+                    <journal_title>Clinical Microbiology and Infection</journal_title>
+                    <author>Haddow</author>
+                    <volume>9</volume>
+                    <issue>5</issue>
+                    <first_page>426</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1046/j.1469-0691.2003.00533.x</doi>
+                    <article_title>Neisseria elongata endocarditis: case report and literature review</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-20">
+                    <journal_title>Clinical Microbiology Reviews</journal_title>
+                    <author>Heckels</author>
+                    <volume>2</volume>
+                    <issue>Suppl</issue>
+                    <first_page>S66</first_page>
+                    <cYear>1989</cYear>
+                    <doi provider="crossref">10.1128/CMR.2.Suppl.S66</doi>
+                    <article_title>Structure and function of pili of pathogenic Neisseriaspecies</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-21">
+                    <journal_title>Science</journal_title>
+                    <author>Hensel</author>
+                    <volume>269</volume>
+                    <issue>5222</issue>
+                    <first_page>400</first_page>
+                    <cYear>1995</cYear>
+                    <doi>10.1126/science.7618105</doi>
+                    <article_title>Simultaneous identification of bacterial virulence genes by negative selection</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-22">
+                    <journal_title>PLoS ONE</journal_title>
+                    <author>Higashi</author>
+                    <volume>6</volume>
+                    <issue>6</issue>
+                    <first_page>e21373</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1371/journal.pone.0021373</doi>
+                    <article_title>N. elongata produces type IV pili that mediate interspecies gene transfer with N. gonorrhoeae</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-23">
+                    <journal_title>Scandinavian Journal of Infectious Diseases</journal_title>
+                    <author>Hofstad</author>
+                    <volume>30</volume>
+                    <issue>2</issue>
+                    <first_page>200</first_page>
+                    <cYear>1998</cYear>
+                    <doi>10.1080/003655498750003672</doi>
+                    <article_title>Septicaemia with Neisseria elongata ssp. nitroreducens in a patient with hypertrophic obstructive cardiomyopathia</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-24">
+                    <journal_title>Journal of Clinical Microbiology</journal_title>
+                    <author>Hombrouck-Alet</author>
+                    <volume>41</volume>
+                    <issue>7</issue>
+                    <first_page>3436</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1128/JCM.41.7.3436-3437.2003</doi>
+                    <article_title>Utilization of 16S ribosomal DNA sequencing for diagnosis of septicemia due to Neisseria elongata subsp. glycolyticain a neutropenic patient</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-25">
+                    <journal_title>Journal of Medical Microbiology</journal_title>
+                    <author>Hsiao</author>
+                    <volume>57</volume>
+                    <issue>Pt 3</issue>
+                    <first_page>376</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1099/jmm.0.47493-0</doi>
+                    <article_title>Neisseria elongata endocarditis complicated by brain embolism and abscess</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-26">
+                    <volume_title>Neisseria. Manual of clinical microbiology</volume_title>
+                    <author>Janda</author>
+                    <first_page>601</first_page>
+                    <cYear>2007</cYear>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-27">
+                    <journal_title>BMC Bioinformatics</journal_title>
+                    <author>Jolley</author>
+                    <volume>11</volume>
+                    <first_page>595</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1186/1471-2105-11-595</doi>
+                    <article_title>BIGSdb: scalable analysis of bacterial genome variation at the population level</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-28">
+                    <journal_title>Nephrology, Dialysis, Transplantation</journal_title>
+                    <author>Kamar</author>
+                    <volume>22</volume>
+                    <issue>7</issue>
+                    <first_page>2099</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1093/ndt/gfm040</doi>
+                    <article_title>Neisseria-cinerea-induced pulmonary cavitation in a renal transplant patient</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-29">
+                    <journal_title>Database</journal_title>
+                    <author>Katz</author>
+                    <volume>2011</volume>
+                    <first_page>bar035</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1093/database/bar035</doi>
+                    <article_title>Neisseria Base: a comparative genomics database for Neisseria meningitidis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-30">
+                    <journal_title>Todar’s Online Textbook of Bacteriology</journal_title>
+                    <author>Kenneth</author>
+                    <cYear>2012</cYear>
+                    <article_title>Pathogenic Neisseriae: Gonorrhea, Neonatal Ophthalmia and Meningococcal Meningitis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-31">
+                    <journal_title>Clinical Microbiology Reviews</journal_title>
+                    <author>Knapp</author>
+                    <volume>1</volume>
+                    <issue>4</issue>
+                    <first_page>415</first_page>
+                    <cYear>1988</cYear>
+                    <doi provider="crossref">10.1128/CMR.1.4.415</doi>
+                    <article_title>Historical perspectives and identification of Neisseria and related species</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-32">
+                    <journal_title>American Journal of Kidney Diseases</journal_title>
+                    <author>Konner</author>
+                    <volume>37</volume>
+                    <issue>1</issue>
+                    <first_page>E10</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0272-6386(01)90007-1</doi>
+                    <article_title>A case of continuous ambulatory peritoneal dialysis peritonitis with an uncommon organism and an atypical clinical course</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-33">
+                    <journal_title>Genome Research</journal_title>
+                    <author>Krzywinski</author>
+                    <volume>19</volume>
+                    <issue>9</issue>
+                    <first_page>1639</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1101/gr.092759.109</doi>
+                    <article_title>Circos: an information aesthetic for comparative genomics</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-34">
+                    <journal_title>Genome Biology</journal_title>
+                    <author>Kurtz</author>
+                    <volume>5</volume>
+                    <issue>2</issue>
+                    <first_page>R12</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1186/gb-2004-5-2-r12</doi>
+                    <article_title>Versatile and open software for comparing large genomes</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-35">
+                    <journal_title>Current Opinion in Microbiology</journal_title>
+                    <author>Maiden</author>
+                    <volume>11</volume>
+                    <issue>5</issue>
+                    <first_page>467</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.mib.2008.09.002</doi>
+                    <article_title>Population genomics: diversity and virulence in the Neisseria</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-36">
+                    <journal_title>PLoS ONE</journal_title>
+                    <author>Marri</author>
+                    <volume>5</volume>
+                    <issue>7</issue>
+                    <first_page>e11835</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1371/journal.pone.0011835</doi>
+                    <article_title>Genome sequencing reveals widespread virulence gene exchange among human Neisseria species</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-37">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>McGinnis</author>
+                    <volume>32</volume>
+                    <issue>Suppl 2</issue>
+                    <first_page>W20</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1093/nar/gkh435</doi>
+                    <article_title>BLAST: at the core of a powerful and diverse set of sequence analysis tools</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-38">
+                    <volume_title>Medical microbiology</volume_title>
+                    <author>Morse</author>
+                    <edition_number>4th edition</edition_number>
+                    <cYear>1996</cYear>
+                    <article_title>Neisseria, Moraxella, Kingella and Eikenella</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-39">
+                    <volume_title>Medical Microbiology</volume_title>
+                    <author>Murray</author>
+                    <edition_number>7th edition</edition_number>
+                    <first_page>248</first_page>
+                    <cYear>2012</cYear>
+                    <article_title>Neisseria and related genera</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-40">
+                    <journal_title>Journal of Infection</journal_title>
+                    <author>Panagea</author>
+                    <volume>44</volume>
+                    <issue>2</issue>
+                    <first_page>96</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1053/jinf.2001.0965</doi>
+                    <article_title>A case of lower respiratory tract infection caused by Neisseria weaveri and review of the literature</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-41">
+                    <volume_title>Medical microbiology</volume_title>
+                    <author>Peterson</author>
+                    <edition_number>4th edition</edition_number>
+                    <cYear>1996</cYear>
+                    <article_title>Bacterial pathogenesis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-42">
+                    <journal_title>BMC Microbiology</journal_title>
+                    <author>Qvarnstrom</author>
+                    <volume>6</volume>
+                    <first_page>11</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1186/1471-2180-6-11</doi>
+                    <article_title>Variations in gene organization and DNA uptake signal sequence in the folP region between commensal and pathogenic Neisseria species</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-43">
+                    <journal_title>Clinical Microbiology and Infection</journal_title>
+                    <author>Read</author>
+                    <volume>20</volume>
+                    <issue>5</issue>
+                    <first_page>391</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1111/1469-0691.12647</doi>
+                    <article_title>Neisseria meningitidis; clones, carriage, and disease</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-44">
+                    <journal_title>Annual Review of Microbiology</journal_title>
+                    <author>Roberts</author>
+                    <volume>50</volume>
+                    <first_page>285</first_page>
+                    <cYear>1996</cYear>
+                    <doi>10.1146/annurev.micro.50.1.285</doi>
+                    <article_title>The biochemistry and genetics of capsular polysaccharide production in bacteria</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-45">
+                    <journal_title>Spinal Cord</journal_title>
+                    <author>Roberts</author>
+                    <volume>41</volume>
+                    <issue>10</issue>
+                    <first_page>590</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1038/sj.sc.3101497</doi>
+                    <article_title>Infective discitis with Neisseria sicca/subflava in a previously healthy adult</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-46">
+                    <journal_title>Annual Review of Genetics</journal_title>
+                    <author>Rotman</author>
+                    <volume>48</volume>
+                    <first_page>405</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1146/annurev-genet-120213-092007</doi>
+                    <article_title>The Genetics of Neisseria Species</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-47">
+                    <journal_title>Genome Biology</journal_title>
+                    <author>Rusniok</author>
+                    <volume>10</volume>
+                    <first_page>R110</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1186/gb-2009-10-10-r110</doi>
+                    <article_title>NeMeSys: a biological resource for narrowing the gap between sequence and function in the human pathogen Neisseria meningitidis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-48">
+                    <journal_title>International Microbiology</journal_title>
+                    <author>Saez Nieto</author>
+                    <volume>1</volume>
+                    <issue>1</issue>
+                    <first_page>59</first_page>
+                    <cYear>1998</cYear>
+                    <article_title>Multicolonization of human nasopharynx due to Neisseria spp</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-49">
+                    <journal_title>Journal of Clinical Microbiology</journal_title>
+                    <author>Schifman</author>
+                    <volume>17</volume>
+                    <issue>5</issue>
+                    <first_page>934</first_page>
+                    <cYear>1983</cYear>
+                    <article_title>Neisseria lactamica septicemia in an immunocompromised patient</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-50">
+                    <journal_title>Current Protocols in Bioinformatics</journal_title>
+                    <author>Skinner</author>
+                    <volume>Chapter 9</volume>
+                    <cYear>2010</cYear>
+                    <doi>10.1002/0471250953.bi0913s32</doi>
+                    <article_title>Setting up the JBrowse genome browser</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-51">
+                    <journal_title>Proceedings of the National Academy of Sciences of the United States of America</journal_title>
+                    <author>Spratt</author>
+                    <volume>86</volume>
+                    <issue>22</issue>
+                    <first_page>8988</first_page>
+                    <cYear>1989</cYear>
+                    <doi>10.1073/pnas.86.22.8988</doi>
+                    <article_title>Recruitment of a penicillin-binding protein gene from Neisseria flavescens during the emergence of penicillin resistance in Neisseria meningitidis</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-52">
+                    <journal_title>Journal of Clinical Microbiology</journal_title>
+                    <author>Taegtmeyer</author>
+                    <volume>44</volume>
+                    <issue>8</issue>
+                    <first_page>3040</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1128/JCM.00917-06</doi>
+                    <article_title>Ciprofloxacin treatment of bacterial peritonitis associated with chronic ambulatory peritoneal dialysis caused by Neisseria cinerea</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-53">
+                    <cYear>2010</cYear>
+                    <article_title>Standalone BLAST Setup for Windows PC</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-54">
+                    <journal_title>Nephrology, Dialysis, Transplantation</journal_title>
+                    <author>Vermeij</author>
+                    <volume>14</volume>
+                    <issue>6</issue>
+                    <first_page>1608</first_page>
+                    <cYear>1999</cYear>
+                    <doi>10.1093/ndt/14.6.1608</doi>
+                    <article_title>Neisseria subflava biovar perflava peritonitis in a continuous cyclic peritoneal dialysis patient</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-55">
+                    <journal_title>Nature Reviews Microbiology</journal_title>
+                    <author>Virji</author>
+                    <volume>7</volume>
+                    <issue>4</issue>
+                    <first_page>274</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1038/nrmicro2097</doi>
+                    <article_title>Pathogenic neisseriae: surface modulation, pathogenesis and infection control</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-56">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Wattam</author>
+                    <volume>42</volume>
+                    <issue>Database issue</issue>
+                    <first_page>D581</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1093/nar/gkt1099</doi>
+                    <article_title>PATRIC, the bacterial bioinformatics database and analysis resource</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-57">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Yang</author>
+                    <volume>36</volume>
+                    <issue>D1</issue>
+                    <first_page>D539</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1093/nar/gkm951</doi>
+                    <article_title>VFDB 2008 release: an enhanced web-based resource for comparative pathogenomics</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-58">
+                    <journal_title>Bioinformatics</journal_title>
+                    <author>Yu</author>
+                    <volume>26</volume>
+                    <issue>13</issue>
+                    <first_page>1608</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1093/bioinformatics/btq249</doi>
+                    <article_title>PSORTb 3.0: improved protein subcellular localization prediction with refined localization subcategories and predictive capabilities for all prokaryotes</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-59">
+                    <journal_title>BMC Bioinformatics</journal_title>
+                    <author>Zhang</author>
+                    <volume>14</volume>
+                    <first_page>244</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1186/1471-2105-14-244</doi>
+                    <article_title>RCircos: an R package for Circos 2D track plots</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-60">
+                    <journal_title>Molecular Microbiology</journal_title>
+                    <author>Zhou</author>
+                    <volume>23</volume>
+                    <issue>4</issue>
+                    <first_page>799</first_page>
+                    <cYear>1997</cYear>
+                    <doi>10.1046/j.1365-2958.1997.2681633.x</doi>
+                    <article_title>Interspecies recombination, and phylogenetic distortions, within the glutamine synthetase and shikimate dehydrogenase genes of Neisseria meningitidis and commensal Neisseria species</article_title>
+                  </citation>
+                  <citation key="10.7717/peerj.1698/ref-61">
+                    <journal_title>Nucleic Acids Research</journal_title>
+                    <author>Zhou</author>
+                    <volume>39</volume>
+                    <issue>Web Server issue</issue>
+                    <first_page>W347</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1093/nar/gkr485</doi>
+                    <article_title>PHAST: a fast phage search tool</article_title>
+                  </citation>
+                </citation_list>
+                <component_list>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>Figure 1: Flow diagram showing the overview of functionalities of NeisseriaBase.</title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-1</doi>
+                      <resource>https://peerj.com/articles/1698/fig-1</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>Figure 2: Overview of NeisseriaBase.</title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-2</doi>
+                      <resource>https://peerj.com/articles/1698/fig-2</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>
+                        Figure 3: The heatmap showing the cluster of
+                        <i>Neisseria</i>
+                        strains based on virulence genes, generated using PathoProT with the threshold of 50% sequence identity and 50% sequence completeness.
+                      </title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-3</doi>
+                      <resource>https://peerj.com/articles/1698/fig-3</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>
+                        Figure 4: The heatmap showing the cluster of
+                        <i>Neisseria</i>
+                        strains based on virulence genes, generated using PathoProT with stringent threshold of 95% sequence identity and 95% sequence completeness.
+                      </title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-4</doi>
+                      <resource>https://peerj.com/articles/1698/fig-4</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>Figure 5: Pairwise genome comparison.</title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-5</doi>
+                      <resource>https://peerj.com/articles/1698/fig-5</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>Figure 6: Linear prophage view of the intact prophage of alpha710 strain.</title>
+                    </titles>
+                    <format mime_type="image/png" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/fig-6</doi>
+                      <resource>https://peerj.com/articles/1698/fig-6</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>
+                        Table 1: List of available
+                        <i>Neisseria</i>
+                        strains/genome sequences in NeiseriaBase.
+                      </title>
+                    </titles>
+                    <format mime_type="text/html" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/table-1</doi>
+                      <resource>https://peerj.com/articles/1698/table-1</resource>
+                    </doi_data>
+                  </component>
+                  <component parent_relation="isPartOf">
+                    <titles>
+                      <title>Figure S1: Pathogenomics Profiling Tool (PathoProT) workflow</title>
+                    </titles>
+                    <format mime_type="application/pdf" />
+                    <doi_data>
+                      <doi>10.7717/peerj.1698/supp-1</doi>
+                      <resource>https://peerj.com/articles/1698/supp-1</resource>
+                    </doi_data>
+                  </component>
+                </component_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>
