@@ -153,12 +153,12 @@
    so we avoid the canonical lower-case DOI and present metadata for the DOI
    exactly as requested."
   [request doi]
-  (assoc (get-in request [:work :message]) 
-    :URL 
-    (->> doi
-         (URLDecoder/decode)
-         (doi-id/extract-long-doi)
-         (str "http://dx.doi.org/"))))
+  (assoc (get-in request [:work :message])
+         :URL
+         (->> doi
+              (URLDecoder/decode)
+              (doi-id/extract-long-doi)
+              (str "http://dx.doi.org/"))))
 
 (defresource work-transform-resource [doi]
   :malformed? (v/malformed? :singleton true)
@@ -362,58 +362,58 @@
 
 (defroutes api-routes
   (ANY "/reverse" []
-       reverse-lookup-resource)
+    reverse-lookup-resource)
   (ANY "/styles" []
-       csl-styles-resource)
+    csl-styles-resource)
   (ANY "/locales" []
-       csl-locales-resource)
+    csl-locales-resource)
   (ANY "/funders" []
-       funders-resource)
+    funders-resource)
   (ANY "/funders/*" {{id :*} :params}
-       (if (.endsWith id "/works")
-         (funder-works-resource (string/replace id #"/works\z" ""))
-         (funder-resource id)))
+    (if (.endsWith id "/works")
+      (funder-works-resource (string/replace id #"/works\z" ""))
+      (funder-resource id)))
   (ANY "/members" []
-       members-resource)
+    members-resource)
   (ANY "/members/:id" [id]
-       (member-resource id))
+    (member-resource id))
   (ANY "/members/:id/works" [id]
-       (member-works-resource id))
+    (member-works-resource id))
   (ANY "/journals" []
-       journals-resource)
+    journals-resource)
   (ANY "/journals/:issn" [issn]
-       (journal-resource issn))
+    (journal-resource issn))
   (ANY "/journals/:issn/works" [issn]
-       (journal-works-resource issn))
+    (journal-works-resource issn))
   (ANY "/prefixes/:prefix" [prefix]
-       (prefix-resource prefix))
+    (prefix-resource prefix))
   (ANY "/prefixes/:prefix/works" [prefix]
-       (prefix-works-resource prefix))
+    (prefix-works-resource prefix))
   (ANY "/works" []
-       works-resource)
+    works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (cond (.endsWith doi ".xml")
-             (redirect (str 
-                        "/works/"
-                        (string/replace doi #".xml" "")
-                        "/transform/application/vnd.crossref.unixsd+xml"))
-             (.endsWith doi "/agency")
-             (work-agency-resource (string/replace doi #"/agency\z" ""))
-             (.endsWith doi "/transform")
-             (work-transform-resource (string/replace doi #"/transform\z" ""))
-             (re-matches #".*/transform/.+\z" doi)
-             (explicit-work-transform-resource
-              (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
-              (second (re-matches #".*/transform/(.+)\z" doi)))
-             :else
-             (work-resource doi)))
+    (cond (.endsWith doi ".xml")
+          (redirect (str
+                     "/works/"
+                     (string/replace doi #".xml" "")
+                     "/transform/application/vnd.crossref.unixsd+xml"))
+          (.endsWith doi "/agency")
+          (work-agency-resource (string/replace doi #"/agency\z" ""))
+          (.endsWith doi "/transform")
+          (work-transform-resource (string/replace doi #"/transform\z" ""))
+          (re-matches #".*/transform/.+\z" doi)
+          (explicit-work-transform-resource
+           (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
+           (second (re-matches #".*/transform/(.+)\z" doi)))
+          :else
+          (work-resource doi)))
   (ANY "/types" []
-       types-resource)
+    types-resource)
   (ANY "/types/:id" [id]
-       (type-resource id))
+    (type-resource id))
   (ANY "/types/:id/works" [id]
-       (type-works-resource id))
+    (type-works-resource id))
   (ANY "/cores" []
-       cores-resource)
+    cores-resource)
   (ANY "/cores/:name" [name]
-       (core-resource name)))
+    (core-resource name)))
