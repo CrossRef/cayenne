@@ -139,43 +139,25 @@
                                          convert/es-doc->citeproc
                                          with-citations)))))
 
-(def agency-label
-  {"10.SERV/DEFAULT"  "Default"
-   "10.SERV/CROSSREF" "Crossref"
-   "10.SERV/DATACITE" "DataCite"
-   "10.SERV/MEDRA"    "mEDRA"})
-
-(def agency-id
-  {"10.SERV/DEFAULT"  "default"
-   "10.SERV/CROSSREF" "crossref"
-   "10.SERV/DATACITE" "datacite"
-   "10.SERV/MEDRA"    "medra"})
-
 (defn get-agency [doi]
-  (let [extracted-doi (doi-id/normalize-long-doi doi)
-        {:keys [status headers body error]}
-        @(http/get (str (conf/get-param [:upstream :ra-url])
-                        (doi-id/extract-long-prefix extracted-doi)))]
-    (when-not error
-      (let [vals (-> body
-                     (json/read-str :key-fn keyword)
-                     :values)
-            hs-serv-index-value 1]
-        (get-in
-         (first
-          (filter
-           #(= (:index %) hs-serv-index-value)
-           vals))
-         [:data :value])))))
+  @(http/get (str (conf/get-param [:upstream :doi-ra-url])
+                  doi)))
+
+(defn parse-agency [{:keys [status headers body error]}]
+  (when-not error
+    (-> body
+        (json/read-str :key-fn keyword)
+        first
+        :RA)))
 
 (defn ->agency-response [doi agency]
   (r/api-response
    :work-agency
    :content {:DOI (doi-id/normalize-long-doi doi)
-             :agency {:id (or (agency-id agency) agency)
-                      :label (or (agency-label agency) agency)}}))
+             :agency {:id (clojure.string/lower-case agency)
+                      :label agency}}))
 
 (defn fetch-agency [doi]
   (let [extracted-doi (doi-id/normalize-long-doi doi)
-        agency (get-agency extracted-doi)]
-    (->agency-response doi agency)))
+        agency-fn (comp parse-agency get-agency)]
+    (->agency-response doi (agency-fn extracted-doi))))

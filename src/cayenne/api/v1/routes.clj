@@ -43,7 +43,7 @@
 (defn get-passwd [context]
   (get-in context [:request :basic-authentication 1]))
 
-(defn known-post-type? 
+(defn known-post-type?
   "Does the content type submitted match a known content type, if the
    method is POST? Otherwise, if not method POST, accept the request
    regardless of content type."
@@ -143,7 +143,7 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :exists? (->1 #(when-let [agency (work/get-agency doi)] {:agency agency}))
+  :exists? (->1 #(when-let [agency (work/parse-agency (work/get-agency doi))] {:agency agency}))
   :handle-ok #(work/->agency-response doi (:agency %)))
 
 (defn force-exact-request-doi
