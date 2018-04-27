@@ -42,7 +42,7 @@
 
 (defn select-country-stmts [model node]
   (concat
-   (rdf/select model 
+   (rdf/select model
                :subject node
                :predicate (svf-el model "country"))
    (rdf/select model
@@ -53,10 +53,10 @@
   (let [country-obj (-> (select-country-stmts model node)
                         (rdf/objects)
                         (first))]
-    (if (or (nil? country-obj) 
-            (= (rdf/->uri country-obj) 
+    (if (or (nil? country-obj)
+            (= (rdf/->uri country-obj)
                "http://sws.geonames.org//"))
-      (do 
+      (do
         (prn "Found node with no country: " node)
         "Unknown")
       (try
