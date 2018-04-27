@@ -19,6 +19,13 @@
 
 (defn res->id [funder-concept-node]
   (when funder-concept-node
+    (-> funder-concept-node
+        rdf/->uri
+        (string/split #"/")
+        last)))
+
+(defn res->doi [funder-concept-node]
+  (when funder-concept-node
     (str
      "10.13039/"
      (-> funder-concept-node
@@ -100,10 +107,11 @@
 (defn resource-descendants [model funder-resource]
   (drop 1 (tree-seq (constantly true) #(narrower model %) funder-resource)))
 
-(defn id-name-map [resources]
+(defn id-name-map [model resources]
   (->> resources
-       (map #(vector (res->id %) (first (get-labels % "prefLabel"))))
-       (into {})))
+       (map (fn [resource]
+              {:id (res->id resource)
+               :name (first (get-labels model resource "prefLabel"))}))))
 
 (defn index-command [model funder-resource]
   (let [primary-name   (-> model (get-labels funder-resource "prefLabel") first)
@@ -113,14 +121,15 @@
         ancestor-ids   (->> ancestors (map res->id) distinct)
         descendant-ids (->> descendants (map res->id) distinct)]
     [{:index {:_id (res->id funder-resource)}}
-     {:doi             (res->id funder-resource)
+     {:doi             (res->doi funder-resource)
+      :id              (res->id funder-resource)
       :primary-name    primary-name
       :name            alt-names
       :token           (concat
                         (util/tokenize-name primary-name)
                         (flatten (map util/tokenize-name alt-names)))
       :country         (get-country-literal-name model funder-resource)
-      :parent          (-> model (broader funder-resource) first res->id)
+      :parent          (-> model (broader funder-resource) first res->doi)
       :ancestor        ancestor-ids
       :level           (-> ancestor-ids count (+ 1))
       :child           (distinct (map res->id (narrower model funder-resource)))
@@ -128,11 +137,11 @@
       :affiliated      (distinct (map res->id (affiliated model funder-resource)))
       :replaced-by     (distinct (map res->id (replaced-by model funder-resource)))
       :replaces        (distinct (map res->id (replaces model funder-resource)))
-      :hierarchy       []
+      :hierarchy       (flatten [ancestor-ids [(res->id funder-resource)] descendant-ids])
       :hierarchy-names (-> [funder-resource]
-                           (concat resource-ancestors)
-                           (concat resource-descendants)
-                           id-name-map)}]))
+                           (concat ancestors)
+                           (concat descendants)
+                           (->> (id-name-map model)))}]))
 
 (defn index-funders []
   (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry]))
@@ -161,7 +170,7 @@
   (->> rdf-file
        (rdf/document->model)
        (find-funders)
-       (map res->id)))
+       (map res->doi)))
 
 (defn diff-funders-rdf-names
   "Returns a list of funder names found in the new RDF file but not in the old

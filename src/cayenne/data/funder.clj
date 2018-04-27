@@ -45,7 +45,7 @@
       (get-in [:body :count])))
 
 (defn ->response-doc [funder-doc]
-  {:id          (:doi funder-doc)
+  {:id          (:id funder-doc)
    :location    (:country funder-doc)
    :name        (:primary-name funder-doc)
    :alt-names   (:name funder-doc)
@@ -55,20 +55,22 @@
    :tokens      (:token funder-doc)})
 
 (defn ->extended-response-doc [funder-doc]
-  (let [funder-doi (:doi funder-doc)]
+  (let [funder-doi (:id funder-doc)]
     (merge
      (->response-doc funder-doc)
      {:work-count            (fetch-work-count funder-doi)
       :descendant-work-count (fetch-descendant-work-count funder-doi)
       :descendants           (:descendant funder-doc)
-      :hierarchy             (:hierarchy funder-doc)
-      :hierarchy-names       (:hierarchy-names funder-doc)})))
+      :hierarchy             (assoc-in {} (:hierarchy funder-doc) {})
+      :hierarchy-names       (->> (:hierarchy-names funder-doc)
+                                  (map (fn [h] {(:id h) (:name h)}))
+                                  (apply merge))})))
 
 (defn fetch-one [query-context]
   (when-let [funder-doc (-> (elastic/request
                              (conf/get-service :elastic)
                              (query/->es-request query-context
-                                                 :id-field :doi
+                                                 :id-field :id
                                                  :index "funder"))
                             (get-in [:body :hits :hits])
                             first

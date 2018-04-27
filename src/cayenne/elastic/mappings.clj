@@ -235,13 +235,14 @@
 (def funder-properties
   {:doi             {:type "keyword"}
    :suggest         {:type "completion"}
+   :id              {:type "text"}
    :level           {:type "integer"}
    :parent          {:type "keyword"}
    :ancestor        {:type "keyword"}
    :child           {:type "keyword"}
    :descendant      {:type "keyword"}
-   :hierarchy       {:type "object"}
-   :hierarchy-names {:type "keyword" :index false}
+   :hierarchy       {:type "keyword"}
+   :hierarchy-names {:type "object"}
    :affiliated      {:type "keyword"}
    :country         {:type "keyword"}
    :primary-name    {:type "text" :copy_to :suggest}

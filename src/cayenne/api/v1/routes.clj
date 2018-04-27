@@ -210,8 +210,8 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :exists? #(when-let [f (funder/fetch-one 
-                          (q/->query-context % :id (doi-id/with-funder-prefix funder-id)))]
+  :exists? #(when-let [f (funder/fetch-one
+                          (q/->query-context % :id funder-id))]
               {:funder f})
   :handle-ok :funder)
 
