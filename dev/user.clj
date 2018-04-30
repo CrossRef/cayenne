@@ -39,6 +39,8 @@
     (catch Exception e
       false)))
 
+(def core-started? (atom false))
+
 (defn start []
   (let [result
         (sh "docker-compose" "up" "-d" "mongo" "solr"
@@ -54,11 +56,11 @@
                    (not (mongo-ready?)))
           (println "Waiting for solr and mongo to be ready..")
           (Thread/sleep 500))
-        (start-core! :default :api :feed-api)))))
+        (when-not @core-started?
+          (when (start-core! :default :api :feed-api)
+            (reset! core-started? true)))))))
 
 (defn stop []
-  (stop-core! :default)
-  (Thread/sleep 2000)
   (sh "docker-compose" "down"))
 
 (defn reset []
