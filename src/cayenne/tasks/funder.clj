@@ -92,7 +92,7 @@
    (rdf/objects
     (rdf/select model :subject funder-resource :predicate (rdf/dct model "isReplacedBy")))
    (rdf/subjects
-    (rdf/select model :predicate (rdf/dct model "reaplces") :object funder-resource))))
+    (rdf/select model :predicate (rdf/dct model "replaces") :object funder-resource))))
 
 (defn affiliated [model funder-resource]
   (concat
