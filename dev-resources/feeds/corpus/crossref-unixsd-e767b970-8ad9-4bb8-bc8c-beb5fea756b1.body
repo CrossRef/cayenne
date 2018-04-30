@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.3389/fendo.2016.00158</doi>
+        <crm-item name="publisher-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="prefix-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="member-id" type="number">1965</crm-item>
+        <crm-item name="citation-id" type="number">86855327</crm-item>
+        <crm-item name="journal-id" type="number">111805</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20180226123350</crm-item>
+        <crm-item name="owner-prefix" type="string">10.3389</crm-item>
+        <crm-item name="last-update" type="date">2018-02-26T12:35:01Z</crm-item>
+        <crm-item name="created" type="date">2016-12-15T03:59:50Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>Frontiers in Endocrinology</full_title>
+                <abbrev_title>Front. Endocrinol.</abbrev_title>
+                <issn media_type="electronic">1664-2392</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>15</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>7</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Dynamic Changes in DNA Methylation Occur during the First Year of Life in Preterm Infants</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Chinthika</given_name>
+                    <surname>Piyasena</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Jessy</given_name>
+                    <surname>Cartier</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Nadine</given_name>
+                    <surname>Provençal</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Tobias</given_name>
+                    <surname>Wiechmann</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Batbayar</given_name>
+                    <surname>Khulan</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Raju</given_name>
+                    <surname>Sunderesan</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Gopi</given_name>
+                    <surname>Menon</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Jonathan R.</given_name>
+                    <surname>Seckl</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Rebecca M.</given_name>
+                    <surname>Reynolds</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Elisabeth B.</given_name>
+                    <surname>Binder</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Amanda J.</given_name>
+                    <surname>Drake</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>15</day>
+                  <year>2016</year>
+                </publication_date>
+                <publisher_item>
+                  <item_number item_number_type="article_number">158</item_number>
+                  <identifier id_type="doi">10.3389/fendo.2016.00158</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.3389/crossmark-policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>frontiersin.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Scottish Funding Council
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100000360</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">SCD/09</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Medical Research Council
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100000265</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">G0501904</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          European Research Council
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100000781</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">281338</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Diabetes UK
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100000361</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">08/0003781</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:free_to_read />
+                      <ai:license_ref>https://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.3389/fendo.2016.00158</doi>
+                  <resource>http://journal.frontiersin.org/article/10.3389/fendo.2016.00158/full</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://journal.frontiersin.org/article/10.3389/fendo.2016.00158/full</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <journal_title>Int J Epidemiol</journal_title>
+                    <author>Risnes</author>
+                    <volume>40</volume>
+                    <first_page>647</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Birthweight and mortality in adulthood: a systematic review and meta-analysis</article_title>
+                    <doi>10.1093/ije/dyq267</doi>
+                  </citation>
+                  <citation key="B2">
+                    <journal_title>Science</journal_title>
+                    <author>Gluckman</author>
+                    <volume>305</volume>
+                    <first_page>1733</first_page>
+                    <cYear>2004</cYear>
+                    <article_title>Living with the past: evolution, development, and patterns of disease</article_title>
+                    <doi>10.1126/science.1095292</doi>
+                  </citation>
+                  <citation key="B3">
+                    <journal_title>Pediatrics</journal_title>
+                    <author>Parkinson</author>
+                    <volume>131</volume>
+                    <first_page>e1240</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Preterm birth and the metabolic syndrome in adult life: a systematic review and meta-analysis</article_title>
+                    <doi>10.1542/peds.2012-2177</doi>
+                  </citation>
+                  <citation key="B4">
+                    <journal_title>Arch Dis Child Fetal Neonatal Ed</journal_title>
+                    <author>Bayman</author>
+                    <volume>99</volume>
+                    <first_page>F510</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Prematurity and programming of cardiovascular disease risk: a future challenge for public health?</article_title>
+                    <doi>10.1136/archdischild-2014-306742</doi>
+                  </citation>
+                  <citation key="B5">
+                    <journal_title>Arch Dis Child</journal_title>
+                    <author>Tinnion</author>
+                    <volume>99</volume>
+                    <first_page>362</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Preterm birth and subsequent insulin sensitivity: a systematic review</article_title>
+                    <doi>10.1136/archdischild-2013-304615</doi>
+                  </citation>
+                  <citation key="B6">
+                    <journal_title>J Am Acad Child Adolesc Psychiatry</journal_title>
+                    <author>Johnson</author>
+                    <volume>49</volume>
+                    <first_page>453</first_page>
+                    <cYear>2010</cYear>
+                    <article_title>Psychiatric disorders in extremely preterm children: longitudinal finding at age 11 years in the EPICure study</article_title>
+                    <doi>10.1016/j.jaac.2010.02.002</doi>
+                  </citation>
+                  <citation key="B7">
+                    <journal_title>Reprod Health</journal_title>
+                    <author>Blencowe</author>
+                    <volume>10</volume>
+                    <first_page>S2</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Born too soon: the global epidemiology of 15 million preterm births</article_title>
+                    <doi>10.1186/1742-4755-10-S1-S2</doi>
+                  </citation>
+                  <citation key="B8">
+                    <journal_title>Pediatrics</journal_title>
+                    <author>Embleton</author>
+                    <volume>107</volume>
+                    <first_page>270</first_page>
+                    <cYear>2001</cYear>
+                    <article_title>Postnatal malnutrition and growth retardation: an inevitable consequence of current recommendations in preterm infants?</article_title>
+                    <doi>10.1542/peds.107.2.270</doi>
+                  </citation>
+                  <citation key="B9">
+                    <journal_title>J Pediatr</journal_title>
+                    <author>Grunau</author>
+                    <volume>150</volume>
+                    <first_page>151</first_page>
+                    <cYear>2007</cYear>
+                    <article_title>Altered basal cortisol levels at 3, 6, 8 and 18 months in infants born at extremely low gestational age</article_title>
+                    <doi>10.1016/j.jpeds.2006.10.053</doi>
+                  </citation>
+                  <citation key="B10">
+                    <journal_title>Dev Psychobiol</journal_title>
+                    <author>Brummelte</author>
+                    <volume>53</volume>
+                    <first_page>184</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Cortisol levels in relation to maternal interaction and child internalizing behavior in preterm and full-term children at 18 months corrected age</article_title>
+                    <doi>10.1002/dev.20511</doi>
+                  </citation>
+                  <citation key="B11">
+                    <journal_title>Pediatr Res</journal_title>
+                    <author>Godfrey</author>
+                    <volume>61</volume>
+                    <first_page>5R</first_page>
+                    <cYear>2007</cYear>
+                    <article_title>Epigenetic mechanisms and the mismatch concept of the developmental origins of health and disease</article_title>
+                    <doi>10.1203/pdr.0b013e318045bedb</doi>
+                  </citation>
+                  <citation key="B12">
+                    <journal_title>Genome Med</journal_title>
+                    <author>Cruickshank</author>
+                    <volume>5</volume>
+                    <first_page>96</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Analysis of epigenetic changes in survivors of preterm birth reveals the effect of gestational age and evidence for a long term legacy</article_title>
+                    <doi>10.1186/gm500</doi>
+                  </citation>
+                  <citation key="B13">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Parets</author>
+                    <volume>8</volume>
+                    <first_page>e67489</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Fetal DNA methylation associates with early spontaneous preterm birth and gestational age</article_title>
+                    <doi>10.1371/journal.pone.0067489</doi>
+                  </citation>
+                  <citation key="B14">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>Sparrow</author>
+                    <volume>6</volume>
+                    <first_page>e716</first_page>
+                    <cYear>2016</cYear>
+                    <article_title>Epigenomic profiling of preterm infants reveals DNA methylation differences at sites associated with neural function</article_title>
+                    <doi>10.1038/tp.2015.210</doi>
+                  </citation>
+                  <citation key="B15">
+                    <journal_title>Hum Mol Genet</journal_title>
+                    <author>Ollikainen</author>
+                    <volume>19</volume>
+                    <first_page>4176</first_page>
+                    <cYear>2010</cYear>
+                    <article_title>DNA methylation analysis of multiple tissues from newborn twins reveals both genetic and intrauterine components to variation in the human neonatal epigenome</article_title>
+                    <doi>10.1093/hmg/ddq336</doi>
+                  </citation>
+                  <citation key="B16">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>Heijmans</author>
+                    <volume>105</volume>
+                    <first_page>17046</first_page>
+                    <cYear>2008</cYear>
+                    <article_title>Persistent epigenetic differences associated with prenatal exposure to famine in humans</article_title>
+                    <doi>10.1073/pnas.0806560105</doi>
+                  </citation>
+                  <citation key="B17">
+                    <journal_title>Clin Endocrinol</journal_title>
+                    <author>Drake</author>
+                    <volume>77</volume>
+                    <first_page>808</first_page>
+                    <cYear>2012</cYear>
+                    <article_title>An unbalanced maternal diet in pregnancy associates with offspring epigenetic changes in genes controlling glucocorticoid action and foetal growth</article_title>
+                    <doi>10.1111/j.1365-2265.2012.04453.x</doi>
+                  </citation>
+                  <citation key="B18">
+                    <journal_title>Epigenomics</journal_title>
+                    <author>Paquette</author>
+                    <volume>7</volume>
+                    <first_page>767</first_page>
+                    <cYear>2015</cYear>
+                    <article_title>Placental epigenetic patterning of glucocorticoid response genes is associated with infant neurodevelopment</article_title>
+                    <doi>10.2217/epi.15.28</doi>
+                  </citation>
+                  <citation key="B19">
+                    <journal_title>Genes Brain Behav</journal_title>
+                    <author>Zannas</author>
+                    <volume>13</volume>
+                    <first_page>25</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Gene-environment interactions at the FKBP5 locus: sensitive periods, mechanisms and pleiotropism</article_title>
+                    <doi>10.1111/gbb.12104</doi>
+                  </citation>
+                  <citation key="B20">
+                    <journal_title>Nat Neurosci</journal_title>
+                    <author>Klengel</author>
+                    <volume>16</volume>
+                    <first_page>33</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Allele-specific FKBP5 DNA demethylation mediates gene-childhood trauma interactions</article_title>
+                    <doi>10.1038/nn.3275</doi>
+                  </citation>
+                  <citation key="B21">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Paquette</author>
+                    <volume>9</volume>
+                    <first_page>e104913</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Placental FKBP5 genetic and epigenetic variation is associated with infant neurobehavioral outcomes in the RICHS cohort</article_title>
+                    <doi>10.1371/journal.pone.0104913</doi>
+                  </citation>
+                  <citation key="B22">
+                    <journal_title>Anal Biochem</journal_title>
+                    <author>Dupont</author>
+                    <volume>333</volume>
+                    <first_page>119</first_page>
+                    <cYear>2004</cYear>
+                    <article_title>De novo quantitative bisulphite sequencing using the pyrosequencing technology</article_title>
+                    <doi>10.1016/j.ab.2004.05.007</doi>
+                  </citation>
+                  <citation key="B23">
+                    <unstructured_citation>PanH
+            ColeTJ
+          LMSgrowth, a Microsoft Excel Add-In to Access Growth References Based on the LMS Method. Version 2.772012</unstructured_citation>
+                  </citation>
+                  <citation key="B24">
+                    <journal_title>Pediatrics</journal_title>
+                    <author>Hack</author>
+                    <volume>112</volume>
+                    <first_page>e30</first_page>
+                    <cYear>2003</cYear>
+                    <article_title>Growth of very low birth weight infants to age 20 years</article_title>
+                    <doi>10.1542/peds.112.1.e30</doi>
+                  </citation>
+                  <citation key="B25">
+                    <journal_title>Arch Dis Child Fetal Neonatal Ed</journal_title>
+                    <author>Cole</author>
+                    <volume>99</volume>
+                    <first_page>F34</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Birth weight and longitudinal growth in infants born below 32 weeks’ gestation: a UK population study</article_title>
+                    <doi>10.1136/archdischild-2012-303536</doi>
+                  </citation>
+                  <citation key="B26">
+                    <journal_title>Pediatr Res</journal_title>
+                    <author>Uthaya</author>
+                    <volume>57</volume>
+                    <first_page>211</first_page>
+                    <cYear>2005</cYear>
+                    <article_title>Altered adiposity after extremely preterm birth</article_title>
+                    <doi>10.1203/01.PDR.0000148284.58934.1C</doi>
+                  </citation>
+                  <citation key="B27">
+                    <journal_title>Early Hum Dev</journal_title>
+                    <author>Roggero</author>
+                    <volume>85</volume>
+                    <first_page>349</first_page>
+                    <cYear>2009</cYear>
+                    <article_title>Is term newborn body composition being achieved postnatally in preterm infants?</article_title>
+                    <doi>10.1016/j.earlhumdev.2008.12.011</doi>
+                  </citation>
+                  <citation key="B28">
+                    <journal_title>J Pediatr Gastroenterol Nutr</journal_title>
+                    <author>Ramel</author>
+                    <volume>53</volume>
+                    <first_page>333</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Body composition changes in preterm infants following hospital discharge: comparison with term infants</article_title>
+                    <doi>10.1097/MPG.0b013e3182243aa7</doi>
+                  </citation>
+                  <citation key="B29">
+                    <journal_title>Pediatr Res</journal_title>
+                    <author>Thomas</author>
+                    <volume>70</volume>
+                    <first_page>507</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Aberrant adiposity and ectopic lipid deposition characterize the adult phenotype of the preterm infant</article_title>
+                    <doi>10.1038/pr.2011.732</doi>
+                  </citation>
+                  <citation key="B30">
+                    <journal_title>Clin Epigenetics</journal_title>
+                    <author>Elliott</author>
+                    <volume>6</volume>
+                    <first_page>4</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Differences in smoking associated DNA methylation patterns in South Asians and Europeans</article_title>
+                    <doi>10.1186/1868-7083-6-4</doi>
+                  </citation>
+                  <citation key="B31">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Dogan</author>
+                    <volume>66</volume>
+                    <first_page>176</first_page>
+                    <cYear>2016</cYear>
+                    <article_title>Alcohol and tobacco consumption alter hypothalamic pituitary adrenal axis DNA methylation</article_title>
+                    <doi>10.1016/j.psyneuen.2016.01.018</doi>
+                  </citation>
+                  <citation key="B32">
+                    <journal_title>Cancer Epidemiol Biomarkers Prev</journal_title>
+                    <author>Flom</author>
+                    <volume>20</volume>
+                    <first_page>2518</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Prenatal smoke exposure and genomic DNA methylation in a multiethnic birth cohort</article_title>
+                    <doi>10.1158/1055-9965.epi-11-0553</doi>
+                  </citation>
+                  <citation key="B33">
+                    <journal_title>Gene</journal_title>
+                    <author>Murphy</author>
+                    <volume>494</volume>
+                    <first_page>36</first_page>
+                    <cYear>2012</cYear>
+                    <article_title>Gender-specific methylation differences in relation to prenatal exposure to cigarette smoke</article_title>
+                    <doi>10.1016/j.gene.2011.11.062</doi>
+                  </citation>
+                  <citation key="B34">
+                    <journal_title>Epigenetics</journal_title>
+                    <author>Novakovic</author>
+                    <volume>9</volume>
+                    <first_page>377</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Postnatal stability, tissue, and time specific effects of AHRR methylation change in response to maternal smoking in pregnancy</article_title>
+                    <doi>10.4161/epi.27248</doi>
+                  </citation>
+                  <citation key="B35">
+                    <journal_title>Am J Hum Genet</journal_title>
+                    <author>Joubert</author>
+                    <volume>98</volume>
+                    <first_page>680</first_page>
+                    <cYear>2016</cYear>
+                    <article_title>DNA methylation in newborns and maternal smoking in pregnancy: genome-wide consortium meta-analysis</article_title>
+                    <doi>10.1016/j.ajhg.2016.02.019</doi>
+                  </citation>
+                  <citation key="B36">
+                    <journal_title>Hum Mol Genet</journal_title>
+                    <author>Simpkin</author>
+                    <volume>25</volume>
+                    <first_page>191</first_page>
+                    <cYear>2016</cYear>
+                    <article_title>Prenatal and early life influences on epigenetic age in children: a study of mother-offspring pairs from two cohort studies</article_title>
+                    <doi>10.1093/hmg/ddv456</doi>
+                  </citation>
+                  <citation key="B37">
+                    <journal_title>Hum Mol Genet</journal_title>
+                    <author>Waterland</author>
+                    <volume>15</volume>
+                    <first_page>705</first_page>
+                    <cYear>2006</cYear>
+                    <article_title>Post-weaning diet affects genomic imprinting at the insulin-like growth factor 2 (Igf2) locus</article_title>
+                    <doi>10.1093/hmg/ddi484</doi>
+                  </citation>
+                  <citation key="B38">
+                    <journal_title>J Child Psychol Psychiatry</journal_title>
+                    <author>Rijlaarsdam</author>
+                    <cYear>2016</cYear>
+                    <article_title>Prenatal unhealthy diet, insulin-like growth factor 2 gene (IGF2) methylation, and attention deficit hyperactivity disorder symptoms in youth with early-onset conduct problems</article_title>
+                    <doi>10.1111/jcpp.12589</doi>
+                  </citation>
+                  <citation key="B39">
+                    <journal_title>Endocrinology</journal_title>
+                    <author>Lee</author>
+                    <volume>151</volume>
+                    <first_page>4332</first_page>
+                    <cYear>2010</cYear>
+                    <article_title>Chronic corticosterone exposure increases expression and decreases deoxyribonucleic acid methylation of Fkbp5 in mice</article_title>
+                    <doi>10.1210/en.2010-0225</doi>
+                  </citation>
+                  <citation key="B40">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>Yehuda</author>
+                    <volume>80</volume>
+                    <first_page>372</first_page>
+                    <cYear>2015</cYear>
+                    <article_title>Holocaust exposure induced intergenerational effects on FKBP5 methylation</article_title>
+                    <doi>10.1016/j.biopsych.2015.08.005</doi>
+                  </citation>
+                  <citation key="B41">
+                    <journal_title>PLoS Genet</journal_title>
+                    <author>Birney</author>
+                    <volume>12</volume>
+                    <first_page>e1006105</first_page>
+                    <cYear>2016</cYear>
+                    <article_title>Epigenome-wide association studies and the interpretation of disease -omics</article_title>
+                    <doi>10.1371/journal.pgen.1006105</doi>
+                  </citation>
+                  <citation key="B42">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Wehkalampi</author>
+                    <volume>8</volume>
+                    <first_page>e67379</first_page>
+                    <cYear>2013</cYear>
+                    <article_title>Altered methylation of IGF2 locus 20 years after preterm birth at very low birth weight</article_title>
+                    <doi>10.1371/journal.pone.0067379</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1002/jnr.23992</doi>
+        <crm-item name="publisher-name" type="string">Wiley</crm-item>
+        <crm-item name="prefix-name" type="string">Wiley (John Wiley &amp; Sons)</crm-item>
+        <crm-item name="member-id" type="number">311</crm-item>
+        <crm-item name="citation-id" type="number">86374010</crm-item>
+        <crm-item name="journal-id" type="number">1</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170614092009616</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1002</crm-item>
+        <crm-item name="last-update" type="date">2017-06-14T13:22:54Z</crm-item>
+        <crm-item name="created" type="date">2016-11-16T20:00:46Z</crm-item>
+        <crm-item name="citedby-count" type="number">9</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Journal of Neuroscience Research</full_title>
+                <abbrev_title>Journal of Neuroscience Research</abbrev_title>
+                <issn>03604012</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>08</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>95</volume>
+                </journal_volume>
+                <issue>8</issue>
+                <doi_data>
+                  <doi>10.1002/jnr.v95.8</doi>
+                  <resource>http://doi.wiley.com/10.1002/jnr.v95.8</resource>
+                </doi_data>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Short-term exposure to enriched environment rescues chronic stress-induced impaired hippocampal synaptic plasticity, anxiety, and memory deficits</title>
+                  <subtitle>Enrichment Reverses Stress-Induced Cognitive Deficits</subtitle>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Venkanna Rao</given_name>
+                    <surname>Bhagya</surname>
+                    <affiliation>Department of Neurophysiology; National Institute of Mental Health and Neuro Sciences (NIMHANS); Bengaluru India</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Bettadapura N.</given_name>
+                    <surname>Srikumar</surname>
+                    <affiliation>Department of Neurophysiology; National Institute of Mental Health and Neuro Sciences (NIMHANS); Bengaluru India</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jayagopalan</given_name>
+                    <surname>Veena</surname>
+                    <affiliation>Department of Neurophysiology; National Institute of Mental Health and Neuro Sciences (NIMHANS); Bengaluru India</affiliation>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Byrathnahalli S.</given_name>
+                    <surname>Shankaranarayana Rao</surname>
+                    <affiliation>Department of Neurophysiology; National Institute of Mental Health and Neuro Sciences (NIMHANS); Bengaluru India</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>08</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>16</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1602</first_page>
+                  <last_page>1610</last_page>
+                </pages>
+                <archive_locations>
+                  <archive name="Portico" />
+                </archive_locations>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref applies_to="tdm">http://doi.wiley.com/10.1002/tdm_license_1</ai:license_ref>
+                  <ai:license_ref applies_to="vor" start_date="2016-11-16">http://onlinelibrary.wiley.com/termsAndConditions</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1002/jnr.23992</doi>
+                  <resource>http://doi.wiley.com/10.1002/jnr.23992</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://onlinelibrary.wiley.com/wol1/doi/10.1002/jnr.23992/fullpdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource content_version="vor" mime_type="application/pdf">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fjnr.23992</resource>
+                    </item>
+                    <item>
+                      <resource content_version="vor">https://api.wiley.com/onlinelibrary/tdm/v1/articles/10.1002%2Fjnr.23992</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="10.1002/jnr.23992-BIB0001|jnr23992-cit-0001">
+                    <author>Anderson</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0165-0270(01)00374-0</doi>
+                    <article_title>The LTP program: a data acquisition program for on-line analysis of long-term potentiation and other synaptic events</article_title>
+                    <journal_title>J Neurosci Methods</journal_title>
+                    <volume>108</volume>
+                    <first_page>71</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0002|jnr23992-cit-0002">
+                    <author>Anuradha</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1007/s00702-007-0821-6</doi>
+                    <article_title>Euphorbia hirta reverses chronic stress-induced anxiety and mediates its action through the GABA(A) receptor benzodiazepine receptor-Cl(-) channel complex</article_title>
+                    <journal_title>J Neural Transm</journal_title>
+                    <volume>115</volume>
+                    <first_page>35</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0003|jnr23992-cit-0003">
+                    <author>Artola</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2005.04552.x</doi>
+                    <article_title>Long-lasting modulation of the induction of LTD and LTP in rat hippocampal CA1 by behavioural stress and environmental enrichment</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>23</volume>
+                    <first_page>261</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0004|jnr23992-cit-0004">
+                    <author>Ashokan</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.009</doi>
+                    <article_title>Short-term environmental enrichment is sufficient to counter stress-induced anxiety and associated structural and molecular plasticity in basolateral amygdala</article_title>
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <volume>69</volume>
+                    <first_page>189</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0005|jnr23992-cit-0005">
+                    <author>Beauquis</author>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0013993</doi>
+                    <article_title>Short-term environmental enrichment enhances adult neurogenesis, vascular network and dendritic complexity in the hippocampus of type 1 diabetic mice</article_title>
+                    <journal_title>PLoS One</journal_title>
+                    <volume>5</volume>
+                    <first_page>e13993</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0006|jnr23992-cit-0006">
+                    <author>Benaroya-Milshtein</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2004.03587.x</doi>
+                    <article_title>Environmental enrichment in mice decreases anxiety, attenuates stress responses and enhances natural killer cell activity</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>20</volume>
+                    <first_page>1341</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0008|jnr23992-cit-0008">
+                    <author>Bhagya</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1007/s00213-010-2054-x</doi>
+                    <article_title>Chronic escitalopram treatment restores spatial learning, monoamine levels and hippocampal long-term potentiation in an animal model of depression</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>214</volume>
+                    <first_page>477</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0009|jnr23992-cit-0009">
+                    <author>Bhagya</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1002/jnr.23473</doi>
+                    <article_title>Selective noradrenergic reuptake inhibitor reboxetine restores spatial learning deficits, biochemical changes and hippocampal synaptic plasticity in an animal model of depression</article_title>
+                    <journal_title>J Neurosci Res</journal_title>
+                    <volume>93</volume>
+                    <first_page>104</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0010|jnr23992-cit-0010">
+                    <author>Bhagya</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.4103/0253-7613.194853</doi>
+                    <article_title>Neuroprotective effect of Celastrus paniculatus on chronic stress-induced cognitive impairment</article_title>
+                    <journal_title>Indian J Pharmacol</journal_title>
+                    <volume>48</volume>
+                    <first_page>687</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0011|jnr23992-cit-0011">
+                    <author>Bindu</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2006.09.057</doi>
+                    <article_title>Short-term exposure to an enriched environment enhances dendritic branching but not brain-derived neurotrophic factor expression in the hippocampus of rats with ventral subicular lesions</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>144</volume>
+                    <first_page>412</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0012|jnr23992-cit-0012">
+                    <author>Burrows</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.44</doi>
+                    <article_title>Environmental enrichment ameliorates behavioral impairments modeling schizophrenia in mice lacking metabotropic glutamate receptor 5</article_title>
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <volume>40</volume>
+                    <first_page>1947</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0013|jnr23992-cit-0013">
+                    <author>Buchhold</author>
+                    <cYear>2007</cYear>
+                    <article_title>Environmental enrichment improves functional and neuropathological indices following stroke in young and aged rats</article_title>
+                    <journal_title>Restor Neurol Neurosci</journal_title>
+                    <volume>25</volume>
+                    <first_page>467</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0014|jnr23992-cit-0014">
+                    <author>Buschler</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.3389/fnbeh.2012.00085</doi>
+                    <article_title>Brief environmental enrichment elicits metaplasticity of hippocampal synaptic potentiation in vivo</article_title>
+                    <journal_title>Front Behav Neurosci</journal_title>
+                    <volume>6</volume>
+                    <first_page>85</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0015|jnr23992-cit-0015">
+                    <author>Chapillon</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1023/A:1021437905913</doi>
+                    <article_title>Rearing environmental enrichment in two inbred strains of mice: effects on emotional reactivity</article_title>
+                    <journal_title>Behav Genet</journal_title>
+                    <volume>29</volume>
+                    <first_page>41</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0016|jnr23992-cit-0016">
+                    <author>Chiba</author>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.pnpbp.2012.05.018</doi>
+                    <article_title>Chronic restraint stress causes anxiety- and depression-like behaviors, down regulates glucocorticoid receptor expression, and attenuates glutamate release induced by brain-derived neurotrophic factor in the prefrontal cortex</article_title>
+                    <journal_title>Prog Neuropsychopharmacol Biol Psychiatry</journal_title>
+                    <volume>39</volume>
+                    <first_page>112</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0017|jnr23992-cit-0017">
+                    <author>Conrad</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.113.5.902</doi>
+                    <article_title>Repeated restraint stress facilitates fear conditioning independently of causing hippocampal CA3 dendritic atrophy</article_title>
+                    <journal_title>Behav Neurosci</journal_title>
+                    <volume>113</volume>
+                    <first_page>902</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0018|jnr23992-cit-0018">
+                    <author>Cordner</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/tp.2016.127</doi>
+                    <article_title>Effects of chronic variable stress on cognition and Bace1 expression among wild-type mice</article_title>
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <volume>6</volume>
+                    <first_page>e854</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0019|jnr23992-cit-0019">
+                    <author>Cui</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2006.05.048</doi>
+                    <article_title>Enriched environment experience overcomes the memory deficits and depressive-like behavior induced by early life stress</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>404</volume>
+                    <first_page>208</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0020|jnr23992-cit-0020">
+                    <author>Czeh</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(02)01457-9</doi>
+                    <article_title>Chronic psychosocial stress and concomitant repetitive transcranial magnetic stimulation: effects on stress hormone levels and adult hippocampal neurogenesis</article_title>
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <volume>52</volume>
+                    <first_page>1057</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0021|jnr23992-cit-0021">
+                    <author>Diamond</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.euroneuro.2004.09.003</doi>
+                    <article_title>Preclinical research on stress, memory, and the brain in the development of pharmacotherapy for depression</article_title>
+                    <journal_title>Eur Neuropsychopharmacol</journal_title>
+                    <volume>14</volume>
+                    <issue>Suppl 5</issue>
+                    <first_page>S491</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0022|jnr23992-cit-0022">
+                    <author>Duffy</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1101/lm.36301</doi>
+                    <article_title>Environmental enrichment modifies the PKA-dependence of hippocampal LTP and improves hippocampus-dependent memory</article_title>
+                    <journal_title>Learn Mem</journal_title>
+                    <volume>8</volume>
+                    <first_page>26</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0023|jnr23992-cit-0023">
+                    <author>Fares</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0053888</doi>
+                    <article_title>Standardized environmental enrichment supports enhanced brain plasticity in healthy rats and prevents cognitive impairment in epileptic rats</article_title>
+                    <journal_title>PLoS One</journal_title>
+                    <volume>8</volume>
+                    <first_page>e53888</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0024|jnr23992-cit-0024">
+                    <author>Fox</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2006.08.016</doi>
+                    <article_title>Therapeutic and protective effect of environmental enrichment against psychogenic and neurogenic stress</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>175</volume>
+                    <first_page>1</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0025|jnr23992-cit-0025">
+                    <author>Furuie</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1097/FBP.0000000000000003</doi>
+                    <article_title>MK-801-induced and scopolamine-induced hyperactivity in rats neonatally treated chronically with MK-801</article_title>
+                    <journal_title>Behav Pharmacol</journal_title>
+                    <volume>24</volume>
+                    <first_page>678</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0026|jnr23992-cit-0026">
+                    <author>Garcia</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1016/S0304-3940(97)00621-6</doi>
+                    <article_title>Time-dependent blockade of STP and LTP in hippocampal slices following acute stress in mice</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>233</volume>
+                    <first_page>41</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0027|jnr23992-cit-0027">
+                    <author>Gerges</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0006-8993(01)03181-X</doi>
+                    <article_title>Combination of hypothyroidism and stress abolishes early LTP in the CA1 but not dentate gyrus of hippocampus of adult rats</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>922</volume>
+                    <first_page>250</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0028|jnr23992-cit-0028">
+                    <author>Gerges</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1002/hipo.10193</doi>
+                    <article_title>Reduced basal CaMKII levels in hippocampal CA1 region: possible cause of stress-induced impairment of LTP in chronically stressed rats</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>14</volume>
+                    <first_page>402</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0029|jnr23992-cit-0029">
+                    <author>Gould</author>
+                    <cYear>1997</cYear>
+                    <article_title>Neurogenesis in the dentate gyrus of the adult tree shrew is regulated by psychosocial stress and NMDA receptor activation</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>17</volume>
+                    <first_page>2492</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0030|jnr23992-cit-0030">
+                    <author>Hamm</author>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1089/neu.1996.13.41</doi>
+                    <article_title>Exposure to environmental complexity promotes recovery of cognitive function after traumatic brain injury</article_title>
+                    <journal_title>J Neurotrauma</journal_title>
+                    <volume>13</volume>
+                    <first_page>41</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0031|jnr23992-cit-0031">
+                    <author>Han</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.3233/JAD-160189</doi>
+                    <article_title>Chronic stress aggravates cognitive impairment and suppresses insulin associated signaling pathway in APP/PS1 mice</article_title>
+                    <journal_title>J Alzheimers Dis</journal_title>
+                    <volume>53</volume>
+                    <first_page>1539</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0032|jnr23992-cit-0032">
+                    <author>Hellemans</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.devbrainres.2004.03.003</doi>
+                    <article_title>Adolescent enrichment partially reverses the social isolation syndrome</article_title>
+                    <journal_title>Brain Res Dev Brain Res</journal_title>
+                    <volume>150</volume>
+                    <first_page>103</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0033|jnr23992-cit-0033">
+                    <author>Henn</author>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2005.03.019</doi>
+                    <article_title>Stress models of depression: forming genetically vulnerable strains</article_title>
+                    <journal_title>Neurosci Biobehav Rev</journal_title>
+                    <volume>29</volume>
+                    <first_page>799</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0034|jnr23992-cit-0034">
+                    <author>Huang</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1182-06.2006</doi>
+                    <article_title>Environmental enrichment enhances neurogranin expression and hippocampal learning and memory but fails to rescue the impairments of neurogranin null mutant mice</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>26</volume>
+                    <first_page>6230</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0035|jnr23992-cit-0035">
+                    <author>Irvine</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1002/hipo.20142</doi>
+                    <article_title>Enriched environment exposure regulates excitability, synaptic transmission, and LTP in the dentate gyrus of freely moving rats</article_title>
+                    <journal_title>Hippocampus</journal_title>
+                    <volume>6</volume>
+                    <first_page>149</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0036|jnr23992-cit-0036">
+                    <author>Joëls</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1080/10253890500070005</doi>
+                    <article_title>Effects of chronic stress on structure and cell function in rat hippocampus and hypothalamus</article_title>
+                    <journal_title>Stress</journal_title>
+                    <volume>7</volume>
+                    <first_page>221</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0037|jnr23992-cit-0037">
+                    <author>Johansson</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1097/00004647-200201000-00011</doi>
+                    <article_title>Neuronal plasticity and dendritic spines: effect of environmental enrichment on intact and post ischemic rat brain</article_title>
+                    <journal_title>J Cereb Blood Flow Metab</journal_title>
+                    <volume>22</volume>
+                    <first_page>89</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0038|jnr23992-cit-0038">
+                    <author>Kempermann</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0079-6123(00)27004-0</doi>
+                    <article_title>Activity-dependent regulation of neuronal plasticity and self repair</article_title>
+                    <journal_title>Prog Brain Res</journal_title>
+                    <volume>127</volume>
+                    <first_page>35</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0039|jnr23992-cit-0039">
+                    <author>Kleen</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.120.4.842</doi>
+                    <article_title>Chronic stress impairs spatial memory and motivation for reward without disrupting motor ability and motivation to explore</article_title>
+                    <journal_title>Behav Neurosci</journal_title>
+                    <volume>120</volume>
+                    <first_page>842</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0040|jnr23992-cit-0040">
+                    <author>Krugers</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2006.04842.x</doi>
+                    <article_title>Blockade of glucocorticoid receptors rapidly restores hippocampal CA1 synaptic plasticity after exposure to chronic stress</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>23</volume>
+                    <first_page>3051</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0041|jnr23992-cit-0041">
+                    <author>Liu</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2016.03.005</doi>
+                    <article_title>The identification of metabolic disturbances in the prefrontal cortex of the chronic restraint stress rat model of depression</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>305</volume>
+                    <first_page>148</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0042|jnr23992-cit-0042">
+                    <author>Mahati</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2016.08.017</doi>
+                    <article_title>Enriched environment ameliorates depression-induced cognitive deficits and restores abnormal hippocampal synaptic plasticity</article_title>
+                    <journal_title>Neurobiol Learn Mem</journal_title>
+                    <volume>134</volume>
+                    <first_page>379</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0043|jnr23992-cit-0043">
+                    <author>Malchow</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1093/schbul/sbv020</doi>
+                    <article_title>Effects of endurance training combined with cognitive remediation on everyday functioning, symptoms, and cognition in multi episode schizophrenia patients</article_title>
+                    <journal_title>Schizophr Bull</journal_title>
+                    <volume>41</volume>
+                    <first_page>847</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0044|jnr23992-cit-0044">
+                    <author>McEwen</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0006-8993(00)02950-4</doi>
+                    <article_title>The neurobiology of stress: from serendipity to clinical relevance</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>886</volume>
+                    <first_page>172</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0045|jnr23992-cit-0045">
+                    <author>McKittrick</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1002/(SICI)1098-2396(200005)36:2&lt;85::AID-SYN1&gt;3.0.CO;2-Y</doi>
+                    <article_title>Chronic social stress reduces dendritic arbors in CA3 of hippocampus and decreases binding to serotonin transporter sites</article_title>
+                    <journal_title>Synapse</journal_title>
+                    <volume>36</volume>
+                    <first_page>85</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0046|jnr23992-cit-0046">
+                    <author>McLaughlin</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2007.05.042</doi>
+                    <article_title>The effects of chronic stress on hippocampal morphology and function: an evaluation of chronic restraint paradigms</article_title>
+                    <journal_title>Brain Res</journal_title>
+                    <volume>1161</volume>
+                    <first_page>56</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0047|jnr23992-cit-0047">
+                    <author>Mora</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.brainresrev.2007.03.011</doi>
+                    <article_title>Aging, plasticity and environmental enrichment: structural changes and neurotransmitter dynamics in several areas of the brain</article_title>
+                    <journal_title>Brain Res Rev</journal_title>
+                    <volume>55</volume>
+                    <first_page>78</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0048|jnr23992-cit-0048">
+                    <author>Morley-Fletcher</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2003.03070.x</doi>
+                    <article_title>Environmental enrichment during adolescence reverses the effects of prenatal stress on play behavior and HPA axis reactivity in rats</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>18</volume>
+                    <first_page>3367</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0049|jnr23992-cit-0049">
+                    <author>Nithianantharajah</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1038/nrn1970</doi>
+                    <article_title>Enriched environments, experience dependent plasticity and disorders of the nervous system</article_title>
+                    <journal_title>Nat Rev Neurosci</journal_title>
+                    <volume>7</volume>
+                    <first_page>697</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0050|jnr23992-cit-0050">
+                    <author>Nithianantharajah</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2004.02.002</doi>
+                    <article_title>Environmental enrichment results in cortical and subcortical changes in levels of synaptophysin and PSD-95 proteins</article_title>
+                    <journal_title>Neurobiol Learn Mem</journal_title>
+                    <volume>81</volume>
+                    <first_page>200</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0051|jnr23992-cit-0051">
+                    <author>Nowakowska</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.pharep.2013.12.008</doi>
+                    <article_title>The influence of aripiprazole, olanzapine and enriched environment on depressant-like behavior, spatial memory dysfunction and hippocampal level of BDNF in prenatally stressed rats</article_title>
+                    <journal_title>Pharmacol Rep</journal_title>
+                    <volume>66</volume>
+                    <first_page>404</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0052|jnr23992-cit-0052">
+                    <author>Pang</author>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neuropharm.2012.06.029</doi>
+                    <article_title>Enhancement of cognitive function in models of brain disease through environmental enrichment and physical activity</article_title>
+                    <journal_title>Neuropharmacology</journal_title>
+                    <volume>64</volume>
+                    <first_page>515</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0053|jnr23992-cit-0053">
+                    <author>Passineau</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1006/exnr.2000.7623</doi>
+                    <article_title>Therapeutic effects of environmental enrichment on cognitive function and tissue integrity following severe traumatic brain injury in rats</article_title>
+                    <journal_title>Exp Neurol</journal_title>
+                    <volume>168</volume>
+                    <first_page>373</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0054|jnr23992-cit-0054">
+                    <author>Pham</author>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.2003.02513.x</doi>
+                    <article_title>Repeated restraint stress suppresses neurogenesis and induces biphasic PSA-NCAM expression in the adult rat dentate gyrus</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>17</volume>
+                    <first_page>879</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0055|jnr23992-cit-0055">
+                    <author>Pham</author>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0306-4522(99)00316-4</doi>
+                    <article_title>Changes in brain nerve growth factor levels and nerve growth factor receptors in rats exposed to environmental enrichment for one year</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>94</volume>
+                    <first_page>279</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0056|jnr23992-cit-0056">
+                    <author>Piazza</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/s11011-013-9467-2</doi>
+                    <article_title>Enriched environment induces beneficial effects on memory deficits and microglial activation in the hippocampus of type 1 diabetic rats</article_title>
+                    <journal_title>Metab Brain Dis</journal_title>
+                    <volume>29</volume>
+                    <first_page>93</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0057|jnr23992-cit-0057">
+                    <author>Ramkumar</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1007/s11064-007-9511-x</doi>
+                    <article_title>Self-stimulation rewarding experience restores stress-induced CA3 dendritic atrophy, spatial memory deficits and alterations in the levels of neurotransmitters in the hippocampus</article_title>
+                    <journal_title>Neurochem Res</journal_title>
+                    <volume>33</volume>
+                    <first_page>1651</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0058|jnr23992-cit-0058">
+                    <author>Sarris</author>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1186/1471-244X-14-107</doi>
+                    <article_title>Lifestyle medicine for depression</article_title>
+                    <journal_title>BMC Psychiatry</journal_title>
+                    <volume>14</volume>
+                    <first_page>107</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0059|jnr23992-cit-0059">
+                    <author>Shors</author>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1002/(SICI)1098-2396(199707)26:3&lt;209::AID-SYN2&gt;3.0.CO;2-B</doi>
+                    <article_title>Transient and persistent consequences of acute stress on long-term potentiation (LTP), synaptic efficacy, theta rhythms and bursts in area CA1 of the hippocampus</article_title>
+                    <journal_title>Synapse</journal_title>
+                    <volume>26</volume>
+                    <first_page>209</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0060|jnr23992-cit-0060">
+                    <author>Sousa</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0306-4522(00)00050-6</doi>
+                    <article_title>Reorganization of the morphology of hippocampal neurites and synapses after stress-induced damage correlates with behavioral improvement</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>97</volume>
+                    <first_page>253</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0061|jnr23992-cit-0061">
+                    <author>Srikumar</author>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2006.08.041</doi>
+                    <article_title>The involvement of cholinergic and noradrenergic systems in behavioral recovery following oxotremorine treatment to chronically stressed rats</article_title>
+                    <journal_title>Neuroscience</journal_title>
+                    <volume>143</volume>
+                    <first_page>679</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0062|jnr23992-cit-0062">
+                    <author>Srikumar</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1007/s00213-007-0801-4</doi>
+                    <article_title>Contrasting effects of bromocriptine on learning of a partially baited radial arm maze task in the presence and absence of restraint stress</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>193</volume>
+                    <first_page>363</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0063|jnr23992-cit-0063">
+                    <author>Sunanda, Shankaranarayana Rao</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1023/A:1026606201069</doi>
+                    <article_title>Restraint stress-induced alterations in the levels of biogenic amines, amino acids, and AChE activity in the hippocampus</article_title>
+                    <journal_title>Neurochem Res</journal_title>
+                    <volume>25</volume>
+                    <first_page>1547</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0064|jnr23992-cit-0064">
+                    <author>Tang</author>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0028-3908(01)00122-8</doi>
+                    <article_title>Differential effects of enrichment on learning and memory function in NR2B transgenic mice</article_title>
+                    <journal_title>Neuropharmacology</journal_title>
+                    <volume>41</volume>
+                    <first_page>779</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0065|jnr23992-cit-0065">
+                    <author>Teather</author>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.2002.02416.x</doi>
+                    <article_title>Environmental conditions influence hippocampus-dependent behaviours and brain levels of amyloid precursor protein in rats</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>16</volume>
+                    <first_page>2405</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0066|jnr23992-cit-0066">
+                    <author>Then</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1212/WNL.0000000000001605</doi>
+                    <article_title>Differential effects of enriched environment at work on cognitive decline in old age</article_title>
+                    <journal_title>Neurology</journal_title>
+                    <volume>84</volume>
+                    <first_page>2169</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0067|jnr23992-cit-0067">
+                    <author>Valero</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0016832</doi>
+                    <article_title>Short-term environmental enrichment rescues adult neurogenesis and memory deficits in APP (Sw,Ind) transgenic mice</article_title>
+                    <journal_title>PLoS One</journal_title>
+                    <volume>6</volume>
+                    <first_page>e16832</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0068|jnr23992-cit-0068">
+                    <author>Praag</author>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/35044558</doi>
+                    <article_title>Neural consequences of environmental enrichment</article_title>
+                    <journal_title>Nat Rev Neurosci</journal_title>
+                    <volume>1</volume>
+                    <first_page>191</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0069|jnr23992-cit-0069">
+                    <author>Veena</author>
+                    <cYear>2009a</cYear>
+                    <doi provider="crossref">10.1002/jnr.21907</doi>
+                    <article_title>Enriched environment restores hippocampal cell proliferation and ameliorates cognitive deficits in chronically stressed rats</article_title>
+                    <journal_title>J Neurosci Res</journal_title>
+                    <volume>87</volume>
+                    <first_page>831</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0070|jnr23992-cit-0070">
+                    <author>Veena</author>
+                    <cYear>2009b</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2009.03.059</doi>
+                    <article_title>Exposure to enriched environment restores the survival and differentiation of new born cells in the hippocampus and ameliorates depressive symptoms in chronically stressed rats</article_title>
+                    <journal_title>Neurosci Lett</journal_title>
+                    <volume>455</volume>
+                    <first_page>178</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0870|jnr23992-cit-0870">
+                    <author>J</author>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1007/s00213-011-2279-3</doi>
+                    <article_title>Oxotremorine treatment restores hippocampal neurogenesis and ameliorates depression-like behaviour in chronically stressed rats</article_title>
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <volume>217</volume>
+                    <first_page>239</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0071|jnr23992-cit-0071">
+                    <author>Vouimba</author>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.2004.03294.x</doi>
+                    <article_title>Effects of inescapable stress on LTP in the amygdala versus the dentate gyrus of freely behaving rats</article_title>
+                    <journal_title>Eur J Neurosci</journal_title>
+                    <volume>19</volume>
+                    <first_page>1887</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0072|jnr23992-cit-0072">
+                    <author>Vyas</author>
+                    <cYear>2002</cYear>
+                    <article_title>Chronic stress induces contrasting patterns of dendritic remodeling in hippocampal and amygdaloid neurons</article_title>
+                    <journal_title>J Neurosci</journal_title>
+                    <volume>22</volume>
+                    <first_page>6810</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0073|jnr23992-cit-0073">
+                    <author>White</author>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.3109/09638288.2014.935876</doi>
+                    <article_title>Exploring stroke survivor experience of participation in an enriched environment: a qualitative study</article_title>
+                    <journal_title>Disabil Rehabil</journal_title>
+                    <volume>37</volume>
+                    <first_page>593</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0074|jnr23992-cit-0074">
+                    <author>Wright</author>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.bbr.2007.08.025</doi>
+                    <article_title>Enriched environment prevents chronic stress-induced spatial learning and memory deficits</article_title>
+                    <journal_title>Behav Brain Res</journal_title>
+                    <volume>187</volume>
+                    <first_page>41</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0075|jnr23992-cit-0075">
+                    <author>Yang</author>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2006.09.001</doi>
+                    <article_title>Enriched environment treatment restores impaired hippocampal synaptic plasticity and cognitive deficits induced by prenatal chronic stress</article_title>
+                    <journal_title>Neurobiol Learn Mem</journal_title>
+                    <volume>87</volume>
+                    <first_page>257</first_page>
+                  </citation>
+                  <citation key="10.1002/jnr.23992-BIB0076|jnr23992-cit-0076">
+                    <author>Yu</author>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.wneu.2015.09.071</doi>
+                    <article_title>Combination therapy of salvianolic acid and fluoxetine improves the cognitive function of rats with chronic stress-induced depression</article_title>
+                    <journal_title>World Neurosurg</journal_title>
+                    <volume>86</volume>
+                    <first_page>173</first_page>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

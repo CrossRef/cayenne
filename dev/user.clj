@@ -41,14 +41,14 @@
 
 (defn start []
   (let [result
-    (sh "docker-compose" "up" "-d" "mongo" "solr"
-        :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
-              "PATH" (System/getenv "PATH")
-              "MONGO_HOST" "cayenne_mongo_1:27017"})]
+        (sh "docker-compose" "up" "-d" "mongo" "solr"
+            :env {"CAYENNE_SOLR_HOST" "cayenne_solr_1:8983"
+                  "PATH" (System/getenv "PATH")
+                  "MONGO_HOST" "cayenne_mongo_1:27017"})]
     (if-not (-> result :exit zero?)
       (do (println "Error starting Docker Compose:")
           (println result))
-      (do 
+      (do
         ;; wait for solr to start, sometimes takes a while to load the core
         (while (or (not (solr-ready?))
                    (not (mongo-ready?)))
@@ -70,58 +70,50 @@
     (->> (.getPath (resource "registry.rdf"))
          (str "file://")
          (set-param! [:location :cr-funder-registry])))
-  (with-redefs 
-    [cayenne.tasks.funder/get-country-literal-name 
-     (fn [model node] 
-       (let [url (rdf/->uri (first (rdf/objects (select-country-stmts model node))))]
-         (case url
-           "http://sws.geonames.org/2921044/" "Germany"
-           "http://sws.geonames.org/6252001/" "United States"
-           "http://sws.geonames.org/2077456/" "Australia"
-           "http://sws.geonames.org/337996/" "Ethiopia"
-           "http://sws.geonames.org/1814991/" "China"
-           "http://sws.geonames.org/2635167/" "United Kingdom"
-           "http://sws.geonames.org/3144096/" "Norway"
-           "http://sws.geonames.org/2661886/" "Sweden"
-           "http://sws.geonames.org/1861060/" "Japan"
-           url)))]
+  (with-redefs
+   [cayenne.tasks.funder/get-country-literal-name
+    (fn [model node]
+      (let [url (rdf/->uri (first (rdf/objects (select-country-stmts model node))))]
+        (case url
+          "http://sws.geonames.org/2921044/" "Germany"
+          "http://sws.geonames.org/6252001/" "United States"
+          "http://sws.geonames.org/2077456/" "Australia"
+          "http://sws.geonames.org/337996/" "Ethiopia"
+          "http://sws.geonames.org/1814991/" "China"
+          "http://sws.geonames.org/2635167/" "United Kingdom"
+          "http://sws.geonames.org/3144096/" "Norway"
+          "http://sws.geonames.org/2661886/" "Sweden"
+          "http://sws.geonames.org/1861060/" "Japan"
+          url)))]
     (load-funders)))
 
 (defn load-test-journals []
-  (with-core :default 
+  (with-core :default
     (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
   (load-journals))
 
 (defn process-feed []
   (let [feed-dir (.getPath (resource "feeds"))
-        feed-source-dir (str feed-dir "/source")
+        feed-source-dir (str feed-dir "/corpus")
         feed-in-dir (str feed-dir "/feed-in")
         feed-processed-dir (str feed-dir "/feed-processed")
         feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
-    (when-not (= feed-file-count 179) 
-      (throw (Exception. 
-               (str "The number of feed input files is not as expected. Expected to find " 
-                    179 
-                    " files in " 
-                    feed-source-dir
-                    " but found "
-                    feed-file-count))))
     (delete-dir feed-processed-dir)
     (delete-dir feed-in-dir)
     (copy-dir feed-source-dir feed-in-dir)
-    (with-core :default 
+    (with-core :default
       (set-param! [:dir :data] feed-dir)
       (set-param! [:dir :test-data] feed-dir)
       (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
       (set-param! [:service :solr :insert-list-max-size] 0))
     (load-journals)
     (with-redefs
-      [cayenne.tasks.publisher/get-member-list
-       (fn get-member-list []
-         (read-string (slurp (resource "get-member-list.edn"))))
-       cayenne.tasks.publisher/get-prefix-info
-       (fn get-prefix-info [prefix]
-         (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
+     [cayenne.tasks.publisher/get-member-list
+      (fn get-member-list []
+        (read-string (slurp (resource "get-member-list.edn"))))
+      cayenne.tasks.publisher/get-prefix-info
+      (fn get-prefix-info [prefix]
+        (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
       (load-members)
       (start-insert-list-processing)
       (start-feed-processing)
@@ -133,16 +125,32 @@
 
 (defn setup-for-feeds []
   (let [feed-dir (.getPath (resource "feeds"))
-        feed-source-dir (str feed-dir "/source")
+        feed-source-dir (str feed-dir "/corpus")
         feed-in-dir (str feed-dir "/feed-in")
         feed-processed-dir (str feed-dir "/feed-processed")
         feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
     (delete-dir feed-processed-dir)
     (delete-dir feed-in-dir)
-    (with-core :default 
+    (with-core :default
       (set-param! [:dir :data] feed-dir)
       (set-param! [:dir :test-data] feed-dir)
       (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
       (set-param! [:service :solr :insert-list-max-size] 0))))
 
 (def system @cores)
+
+(defn remove-feed-references []
+  (let [feed-dir (.getPath (resource "feeds"))
+        feed-corpus-dir (str feed-dir "/corpus")
+        dois (->> (http/get "http://localhost:3000/works?rows=1000&select=DOI" {:as :json})
+                  :body
+                  :message
+                  :items
+                  (map :DOI))]
+    (doseq [doi dois]
+      (let [clean-file-path (str feed-corpus-dir "/crossref-unixsd-" (str (java.util.UUID/randomUUID)) ".body")]
+        (println "Downloading clean version of " doi)
+        ;;TODO: Replace {REPLACE-ME} with a valid pid for crossref.org
+        (spit clean-file-path (slurp (str "https://www.crossref.org/openurl/?pid={REPLACE-ME}&noredirect=true&format=unixsd&id=doi:" doi)))
+        (Thread/sleep 1000)
+        (println "Saved clean version of" doi "to" clean-file-path)))))

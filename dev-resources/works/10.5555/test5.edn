@@ -1,4 +1,5 @@
-{:reference-count 0,
+{:edition-number "2",
+ :reference-count 0,
  :publisher "Sample Publisher",
  :isbn-type
  [{:value "0064410145", :type "print"}
@@ -6,8 +7,6 @@
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title [],
  :DOI "10.5555/test5",
- :edition-number "2"
- :part-number "33-6",
  :type "book-set",
  :created
  {:date-parts [[2009 3 10]],
@@ -35,5 +34,6 @@
  :issued {:date-parts [[nil]]},
  :ISBN ["0571089895" "0064410145"],
  :references-count 0,
+ :part-number "33-6",
  :URL "http://dx.doi.org/10.5555/test5",
  :relation {}}

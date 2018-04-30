@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1007/s10964-016-0591-2</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer-Verlag</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">85972390</crm-item>
+        <crm-item name="journal-id" type="number">2558</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170106135451185</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1007</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T02:00:55Z</crm-item>
+        <crm-item name="created" type="date">2016-10-25T05:40:53Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Journal of Youth and Adolescence</full_title>
+                <abbrev_title>J Youth Adolescence</abbrev_title>
+                <issn media_type="print">0047-2891</issn>
+                <issn media_type="electronic">1573-6601</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>46</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Individual and Day-to-Day Differences in Active Coping Predict Diurnal Cortisol Patterns among Early Adolescent Girls</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Michael R.</given_name>
+                    <surname>Sladek</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Leah D.</given_name>
+                    <surname>Doane</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Catherine B.</given_name>
+                    <surname>Stroud</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>25</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>121</first_page>
+                  <last_page>135</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">591</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="funder_name">
+                        National Institute of Mental Health
+                        <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100009633</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1007/s10964-016-0591-2</doi>
+                  <timestamp>20170106135451185</timestamp>
+                  <resource>http://link.springer.com/10.1007/s10964-016-0591-2</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s10964-016-0591-2.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s10964-016-0591-2.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://link.springer.com/article/10.1007/s10964-016-0591-2/fulltext.html</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="591_CR1">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>EK Adam</author>
+                    <volume>31</volume>
+                    <issue>5</issue>
+                    <first_page>664</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2006.01.010</doi>
+                    <unstructured_citation>Adam, E. K. (2006). Transactions among adolescent trait and state emotion and diurnal and momentary cortisol activity in naturalistic settings. Psychoneuroendocrinology, 31(5), 664–679.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR2">
+                    <journal_title>Proceedings of the National Academy of Sciences</journal_title>
+                    <author>EK Adam</author>
+                    <volume>103</volume>
+                    <issue>45</issue>
+                    <first_page>17058</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1073/pnas.0605053103</doi>
+                    <unstructured_citation>Adam, E. K., Hawkley, L. C., Kudielka, B. M., &amp; Cacioppo, J. T. (2006). Day-to-day dynamics of experience–cortisol associations in a population-based sample of older adults. Proceedings of the National Academy of Sciences, 103(45), 17058–17063.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR3">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>EK Adam</author>
+                    <volume>34</volume>
+                    <issue>10</issue>
+                    <first_page>1423</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2009.06.011</doi>
+                    <unstructured_citation>Adam, E. K., &amp; Kumari, M. (2009). Assessing salivary cortisol in large-scale, epidemiological research. Psychoneuroendocrinology, 34(10), 1423–1436.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR4">
+                    <author>LS Aiken</author>
+                    <cYear>1991</cYear>
+                    <volume_title>Multiple regression: Testing and interpreting interactions</volume_title>
+                    <unstructured_citation>Aiken, L. S., &amp; West, S. G. (1991). Multiple regression: Testing and interpreting interactions. Newbury Park, CA: Sage.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR5">
+                    <journal_title>Cognitive Therapy and Research</journal_title>
+                    <author>A Aldao</author>
+                    <volume>39</volume>
+                    <first_page>263</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1007/s10608-014-9662-4</doi>
+                    <unstructured_citation>Aldao, A., Sheppes, G., &amp; Gross, J. J. (2015). Emotion regulation flexibility. Cognitive Therapy and Research, 39, 263–278.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR6">
+                    <journal_title>Current Directions in Psychological Science</journal_title>
+                    <author>DM Almeida</author>
+                    <volume>14</volume>
+                    <issue>2</issue>
+                    <first_page>64</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1111/j.0963-7214.2005.00336.x</doi>
+                    <unstructured_citation>Almeida, D. M. (2005). Resilience and vulnerability to daily stressors assessed via diary methods. Current Directions in Psychological Science, 14(2), 64–68.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR7">
+                    <journal_title>Biological Psychology</journal_title>
+                    <author>Y Chida</author>
+                    <volume>80</volume>
+                    <issue>3</issue>
+                    <first_page>265</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.biopsycho.2008.10.004</doi>
+                    <unstructured_citation>Chida, Y., &amp; Steptoe, A. (2009). Cortisol awakening response and psychosocial factors: A systematic review and meta-analysis. Biological Psychology, 80(3), 265–278.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR8">
+                    <journal_title>Neuroscience &amp; Biobehavioral Reviews</journal_title>
+                    <author>A Clow</author>
+                    <volume>35</volume>
+                    <issue>1</issue>
+                    <first_page>97</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2009.12.011</doi>
+                    <unstructured_citation>Clow, A., Hucklebridge, F., Stalder, T., Evans, P., &amp; Thorn, L. (2010). The cortisol awakening response: More than a measure of HPA axis function. Neuroscience &amp; Biobehavioral Reviews, 35(1), 97–103.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR9">
+                    <author>BE Compas</author>
+                    <first_page>105</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1007/978-1-4757-9862-3_4</doi>
+                    <volume_title>Coping with chronic stress</volume_title>
+                    <unstructured_citation>Compas, B. E., Connor, J. K., Osowiecki, D., &amp; Welch, A. (1997). Effortful and involuntary responses to stress: Implications for coping with chronic stress. In B. H. Gottlieb (Ed.), Coping with chronic stress (pp. 105–130). New York: Plenum.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR10">
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <author>BE Compas</author>
+                    <volume>127</volume>
+                    <issue>1</issue>
+                    <first_page>87</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.127.1.87</doi>
+                    <unstructured_citation>Compas, B. E., Connor-Smith, J. K., Saltzman, H., Thomsen, A. H., &amp; Wadsworth, M. E. (2001). Coping with stress during childhood and adolescence: Problems, progress, and potential in theory and research. Psychological Bulletin, 127(1), 87–127.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR11">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>CS Conley</author>
+                    <volume>21</volume>
+                    <issue>02</issue>
+                    <first_page>593</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1017/S0954579409000327</doi>
+                    <unstructured_citation>Conley, C. S., &amp; Rudolph, K. D. (2009). The emerging sex difference in adolescent depression: Interacting contributions of puberty and peer stress. Development and Psychopathology, 21(02), 593–620.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR12">
+                    <journal_title>Journal of Consulting and Clinical Psychology</journal_title>
+                    <author>JK Connor-Smith</author>
+                    <volume>68</volume>
+                    <issue>6</issue>
+                    <first_page>976</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1037/0022-006X.68.6.976</doi>
+                    <unstructured_citation>Connor-Smith, J. K., Compas, B. E., Wadsworth, M. E., Thomsen, A. H., &amp; Saltzman, H. (2000). Responses to stress in adolescence: Measurement of coping and involuntary stress responses. Journal of Consulting and Clinical Psychology, 68(6), 976–992.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR13">
+                    <journal_title>Annals of the New York Academy of Sciences</journal_title>
+                    <author>ER Kloet de</author>
+                    <volume>1018</volume>
+                    <issue>1</issue>
+                    <first_page>1</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1196/annals.1296.001</doi>
+                    <unstructured_citation>de Kloet, E. R. (2004). Hormones and the stressed brain. Annals of the New York Academy of Sciences, 1018(1), 1–15.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR14">
+                    <journal_title>Journal of Personality</journal_title>
+                    <author>A DeLongis</author>
+                    <volume>73</volume>
+                    <issue>6</issue>
+                    <first_page>1633</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1111/j.1467-6494.2005.00361.x</doi>
+                    <unstructured_citation>DeLongis, A., &amp; Holtzman, S. (2005). Coping in context: The role of stress, social support, and personality in coping. Journal of Personality, 73(6), 1633–1656.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR15">
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <author>SS Dickerson</author>
+                    <volume>130</volume>
+                    <issue>3</issue>
+                    <first_page>355</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.130.3.355</doi>
+                    <unstructured_citation>Dickerson, S. S., &amp; Kemeny, M. E. (2004). Acute stressors and cortisol responses: A theoretical integration and synthesis of laboratory research. Psychological Bulletin, 130(3), 355–391.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR16">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>LD Doane</author>
+                    <volume>35</volume>
+                    <issue>3</issue>
+                    <first_page>430</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2009.08.005</doi>
+                    <unstructured_citation>Doane, L. D., &amp; Adam, E. K. (2010). Loneliness and cortisol: Momentary, day-to-day, and trait associations. Psychoneuroendocrinology, 35(3), 430–441.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR17">
+                    <journal_title>Journal of Adolescent Health</journal_title>
+                    <author>LD Doane</author>
+                    <volume>54</volume>
+                    <issue>5</issue>
+                    <first_page>536</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.jadohealth.2013.10.007</doi>
+                    <unstructured_citation>Doane, L. D., &amp; Zeiders, K. H. (2014). Contextual moderators of momentary cortisol and negative affect in adolescents’ daily lives. Journal of Adolescent Health, 54(5), 536–542.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR18">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>LD Doane</author>
+                    <volume>25</volume>
+                    <issue>3</issue>
+                    <first_page>629</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1017/S0954579413000060</doi>
+                    <unstructured_citation>Doane, L. D., Mineka, S., Zinbarg, R. E., Craske, M., Griffith, J. W., &amp; Adam, E. K. (2013). Are flatter diurnal cortisol rhythms associated with major depression and anxiety disorders in late adolescence? The role of life stress and daily negative emotion. Development and Psychopathology, 25(3), 629–642.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR19">
+                    <journal_title>Journal of Steroid Biochemistry</journal_title>
+                    <author>RA Dressendörfer</author>
+                    <volume>43</volume>
+                    <first_page>683</first_page>
+                    <cYear>1992</cYear>
+                    <doi provider="crossref">10.1016/0960-0760(92)90294-S</doi>
+                    <unstructured_citation>Dressendörfer, R. A., Kirschbaum, C., Rohde, W., Stahl, F., &amp; Strasburger, C. J. (1992). Synthesis of a cortisol-biotin conjugate and evaluation as a tracer in an immunoassay for salivary cortisol measurement. Journal of Steroid Biochemistry, 43, 683–692.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR20">
+                    <journal_title>Journal of Youth and Adolescence</journal_title>
+                    <author>M Dumont</author>
+                    <volume>28</volume>
+                    <first_page>343</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1023/A:1021637011732</doi>
+                    <unstructured_citation>Dumont, M., &amp; Provost, M. A. (1999). Resilience in adolescents: Protective role of social support, coping strategies, self-esteem, and social activities on experience of stress and depression. Journal of Youth and Adolescence, 28, 343–363.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR21">
+                    <journal_title>Psychological Methods</journal_title>
+                    <author>CK Enders</author>
+                    <volume>12</volume>
+                    <first_page>121</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1037/1082-989X.12.2.121</doi>
+                    <unstructured_citation>Enders, C. K., &amp; Tofighi, D. (2007). Centering predictor variables in cross-sectional multilevel models: A new look at an old issue. Psychological Methods, 12, 121–138.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR22">
+                    <journal_title>Cognition and Emotion</journal_title>
+                    <author>M Flynn</author>
+                    <volume>21</volume>
+                    <issue>4</issue>
+                    <first_page>773</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1080/02699930600824635</doi>
+                    <unstructured_citation>Flynn, M., &amp; Rudolph, K. D. (2007). Perceptual asymmetry and youths’ responses to stress: Understanding vulnerability to depression. Cognition and Emotion, 21(4), 773–788.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR23">
+                    <journal_title>Journal of Applied Developmental Psychology</journal_title>
+                    <author>M Flynn</author>
+                    <volume>31</volume>
+                    <issue>4</issue>
+                    <first_page>291</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.appdev.2010.04.004</doi>
+                    <unstructured_citation>Flynn, M., &amp; Rudolph, K. D. (2010). The contribution of deficits in emotional clarity to stress responses and depression. Journal of Applied Developmental Psychology, 31(4), 291–297.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR24">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>LC Foland-Ross</author>
+                    <volume>26</volume>
+                    <first_page>1401</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1017/S0954579414001102</doi>
+                    <unstructured_citation>Foland-Ross, L. C., Kircanski, K., &amp; Gotlib, I. H. (2014). Coping with having a depressed mother: The role of stress and coping in hypothalamic-pituitary-adrenal axis dysfunction in girls at familial risk for major depression. Development and Psychopathology, 26, 1401–1409.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR25">
+                    <journal_title>International Journal of Psychophysiology</journal_title>
+                    <author>E Fries</author>
+                    <volume>72</volume>
+                    <first_page>67</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.ijpsycho.2008.03.014</doi>
+                    <unstructured_citation>Fries, E., Dettenborn, L., &amp; Kirschbaum, C. (2009). The cortisol awakening response (CAR): Facts and future directions. International Journal of Psychophysiology, 72, 67–73.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR26">
+                    <journal_title>Developmental Psychology</journal_title>
+                    <author>X Ge</author>
+                    <volume>37</volume>
+                    <issue>3</issue>
+                    <first_page>404</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1037/0012-1649.37.3.404</doi>
+                    <unstructured_citation>Ge, X., Conger, R. D., &amp; Elder, Jr, G. H. (2001). Pubertal transition, stressful life events, and the emergence of gender differences in adolescent depressive symptoms. Developmental Psychology, 37(3), 404–417.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR27">
+                    <journal_title>Journal of Research on Adolescence</journal_title>
+                    <author>S Gore</author>
+                    <volume>3</volume>
+                    <issue>2</issue>
+                    <first_page>101</first_page>
+                    <cYear>1993</cYear>
+                    <doi provider="crossref">10.1207/s15327795jra0302_1</doi>
+                    <unstructured_citation>Gore, S., Aseltine, Jr, R. H., &amp; Colten, M. E. (1993). Gender, social-relationship involvement, and depression. Journal of Research on Adolescence, 3(2), 101–125.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR28">
+                    <author>JA Graber</author>
+                    <first_page>3</first_page>
+                    <cYear>2009</cYear>
+                    <volume_title>Handbook of adolescent psychology (3rd edition), Vol. 1: Individual bases of adolescent development</volume_title>
+                    <unstructured_citation>Graber, J. A., &amp; Sontag, L. M. (2009). Internalizing problems during adolescence. In R. Lerner, &amp; L. Steinberg (Eds.), Handbook of adolescent psychology (3rd edition), Vol. 1: Individual bases of adolescent development (pp. 3–14). New York: Wiley. Ch. 1.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR29">
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <author>KE Grant</author>
+                    <volume>129</volume>
+                    <issue>3</issue>
+                    <first_page>447</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.129.3.447</doi>
+                    <unstructured_citation>Grant, K. E., Compas, B. E., Stuhlmacher, A. F., Thurm, A. E., McMahon, S. D., &amp; Halpert, J. A. (2003). Stressors and child and adolescent psychopathology: Moving from markers to mechanisms of risk. Psychological Bulletin, 129(3), 447–466.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR30">
+                    <journal_title>Journal of Abnormal Psychology</journal_title>
+                    <author>C Hammen</author>
+                    <volume>100</volume>
+                    <first_page>555</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1037/0021-843X.100.4.555</doi>
+                    <unstructured_citation>Hammen, C. (1991). Generation of stress in the course of unipolar depression. Journal of Abnormal Psychology, 100, 555–561.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR31">
+                    <journal_title>Journal of Adolescent Health</journal_title>
+                    <author>P Hampel</author>
+                    <volume>38</volume>
+                    <issue>4</issue>
+                    <first_page>409</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.jadohealth.2005.02.014</doi>
+                    <unstructured_citation>Hampel, P., &amp; Petermann, F. (2006). Perceived stress, coping, and adjustment in adolescents. Journal of Adolescent Health, 38(4), 409–415.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR32">
+                    <journal_title>Journal of Abnormal Psychology</journal_title>
+                    <author>BL Hankin</author>
+                    <volume>107</volume>
+                    <issue>1</issue>
+                    <first_page>128</first_page>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1037/0021-843X.107.1.128</doi>
+                    <unstructured_citation>Hankin, B. L., Abramson, L. Y., Moffitt, T. E., Silva, P. A., McGee, R., &amp; Angell, K. E. (1998). Development of depression from preadolescence to young adulthood: Emerging gender differences in a 10-year longitudinal study. Journal of Abnormal Psychology, 107(1), 128–140.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR33">
+                    <journal_title>Journal of Youth and Adolescence</journal_title>
+                    <author>M Herman-Stahl</author>
+                    <volume>25</volume>
+                    <issue>6</issue>
+                    <first_page>733</first_page>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1007/BF01537451</doi>
+                    <unstructured_citation>Herman-Stahl, M., &amp; Petersen, A. C. (1996). The protective role of coping and social resources for depressive symptoms among young adolescents. Journal of Youth and Adolescence, 25(6), 733–753.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR34">
+                    <journal_title>Journal of the American Academy of Child and Adolescent Psychiatry</journal_title>
+                    <author>J Kaufman</author>
+                    <volume>36</volume>
+                    <first_page>980</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1097/00004583-199707000-00021</doi>
+                    <unstructured_citation>Kaufman, J., Birmaher, B., Brent, D., Rau, U., Flynn, C., &amp; Moreci, P., et al. (1997). Schedule for affective disorders and schizophrenia for school-age children present and lifetime version (K-SADS-PL): Initial reliability and validity data. Journal of the American Academy of Child and Adolescent Psychiatry, 36, 980–987.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR35">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>B Klimes-Dougan</author>
+                    <volume>13</volume>
+                    <issue>03</issue>
+                    <first_page>695</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1017/S0954579401003157</doi>
+                    <unstructured_citation>Klimes-Dougan, B., Hastings, P. D., Granger, D. A., Usher, B. A., &amp; Zahn-Waxler, C. (2001). Adrenocortical activity in at-risk and normally developing adolescents: Individual differences in salivary cortisol basal levels, diurnal variation, and responses to social challenges. Development and Psychopathology, 13(03), 695–719.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR36">
+                    <journal_title>Psychosomatic Medicine</journal_title>
+                    <author>BM Kudielka</author>
+                    <volume>65</volume>
+                    <issue>2</issue>
+                    <first_page>313</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1097/01.PSY.0000058374.50240.BF</doi>
+                    <unstructured_citation>Kudielka, B. M., Broderick, J. E., &amp; Kirschbaum, C. (2003). Compliance with saliva sampling protocols: Electronic monitoring reveals invalid cortisol daytime profiles in noncompliant subjects. Psychosomatic Medicine, 65(2), 313–319.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR37">
+                    <author>RS Lazarus</author>
+                    <cYear>1984</cYear>
+                    <volume_title>Stress, appraisal, and coping</volume_title>
+                    <unstructured_citation>Lazarus, R. S., &amp; Folkman, S. (1984). Stress, appraisal, and coping. New York, NY: Springer Publishing Company.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR38">
+                    <doi>10.1177/0165025415616202</doi>
+                    <unstructured_citation>Malooly, A.M., Flannery, K.M., &amp; Ohannessian, C.M. (in press). Coping mediates the association between gender and depressive symptomatology in adolescence. International Journal of Behavioral Development. doi: 10.1177/0165025415616202 .</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR39">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>K Marceau</author>
+                    <volume>27</volume>
+                    <first_page>1025</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1017/S0954579415000668</doi>
+                    <unstructured_citation>Marceau, K., Zahn-Waxler, C., Shirtcliff, E. A., Schreiber, J. E., Hastings, P., &amp; Klimes-Dougan, B. (2014). Adolescents’, mothers’, and fathers’ gendered coping strategies during conflict: Youth and parent influences on conflict resolution and psychopathology. Development and Psychopathology, 27, 1025–1044.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR40">
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <author>GE Miller</author>
+                    <volume>137</volume>
+                    <issue>6</issue>
+                    <first_page>959</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1037/a0024768</doi>
+                    <unstructured_citation>Miller, G. E., Chen, E., &amp; Parker, K. J. (2011). Psychological stress in childhood and susceptibility to the chronic diseases of aging: Moving towards a model of behavioral and biological mechanisms. Psychological Bulletin, 137(6), 959–997.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR41">
+                    <journal_title>Psychological Bulletin</journal_title>
+                    <author>GE Miller</author>
+                    <volume>133</volume>
+                    <issue>1</issue>
+                    <first_page>25</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1037/0033-2909.133.1.25</doi>
+                    <unstructured_citation>Miller, G. E., Chen, E., &amp; Zhou, E. S. (2007). If it goes up, must it come down? Chronic stress and the hypothalamic-pituitary-adrenocortical axis in humans. Psychological Bulletin, 133(1), 25–45.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR42">
+                    <author>LK Muthén</author>
+                    <cYear>1998</cYear>
+                    <volume_title>Mplus user’s guide</volume_title>
+                    <edition_number>Seventh Edition</edition_number>
+                    <unstructured_citation>Muthén, L. K., &amp; Muthén, B. O. (1998). Mplus user’s guide. Seventh Edition Los Angeles, CA: Muthén &amp; Muthén. 2012.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR43">
+                    <author>NA Nicolson</author>
+                    <first_page>37</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.4135/9781412976244.n3</doi>
+                    <volume_title>Handbook of physiological research methods in health psychology</volume_title>
+                    <unstructured_citation>Nicolson, N. A. (2008). Measurement of cortisol. In L. J. Luecken, &amp; L. C. Gallo (Eds.), Handbook of physiological research methods in health psychology (pp. 37–74). New York, NY: Sage Publications.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR44">
+                    <journal_title>Current Directions in Psychological Science</journal_title>
+                    <author>S Nolen-Hoeksema</author>
+                    <volume>10</volume>
+                    <issue>5</issue>
+                    <first_page>173</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1111/1467-8721.00142</doi>
+                    <unstructured_citation>Nolen-Hoeksema, S. (2001). Gender differences in depression. Current Directions in Psychological Science, 10(5), 173–176.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR45">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>J Obradović</author>
+                    <volume>24</volume>
+                    <first_page>371</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1017/S0954579412000053</doi>
+                    <unstructured_citation>Obradović, J. (2012). How can the study of physiological reactivity contribute to our understanding of adversity and resilience processes in development? Development and Psychopathology, 24, 371–387.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR46">
+                    <journal_title>Child Development</journal_title>
+                    <author>E Peters</author>
+                    <volume>82</volume>
+                    <issue>6</issue>
+                    <first_page>1906</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1111/j.1467-8624.2011.01647.x</doi>
+                    <unstructured_citation>Peters, E., Riksen-Walraven, J. M., Cillessen, A. H. N., &amp; de Weerth, C. (2011). Peer rejection and HPA activity in middle childhood: Friendship makes a difference. Child Development, 82(6), 1906–1920.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR47">
+                    <journal_title>Journal of Youth and Adolescence</journal_title>
+                    <author>AC Petersen</author>
+                    <volume>17</volume>
+                    <issue>2</issue>
+                    <first_page>117</first_page>
+                    <cYear>1988</cYear>
+                    <doi provider="crossref">10.1007/BF01537962</doi>
+                    <unstructured_citation>Petersen, A. C., Crockett, L., Richards, M., &amp; Boxer, A. (1988). A self-report measure of pubertal status: Reliability, validity, and initial norms. Journal of Youth and Adolescence, 17(2), 117–133.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR48">
+                    <journal_title>Journal of Educational and Behavioral Statistics</journal_title>
+                    <author>KJ Preacher</author>
+                    <volume>31</volume>
+                    <first_page>437</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.3102/10769986031004437</doi>
+                    <unstructured_citation>Preacher, K. J., Curran, P. J., &amp; Bauer, D. J. (2006). Computational tools for probing interaction effects in multiple linear regression, multilevel modeling, and latent curve analysis. Journal of Educational and Behavioral Statistics, 31, 437–448.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR49">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>JC Pruessner</author>
+                    <volume>28</volume>
+                    <first_page>916</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(02)00108-7</doi>
+                    <unstructured_citation>Pruessner, J. C., Kirschbaum, C., Meinlschmid, G., &amp; Hellhammer, D. H. (2003). Two formulas for computation of the area under the curve represent measures of total hormone concentration versus time-dependent change. Psychoneuroendocrinology, 28, 916–931.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR50">
+                    <journal_title>Psychological Assessment</journal_title>
+                    <author>JT Ptacek</author>
+                    <volume>6</volume>
+                    <issue>1</issue>
+                    <first_page>41</first_page>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1037/1040-3590.6.1.41</doi>
+                    <unstructured_citation>Ptacek, J. T., Smith, R. E., Espe, K., &amp; Raffety, B. (1994). Limited correspondence between daily coping reports and retrospective coping recall. Psychological Assessment, 6(1), 41–49.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR51">
+                    <journal_title>Journal of Clinical Psychology</journal_title>
+                    <author>P Rohde</author>
+                    <volume>65</volume>
+                    <issue>12</issue>
+                    <first_page>1339</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1002/jclp.20629</doi>
+                    <unstructured_citation>Rohde, P., Beevers, C. G., Stice, E., &amp; O’Neil, K. (2009). Major and minor depression in female adolescents: Onset, course, symptom presentation, and demographic associations. Journal of Clinical Psychology, 65(12), 1339–1349.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR52">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>KM Ross</author>
+                    <volume>39</volume>
+                    <first_page>184</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2013.09.016</doi>
+                    <unstructured_citation>Ross, K. M., Murphy, M. L., Adam, E. K., Chen, E., &amp; Miller, G. E. (2014). How stable are diurnal cortisol activity indices in healthy individuals? Evidence from three multi-wave studies. Psychoneuroendocrinology, 39, 184–193.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR53">
+                    <journal_title>Child Development</journal_title>
+                    <author>KD Rudolph</author>
+                    <volume>70</volume>
+                    <first_page>660</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1111/1467-8624.00048</doi>
+                    <unstructured_citation>Rudolph, K. D., &amp; Hammen, C. (1999). Age and gender as determinants of stress exposure, generation, and reactions in youngsters: A transactional perspective. Child Development, 70, 660–677.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR54">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>KD Rudolph</author>
+                    <volume>12</volume>
+                    <first_page>215</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1017/S0954579400002066</doi>
+                    <unstructured_citation>Rudolph, K. D., Hammen, C., Burge, D., Lindberg, N., Herzberg, D., &amp; Daley, S. E. (2000). Toward an interpersonal life-stress model of depression: The developmental context of stress generation. Development and Psychopathology, 12, 215–234.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR55">
+                    <journal_title>Health Psychology Review</journal_title>
+                    <author>DE Saxbe</author>
+                    <volume>2</volume>
+                    <issue>2</issue>
+                    <first_page>163</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1080/17437190802530812</doi>
+                    <unstructured_citation>Saxbe, D. E. (2008). A field (researcher’s) guide to cortisol: Tracking HPA axis functioning in everyday life. Health Psychology Review, 2(2), 163–190.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR56">
+                    <journal_title>Journal of Personality and Social Psychology</journal_title>
+                    <author>JE Schwartz</author>
+                    <volume>77</volume>
+                    <issue>2</issue>
+                    <first_page>360</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1037/0022-3514.77.2.360</doi>
+                    <unstructured_citation>Schwartz, J. E., Neale, J., Marco, C., Shiffman, S. S., &amp; Stone, A. A. (1999). Does trait coping exist? A momentary assessment approach to the evaluation of traits. Journal of Personality and Social Psychology, 77(2), 360–369.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR57">
+                    <journal_title>Developmental Psychobiology</journal_title>
+                    <author>EA Shirtcliff</author>
+                    <volume>50</volume>
+                    <issue>7</issue>
+                    <first_page>690</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1002/dev.20336</doi>
+                    <unstructured_citation>Shirtcliff, E. A., &amp; Essex, M. J. (2008). Concurrent and longitudinal associations of basal and diurnal cortisol with mental health symptoms in early adolescence. Developmental Psychobiology, 50(7), 690–703.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR58">
+                    <journal_title>Biological Psychology</journal_title>
+                    <author>MR Sladek</author>
+                    <volume>117</volume>
+                    <first_page>8</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.biopsycho.2016.02.003</doi>
+                    <unstructured_citation>Sladek, M. R., Doane, L. D., Luecken, L. J., &amp; Eisenberg, N. (2016). Perceived stress, coping, and cortisol reactivity in daily life: A study of adolescents during the first year of college. Biological Psychology, 117, 8–15.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR59">
+                    <journal_title>Health Psychology</journal_title>
+                    <author>RB Slatcher</author>
+                    <volume>34</volume>
+                    <issue>8</issue>
+                    <first_page>802</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1037/hea0000169</doi>
+                    <unstructured_citation>Slatcher, R. B., Chi, P., Li, X., Zhao, J., Zhao, G., &amp; Ren, X., et al. (2015). Associations between coping and diurnal cortisol among children affected by parental HIV/AIDS. Health Psychology, 34(8), 802–810.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR60">
+                    <journal_title>Neuroscience &amp; Biobehavioral Reviews</journal_title>
+                    <author>GM Slavich</author>
+                    <volume>35</volume>
+                    <issue>1</issue>
+                    <first_page>39</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2010.01.003</doi>
+                    <unstructured_citation>Slavich, G. M., O’Donovan, A., Epel, E. S., &amp; Kemeny, M. E. (2010). Black sheep get the blues: A psychobiological model of social rejection and depression. Neuroscience &amp; Biobehavioral Reviews, 35(1), 39–45.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR61">
+                    <journal_title>Journal of Personality and Social Psychology</journal_title>
+                    <author>RE Smith</author>
+                    <volume>76</volume>
+                    <issue>6</issue>
+                    <first_page>1050</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1037/0022-3514.76.6.1050</doi>
+                    <unstructured_citation>Smith, R. E., Leffingwell, T. R., &amp; Ptacek, J. T. (1999). Can people remember how they coped? Factors associated with discordance between same-day and retrospective reports. Journal of Personality and Social Psychology, 76(6), 1050–1061.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR62">
+                    <journal_title>Journal of Abnormal Child Psychology</journal_title>
+                    <author>LM Sontag</author>
+                    <volume>36</volume>
+                    <issue>8</issue>
+                    <first_page>1159</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1007/s10802-008-9239-3</doi>
+                    <unstructured_citation>Sontag, L. M., Graber, J. A., Brooks-Gunn, J., &amp; Warren, M. P. (2008). Coping with social stress: Implications for psychopathology in young adolescent girls. Journal of Abnormal Child Psychology, 36(8), 1159–1174.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR63">
+                    <journal_title>Journal of Affective Disorders</journal_title>
+                    <author>LR Starr</author>
+                    <volume>190</volume>
+                    <first_page>757</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.jad.2015.10.065</doi>
+                    <unstructured_citation>Starr, L. R., Stroud, C. B., &amp; Li, Y. I. (2016). Predicting the transition from anxiety to depressive symptoms in early adolescence: Negative anxiety response style as a moderator of sequential comorbidity. Journal of Affective Disorders, 190, 757–763.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR64">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>CB Stroud</author>
+                    <volume>70</volume>
+                    <first_page>38</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.015</doi>
+                    <unstructured_citation>Stroud, C. B., Chen, F. R., Doane, L. D., &amp; Granger, D. A. (2016). Individual differences in early adolescents’ latent trait cortisol (LTC): Relation to recent acute and chronic stress. Psychoneuroendocrinology, 70, 38–46.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR65">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>LR Stroud</author>
+                    <volume>21</volume>
+                    <issue>01</issue>
+                    <first_page>47</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1017/S0954579409000042</doi>
+                    <unstructured_citation>Stroud, L. R., Foster, E., Papandonatos, G. D., Handwerger, K., Granger, D. A., Kivlighan, K. T., &amp; Niaura, R. (2009). Stress response and the adolescent transition: Performance versus peer rejection stressors. Development and Psychopathology, 21(01), 47–68.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR66">
+                    <journal_title>Biological Psychiatry</journal_title>
+                    <author>LR Stroud</author>
+                    <volume>52</volume>
+                    <issue>4</issue>
+                    <first_page>318</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(02)01333-1</doi>
+                    <unstructured_citation>Stroud, L. R., Salovey, P., &amp; Epel, E. S. (2002). Sex differences in stress responses: Social rejection versus achievement stress. Biological Psychiatry, 52(4), 318–327.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR67">
+                    <journal_title>American Psychologist</journal_title>
+                    <author>H Tennen</author>
+                    <volume>55</volume>
+                    <issue>6</issue>
+                    <first_page>626</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1037/0003-066X.55.6.626</doi>
+                    <unstructured_citation>Tennen, H., Affleck, G., Armeli, S., &amp; Carney, M. A. (2000). A daily process approach to coping: Linking theory, research, and practice. American Psychologist, 55(6), 626–636.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR68">
+                    <journal_title>Psychological Medicine</journal_title>
+                    <author>S Vrshek-Schallhorn</author>
+                    <volume>43</volume>
+                    <issue>03</issue>
+                    <first_page>483</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1017/S0033291712001213</doi>
+                    <unstructured_citation>Vrshek-Schallhorn, S., Doane, L. D., Mineka, S., Zinbarg, R. E., Craske, M. G., &amp; Adam, E. K. (2013). The cortisol awakening response predicts major depression: Predictive stability over a 4-year follow-up and effect of depression history. Psychological Medicine, 43(03), 483–493.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR69">
+                    <journal_title>Journal of the American Academy of Child &amp; Adolescent Psychiatry</journal_title>
+                    <author>TJ Wade</author>
+                    <volume>41</volume>
+                    <issue>2</issue>
+                    <first_page>190</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1097/00004583-200202000-00013</doi>
+                    <unstructured_citation>Wade, T. J., Cairney, J., &amp; Pevalin, D. J. (2002). Emergence of gender differences in depression during adolescence: National panel results from three countries. Journal of the American Academy of Child &amp; Adolescent Psychiatry, 41(2), 190–198.</unstructured_citation>
+                  </citation>
+                  <citation key="591_CR70">
+                    <journal_title>Development and Psychopathology</journal_title>
+                    <author>C Zahn-Waxler</author>
+                    <volume>12</volume>
+                    <first_page>443</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1017/S0954579400003102</doi>
+                    <unstructured_citation>Zahn-Waxler, C., Klimes-Dougan, B., &amp; Slattery, M. J. (2000). Internalizing problems of childhood and adolescence: Prospects, pitfalls, and progress in understanding the development of anxiety and depression. Development and Psychopathology, 12, 443–466.</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

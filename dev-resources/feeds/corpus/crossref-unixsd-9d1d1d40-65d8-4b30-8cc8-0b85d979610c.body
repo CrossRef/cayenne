@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1192/bjp.209.6.533</doi>
+        <crm-item name="publisher-name" type="string">Royal College of Psychiatrists</crm-item>
+        <crm-item name="prefix-name" type="string">Royal College of Psychiatrists</crm-item>
+        <crm-item name="member-id" type="number">170</crm-item>
+        <crm-item name="citation-id" type="number">86620557</crm-item>
+        <crm-item name="journal-id" type="number">7316</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2018011707204800930</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1192</crm-item>
+        <crm-item name="last-update" type="date">2018-01-17T07:22:20Z</crm-item>
+        <crm-item name="created" type="date">2016-12-01T08:31:49Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>British Journal of Psychiatry</full_title>
+                <abbrev_title>Br J Psychiatry</abbrev_title>
+                <issn media_type="print">0007-1250</issn>
+                <issn media_type="electronic">1472-1465</issn>
+                <coden>applab</coden>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>209</volume>
+                </journal_volume>
+                <issue>06</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Kaleidoscope</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Derek K.</given_name>
+                    <surname>Tracy</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Dan W.</given_name>
+                    <surname>Joyce</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Sukhwinder S.</given_name>
+                    <surname>Shergill</surname>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1" abstract-type="text-abstract">
+                  <jats:p>
+                    <jats:bold>The Global Burden of Disease (GBD) is the most comprehensive global epidemiological study, and the analyses of the 2015 data have recently been published</jats:bold>
+                    (thelancet.com/gbd). This is a rich data-set including observation on the general increase in global life expectancy, with the gains due to significant improvement in HIV outcomes balanced against the significant war-related decreases in male life expectancy in Syria. Interestingly, the age-standardised mortality rate for mental and substance use disorders dropped by over 12% between 2005 and 2015, though with considerable variations between conditions and countries, and the authors further note the difficulty in accurately attributing and coding excess deaths – for example, the years of life known to be indirectly lost to schizophrenia. Total deaths due to self-harm and interpersonal violence did not change much during this period.
+                  </jats:p>
+                </jats:abstract>
+                <publication_date media_type="online">
+                  <month>1</month>
+                  <day>2</day>
+                  <year>2018</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>533</first_page>
+                  <last_page>534</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">S000712500024590X</identifier>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.1192/bjp.209.6.533</doi>
+                  <resource>https://www.cambridge.org/core/product/identifier/S000712500024590X/type/journal_article</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://www.cambridge.org/core/services/aop-cambridge-core/content/view/S000712500024590X</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

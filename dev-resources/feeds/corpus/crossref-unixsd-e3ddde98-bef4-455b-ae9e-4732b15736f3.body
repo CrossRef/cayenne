@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="peer_review">10.7287/peerj.2196v0.1/reviews/2</doi>
+        <crm-item name="publisher-name" type="string">PeerJ</crm-item>
+        <crm-item name="prefix-name" type="string">PeerJ</crm-item>
+        <crm-item name="member-id" type="number">4443</crm-item>
+        <crm-item name="citation-id" type="number">95718185</crm-item>
+        <crm-item name="journal-id" type="number">202465</crm-item>
+        <crm-item name="deposit-timestamp" type="number">1515539304</crm-item>
+        <crm-item name="owner-prefix" type="string">10.7287</crm-item>
+        <crm-item name="last-update" type="date">2018-01-09T23:59:03Z</crm-item>
+        <crm-item name="created" type="date">2018-01-09T23:59:03Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <peer_review stage="pre-publication" revision-round="2">
+              <contributors>
+                <anonymous contributor_role="reviewer" sequence="additional" />
+              </contributors>
+              <titles>
+                <title>Peer Review #2 of "Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)"</title>
+              </titles>
+              <review_date>
+                <month>07</month>
+                <day>26</day>
+                <year>2016</year>
+              </review_date>
+              <program xmlns="http://www.crossref.org/relations.xsd">
+                <related_item>
+                  <inter_work_relation relationship-type="isReviewOf" identifier-type="doi">10.7717/peerj.2196</inter_work_relation>
+                </related_item>
+              </program>
+              <doi_data>
+                <doi>10.7287/peerj.2196v0.1/reviews/2</doi>
+                <timestamp>1515539304</timestamp>
+                <resource>https://peerj.com/articles/2196v0.1/reviews/2/</resource>
+              </doi_data>
+            </peer_review>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

@@ -1,0 +1,1745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1038/nrn.2016.155</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer Nature</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86514426</crm-item>
+        <crm-item name="journal-id" type="number">3439</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20180118062855513</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1038</crm-item>
+        <crm-item name="last-update" type="date">2018-01-18T05:29:31Z</crm-item>
+        <crm-item name="created" type="date">2016-11-24T06:40:41Z</crm-item>
+        <crm-item name="citedby-count" type="number">37</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Nature Reviews Neuroscience</full_title>
+                <abbrev_title>Nat Rev Neurosci</abbrev_title>
+                <issn media_type="print">1471-003X</issn>
+                <issn media_type="electronic">1471-0048</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>18</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Stress, glucocorticoids and memory: implications for treating fear-related disorders</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Dominique</given_name>
+                    <surname>de Quervain</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Lars</given_name>
+                    <surname>Schwabe</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Benno</given_name>
+                    <surname>Roozendaal</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>24</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>7</first_page>
+                  <last_page>19</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">BFnrn2016155</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1038/nrn.2016.155</doi>
+                  <timestamp>20180118062855513</timestamp>
+                  <resource>http://www.nature.com/articles/nrn.2016.155</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/nrn.2016.155.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/nrn.2016.155.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://www.nature.com/articles/nrn.2016.155</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="nrn.2016.155-b1">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Joels M.</author>
+                    <first_page>459</first_page>
+                    <volume>10</volume>
+                    <cYear>2009</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b2">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>797</first_page>
+                    <volume>125</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1037/a0026187</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b3">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b4">
+                    <journal_title>Front. Neuroendocrinol.</journal_title>
+                    <author>de Quervain D. J.</author>
+                    <first_page>358</first_page>
+                    <volume>30</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2009.03.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b5">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>423</first_page>
+                    <volume>10</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nrn2651</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b6">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Quirarte G. L.</author>
+                    <first_page>14048</first_page>
+                    <volume>94</volume>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1073/pnas.94.25.14048</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b7">
+                    <journal_title>Nature</journal_title>
+                    <author>de Quervain D. J.</author>
+                    <first_page>787</first_page>
+                    <volume>394</volume>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1038/29542</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b8">
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>1740</first_page>
+                    <volume>36</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2011.07.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b9">
+                    <journal_title>Brain Res.</journal_title>
+                    <author>Wolf O. T.</author>
+                    <first_page>142</first_page>
+                    <volume>1293</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2009.04.013</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b10">
+                    <journal_title>World J. Biol. Psychiatry</journal_title>
+                    <author>Bandelow B.</author>
+                    <first_page>175</first_page>
+                    <volume>8</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1080/15622970601110273</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b11">
+                    <journal_title>Int. J. Psychiatry Clin. Pract.</journal_title>
+                    <author>Bandelow B.</author>
+                    <first_page>77</first_page>
+                    <volume>16</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.3109/13651501.2012.667114</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b12">
+                    <journal_title>Health Technol. Assess.</journal_title>
+                    <author>Barton S.</author>
+                    <first_page>1</first_page>
+                    <volume>18</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3310/hta18500</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b13">
+                    <journal_title>S. Afr. Med. J.</journal_title>
+                    <author>Ipser J.</author>
+                    <first_page>1088</first_page>
+                    <volume>96</volume>
+                    <cYear>2006</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b14">
+                    <journal_title>Psychopharmacology (Berl.)</journal_title>
+                    <author>Lin C. C.</author>
+                    <first_page>1135</first_page>
+                    <volume>233</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s00213-015-4194-5</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b15">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>Parsons R. G.</author>
+                    <first_page>146</first_page>
+                    <volume>16</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1038/nn.3296</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b16">
+                    <journal_title>N. Engl. J. Med.</journal_title>
+                    <author>Holbrook T. L.</author>
+                    <first_page>110</first_page>
+                    <volume>362</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1056/NEJMoa0903326</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b17">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Pitman R. K.</author>
+                    <first_page>189</first_page>
+                    <volume>51</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(01)01279-3</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b18">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>Wessa M.</author>
+                    <first_page>1684</first_page>
+                    <volume>164</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.2007.07030525</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b19">
+                    <journal_title>Arch. Gen. Psychiatry</journal_title>
+                    <author>Ressler K. J.</author>
+                    <first_page>1136</first_page>
+                    <volume>61</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1001/archpsyc.61.11.1136</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b20">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Soeter M.</author>
+                    <first_page>880</first_page>
+                    <volume>78</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2015.04.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b21">
+                    <journal_title>J. Endocrinol.</journal_title>
+                    <author>McEwen B. S.</author>
+                    <first_page>T67</first_page>
+                    <volume>226</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1530/JOE-15-0121</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b22">
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <author>Joels M.</author>
+                    <first_page>152</first_page>
+                    <volume>10</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2006.02.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b23">
+                    <journal_title>Front. Neuroendocrinol.</journal_title>
+                    <author>de Kloet E. R.</author>
+                    <first_page>268</first_page>
+                    <volume>29</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.yfrne.2007.10.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b24">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>de Kloet E. R.</author>
+                    <first_page>463</first_page>
+                    <volume>6</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1038/nrn1683</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b25">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Coluccia D.</author>
+                    <first_page>3474</first_page>
+                    <volume>28</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.4893-07.2008</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b26">
+                    <journal_title>Science</journal_title>
+                    <author>McGaugh J. L.</author>
+                    <first_page>248</first_page>
+                    <volume>287</volume>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1126/science.287.5451.248</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b27">
+                    <journal_title>Curr. Opin. Neurobiol.</journal_title>
+                    <author>McGaugh J. L.</author>
+                    <first_page>205</first_page>
+                    <volume>12</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0959-4388(02)00306-9</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b28">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>681</first_page>
+                    <volume>21</volume>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(96)00028-5</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b29">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>Maheu F. S.</author>
+                    <first_page>420</first_page>
+                    <volume>118</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.118.2.420</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b30">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>Oitzl M. S.</author>
+                    <first_page>62</first_page>
+                    <volume>106</volume>
+                    <cYear>1992</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.106.1.62</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b31">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>176</first_page>
+                    <volume>67</volume>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1006/nlme.1996.3765</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b32">
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>1317</first_page>
+                    <volume>11</volume>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.1999.00537.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b33">
+                    <journal_title>Psychol. Sci.</journal_title>
+                    <author>Andreano J. M.</author>
+                    <first_page>466</first_page>
+                    <volume>17</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1111/j.1467-9280.2006.01729.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b34">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Preuss D.</author>
+                    <first_page>318</first_page>
+                    <volume>92</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2009.03.009</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b35">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Cornelisse S.</author>
+                    <first_page>569</first_page>
+                    <volume>36</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2010.09.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b36">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Buchanan T. W.</author>
+                    <first_page>307</first_page>
+                    <volume>26</volume>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(00)00058-5</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b37">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>6741</first_page>
+                    <volume>103</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1073/pnas.0601874103</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b38">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Segal S. K.</author>
+                    <first_page>267</first_page>
+                    <volume>277</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2014.06.059</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b39">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>Kuhlmann S.</author>
+                    <first_page>217</first_page>
+                    <volume>120</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1037/0735-7044.120.1.217</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b40">
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <author>Karst H.</author>
+                    <first_page>1083</first_page>
+                    <volume>16</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1046/j.1460-9568.2002.02172.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b41">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>Revest J. M.</author>
+                    <first_page>664</first_page>
+                    <volume>8</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1038/nn1441</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b42">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Bisaz R.</author>
+                    <first_page>333</first_page>
+                    <volume>91</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2008.11.003</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b43">
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <author>Datson N. A.</author>
+                    <first_page>675</first_page>
+                    <volume>14</volume>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1046/j.0953-816x.2001.01685.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b44">
+                    <journal_title>Mol. Brain</journal_title>
+                    <author>Riedemann T.</author>
+                    <first_page>2</first_page>
+                    <volume>3</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1186/1756-6606-3-2</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b45">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Johnson L. R.</author>
+                    <first_page>289</first_page>
+                    <volume>136</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2005.06.050</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b46">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Barsegyan A.</author>
+                    <first_page>16655</first_page>
+                    <volume>107</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1073/pnas.1011975107</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b47">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>5037</first_page>
+                    <volume>30</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5717-09.2010</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b48">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Lee E. J.</author>
+                    <first_page>7131</first_page>
+                    <volume>31</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.4692-10.2011</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b49">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Karst H.</author>
+                    <first_page>19204</first_page>
+                    <volume>102</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1073/pnas.0507572102</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b50">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Krugers H. J.</author>
+                    <first_page>675</first_page>
+                    <volume>11</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1038/nrn2913</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b51">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Conboy L.</author>
+                    <first_page>674</first_page>
+                    <volume>35</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1038/npp.2009.172</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b52">
+                    <journal_title>J. Psychopharmacol.</journal_title>
+                    <author>Zhou M.</author>
+                    <first_page>516</first_page>
+                    <volume>26</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1177/0269881111424930</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b53">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>Chen D. Y.</author>
+                    <first_page>1707</first_page>
+                    <volume>15</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1038/nn.3266</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b54">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Campolongo P.</author>
+                    <first_page>4888</first_page>
+                    <volume>106</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1073/pnas.0900835106</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b55">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>Chauveau F.</author>
+                    <first_page>196</first_page>
+                    <volume>20</volume>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b56">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Roozendaal B.</author>
+                    <first_page>8161</first_page>
+                    <volume>24</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2574-04.2004</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b57">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>de Quervain D. J.</author>
+                    <first_page>313</first_page>
+                    <volume>3</volume>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/73873</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b58">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>de Quervain D. J.</author>
+                    <first_page>967</first_page>
+                    <volume>164</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1176/ajp.2007.164.6.967</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b59">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Kuhlmann S.</author>
+                    <first_page>2977</first_page>
+                    <volume>25</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.5139-04.2005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b60">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>446</first_page>
+                    <volume>34</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2008.10.009</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b61">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Atsak P.</author>
+                    <first_page>3504</first_page>
+                    <volume>109</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1073/pnas.1200742109</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b62">
+                    <journal_title>Psychopharmacology (Berl.)</journal_title>
+                    <author>Kuhlmann S.</author>
+                    <first_page>65</first_page>
+                    <volume>183</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1007/s00213-005-0143-z</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b63">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Quirk G. J.</author>
+                    <first_page>56</first_page>
+                    <volume>33</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1038/sj.npp.1301555</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b64">
+                    <journal_title>Annu. Rev. Psychol.</journal_title>
+                    <author>Milad M. R.</author>
+                    <first_page>129</first_page>
+                    <volume>63</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1146/annurev.psych.121208.131631</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b65">
+                    <journal_title>Neurosci. Lett.</journal_title>
+                    <author>Barrett D.</author>
+                    <first_page>91</first_page>
+                    <volume>371</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2004.08.046</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b66">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Cai W. H.</author>
+                    <first_page>9560</first_page>
+                    <volume>26</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2397-06.2006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b67">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Yang Y. L.</author>
+                    <first_page>912</first_page>
+                    <volume>31</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1038/sj.npp.1300899</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b68">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Blundell J.</author>
+                    <first_page>453</first_page>
+                    <volume>95</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2011.02.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b69">
+                    <journal_title>Int. J. Neuropharmacol.</journal_title>
+                    <author>Bohus B.</author>
+                    <first_page>301</first_page>
+                    <volume>7</volume>
+                    <cYear>1968</cYear>
+                    <doi provider="crossref">10.1016/0028-3908(68)90012-9</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b70">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Clay R.</author>
+                    <first_page>367</first_page>
+                    <volume>96</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2011.06.012</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b71">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Nader K.</author>
+                    <first_page>224</first_page>
+                    <volume>10</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nrn2590</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b72">
+                    <journal_title>Nature</journal_title>
+                    <author>Nader K.</author>
+                    <first_page>722</first_page>
+                    <volume>406</volume>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1038/35021052</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b73">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>274</first_page>
+                    <volume>76</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2014.03.008</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b74">
+                    <journal_title>Trends Neurosci.</journal_title>
+                    <author>Alberini C. M.</author>
+                    <first_page>51</first_page>
+                    <volume>28</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.tins.2004.11.001</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b75">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>153</first_page>
+                    <volume>94</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2010.05.001</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b76">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Coccoz V.</author>
+                    <first_page>61</first_page>
+                    <volume>185</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2011.04.023</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b77">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Bos M. G.</author>
+                    <first_page>102</first_page>
+                    <volume>46</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.04.011</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b78">
+                    <journal_title>Stress</journal_title>
+                    <author>Nikzad S.</author>
+                    <first_page>459</first_page>
+                    <volume>14</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.3109/10253890.2010.548171</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b79">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>Pitman R. K.</author>
+                    <first_page>632</first_page>
+                    <volume>125</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1037/a0024364</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b80">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Abrari K.</author>
+                    <first_page>178</first_page>
+                    <volume>89</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2007.07.005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b81">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Drexler S. M.</author>
+                    <first_page>3036</first_page>
+                    <volume>40</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.160</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b82">
+                    <journal_title>Psychopharmacology (Berl.)</journal_title>
+                    <author>Meir Drexler S.</author>
+                    <first_page>2687</first_page>
+                    <volume>233</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s00213-016-4314-x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b83">
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <author>Joels M.</author>
+                    <first_page>280</first_page>
+                    <volume>15</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2011.04.004</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b84">
+                    <journal_title>Science</journal_title>
+                    <author>Hermans E. J.</author>
+                    <first_page>1151</first_page>
+                    <volume>334</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1126/science.1209603</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b85">
+                    <journal_title>J. Neurophysiol.</journal_title>
+                    <author>Katsuki H.</author>
+                    <first_page>3013</first_page>
+                    <volume>77</volume>
+                    <cYear>1997</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b86">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Vogel S.</author>
+                    <first_page>64</first_page>
+                    <volume>71</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.027</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b87">
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <author>Sandi C.</author>
+                    <first_page>637</first_page>
+                    <volume>9</volume>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1111/j.1460-9568.1997.tb01412.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b88">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Sch&amp;ouml;nfeld P.</author>
+                    <first_page>249</first_page>
+                    <volume>39</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2013.09.020</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b89">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Zoladz P. R.</author>
+                    <first_page>467</first_page>
+                    <volume>103</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2011.01.016</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b90">
+                    <journal_title>Cogn. Affect. Behav. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>1041</first_page>
+                    <volume>14</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.3758/s13415-014-0256-0</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b91">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Wiegert O.</author>
+                    <first_page>110</first_page>
+                    <volume>13</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1101/lm.87706</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b92">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Kim J. J.</author>
+                    <first_page>453</first_page>
+                    <volume>3</volume>
+                    <cYear>2002</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b93">
+                    <journal_title>Hum. Brain Mapp.</journal_title>
+                    <author>Henckens M. J. A. G.</author>
+                    <first_page>2885</first_page>
+                    <volume>33</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/hbm.21409</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b94">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Henckens M. J. A. G.</author>
+                    <first_page>12725</first_page>
+                    <volume>30</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3112-10.2010</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b95">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Miranda M. I.</author>
+                    <first_page>468</first_page>
+                    <volume>15</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1101/lm.964708</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b96">
+                    <journal_title>Front. Behav. Neurosci.</journal_title>
+                    <author>Fornari R. V.</author>
+                    <first_page>10</first_page>
+                    <volume>6</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.3389/fnbeh.2012.00010</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b97">
+                    <journal_title>Annu. Rev. Neurosci.</journal_title>
+                    <author>Packard M. G.</author>
+                    <first_page>563</first_page>
+                    <volume>25</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1146/annurev.neuro.25.112701.142937</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b98">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Hermans E. J.</author>
+                    <first_page>2</first_page>
+                    <volume>112</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2014.02.005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b99">
+                    <journal_title>Behav. Neural Biol.</journal_title>
+                    <author>McDonald R.</author>
+                    <first_page>260</first_page>
+                    <volume>61</volume>
+                    <cYear>1994</cYear>
+                    <doi provider="crossref">10.1016/S0163-1047(05)80009-3</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b100">
+                    <journal_title>Neuropsychologia</journal_title>
+                    <author>Poldrack R. A.</author>
+                    <first_page>245</first_page>
+                    <volume>41</volume>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0028-3932(02)00157-4</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b101">
+                    <journal_title>Rev. Neurosci.</journal_title>
+                    <author>Goodman J.</author>
+                    <first_page>627</first_page>
+                    <volume>23</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1515/revneuro-2012-0049</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b102">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>1035</first_page>
+                    <volume>23</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1002/hipo.22175</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b103">
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>584</first_page>
+                    <volume>34</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2009.11.015</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b104">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Kim J.</author>
+                    <first_page>5222</first_page>
+                    <volume>21</volume>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b105">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>109</first_page>
+                    <volume>14</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1101/lm.435807</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b106">
+                    <journal_title>J. Cogn. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>1362</first_page>
+                    <volume>22</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1162/jocn.2009.21278</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b107">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>801</first_page>
+                    <volume>74</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2013.06.001</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b108">
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <author>Vogel S.</author>
+                    <first_page>192</first_page>
+                    <volume>20</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2015.12.003</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b109">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>7191</first_page>
+                    <volume>29</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0979-09.2009</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b110">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Braun S.</author>
+                    <first_page>700</first_page>
+                    <volume>20</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1101/lm.032987.113</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b111">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>8190</first_page>
+                    <volume>30</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.0734-10.2010</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b112">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>17317</first_page>
+                    <volume>31</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.3304-11.2011</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b113">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>10146</first_page>
+                    <volume>32</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1304-12.2012</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b114">
+                    <journal_title>Neuroimage</journal_title>
+                    <author>Paquette V.</author>
+                    <first_page>401</first_page>
+                    <volume>18</volume>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S1053-8119(02)00030-7</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b115">
+                    <journal_title>J. Psychiatry Neurosci.</journal_title>
+                    <author>Mickleborough M. J.</author>
+                    <first_page>6</first_page>
+                    <volume>36</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1503/jpn.080188</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b116">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Quirarte G. L.</author>
+                    <first_page>586</first_page>
+                    <volume>16</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1101/lm.1493609</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b117">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>Medina A. C.</author>
+                    <first_page>673</first_page>
+                    <volume>14</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1101/lm.654407</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b118">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Guenzel F. M.</author>
+                    <first_page>21</first_page>
+                    <volume>45</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.02.015</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b119">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Atsak P.</author>
+                    <first_page>207</first_page>
+                    <volume>67</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.02.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b120">
+                    <journal_title>Curr. Opin. Neurobiol.</journal_title>
+                    <author>Burguiere E.</author>
+                    <first_page>59</first_page>
+                    <volume>30</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.conb.2014.08.008</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b121">
+                    <journal_title>Br. J. Psychiatry</journal_title>
+                    <author>Meewisse M. L.</author>
+                    <first_page>387</first_page>
+                    <volume>191</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1192/bjp.bp.106.024877</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b122">
+                    <journal_title>N. Engl. J. Med.</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>108</first_page>
+                    <volume>346</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1056/NEJMra012941</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b123">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Pitman R. K.</author>
+                    <first_page>769</first_page>
+                    <volume>13</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1038/nrn3339</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b124">
+                    <journal_title>Ann. NY Acad. Sci.</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>56</first_page>
+                    <volume>1179</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1111/j.1749-6632.2009.04979.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b125">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>van Zuiden M.</author>
+                    <first_page>89</first_page>
+                    <volume>168</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.2010.10050706</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b126">
+                    <journal_title>Brain Behav. Immun.</journal_title>
+                    <author>van Zuiden M.</author>
+                    <first_page>12</first_page>
+                    <volume>30</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.bbi.2012.08.015</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b127">
+                    <journal_title>Neurosci. Biobehav. Rev.</journal_title>
+                    <author>Castro-Vale I.</author>
+                    <first_page>143</first_page>
+                    <volume>63</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.neubiorev.2016.02.005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b128">
+                    <journal_title>Eur. Neuropsychopharmacol.</journal_title>
+                    <author>Zohar J.</author>
+                    <first_page>796</first_page>
+                    <volume>21</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.euroneuro.2011.06.001</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b129">
+                    <journal_title>Crit. Care Med.</journal_title>
+                    <author>Kok L.</author>
+                    <first_page>512</first_page>
+                    <volume>44</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1097/CCM.0000000000001419</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b130">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>Aerni A.</author>
+                    <first_page>1488</first_page>
+                    <volume>161</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.161.8.1488</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b131">
+                    <journal_title>J. Psychopharmacol.</journal_title>
+                    <author>Ludascher P.</author>
+                    <first_page>1077</first_page>
+                    <volume>29</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1177/0269881115592339</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b132">
+                    <journal_title>Ann. Clin. Psychiatry</journal_title>
+                    <author>Suris A.</author>
+                    <first_page>274</first_page>
+                    <volume>22</volume>
+                    <cYear>2010</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b133">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b134">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>589</first_page>
+                    <volume>51</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.08.004</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b135">
+                    <journal_title>Psychiatry Res.</journal_title>
+                    <author>Wood N. E.</author>
+                    <first_page>31</first_page>
+                    <volume>225</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psychres.2014.09.005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b136">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Schelling G.</author>
+                    <first_page>627</first_page>
+                    <volume>55</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2003.09.014</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b137">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Schelling G.</author>
+                    <first_page>978</first_page>
+                    <volume>50</volume>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(01)01270-7</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b138">
+                    <journal_title>J. Thorac. Cardiovasc. Surg.</journal_title>
+                    <author>Weis F.</author>
+                    <first_page>277</first_page>
+                    <volume>131</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.jtcvs.2005.07.063</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b139">
+                    <journal_title>CNS Spectr.</journal_title>
+                    <author>Delahanty D. L.</author>
+                    <first_page>103</first_page>
+                    <volume>18</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1017/S1092852913000096</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b140">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Delahanty D. L.</author>
+                    <first_page>940</first_page>
+                    <volume>48</volume>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(00)00896-9</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b141">
+                    <journal_title>Ann. NY Acad. Sci.</journal_title>
+                    <author>McFarlane A. C.</author>
+                    <first_page>437</first_page>
+                    <volume>821</volume>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1111/j.1749-6632.1997.tb48299.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b142">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>1305</first_page>
+                    <volume>44</volume>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(98)00276-5</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b143">
+                    <journal_title>Lancet Psychiatry</journal_title>
+                    <author>Sijbrandij M.</author>
+                    <first_page>413</first_page>
+                    <volume>2</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/S2215-0366(14)00121-7</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b144">
+                    <journal_title>Cochrane Database Syst. Rev.</journal_title>
+                    <author>Amos T.</author>
+                    <first_page>CD006239</first_page>
+                    <volume>7</volume>
+                    <cYear>2014</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b145">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b146">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b147">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b148">
+                    <journal_title>Curr. Top. Behav. Neurosci.</journal_title>
+                    <author>Elnazer H. Y.</author>
+                    <first_page>191</first_page>
+                    <volume>18</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/7854_2014_299</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b149">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>Soravia L. M.</author>
+                    <first_page>5585</first_page>
+                    <volume>103</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1073/pnas.0509184103</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b150">
+                    <journal_title>Proc. Natl Acad. Sci. USA</journal_title>
+                    <author>de Quervain D. J.</author>
+                    <first_page>6621</first_page>
+                    <volume>108</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1073/pnas.1018214108</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b151">
+                    <journal_title>Depress. Anxiety</journal_title>
+                    <author>Soravia L. M.</author>
+                    <first_page>429</first_page>
+                    <volume>31</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1002/da.22219</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b152">
+                    <journal_title>Behav. Res. Ther.</journal_title>
+                    <author>Lass-Hennemann J.</author>
+                    <first_page>39</first_page>
+                    <volume>60</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.brat.2014.06.009</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b153">
+                    <journal_title>Ann. NY Acad. Sci.</journal_title>
+                    <author>Tiffany S. T.</author>
+                    <first_page>1</first_page>
+                    <volume>1248</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1111/j.1749-6632.2011.06298.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b154">
+                    <journal_title>Eur. Neuropsychopharmacol.</journal_title>
+                    <author>Preller K. H.</author>
+                    <first_page>1270</first_page>
+                    <volume>23</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.euroneuro.2012.11.007</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b155">
+                    <journal_title>Addiction</journal_title>
+                    <author>Robinson T. E.</author>
+                    <first_page>91</first_page>
+                    <volume>95</volume>
+                    <cYear>2000</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b156">
+                    <journal_title>Neuron</journal_title>
+                    <author>Kelley A. E.</author>
+                    <first_page>161</first_page>
+                    <volume>44</volume>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2004.09.016</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b157">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>Walter M.</author>
+                    <first_page>e610</first_page>
+                    <volume>5</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/tp.2015.101</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b158">
+                    <journal_title>JAMA Psychiatry</journal_title>
+                    <author>Milad M. R.</author>
+                    <first_page>608</first_page>
+                    <volume>70</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1001/jamapsychiatry.2013.914</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b159">
+                    <journal_title>Acta Psychol. (Amst.)</journal_title>
+                    <author>Mineka S.</author>
+                    <first_page>567</first_page>
+                    <volume>127</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.actpsy.2007.11.007</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b160">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Pitman R. K.</author>
+                    <first_page>221</first_page>
+                    <volume>26</volume>
+                    <cYear>1989</cYear>
+                    <doi provider="crossref">10.1016/0006-3223(89)90033-4</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b161">
+                    <journal_title>Cell. Mol. Neurobiol.</journal_title>
+                    <author>LeDoux J.</author>
+                    <first_page>727</first_page>
+                    <volume>23</volume>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1023/A:1025048802629</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b162">
+                    <journal_title>Neuron</journal_title>
+                    <author>Phelps E. A.</author>
+                    <first_page>175</first_page>
+                    <volume>48</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2005.09.025</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b163">
+                    <journal_title>Neuron</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>19</first_page>
+                    <volume>56</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2007.09.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b164">
+                    <journal_title>Clin. Psychol. Rev.</journal_title>
+                    <author>Brewin C. R.</author>
+                    <first_page>339</first_page>
+                    <volume>23</volume>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0272-7358(03)00033-3</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b165">
+                    <journal_title>Nature</journal_title>
+                    <author>Cahill L.</author>
+                    <first_page>295</first_page>
+                    <volume>377</volume>
+                    <cYear>1995</cYear>
+                    <doi provider="crossref">10.1038/377295a0</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b166">
+                    <journal_title>Depress. Anxiety</journal_title>
+                    <author>Francati V.</author>
+                    <first_page>202</first_page>
+                    <volume>24</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1002/da.20208</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b167">
+                    <journal_title>Am. J. Psychiatry</journal_title>
+                    <author>Armony J. L.</author>
+                    <first_page>1961</first_page>
+                    <volume>162</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1176/appi.ajp.162.10.1961</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b168">
+                    <journal_title>Neuropsychologia</journal_title>
+                    <author>Dickie E. W.</author>
+                    <first_page>1522</first_page>
+                    <volume>46</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.neuropsychologia.2008.01.007</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b169">
+                    <journal_title>Arch. Gen. Psychiatry</journal_title>
+                    <author>Shin L. M.</author>
+                    <first_page>273</first_page>
+                    <volume>62</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1001/archpsyc.62.3.273</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b170">
+                    <journal_title>CNS Spectr.</journal_title>
+                    <author>Heim C.</author>
+                    <first_page>13</first_page>
+                    <volume>14</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1017/S1092852900024664</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b171">
+                    <journal_title>Psychiatry Clin. Neurosci.</journal_title>
+                    <author>Ipser J. C.</author>
+                    <first_page>311</first_page>
+                    <volume>67</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1111/pcn.12055</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b172">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b173">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b174">
+                    <journal_title>J. Anxiety Disord.</journal_title>
+                    <author>Bentz D.</author>
+                    <first_page>223</first_page>
+                    <volume>24</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.janxdis.2009.10.011</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b175">
+                    <journal_title>Clin. Psychol. Rev.</journal_title>
+                    <author>McNally R. J.</author>
+                    <first_page>750</first_page>
+                    <volume>27</volume>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.cpr.2007.01.003</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b176">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Hermans D.</author>
+                    <first_page>361</first_page>
+                    <volume>60</volume>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2005.10.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b177">
+                    <journal_title>Psychiatr. Clin. North Am.</journal_title>
+                    <author>Hamm A. O.</author>
+                    <first_page>577</first_page>
+                    <volume>32</volume>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1016/j.psc.2009.05.008</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b178">
+                    <journal_title>Cold Spring Harb. Perspect. Biol.</journal_title>
+                    <author>Nader K.</author>
+                    <first_page>a021782</first_page>
+                    <volume>7</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1101/cshperspect.a021782</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b179">
+                    <journal_title>Science</journal_title>
+                    <author>Kandel E. R.</author>
+                    <first_page>1030</first_page>
+                    <volume>294</volume>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1126/science.1067020</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b180">
+                    <journal_title>Trends Cogn. Sci.</journal_title>
+                    <author>Schwabe L.</author>
+                    <first_page>60</first_page>
+                    <volume>17</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.tics.2012.12.001</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b181">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Bouton M. E.</author>
+                    <first_page>976</first_page>
+                    <volume>52</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(02)01546-9</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b182">
+                    <journal_title>Curr. Opin. Neurobiol.</journal_title>
+                    <author>Ohno-Shosaku T.</author>
+                    <first_page>1</first_page>
+                    <volume>29</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.conb.2014.03.017</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b183">
+                    <journal_title>Endocrinology</journal_title>
+                    <author>Di S.</author>
+                    <first_page>4292</first_page>
+                    <volume>146</volume>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1210/en.2005-0610</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b184">
+                    <journal_title>Endocrinology</journal_title>
+                    <author>Evanson N. K.</author>
+                    <first_page>4811</first_page>
+                    <volume>151</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1210/en.2010-0285</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b185">
+                    <journal_title>J. Psychopharmacol.</journal_title>
+                    <author>Marco E. M.</author>
+                    <first_page>150</first_page>
+                    <volume>26</volume>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1177/0269881111408459</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b186">
+                    <journal_title>Nature</journal_title>
+                    <author>Marsicano G.</author>
+                    <first_page>530</first_page>
+                    <volume>418</volume>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1038/nature00839</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b187">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Hill M. N.</author>
+                    <first_page>1333</first_page>
+                    <volume>35</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2010.03.005</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b188">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Atsak P.</author>
+                    <first_page>1485</first_page>
+                    <volume>40</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/npp.2014.334</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b189">
+                    <journal_title>Learn. Mem.</journal_title>
+                    <author>de Oliveira Alvares L.</author>
+                    <first_page>202</first_page>
+                    <volume>17</volume>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1101/lm.1721010</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b190">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Katona I.</author>
+                    <first_page>9506</first_page>
+                    <volume>21</volume>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="nrn.2016.155-b191">
+                    <journal_title>Neuron</journal_title>
+                    <author>Ohno-Shosaku T.</author>
+                    <first_page>729</first_page>
+                    <volume>29</volume>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0896-6273(01)00247-1</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b192">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Di S.</author>
+                    <first_page>8461</first_page>
+                    <volume>36</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.2279-15.2016</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b193">
+                    <unstructured_citation />
+                  </citation>
+                  <citation key="nrn.2016.155-b194">
+                    <journal_title>J. Clin. Psychiatry</journal_title>
+                    <author>Mota N.</author>
+                    <first_page>e1622</first_page>
+                    <volume>76</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.4088/JCP.15l10084</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b195">
+                    <journal_title>Neuropharmacology</journal_title>
+                    <author>de Bitencourt R. M.</author>
+                    <first_page>389</first_page>
+                    <volume>64</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neuropharm.2012.05.039</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b196">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Jetly R.</author>
+                    <first_page>585</first_page>
+                    <volume>51</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2014.11.002</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b197">
+                    <journal_title>Clin. Drug Investig.</journal_title>
+                    <author>Roitman P.</author>
+                    <first_page>587</first_page>
+                    <volume>34</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/s40261-014-0212-3</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b198">
+                    <journal_title>Mol. Psychiatry</journal_title>
+                    <author>Neumeister A.</author>
+                    <first_page>1034</first_page>
+                    <volume>18</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1038/mp.2013.61</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b199">
+                    <journal_title>Clin. Endocrinol. (Oxf.)</journal_title>
+                    <author>van Rossum E. F.</author>
+                    <first_page>585</first_page>
+                    <volume>59</volume>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1046/j.1365-2265.2003.01888.x</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b200">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Ackermann S.</author>
+                    <first_page>1203</first_page>
+                    <volume>38</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2012.10.009</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b201">
+                    <journal_title>Crit. Care Med.</journal_title>
+                    <author>Hauer D.</author>
+                    <first_page>643</first_page>
+                    <volume>39</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1097/CCM.0b013e318206bae6</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b202">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>Labonte B.</author>
+                    <first_page>e368</first_page>
+                    <volume>4</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1038/tp.2014.3</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b203">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Yehuda R.</author>
+                    <first_page>356</first_page>
+                    <volume>77</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.biopsych.2014.02.006</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b204">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Vukojevic V.</author>
+                    <first_page>10274</first_page>
+                    <volume>34</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1526-14.2014</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b205">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Zannas A. S.</author>
+                    <first_page>261</first_page>
+                    <volume>41</volume>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1038/npp.2015.235</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b206">
+                    <journal_title>Neurobiol. Learn. Mem.</journal_title>
+                    <author>Cheung J.</author>
+                    <first_page>258</first_page>
+                    <volume>125</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.nlm.2015.09.008</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b207">
+                    <journal_title>Arch. Gen. Psychiatry</journal_title>
+                    <author>Mehta D.</author>
+                    <first_page>901</first_page>
+                    <volume>68</volume>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1001/archgenpsychiatry.2011.50</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b208">
+                    <journal_title>Nat. Neurosci.</journal_title>
+                    <author>Klengel T.</author>
+                    <first_page>33</first_page>
+                    <volume>16</volume>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1038/nn.3275</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b209">
+                    <journal_title>Transl Psychiatry</journal_title>
+                    <author>Wilker S.</author>
+                    <first_page>e403</first_page>
+                    <volume>4</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1038/tp.2014.49</doi>
+                  </citation>
+                  <citation key="nrn.2016.155-b210">
+                    <journal_title>Depress. Anxiety</journal_title>
+                    <author>Roberts S.</author>
+                    <first_page>861</first_page>
+                    <volume>32</volume>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1002/da.22430</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

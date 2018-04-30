@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.bmc.2016.10.035</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">86084276</crm-item>
+        <crm-item name="journal-id" type="number">1575</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170228042811000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T02:29:54Z</crm-item>
+        <crm-item name="created" type="date">2016-11-01T08:31:03Z</crm-item>
+        <crm-item name="citedby-count" type="number">4</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Bioorganic &amp; Medicinal Chemistry</full_title>
+                <abbrev_title>Bioorganic &amp; Medicinal Chemistry</abbrev_title>
+                <issn media_type="print">09680896</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>25</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>An evaluation of central penetration from a peripherally administered oxytocin receptor selective antagonist in nonhuman primates</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Aaron L.</given_name>
+                    <surname>Smith</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Hasse</given_name>
+                    <surname>Walum</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Fawn</given_name>
+                    <surname>Connor-Stroud</surname>
+                    <ORCID>http://orcid.org/0000-0003-3981-8654</ORCID>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sara M.</given_name>
+                    <surname>Freeman</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Kiyoshi</given_name>
+                    <surname>Inoue</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Lisa A.</given_name>
+                    <surname>Parr</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mark M.</given_name>
+                    <surname>Goodman</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Larry J.</given_name>
+                    <surname>Young</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>305</first_page>
+                  <last_page>315</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0968089616310872</item_number>
+                  <identifier id_type="pii">S0968089616310872</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion label="This article is maintained by " name="publisher">Elsevier</assertion>
+                    <assertion label="Article Title" name="articletitle">An evaluation of central penetration from a peripherally administered oxytocin receptor selective antagonist in nonhuman primates</assertion>
+                    <assertion label="Journal Title" name="journaltitle">Bioorganic &amp; Medicinal Chemistry</assertion>
+                    <assertion label="CrossRef DOI link to publisher maintained version" name="articlelink">http://dx.doi.org/10.1016/j.bmc.2016.10.035</assertion>
+                    <assertion label="Content Type" name="content_type">article</assertion>
+                    <assertion label="Copyright" name="copyright">Published by Elsevier Ltd.</assertion>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000002</fr:assertion>
+                          NIH
+                        </fr:assertion>
+                        <fr:assertion name="award_number">1P50MH100023</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">NIH OD</fr:assertion>
+                        <fr:assertion name="award_number">P51OD11132</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.bmc.2016.10.035</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0968089616310872</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0968089616310872?httpAccept=text/plain</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0968089616310872?httpAccept=text/xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

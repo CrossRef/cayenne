@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1007/s11302-016-9551-2</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer-Verlag</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86813557</crm-item>
+        <crm-item name="journal-id" type="number">36378</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170515130038198</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1007</crm-item>
+        <crm-item name="last-update" type="date">2017-05-15T11:02:10Z</crm-item>
+        <crm-item name="created" type="date">2016-12-13T09:14:18Z</crm-item>
+        <crm-item name="citedby-count" type="number">7</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Purinergic Signalling</full_title>
+                <abbrev_title>Purinergic Signalling</abbrev_title>
+                <issn media_type="print">1573-9538</issn>
+                <issn media_type="electronic">1573-9546</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>6</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>13</volume>
+                </journal_volume>
+                <issue>2</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Signaling pathways underlying the antidepressant-like effect of inosine in mice</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Filipe Marques</given_name>
+                    <surname>Gonçalves</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Vivian Binder</given_name>
+                    <surname>Neis</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Débora Kurrle</given_name>
+                    <surname>Rieger</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mark William</given_name>
+                    <surname>Lopes</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Isabella A.</given_name>
+                    <surname>Heinrich</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Ana Paula</given_name>
+                    <surname>Costa</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Ana Lúcia S.</given_name>
+                    <surname>Rodrigues</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Manuella P.</given_name>
+                    <surname>Kaster</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Rodrigo Bainy</given_name>
+                    <surname>Leal</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>13</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>6</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>203</first_page>
+                  <last_page>214</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">9551</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Conselho Nacional de Desenvolvimento Científico e Tecnológico
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100003593</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">308459/2013-0</fr:assertion>
+                        <fr:assertion name="award_number">308723/2013-9</fr:assertion>
+                        <fr:assertion name="award_number">481523/2013-8</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Coordenação de Aperfeiçoamento de Pessoal de Nível Superior
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100002322</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">CAPES/MINCyT; #249/14</fr:assertion>
+                        <fr:assertion name="award_number">PROESP/CAPES; #1509/2009</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Fundação de Amparo à Pesquisa e Inovação do Estado de Santa Catarina
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100005667</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">FAPESC/PRONEX Program—NENASC Project; #1262/2012-9</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1007/s11302-016-9551-2</doi>
+                  <timestamp>20170515130038198</timestamp>
+                  <resource>http://link.springer.com/10.1007/s11302-016-9551-2</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s11302-016-9551-2.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s11302-016-9551-2.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://link.springer.com/article/10.1007/s11302-016-9551-2/fulltext.html</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="9551_CR1">
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <author>MP Kaster</author>
+                    <volume>771</volume>
+                    <first_page>236</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.ejphar.2015.12.029</doi>
+                    <unstructured_citation>Kaster MP, Moretti M, Cunha MP, Rodrigues AL (2016) Novel approaches for the management of depressive disorders. Eur J Pharmacol 771:236–240. doi:
+10.1016/j.ejphar.2015.12.029</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR2">
+                    <journal_title>Nature</journal_title>
+                    <author>V Krishnan</author>
+                    <volume>455</volume>
+                    <issue>7215</issue>
+                    <first_page>894</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1038/nature07455</doi>
+                    <unstructured_citation>Krishnan V, Nestler EJ (2008) The molecular neurobiology of depression. Nature 455(7215):894–902. doi:
+10.1038/nature07455</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR3">
+                    <journal_title>Mol Psychiatry</journal_title>
+                    <author>GI Papakostas</author>
+                    <volume>20</volume>
+                    <issue>10</issue>
+                    <first_page>1142</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1038/mp.2015.92</doi>
+                    <unstructured_citation>Papakostas GI, Ionescu DF (2016) Towards new mechanisms: an update on therapeutics for treatment-resistant major depressive disorder. Mol Psychiatry 20(10):1142–1150. doi:
+10.1038/mp.2015.92</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR4">
+                    <journal_title>Nat Neurosci</journal_title>
+                    <author>CB Nemeroff</author>
+                    <volume>5</volume>
+                    <issue>Suppl</issue>
+                    <first_page>1068</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1038/nn943</doi>
+                    <unstructured_citation>Nemeroff CB, Owens MJ (2002) Treatment of mood disorders. Nat Neurosci 5(Suppl):1068–1070. doi:
+10.1038/nn943</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR5">
+                    <journal_title>J Affect Disord</journal_title>
+                    <author>HG Ruhe</author>
+                    <volume>137</volume>
+                    <issue>1–3</issue>
+                    <first_page>35</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.jad.2011.02.020</doi>
+                    <unstructured_citation>Ruhe HG, van Rooijen G, Spijker J, Peeters FP, Schene AH (2011) Staging methods for treatment resistant depression. A systematic review. J Affect Disord 137(1–3):35–45. doi:
+10.1016/j.jad.2011.02.020</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR6">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>MP Kaster</author>
+                    <volume>112</volume>
+                    <issue>25</issue>
+                    <first_page>7833</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1073/pnas.1423088112</doi>
+                    <unstructured_citation>Kaster MP, Machado NJ, Silva HB, Nunes A, Ardais AP, Santana M, Baqi Y, Muller CE, Rodrigues AL, Porciuncula LO, Chen JF, Tome AR, Agostinho P, Canas PM, Cunha RA (2015) Caffeine acts through neuronal adenosine A2A receptors to prevent mood and memory dysfunction triggered by chronic stress. Proc Natl Acad Sci U S A 112(25):7833–7838. doi:
+10.1073/pnas.1423088112</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR7">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>T Ali-Sisto</author>
+                    <volume>70</volume>
+                    <first_page>25</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.04.017</doi>
+                    <unstructured_citation>Ali-Sisto T, Tolmunen T, Toffol E, Viinamaki H, Mantyselka P, Valkonen-Korhonen M, Honkalampi K, Ruusunen A, Velagapudi V, Lehto SM (2016) Purine metabolism is dysregulated in patients with major depressive disorder. Psychoneuroendocrinology 70:25–32. doi:
+10.1016/j.psyneuen.2016.04.017</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR8">
+                    <journal_title>Prog Neuro-Psychopharmacol Biol Psychiatry</journal_title>
+                    <author>R Ortiz</author>
+                    <volume>57</volume>
+                    <first_page>117</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.pnpbp.2014.10.016</doi>
+                    <unstructured_citation>Ortiz R, Ulrich H, Zarate CA Jr, Machado-Vieira R (2014) Purinergic system dysfunction in mood disorders: a key target for developing improved therapeutics. Prog Neuro-Psychopharmacol Biol Psychiatry 57:117–131. doi:
+10.1016/j.pnpbp.2014.10.016</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR9">
+                    <journal_title>Neuroendocrinology</journal_title>
+                    <author>S Scaccianoce</author>
+                    <volume>50</volume>
+                    <issue>4</issue>
+                    <first_page>464</first_page>
+                    <cYear>1989</cYear>
+                    <doi provider="crossref">10.1159/000125264</doi>
+                    <unstructured_citation>Scaccianoce S, Navarra D, Di Sciullo A, Angelucci L, Endroczi E (1989) Adenosine and pituitary-adrenocortical axis activity in the rat. Neuroendocrinology 50(4):464–468</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR10">
+                    <journal_title>J Neurosci</journal_title>
+                    <author>M Okada</author>
+                    <volume>21</volume>
+                    <issue>2</issue>
+                    <first_page>628</first_page>
+                    <cYear>2001</cYear>
+                    <unstructured_citation>Okada M, Nutt DJ, Murakami T, Zhu G, Kamata A, Kawata Y, Kaneko S (2001) Adenosine receptor subtypes modulate two major functional pathways for hippocampal serotonin release. J Neurosci 21(2):628–640</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR11">
+                    <journal_title>Neurosci Lett</journal_title>
+                    <author>MP Kaster</author>
+                    <volume>355</volume>
+                    <issue>1–2</issue>
+                    <first_page>21</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2003.10.040</doi>
+                    <unstructured_citation>Kaster MP, Rosa AO, Rosso MM, Goulart EC, Santos AR, Rodrigues AL (2004) Adenosine administration produces an antidepressant-like effect in mice: evidence for the involvement of A1 and A2A receptors. Neurosci Lett 355(1–2):21–24</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR12">
+                    <journal_title>Neurology</journal_title>
+                    <author>M El Yacoubi</author>
+                    <volume>61</volume>
+                    <issue>11 Suppl 6</issue>
+                    <first_page>S82</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1212/01.WNL.0000095220.87550.F6</doi>
+                    <unstructured_citation>El Yacoubi M, Costentin J, Vaugeois JM (2003) Adenosine A2A receptors and depression. Neurology 61(11 Suppl 6):S82–S87</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR13">
+                    <journal_title>Behav Neurosci</journal_title>
+                    <author>TR Minor</author>
+                    <volume>122</volume>
+                    <issue>6</issue>
+                    <first_page>1236</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1037/a0013143</doi>
+                    <unstructured_citation>Minor TR, Rowe M, Cullen PK, Furst S (2008) Enhancing brain adenosine signaling with the nucleoside transport blocker NBTI (S-(4-nitrobenzyl)-6-theoinosine) mimics the effects of inescapable shock on later shuttle-escape performance in rats. Behav Neurosci 122(6):1236–1247. doi:
+10.1037/a0013143</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR14">
+                    <journal_title>Psychopharmacology</journal_title>
+                    <author>K Yamada</author>
+                    <volume>231</volume>
+                    <issue>14</issue>
+                    <first_page>2839</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1007/s00213-014-3454-0</doi>
+                    <unstructured_citation>Yamada K, Kobayashi M, Shiozaki S, Ohta T, Mori A, Jenner P, Kanda T (2014) Antidepressant activity of the adenosine A2A receptor antagonist, istradefylline (KW-6002) on learned helplessness in rats. Psychopharmacology 231(14):2839–2849. doi:
+10.1007/s00213-014-3454-0</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR15">
+                    <journal_title>Front Psychiatry</journal_title>
+                    <author>JE Coelho</author>
+                    <volume>5</volume>
+                    <first_page>67</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.3389/fpsyt.2014.00067</doi>
+                    <unstructured_citation>Coelho JE, Alves P, Canas PM, Valadas JS, Shmidt T, Batalha VL, Ferreira DG, Ribeiro JA, Bader M, Cunha RA, do Couto FS, Lopes LV (2014) Overexpression of adenosine A2A receptors in rats: effects on depression, locomotion, and anxiety. Front Psychiatry 5:67. doi:
+10.3389/fpsyt.2014.00067</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR16">
+                    <journal_title>Mol Neurobiol</journal_title>
+                    <author>NJ Machado</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1007/s12035-016-9774-9</doi>
+                    <unstructured_citation>Machado NJ, Simoes AP, Silva HB, Ardais AP, Kaster MP, Garcao P, Rodrigues DI, Pochmann D, Santos AI, Araujo IM, Porciuncula LO, Tome AR, Kofalvi A, Vaugeois JM, Agostinho P, El Yacoubi M, Cunha RA, Gomes CA (2016) Caffeine reverts memory but not mood impairment in a depression-prone mouse strain with up-regulated adenosine A2A receptor in hippocampal glutamate synapses. Mol Neurobiol. doi:
+10.1007/s12035-016-9774-9</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR17">
+                    <journal_title>Eur J Immunol</journal_title>
+                    <author>J Barankiewicz</author>
+                    <volume>15</volume>
+                    <issue>6</issue>
+                    <first_page>627</first_page>
+                    <cYear>1985</cYear>
+                    <doi>10.1002/eji.1830150618</doi>
+                    <unstructured_citation>Barankiewicz J, Cohen A (1985) Purine nucleotide metabolism in resident and activated rat macrophages in vitro. Eur J Immunol 15(6):627–631. doi:
+10.1002/eji.1830150618</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR18">
+                    <journal_title>J Neurochem</journal_title>
+                    <author>SE Haun</author>
+                    <volume>67</volume>
+                    <issue>5</issue>
+                    <first_page>2051</first_page>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1046/j.1471-4159.1996.67052051.x</doi>
+                    <unstructured_citation>Haun SE, Segeleon JE, Trapp VL, Clotz MA, Horrocks LA (1996) Inosine mediates the protective effect of adenosine in rat astrocyte cultures subjected to combined glucose-oxygen deprivation. J Neurochem 67(5):2051–2059</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR19">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>S Cipriani</author>
+                    <volume>274</volume>
+                    <first_page>242</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.neuroscience.2014.05.038</doi>
+                    <unstructured_citation>Cipriani S, Bakshi R, Schwarzschild MA (2014) Protection by inosine in a cellular model of Parkinson’s disease. Neuroscience 274:242–249. doi:
+10.1016/j.neuroscience.2014.05.038</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR20">
+                    <journal_title>Sci Rep</journal_title>
+                    <author>J Muto</author>
+                    <volume>4</volume>
+                    <first_page>4199</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1038/srep04199</doi>
+                    <unstructured_citation>Muto J, Lee H, Uwaya A, Park J, Nakajima S, Nagata K, Ohno M, Ohsawa I, Mikami T (2014) Oral administration of inosine produces antidepressant-like effects in mice. Sci Rep 4:4199. doi:
+10.1038/srep04199</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR21">
+                    <journal_title>Neurosci Lett</journal_title>
+                    <author>MM Wu</author>
+                    <volume>341</volume>
+                    <issue>1</issue>
+                    <first_page>84</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0304-3940(03)00151-4</doi>
+                    <unstructured_citation>Wu MM, You SW, Hou B, Jiao XY, Li YY, Ju G (2003) Effects of inosine on axonal regeneration of axotomized retinal ganglion cells in adult rats. Neurosci Lett 341(1):84–86</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR22">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>AD Zurn</author>
+                    <volume>85</volume>
+                    <issue>21</issue>
+                    <first_page>8301</first_page>
+                    <cYear>1988</cYear>
+                    <doi provider="crossref">10.1073/pnas.85.21.8301</doi>
+                    <unstructured_citation>Zurn AD, Do KQ (1988) Purine metabolite inosine is an adrenergic neurotrophic substance for cultured chicken sympathetic neurons. Proc Natl Acad Sci U S A 85(21):8301–8305</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR23">
+                    <journal_title>Prog Brain Res</journal_title>
+                    <author>LI Benowitz</author>
+                    <volume>137</volume>
+                    <first_page>389</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0079-6123(02)37030-4</doi>
+                    <unstructured_citation>Benowitz LI, Goldberg DE, Irwin N (2002) Inosine stimulates axon growth in vitro and in the adult CNS. Prog Brain Res 137:389–399</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR24">
+                    <journal_title>J Biol Chem</journal_title>
+                    <author>LI Benowitz</author>
+                    <volume>273</volume>
+                    <issue>45</issue>
+                    <first_page>29626</first_page>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1074/jbc.273.45.29626</doi>
+                    <unstructured_citation>Benowitz LI, Jing Y, Tabibiazar R, Jo SA, Petrausch B, Stuermer CA, Rosenberg PA, Irwin N (1998) Axon outgrowth is regulated by an intracellular purine-sensitive mechanism in retinal ganglion cells. J Biol Chem 273(45):29626–29634</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR25">
+                    <journal_title>Proc Natl Acad Sci U S A</journal_title>
+                    <author>P Chen</author>
+                    <volume>99</volume>
+                    <issue>13</issue>
+                    <first_page>9031</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1073/pnas.132076299</doi>
+                    <unstructured_citation>Chen P, Goldberg DE, Kolb B, Lanser M, Benowitz LI (2002) Inosine induces axonal rewiring and improves behavioral outcome after stroke. Proc Natl Acad Sci U S A 99(13):9031–9036. doi:
+10.1073/pnas.132076299</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR26">
+                    <journal_title>J Pharmacol Exp Ther</journal_title>
+                    <author>FP Nascimento</author>
+                    <volume>334</volume>
+                    <issue>2</issue>
+                    <first_page>590</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1124/jpet.110.166058</doi>
+                    <unstructured_citation>Nascimento FP, Figueredo SM, Marcon R, Martins DF, Macedo SJ Jr, Lima DA, Almeida RC, Ostroski RM, Rodrigues AL, Santos AR (2010) Inosine reduces pain-related behavior in mice: involvement of adenosine A1 and A2A receptor subtypes and protein kinase C pathways. J Pharmacol Exp Ther 334(2):590–598. doi:
+10.1124/jpet.110.166058</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR27">
+                    <journal_title>Purinergic Signal</journal_title>
+                    <author>SJ Macedo-Junior</author>
+                    <volume>9</volume>
+                    <issue>1</issue>
+                    <first_page>51</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1007/s11302-012-9327-2</doi>
+                    <unstructured_citation>Macedo-Junior SJ, Nascimento FP, Luiz-Cerutti M, Santos AR (2012) Role of pertussis toxin-sensitive G-protein, K+ channels, and voltage-gated Ca2+ channels in the antinociceptive effect of inosine. Purinergic Signal 9(1):51–58. doi:
+10.1007/s11302-012-9327-2</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR28">
+                    <journal_title>J Altern Complement Med</journal_title>
+                    <author>CE Markowitz</author>
+                    <volume>15</volume>
+                    <issue>6</issue>
+                    <first_page>619</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1089/acm.2008.0513</doi>
+                    <unstructured_citation>Markowitz CE, Spitsin S, Zimmerman V, Jacobs D, Udupa JK, Hooper DC, Koprowski H (2009) The treatment of multiple sclerosis with inosine. J Altern Complement Med 15(6):619–625. doi:
+10.1089/acm.2008.0513</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR29">
+                    <journal_title>JAMA Neurol</journal_title>
+                    <author>MA Schwarzschild</author>
+                    <volume>71</volume>
+                    <issue>2</issue>
+                    <first_page>141</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1001/jamaneurol.2013.5528</doi>
+                    <unstructured_citation>Schwarzschild MA, Ascherio A, Beal MF, Cudkowicz ME, Curhan GC, Hare JM, Hooper DC, Kieburtz KD, Macklin EA, Oakes D, Rudolph A, Shoulson I, Tennis MK, Espay AJ, Gartner M, Hung A, Bwala G, Lenehan R, Encarnacion E, Ainslie M, Castillo R, Togasaki D, Barles G, Friedman JH, Niles L, Carter JH, Murray M, Goetz CG, Jaglin J, Ahmed A, Russell DS, Cotto C, Goudreau JL, Russell D, Parashos SA, Ede P, Saint-Hilaire MH, Thomas CA, James R, Stacy MA, Johnson J, Gauger L, Antonelle de Marcaida J, Thurlow S, Isaacson SH, Carvajal L, Rao J, Cook M, Hope-Porche C, McClurg L, Grasso DL, Logan R, Orme C, Ross T, Brocht AF, Constantinescu R, Sharma S, Venuto C, Weber J, Eaton K (2013) Inosine to increase serum and cerebrospinal fluid urate in Parkinson disease: a randomized clinical trial. JAMA Neurol 71(2):141–150. doi:
+10.1001/jamaneurol.2013.5528</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR30">
+                    <journal_title>Mov Disord</journal_title>
+                    <author>S Bhattacharyya</author>
+                    <volume>31</volume>
+                    <issue>3</issue>
+                    <first_page>417</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1002/mds.26483</doi>
+                    <unstructured_citation>Bhattacharyya S, Bakshi R, Logan R, Ascherio A, Macklin EA, Schwarzschild MA (2016) Oral inosine persistently elevates plasma antioxidant capacity in Parkinson’s disease. Mov Disord 31(3):417–421. doi:
+10.1002/mds.26483</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR31">
+                    <journal_title>Mol Neurobiol</journal_title>
+                    <author>FP Nascimento</author>
+                    <cYear>2014</cYear>
+                    <doi>10.1007/s12035-014-8815-5</doi>
+                    <unstructured_citation>Nascimento FP, Macedo-Junior SJ, Pamplona FA, Luiz-Cerutti M, Cordova MM, Constantino L, Tasca CI, Dutra RC, Calixto JB, Reid A, Sawynok J, Santos AR (2014) Adenosine A1 receptor-dependent antinociception induced by inosine in mice: pharmacological, genetic and biochemical aspects. Mol Neurobiol. doi:
+10.1007/s12035-014-8815-5</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR32">
+                    <journal_title>Cell Signal</journal_title>
+                    <author>AA Welihinda</author>
+                    <volume>28</volume>
+                    <issue>6</issue>
+                    <first_page>552</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.cellsig.2016.02.010</doi>
+                    <unstructured_citation>Welihinda AA, Kaur M, Greene K, Zhai Y, Amento EP (2016) The adenosine metabolite inosine is a functional agonist of the adenosine A2A receptor with a unique signaling bias. Cell Signal 28(6):552–560. doi:
+10.1016/j.cellsig.2016.02.010</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR33">
+                    <journal_title>Trends Pharmacol Sci</journal_title>
+                    <author>G Hasko</author>
+                    <volume>25</volume>
+                    <issue>3</issue>
+                    <first_page>152</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1016/j.tips.2004.01.006</doi>
+                    <unstructured_citation>Hasko G, Sitkovsky MV, Szabo C (2004) Immunomodulatory and neuroprotective effects of inosine. Trends Pharmacol Sci 25(3):152–157. doi:
+10.1016/j.tips.2004.01.006</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR34">
+                    <journal_title>J Clin Invest</journal_title>
+                    <author>X Jin</author>
+                    <volume>100</volume>
+                    <issue>11</issue>
+                    <first_page>2849</first_page>
+                    <cYear>1997</cYear>
+                    <doi>10.1172/JCI119833</doi>
+                    <unstructured_citation>Jin X, Shepherd RK, Duling BR, Linden J (1997) Inosine binds to A3 adenosine receptors and stimulates mast cell degranulation. J Clin Invest 100(11):2849–2857. doi:
+10.1172/JCI119833</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR35">
+                    <journal_title>Blood</journal_title>
+                    <author>G Gomez</author>
+                    <volume>102</volume>
+                    <issue>13</issue>
+                    <first_page>4472</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1182/blood-2002-11-3624</doi>
+                    <unstructured_citation>Gomez G, Sitkovsky MV (2003) Differential requirement for A2a and A3 adenosine receptors for the protective effect of inosine in vivo. Blood 102(13):4472–4478. doi:
+10.1182/blood-2002-11-3624</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR36">
+                    <journal_title>Purinergic Signal</journal_title>
+                    <author>MP Kaster</author>
+                    <volume>9</volume>
+                    <issue>3</issue>
+                    <first_page>481</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1007/s11302-013-9361-8</doi>
+                    <unstructured_citation>Kaster MP, Budni J, Gazal M, Cunha MP, Santos AR, Rodrigues AL (2013) The antidepressant-like effect of inosine in the FST is associated with both adenosine A1 and A2A receptors. Purinergic Signal 9(3):481–486. doi:
+10.1007/s11302-013-9361-8</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR37">
+                    <journal_title>Bipolar Disord</journal_title>
+                    <author>C D’Sa</author>
+                    <volume>4</volume>
+                    <issue>3</issue>
+                    <first_page>183</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1034/j.1399-5618.2002.01203.x</doi>
+                    <unstructured_citation>D’Sa C, Duman RS (2002) Antidepressants and neuroplasticity. Bipolar Disord 4(3):183–194</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR38">
+                    <journal_title>Prog Neuro-Psychopharmacol Biol Psychiatry</journal_title>
+                    <author>WN Marsden</author>
+                    <volume>43</volume>
+                    <first_page>168</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.pnpbp.2012.12.012</doi>
+                    <unstructured_citation>Marsden WN (2012) Synaptic plasticity in depression: molecular, cellular and functional correlates. Prog Neuro-Psychopharmacol Biol Psychiatry 43:168–184. doi:
+10.1016/j.pnpbp.2012.12.012</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR39">
+                    <journal_title>Int J Neuropsychopharmacol</journal_title>
+                    <author>V Duric</author>
+                    <volume>16</volume>
+                    <issue>1</issue>
+                    <first_page>69</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1017/S1461145712000016</doi>
+                    <unstructured_citation>Duric V, Banasr M, Stockmeier CA, Simen AA, Newton SS, Overholser JC, Jurjus GJ, Dieter L, Duman RS (2012) Altered expression of synapse and glutamate related genes in post-mortem hippocampus of depressed subjects. Int J Neuropsychopharmacol 16(1):69–82. doi:
+10.1017/S1461145712000016</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR40">
+                    <journal_title>J Affect Disord</journal_title>
+                    <author>P Yuan</author>
+                    <volume>124</volume>
+                    <issue>1–2</issue>
+                    <first_page>164</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.jad.2009.10.017</doi>
+                    <unstructured_citation>Yuan P, Zhou R, Wang Y, Li X, Li J, Chen G, Guitart X, Manji HK (2009) Altered levels of extracellular signal-regulated kinase signaling proteins in postmortem frontal cortex of individuals with mood disorders and schizophrenia. J Affect Disord 124(1–2):164–169. doi:
+10.1016/j.jad.2009.10.017</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR41">
+                    <journal_title>Behav Brain Res</journal_title>
+                    <author>GZ Reus</author>
+                    <volume>221</volume>
+                    <issue>1</issue>
+                    <first_page>166</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.bbr.2011.02.024</doi>
+                    <unstructured_citation>Reus GZ, Stringari RB, Ribeiro KF, Ferraro AK, Vitto MF, Cesconetto P, Souza CT, Quevedo J (2011) Ketamine plus imipramine treatment induces antidepressant-like behavior and increases CREB and BDNF protein levels and PKA and PKC phosphorylation in rat brain. Behav Brain Res 221(1):166–171. doi:
+10.1016/j.bbr.2011.02.024</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR42">
+                    <journal_title>Nat Rev Drug Discov</journal_title>
+                    <author>KA Jacobson</author>
+                    <volume>5</volume>
+                    <issue>3</issue>
+                    <first_page>247</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1038/nrd1983</doi>
+                    <unstructured_citation>Jacobson KA, Gao ZG (2006) Adenosine receptors as therapeutic targets. Nat Rev Drug Discov 5(3):247–264. doi:
+10.1038/nrd1983</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR43">
+                    <journal_title>J Biol Chem</journal_title>
+                    <author>AM Liu</author>
+                    <volume>279</volume>
+                    <issue>51</issue>
+                    <first_page>53196</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1074/jbc.M410196200</doi>
+                    <unstructured_citation>Liu AM, Wong YH (2004) G16-mediated activation of nuclear factor kappaB by the adenosine A1 receptor involves c-Src, protein kinase C, and ERK signaling. J Biol Chem 279(51):53196–53204. doi:
+10.1074/jbc.M410196200</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR44">
+                    <journal_title>Prog Neuro-Psychopharmacol Biol Psychiatry</journal_title>
+                    <author>LM Manosso</author>
+                    <volume>59</volume>
+                    <first_page>59</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.pnpbp.2015.01.008</doi>
+                    <unstructured_citation>Manosso LM, Moretti M, Ribeiro CM, Goncalves FM, Leal RB, Rodrigues AL (2015) Antidepressant-like effect of zinc is dependent on signaling pathways implicated in BDNF modulation. Prog Neuro-Psychopharmacol Biol Psychiatry 59:59–67. doi:
+10.1016/j.pnpbp.2015.01.008</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR45">
+                    <journal_title>Pharmacol Biochem Behav</journal_title>
+                    <author>AL Zeni</author>
+                    <volume>103</volume>
+                    <issue>2</issue>
+                    <first_page>181</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.pbb.2012.08.020</doi>
+                    <unstructured_citation>Zeni AL, Zomkowski AD, Maraschin M, Rodrigues AL, Tasca CI (2012) Involvement of PKA, CaMKII, PKC, MAPK/ERK and PI3K in the acute antidepressant-like effect of ferulic acid in the tail suspension test. Pharmacol Biochem Behav 103(2):181–186. doi:
+10.1016/j.pbb.2012.08.020</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR46">
+                    <journal_title>Neuropharmacology</journal_title>
+                    <author>MP Kaster</author>
+                    <volume>62</volume>
+                    <issue>1</issue>
+                    <first_page>419</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.neuropharm.2011.08.018</doi>
+                    <unstructured_citation>Kaster MP, Gadotti VM, Calixto JB, Santos AR, Rodrigues AL (2011) Depressive-like behavior induced by tumor necrosis factor-alpha in mice. Neuropharmacology 62(1):419–426. doi:
+10.1016/j.neuropharm.2011.08.018</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR47">
+                    <journal_title>Neurochem Res</journal_title>
+                    <author>FM Goncalves</author>
+                    <volume>38</volume>
+                    <issue>11</issue>
+                    <first_page>2375</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1007/s11064-013-1150-9</doi>
+                    <unstructured_citation>Goncalves FM, Freitas AE, Peres TV, Rieger DK, Ben J, Maestri M, Costa AP, Tramontina AC, Goncalves CA, Rodrigues AL, Nagano CS, Teixeira EH, Nascimento KS, Cavada BS, Leal RB (2013) Vatairea macrocarpa lectin (VML) induces depressive-like behavior and expression of neuroinflammatory markers in mice. Neurochem Res 38(11):2375–2384. doi:
+10.1007/s11064-013-1150-9</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR48">
+                    <journal_title>Psychopharmacology</journal_title>
+                    <author>L Steru</author>
+                    <volume>85</volume>
+                    <issue>3</issue>
+                    <first_page>367</first_page>
+                    <cYear>1985</cYear>
+                    <doi provider="crossref">10.1007/BF00428203</doi>
+                    <unstructured_citation>Steru L, Chermat R, Thierry B, Simon P (1985) The tail suspension test: a new method for screening antidepressants in mice. Psychopharmacology 85(3):367–370</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR49">
+                    <journal_title>Purinergic Signal</journal_title>
+                    <author>MP Cunha</author>
+                    <cYear>2015</cYear>
+                    <doi>10.1007/s11302-015-9446-7</doi>
+                    <unstructured_citation>Cunha MP, Pazini FL, Rosa JM, Ramos-Hryb AB, Oliveira A, Kaster MP, Rodrigues AL (2015) Creatine, similarly to ketamine, affords antidepressant-like effects in the tail suspension test via adenosine A1 and A2A receptor activation. Purinergic Signal. doi:
+10.1007/s11302-015-9446-7</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR50">
+                    <journal_title>Pharmacol Biochem Behav</journal_title>
+                    <author>VB Neis</author>
+                    <volume>130</volume>
+                    <first_page>9</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.pbb.2014.12.009</doi>
+                    <unstructured_citation>Neis VB, Moretti M, Manosso LM, Lopes MW, Leal RB, Rodrigues AL (2015) Agmatine enhances antidepressant potency of MK-801 and conventional antidepressants in mice. Pharmacol Biochem Behav 130:9–14. doi:
+10.1016/j.pbb.2014.12.009</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR51">
+                    <journal_title>J Psychiatr Res</journal_title>
+                    <author>M Moretti</author>
+                    <volume>48</volume>
+                    <issue>1</issue>
+                    <first_page>16</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1016/j.jpsychires.2013.10.014</doi>
+                    <unstructured_citation>Moretti M, Budni J, Freitas AE, Rosa PB, Rodrigues AL (2013) Antidepressant-like effect of ascorbic acid is associated with the modulation of mammalian target of rapamycin pathway. J Psychiatr Res 48(1):16–24. doi:
+10.1016/j.jpsychires.2013.10.014</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR52">
+                    <journal_title>Pharmacol Toxicol</journal_title>
+                    <author>AL Rodrigues</author>
+                    <volume>79</volume>
+                    <issue>3</issue>
+                    <first_page>150</first_page>
+                    <cYear>1996</cYear>
+                    <doi provider="crossref">10.1111/j.1600-0773.1996.tb00259.x</doi>
+                    <unstructured_citation>Rodrigues AL, Rocha JB, Mello CF, Souza DO (1996) Effect of perinatal lead exposure on rat behaviour in open-field and two-way avoidance tasks. Pharmacol Toxicol 79(3):150–156</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR53">
+                    <journal_title>Eur Neuropsychopharmacol</journal_title>
+                    <author>VB Neis</author>
+                    <volume>26</volume>
+                    <issue>6</issue>
+                    <first_page>959</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.euroneuro.2016.03.009</doi>
+                    <unstructured_citation>Neis VB, Moretti M, Bettio LE, Ribeiro CM, Rosa PB, Goncalves FM, Lopes MW, Leal RB, Rodrigues AL (2016) Agmatine produces antidepressant-like effects by activating AMPA receptors and mTOR signaling. Eur Neuropsychopharmacol 26(6):959–971. doi:
+10.1016/j.euroneuro.2016.03.009</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR54">
+                    <journal_title>Neurotoxicology</journal_title>
+                    <author>TV Peres</author>
+                    <volume>50</volume>
+                    <first_page>28</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.neuro.2015.07.005</doi>
+                    <unstructured_citation>Peres TV, Eyng H, Lopes SC, Colle D, Goncalves FM, Venske DK, Lopes MW, Ben J, Bornhorst J, Schwerdtle T, Aschner M, Farina M, Prediger RD, Leal RB (2015) Developmental exposure to manganese induces lasting motor and cognitive impairment in rats. Neurotoxicology 50:28–37. doi:
+10.1016/j.neuro.2015.07.005</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR55">
+                    <journal_title>Neurochem Int</journal_title>
+                    <author>MW Lopes</author>
+                    <volume>87</volume>
+                    <first_page>22</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.neuint.2015.05.003</doi>
+                    <unstructured_citation>Lopes MW, Lopes SC, Costa AP, Goncalves FM, Rieger DK, Peres TV, Eyng H, Prediger RD, Diaz AP, Nunes JC, Walz R, Leal RB (2015) Region-specific alterations of AMPA receptor phosphorylation and signaling pathways in the pilocarpine model of epilepsy. Neurochem Int 87:22–33. doi:
+10.1016/j.neuint.2015.05.003</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR56">
+                    <journal_title>Anal Biochem</journal_title>
+                    <author>GL Peterson</author>
+                    <volume>83</volume>
+                    <issue>2</issue>
+                    <first_page>346</first_page>
+                    <cYear>1977</cYear>
+                    <doi provider="crossref">10.1016/0003-2697(77)90043-4</doi>
+                    <unstructured_citation>Peterson GL (1977) A simplification of the protein assay method of Lowry et al. which is more generally applicable. Anal Biochem 83(2):346–356</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR57">
+                    <journal_title>Neurochem Res</journal_title>
+                    <author>Z Kovacs</author>
+                    <volume>35</volume>
+                    <issue>3</issue>
+                    <first_page>452</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1007/s11064-009-0080-z</doi>
+                    <unstructured_citation>Kovacs Z, Dobolyi A, Juhasz G, Kekesi KA (2009) Nucleoside map of the human central nervous system. Neurochem Res 35(3):452–464. doi:
+10.1007/s11064-009-0080-z</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR58">
+                    <journal_title>Clin Biochem</journal_title>
+                    <author>S Wen</author>
+                    <volume>45</volume>
+                    <issue>1–2</issue>
+                    <first_page>49</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.clinbiochem.2011.10.010</doi>
+                    <unstructured_citation>Wen S, Cheng M, Wang H, Yue J, Wang H, Li G, Zheng L, Zhong Z, Peng F (2012) Serum uric acid levels and the clinical characteristics of depression. Clin Biochem 45(1–2):49–53. doi:
+10.1016/j.clinbiochem.2011.10.010</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR59">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>S Elgun</author>
+                    <volume>24</volume>
+                    <issue>8</issue>
+                    <first_page>823</first_page>
+                    <cYear>1999</cYear>
+                    <doi provider="crossref">10.1016/S0306-4530(99)00039-6</doi>
+                    <unstructured_citation>Elgun S, Keskinege A, Kumbasar H (1999) Dipeptidyl peptidase IV and adenosine deaminase activity. Decrease in depression. Psychoneuroendocrinology 24(8):823–832</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR60">
+                    <journal_title>Stroke</journal_title>
+                    <author>H Shen</author>
+                    <volume>36</volume>
+                    <issue>3</issue>
+                    <first_page>654</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1161/01.STR.0000155747.15679.04</doi>
+                    <unstructured_citation>Shen H, Chen GJ, Harvey BK, Bickford PC, Wang Y (2005) Inosine reduces ischemic brain injury in rats. Stroke 36(3):654–659. doi:
+10.1161/01.STR.0000155747.15679.04</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR61">
+                    <journal_title>J Biol Chem</journal_title>
+                    <author>MF Favata</author>
+                    <volume>273</volume>
+                    <issue>29</issue>
+                    <first_page>18623</first_page>
+                    <cYear>1998</cYear>
+                    <doi provider="crossref">10.1074/jbc.273.29.18623</doi>
+                    <unstructured_citation>Favata MF, Horiuchi KY, Manos EJ, Daulerio AJ, Stradley DA, Feeser WS, Van Dyk DE, Pitts WJ, Earl RA, Hobbs F, Copeland RA, Magolda RL, Scherle PA, Trzaskos JM (1998) Identification of a novel inhibitor of mitogen-activated protein kinase kinase. J Biol Chem 273(29):18623–18632</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR62">
+                    <journal_title>Int J Dev Neurosci</journal_title>
+                    <author>P Cheng</author>
+                    <volume>31</volume>
+                    <issue>8</issue>
+                    <first_page>783</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1016/j.ijdevneu.2013.09.008</doi>
+                    <unstructured_citation>Cheng P, Alberts I, Li X (2013) The role of ERK1/2 in the regulation of proliferation and differentiation of astrocytes in developing brain. Int J Dev Neurosci 31(8):783–789. doi:
+10.1016/j.ijdevneu.2013.09.008</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR63">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>SL Gourley</author>
+                    <volume>63</volume>
+                    <issue>4</issue>
+                    <first_page>353</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.biopsych.2007.07.016</doi>
+                    <unstructured_citation>Gourley SL, Wu FJ, Kiraly DD, Ploski JE, Kedves AT, Duman RS, Taylor JR (2008) Regionally specific regulation of ERK MAP kinase in a model of antidepressant-sensitive chronic depression. Biol Psychiatry 63(4):353–359. doi:
+10.1016/j.biopsych.2007.07.016</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR64">
+                    <journal_title>Behav Brain Res</journal_title>
+                    <author>D Liu</author>
+                    <volume>271</volume>
+                    <first_page>116</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.bbr.2014.05.068</doi>
+                    <unstructured_citation>Liu D, Wang Z, Gao Z, Xie K, Zhang Q, Jiang H, Pang Q (2014) Effects of curcumin on learning and memory deficits, BDNF, and ERK protein expression in rats exposed to chronic unpredictable stress. Behav Brain Res 271:116–121. doi:
+10.1016/j.bbr.2014.05.068</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR65">
+                    <journal_title>J Psychiatr Res</journal_title>
+                    <author>GZ Reus</author>
+                    <volume>55</volume>
+                    <first_page>15</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.jpsychires.2014.04.010</doi>
+                    <unstructured_citation>Reus GZ, Vieira FG, Abelaira HM, Michels M, Tomaz DB, dos Santos MA, Carlessi AS, Neotti MV, Matias BI, Luz JR, Dal-Pizzol F, Quevedo J (2014) MAPK signaling correlates with the antidepressant effects of ketamine. J Psychiatr Res 55:15–21. doi:
+10.1016/j.jpsychires.2014.04.010</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR66">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>CH Duman</author>
+                    <volume>61</volume>
+                    <issue>5</issue>
+                    <first_page>661</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.biopsych.2006.05.047</doi>
+                    <unstructured_citation>Duman CH, Schlesinger L, Kodama M, Russell DS, Duman RS (2007) A role for MAP kinase signaling in behavioral models of depression and antidepressant treatment. Biol Psychiatry 61(5):661–670. doi:
+10.1016/j.biopsych.2006.05.047</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR67">
+                    <journal_title>Biol Psychiatry</journal_title>
+                    <author>E Celano</author>
+                    <volume>53</volume>
+                    <issue>5</issue>
+                    <first_page>442</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0006-3223(02)01491-9</doi>
+                    <unstructured_citation>Celano E, Tiraboschi E, Consogno E, D’Urso G, Mbakop MP, Gennarelli M, de Bartolomeis A, Racagni G, Popoli M (2003) Selective regulation of presynaptic calcium/calmodulin-dependent protein kinase II by psychotropic drugs. Biol Psychiatry 53(5):442–449</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR68">
+                    <journal_title>Prog Mol Biol Transl Sci</journal_title>
+                    <author>BC Shonesy</author>
+                    <volume>122</volume>
+                    <first_page>61</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/B978-0-12-420170-5.00003-9</doi>
+                    <unstructured_citation>Shonesy BC, Jalan-Sakrikar N, Cavener VS, Colbran RJ (2014) CaMKII: a molecular substrate for synaptic plasticity and memory. Prog Mol Biol Transl Sci 122:61–87. doi:
+10.1016/B978-0-12-420170-5.00003-9</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR69">
+                    <journal_title>Trends Neurosci</journal_title>
+                    <author>AJ Robison</author>
+                    <volume>37</volume>
+                    <issue>11</issue>
+                    <first_page>653</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.tins.2014.07.001</doi>
+                    <unstructured_citation>Robison AJ (2014) Emerging role of CaMKII in neuropsychiatric disease. Trends Neurosci 37(11):653–662. doi:
+10.1016/j.tins.2014.07.001</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR70">
+                    <journal_title>Am J Respir Cell Mol Biol</journal_title>
+                    <author>MF Ethier</author>
+                    <volume>35</volume>
+                    <issue>4</issue>
+                    <first_page>496</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1165/rcmb.2005-0290OC</doi>
+                    <unstructured_citation>Ethier MF, Madison JM (2006) Adenosine A1 receptors mediate mobilization of calcium in human bronchial smooth muscle cells. Am J Respir Cell Mol Biol 35(4):496–502. doi:
+10.1165/rcmb.2005-0290OC</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR71">
+                    <journal_title>Neuroreport</journal_title>
+                    <author>E Tiraboschi</author>
+                    <volume>15</volume>
+                    <issue>15</issue>
+                    <first_page>2393</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1097/00001756-200410250-00018</doi>
+                    <unstructured_citation>Tiraboschi E, Giambelli R, D’Urso G, Galietta A, Barbon A, de Bartolomeis A, Gennarelli M, Barlati S, Racagni G, Popoli M (2004) Antidepressants activate CaMKII in neuron cell body by Thr286 phosphorylation. Neuroreport 15(15):2393–2396</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR72">
+                    <journal_title>Int J Neuropsychopharmacol</journal_title>
+                    <author>J Du</author>
+                    <volume>7</volume>
+                    <issue>3</issue>
+                    <first_page>243</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1017/S1461145704004432</doi>
+                    <unstructured_citation>Du J, Szabo ST, Gray NA, Manji HK (2004) Focus on CaMKII: a molecular switch in the pathophysiology and treatment of mood and anxiety disorders. Int J Neuropsychopharmacol 7(3):243–248. doi:
+10.1017/S1461145704004432</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR73">
+                    <journal_title>Eur J Pharmacol</journal_title>
+                    <author>J Sanchez-Nogueiro</author>
+                    <volume>744</volume>
+                    <first_page>190</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.ejphar.2014.10.036</doi>
+                    <unstructured_citation>Sanchez-Nogueiro J, Marin-Garcia P, Bustillo D, Olivos-Ore LA, Miras-Portugal MT, Artalejo AR (2014) Subcellular distribution and early signalling events of P2X7 receptors from mouse cerebellar granule neurons. Eur J Pharmacol 744:190–202. doi:
+10.1016/j.ejphar.2014.10.036</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR74">
+                    <journal_title>Mol Pharmacol</journal_title>
+                    <author>RA North</author>
+                    <volume>83</volume>
+                    <issue>4</issue>
+                    <first_page>759</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1124/mol.112.083758</doi>
+                    <unstructured_citation>North RA, Jarvis MF (2013) P2X receptors as drug targets. Mol Pharmacol 83(4):759–769. doi:
+10.1124/mol.112.083758</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR75">
+                    <journal_title>Neurosci Lett</journal_title>
+                    <author>RC Almeida</author>
+                    <volume>395</volume>
+                    <issue>2</issue>
+                    <first_page>93</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1016/j.neulet.2005.10.057</doi>
+                    <unstructured_citation>Almeida RC, Souza DG, Soletti RC, Lopez MG, Rodrigues AL, Gabilan NH (2006) Involvement of PKA, MAPK/ERK and CaMKII, but not PKC in the acute antidepressant-like effect of memantine in mice. Neurosci Lett 395(2):93–97. doi:
+10.1016/j.neulet.2005.10.057</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR76">
+                    <journal_title>Pharmacol Rep</journal_title>
+                    <author>MP Cunha</author>
+                    <volume>66</volume>
+                    <issue>4</issue>
+                    <first_page>653</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.pharep.2014.03.004</doi>
+                    <unstructured_citation>Cunha MP, Budni J, Pazini FL, Oliveira A, Rosa JM, Lopes MW, Leal RB, Rodrigues AL (2014) Involvement of PKA, PKC, CAMK-II and MEK1/2 in the acute antidepressant-like effect of creatine in mice. Pharmacol Rep 66(4):653–659. doi:
+10.1016/j.pharep.2014.03.004</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR77">
+                    <journal_title>Int J Mol Sci</journal_title>
+                    <author>S Sheth</author>
+                    <volume>15</volume>
+                    <issue>2</issue>
+                    <first_page>2024</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.3390/ijms15022024</doi>
+                    <unstructured_citation>Sheth S, Brito R, Mukherjea D, Rybak LP, Ramkumar V (2014) Adenosine receptors: expression, function and regulation. Int J Mol Sci 15(2):2024–2052. doi:
+10.3390/ijms15022024</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR78">
+                    <journal_title>J Cereb Blood Flow Metab</journal_title>
+                    <author>GH Nayak</author>
+                    <volume>31</volume>
+                    <issue>2</issue>
+                    <first_page>467</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1038/jcbfm.2010.109</doi>
+                    <unstructured_citation>Nayak GH, Prentice HM, Milton SL (2010) Neuroprotective signaling pathways are modulated by adenosine in the anoxia tolerant turtle. J Cereb Blood Flow Metab 31(2):467–475. doi:
+10.1038/jcbfm.2010.109</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR79">
+                    <journal_title>Mol Pharmacol</journal_title>
+                    <author>Z Gao</author>
+                    <volume>59</volume>
+                    <issue>1</issue>
+                    <first_page>76</first_page>
+                    <cYear>2001</cYear>
+                    <unstructured_citation>Gao Z, Li BS, Day YJ, Linden J (2001) A3 adenosine receptor activation triggers phosphorylation of protein kinase B and protects rat basophilic leukemia 2H3 mast cells from apoptosis. Mol Pharmacol 59(1):76–82</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR80">
+                    <journal_title>Trends Biochem Sci</journal_title>
+                    <author>DP Brazil</author>
+                    <volume>26</volume>
+                    <issue>11</issue>
+                    <first_page>657</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1016/S0968-0004(01)01958-2</doi>
+                    <unstructured_citation>Brazil DP, Hemmings BA (2001) Ten years of protein kinase B signalling: a hard Akt to follow. Trends Biochem Sci 26(11):657–664</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR81">
+                    <journal_title>Annu Rev Pharmacol Toxicol</journal_title>
+                    <author>JM Beaulieu</author>
+                    <volume>49</volume>
+                    <first_page>327</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1146/annurev.pharmtox.011008.145634</doi>
+                    <unstructured_citation>Beaulieu JM, Gainetdinov RR, Caron MG (2009) Akt/GSK3 signaling in the action of psychotropic drugs. Annu Rev Pharmacol Toxicol 49:327–347. doi:
+10.1146/annurev.pharmtox.011008.145634</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR82">
+                    <journal_title>Prog Neuro-Psychopharmacol Biol Psychiatry</journal_title>
+                    <author>AO Rosa</author>
+                    <volume>32</volume>
+                    <issue>6</issue>
+                    <first_page>1549</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.pnpbp.2008.05.020</doi>
+                    <unstructured_citation>Rosa AO, Kaster MP, Binfare RW, Morales S, Martin-Aparicio E, Navarro-Rico ML, Martinez A, Medina M, Garcia AG, Lopez MG, Rodrigues AL (2008) Antidepressant-like effect of the novel thiadiazolidinone NP031115 in mice. Prog Neuro-Psychopharmacol Biol Psychiatry 32(6):1549–1556. doi:
+10.1016/j.pnpbp.2008.05.020</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR83">
+                    <journal_title>Annu Rev Biochem</journal_title>
+                    <author>AJ Shaywitz</author>
+                    <volume>68</volume>
+                    <first_page>821</first_page>
+                    <cYear>1999</cYear>
+                    <doi>10.1146/annurev.biochem.68.1.821</doi>
+                    <unstructured_citation>Shaywitz AJ, Greenberg ME (1999) CREB: a stimulus-induced transcription factor activated by a diverse array of extracellular signals. Annu Rev Biochem 68:821–861. doi:
+10.1146/annurev.biochem.68.1.821</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR84">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>X Li</author>
+                    <volume>35</volume>
+                    <issue>11</issue>
+                    <first_page>2143</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1038/npp.2010.105</doi>
+                    <unstructured_citation>Li X, Jope RS (2010) Is glycogen synthase kinase-3 a central modulator in mood regulation? Neuropsychopharmacology 35(11):2143–2154. doi:
+10.1038/npp.2010.105</unstructured_citation>
+                  </citation>
+                  <citation key="9551_CR85">
+                    <journal_title>Nature</journal_title>
+                    <author>P Zanos</author>
+                    <volume>533</volume>
+                    <issue>7604</issue>
+                    <first_page>481</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1038/nature17998</doi>
+                    <unstructured_citation>Zanos P, Moaddel R, Morris PJ, Georgiou P, Fischell J, Elmer GI, Alkondon M, Yuan P, Pribut HJ, Singh NS, Dossou KS, Fang Y, Huang XP, Mayo CL, Wainer IW, Albuquerque EX, Thompson SM, Thomas CJ, Zarate CA Jr, Gould TD (2016) NMDAR inhibition-independent antidepressant actions of ketamine metabolites. Nature 533(7604):481–486. doi:
+10.1038/nature17998</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

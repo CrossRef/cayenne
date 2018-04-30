@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1530/JOE-16-0417</doi>
+        <crm-item name="publisher-name" type="string">Bioscientifica</crm-item>
+        <crm-item name="prefix-name" type="string">Bioscientifica</crm-item>
+        <crm-item name="member-id" type="number">416</crm-item>
+        <crm-item name="citation-id" type="number">85855905</crm-item>
+        <crm-item name="journal-id" type="number">35258</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016111120041199000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1530</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T01:28:01Z</crm-item>
+        <crm-item name="created" type="date">2016-10-18T20:13:59Z</crm-item>
+        <crm-item name="citedby-count" type="number">10</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Journal of Endocrinology</full_title>
+                <abbrev_title>J Endocrinol</abbrev_title>
+                <issn media_type="print">0022-0795</issn>
+                <issn media_type="electronic">1479-6805</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>11</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>232</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Prenatal corticosterone exposure programs sex-specific adrenal adaptations in mouse offspring</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>J S M</given_name>
+                    <surname>Cuffe</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>E L</given_name>
+                    <surname>Turton</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>L K</given_name>
+                    <surname>Akison</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>H</given_name>
+                    <surname>Bielefeldt-Ohmann</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>K M</given_name>
+                    <surname>Moritz</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>01</month>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>17</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>37</first_page>
+                  <last_page>48</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="atom">/joe/232/1/37.atom</item_number>
+                  <identifier id_type="doi">10.1530/JOE-16-0417</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1.0</crossmark_version>
+                  <crossmark_policy>10.1530/crossmarkpolicy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>joe.endocrinology-journals.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata />
+                </crossmark>
+                <doi_data>
+                  <doi>10.1530/JOE-16-0417</doi>
+                  <timestamp>2016111120041199000</timestamp>
+                  <resource>http://joe.endocrinology-journals.org/lookup/doi/10.1530/JOE-16-0417</resource>
+                </doi_data>
+                <citation_list>
+                  <citation key="2016111120041199000_232.1.37.1">
+                    <doi>10.1210/jc.2009-0370</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.2">
+                    <doi>10.1113/jphysiol.2004.063669</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.3">
+                    <doi>10.1152/ajpendo.00705.2006</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.4">
+                    <doi>10.1159/000123220</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.5">
+                    <doi provider="crossref">10.1210/en.2016-1335</doi>
+                    <unstructured_citation>Cheong JN Cuffe JS Jefferies AJ Anevska K Moritz KM Wlodek ME 2016 Sex-specific metabolic outcomes in offspring of female rats born small or exposed to stress during pregnancy. Endocrinology en20161335. (doi:10.1210/en.2016-1335)</unstructured_citation>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.6">
+                    <doi>10.1073/pnas.0706953104</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.7">
+                    <doi>10.1101/gad.9.13.1608</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.8">
+                    <journal_title>Frontiers in Behavioral Neuroscience</journal_title>
+                    <author>Cottrell</author>
+                    <volume>3</volume>
+                    <first_page>19</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.3389/neuro.08.019.2009</doi>
+                    <article_title>Prenatal stress, glucocorticoids and the programming of adult disease</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.9">
+                    <doi>10.1210/en.2012-1479</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.10">
+                    <doi>10.1113/jphysiol.2014.272856</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.11">
+                    <doi>10.14814/phy2.12754</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.12">
+                    <doi>10.1172/JCI30982</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.13">
+                    <doi>10.1177/019262339202000103</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.14">
+                    <doi>10.1093/jnci/44.6.1323</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.15">
+                    <doi>10.1677/joe.1.06961</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.16">
+                    <doi provider="crossref">10.1007/978-3-642-96720-7_15</doi>
+                    <unstructured_citation>Frith CH 1983 Lipogenic pigmentation, adrenal cortex, mouse. In Endocrine System, pp 60–64. Eds Jones TC Mohr U Hunt RD Capen CC . Berlin, Heidelberg, Germany: Springer Berlin Heidelberg. (doi:10.1007/978-3-642-96720-7_15)</unstructured_citation>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.17">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Garcia-Caceres</author>
+                    <volume>35</volume>
+                    <first_page>1525</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2010.05.006</doi>
+                    <article_title>Gender differences in the long-term effects of chronic prenatal stress on the HPA axis and hypothalamic structure in rats</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.18">
+                    <doi>10.1210/en.140.12.5609</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.19">
+                    <doi>10.1097/00004872-200018070-00002</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.20">
+                    <doi>10.1113/jphysiol.2008.153684</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.21">
+                    <journal_title>Pflügers Archiv: European Journal of Physiology</journal_title>
+                    <author>Langdown</author>
+                    <volume>442</volume>
+                    <first_page>248</first_page>
+                    <cYear>2001</cYear>
+                    <doi provider="crossref">10.1007/s004240100519</doi>
+                    <article_title>Excessive glucocorticoid exposure during late intrauterine development modulates the expression of cardiac uncoupling proteins in adult hypertensive male offspring</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.22">
+                    <doi>10.1016/j.lfs.2003.07.050</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.23">
+                    <doi>10.1210/en.143.4.1159</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.24">
+                    <doi>10.1016/j.placenta.2010.01.006</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.25">
+                    <doi>10.1152/ajprenal.00676.2014</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.26">
+                    <doi>10.1161/HYPERTENSIONAHA.107.091785</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.27">
+                    <doi>10.1093/bmb/60.1.143</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.28">
+                    <doi>10.1530/JOE-13-0514</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.29">
+                    <journal_title>Journal of Neuroscience</journal_title>
+                    <author>Raber</author>
+                    <volume>20</volume>
+                    <first_page>2064</first_page>
+                    <cYear>2000</cYear>
+                    <article_title>Hypothalamic-pituitary-adrenal dysfunction in Apoe(−/−) mice: possible role in behavioral and metabolic alterations</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.30">
+                    <doi>10.1080/019262301301418847</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.31">
+                    <journal_title>Anatomical Record</journal_title>
+                    <author>Schardein</author>
+                    <volume>159</volume>
+                    <first_page>291</first_page>
+                    <cYear>1967</cYear>
+                    <doi provider="crossref">10.1002/ar.1091590307</doi>
+                    <article_title>The microscopy of ‘brown degeneration’ in the adrenal gland of the mouse</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.32">
+                    <doi>10.1111/1440-1681.12009</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.33">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Spiers</author>
+                    <volume>67</volume>
+                    <first_page>104</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.02.005</doi>
+                    <article_title>Acute restraint stress induces rapid changes in central redox status and protective antioxidant genes in rats</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.34">
+                    <doi>10.1152/ajpendo.00013.2013</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.35">
+                    <journal_title>Development Growth and Differentiation</journal_title>
+                    <author>Sugimoto</author>
+                    <volume>18</volume>
+                    <first_page>319</first_page>
+                    <cYear>1976</cYear>
+                    <doi provider="crossref">10.1111/j.1440-169X.1976.00319.x</doi>
+                    <article_title>Role of glucocorticoids in terminal differentiation and tissue specific function</article_title>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.36">
+                    <doi provider="crossref">10.1111/evj.12560</doi>
+                    <unstructured_citation>Valenzuela OA Jellyman JK Allen VL Holdstock NB Fowden AL 2016 Effects of maternal dexamethasone treatment on pancreatic beta cell function in the pregnant mare and postnatal foal. Equine Veterinary Journal [in press]. (doi:10.1111/evj.12560)</unstructured_citation>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.37">
+                    <doi>10.1159/000180643</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.38">
+                    <doi>10.1677/JOE-09-0459</doi>
+                  </citation>
+                  <citation key="2016111120041199000_232.1.37.39">
+                    <journal_title>Clinical Endocrinology</journal_title>
+                    <author>Zilio</author>
+                    <volume>80</volume>
+                    <first_page>403</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1111/cen.12299</doi>
+                    <article_title>Diagnosis and complications of Cushing’s disease: gender-related differences</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

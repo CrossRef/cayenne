@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1155/2016/6402942</doi>
+        <crm-item name="publisher-name" type="string">Hindawi Limited</crm-item>
+        <crm-item name="prefix-name" type="string">Hindawi Limited</crm-item>
+        <crm-item name="member-id" type="number">98</crm-item>
+        <crm-item name="citation-id" type="number">86751391</crm-item>
+        <crm-item name="journal-id" type="number">238748</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161208090019</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1155</crm-item>
+        <crm-item name="last-update" type="date">2016-12-08T21:02:38Z</crm-item>
+        <crm-item name="created" type="date">2016-12-08T21:02:34Z</crm-item>
+        <crm-item name="citedby-count" type="number">4</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Neural Plasticity</full_title>
+                <abbrev_title>Neural Plasticity</abbrev_title>
+                <issn media_type="print">2090-5904</issn>
+                <issn media_type="electronic">1687-5443</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>2016</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The Role of Stress Regulation on Neural Plasticity in Pain Chronification</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Xiaoyun</given_name>
+                    <surname>Li</surname>
+                    <affiliation>Key Laboratory of Cognition and Personality, Ministry of Education and Faculty of Psychology, Southwest University, Chongqing, China</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Li</given_name>
+                    <surname>Hu</surname>
+                    <affiliation>Key Laboratory of Cognition and Personality, Ministry of Education and Faculty of Psychology, Southwest University, Chongqing, China</affiliation>
+                    <affiliation>CAS Key Laboratory of Mental Health, Institute of Psychology, Beijing, China</affiliation>
+                    <ORCID authenticated="true">http://orcid.org/0000-0001-7003-2903</ORCID>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1">
+                  <jats:p>Pain, especially chronic pain, is one of the most common clinical symptoms and has been considered as a worldwide healthcare problem. The transition from acute to chronic pain is accompanied by a chain of alterations in physiology, pathology, and psychology. Increasing clinical studies and complementary animal models have elucidated effects of stress regulation on the pain chronification via investigating activations of the hypothalamic-pituitary-adrenal (HPA) axis and changes in some crucial brain regions, including the amygdala, prefrontal cortex, and hippocampus. Although individuals suffer from acute pain benefit from such physiological alterations, chronic pain is commonly associated with maladaptive responses, like the HPA dysfunction and abnormal brain plasticity. However, the causal relationship among pain chronification, stress regulation, and brain alterations is rarely discussed. To call for more attention on this issue, we review recent findings obtained from clinical populations and animal models, propose an integrated stress model of pain chronification based on the existing models in perspectives of environmental influences and genetic predispositions, and discuss the significance of investigating the role of stress regulation on brain alteration in pain chronification for various clinical applications.</jats:p>
+                </jats:abstract>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1</first_page>
+                  <last_page>9</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">6402942</identifier>
+                  <identifier id_type="other">6402942</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="funder_name">
+                    National Natural Science Foundation of China
+                    <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100001809</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="award_number">31471082</fr:assertion>
+                  <fr:assertion name="funder_name">
+                    National Natural Science Foundation of China
+                    <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100001809</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="award_number">31671141</fr:assertion>
+                  <fr:assertion name="funder_name">Chongqing Research Program of Basic Research and Frontier Technology</fr:assertion>
+                  <fr:assertion name="award_number">cstc2015jcyjBX0050</fr:assertion>
+                  <fr:assertion name="funder_name">
+                    Chinese Academy of Sciences
+                    <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100002367</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="award_number">Y6CX021008</fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref>http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1155/2016/6402942</doi>
+                  <timestamp>20161208090019</timestamp>
+                  <resource>https://www.hindawi.com/journals/np/2016/6402942/</resource>
+                  <collection property="crawler-based">
+                    <item crawler="google">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item crawler="msn">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item crawler="altavista">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item crawler="yahoo">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item crawler="scirus">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item crawler="iParadigms">
+                      <resource>http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://downloads.hindawi.com/journals/np/2016/6402942.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="application/xml">http://downloads.hindawi.com/journals/np/2016/6402942.xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="1">
+                    <doi>10.1056/NEJMra1201534</doi>
+                  </citation>
+                  <citation key="2">
+                    <first_page>89</first_page>
+                    <cYear>1999</cYear>
+                    <volume_title>Pain and stress: a new perspective</volume_title>
+                  </citation>
+                  <citation key="3">
+                    <doi>10.1046/j.0007-1331.2001.00727.x</doi>
+                  </citation>
+                  <citation key="4">
+                    <doi>10.1016/j.neuron.2012.01.001</doi>
+                  </citation>
+                  <citation key="5">
+                    <doi>10.1016/j.metabol.2010.07.012</doi>
+                  </citation>
+                  <citation key="6">
+                    <doi>10.1038/nrn1683</doi>
+                  </citation>
+                  <citation key="7">
+                    <doi>10.1016/j.pnpbp.2005.08.006</doi>
+                  </citation>
+                  <citation key="8">
+                    <doi>10.1152/physrev.00041.2006</doi>
+                  </citation>
+                  <citation key="9">
+                    <doi>10.1038/nn.3153</doi>
+                  </citation>
+                  <citation key="10">
+                    <doi>10.1093/brain/awt211</doi>
+                  </citation>
+                  <citation key="11">
+                    <doi>10.1016/j.pain.2013.06.044</doi>
+                  </citation>
+                  <citation key="12">
+                    <doi>10.1093/brain/aww100</doi>
+                  </citation>
+                  <citation key="13">
+                    <cYear>1994</cYear>
+                  </citation>
+                  <citation key="14">
+                    <doi>10.1016/s0301-0082(98)00048-3</doi>
+                  </citation>
+                  <citation key="15">
+                    <doi>10.1097/00007632-200005010-00017</doi>
+                  </citation>
+                  <citation key="16">
+                    <doi>10.1016/j.tins.2007.10.005</doi>
+                  </citation>
+                  <citation key="17">
+                    <journal_title>Annals of the New York Academy of Sciences</journal_title>
+                    <volume>933</volume>
+                    <first_page>265</first_page>
+                    <cYear>2001</cYear>
+                  </citation>
+                  <citation key="18">
+                    <doi>10.1038/nrn2651</doi>
+                  </citation>
+                  <citation key="19">
+                    <doi>10.1016/S0304-3959(01)00447-X</doi>
+                  </citation>
+                  <citation key="20">
+                    <doi>10.1097/00002508-200307000-00006</doi>
+                  </citation>
+                  <citation key="21">
+                    <doi>10.1111/j.1749-6632.1998.tb09546.x</doi>
+                  </citation>
+                  <citation key="22">
+                    <doi>10.1523/jneurosci.4584-12.2013</doi>
+                  </citation>
+                  <citation key="23">
+                    <doi>10.1016/j.pain.2004.08.017</doi>
+                  </citation>
+                  <citation key="24">
+                    <journal_title>Journal of Physiology &amp; Pharmacology</journal_title>
+                    <volume>62</volume>
+                    <issue>5</issue>
+                    <first_page>541</first_page>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="25">
+                    <doi>10.1007/s003930050239</doi>
+                  </citation>
+                  <citation key="26">
+                    <doi>10.1016/j.psyneuen.2011.06.014</doi>
+                  </citation>
+                  <citation key="27">
+                    <doi>10.1016/j.pain.2005.10.001</doi>
+                  </citation>
+                  <citation key="28">
+                    <doi>10.1002/ejp.630</doi>
+                  </citation>
+                  <citation key="29">
+                    <doi>10.1111/j.1526-4637.2012.01514.x</doi>
+                  </citation>
+                  <citation key="30">
+                    <doi>10.1016/j.psyneuen.2014.01.017</doi>
+                  </citation>
+                  <citation key="31">
+                    <doi>10.1080/10253890701840610</doi>
+                  </citation>
+                  <citation key="35">
+                    <doi>10.1093/brain/aws371</doi>
+                  </citation>
+                  <citation key="32">
+                    <doi>10.1002/1529-0131(200002)13:160;51::aid-art862;3.0.co;2-q</doi>
+                  </citation>
+                  <citation key="33">
+                    <doi>10.1002/art.1780371105</doi>
+                  </citation>
+                  <citation key="34">
+                    <doi>10.1111/j.1749-6632.1999.tb07657.x</doi>
+                  </citation>
+                  <citation key="36">
+                    <journal_title>The Journal of Rheumatology</journal_title>
+                    <volume>16</volume>
+                    <issue>19</issue>
+                    <first_page>154</first_page>
+                    <cYear>1989</cYear>
+                  </citation>
+                  <citation key="37">
+                    <doi>10.1016/j.jpsychores.2006.06.006</doi>
+                  </citation>
+                  <citation key="38">
+                    <doi>10.1016/j.psyneuen.2008.03.012</doi>
+                  </citation>
+                  <citation key="39">
+                    <doi>10.1097/PSY.0b013e31815ff3ce</doi>
+                  </citation>
+                  <citation key="40">
+                    <doi>10.1007/s00482-006-0521-4</doi>
+                  </citation>
+                  <citation key="41">
+                    <doi>10.1007/s10484-015-9300-2</doi>
+                  </citation>
+                  <citation key="42">
+                    <doi>10.1016/j.psyneuen.2016.03.017</doi>
+                  </citation>
+                  <citation key="43">
+                    <doi>10.1016/j.ejpain.2004.11.001</doi>
+                  </citation>
+                  <citation key="44">
+                    <doi>10.1038/nrn3516</doi>
+                  </citation>
+                  <citation key="45">
+                    <doi>10.1016/s0987-7053(00)00227-6</doi>
+                  </citation>
+                  <citation key="46">
+                    <doi>10.1016/S0304-3959(97)00138-3</doi>
+                  </citation>
+                  <citation key="47">
+                    <doi>10.1007/s00429-012-0437-y</doi>
+                  </citation>
+                  <citation key="48">
+                    <doi>10.1186/1744-8069-6-81</doi>
+                  </citation>
+                  <citation key="49">
+                    <doi>10.1038/nn.3969</doi>
+                  </citation>
+                  <citation key="50">
+                    <doi>10.1016/j.pain.2010.04.001</doi>
+                  </citation>
+                  <citation key="51">
+                    <doi>10.1136/gut.2003.028514</doi>
+                  </citation>
+                  <citation key="52">
+                    <doi>10.1016/j.biopsych.2010.01.014</doi>
+                  </citation>
+                  <citation key="53">
+                    <doi>10.1093/brain/awf137</doi>
+                  </citation>
+                  <citation key="54">
+                    <doi>10.1016/s0304-3959(02)00157-4</doi>
+                  </citation>
+                  <citation key="55">
+                    <doi>10.1002/hbm.20867</doi>
+                  </citation>
+                  <citation key="56">
+                    <doi>10.1126/science.284.5422.1979</doi>
+                  </citation>
+                  <citation key="57">
+                    <doi>10.1097/psy.0b013e3181656a48</doi>
+                  </citation>
+                  <citation key="58">
+                    <doi>10.1016/j.bbi.2015.03.017</doi>
+                  </citation>
+                  <citation key="59">
+                    <doi>10.1111/aas.12607</doi>
+                  </citation>
+                  <citation key="60">
+                    <journal_title>Journal of Neurophysiology</journal_title>
+                    <volume>68</volume>
+                    <issue>2</issue>
+                    <first_page>551</first_page>
+                    <cYear>1992</cYear>
+                  </citation>
+                  <citation key="61">
+                    <doi>10.1152/jn.00485.2003</doi>
+                  </citation>
+                  <citation key="62">
+                    <doi>10.1152/jn.00799.2002</doi>
+                  </citation>
+                  <citation key="63">
+                    <doi>10.1016/j.neuroscience.2004.01.055</doi>
+                  </citation>
+                  <citation key="64">
+                    <doi>10.1016/S0306-4522(96)00456-3</doi>
+                  </citation>
+                  <citation key="65">
+                    <doi>10.1016/0304-3959(89)90047-X</doi>
+                  </citation>
+                  <citation key="66">
+                    <doi>10.1016/j.pain.2008.04.018</doi>
+                  </citation>
+                  <citation key="67">
+                    <doi>10.1016/j.pbb.2008.08.029</doi>
+                  </citation>
+                  <citation key="68">
+                    <doi>10.1016/j.brainres.2004.01.026</doi>
+                  </citation>
+                  <citation key="69">
+                    <doi>10.1016/S0304-3940(03)00465-8</doi>
+                  </citation>
+                  <citation key="70">
+                    <doi>10.1016/j.bbr.2006.03.044</doi>
+                  </citation>
+                  <citation key="71">
+                    <doi>10.1523/jneurosci.2541-04.2004</doi>
+                  </citation>
+                  <citation key="72">
+                    <doi>10.1016/j.pain.2008.02.034</doi>
+                  </citation>
+                  <citation key="73">
+                    <doi>10.1016/j.jpain.2013.03.001</doi>
+                  </citation>
+                  <citation key="74">
+                    <doi>10.1097/PSY.0b013e3181a32da0</doi>
+                  </citation>
+                  <citation key="75">
+                    <doi>10.1016/j.pain.2013.09.020</doi>
+                  </citation>
+                  <citation key="76">
+                    <doi>10.1016/j.jpain.2015.08.012</doi>
+                  </citation>
+                  <citation key="77">
+                    <doi>10.1523/jneurosci.3687-09.2009</doi>
+                  </citation>
+                  <citation key="78">
+                    <doi>10.1111/j.1526-4610.2007.00723.x</doi>
+                  </citation>
+                  <citation key="79">
+                    <doi>10.1053/j.gastro.2009.12.043</doi>
+                  </citation>
+                  <citation key="80">
+                    <doi>10.1016/j.neuron.2008.08.022</doi>
+                  </citation>
+                  <citation key="81">
+                    <doi>10.1212/01.wnl.0000183067.94400.80</doi>
+                  </citation>
+                  <citation key="82">
+                    <doi>10.1053/j.gastro.2013.08.016</doi>
+                  </citation>
+                  <citation key="83">
+                    <doi>10.1523/jneurosci.0587-12.2012</doi>
+                  </citation>
+                  <citation key="84">
+                    <doi>10.1016/S0304-3940(01)02122-X</doi>
+                  </citation>
+                  <citation key="85">
+                    <doi>10.1002/hbm.22199</doi>
+                  </citation>
+                  <citation key="86">
+                    <doi>10.1523/jneurosci.3576-06.2006</doi>
+                  </citation>
+                  <citation key="87">
+                    <doi>10.1016/j.neuroimage.2006.03.024</doi>
+                  </citation>
+                  <citation key="88">
+                    <doi>10.1152/jn.00611.2013</doi>
+                  </citation>
+                  <citation key="89">
+                    <doi>10.1002/ejp.911</doi>
+                  </citation>
+                  <citation key="90">
+                    <doi>10.1016/j.pain.2006.09.003</doi>
+                  </citation>
+                  <citation key="91">
+                    <doi>10.1097/ALN.0000000000000403</doi>
+                  </citation>
+                  <citation key="92">
+                    <doi>10.1016/j.expneurol.2008.04.043</doi>
+                  </citation>
+                  <citation key="93">
+                    <doi>10.1016/j.neuropharm.2015.04.003</doi>
+                  </citation>
+                  <citation key="94">
+                    <doi>10.1073/pnas.0809897106</doi>
+                  </citation>
+                  <citation key="95">
+                    <doi>10.1523/jneurosci.5634-08.2009</doi>
+                  </citation>
+                  <citation key="96">
+                    <doi>10.1016/j.neulet.2008.05.078</doi>
+                  </citation>
+                  <citation key="97">
+                    <doi>10.1007/s00429-007-0150-4</doi>
+                  </citation>
+                  <citation key="98">
+                    <doi>10.1111/ejn.12432</doi>
+                  </citation>
+                  <citation key="99">
+                    <doi>10.1523/jneurosci.0225-10.2010</doi>
+                  </citation>
+                  <citation key="100">
+                    <doi>10.1523/jneurosci.5197-12.2013</doi>
+                  </citation>
+                  <citation key="101">
+                    <doi>10.1016/j.physbeh.2006.03.012</doi>
+                  </citation>
+                  <citation key="102">
+                    <doi>10.1038/nrn2639</doi>
+                  </citation>
+                  <citation key="103">
+                    <doi>10.1210/edrv-7-3-284</doi>
+                  </citation>
+                  <citation key="104">
+                    <doi>10.1038/nn958</doi>
+                  </citation>
+                  <citation key="105">
+                    <doi>10.1001/archpsyc.58.12.1145</doi>
+                  </citation>
+                  <citation key="106">
+                    <doi>10.1016/j.tics.2011.10.005</doi>
+                  </citation>
+                  <citation key="107">
+                    <journal_title>Journal of Neuroscience</journal_title>
+                    <volume>10</volume>
+                    <issue>9</issue>
+                    <first_page>2897</first_page>
+                    <cYear>1990</cYear>
+                  </citation>
+                  <citation key="108">
+                    <doi>10.1016/j.neubiorev.2013.12.006</doi>
+                  </citation>
+                  <citation key="109">
+                    <doi>10.1038/nature14101</doi>
+                  </citation>
+                  <citation key="110">
+                    <doi>10.1016/j.bandc.2007.02.007</doi>
+                  </citation>
+                  <citation key="111">
+                    <doi>10.1016/j.neuron.2015.06.005</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

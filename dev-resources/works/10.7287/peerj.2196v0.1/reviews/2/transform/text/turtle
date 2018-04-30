@@ -1,25 +1,12 @@
-<http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw>
-      a       <http://xmlns.com/foaf/0.1/Person> ;
-      <http://www.w3.org/2002/07/owl#sameAs>
-              <http://orcid.org/0000-0002-3368-4133> ;
-      <http://xmlns.com/foaf/0.1/familyName>
-              "Fang" ;
-      <http://xmlns.com/foaf/0.1/givenName>
-              "Xiaoguang" ;
-      <http://xmlns.com/foaf/0.1/name>
-              "Xiaoguang Fang" .
-
 <http://dx.doi.org/10.7287/peerj.2196v0.1/reviews/2>
       <http://prismstandard.org/namespaces/basic/2.1/doi>
               "10.7287/peerj.2196v0.1/reviews/2" ;
-      <http://purl.org/dc/terms/creator>
-              <http://id.crossref.org/contributor/xiaoguang-fang-29xc8z7suuuyw> ;
       <http://purl.org/dc/terms/date>
-              "2017-04-19"^^<http://www.w3.org/2001/XMLSchema#date> ;
+              "2016-07-26"^^<http://www.w3.org/2001/XMLSchema#date> ;
       <http://purl.org/dc/terms/identifier>
               "10.7287/peerj.2196v0.1/reviews/2" ;
       <http://purl.org/dc/terms/publisher>
-              "Rockefeller University Press" ;
+              "PeerJ" ;
       <http://purl.org/dc/terms/title>
               "Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\"" ;
       <http://purl.org/ontology/bibo/doi>

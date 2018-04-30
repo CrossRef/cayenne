@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1093/jat/bkw129</doi>
+        <crm-item name="publisher-name" type="string">Oxford University Press (OUP)</crm-item>
+        <crm-item name="prefix-name" type="string">Oxford University Press</crm-item>
+        <crm-item name="member-id" type="number">286</crm-item>
+        <crm-item name="citation-id" type="number">86668042</crm-item>
+        <crm-item name="journal-id" type="number">157485</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017011717252852000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1093</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T05:09:35Z</crm-item>
+        <crm-item name="created" type="date">2016-12-02T20:07:03Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Journal of Analytical Toxicology</full_title>
+                <abbrev_title>J Anal Toxicol</abbrev_title>
+                <issn media_type="print">0146-4760</issn>
+                <issn media_type="electronic">1945-2403</issn>
+              </journal_metadata>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Postmortem and Toxicological Findings in a Series of Furanylfentanyl-Related Deaths</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Davide</given_name>
+                    <surname>Guerrieri</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Emma</given_name>
+                    <surname>Rapp</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Markus</given_name>
+                    <surname>Roman</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Henrik</given_name>
+                    <surname>Druid</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Robert</given_name>
+                    <surname>Kronstrand</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>01</month>
+                  <day>17</day>
+                  <year>2017</year>
+                </publication_date>
+                <publisher_item>
+                  <item_number item_number_type="pisa">jat;bkw129v1</item_number>
+                  <identifier id_type="doi">10.1093/jat/bkw129</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">Strategiområdet Forensiska Vetenskaper (Strategic Research Area Forensic Sciences)</fr:assertion>
+                  </fr:assertion>
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Linköping University
+                      <fr:assertion name="funder_identifier" provider="crossref">http://dx.doi.org/10.13039/501100003945</fr:assertion>
+                    </fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <doi_data>
+                  <doi>10.1093/jat/bkw129</doi>
+                  <timestamp>2017011717252852000</timestamp>
+                  <resource>https://academic.oup.com/jat/article-lookup/doi/10.1093/jat/bkw129</resource>
+                </doi_data>
+                <citation_list>
+                  <citation key="2017011717252852000_bkw129v1.1">
+                    <unstructured_citation>UNDOC . (2015) World Drug Report.</unstructured_citation>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.2">
+                    <unstructured_citation>European Monitoring Center for Drug and Drug Addiction . (2015) New Psychoactive Substances in Europe—an Update from the EU Early Warning System.</unstructured_citation>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.3">
+                    <doi>10.1523/JNEUROSCI.3223-14.2014</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.4">
+                    <unstructured_citation>European Monitoring Center for Drug and Drug Addiction . (2015) European Drug Report—Trends and Developments.</unstructured_citation>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.5">
+                    <doi>10.1093/qjmed/hcq056</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.6">
+                    <journal_title>Drug Testing and Analysis</journal_title>
+                    <author>Baron</author>
+                    <volume>3</volume>
+                    <first_page>576</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1002/dta.274</doi>
+                    <article_title>An analysis of legal highs: do they contain what it says on the tin</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.7">
+                    <doi>10.1016/j.forsciint.2015.01.003</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.8">
+                    <doi>10.1146/annurev-publhealth-031914-122957</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.9">
+                    <journal_title>Forensic Science, Medicine, and Pathology</journal_title>
+                    <author>Ruan</author>
+                    <volume>12</volume>
+                    <first_page>363</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s12024-016-9789-6</doi>
+                    <article_title>Toxicological testing when evaluating fatal cases suspected of acute fentanyl toxicity</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.10">
+                    <journal_title>The International Journal on Drug Policy</journal_title>
+                    <author>Mounteney</author>
+                    <volume>26</volume>
+                    <first_page>626</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.drugpo.2015.04.003</doi>
+                    <article_title>Fentanyls: are we missing the signs? Highly potent and on the rise in Europe</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.11">
+                    <journal_title>International Journal of Legal Medicine</journal_title>
+                    <author>Ojanpera</author>
+                    <volume>122</volume>
+                    <first_page>395</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1007/s00414-008-0230-x</doi>
+                    <article_title>An epidemic of fatal 3-methylfentanyl poisoning in Estonia</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.12">
+                    <doi>10.1016/j.annemergmed.2014.07.017</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.13">
+                    <doi>10.3109/15563650.2015.1054505</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.14">
+                    <doi>10.3109/15563650.2016.1139715</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.15">
+                    <doi>10.1016/j.forsciint.2006.05.021</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.16">
+                    <doi>10.1007/s00216-013-6798-0</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.17">
+                    <doi>10.1046/j.1360-0443.1999.9479612.x</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.18">
+                    <journal_title>Therapie</journal_title>
+                    <author>Eiden</author>
+                    <volume>67</volume>
+                    <first_page>515</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.2515/therapie/2012072</doi>
+                    <article_title>Methadone-related deaths in Montpellier and region, from 2000 to 2010</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.19">
+                    <doi>10.1016/S0379-0738(98)00003-6</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.20">
+                    <doi>10.1093/jat/bkt085</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.21">
+                    <journal_title>European Radiology</journal_title>
+                    <author>Winklhofer</author>
+                    <volume>24</volume>
+                    <first_page>1276</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/s00330-014-3128-7</doi>
+                    <article_title>Post-mortem whole body computed tomography of opioid (heroin and methadone) fatalities: frequent findings and comparison to autopsy</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.22">
+                    <journal_title>High Altitude Medicine &amp; Biology</journal_title>
+                    <author>Hackett</author>
+                    <volume>5</volume>
+                    <first_page>136</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1089/1527029041352054</doi>
+                    <article_title>High altitude cerebral edema</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.23">
+                    <doi>10.1016/j.cbi.2013.10.011</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.24">
+                    <journal_title>Chinese Medical Journal</journal_title>
+                    <author>Zhang</author>
+                    <volume>127</volume>
+                    <first_page>4025</first_page>
+                    <cYear>2014</cYear>
+                    <article_title>Recombinant osteopontin attenuates hyperoxia-induced acute lung injury through inhibiting nuclear factor kappa B and matrix metalloproteinases 2 and 9</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.25">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Lundberg</author>
+                    <volume>73</volume>
+                    <first_page>117</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.07.219</doi>
+                    <article_title>Stress-induced release of matrix metalloproteinase-9 in patients with coronary artery disease: the possible influence of cortisol</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.26">
+                    <journal_title>European Journal of Pharmacology</journal_title>
+                    <author>Nakamoto</author>
+                    <volume>683</volume>
+                    <first_page>86</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.ejphar.2012.03.006</doi>
+                    <article_title>Involvement of matrix metalloproteinase-9 in the development of morphine tolerance</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.27">
+                    <doi>10.1016/j.forsciint.2006.02.047</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.28">
+                    <doi>10.1136/ewjm.172.1.11</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.29">
+                    <doi>10.1093/jat/bku057</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.30">
+                    <journal_title>Forensic Science International</journal_title>
+                    <author>Eastwood</author>
+                    <volume>266</volume>
+                    <first_page>197</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.forsciint.2016.05.033</doi>
+                    <article_title>Pregabalin concentrations in post-mortem blood—a two year study</article_title>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.31">
+                    <doi>10.1093/jat/bku004</doi>
+                  </citation>
+                  <citation key="2017011717252852000_bkw129v1.32">
+                    <doi>10.1111/j.1398-9995.1997.tb01256.x</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

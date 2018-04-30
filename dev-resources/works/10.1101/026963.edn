@@ -1,8 +1,4 @@
-{:institution
- {:name "Psychoceramics Institute",
-  :place ["Pittsburg, Arizona"],
-  :department ["Soft furnishings"],
-  :acronym ["PI"]},
+{:institution {:name "bioRxiv", :place ["-"], :acronym ["-"]},
  :posted {:date-parts [[2015 9 16]]},
  :group-title "Bioinformatics",
  :reference-count 0,
@@ -10,6 +6,8 @@
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title [],
  :accepted {:date-parts [[2016 9 16]]},
+ :abstract
+ "<jats:p>Characterization of genetic variations in maize has been challenging, mainly due to deterioration of collinearity between individual genomes in the species. An international consortium of maize research groups combined resources to develop the maize haplotype version 3 (HapMap 3), built from whole genome sequencing data from 1,218 maize lines, covering pre-domestication and domesticated Zea mays varieties across the world.A new computational pipeline was set up to process over 12 trillion bp of sequencing data, and a set of population genetics filters were applied to identify over 83 million variant sites. We identified polymorphisms in regions where collinearity is largely preserved in the maize species. However, the fact that the B73 genome used as the reference only represents a fraction of all haplotypes is still an important limiting factor.</jats:p>",
  :DOI "10.1101/026963",
  :type "posted-content",
  :created
@@ -17,7 +15,7 @@
   :date-time "2015-09-17T05:01:45Z",
   :timestamp 1442466105000},
  :source "Crossref",
- :is-referenced-by-count 10,
+ :is-referenced-by-count 11,
  :title
  ["Construction of the third generation Zea mays haplotype map"],
  :prefix "10.1101",
@@ -25,6 +23,99 @@
  [{:given "Robert",
    :family "Bukowski",
    :sequence "first",
+   :affiliation []}
+  {:given "Xiaosen",
+   :family "Guo",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Yanli",
+   :family "Lu",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Cheng",
+   :family "Zou",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Bing",
+   :family "He",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Zhengqin",
+   :family "Rong",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Bo",
+   :family "Wang",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Dawen",
+   :family "Xu",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Bicheng",
+   :family "Yang",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Chuanxiao",
+   :family "Xie",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Longjiang",
+   :family "Fan",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Shibin",
+   :family "Gao",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Xun", :family "Xu", :sequence "additional", :affiliation []}
+  {:given "Gengyun",
+   :family "Zhang",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Yingrui",
+   :family "Li",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Yinping",
+   :family "Jiao",
+   :sequence "additional",
+   :affiliation []}
+  {:given "John",
+   :family "Doebley",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Jeffrey",
+   :family "Ross-Ibarra",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Vince",
+   :family "Buffalo",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Cinta M",
+   :family "Romay",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Edward S",
+   :family "Buckler",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Yunbi",
+   :family "Xu",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Jinsheng",
+   :family "Lai",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Doreen",
+   :family "Ware",
+   :sequence "additional",
+   :affiliation []}
+  {:given "Qi",
+   :family "Sun",
+   :sequence "additional",
    :affiliation []}],
  :member "246",
  :container-title [],
@@ -35,14 +126,18 @@
    :content-version "vor",
    :intended-application "similarity-checking"}],
  :deposited
- {:date-parts [[2017 1 4]],
-  :date-time "2017-01-04T06:16:14Z",
-  :timestamp 1483510574000},
+ {:date-parts [[2018 3 30]],
+  :date-time "2018-03-30T21:35:55Z",
+  :timestamp 1522445755000},
  :score 1.0,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2015 9 16]]},
  :references-count 0,
  :URL "http://dx.doi.org/10.1101/026963",
- :relation {},
+ :relation
+ {:is-preprint-of
+  [{:id-type "doi",
+    :id "10.1093/gigascience/gix134",
+    :asserted-by "subject"}]},
  :subtype "preprint"}

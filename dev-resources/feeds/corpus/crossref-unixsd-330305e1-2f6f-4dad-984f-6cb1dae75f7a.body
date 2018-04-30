@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="posted_content">10.1101/026963</doi>
+        <crm-item name="publisher-name" type="string">Cold Spring Harbor Laboratory</crm-item>
+        <crm-item name="prefix-name" type="string">Cold Spring Harbor Laboratory</crm-item>
+        <crm-item name="member-id" type="number">246</crm-item>
+        <crm-item name="citation-id" type="number">77808819</crm-item>
+        <crm-item name="book-id" type="number">2217902</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017010322083682000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1101</crm-item>
+        <crm-item name="last-update" type="date">2018-03-30T21:35:55Z</crm-item>
+        <crm-item name="created" type="date">2015-09-17T05:01:45Z</crm-item>
+        <crm-item name="citedby-count" type="number">11</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <posted_content type="preprint" language="en" metadata_distribution_opts="any">
+              <group_title>Bioinformatics</group_title>
+              <contributors>
+                <person_name contributor_role="author" sequence="first">
+                  <given_name>Robert</given_name>
+                  <surname>Bukowski</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Xiaosen</given_name>
+                  <surname>Guo</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Yanli</given_name>
+                  <surname>Lu</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Cheng</given_name>
+                  <surname>Zou</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Bing</given_name>
+                  <surname>He</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Zhengqin</given_name>
+                  <surname>Rong</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Bo</given_name>
+                  <surname>Wang</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Dawen</given_name>
+                  <surname>Xu</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Bicheng</given_name>
+                  <surname>Yang</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Chuanxiao</given_name>
+                  <surname>Xie</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Longjiang</given_name>
+                  <surname>Fan</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Shibin</given_name>
+                  <surname>Gao</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Xun</given_name>
+                  <surname>Xu</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Gengyun</given_name>
+                  <surname>Zhang</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Yingrui</given_name>
+                  <surname>Li</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Yinping</given_name>
+                  <surname>Jiao</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>John</given_name>
+                  <surname>Doebley</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Jeffrey</given_name>
+                  <surname>Ross-Ibarra</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Vince</given_name>
+                  <surname>Buffalo</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Cinta M</given_name>
+                  <surname>Romay</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Edward S</given_name>
+                  <surname>Buckler</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Yunbi</given_name>
+                  <surname>Xu</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Jinsheng</given_name>
+                  <surname>Lai</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Doreen</given_name>
+                  <surname>Ware</surname>
+                </person_name>
+                <person_name contributor_role="author" sequence="additional">
+                  <given_name>Qi</given_name>
+                  <surname>Sun</surname>
+                </person_name>
+              </contributors>
+              <titles>
+                <title>Construction of the third generation Zea mays haplotype map</title>
+              </titles>
+              <posted_date>
+                <month>09</month>
+                <day>16</day>
+                <year>2015</year>
+              </posted_date>
+              <acceptance_date>
+                <month>09</month>
+                <day>16</day>
+                <year>2016</year>
+              </acceptance_date>
+              <institution>
+                <institution_name>bioRxiv</institution_name>
+              </institution>
+              <item_number item_number_type="pisa">biorxiv;026963v3</item_number>
+              <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1">
+                <jats:p>Characterization of genetic variations in maize has been challenging, mainly due to deterioration of collinearity between individual genomes in the species. An international consortium of maize research groups combined resources to develop the maize haplotype version 3 (HapMap 3), built from whole genome sequencing data from 1,218 maize lines, covering pre-domestication and domesticated Zea mays varieties across the world.A new computational pipeline was set up to process over 12 trillion bp of sequencing data, and a set of population genetics filters were applied to identify over 83 million variant sites. We identified polymorphisms in regions where collinearity is largely preserved in the maize species. However, the fact that the B73 genome used as the reference only represents a fraction of all haplotypes is still an important limiting factor.</jats:p>
+              </jats:abstract>
+              <program xmlns="http://www.crossref.org/relations.xsd">
+                <related_item>
+                  <intra_work_relation relationship-type="isPreprintOf" identifier-type="doi">10.1093/gigascience/gix134</intra_work_relation>
+                </related_item>
+              </program>
+              <doi_data>
+                <doi>10.1101/026963</doi>
+                <timestamp>2017010322095093000</timestamp>
+                <resource>http://biorxiv.org/lookup/doi/10.1101/026963</resource>
+                <collection property="crawler-based">
+                  <item crawler="iParadigms">
+                    <resource>https://syndication.highwire.org/content/doi/10.1101/026963</resource>
+                  </item>
+                </collection>
+              </doi_data>
+            </posted_content>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

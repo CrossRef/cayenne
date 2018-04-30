@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.neulet.2016.11.064</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">86643450</crm-item>
+        <crm-item name="journal-id" type="number">1455</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171219010430000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-12-19T01:21:02Z</crm-item>
+        <crm-item name="created" type="date">2016-12-01T19:15:56Z</crm-item>
+        <crm-item name="citedby-count" type="number">10</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Neuroscience Letters</full_title>
+                <abbrev_title>Neuroscience Letters</abbrev_title>
+                <issn media_type="print">03043940</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>05</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>649</volume>
+                </journal_volume>
+                <special_numbering>C</special_numbering>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Glutamate dysregulation and glutamatergic therapeutics for PTSD: Evidence from human studies</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Lynnette A.</given_name>
+                    <surname>Averill</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Prerana</given_name>
+                    <surname>Purohit</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Christopher L.</given_name>
+                    <surname>Averill</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Markus A.</given_name>
+                    <surname>Boesl</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>John H.</given_name>
+                    <surname>Krystal</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Chadi G.</given_name>
+                    <surname>Abdallah</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>05</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>147</first_page>
+                  <last_page>155</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0304394016309351</item_number>
+                  <identifier id_type="pii">S0304394016309351</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion name="publisher" label="This article is maintained by ">Elsevier</assertion>
+                    <assertion name="articletitle" label="Article Title">Glutamate dysregulation and glutamatergic therapeutics for PTSD: Evidence from human studies</assertion>
+                    <assertion name="journaltitle" label="Journal Title">Neuroscience Letters</assertion>
+                    <assertion name="articlelink" label="CrossRef DOI link to publisher maintained version">http://dx.doi.org/10.1016/j.neulet.2016.11.064</assertion>
+                    <assertion name="content_type" label="Content Type">article</assertion>
+                    <assertion name="copyright" label="Copyright">Published by Elsevier Ireland Ltd.</assertion>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Department of Veterans Affairs
+                          <fr:assertion name="funder_identifier" provider="crossref">http://dx.doi.org/10.13039/100000738</fr:assertion>
+                        </fr:assertion>
+                        <fr:assertion name="award_number">NCPTSD; IK2CX000772</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000025</fr:assertion>
+                          NIMH
+                        </fr:assertion>
+                        <fr:assertion name="award_number">K23MH101498</fr:assertion>
+                      </fr:assertion>
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">Yale Center for Clinical Investigation</fr:assertion>
+                        <fr:assertion name="award_number">UL1RR024139</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.neulet.2016.11.064</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0304394016309351</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0304394016309351?httpAccept=text/xml</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0304394016309351?httpAccept=text/plain</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

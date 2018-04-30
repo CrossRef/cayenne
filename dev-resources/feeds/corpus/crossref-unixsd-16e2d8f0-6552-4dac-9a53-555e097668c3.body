@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1155/2016/7810196</doi>
+        <crm-item name="publisher-name" type="string">Hindawi Limited</crm-item>
+        <crm-item name="prefix-name" type="string">Hindawi Limited</crm-item>
+        <crm-item name="member-id" type="number">98</crm-item>
+        <crm-item name="citation-id" type="number">86606702</crm-item>
+        <crm-item name="journal-id" type="number">193845</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161130090005</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1155</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T04:54:19Z</crm-item>
+        <crm-item name="created" type="date">2016-11-30T21:06:48Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>BioMed Research International</full_title>
+                <abbrev_title>BioMed Research International</abbrev_title>
+                <issn media_type="print">2314-6133</issn>
+                <issn media_type="electronic">2314-6141</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>2016</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Lamotrigine Reduces Inflammatory Response and Ameliorates Executive Function Deterioration in an Alzheimer’s-Like Mouse Model</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Kexin</given_name>
+                    <surname>Wang</surname>
+                    <affiliation>Department of General Surgery, Qilu Hospital of Shandong University, Jinan, Shandong 250012, China</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Alejandro</given_name>
+                    <surname>Fernandez-Escobar</surname>
+                    <affiliation>School of Medicine, CES University, Medellin, Antioquia, Colombia</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Shuhong</given_name>
+                    <surname>Han</surname>
+                    <affiliation>Department of Medicine, Division of Rheumatology &amp; Clinical Immunology, University of Florida, Gainesville, FL 32610-0275, USA</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Ping</given_name>
+                    <surname>Zhu</surname>
+                    <affiliation>Department of Ophthalmology, College of Medicine, University of Florida, Gainesville, FL 32610-0284, USA</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Jun-Hui</given_name>
+                    <surname>Wang</surname>
+                    <affiliation>Department of Physiology, University of Toronto, Toronto, ON, M5S1A8, Canada</affiliation>
+                    <ORCID authenticated="true">http://orcid.org/0000-0003-4187-3441</ORCID>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Yu</given_name>
+                    <surname>Sun</surname>
+                    <affiliation>Department of Endocrinology, Qilu Hospital of Shandong University, Jinan, Shandong 250012, China</affiliation>
+                    <ORCID authenticated="true">http://orcid.org/0000-0002-1286-1823</ORCID>
+                  </person_name>
+                </contributors>
+                <jats:abstract xmlns:jats="http://www.ncbi.nlm.nih.gov/JATS1">
+                  <jats:p>Alzheimer’s disease (AD) has been described in the literature, to be associated with impairment of executive function which develops early in the course of disease, and an effective treatment for this clinical feature remains elusive. Preclinical studies have implied that lamotrigine, an antiepileptic agent, could be a potential treatment for executive dysfunction in AD patients. Although there have been promising results in previous studies with lamotrigine, executive function has never been measured using animal models. The aim of the present study was to evaluate the effects of lamotrigine on executive function and determine whether lamotrigine can attenuate inflammatory response in an AD mouse model. Nontransgenic and transgenic mice were treated with lamotrigine (0 or 30 mg/kg/day) in a standard laboratory chow diet starting at 3 months of age. After 6 months of continuous lamotrigine administration, there was a marked improvement in executive function and a significant attenuation in the expression of proinflammatory cytokines. These results suggest that lamotrigine could ameliorate executive dysfunction and brain inflammatory response in the mouse model of AD and early lamotrigine intervention may be a promising therapeutic strategy for AD.</jats:p>
+                </jats:abstract>
+                <publication_date media_type="print">
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>1</first_page>
+                  <last_page>9</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">7810196</identifier>
+                  <identifier id_type="other">7810196</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="funder_name">Shandong Natural Science Foundation</fr:assertion>
+                  <fr:assertion name="award_number">ZR2013HQ054</fr:assertion>
+                  <fr:assertion name="funder_name">Jinan Young Science and Technology Stars Project</fr:assertion>
+                  <fr:assertion name="award_number">20120139</fr:assertion>
+                </fr:program>
+                <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                  <ai:license_ref>http://creativecommons.org/licenses/by/4.0/</ai:license_ref>
+                </ai:program>
+                <doi_data>
+                  <doi>10.1155/2016/7810196</doi>
+                  <timestamp>20161130090005</timestamp>
+                  <resource>https://www.hindawi.com/journals/bmri/2016/7810196/</resource>
+                  <collection property="crawler-based">
+                    <item crawler="google">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item crawler="msn">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item crawler="altavista">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item crawler="yahoo">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item crawler="scirus">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item crawler="iParadigms">
+                      <resource>http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://downloads.hindawi.com/journals/bmri/2016/7810196.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="application/xml">http://downloads.hindawi.com/journals/bmri/2016/7810196.xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="1">
+                    <doi>10.1371/journal.pone.0135686</doi>
+                  </citation>
+                  <citation key="2">
+                    <doi>10.1016/j.acn.2005.07.002</doi>
+                  </citation>
+                  <citation key="3">
+                    <doi>10.1155/2015/748212</doi>
+                  </citation>
+                  <citation key="4">
+                    <doi>10.1002/glia.22926</doi>
+                  </citation>
+                  <citation key="5">
+                    <doi>10.1212/wnl.43.11.2284</doi>
+                  </citation>
+                  <citation key="6">
+                    <doi>10.1345/aph.19128</doi>
+                  </citation>
+                  <citation key="7">
+                    <doi>10.1007/s007020050059</doi>
+                  </citation>
+                  <citation key="8">
+                    <doi>10.1016/j.neurobiolaging.2014.06.009</doi>
+                  </citation>
+                  <citation key="9">
+                    <doi>10.3389/fnagi.2014.00107</doi>
+                  </citation>
+                  <citation key="10">
+                    <doi>10.1111/jgs.13165</doi>
+                  </citation>
+                  <citation key="11">
+                    <doi>10.1038/npp.2013.208</doi>
+                  </citation>
+                  <citation key="12">
+                    <doi>10.1016/j.biocel.2004.07.009</doi>
+                  </citation>
+                  <citation key="13">
+                    <doi>10.1016/S0197-4580(01)00287-1</doi>
+                  </citation>
+                  <citation key="14">
+                    <doi>10.1016/0304-3940(95)12192-7</doi>
+                  </citation>
+                  <citation key="15">
+                    <doi>10.1016/s0197-4580(96)00107-8</doi>
+                  </citation>
+                  <citation key="16">
+                    <doi>10.1016/S0024-3205(02)01546-1</doi>
+                  </citation>
+                  <citation key="17">
+                    <doi>10.1002/glia.20147</doi>
+                  </citation>
+                  <citation key="18">
+                    <doi>10.1111/gbb.12183</doi>
+                  </citation>
+                  <citation key="19">
+                    <doi>10.1016/j.expneurol.2010.09.008</doi>
+                  </citation>
+                  <citation key="20">
+                    <doi>10.1016/j.cell.2009.11.014</doi>
+                  </citation>
+                  <citation key="21">
+                    <doi>10.1126/science.1072994</doi>
+                  </citation>
+                  <citation key="22">
+                    <doi>10.1097/00019442-200303000-00012</doi>
+                  </citation>
+                  <citation key="23">
+                    <doi>10.1017/S1355617708080302</doi>
+                  </citation>
+                  <citation key="24">
+                    <doi>10.1176/appi.neuropsych.21.4.445</doi>
+                  </citation>
+                  <citation key="25">
+                    <doi>10.1007/s13311-011-0047-z</doi>
+                  </citation>
+                  <citation key="26">
+                    <doi>10.1007/bf03033906</doi>
+                  </citation>
+                  <citation key="27">
+                    <doi>10.1016/j.psyneuen.2016.05.006</doi>
+                  </citation>
+                  <citation key="28">
+                    <doi>10.1177/2040622311399145</doi>
+                  </citation>
+                  <citation key="29">
+                    <doi>10.1111/j.1528-1157.1997.tb01135.x</doi>
+                  </citation>
+                  <citation key="30">
+                    <doi>10.1016/0166-2236(96)10039-4</doi>
+                  </citation>
+                  <citation key="31">
+                    <doi>10.1016/j.biocel.2006.06.008</doi>
+                  </citation>
+                  <citation key="32">
+                    <doi>10.1038/nrn3880</doi>
+                  </citation>
+                  <citation key="33">
+                    <journal_title>Neurotoxicology</journal_title>
+                    <volume>57</volume>
+                    <first_page>104</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.neuro.2016.09.009</doi>
+                  </citation>
+                  <citation key="34">
+                    <doi>10.1073/pnas.1604032113</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

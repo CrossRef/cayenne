@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1007/s00125-016-4154-6</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer-Verlag</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86315918</crm-item>
+        <crm-item name="journal-id" type="number">929</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161202110126534</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1007</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T03:27:10Z</crm-item>
+        <crm-item name="created" type="date">2016-11-12T07:44:25Z</crm-item>
+        <crm-item name="citedby-count" type="number">5</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Diabetologia</full_title>
+                <abbrev_title>Diabetologia</abbrev_title>
+                <issn media_type="print">0012-186X</issn>
+                <issn media_type="electronic">1432-0428</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>60</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Depression: a common and burdensome complication of diabetes that warrants the continued attention of clinicians, researchers and healthcare policy makers</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>François</given_name>
+                    <surname>Pouwer</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>11</month>
+                  <day>12</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>1</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>30</first_page>
+                  <last_page>34</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">s00125-016-4154-6</item_number>
+                  <identifier id_type="pii">4154</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1007/s00125-016-4154-6</doi>
+                  <timestamp>20161202110126534</timestamp>
+                  <resource>http://link.springer.com/10.1007/s00125-016-4154-6</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s00125-016-4154-6.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s00125-016-4154-6.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://link.springer.com/article/10.1007/s00125-016-4154-6/fulltext.html</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="4154_CR1">
+                    <doi provider="crossref">10.2337/diacare.24.6.1069</doi>
+                    <unstructured_citation>Anderson RJ, Freedland KE, Clouse RE et al (2001) The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care 24:1069–1078</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR2">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>B Buchberger</author>
+                    <volume>70</volume>
+                    <first_page>70</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.04.019</doi>
+                    <unstructured_citation>Buchberger B, Huppertz H, Krabbe L et al (2016) Symptoms of depression and anxiety in youth with type 1 diabetes: a systematic review and meta-analysis. Psychoneuroendocrinology 70:70–84</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR3">
+                    <journal_title>J Affect Disord</journal_title>
+                    <author>T Roy</author>
+                    <volume>142</volume>
+                    <issue>Suppl</issue>
+                    <first_page>S8</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/S0165-0327(12)70004-6</doi>
+                    <unstructured_citation>Roy T, Lloyd CE (2012) Epidemiology of depression and diabetes: a systematic review. J Affect Disord 142(Suppl):S8–S21</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR4">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>A Nouwen</author>
+                    <volume>34</volume>
+                    <first_page>752</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.2337/dc10-1414</doi>
+                    <unstructured_citation>Nouwen A, Nefs G, Caramlau I et al (2011) Prevalence of depression in individuals with impaired glucose metabolism or undiagnosed diabetes: a systematic review and meta-analysis of the European Depression in Diabetes (EDID) Research Consortium. Diabetes Care 34:752–762</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR5">
+                    <journal_title>Psychosom Med</journal_title>
+                    <author>M Meurs</author>
+                    <volume>78</volume>
+                    <first_page>233</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1097/PSY.0000000000000255</doi>
+                    <unstructured_citation>Meurs M, Roest AM, Wolffenbuttel BH et al (2016) Association of depressive and anxiety disorders with diagnosed versus undiagnosed diabetes: an epidemiological study of 90,686 participants. Psychosom Med 78:233–241</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR6">
+                    <doi>10.1007/s00125-016-4123-0</doi>
+                    <unstructured_citation>Kampling H, Petrak F, Farin E et al (2016) Trajectories of depression in adults with newly diagnosed type 1 diabetes: results from the German Multicenter Diabetes Cohort Study. Diabetologia. doi: 10.1007/s00125-016-4123-0</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR7">
+                    <journal_title>Curr Diabetes Rev</journal_title>
+                    <author>MT Schram</author>
+                    <volume>5</volume>
+                    <first_page>112</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.2174/157339909788166828</doi>
+                    <unstructured_citation>Schram MT, Baan CA, Pouwer F (2009) Depression and quality of life in patients with diabetes: a systematic review from the European depression in diabetes (EDID) research consortium. Curr Diabetes Rev 5:112–119</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR8">
+                    <journal_title>Endocrinol Metab Clin North Am</journal_title>
+                    <author>F Pouwer</author>
+                    <volume>42</volume>
+                    <first_page>529</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.ecl.2013.05.002</doi>
+                    <unstructured_citation>Pouwer F, Nefs G, Nouwen A (2013) Adverse effects of depression on glycemic control and health outcomes in people with diabetes: a review. Endocrinol Metab Clin North Am 42:529–544</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR9">
+                    <doi provider="crossref">10.1371/journal.pone.0057058</doi>
+                    <unstructured_citation>Van Dooren FE, Nefs G, Schram MT et al (2013) Depression and risk of mortality in people with diabetes mellitus: a systematic review and meta-analysis. PLoS One 8:e57058</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR10">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>JS Gonzalez</author>
+                    <volume>31</volume>
+                    <first_page>2398</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.2337/dc08-1341</doi>
+                    <unstructured_citation>Gonzalez JS, Peyrot M, McCarl LA et al (2008) Depression and diabetes treatment nonadherence: a meta-analysis. Diabetes Care 31:2398–403</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR11">
+                    <journal_title>Lancet Diabetes Endocrinol</journal_title>
+                    <author>CD Moulton</author>
+                    <volume>3</volume>
+                    <first_page>461</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/S2213-8587(15)00134-5</doi>
+                    <unstructured_citation>Moulton CD, Pickup JC, Ismail K (2015) The link between depression and diabetes: the search for shared mechanisms. Lancet Diabetes Endocrinol 3:461–471</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR12">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>PJ Lustman</author>
+                    <volume>23</volume>
+                    <first_page>934</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.2337/diacare.23.7.934</doi>
+                    <unstructured_citation>Lustman PJ, Anderson RJ, Freedland KE et al (2000) Depression and poor glycemic control: a meta-analytic review of the literature. Diabetes Care 23:934–942</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR13">
+                    <journal_title>Diabetologia</journal_title>
+                    <author>G Nefs</author>
+                    <volume>55</volume>
+                    <first_page>608</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1007/s00125-011-2411-2</doi>
+                    <unstructured_citation>Nefs G, Pouwer F, Denollet J et al (2012) The course of depressive symptoms in primary care patients with type 2 diabetes: results from the Diabetes, Depression, Type D Personality Zuidoost-Brabant (DiaDDZoB) Study. Diabetologia 55:608–616</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR14">
+                    <journal_title>Gen Hosp Psychiatry</journal_title>
+                    <author>CM Feltz-Cornelis Van der</author>
+                    <volume>32</volume>
+                    <first_page>380</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.genhosppsych.2010.03.011</doi>
+                    <unstructured_citation>Van der Feltz-Cornelis CM, Nuyen J, Stoop C et al (2010) Effect of interventions for major depressive disorder and significant depressive symptoms in patients with diabetes mellitus: a systematic review and meta-analysis. Gen Hosp Psychiatry 32:380–395</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR15">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>J Son Van</author>
+                    <volume>36</volume>
+                    <first_page>823</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.2337/dc12-1477</doi>
+                    <unstructured_citation>Van Son J, Nyklícek I, Pop VJ et al (2013) The effects of a mindfulness-based intervention on emotional distress, quality of life, and HbA(1c) in outpatients with diabetes (DiaMind): a randomized controlled trial. Diabetes Care 36:823–830</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR16">
+                    <doi provider="crossref">10.2337/dc10-1248</doi>
+                    <unstructured_citation>Van Bastelaar KM, Pouwer F, Cuijpers P et al (2011) Web-based depression treatment for type 1 and type 2 diabetic patients: a randomized, controlled trial. Diabetes Care 34:320–325</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR17">
+                    <journal_title>Diabet Med</journal_title>
+                    <author>H Baumeister</author>
+                    <volume>31</volume>
+                    <first_page>773</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1111/dme.12452</doi>
+                    <unstructured_citation>Baumeister H, Hutter N, Bengel J (2014) Psychological and pharmacological interventions for depression in patients with diabetes mellitus: an abridged Cochrane review. Diabet Med 31:773–786</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR18">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>HR Bogner</author>
+                    <volume>30</volume>
+                    <first_page>3005</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.2337/dc07-0974</doi>
+                    <unstructured_citation>Bogner HR, Morales KH, Post EP et al (2007) Diabetes, depression, and death: a randomized controlled trial of a depression treatment program for older adults based in primary care (PROSPECT). Diabetes Care 30:3005–3010</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR19">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>BD Thombs</author>
+                    <volume>31</volume>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.2337/dc08-0446</doi>
+                    <unstructured_citation>Thombs BD, Ziegelstein RC (2008) Diabetes, depression, and death: a randomized controlled trial of a depression treatment program for older adults based in primary care (PROSPECT): response to Bogner et al. Diabetes Care 31, e54</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR20">
+                    <journal_title>Patient Educ Couns</journal_title>
+                    <author>F Pouwer</author>
+                    <volume>60</volume>
+                    <first_page>235</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.pec.2005.01.009</doi>
+                    <unstructured_citation>Pouwer F, Beekman AT, Lubach C et al (2006) Nurses’ recognition and registration of depression, anxiety and diabetes-specific emotional problems in outpatients with diabetes mellitus. Patient Educ Couns 60:235–240</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR21">
+                    <journal_title>Nat Rev Endocrinol</journal_title>
+                    <author>F Pouwer</author>
+                    <volume>5</volume>
+                    <first_page>665</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nrendo.2009.214</doi>
+                    <unstructured_citation>Pouwer F (2009) Should we screen for emotional distress in type 2 diabetes mellitus? Nat Rev Endocrinol 5:665–671</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR22">
+                    <journal_title>Diabetologia</journal_title>
+                    <author>F Pouwer</author>
+                    <volume>54</volume>
+                    <first_page>741</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1007/s00125-010-2033-0</doi>
+                    <unstructured_citation>Pouwer F, Tack CJ, Geelhoed-Duijvestijn PH et al (2011) Limited effect of screening for depression with written feedback in outpatients with diabetes mellitus: a randomised controlled trial. Diabetologia 54:741–748</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR23">
+                    <journal_title>BMJ Open</journal_title>
+                    <author>E Atlantis</author>
+                    <volume>4</volume>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1136/bmjopen-2013-004706</doi>
+                    <unstructured_citation>Atlantis E, Fahey P, Foster J (2014) Collaborative care for comorbid depression and diabetes: a systematic review and meta-analysis. BMJ Open 4:e004706</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR24">
+                    <journal_title>N Engl J Med</journal_title>
+                    <author>WJ Katon</author>
+                    <volume>363</volume>
+                    <first_page>2611</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1056/NEJMoa1003955</doi>
+                    <unstructured_citation>Katon WJ, Lin EH, Von Korff M et al (2010) Collaborative care for patients with depression and chronic illnesses. N Engl J Med 363:2611–2620</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR25">
+                    <journal_title>Arch Gen Psychiatry</journal_title>
+                    <author>W Katon</author>
+                    <volume>69</volume>
+                    <first_page>506</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1001/archgenpsychiatry.2011.1548</doi>
+                    <unstructured_citation>Katon W, Russo J, Lin EH et al (2012) Cost-effectiveness of a multicondition collaborative care intervention: a randomized controlled trial. Arch Gen Psychiatry 69:506–514</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR26">
+                    <unstructured_citation>International Diabetes Federation Clinical Guideline Task Force (2012) Global guideline for type 2 diabetes. Available from www.idf.org/sites/default/files/IDF-Guideline-for-Type-2-Diabetes.pdf , accessed 11 Oct 2016</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR27">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>American Diabetes Association</author>
+                    <volume>38</volume>
+                    <issue>Suppl 1</issue>
+                    <first_page>S15</first_page>
+                    <cYear>2015</cYear>
+                    <unstructured_citation>American Diabetes Association (2015) Standard of Medical Care in Diabetes -2015. Diabetes Care 38(Suppl 1):S15–S35</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR28">
+                    <unstructured_citation>National Institute for Health and Care Excellence (2009) Depression in adults with a chronic physical health problem: recognition and management: clinical guidance. Available from www.nice.org.uk/guidance/cg91/chapter/1-Guidance , accessed 11 Oct 2016</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR29">
+                    <journal_title>Am Health Drug Benefits</journal_title>
+                    <author>A Pozniak</author>
+                    <volume>3</volume>
+                    <first_page>31</first_page>
+                    <cYear>2010</cYear>
+                    <unstructured_citation>Pozniak A, Olinger L, Shier V (2010) Physicians’ perceptions of reimbursement as a barrier to comprehensive diabetes care. Am Health Drug Benefits 3:31–40</unstructured_citation>
+                  </citation>
+                  <citation key="4154_CR30">
+                    <journal_title>Diabet Med</journal_title>
+                    <author>A Jones</author>
+                    <cYear>2016</cYear>
+                    <doi>10.1111/dme.13255</doi>
+                    <unstructured_citation>Jones A, Vallis M, Cooke D et al (2016) Review of research grant allocation to psychosocial studies in diabetes research. Diabet Med. doi: 10.1111/dme.13255</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

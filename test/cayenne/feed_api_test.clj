@@ -9,9 +9,9 @@
 
 (deftest pushing-files
   (testing "file is deposited exactly as pushed"
-    (doseq [file ["crossref-unixsd-multi-line-title.body"]]
+    (doseq [file ["crossref-unixsd-f0e08fdd-459c-4b59-96da-ede1a1483f81.body"]]
       (let [feed-dir (get-param [:dir :data])
-            feed-file (str feed-dir "/source/" file)
+            feed-file (str feed-dir "/corpus/" file)
             feed-in-dir (str feed-dir "/feed-in")
             token (String. (encode (.getBytes "crossref:development-token")))
             response (http/post (str api-root "/v1/feeds/crossref") 

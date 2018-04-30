@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1093/ijnp/pyw107</doi>
+        <crm-item name="publisher-name" type="string">Oxford University Press (OUP)</crm-item>
+        <crm-item name="prefix-name" type="string">Oxford University Press</crm-item>
+        <crm-item name="member-id" type="number">286</crm-item>
+        <crm-item name="citation-id" type="number">86509190</crm-item>
+        <crm-item name="journal-id" type="number">6040</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2016122917353591000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1093</crm-item>
+        <crm-item name="last-update" type="date">2017-08-25T02:32:27Z</crm-item>
+        <crm-item name="created" type="date">2016-11-23T20:06:36Z</crm-item>
+        <crm-item name="citedby-count" type="number">2</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>International Journal of Neuropsychopharmacology</full_title>
+                <abbrev_title>IJNPPY</abbrev_title>
+                <issn media_type="print">1461-1457</issn>
+                <issn media_type="electronic">1469-5111</issn>
+              </journal_metadata>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Altered Acoustic Startle Reflex, Prepulse Inhibition, and Peripheral Brain-Derived Neurotrophic Factor in Morphine Self-Administered Rats</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Bong Hyo</given_name>
+                    <surname>Lee</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Thomas Y.</given_name>
+                    <surname>Park</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Erica</given_name>
+                    <surname>Lin</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>He</given_name>
+                    <surname>Li</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Chae Ha</given_name>
+                    <surname>Yang</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Kwang H.</given_name>
+                    <surname>Choi</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>07</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>pyw107</first_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="pisa">ijnp;pyw107v4</item_number>
+                  <identifier id_type="doi">10.1093/ijnp/pyw107</identifier>
+                </publisher_item>
+                <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <fr:assertion name="fundgroup">
+                    <fr:assertion name="funder_name">
+                      Ministry of Education
+                      <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100002701</fr:assertion>
+                    </fr:assertion>
+                    <fr:assertion name="award_number">2010-0025821</fr:assertion>
+                  </fr:assertion>
+                </fr:program>
+                <doi_data>
+                  <doi>10.1093/ijnp/pyw107</doi>
+                  <timestamp>2016122917353591000</timestamp>
+                  <resource>https://academic.oup.com/ijnp/article-lookup/doi/10.1093/ijnp/pyw107</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://academic.oup.com/ijnp/article-pdf/20/5/383/16631033/pyw107.pdf</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="2016122917353591000_pyw107v4.1">
+                    <doi>10.1038/374450a0</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.2">
+                    <doi>10.1177/0269881107078491</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.3">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Armbruster</author>
+                    <volume>66</volume>
+                    <first_page>39</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2015.12.020</doi>
+                    <article_title>BDNF val(66)met genotype shows distinct associations with the acoustic startle reflex and the cortisol stress response in young adults and children</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.4">
+                    <doi>10.1385/NMM:5:1:069</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.5">
+                    <doi>10.1016/j.pnpbp.2008.12.012</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.6">
+                    <doi>10.1016/j.molbrainres.2004.11.012</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.7">
+                    <doi>10.1038/npp.2009.109</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.8">
+                    <journal_title>Brain Res Bull</journal_title>
+                    <author>Fan</author>
+                    <volume>122</volume>
+                    <first_page>54</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.brainresbull.2016.03.001</doi>
+                    <article_title>Blunted inflammation mediated by NF-kappaB activation in hippocampus alleviates chronic normobaric hypoxia-induced anxiety-like behavior in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.9">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>Fodor</author>
+                    <volume>158</volume>
+                    <first_page>100</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2016.02.041</doi>
+                    <article_title>Depressive- and anxiety-like behaviors and stress-related neuronal activation in vasopressin-deficient female Brattleboro rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.10">
+                    <unstructured_citation>Geoffroy HA Puig S Benturquia N Noble F (2015) Temporal regulation of peripheral BDNF levels during cocaine and morphine withdrawal: comparison with a natural reward. The international journal of neuropsychopharmacology / official scientific journal of the Collegium Internationale Neuropsychopharmacologicum 18.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.11">
+                    <doi>10.1016/0006-3223(93)90180-L</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.12">
+                    <journal_title>Psychopharmacology (Berl)</journal_title>
+                    <author>Glover</author>
+                    <volume>198</volume>
+                    <first_page>167</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1007/s00213-008-1112-0</doi>
+                    <article_title>Anxiolytic-like effects of morphine and buprenorphine in the rat model of fear-potentiated startle: tolerance, cross-tolerance, and blockade by naloxone</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.13">
+                    <doi>10.1016/S0006-8993(00)02093-X</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.14">
+                    <doi>10.1007/s00213-003-1573-0</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.15">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Harris</author>
+                    <volume>139</volume>
+                    <first_page>1201</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2006.01.048</doi>
+                    <article_title>Double dissociation in the neural substrates of acute opiate dependence as measured by withdrawal-potentiated startle</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.16">
+                    <doi>10.1177/0269881111411332</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.17">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>Hill</author>
+                    <volume>147</volume>
+                    <first_page>359</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2015.05.013</doi>
+                    <article_title>Measure of anxiety-related behaviors and hippocampal BDNF levels associated to the amnesic effect induced by MK-801 evaluated in the modified elevated plus-maze in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.18">
+                    <journal_title>Behav Pharmacol</journal_title>
+                    <author>Hoot</author>
+                    <volume>24</volume>
+                    <first_page>144</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1097/FBP.0b013e32835f3d2f</doi>
+                    <article_title>Inhibition of Gbetagamma-subunit signaling potentiates morphine-induced antinociception but not respiratory depression, constipation, locomotion, and reward</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.19">
+                    <doi>10.1146/annurev.neuro.24.1.677</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.20">
+                    <journal_title>J Pharmacol Exp Ther</journal_title>
+                    <author>Iwamoto</author>
+                    <volume>200</volume>
+                    <first_page>236</first_page>
+                    <cYear>1977</cYear>
+                    <article_title>First-pass effect of morphine in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.21">
+                    <doi>10.1016/j.tips.2003.09.006</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.22">
+                    <journal_title>J Psychiatr Res</journal_title>
+                    <author>Jia</author>
+                    <volume>60</volume>
+                    <first_page>29</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1016/j.jpsychires.2014.09.020</doi>
+                    <article_title>Corticosterone mitigates the stress response in an animal model of PTSD</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.23">
+                    <doi>10.1016/j.neulet.2011.03.005</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.24">
+                    <doi>10.1016/S0304-3940(02)00529-3</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.25">
+                    <doi>10.1017/S1461145710000738</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.26">
+                    <doi>10.1126/science.1222265</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.27">
+                    <doi>10.1016/j.neuron.2005.09.023</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.28">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>Kumari</author>
+                    <volume>158</volume>
+                    <first_page>34</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2016.02.032</doi>
+                    <article_title>Social isolation mediated anxiety like behavior is associated with enhanced expression and regulation of BDNF in the female mouse brain</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.29">
+                    <journal_title>Endocrine</journal_title>
+                    <author>Larco</author>
+                    <volume>42</volume>
+                    <first_page>717</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1007/s12020-012-9716-x</doi>
+                    <article_title>The effect of chronic immobilization stress on leptin signaling in the ovariectomized (OVX) rat</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.30">
+                    <journal_title>Psychopharmacology</journal_title>
+                    <author>Le</author>
+                    <volume>231</volume>
+                    <first_page>4569</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1007/s00213-014-3606-2</doi>
+                    <article_title>Association between initial morphine intake and body weight change, acoustic startle reflex and drug seeking in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.31">
+                    <journal_title>Brain Res</journal_title>
+                    <author>Liu</author>
+                    <volume>1454</volume>
+                    <first_page>90</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.brainres.2012.03.027</doi>
+                    <article_title>Septal nuclei critically mediate the development of behavioral sensitization to a single morphine injection in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.32">
+                    <doi>10.1016/S0920-9964(01)00198-0</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.33">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Lunden</author>
+                    <volume>254</volume>
+                    <first_page>160</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1016/j.neuroscience.2013.08.071</doi>
+                    <article_title>Opiate exposure and withdrawal dynamically regulate mRNA expression in the serotonergic dorsal raphe nucleus</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.34">
+                    <journal_title>Neurochem Res</journal_title>
+                    <author>Mashayekhi</author>
+                    <volume>37</volume>
+                    <first_page>1517</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1007/s11064-012-0746-9</doi>
+                    <article_title>Expression levels of the BDNF gene and histone modifications around its promoters in the ventral tegmental area and locus ceruleus of rats during forced abstinence from morphine</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.35">
+                    <doi>10.1016/0893-133X(95)00274-H</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.36">
+                    <journal_title>Sci China Life Sci</journal_title>
+                    <author>Meng</author>
+                    <volume>53</volume>
+                    <first_page>1356</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1007/s11427-010-4077-2</doi>
+                    <article_title>Chronic morphine treatment decreases acoustic startle response and prepulse inhibition in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.37">
+                    <journal_title>Cell</journal_title>
+                    <author>Miyamoto</author>
+                    <volume>147</volume>
+                    <first_page>261</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.cell.2011.09.026</doi>
+                    <article_title>Why does morphine make you itch?</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.38">
+                    <journal_title>J Neurosci</journal_title>
+                    <author>Numan</author>
+                    <volume>18</volume>
+                    <first_page>10700</first_page>
+                    <cYear>1998</cYear>
+                    <article_title>Differential regulation of neurotrophin and trk receptor mRNAs in catecholaminergic nuclei during chronic opiate treatment and withdrawal</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.39">
+                    <doi>10.1210/en.2008-1732</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.40">
+                    <doi>10.1016/j.neubiorev.2010.10.012</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.41">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>O’Neill</author>
+                    <volume>67</volume>
+                    <first_page>40</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.01.030</doi>
+                    <article_title>Adolescent caffeine consumption increases adulthood anxiety-related behavior and modifies neuroendocrine signaling</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.42">
+                    <doi>10.1016/S0006-3223(99)00148-1</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.43">
+                    <doi>10.1038/srep17989</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.44">
+                    <journal_title>Physiol Behav</journal_title>
+                    <author>Rosa</author>
+                    <volume>155</volume>
+                    <first_page>1</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2015.11.038</doi>
+                    <article_title>Diphenyl diselenide ameliorates monosodium glutamate induced anxiety-like behavior in rats by modulating hippocampal BDNF-Akt pathway and uptake of GABA and serotonin neurotransmitters</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.45">
+                    <doi>10.1038/npp.2009.56</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.46">
+                    <doi>10.1038/npp.2010.134</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.47">
+                    <doi>10.1002/cne.903420302</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.48">
+                    <doi>10.1016/0091-3057(78)90292-7</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.49">
+                    <doi provider="crossref">10.3791/4433</doi>
+                    <unstructured_citation>Tziridis K Ahlf S Schulze H (2012) A low cost setup for behavioral audiometry in rodents. J Vis Exp 68:4433.</unstructured_citation>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.50">
+                    <journal_title>Drug Discov Ther</journal_title>
+                    <author>Ueno</author>
+                    <volume>5</volume>
+                    <first_page>71</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.5582/ddt.2011.v5.2.71</doi>
+                    <article_title>Availability of serum corticosterone level for quantitative evaluation of morphine withdrawal in mice</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.51">
+                    <doi>10.1046/j.0953-816x.2001.01775.x</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.52">
+                    <doi>10.1126/science.1168501</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.53">
+                    <journal_title>The international journal of neuropsychopharmacology / official scientific journal of the Collegium Internationale Neuropsychopharmacologicum</journal_title>
+                    <author>Wang</author>
+                    <volume>17</volume>
+                    <first_page>469</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1017/S1461145713001429</doi>
+                    <article_title>Chaperone heat shock protein 70 in nucleus accumbens core: a novel biological target of behavioural sensitization to morphine in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.54">
+                    <journal_title>Pharmacol Biochem Behav</journal_title>
+                    <author>Warren</author>
+                    <volume>16</volume>
+                    <first_page>869</first_page>
+                    <cYear>1982</cYear>
+                    <doi provider="crossref">10.1016/0091-3057(82)90038-7</doi>
+                    <article_title>Selective action of morphine on reflex expression to nociceptive stimulation in the rat: a contribution to the assessment of analgesia</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.55">
+                    <doi>10.1111/apt.12899.</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.56">
+                    <journal_title>Neurosci Lett</journal_title>
+                    <author>Wei</author>
+                    <volume>610</volume>
+                    <first_page>30</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2015.10.057</doi>
+                    <article_title>The alpha1 adrenoceptors in ventrolateral orbital cortex contribute to the expression of morphine-induced behavioral sensitization in rats</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.57">
+                    <doi>10.1254/jphs.91.267</doi>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.58">
+                    <journal_title>Neurosci Lett</journal_title>
+                    <author>Zhang</author>
+                    <volume>571</volume>
+                    <first_page>61</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2014.04.048</doi>
+                    <article_title>Increased serum brain-derived neurotrophic factor levels during opiate withdrawal</article_title>
+                  </citation>
+                  <citation key="2016122917353591000_pyw107v4.59">
+                    <doi>10.1080/15592294.2016.1146850</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

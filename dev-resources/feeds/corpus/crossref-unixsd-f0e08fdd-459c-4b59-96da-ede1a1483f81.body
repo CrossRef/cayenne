@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1080/08870446.2016.1247841</doi>
+        <crm-item name="publisher-name" type="string">Informa UK Limited</crm-item>
+        <crm-item name="prefix-name" type="string">Informa UK (Taylor &amp; Francis)</crm-item>
+        <crm-item name="member-id" type="number">301</crm-item>
+        <crm-item name="citation-id" type="number">85932562</crm-item>
+        <crm-item name="journal-id" type="number">18014</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2017072003063100305</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1080</crm-item>
+        <crm-item name="last-update" type="date">2017-07-20T15:56:13Z</crm-item>
+        <crm-item name="created" type="date">2016-10-21T10:25:24Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Psychology &amp; Health</full_title>
+                <abbrev_title>Psychology &amp; Health</abbrev_title>
+                <issn media_type="print">0887-0446</issn>
+                <issn media_type="electronic">1476-8321</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>07</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>03</month>
+                  <day>04</day>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>32</volume>
+                </journal_volume>
+                <issue>3</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Unemployment as a chronic stressor: A systematic review of cortisol studies</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Rachel C.</given_name>
+                    <surname>Sumner</surname>
+                    <affiliation>School of Health &amp;amp; Social Care, University of Gloucestershire, Cheltenham, UK</affiliation>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Stephen</given_name>
+                    <surname>Gallagher</surname>
+                    <affiliation>Laboratory for the Study of Anxiety, Stress &amp;amp; Health (SASHLab), Department of Psychology, University of Limerick, Limerick, Republic of Ireland</affiliation>
+                    <affiliation>Health Research Institute, University of Limerick, Limerick, Republic of Ireland</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>21</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>03</month>
+                  <day>04</day>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>289</first_page>
+                  <last_page>311</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">2</item_number>
+                  <identifier id_type="doi">10.1080/08870446.2016.1247841</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1080/tandf_crossmark_01</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>www.tandfonline.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion name="peerreview_statement" label="Peer Review Statement" order="1">The publishing and review policy for this title is described in its Aims &amp; Scope.</assertion>
+                    <assertion name="aims_and_scope_url" label="Aim &amp; Scope" order="2" href="http://www.tandfonline.com/action/journalInformation?show=aimsScope&amp;journalCode=gpsh20">http://www.tandfonline.com/action/journalInformation?show=aimsScope&amp;journalCode=gpsh20</assertion>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="fundgroup">
+                        <fr:assertion name="funder_name">
+                          Irish Research Council
+                          <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100002081</fr:assertion>
+                        </fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1080/08870446.2016.1247841</doi>
+                  <resource>https://www.tandfonline.com/doi/full/10.1080/08870446.2016.1247841</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>https://www.tandfonline.com/doi/pdf/10.1080/08870446.2016.1247841</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="CIT0001">
+                    <doi>10.1007/s00038-015-0668-9</doi>
+                  </citation>
+                  <citation key="CIT0002">
+                    <doi>10.1159/000288412</doi>
+                  </citation>
+                  <citation key="CIT0003">
+                    <doi>10.1186/1475-9276-13-22</doi>
+                  </citation>
+                  <citation key="CIT0004">
+                    <doi>10.1136/jech.2008.077354</doi>
+                  </citation>
+                  <citation key="CIT0005">
+                    <doi>10.1162/154247606776014668</doi>
+                  </citation>
+                  <citation key="CIT0006">
+                    <doi>10.1016/0277-9536(87)90383-2</doi>
+                  </citation>
+                  <citation key="CIT0007">
+                    <doi>10.1016/j.jhealeco.2012.03.001</doi>
+                  </citation>
+                  <citation key="CIT0008">
+                    <doi>10.1016/j.biopsycho.2008.10.004</doi>
+                  </citation>
+                  <citation key="CIT0009">
+                    <doi>10.1086/345560</doi>
+                  </citation>
+                  <citation key="CIT0010">
+                    <doi>10.1080/02678379408259972</doi>
+                  </citation>
+                  <citation key="CIT0011">
+                    <doi>10.1097/PSY.0b013e31803139a6</doi>
+                  </citation>
+                  <citation key="CIT0012">
+                    <doi>10.1073/pnas.1118355109</doi>
+                  </citation>
+                  <citation key="CIT0013">
+                    <journal_title>Neuropsychiatrie</journal_title>
+                    <author>Cooper B.</author>
+                    <first_page>113</first_page>
+                    <volume>25</volume>
+                    <cYear>2011</cYear>
+                  </citation>
+                  <citation key="CIT0014">
+                    <doi>10.1080/00049530412331312954</doi>
+                  </citation>
+                  <citation key="CIT0015">
+                    <doi>10.1016/j.psyneuen.2010.04.006</doi>
+                  </citation>
+                  <citation key="CIT0016">
+                    <doi>10.1093/ije/dyp277</doi>
+                  </citation>
+                  <citation key="CIT0017">
+                    <doi>10.1111/j.1467-9515.2009.00697.x</doi>
+                  </citation>
+                  <citation key="CIT0018">
+                    <doi>10.1001/2013.jamainternmed.447</doi>
+                  </citation>
+                  <citation key="CIT0019">
+                    <doi>10.1016/j.psyneuen.2013.10.007</doi>
+                  </citation>
+                  <citation key="CIT0020">
+                    <doi>10.1016/j.psyneuen.2016.03.011</doi>
+                  </citation>
+                  <citation key="CIT0021">
+                    <doi>10.1016/j.socscimed.2012.01.034</doi>
+                  </citation>
+                  <citation key="CIT0022">
+                    <doi>10.1016/j.jhealeco.2010.12.005</doi>
+                  </citation>
+                  <citation key="CIT0023">
+                    <doi>10.1007/s00420-015-1059-5</doi>
+                  </citation>
+                  <citation key="CIT0024">
+                    <doi>10.1007/bf02688666</doi>
+                  </citation>
+                  <citation key="CIT0025">
+                    <doi>10.1007/bf02734094</doi>
+                  </citation>
+                  <citation key="CIT0026">
+                    <doi>10.1016/j.psyneuen.2011.09.011</doi>
+                  </citation>
+                  <citation key="CIT0027">
+                    <doi>10.1016/j.psyneuen.2012.10.007</doi>
+                  </citation>
+                  <citation key="CIT0028">
+                    <doi>10.1016/0277-9536(88)90200-6</doi>
+                  </citation>
+                  <citation key="CIT0029">
+                    <doi>10.3238/arztebl.2013.0413</doi>
+                  </citation>
+                  <citation key="CIT0030">
+                    <doi>10.1007/s10389-015-0685-4</doi>
+                  </citation>
+                  <citation key="CIT0031">
+                    <doi>10.1136/jech-2014-204404</doi>
+                  </citation>
+                  <citation key="CIT0032">
+                    <doi>10.1016/j.neubiorev.2009.10.002</doi>
+                  </citation>
+                  <citation key="CIT0033">
+                    <doi>10.1016/j.psyneuen.2005.07.002</doi>
+                  </citation>
+                  <citation key="CIT0034">
+                    <doi>10.1016/j.socscimed.2014.01.007</doi>
+                  </citation>
+                  <citation key="CIT0035">
+                    <doi>10.1016/0306-4530(94)00078-O</doi>
+                  </citation>
+                  <citation key="CIT0036">
+                    <doi>10.1016/j.psyneuen.2008.10.004</doi>
+                  </citation>
+                  <citation key="CIT0037">
+                    <doi>10.1016/S0277-9536(03)00347-2</doi>
+                  </citation>
+                  <citation key="CIT0038">
+                    <doi>10.2307/41344347</doi>
+                  </citation>
+                  <citation key="CIT0040">
+                    <doi>10.2105/AJPH.75.5.502</doi>
+                  </citation>
+                  <citation key="CIT0041">
+                    <doi>10.1007/s00420-005-0052-9</doi>
+                  </citation>
+                  <citation key="CIT0042">
+                    <doi>10.1177/0730888493020001001</doi>
+                  </citation>
+                  <citation key="CIT0043">
+                    <doi>10.1037/0021-9010.90.1.53</doi>
+                  </citation>
+                  <citation key="CIT0044">
+                    <doi>10.1037/0033-2909.133.1.25</doi>
+                  </citation>
+                  <citation key="CIT0045">
+                    <doi>10.3389/fpsyg.2015.01263</doi>
+                  </citation>
+                  <citation key="CIT0046">
+                    <doi>10.1097/00006842-199509000-00008</doi>
+                  </citation>
+                  <citation key="CIT0047">
+                    <doi>10.1016/j.jvb.2009.01.001</doi>
+                  </citation>
+                  <citation key="CIT0048">
+                    <doi>10.3109/10253890.2010.511352</doi>
+                  </citation>
+                  <citation key="CIT0049">
+                    <doi>10.1016/j.ijpsycho.2013.02.002</doi>
+                  </citation>
+                  <citation key="CIT0050">
+                    <doi>10.1037/0882-7974.18.2.250</doi>
+                  </citation>
+                  <citation key="CIT0051">
+                    <doi>10.1097/00006842-199903000-00012</doi>
+                  </citation>
+                  <citation key="CIT0052">
+                    <doi>10.1016/j.socscimed.2011.01.005</doi>
+                  </citation>
+                  <citation key="CIT0053">
+                    <doi>10.1037/0033-2909.130.4.601</doi>
+                  </citation>
+                  <citation key="CIT0054">
+                    <doi>10.2307/2786857</doi>
+                  </citation>
+                  <citation key="CIT0055">
+                    <doi>10.1016/S0306-4530(96)00039-X</doi>
+                  </citation>
+                  <citation key="CIT0056">
+                    <doi>10.1016/S0306-4530(98)00008-0</doi>
+                  </citation>
+                  <citation key="CIT0057">
+                    <doi>10.1177/0950017014563106</doi>
+                  </citation>
+                  <citation key="CIT0058">
+                    <doi>10.1210/jc.2013-1056</doi>
+                  </citation>
+                  <citation key="CIT0059">
+                    <doi>10.1016/j.psyneuen.2015.10.010</doi>
+                  </citation>
+                  <citation key="CIT0060">
+                    <doi>10.1016/j.psyneuen.2014.04.021</doi>
+                  </citation>
+                  <citation key="CIT0061">
+                    <doi>10.1016/j.joep.2010.11.002</doi>
+                  </citation>
+                  <citation key="CIT0062">
+                    <doi>10.1038/nrcardio.2012.45</doi>
+                  </citation>
+                  <citation key="CIT0063">
+                    <doi>10.1002/j.2161-1920.2015.00053.x</doi>
+                  </citation>
+                  <citation key="CIT0064">
+                    <doi>10.1007/s10198-014-0563-y</doi>
+                  </citation>
+                  <citation key="CIT0065">
+                    <doi>10.1007/s11205-012-0207-5</doi>
+                  </citation>
+                  <citation key="CIT0066">
+                    <doi>10.1348/096317907x263638</doi>
+                  </citation>
+                  <citation key="CIT0067">
+                    <doi>10.1348/096317906X104004</doi>
+                  </citation>
+                  <citation key="CIT0068">
+                    <doi>10.1002/joec.2002.39.issue-4</doi>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

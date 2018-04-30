@@ -9,10 +9,9 @@ Make sure you have these dependencies installed within your development environm
 
 - Java 7
 - Leiningen
-
-Plus, if you wish to build the docker container for deployment:
-
 - Docker
+
+The tests require Docker to spin up service dependencies on development machine (SOLR and MongoDB). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
 
 ### Preparing CSL Resources
 

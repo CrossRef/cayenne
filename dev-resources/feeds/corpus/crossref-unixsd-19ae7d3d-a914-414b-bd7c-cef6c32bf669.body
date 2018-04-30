@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1016/j.biopsycho.2016.12.010</doi>
+        <crm-item name="publisher-name" type="string">Elsevier BV</crm-item>
+        <crm-item name="prefix-name" type="string">Elsevier</crm-item>
+        <crm-item name="member-id" type="number">78</crm-item>
+        <crm-item name="citation-id" type="number">86868492</crm-item>
+        <crm-item name="journal-id" type="number">2166</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170131143525000</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1016</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T06:01:29Z</crm-item>
+        <crm-item name="created" type="date">2016-12-15T17:45:19Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Biological Psychology</full_title>
+                <abbrev_title>Biological Psychology</abbrev_title>
+                <issn media_type="print">03010511</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>123</volume>
+                </journal_volume>
+                <special_numbering>C</special_numbering>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The effect of cortisol on autobiographical memory retrieval depends on remoteness and valence of memories</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Juliane</given_name>
+                    <surname>Fleischer</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Juliane</given_name>
+                    <surname>Weber</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Julian</given_name>
+                    <surname>Hellmann-Regen</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Moritz</given_name>
+                    <surname>Düsenberg</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Oliver T.</given_name>
+                    <surname>Wolf</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Christian</given_name>
+                    <surname>Otte</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Katja</given_name>
+                    <surname>Wingenfeld</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>136</first_page>
+                  <last_page>140</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number item_number_type="sequence-number">S0301051116303738</item_number>
+                  <identifier id_type="pii">S0301051116303738</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_policy>10.1016/elsevier_cm_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>elsevier.com</domain>
+                    </crossmark_domain>
+                    <crossmark_domain>
+                      <domain>sciencedirect.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <assertion label="This article is maintained by " name="publisher">Elsevier</assertion>
+                    <assertion label="Article Title" name="articletitle">The effect of cortisol on autobiographical memory retrieval depends on remoteness and valence of memories</assertion>
+                    <assertion label="Journal Title" name="journaltitle">Biological Psychology</assertion>
+                    <assertion label="CrossRef DOI link to publisher maintained version" name="articlelink">http://dx.doi.org/10.1016/j.biopsycho.2016.12.010</assertion>
+                    <assertion label="Content Type" name="content_type">article</assertion>
+                    <assertion label="Copyright" name="copyright">© 2016 Elsevier B.V. All rights reserved.</assertion>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1016/j.biopsycho.2016.12.010</doi>
+                  <resource>http://linkinghub.elsevier.com/retrieve/pii/S0301051116303738</resource>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/plain">http://api.elsevier.com/content/article/PII:S0301051116303738?httpAccept=text/plain</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/xml">http://api.elsevier.com/content/article/PII:S0301051116303738?httpAccept=text/xml</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

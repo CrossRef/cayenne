@@ -1,3 +1,5 @@
 (ns cayenne.version)
 
-(def version "1.0.0")
+(def version (System/getProperty "cayenne.version"))
+(assert version "Failed to detect version.")
+

@@ -1,0 +1,629 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.3389/fnhum.2016.00627</doi>
+        <crm-item name="publisher-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="prefix-name" type="string">Frontiers Media SA</crm-item>
+        <crm-item name="member-id" type="number">1965</crm-item>
+        <crm-item name="citation-id" type="number">86738812</crm-item>
+        <crm-item name="journal-id" type="number">74878</crm-item>
+        <crm-item name="deposit-timestamp" type="number">201612080334</crm-item>
+        <crm-item name="owner-prefix" type="string">10.3389</crm-item>
+        <crm-item name="last-update" type="date">2016-12-08T08:54:24Z</crm-item>
+        <crm-item name="created" type="date">2016-12-08T08:54:23Z</crm-item>
+        <crm-item name="citedby-count" type="number">4</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata>
+                <full_title>Frontiers in Human Neuroscience</full_title>
+                <abbrev_title>Front. Hum. Neurosci.</abbrev_title>
+                <issn media_type="electronic">1662-5161</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>08</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>10</volume>
+                </journal_volume>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Effects of the Adult Attachment Projective Picture System on Oxytocin and Cortisol Blood Levels in Mothers</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Sabrina</given_name>
+                    <surname>Krause</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Dan</given_name>
+                    <surname>Pokorny</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Katharina</given_name>
+                    <surname>Schury</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Cornelia</given_name>
+                    <surname>Doyen-Waldecker</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Anna-Lena</given_name>
+                    <surname>Hulbert</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Alexander</given_name>
+                    <surname>Karabatsiakis</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Iris-Tatjana</given_name>
+                    <surname>Kolassa</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Harald</given_name>
+                    <surname>Gündel</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Christiane</given_name>
+                    <surname>Waller</surname>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Anna</given_name>
+                    <surname>Buchheim</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>08</day>
+                  <year>2016</year>
+                </publication_date>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.3389/crossmark-policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>frontiersin.org</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>true</crossmark_domain_exclusive>
+                </crossmark>
+                <doi_data>
+                  <doi>10.3389/fnhum.2016.00627</doi>
+                  <resource>http://journal.frontiersin.org/article/10.3389/fnhum.2016.00627/full</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://journal.frontiersin.org/article/10.3389/fnhum.2016.00627/full</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="B1">
+                    <volume_title>Patterns of Attachment: A Psychological Study of the Strange Situation.</volume_title>
+                    <author>Ainsworth</author>
+                    <cYear>1978</cYear>
+                  </citation>
+                  <citation key="B2">
+                    <journal_title>Psychosom. Med.</journal_title>
+                    <author>Altemus</author>
+                    <volume>63</volume>
+                    <first_page>814</first_page>
+                    <cYear>2001</cYear>
+                    <doi>10.1097/00006842-200109000-00015</doi>
+                    <article_title>Responses to laboratory psychosocial stress in postpartum women</article_title>
+                  </citation>
+                  <citation key="B3">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Atzil</author>
+                    <volume>36</volume>
+                    <first_page>2603</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1038/npp.2011.172</doi>
+                    <article_title>Specifying the neurobiological basis of human attachment: brain, hormones and behavior in synchronous and intrusive mothers</article_title>
+                  </citation>
+                  <citation key="B4">
+                    <journal_title>Psychol. Rep.</journal_title>
+                    <author>Behrens</author>
+                    <volume>108</volume>
+                    <first_page>993</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.2466/02.07.09.21.pr0.108.3.993-1010</doi>
+                    <article_title>Electroencephalographic responses to photographs: a case study of three women with distinct adult attachment interview classifications</article_title>
+                  </citation>
+                  <citation key="B5">
+                    <journal_title>Child Dev.</journal_title>
+                    <author>Beijersbergen</author>
+                    <volume>79</volume>
+                    <first_page>1707</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1111/j.1467-8624.2008.01220.x</doi>
+                    <article_title>Stress regulation in adolescents: physiological reactivity during the adult attachment interview and conflict interaction</article_title>
+                  </citation>
+                  <citation key="B7">
+                    <journal_title>Peptides</journal_title>
+                    <author>Bielsky</author>
+                    <volume>25</volume>
+                    <first_page>1565</first_page>
+                    <cYear>2004</cYear>
+                    <doi>10.1016/j.peptides.2004.05.019</doi>
+                    <article_title>Oxytocin, vasopressin and social recognition in mammals</article_title>
+                  </citation>
+                  <citation key="B8">
+                    <volume_title>Attachment and Loss.</volume_title>
+                    <author>Bowlby</author>
+                    <cYear>1969</cYear>
+                  </citation>
+                  <citation key="B9">
+                    <journal_title>Science</journal_title>
+                    <author>Braunstein</author>
+                    <volume>207</volume>
+                    <first_page>378</first_page>
+                    <cYear>1980</cYear>
+                    <doi>10.1126/science.6153132</doi>
+                    <article_title>Synthesis, transport and release of posterior pituitary hormones</article_title>
+                  </citation>
+                  <citation key="B10">
+                    <volume_title>Minnesota symposia for child development, Memory and affect</volume_title>
+                    <author>Bretherton</author>
+                    <first_page>237</first_page>
+                    <cYear>1993</cYear>
+                    <article_title>From dialogue to internal working models: the co-construction of self in relationships</article_title>
+                  </citation>
+                  <citation key="B12">
+                    <journal_title>Psychiatry Res.</journal_title>
+                    <author>Buchheim</author>
+                    <volume>163</volume>
+                    <first_page>223</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.pscychresns.2007.07.001</doi>
+                    <article_title>Neural correlates of attachment trauma in borderline personality disorder: a functional magnetic resonance imaging study</article_title>
+                  </citation>
+                  <citation key="B13">
+                    <journal_title>Psychopathology</journal_title>
+                    <author>Buchheim</author>
+                    <volume>39</volume>
+                    <first_page>144</first_page>
+                    <cYear>2006a</cYear>
+                    <doi>10.1159/000091800</doi>
+                    <article_title>Measuring attachment representation in an fMRI environment: a pilot study</article_title>
+                  </citation>
+                  <citation key="B300">
+                    <volume_title>Disorganized Attachment and Caregiving</volume_title>
+                    <author>Buchheim</author>
+                    <first_page>343</first_page>
+                    <cYear>2011</cYear>
+                    <article_title>Attachment disorganization in borderline personality disorder and anxiety disorder</article_title>
+                  </citation>
+                  <citation key="B14">
+                    <journal_title>Psychopathology</journal_title>
+                    <author>Buchheim</author>
+                    <volume>39</volume>
+                    <first_page>136</first_page>
+                    <cYear>2006b</cYear>
+                    <doi>10.1159/000091799</doi>
+                    <article_title>Measuring adult attachment representation in an fMRI environment: concepts and assessment</article_title>
+                  </citation>
+                  <citation key="B15">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Buchheim</author>
+                    <volume>34</volume>
+                    <first_page>1417</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.psyneuen.2009.04.002</doi>
+                    <article_title>Oxytocin enhances the experience of attachment security</article_title>
+                  </citation>
+                  <citation key="B11">
+                    <journal_title>PLoS One</journal_title>
+                    <author>Buchheim</author>
+                    <volume>7</volume>
+                    <first_page>e33745</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1371/journal.pone.0033745</doi>
+                    <article_title>Changes in prefrontal-limbic function in major depression after 15 months of long-term psychotherapy</article_title>
+                  </citation>
+                  <citation key="B16">
+                    <journal_title>Pers. Relationship.</journal_title>
+                    <author>Carpenter</author>
+                    <volume>3</volume>
+                    <first_page>351</first_page>
+                    <cYear>1996</cYear>
+                    <doi>10.1111/j.1475-6811.1996.tb00121.x</doi>
+                    <article_title>Attachment style and presence of a romantic partner as moderators of psychophysiological responses to a stressful laboratory situation</article_title>
+                  </citation>
+                  <citation key="B17">
+                    <journal_title>Psychosom. Med.</journal_title>
+                    <author>Cyranowski</author>
+                    <volume>70</volume>
+                    <first_page>967</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1097/PSY.0b013e318188ade4</doi>
+                    <article_title>Evidence of dysregulated peripheral oxytocin release among depressed women</article_title>
+                  </citation>
+                  <citation key="B18">
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <author>Dan</author>
+                    <volume>91</volume>
+                    <first_page>212</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.biopsycho.2012.06.003</doi>
+                    <article_title>Adult attachment and emotional processing biases: an event-related potentials (ERPs) study</article_title>
+                  </citation>
+                  <citation key="B19">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Ditzen</author>
+                    <volume>32</volume>
+                    <first_page>565</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.psyneuen.2007.03.011</doi>
+                    <article_title>Effects of different kinds of couple interaction on cortisol and heart rate responses to stress in women</article_title>
+                  </citation>
+                  <citation key="B20">
+                    <journal_title>J. Psychosom. Res.</journal_title>
+                    <author>Ditzen</author>
+                    <volume>64</volume>
+                    <first_page>479</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.jpsychores.2007.11.011</doi>
+                    <article_title>Adult attachment and social support interact to reduce psychological but not cortisol responses to stress</article_title>
+                  </citation>
+                  <citation key="B21">
+                    <journal_title>Child Dev.</journal_title>
+                    <author>Dozier</author>
+                    <volume>63</volume>
+                    <first_page>1473</first_page>
+                    <cYear>1992</cYear>
+                    <doi>10.2307/1131569</doi>
+                    <article_title>Psychophysiology in attachment interviews: converging evidence for deactivating strategies</article_title>
+                  </citation>
+                  <citation key="B22">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Engert</author>
+                    <volume>74</volume>
+                    <first_page>111</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.08.029</doi>
+                    <article_title>Boosting recovery rather than buffering reactivity: higher stress-induced oxytocin secretion is associated with increased cortisol reactivity and faster vagal recovery after acute psychosocial stress</article_title>
+                  </citation>
+                  <citation key="B24">
+                    <journal_title>Neuropsychopharmacology</journal_title>
+                    <author>Feldman</author>
+                    <volume>38</volume>
+                    <first_page>1154</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1038/npp.2013.22</doi>
+                    <article_title>Parental oxytocin and early caregiving jointly shape children’s oxytocin response and social reciprocity</article_title>
+                  </citation>
+                  <citation key="B25">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Feldman</author>
+                    <volume>35</volume>
+                    <first_page>1133</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1016/j.psyneuen.2010.01.013</doi>
+                    <article_title>Natural variations in maternal and paternal care are associated with systematic changes in oxytocin following parent-infant contact</article_title>
+                  </citation>
+                  <citation key="B23">
+                    <journal_title>Dev. Sci.</journal_title>
+                    <author>Feldman</author>
+                    <volume>14</volume>
+                    <first_page>752</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1111/j.1467-7687.2010.01021.x</doi>
+                    <article_title>Maternal and paternal plasma, salivary and urinary oxytocin and parent-infant synchrony: considering stress and affiliation components of human bonding</article_title>
+                  </citation>
+                  <citation key="B26">
+                    <journal_title>Attach. Hum. Dev.</journal_title>
+                    <author>Fraedrich</author>
+                    <volume>12</volume>
+                    <first_page>231</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1080/14616731003759724</doi>
+                    <article_title>Brain activity during emotion perception: the role of attachment representation</article_title>
+                  </citation>
+                  <citation key="B27">
+                    <journal_title>Front. Hum. Neurosci.</journal_title>
+                    <author>Gander</author>
+                    <volume>9</volume>
+                    <first_page>79</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.3389/fnhum.2015.00079</doi>
+                    <article_title>Attachment classification, psychophysiology and frontal EEG asymmetry across the lifespan: a review</article_title>
+                  </citation>
+                  <citation key="B28">
+                    <journal_title>Infant Ment. Health J.</journal_title>
+                    <author>George</author>
+                    <volume>17</volume>
+                    <first_page>198</first_page>
+                    <cYear>1996</cYear>
+                    <doi>10.1002/(SICI)1097-0355(199623)17:3198::AID-IMHJ23.0.CO;2-L</doi>
+                    <article_title>Representational models of relationships: links between caregiving and attachment</article_title>
+                  </citation>
+                  <citation key="B29">
+                    <volume_title>Handbook of Attachment: Theory, Research and Clinical Application</volume_title>
+                    <author>George</author>
+                    <first_page>833</first_page>
+                    <cYear>2008</cYear>
+                    <article_title>The caregiving behavioral system: A behavioral system approach to parenting</article_title>
+                  </citation>
+                  <citation key="B30">
+                    <journal_title>Attach. Hum. Dev.</journal_title>
+                    <author>George</author>
+                    <volume>3</volume>
+                    <first_page>30</first_page>
+                    <cYear>2001</cYear>
+                    <doi>10.1080/14616730010024771</doi>
+                    <article_title>The development and preliminary validation of a new measure of adult attachment: the adult attachment projective</article_title>
+                  </citation>
+                  <citation key="B31">
+                    <volume_title>The Adult Attachment Projective Picture System: Attachment Theory and Assessment in Adults.</volume_title>
+                    <author>George</author>
+                    <cYear>2012</cYear>
+                  </citation>
+                  <citation key="B32">
+                    <journal_title>Physiol. Rev.</journal_title>
+                    <author>Gimpl</author>
+                    <volume>81</volume>
+                    <first_page>629</first_page>
+                    <cYear>2001</cYear>
+                    <article_title>The oxytocin receptor system: structure, function and regulation</article_title>
+                  </citation>
+                  <citation key="B33">
+                    <journal_title>Physiol. Behav.</journal_title>
+                    <author>Gordon</author>
+                    <volume>101</volume>
+                    <first_page>679</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1016/j.physbeh.2010.08.008</doi>
+                    <article_title>Oxytocin, cortisol and triadic family interactions</article_title>
+                  </citation>
+                  <citation key="B34">
+                    <journal_title>Biol. Psychiatry</journal_title>
+                    <author>Heinrichs</author>
+                    <volume>54</volume>
+                    <first_page>1389</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1016/s0006-3223(03)00465-7</doi>
+                    <article_title>Social support and oxytocin interact to suppress cortisol and subjective responses to psychosocial stress</article_title>
+                  </citation>
+                  <citation key="B35">
+                    <journal_title>Dev. Psychol.</journal_title>
+                    <author>Holland</author>
+                    <volume>46</volume>
+                    <first_page>552</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1037/a0018542</doi>
+                    <article_title>Adult attachment security and young adults’ dating relationships over time: self-reported, observational and physiological evidence</article_title>
+                  </citation>
+                  <citation key="B37">
+                    <journal_title>J. Neurosci.</journal_title>
+                    <author>Hurlemann</author>
+                    <volume>30</volume>
+                    <first_page>4999</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1523/JNEUROSCI.5538-09.2010</doi>
+                    <article_title>Oxytocin enhances amygdala-dependent, socially reinforced learning and emotional empathy in humans</article_title>
+                  </citation>
+                  <citation key="B38">
+                    <journal_title>Behav. Brain Sci.</journal_title>
+                    <author>Insel</author>
+                    <volume>15</volume>
+                    <first_page>515</first_page>
+                    <cYear>1992</cYear>
+                    <doi>10.1017/S0140525X00069818</doi>
+                    <article_title>Oxytocin and the neurobiology of attachment</article_title>
+                  </citation>
+                  <citation key="B39">
+                    <journal_title>J. Child Custody</journal_title>
+                    <author>Isaacs</author>
+                    <volume>6</volume>
+                    <first_page>139</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1080/15379410902894882</doi>
+                    <article_title>Utilizing attachment measures in custody evaluations: incremental validity</article_title>
+                  </citation>
+                  <citation key="B41">
+                    <journal_title>Personal Relationships</journal_title>
+                    <author>Kim</author>
+                    <volume>13</volume>
+                    <first_page>103</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1111/j.1475-6811.2006.00107.x</doi>
+                    <article_title>Gender, attachment and relationship duration on cardiovascular reactivity to stress in a laboratory study of dating couples</article_title>
+                  </citation>
+                  <citation key="B42">
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <author>Kiss</author>
+                    <volume>88</volume>
+                    <first_page>223</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.biopsycho.2011.08.005</doi>
+                    <article_title>Cd 38 expression, attachment style and habituation of arousal in relation to trust-related oxytocin release</article_title>
+                  </citation>
+                  <citation key="B43">
+                    <journal_title>Nature</journal_title>
+                    <author>Kosfeld</author>
+                    <volume>435</volume>
+                    <first_page>673</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1038/nature03701</doi>
+                    <article_title>Oxytocin increases trust in humans</article_title>
+                  </citation>
+                  <citation key="B44">
+                    <journal_title>Biol. Psychol.</journal_title>
+                    <author>Laurent</author>
+                    <volume>76</volume>
+                    <first_page>61</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1016/j.biopsycho.2007.06.002</doi>
+                    <article_title>Emotion regulation in emerging adult couples: temperament, attachment and HPA response to conflict</article_title>
+                  </citation>
+                  <citation key="B46">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Lischke</author>
+                    <volume>37</volume>
+                    <first_page>1431</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.psyneuen.2012.01.011</doi>
+                    <article_title>Oxytocin increases amygdala reactivity to threatening scenes in females</article_title>
+                  </citation>
+                  <citation key="B47">
+                    <journal_title>Monogr. Soc. Res. Child Dev.</journal_title>
+                    <author>Main</author>
+                    <volume>50</volume>
+                    <first_page>66</first_page>
+                    <cYear>1985</cYear>
+                    <doi>10.2307/3333827</doi>
+                    <article_title>Security in infancy, childhood and adulthood: a move to the level of representation</article_title>
+                  </citation>
+                  <citation key="B48">
+                    <journal_title>Nat. Rev. Neurosci.</journal_title>
+                    <author>Meyer-Lindenberg</author>
+                    <volume>12</volume>
+                    <first_page>524</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1038/nrn3044</doi>
+                    <article_title>Oxytocin and vasopressin in the human brain: social neuropeptides for translational medicine</article_title>
+                  </citation>
+                  <citation key="B49">
+                    <journal_title>Trends Neurosci</journal_title>
+                    <author>Neumann</author>
+                    <volume>35</volume>
+                    <first_page>649</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.tins.2012.08.004</doi>
+                    <article_title>Balance of brain oxytocin and vasopressin: implications for anxiety, depression and social behaviors</article_title>
+                  </citation>
+                  <citation key="B50">
+                    <journal_title>BMJ Open</journal_title>
+                    <author>Ortells-Abuye</author>
+                    <volume>4</volume>
+                    <first_page>e004250</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1136/bmjopen-2013-004250</doi>
+                    <article_title>A cross-sectional study to compare two blood collection methods: direct venous puncture and peripheral venous catheter</article_title>
+                  </citation>
+                  <citation key="B51">
+                    <journal_title>Genes Brain Behav.</journal_title>
+                    <author>Pedersen</author>
+                    <volume>5</volume>
+                    <first_page>274</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1111/j.1601-183x.2005.00162.x</doi>
+                    <article_title>Maternal behavior deficits in nulliparous oxytocin knockout mice</article_title>
+                  </citation>
+                  <citation key="B52">
+                    <journal_title>Attach. Hum. Dev.</journal_title>
+                    <author>Pierrehumbert</author>
+                    <volume>14</volume>
+                    <first_page>453</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1080/14616734.2012.706394</doi>
+                    <article_title>Adult attachment representations predict cortisol and oxytocin responses to stress</article_title>
+                  </citation>
+                  <citation key="B53">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Quirin</author>
+                    <volume>33</volume>
+                    <first_page>581</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.psyneuen.2008.01.013</doi>
+                    <article_title>Hpa system regulation and adult attachment anxiety: individual differences in reactive and awakening cortisol</article_title>
+                  </citation>
+                  <citation key="B301">
+                    <journal_title>J. Psychosom. Res.</journal_title>
+                    <author>Ravitz</author>
+                    <volume>69</volume>
+                    <first_page>419</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.10.1016/j.jpsychores.2009.08.006</doi>
+                    <article_title>Adult attachment measures: a 25-year review</article_title>
+                  </citation>
+                  <citation key="B54">
+                    <journal_title>J. Couns. Psychol.</journal_title>
+                    <author>Rochman</author>
+                    <volume>55</volume>
+                    <first_page>505</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1037/a0013720</doi>
+                    <article_title>Unresolved anger and sadness: Identifying vocal acoustical correlates</article_title>
+                  </citation>
+                  <citation key="B55">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>Ross</author>
+                    <volume>162</volume>
+                    <first_page>892</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1016/j.neuroscience.2009.05.055</doi>
+                    <article_title>Characterization of the oxytocin system regulating affiliative behavior in female prairie voles</article_title>
+                  </citation>
+                  <citation key="B56">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Salonia</author>
+                    <volume>47</volume>
+                    <first_page>164</first_page>
+                    <cYear>2005</cYear>
+                    <doi>10.1016/j.yhbeh.2004.10.002</doi>
+                    <article_title>Menstrual cycle-related changes in plasma oxytocin are relevant to normal sexual function in healthy women</article_title>
+                  </citation>
+                  <citation key="B58">
+                    <journal_title>J. Neuroendocrinol.</journal_title>
+                    <author>Strathearn</author>
+                    <volume>23</volume>
+                    <first_page>1054</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1111/j.1365-2826.2011.02228.x</doi>
+                    <article_title>Maternal neglect: oxytocin, dopamine and the neurobiology of attachment</article_title>
+                  </citation>
+                  <citation key="B59">
+                    <journal_title>Horm. Behav.</journal_title>
+                    <author>Strathearn</author>
+                    <volume>61</volume>
+                    <first_page>429</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.yhbeh.2012.01.014</doi>
+                    <article_title>Maternal oxytocin response during mother-infant interaction: associations with adult temperament</article_title>
+                  </citation>
+                  <citation key="B60">
+                    <journal_title>Psychophysiology</journal_title>
+                    <author>Tops</author>
+                    <volume>44</volume>
+                    <first_page>444</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1111/j.1469-8986.2007.00510.x</doi>
+                    <article_title>Anxiety, cortisol and attachment predict plasma oxytocin</article_title>
+                  </citation>
+                  <citation key="B61">
+                    <journal_title>Front. Hum. Neurosci.</journal_title>
+                    <author>Vrtička</author>
+                    <volume>6</volume>
+                    <first_page>212</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.3389/fnhum.2012.00212</doi>
+                    <article_title>Neuroscience of human social interactions and adult attachment style</article_title>
+                  </citation>
+                  <citation key="B62">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>Waller</author>
+                    <volume>62</volume>
+                    <first_page>27</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1016/j.psyneuen.2015.07.003</doi>
+                    <article_title>Attachment representation modulates oxytocin effects on the processing of own-child faces in fathers</article_title>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

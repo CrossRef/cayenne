@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1021/acschemneuro.6b00308</doi>
+        <crm-item name="publisher-name" type="string">American Chemical Society (ACS)</crm-item>
+        <crm-item name="prefix-name" type="string">American Chemical Society</crm-item>
+        <crm-item name="member-id" type="number">316</crm-item>
+        <crm-item name="citation-id" type="number">86841403</crm-item>
+        <crm-item name="journal-id" type="number">89085</crm-item>
+        <crm-item name="deposit-timestamp" type="number">2018010307415800267</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1021</crm-item>
+        <crm-item name="last-update" type="date">2018-01-03T12:44:56Z</crm-item>
+        <crm-item name="created" type="date">2016-12-14T15:42:38Z</crm-item>
+        <crm-item name="citedby-count" type="number">3</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>ACS Chemical Neuroscience</full_title>
+                <abbrev_title>ACS Chem. Neurosci.</abbrev_title>
+                <issn media_type="print">1948-7193</issn>
+                <issn media_type="electronic">1948-7193</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>19</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <day>15</day>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>8</volume>
+                </journal_volume>
+                <issue>2</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>High-Fat-Diet-Induced Deficits in Dopamine Terminal Function Are Reversed by Restoring Insulin Signaling</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Steve C.</given_name>
+                    <surname>Fordahl</surname>
+                    <affiliation>Department of Physiology&#xD;and Pharmacology, Wake Forest School of Medicine, Winston-Salem, North Carolina 27157, United States</affiliation>
+                    <ORCID authenticated="true">http://orcid.org/0000-0002-7093-6774</ORCID>
+                  </person_name>
+                  <person_name sequence="additional" contributor_role="author">
+                    <given_name>Sara R.</given_name>
+                    <surname>Jones</surname>
+                    <affiliation>Department of Physiology&#xD;and Pharmacology, Wake Forest School of Medicine, Winston-Salem, North Carolina 27157, United States</affiliation>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>01</month>
+                  <day>03</day>
+                  <year>2017</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>02</month>
+                  <day>15</day>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>290</first_page>
+                  <last_page>299</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="doi">10.1021/acschemneuro.6b00308</identifier>
+                </publisher_item>
+                <ns3:program xmlns:ns3="http://www.crossref.org/fundref.xsd" name="fundref">
+                  <ns3:assertion name="fundgroup">
+                    <ns3:assertion name="funder_name">
+                      National Institute on Alcohol Abuse and Alcoholism
+                      <ns3:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000027</ns3:assertion>
+                    </ns3:assertion>
+                    <ns3:assertion name="award_number">AA0014091</ns3:assertion>
+                    <ns3:assertion name="award_number">AA021099</ns3:assertion>
+                  </ns3:assertion>
+                  <ns3:assertion name="fundgroup">
+                    <ns3:assertion name="funder_name">
+                      National Institute on Drug Abuse
+                      <ns3:assertion name="funder_identifier">http://dx.doi.org/10.13039/100000026</ns3:assertion>
+                    </ns3:assertion>
+                    <ns3:assertion name="award_number">DA006634</ns3:assertion>
+                    <ns3:assertion name="award_number">DA021325</ns3:assertion>
+                    <ns3:assertion name="award_number">DA030161</ns3:assertion>
+                  </ns3:assertion>
+                </ns3:program>
+                <doi_data>
+                  <doi>10.1021/acschemneuro.6b00308</doi>
+                  <resource>http://pubs.acs.org/doi/10.1021/acschemneuro.6b00308</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://pubs.acs.org/doi/pdf/10.1021/acschemneuro.6b00308</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

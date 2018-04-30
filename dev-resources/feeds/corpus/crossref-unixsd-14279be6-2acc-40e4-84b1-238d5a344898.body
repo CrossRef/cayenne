@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1038/srep38686</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer Nature</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">86702267</crm-item>
+        <crm-item name="journal-id" type="number">134905</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20170312043114300</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1038</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T05:19:52Z</crm-item>
+        <crm-item name="created" type="date">2016-12-06T10:21:08Z</crm-item>
+        <crm-item name="citedby-count" type="number">1</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Scientific Reports</full_title>
+                <abbrev_title>Sci Rep</abbrev_title>
+                <issn media_type="electronic">2045-2322</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>6</volume>
+                </journal_volume>
+                <issue>1</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Social determinants of eyeblinks in adult male macaques</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Sébastien</given_name>
+                    <surname>Ballesta</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Clayton P.</given_name>
+                    <surname>Mosher</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jeno</given_name>
+                    <surname>Szep</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Kate D.</given_name>
+                    <surname>Fischl</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Katalin M.</given_name>
+                    <surname>Gothard</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>12</month>
+                  <day>6</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>12</month>
+                  <year>2016</year>
+                </publication_date>
+                <publisher_item>
+                  <item_number item_number_type="article-number">38686</item_number>
+                  <identifier id_type="pii">BFsrep38686</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://www.springer.com/tdm</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1038/srep38686</doi>
+                  <timestamp>20170312043114300</timestamp>
+                  <resource>http://www.nature.com/articles/srep38686</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/srep38686.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="application/pdf">http://www.nature.com/articles/srep38686.pdf</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="text/html">http://www.nature.com/articles/srep38686</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="BFsrep38686_CR1">
+                    <journal_title>Br. J. Ophthalmol.</journal_title>
+                    <author>A Hall</author>
+                    <volume>29</volume>
+                    <first_page>445</first_page>
+                    <cYear>1945</cYear>
+                    <doi>10.1136/bjo.29.9.445</doi>
+                    <unstructured_citation>Hall, A. The origin and purposes of blinking. Br. J. Ophthalmol. 29, 445–467 (1945).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR2">
+                    <journal_title>Br. J. Ophthalmol.</journal_title>
+                    <author>RG Linton</author>
+                    <volume>45</volume>
+                    <first_page>718</first_page>
+                    <cYear>1961</cYear>
+                    <doi>10.1136/bjo.45.11.718</doi>
+                    <unstructured_citation>Linton, R. G., Curnow, D. H. &amp; Riley, W. J. The meibomian glands: an investigation into the secretion and some aspects of the physiology. Br. J. Ophthalmol. 45, 718–723 (1961).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR3">
+                    <journal_title>Cornea</journal_title>
+                    <author>DR Korb</author>
+                    <volume>13</volume>
+                    <first_page>354</first_page>
+                    <cYear>1994</cYear>
+                    <doi>10.1097/00003226-199407000-00012</doi>
+                    <unstructured_citation>Korb, D. R. et al. Tear film lipid layer thickness as a function of blinking. Cornea 13, 354–359 (1994).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR4">
+                    <journal_title>Ocul. Surf.</journal_title>
+                    <author>AAV Cruz</author>
+                    <volume>9</volume>
+                    <first_page>29</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/S1542-0124(11)70007-6</doi>
+                    <unstructured_citation>Cruz, A. A. V., Garcia, D. M., Pinto, C. T. &amp; Cechetti, S. P. Spontaneous Eyeblink Activity. Ocul. Surf. 9, 29–41 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR5">
+                    <journal_title>Percept. Mot. Skills</journal_title>
+                    <author>MK Holland</author>
+                    <volume>41</volume>
+                    <first_page>503</first_page>
+                    <cYear>1975</cYear>
+                    <doi>10.2466/pms.1975.41.2.403</doi>
+                    <unstructured_citation>Holland, M. K. &amp; Tarlow, G. Blinking and thinking. Percept. Mot. Skills 41, 503–506 (1975).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR6">
+                    <journal_title>Mov. Disord. Off. J. Mov. Disord. Soc</journal_title>
+                    <author>AR Bentivoglio</author>
+                    <volume>12</volume>
+                    <first_page>1028</first_page>
+                    <cYear>1997</cYear>
+                    <doi>10.1002/mds.870120629</doi>
+                    <unstructured_citation>Bentivoglio, A. R. et al. Analysis of blink rate patterns in normal subjects. Mov. Disord. Off. J. Mov. Disord. Soc. 12, 1028–1034 (1997).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR7">
+                    <unstructured_citation>Boehm-Davis, D. A., Gray, W. D. &amp; Schoelles, M. J. The Eye Blink as a Physiological Indicator of Cognitive Workload. Proc. Hum. Factors Ergon. Soc. Annu. Meet. 44, 6-116-6–119 (2000).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR8">
+                    <journal_title>Aviat. Space Environ. Med.</journal_title>
+                    <author>Y-F Tsai</author>
+                    <volume>78</volume>
+                    <first_page>B176</first_page>
+                    <cYear>2007</cYear>
+                    <unstructured_citation>Tsai, Y.-F., Viirre, E., Strychacz, C., Chase, B. &amp; Jung, T.-P. Task Performance and Eye Activity: Predicting Behavior Relating to Cognitive Workload. Aviat. Space Environ. Med. 78, B176–B185 (2007).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR9">
+                    <journal_title>Hum. Mov. Sci.</journal_title>
+                    <author>J Oh</author>
+                    <volume>31</volume>
+                    <first_page>1353</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1016/j.humov.2012.06.003</doi>
+                    <unstructured_citation>Oh, J., Jeong, S.-Y. &amp; Jeong, J. The timing and temporal patterns of eye blinking are dynamically modulated by attention. Hum. Mov. Sci. 31, 1353–1365 (2012).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR10">
+                    <journal_title>Lang. Cogn. Process</journal_title>
+                    <author>F Cummins</author>
+                    <volume>27</volume>
+                    <first_page>1525</first_page>
+                    <cYear>2012</cYear>
+                    <doi>10.1080/01690965.2011.615220</doi>
+                    <unstructured_citation>Cummins, F. Gaze and blinking in dyadic conversation: A study in coordinated behaviour among individuals. Lang. Cogn. Process. 27, 1525–1549 (2012).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR11">
+                    <doi provider="crossref">10.1073/pnas.1504454112</doi>
+                    <unstructured_citation>Ballesta, S. &amp; Duhamel, J.-R. Rudimentary empathy in macaques’ social decision-making. Proc. Natl. Acad. Sci. 201504454 (2015).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR12">
+                    <journal_title>Leg. Criminol. Psychol</journal_title>
+                    <author>A Vrij</author>
+                    <volume>11</volume>
+                    <first_page>297</first_page>
+                    <cYear>2006</cYear>
+                    <doi>10.1348/135532505X60816</doi>
+                    <unstructured_citation>Vrij, A., Akehurst, L. &amp; Knight, S. Police officers’, social workers’, teachers’ and the general public’s beliefs about deception in children, adolescents and adults. Leg. Criminol. Psychol. 11, 297–312 (2006).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR13">
+                    <unstructured_citation>Takashima, K. et al. Effects of Avatar’s Blinking Animation on Person Impressions. In Proceedings of Graphics Interface 2008, 169–176 (Canadian Information Processing Society, 2008).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR14">
+                    <journal_title>Soc. Behav. Personal. Int. J</journal_title>
+                    <author>Y Omori</author>
+                    <volume>29</volume>
+                    <first_page>159</first_page>
+                    <cYear>2001</cYear>
+                    <doi>10.2224/sbp.2001.29.2.159</doi>
+                    <unstructured_citation>Omori, Y. &amp; Miyata, Y. Estimates of impressions based on frequency of blinking. Soc. Behav. Personal. Int. J. 29, 159–167 (2001).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR15">
+                    <journal_title>Exp. Brain Res.</journal_title>
+                    <author>T Nakano</author>
+                    <volume>205</volume>
+                    <first_page>577</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1007/s00221-010-2387-z</doi>
+                    <unstructured_citation>Nakano, T. &amp; Kitazawa, S. Eyeblink entrainment at breakpoints of speech. Exp. Brain Res. 205, 577–581 (2010).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR16">
+                    <journal_title>Neuropsychologia</journal_title>
+                    <author>T Nakano</author>
+                    <volume>49</volume>
+                    <first_page>2784</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1016/j.neuropsychologia.2011.06.007</doi>
+                    <unstructured_citation>Nakano, T., Kato, N. &amp; Kitazawa, S. Lack of eyeblink entrainments in autism spectrum disorders. Neuropsychologia 49, 2784–2790 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR17">
+                    <journal_title>Eur. J. Neurosci.</journal_title>
+                    <author>A Mandel</author>
+                    <volume>42</volume>
+                    <first_page>2508</first_page>
+                    <cYear>2015</cYear>
+                    <doi>10.1111/ejn.13011</doi>
+                    <unstructured_citation>Mandel, A., Helokunnas, S., Pihko, E. &amp; Hari, R. Brain responds to another person’s eye blinks in a natural setting—the more empathetic the viewer the stronger the responses. Eur. J. Neurosci. 42, 2508–2514 (2015).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR18">
+                    <journal_title>Primates</journal_title>
+                    <author>JP Capitanio</author>
+                    <volume>43</volume>
+                    <first_page>169</first_page>
+                    <cYear>2002</cYear>
+                    <doi>10.1007/BF02629645</doi>
+                    <unstructured_citation>Capitanio, J. P. Sociability and responses to video playbacks in adult male rhesus monkeys (Macaca mulatta). Primates 43, 169–177 (2002).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR19">
+                    <journal_title>Behav. Neurosci.</journal_title>
+                    <author>CP Mosher</author>
+                    <volume>125</volume>
+                    <first_page>639</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1037/a0024264</doi>
+                    <unstructured_citation>Mosher, C. P., Zimmerman, P. E. &amp; Gothard, K. M. Videos of conspecifics elicit interactive looking patterns and facial expressions in monkeys. Behav. Neurosci. 125, 639–652 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR20">
+                    <journal_title>Curr. Biol. CB</journal_title>
+                    <author>CP Mosher</author>
+                    <volume>24</volume>
+                    <first_page>2459</first_page>
+                    <cYear>2014</cYear>
+                    <doi>10.1016/j.cub.2014.08.063</doi>
+                    <unstructured_citation>Mosher, C. P., Zimmerman, P. E. &amp; Gothard, K. M. Neurons in the Monkey Amygdala Detect Eye Contact during Naturalistic Social Interactions. Curr. Biol. CB 24, 2459–2464 (2014).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR21">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>PT Putnam</author>
+                    <volume>72</volume>
+                    <first_page>47</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1016/j.psyneuen.2016.05.016</doi>
+                    <unstructured_citation>Putnam, P. T., Roman, J. M., Zimmerman, P. E. &amp; Gothard, K. M. Oxytocin enhances gaze-following responses to videos of natural social behavior in adult male rhesus monkeys. Psychoneuroendocrinology 72, 47–53 (2016).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR22">
+                    <journal_title>PLoS One</journal_title>
+                    <author>CJ Machado</author>
+                    <volume>6</volume>
+                    <first_page>e26598</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1371/journal.pone.0026598</doi>
+                    <unstructured_citation>Machado, C. J., Bliss-Moreau, E., Platt, M. L. &amp; Amaral, D. G. Social and Nonsocial Content Differentially Modulates Visual Attention and Autonomic Arousal in Rhesus Macaques. PLoS One 6, e26598 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR23">
+                    <journal_title>J. Neurophysiol.</journal_title>
+                    <author>F VanderWerf</author>
+                    <volume>89</volume>
+                    <first_page>2784</first_page>
+                    <cYear>2003</cYear>
+                    <doi>10.1152/jn.00557.2002</doi>
+                    <unstructured_citation>VanderWerf, F., Brassinga, P., Reits, D., Aramideh, M. &amp; Ongerboer de Visser, B. Eyelid movements: behavioral studies of blinking in humans under different stimulus conditions. J. Neurophysiol. 89, 2784–2796 (2003).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR24">
+                    <journal_title>Proc. Natl. Acad. Sci</journal_title>
+                    <author>S Shultz</author>
+                    <volume>108</volume>
+                    <first_page>21270</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.1073/pnas.1109304108</doi>
+                    <unstructured_citation>Shultz, S., Klin, A. &amp; Jones, W. Inhibition of eye blinking reveals subjective perceptions of stimulus salience. Proc. Natl. Acad. Sci. 108, 21270–21275 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR25">
+                    <journal_title>Mem. Cognit.</journal_title>
+                    <author>A Vredeveldt</author>
+                    <volume>39</volume>
+                    <first_page>1253</first_page>
+                    <cYear>2011</cYear>
+                    <doi>10.3758/s13421-011-0098-8</doi>
+                    <unstructured_citation>Vredeveldt, A., Hitch, G. J. &amp; Baddeley, A. D. Eye closure helps memory by reducing cognitive load and enhancing visualisation. Mem. Cognit. 39, 1253–1263 (2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR26">
+                    <unstructured_citation>Nash, R. A., Nash, A., Morris, A. &amp; Smith, S. L. Does rapport-building boost the eyewitness eyeclosure effect in closed questioning? Leg. Criminol. Psychol. n/a-n/a (2015).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR27">
+                    <journal_title>Proc. R. Soc. B Biol. Sci</journal_title>
+                    <author>T Nakano</author>
+                    <volume>276</volume>
+                    <first_page>3635</first_page>
+                    <cYear>2009</cYear>
+                    <doi>10.1098/rspb.2009.0828</doi>
+                    <unstructured_citation>Nakano, T., Yamamoto, Y., Kitajo, K., Takahashi, T. &amp; Kitazawa, S. Synchronization of spontaneous eyeblinks while viewing video stories. Proc. R. Soc. B Biol. Sci. 276, 3635–3644 (2009).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR28">
+                    <journal_title>Neuropsychologia</journal_title>
+                    <author>JK Hietanen</author>
+                    <volume>46</volume>
+                    <first_page>2423</first_page>
+                    <cYear>2008</cYear>
+                    <doi>10.1016/j.neuropsychologia.2008.02.029</doi>
+                    <unstructured_citation>Hietanen, J. K., Leppänen, J. M., Peltola, M. J., Linna-Aho, K. &amp; Ruuhiala, H. J. Seeing direct and averted gaze activates the approach-avoidance motivational brain systems. Neuropsychologia 46, 2423–2430 (2008).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR29">
+                    <journal_title>J. Neurosci. Off. J. Soc. Neurosci.</journal_title>
+                    <author>ML Spezio</author>
+                    <volume>27</volume>
+                    <first_page>3994</first_page>
+                    <cYear>2007</cYear>
+                    <doi>10.1523/JNEUROSCI.3789-06.2007</doi>
+                    <unstructured_citation>Spezio, M. L., Huang, P.-Y. S., Castelli, F. &amp; Adolphs, R. Amygdala damage impairs eye contact during conversations with real people. J. Neurosci. Off. J. Soc. Neurosci. 27, 3994–3997 (2007).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR30">
+                    <journal_title>J. Neurophysiol.</journal_title>
+                    <author>O Dal Monte</author>
+                    <volume>116</volume>
+                    <first_page>1626</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1152/jn.00442.2016</doi>
+                    <unstructured_citation>Dal Monte, O., Piva, M., Morris, J. A. &amp; Chang, S. W. C. Live Interaction Distinctively Shapes Social Gaze Dynamics in Rhesus Macaques. J. Neurophysiol. jn.00442.2016, 116, 1626–1643 (2016).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR31">
+                    <journal_title>Am. J. Primatol.</journal_title>
+                    <author>HD Freeman</author>
+                    <volume>72</volume>
+                    <first_page>653</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1002/ajp.20833</doi>
+                    <unstructured_citation>Freeman, H. D. &amp; Gosling, S. D. Personality in nonhuman primates: a review and evaluation of past research. Am. J. Primatol. 72, 653–671 (2010).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR32">
+                    <doi provider="crossref">10.1007/978-1-4614-0176-6</doi>
+                    <unstructured_citation>Weiss, A., King, J. E. &amp; Murray, L. &amp; SpringerLink (Online service). Personality and temperament in nonhuman primates. (Springer, 2011).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR33">
+                    <journal_title>PloS One</journal_title>
+                    <author>C Neumann</author>
+                    <volume>8</volume>
+                    <first_page>e69383</first_page>
+                    <cYear>2013</cYear>
+                    <doi>10.1371/journal.pone.0069383</doi>
+                    <unstructured_citation>Neumann, C., Agil, M., Widdig, A. &amp; Engelhardt, A. Personality of Wild Male Crested Macaques (Macaca nigra). PloS One 8, e69383 (2013).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR34">
+                    <journal_title>PLoS One</journal_title>
+                    <author>EJ Feczko</author>
+                    <volume>11</volume>
+                    <first_page>e0145956</first_page>
+                    <cYear>2016</cYear>
+                    <doi>10.1371/journal.pone.0145956</doi>
+                    <unstructured_citation>Feczko, E. J., Bliss-Moreau, E., Walum, H., Pruett, J. R. Jr. &amp; Parr, L. A. The Macaque Social Responsiveness Scale (mSR): A Rapid Screening Tool for Assessing Variability in the Social Responsiveness of Rhesus Monkeys (Macaca mulatta). PLoS One 11, e0145956 (2016).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR35">
+                    <unstructured_citation>Chevalier-Skolnikoff, S. In Darwin and facial expression: A century of research in review 11–89 (1973).</unstructured_citation>
+                  </citation>
+                  <citation key="BFsrep38686_CR36">
+                    <journal_title>J. Comput. Neurosci.</journal_title>
+                    <author>H Shimazaki</author>
+                    <volume>29</volume>
+                    <first_page>171</first_page>
+                    <cYear>2010</cYear>
+                    <doi>10.1007/s10827-009-0180-4</doi>
+                    <unstructured_citation>Shimazaki, H. &amp; Shinomoto, S. Kernel bandwidth optimization in spike rate estimation. J. Comput. Neurosci. 29, 171–182 (2010).</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>
