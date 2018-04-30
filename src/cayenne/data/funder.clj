@@ -54,6 +54,15 @@
    :replaced-by (:replaced-by funder-doc)
    :tokens      (:token funder-doc)})
 
+(defn- build-hierarchy [funder-doc]
+  {(first (:hierarchy funder-doc))
+   (zipmap (rest (:hierarchy funder-doc)) (repeat {}))})
+
+(defn- build-hierarchy-names [funder-doc]
+  (->> (:hierarchy-names funder-doc)
+       (map (fn [h] {(:id h) (:name h)}))
+       (apply merge)))
+
 (defn ->extended-response-doc [funder-doc]
   (let [funder-doi (:id funder-doc)]
     (merge
@@ -61,10 +70,8 @@
      {:work-count            (fetch-work-count funder-doi)
       :descendant-work-count (fetch-descendant-work-count funder-doi)
       :descendants           (:descendant funder-doc)
-      :hierarchy             (assoc-in {} (:hierarchy funder-doc) {})
-      :hierarchy-names       (->> (:hierarchy-names funder-doc)
-                                  (map (fn [h] {(:id h) (:name h)}))
-                                  (apply merge))})))
+      :hierarchy             (build-hierarchy funder-doc)
+      :hierarchy-names       (build-hierarchy-names funder-doc)})))
 
 (defn fetch-one [query-context]
   (when-let [funder-doc (-> (elastic/request

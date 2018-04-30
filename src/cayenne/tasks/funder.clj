@@ -105,7 +105,7 @@
   (drop 1 (tree-seq (constantly true) #(broader model %) funder-resource)))
 
 (defn resource-descendants [model funder-resource]
-  (drop 1 (tree-seq (constantly true) #(narrower model %) funder-resource)))
+  (drop 1 (util/tree-seq-depth (constantly true) #(narrower model %) funder-resource)))
 
 (defn id-name-map [model resources]
   (->> resources
@@ -114,12 +114,15 @@
                :name (first (get-labels model resource "prefLabel"))}))))
 
 (defn index-command [model funder-resource]
-  (let [primary-name   (-> model (get-labels funder-resource "prefLabel") first)
-        alt-names      (-> model (get-labels funder-resource "altLabel"))
-        ancestors      (resource-ancestors model funder-resource)
-        descendants    (resource-descendants model funder-resource)
+  (let [primary-name     (-> model (get-labels funder-resource "prefLabel") first)
+        alt-names        (-> model (get-labels funder-resource "altLabel"))
+        ancestors        (resource-ancestors model funder-resource)
+        descendants      (resource-descendants model funder-resource)
+        root-descendants (->> descendants
+                              (filter #(<= (second %) 1))
+                              (map first))
         ancestor-ids   (->> ancestors (map res->id) distinct)
-        descendant-ids (->> descendants (map res->id) distinct)]
+        descendant-ids (->> descendants (map (comp res->id first)) distinct)]
     [{:index {:_id (res->id funder-resource)}}
      {:doi             (res->doi funder-resource)
       :id              (res->id funder-resource)
@@ -137,10 +140,9 @@
       :affiliated      (distinct (map res->id (affiliated model funder-resource)))
       :replaced-by     (distinct (map res->id (replaced-by model funder-resource)))
       :replaces        (distinct (map res->id (replaces model funder-resource)))
-      :hierarchy       (flatten [ancestor-ids [(res->id funder-resource)] descendant-ids])
+      :hierarchy       (concat [(res->id funder-resource)] (map res->id root-descendants))
       :hierarchy-names (-> [funder-resource]
-                           (concat ancestors)
-                           (concat descendants)
+                           (concat root-descendants)
                            (->> (id-name-map model)))}]))
 
 (defn index-funders []
