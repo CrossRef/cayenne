@@ -71,7 +71,7 @@
 (defn make-filter-check-for-type [member-action check-name filter-name filter-value]
   (fn [type id total timing]
       (let
-        [filter-current-count (get-work-count :member id :filters {filter-name filter-value "type-name" type :timing timing})
+        [filter-current-count (get-work-count :member id :filters {filter-name filter-value "type-name" type} :timing timing)
          result  {:coverage {(keyword  check-name)
                              (coverage total filter-current-count)}}]
         result)))
@@ -80,7 +80,7 @@
   (fn [id timing total]
       (let
         [
-         filter-current-count (get-work-count :issn id :filters {filter-name filter-value :timing timing})
+         filter-current-count (get-work-count :issn id :filters {filter-name filter-value} :timing timing)
          result  {:coverage {(keyword  check-name)
                              (coverage total filter-current-count)}}]
         ;(println "filter-current-count: " filter-current-count)
