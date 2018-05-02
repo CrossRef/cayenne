@@ -34,6 +34,7 @@
     (cond-> message
       (:last-status-check-time message) (dissoc :last-status-check-time)
       (:indexed message) (dissoc :indexed)
+      (:coverage-type message) (recursive-dissoc (fn [x](= x :last-status-check-time)))
       (:items message) (-> (update :items (partial map #(dissoc % :indexed :last-status-check-time)))
                            (update :items (partial sort-by :DOI))
                            (update :items #(conj (for [item %] (recursive-dissoc item (fn [x](= x :last-status-check-time))))))))))
