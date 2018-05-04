@@ -21,7 +21,9 @@
             expected-response (read-string (slurp (resource (str "funders/" funder ".edn"))))]
         (is (= expected-response response))))))
 
-(use-fixtures 
-  :once 
-  (api-with 
-    user/load-test-funders))
+(use-fixtures
+  :once
+  (api-with
+    #(do (user/load-test-funders)
+         ;; todo wait until indexing finished
+         (Thread/sleep 5000))))
