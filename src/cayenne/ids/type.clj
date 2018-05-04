@@ -11,7 +11,7 @@
                       :journal-issue {:index-id "Journal Issue"
                                       :label "Journal Issue"
                                       :bibo-type (bibo-type "Issue")}
-                      :journal-volume {:index-id "Journal Volume" 
+                      :journal-volume {:index-id "Journal Volume"
                                        :label "Journal Volume"
                                        :bibo-type (bibo-type "Collection")}
                       :journal {:index-id "Journal"
@@ -19,6 +19,8 @@
                                 :bibo-type (bibo-type "Journal")}
                       :proceedings-article {:index-id "Conference Paper"
                                             :label "Proceedings Article"}
+                      :proceedings-series {:index-id "Proceedings Series"
+                                           :label "Proceedings Series"}
                       :proceedings {:index-id "Proceedings"
                                     :label "Proceedings"}
                       :dataset {:index-id "Dataset"
@@ -67,7 +69,7 @@
                               :label "Other"}})
 
 (def reverse-dictionary
-  (reduce 
+  (reduce
    (fn [m [key value]]
      (assoc m (:index-id value) key))
    {}

@@ -137,7 +137,7 @@
   [(make-filter-check-for-type "deposits" "affiliations" :has-affiliation "true")
    (make-filter-check-for-type "deposits" "abstracts" :has-abstract "true")
    (make-filter-check-for-type "deposits" "update-policies" :has-update-policy "true")
-   (make-filter-check-for-type "deposits" "references"  :full-text {"application" ["unspecified" "text-mining"]})
+   (make-filter-check-for-type "deposits" "references"  :full-text "true")  ;{"application" ["unspecified" "text-mining"]}
    (make-filter-check-for-type "deposits" "licenses" :has-license "true")
    (make-filter-check-for-type "deposits" "resource-links" :has-full-text "true")
    (make-filter-check-for-type "deposits" "orcids" :has-orcid "true")
@@ -238,6 +238,7 @@
   (println "start check members:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
     (doseq [member  (m/fetch collection  :sort {:id 1} :options [:notimeout])]
+      ;(println "doing member:" (:id member) "for collection " collection)
         (try
           (m/update!
            collection
