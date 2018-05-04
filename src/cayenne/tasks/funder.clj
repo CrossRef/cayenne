@@ -66,19 +66,23 @@
             (geoname/get-geoname-name-memo))
         (catch Exception e nil)))))
 
-(defn broader [model funder-resource]
+(defn broader [model funder-resource & {:keys [objects-only] :or {objects-only false}}]
   (concat
    (rdf/objects
     (rdf/select model :subject funder-resource :predicate (rdf/skos model "broader")))
-   (rdf/subjects
-    (rdf/select model :predicate (rdf/skos model "narrower") :object funder-resource))))
+   (if objects-only
+     []
+     (rdf/subjects
+      (rdf/select model :predicate (rdf/skos model "narrower") :object funder-resource)))))
 
-(defn narrower [model funder-resource]
+(defn narrower [model funder-resource & {:keys [objects-only] :or {objects-only false}}]
   (concat
    (rdf/objects
     (rdf/select model :subject funder-resource :predicate (rdf/skos model "narrower")))
-   (rdf/subjects
-    (rdf/select model :predicate (rdf/skos model "broader") :object funder-resource))))
+   (if objects-only
+     []
+     (rdf/subjects
+      (rdf/select model :predicate (rdf/skos model "broader") :object funder-resource)))))
 
 (defn replaces [model funder-resource]
   (concat
@@ -105,24 +109,42 @@
   (drop 1 (tree-seq (constantly true) #(broader model %) funder-resource)))
 
 (defn resource-descendants [model funder-resource]
-  (drop 1 (util/tree-seq-depth (constantly true) #(narrower model %) funder-resource)))
+  (drop 1 (tree-seq (constantly true) #(narrower model %) funder-resource)))
 
-(defn id-name-map [model resources]
-  (->> resources
-       (map (fn [resource]
-              {:id (res->id resource)
-               :name (first (get-labels model resource "prefLabel"))}))))
+(defn id-name [model funder-resource]
+  (merge
+   {:name (first (get-labels model funder-resource "prefLabel"))
+    :id (res->id funder-resource)}
+   (if (not-empty (narrower model funder-resource :objects-only true))
+     {:more true})))
+
+(defn- hierarcy-node [model funder-resource descendants child]
+  {(keyword (res->id funder-resource))
+   (merge
+    (dissoc (id-name model funder-resource) :more)
+    (reduce (fn [m v]
+              (update m
+                      (keyword (res->id v))
+                      #(or % (id-name model v))))
+            child
+            descendants))})
+
+(defn- build-hierarchy [model funder-resource child]
+  (let [ancestors (broader model funder-resource :objects-only true)
+        descendants (narrower model funder-resource :objects-only true)]
+    (if (not-empty ancestors)
+      (build-hierarchy model (first ancestors) (hierarcy-node model funder-resource descendants child))
+      (hierarcy-node model funder-resource descendants child))))
 
 (defn index-command [model funder-resource]
-  (let [primary-name     (-> model (get-labels funder-resource "prefLabel") first)
-        alt-names        (-> model (get-labels funder-resource "altLabel"))
-        ancestors        (resource-ancestors model funder-resource)
-        descendants      (resource-descendants model funder-resource)
-        root-descendants (->> descendants
-                              (filter #(<= (second %) 1))
-                              (map first))
-        ancestor-ids   (->> ancestors (map res->id) distinct)
-        descendant-ids (->> descendants (map (comp res->id first)) distinct)]
+  (let [primary-name   (-> model (get-labels funder-resource "prefLabel") first)
+        alt-names      (-> model (get-labels funder-resource "altLabel"))
+        ancestors      (resource-ancestors model funder-resource)
+        descendants    (resource-descendants model funder-resource)
+        ancestor-ids   (->> ancestors (map res->id) distinct sort)
+        descendant-ids (->> descendants (map res->id) distinct sort)
+        level          (-> ancestor-ids count (+ 1))
+        hierarchy      (build-hierarchy model funder-resource (id-name model funder-resource))]
     [{:index {:_id (res->id funder-resource)}}
      {:doi             (res->doi funder-resource)
       :id              (res->id funder-resource)
@@ -134,16 +156,18 @@
       :country         (get-country-literal-name model funder-resource)
       :parent          (-> model (broader funder-resource) first res->doi)
       :ancestor        ancestor-ids
-      :level           (-> ancestor-ids count (+ 1))
+      :level           level
       :child           (distinct (map res->id (narrower model funder-resource)))
       :descendant      descendant-ids
       :affiliated      (distinct (map res->id (affiliated model funder-resource)))
       :replaced-by     (distinct (map res->id (replaced-by model funder-resource)))
       :replaces        (distinct (map res->id (replaces model funder-resource)))
-      :hierarchy       (concat [(res->id funder-resource)] (map res->id root-descendants))
-      :hierarchy-names (-> [funder-resource]
-                           (concat root-descendants)
-                           (->> (id-name-map model)))}]))
+      :hierarchy-names (reduce
+                        (fn [m [k v]]
+                          (assoc m k v))
+                        (if (> level 1) {:more nil} {})
+                        (partition 2 (util/get-all-in hierarchy [:id :name])))
+      :hierarchy       hierarchy}]))
 
 (defn index-funders []
   (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry]))

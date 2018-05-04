@@ -241,8 +241,8 @@
    :ancestor        {:type "keyword"}
    :child           {:type "keyword"}
    :descendant      {:type "keyword"}
-   :hierarchy       {:type "keyword"}
-   :hierarchy-names {:type "object"}
+   :hierarchy       {:type "object" :enabled false}
+   :hierarchy-names {:type "object" :enabled false}
    :affiliated      {:type "keyword"}
    :country         {:type "keyword"}
    :primary-name    {:type "text" :copy_to :suggest}

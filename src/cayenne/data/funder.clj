@@ -6,6 +6,7 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.work :as work]
+            [cayenne.util :as util]
             [clojure.string :as string]
             [cayenne.ids.doi :as doi-id]
             [qbits.spandex :as elastic]))
@@ -55,13 +56,7 @@
    :tokens      (:token funder-doc)})
 
 (defn- build-hierarchy [funder-doc]
-  {(first (:hierarchy funder-doc))
-   (zipmap (rest (:hierarchy funder-doc)) (repeat {}))})
-
-(defn- build-hierarchy-names [funder-doc]
-  (->> (:hierarchy-names funder-doc)
-       (map (fn [h] {(:id h) (:name h)}))
-       (apply merge)))
+  (util/dissoc-all (:hierarchy funder-doc) [:id :name]))
 
 (defn ->extended-response-doc [funder-doc]
   (let [funder-doi (:id funder-doc)]
@@ -71,7 +66,7 @@
       :descendant-work-count (fetch-descendant-work-count funder-doi)
       :descendants           (:descendant funder-doc)
       :hierarchy             (build-hierarchy funder-doc)
-      :hierarchy-names       (build-hierarchy-names funder-doc)})))
+      :hierarchy-names       (:hierarchy-names funder-doc)})))
 
 (defn fetch-one [query-context]
   (when-let [funder-doc (-> (elastic/request
@@ -93,7 +88,7 @@
    hierarchy."
   [query-context]
   (let [es-request (query/->es-request
-                    (query/prefix-query-context query-context :primary-name)
+                    (query/prefix-query-context (assoc query-context :sort [:level :_id] :order :asc) :primary-name)
                     :index "funder")
         response (elastic/request (conf/get-service :elastic) es-request)
         docs (->> (get-in response [:body :hits :hits]) (map :_source))]

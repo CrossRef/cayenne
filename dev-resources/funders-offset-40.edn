@@ -2,265 +2,262 @@
  :query {:start-index 40, :search-terms nil},
  :total-results 15965,
  :items
- ({:id "501100001190",
-   :location "Australia",
-   :name
-   "Department of Business and Innovation, Victoria State Government",
-   :alt-names ["DBI"],
-   :uri "http://dx.doi.org/10.13039/501100001190",
+ ({:id "100000201",
+   :location "United States",
+   :name "U.S. Department of the Interior",
+   :alt-names ["DOI" "Department of the Interior"],
+   :uri "http://dx.doi.org/10.13039/100000201",
    :replaces [],
    :replaced-by [],
    :tokens
-   ["department"
-    "of"
-    "business"
-    "and"
-    "innovation"
-    "victoria"
-    "state"
-    "government"
-    "dbi"]}
-  {:id "100001438",
-   :location "United States",
-   :name "Accelerate Brain Cancer Cure",
-   :alt-names ["ABC2"],
-   :uri "http://dx.doi.org/10.13039/100001438",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["accelerate" "brain" "cancer" "cure" "abc2"]}
-  {:id "501100004142",
-   :location "China",
-   :name "Lishui University",
-   :alt-names ["LSU"],
-   :uri "http://dx.doi.org/10.13039/501100004142",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["lishui" "university" "lsu"]}
-  {:id "100011752",
-   :location "United States",
-   :name "Office of the Provost, Central Michigan University",
-   :alt-names [],
-   :uri "http://dx.doi.org/10.13039/100011752",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["office" "of" "the" "provost" "central" "michigan" "university"]}
-  {:id "100008130",
-   :location "United States",
-   :name "Helsinn Therapeutics",
-   :alt-names [],
-   :uri "http://dx.doi.org/10.13039/100008130",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["helsinn" "therapeutics"]}
-  {:id "501100006481",
-   :location "http://sws.geonames.org/1733045/",
-   :name
-   "Department of Chemical Engineering, Universiti Teknologi Petronas",
-   :alt-names ["Department of Chemical Engineering, UTP"],
-   :uri "http://dx.doi.org/10.13039/501100006481",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["department"
-    "of"
-    "chemical"
-    "engineering"
-    "universiti"
-    "teknologi"
-    "petronas"
+   ["us"
     "department"
     "of"
-    "chemical"
-    "engineering"
-    "utp"]}
-  {:id "501100005406",
-   :location "http://sws.geonames.org/798544/",
-   :name "Fundacja Badań i Rozwoju Nauki",
-   :alt-names [],
-   :uri "http://dx.doi.org/10.13039/501100005406",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["fundacja" "badań" "i" "rozwoju" "nauki"]}
-  {:id "100008913",
-   :location "United States",
-   :name "University of San Francisco",
-   :alt-names ["USF"],
-   :uri "http://dx.doi.org/10.13039/100008913",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["university" "of" "san" "francisco" "usf"]}
-  {:id "501100000743",
-   :location "United Kingdom",
-   :name
-   "Institute of Advanced Legal Studies, School of Advanced Study, University of London",
-   :alt-names ["IALS"],
-   :uri "http://dx.doi.org/10.13039/501100000743",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["institute"
-    "of"
-    "advanced"
-    "legal"
-    "studies"
-    "school"
-    "of"
-    "advanced"
-    "study"
-    "university"
-    "of"
-    "london"
-    "ials"]}
-  {:id "501100007115",
-   :location "http://sws.geonames.org/298795/",
-   :name "Muş Alparslan Üniversitesi",
-   :alt-names ["Muş Alparslan University"],
-   :uri "http://dx.doi.org/10.13039/501100007115",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["muş" "alparslan" "üniversitesi" "muş" "alparslan" "university"]}
-  {:id "100011603",
-   :location "United States",
-   :name "American Academy of Optometry",
-   :alt-names ["AAO"],
-   :uri "http://dx.doi.org/10.13039/100011603",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["american" "academy" "of" "optometry" "aao"]}
-  {:id "501100009253",
-   :location "http://sws.geonames.org/2658434/",
-   :name "European Association for the Study of the Liver",
-   :alt-names ["EASL" "EASL Home of Hepatology"],
-   :uri "http://dx.doi.org/10.13039/501100009253",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["european"
-    "association"
-    "for"
     "the"
-    "study"
+    "interior"
+    "doi"
+    "department"
     "of"
     "the"
-    "liver"
-    "easl"
-    "easl"
-    "home"
-    "of"
-    "hepatology"]}
-  {:id "100007414",
+    "interior"]}
+  {:id "100000204",
    :location "United States",
-   :name "Horncrest Foundation",
-   :alt-names ["Horncrest Foundation Inc."],
-   :uri "http://dx.doi.org/10.13039/100007414",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["horncrest" "foundation" "horncrest" "foundation" "inc"]}
-  {:id "501100000165",
-   :location "http://sws.geonames.org/6251999/",
-   :name "Sick Kids Foundation",
-   :alt-names [],
-   :uri "http://dx.doi.org/10.13039/501100000165",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["sick" "kids" "foundation"]}
-  {:id "501100008126",
-   :location "http://sws.geonames.org/1835841/",
-   :name "Jeju National University Hospital",
-   :alt-names ["JNUH"],
-   :uri "http://dx.doi.org/10.13039/501100008126",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["jeju" "national" "university" "hospital" "jnuh"]}
-  {:id "501100004478",
-   :location "China",
-   :name "Beijing Union University",
-   :alt-names ["BUU"],
-   :uri "http://dx.doi.org/10.13039/501100004478",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["beijing" "union" "university" "buu"]}
-  {:id "100005808",
-   :location "United States",
-   :name "Vietnam Education Foundation",
-   :alt-names ["VEF"],
-   :uri "http://dx.doi.org/10.13039/100005808",
-   :replaces [],
-   :replaced-by [],
-   :tokens ["vietnam" "education" "foundation" "vef"]}
-  {:id "100006489",
-   :location "United States",
-   :name
-   "Carolina Center of Cancer Nanotechnology Excellence, University of North Carolina - Chapel Hill",
-   :alt-names
-   ["CCNE, UNC" "Carolina Cancer Center of Nanotechnology Excellence"],
-   :uri "http://dx.doi.org/10.13039/100006489",
+   :name "U.S. Department of Housing and Urban Development",
+   :alt-names ["HUD"],
+   :uri "http://dx.doi.org/10.13039/100000204",
    :replaces [],
    :replaced-by [],
    :tokens
-   ["carolina"
-    "center"
+   ["us"
+    "department"
     "of"
-    "cancer"
-    "nanotechnology"
-    "excellence"
-    "university"
-    "of"
-    "north"
-    "carolina"
-    "chapel"
-    "hill"
-    "ccne"
-    "unc"
-    "carolina"
-    "cancer"
-    "center"
-    "of"
-    "nanotechnology"
-    "excellence"]}
-  {:id "501100008424",
-   :location "http://sws.geonames.org/3996063/",
-   :name
-   "Consejo Estatal de Ciencia y Tecnología, Gobierno del estado de Sinaloa",
-   :alt-names
-   ["COECYT"
-    "State Council of Science and Technology, Government of the State of Sinaloa"],
-   :uri "http://dx.doi.org/10.13039/501100008424",
-   :replaces [],
-   :replaced-by [],
-   :tokens
-   ["consejo"
-    "estatal"
-    "de"
-    "ciencia"
-    "y"
-    "tecnología"
-    "gobierno"
-    "del"
-    "estado"
-    "de"
-    "sinaloa"
-    "coecyt"
-    "state"
-    "council"
-    "of"
-    "science"
+    "housing"
     "and"
-    "technology"
-    "government"
-    "of"
-    "the"
-    "state"
-    "of"
-    "sinaloa"]}
-  {:id "100008107",
+    "urban"
+    "development"
+    "hud"]}
+  {:id "100000205",
    :location "United States",
-   :name "University of Wyoming Foundation",
-   :alt-names ["UW Foundation"],
-   :uri "http://dx.doi.org/10.13039/100008107",
+   :name "Technology Opportunities Program",
+   :alt-names ["TOP"],
+   :uri "http://dx.doi.org/10.13039/100000205",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["technology" "opportunities" "program" "top"]}
+  {:id "100000207",
+   :location "United States",
+   :name "U.S. Small Business Administration",
+   :alt-names ["SBA"],
+   :uri "http://dx.doi.org/10.13039/100000207",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["us" "small" "business" "administration" "sba"]}
+  {:id "100000208",
+   :location "United States",
+   :name "Institute of Museum and Library Services",
+   :alt-names ["IMLS"],
+   :uri "http://dx.doi.org/10.13039/100000208",
    :replaces [],
    :replaced-by [],
    :tokens
-   ["university" "of" "wyoming" "foundation" "uw" "foundation"]})}
+   ["institute" "of" "museum" "and" "library" "services" "imls"]}
+  {:id "100000297",
+   :location "United States",
+   :name "FRAXA Research Foundation",
+   :alt-names ["FRAXA" "FRAXA Research Foundation, Inc."],
+   :uri "http://dx.doi.org/10.13039/100000297",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["fraxa"
+    "research"
+    "foundation"
+    "fraxa"
+    "fraxa"
+    "research"
+    "foundation"
+    "inc"]}
+  {:id "100000307",
+   :location "United States",
+   :name "American Library Association",
+   :alt-names ["ALA"],
+   :uri "http://dx.doi.org/10.13039/100000307",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["american" "library" "association" "ala"]}
+  {:id "100000308",
+   :location "United States",
+   :name "Carnegie Corporation of New York",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100000308",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["carnegie" "corporation" "of" "new" "york"]}
+  {:id "100000345",
+   :location "United States",
+   :name "McCormick Foundation",
+   :alt-names
+   ["RRM Foundations"
+    "Robert R. McCormick Foundations"
+    "Robert R. McCormick Foundation"],
+   :uri "http://dx.doi.org/10.13039/100000345",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["mccormick"
+    "foundation"
+    "rrm"
+    "foundations"
+    "robert"
+    "r"
+    "mccormick"
+    "foundations"
+    "robert"
+    "r"
+    "mccormick"
+    "foundation"]}
+  {:id "100000738",
+   :location "United States",
+   :name "U.S. Department of Veterans Affairs",
+   :alt-names ["Department of Veterans Affairs" "VA"],
+   :uri "http://dx.doi.org/10.13039/100000738",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["us"
+    "department"
+    "of"
+    "veterans"
+    "affairs"
+    "department"
+    "of"
+    "veterans"
+    "affairs"
+    "va"]}
+  {:id "100000741",
+   :location "United States",
+   :name "National Archives and Records Administration",
+   :alt-names ["NARA" "National Archives"],
+   :uri "http://dx.doi.org/10.13039/100000741",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["national"
+    "archives"
+    "and"
+    "records"
+    "administration"
+    "nara"
+    "national"
+    "archives"]}
+  {:id "100000778",
+   :location "United States",
+   :name "U.S. Department of Labor",
+   :alt-names ["DOL" "United States Department of Labor"],
+   :uri "http://dx.doi.org/10.13039/100000778",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["us"
+    "department"
+    "of"
+    "labor"
+    "dol"
+    "united"
+    "states"
+    "department"
+    "of"
+    "labor"]}
+  {:id "100000810",
+   :location "United States",
+   :name "Woodrow Wilson International Center for Scholars",
+   :alt-names ["Wilson Center"],
+   :uri "http://dx.doi.org/10.13039/100000810",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["woodrow"
+    "wilson"
+    "international"
+    "center"
+    "for"
+    "scholars"
+    "wilson"
+    "center"]}
+  {:id "100000834",
+   :location "United States",
+   :name "Bernard Osher Foundation",
+   :alt-names [],
+   :uri "http://dx.doi.org/10.13039/100000834",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["bernard" "osher" "foundation"]}
+  {:id "100000848",
+   :location "United States",
+   :name "United Negro College Fund Special Programs Corporation",
+   :alt-names ["UNCFSP"],
+   :uri "http://dx.doi.org/10.13039/100000848",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["united"
+    "negro"
+    "college"
+    "fund"
+    "special"
+    "programs"
+    "corporation"
+    "uncfsp"]}
+  {:id "100000850",
+   :location "United States",
+   :name "American Society for Engineering Education",
+   :alt-names ["ASEE"],
+   :uri "http://dx.doi.org/10.13039/100000850",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["american" "society" "for" "engineering" "education" "asee"]}
+  {:id "100000861",
+   :location "United States",
+   :name "Burroughs Wellcome Fund",
+   :alt-names ["BWF"],
+   :uri "http://dx.doi.org/10.13039/100000861",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["burroughs" "wellcome" "fund" "bwf"]}
+  {:id "100000862",
+   :location "United States",
+   :name "Doris Duke Charitable Foundation",
+   :alt-names ["DDCF"],
+   :uri "http://dx.doi.org/10.13039/100000862",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["doris" "duke" "charitable" "foundation" "ddcf"]}
+  {:id "100000863",
+   :location "United States",
+   :name "Ellison Medical Foundation",
+   :alt-names ["EMF"],
+   :uri "http://dx.doi.org/10.13039/100000863",
+   :replaces [],
+   :replaced-by [],
+   :tokens ["ellison" "medical" "foundation" "emf"]}
+  {:id "100000864",
+   :location "United States",
+   :name "Michael J. Fox Foundation for Parkinson's Research",
+   :alt-names ["MJFF" "Michael J. Fox Foundation"],
+   :uri "http://dx.doi.org/10.13039/100000864",
+   :replaces [],
+   :replaced-by [],
+   :tokens
+   ["michael"
+    "j"
+    "fox"
+    "foundation"
+    "for"
+    "parkinsons"
+    "research"
+    "mjff"
+    "michael"
+    "j"
+    "fox"
+    "foundation"]})}

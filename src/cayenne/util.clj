@@ -225,3 +225,19 @@
                       (when (branch? node)
                         (mapcat (partial walk (inc depth)) (children node))))))]
     (walk 0 root)))
+
+(defn dissoc-all [m ks]
+  (reduce (fn [ma [k va]]
+            (if (map? va)
+              (assoc ma k (dissoc-all va ks))
+              (if (not (some #{k} ks))
+                (assoc ma k va)
+                ma))) {} m))
+
+(defn get-all-in [m ks]
+  (reduce (fn [col [k va]]
+            (if (map? va)
+              (concat col (get-all-in va ks))
+              (if (some #{k} ks)
+                (cons va col)
+                col))) [] m))
