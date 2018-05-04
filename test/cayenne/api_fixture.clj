@@ -20,7 +20,8 @@
       (:last-status-check-time message) (dissoc :last-status-check-time)
       (:indexed message) (dissoc :indexed)
       (:items message) (-> (update :items (partial map #(dissoc % :indexed :last-status-check-time)))
-                           (update :items (partial sort-by sorter))))))
+                           (update :items (partial sort-by sorter)))
+      (:descendants message) (update :descendants sort))))
 
 (def api-with-works
   (api-with user/index-feed))
