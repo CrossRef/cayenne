@@ -22,15 +22,12 @@
  {:date-time "2018-01-10T17:22:19Z",
   :date-parts [[2018 1 10]],
   :timestamp 1515604939000},
- :score 1.0,
+ :score 4.787492,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2015 7 14]]},
  :references-count 0,
  :URL "http://dx.doi.org/10.7287/peerj.1078v0.2/reviews/1",
- :review
- {:revision-round "3"
-  :stage "pre-publication"}
  :relation
  {:is-review-of
   [{:id-type "doi", :id "10.7717/peerj.1078", :asserted-by "subject"}]}}

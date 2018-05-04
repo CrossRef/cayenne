@@ -1,13 +1,13 @@
 {:reference-count 0,
  :publisher "Elsevier BV",
  :license
- [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
-   :start
-   {:date-time "2017-01-01T00:00:00Z",
-    :date-parts [[2017 1 1]],
+ [{:start
+   {:date-parts [[2017 1 1]],
+    :date-time "2017-01-01T00:00:00Z",
     :timestamp 1483228800000},
+   :content-version "tdm",
    :delay-in-days 0,
-   :content-version "tdm"}],
+   :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
  :content-domain
  {:domain
   ["psyneuen-journal.com"
@@ -24,8 +24,8 @@
  :DOI "10.1016/j.psyneuen.2016.10.018",
  :type "journal-article",
  :created
- {:date-time "2016-10-22T16:18:08Z",
-  :date-parts [[2016 10 22]],
+ {:date-parts [[2016 10 22]],
+  :date-time "2016-10-22T16:18:08Z",
   :timestamp 1477153088000},
  :page "132-140",
  :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -76,10 +76,10 @@
    :content-version "vor",
    :intended-application "text-mining"}],
  :deposited
- {:date-time "2017-11-30T15:51:45Z",
-  :date-parts [[2017 11 30]],
+ {:date-parts [[2017 11 30]],
+  :date-time "2017-11-30T15:51:45Z",
   :timestamp 1512057105000},
- :score 1.0,
+ :score 4.787492,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2017 1]]},
