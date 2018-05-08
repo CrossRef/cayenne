@@ -1,5 +1,5 @@
 (ns cayenne.journals-test
-  (:require [cayenne.api-fixture :refer [api-root api-get api-with-works]]
+  (:require [cayenne.api-fixture :refer [api-root api-get api-with-works no-scores]]
             [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]))
 
@@ -23,7 +23,8 @@
 
   (testing "journals endpoint returns expected result for ISSN works"
     (doseq [issn ["0306-4530"]]
-      (let [response (api-get (str "/v1/journals/" issn "/works?rows=76"))
+      (let [response (-> (api-get (str "/v1/journals/" issn "/works?rows=76"))
+                         no-scores)
             expected-response (read-string (slurp (resource (str "titles/" issn "-works.edn"))))]
         (is (= expected-response response))))))
 
