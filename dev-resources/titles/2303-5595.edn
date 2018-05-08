@@ -1,4 +1,4 @@
-{:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+{:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
  :breakdowns {:dois-by-issued-year []},
  :publisher
  "National and University Library of the Republic of Srpska",

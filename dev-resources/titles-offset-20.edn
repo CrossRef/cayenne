@@ -2,7 +2,7 @@
  :query {:start-index 20, :search-terms nil},
  :total-results 366,
  :items
- ({:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+ ({:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Vilnius Gediminas Technical University",
    :coverage
@@ -50,7 +50,7 @@
     :deposits-licenses-current false},
    :ISSN ["2029-7149"],
    :issn-type [{:value "2029-7149", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "OpenEdition",
    :coverage
@@ -95,11 +95,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["1960-6176" "0769-0959"],
+   :ISSN ["0769-0959" "1960-6176"],
    :issn-type
-   [{:value "1960-6176", :type "electronic"}
-    {:value "0769-0959", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "0769-0959", :type "print"}
+    {:value "1960-6176", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Open Library of Humanities",
    :coverage
@@ -147,7 +147,7 @@
     :deposits-licenses-current false},
    :ISSN ["1755-1560"],
    :issn-type [{:value "1755-1560", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "University of California Press",
    :coverage
@@ -192,11 +192,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["1533-8606" "0148-2076"],
+   :ISSN ["0148-2076" "1533-8606"],
    :issn-type
-   [{:value "1533-8606", :type "electronic"}
-    {:value "0148-2076", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "0148-2076", :type "print"}
+    {:value "1533-8606", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "21st Century Political Science Association",
    :coverage
@@ -243,7 +243,7 @@
     :deposits-licenses-current false},
    :ISSN ["1229-5167"],
    :issn-type [{:value "1229-5167", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "21st Century Political Science Association",
    :coverage
@@ -290,7 +290,7 @@
     :deposits-licenses-current false},
    :ISSN ["1229-5167"],
    :issn-type [{:value "1229-5167", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "ABED - Associacao Brasileira de Educacao a Distancia",
    :coverage
@@ -338,7 +338,7 @@
     :deposits-licenses-current false},
    :ISSN ["2175-4098"],
    :issn-type [{:value "2175-4098", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "\"Editora Edgard Blucher, Ltda.\"",
    :coverage
@@ -385,7 +385,7 @@
     :deposits-licenses-current false},
    :ISSN ["2358-9337"],
    :issn-type [{:value "2358-9337", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "JSTOR",
    :coverage
@@ -432,7 +432,7 @@
     :deposits-licenses-current false},
    :ISSN ["1054-7193"],
    :issn-type [{:value "1054-7193", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "IOP Publishing",
    :coverage
@@ -479,7 +479,7 @@
     :deposits-licenses-current false},
    :ISSN ["2053-1583"],
    :issn-type [{:value "2053-1583", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Springer-Verlag",
    :coverage
@@ -524,11 +524,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2190-5738" "2190-572X"],
+   :ISSN ["2190-572X" "2190-5738"],
    :issn-type
-   [{:value "2190-5738", :type "electronic"}
-    {:value "2190-572X", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "2190-572X", :type "print"}
+    {:value "2190-5738", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Makale Sistemi/Geomes",
    :coverage
@@ -575,16 +575,54 @@
     :deposits-licenses-current false},
    :ISSN ["2148-1237"],
    :issn-type [{:value "2148-1237", :type "electronic"}]}
-  {:counts nil,
-   :breakdowns nil,
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "DEStech Publications",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title "30th International Symposium on Ballistics",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Sistema de Bibliotecas PUCP",
    :coverage
@@ -631,7 +669,7 @@
     :deposits-licenses-current false},
    :ISSN ["2518-0495"],
    :issn-type [{:value "2518-0495", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Barbara Budrich Publishers",
    :coverage
@@ -677,20 +715,58 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2366-4177" "1863-8783"],
+   :ISSN ["1863-8783" "2366-4177"],
    :issn-type
-   [{:value "2366-4177", :type "electronic"}
-    {:value "1863-8783", :type "print"}]}
-  {:counts nil,
-   :breakdowns nil,
+   [{:value "1863-8783", :type "print"}
+    {:value "2366-4177", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Innovative Medical Technologies Development Foundation",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title "36510",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "\"Area de Innovacion y Desarrollo, S.L. - 3 Ciencias\"",
    :coverage
@@ -737,7 +813,7 @@
     :deposits-licenses-current false},
    :ISSN ["2254-3376"],
    :issn-type [{:value "2254-3376", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Association for Computing Machinery",
    :coverage
@@ -784,7 +860,7 @@
     :deposits-licenses-current false},
    :ISSN ["1078-2192"],
    :issn-type [{:value "1078-2192", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "\"Area de Innovacion y Desarrollo, S.L. - 3 Ciencias\"",
    :coverage
@@ -831,7 +907,7 @@
     :deposits-licenses-current false},
    :ISSN ["2254-4143"],
    :issn-type [{:value "2254-4143", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "\"Area de Innovacion y Desarrollo, S.L. - 3 Ciencias\"",
    :coverage

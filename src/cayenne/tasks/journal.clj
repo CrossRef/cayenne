@@ -24,9 +24,9 @@
         e-issn (nth csv-row eissn-column)]
     (cond-> []
       (not (string/blank? p-issn))
-      (conj {:value (issn/normalize-issn p-issn) :kind "print"})
+      (conj {:value (issn/normalize-issn p-issn) :type "print"})
       (not (string/blank? e-issn))
-      (conj {:value (issn/normalize-issn e-issn) :kind "electronic"}))))
+      (conj {:value (issn/normalize-issn e-issn) :type "electronic"}))))
 
 (defn index-command [csv-row]
   (let [title (nth csv-row title-column)
@@ -38,7 +38,7 @@
       :doi       (-> csv-row (nth doi-column) doi-id/normalize-long-doi)
       :publisher (nth csv-row publisher-column)
       :issn      (issns csv-row)}]))
-           
+
 (defn index-journals []
   (with-open [body (io/reader (conf/get-param [:location :cr-titles-csv]))]
     (let [cleaned (string/replace (slurp body) #"\\\"" "")]
