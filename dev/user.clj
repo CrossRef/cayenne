@@ -133,6 +133,9 @@
              :body {:query {:match_all {}}}})
            :body :hits :hits)))
 
+(defn spit-resource [path data]
+  (spit (str "dev-resources/" path) (with-out-str (clojure.pprint/pprint data))))
+
 (def system @cores)
 
 (defn remove-feed-references []
