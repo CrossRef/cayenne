@@ -111,11 +111,11 @@
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
   (set-param! [:service :solr :update-list]
-              [{:url "http://mdsplus1:8983/solr" :core "crmds1"}])
+              [{:url "http://localhost:8983/solr" :core "crmds1"}])
 
-  (set-param! [:service :mongo :db] "mongodb://indx1/crossref-test")
-  (set-param! [:service :mongo :host] "indx1")
-  (set-param! [:service :solr :url] "http://mdsplus1:8983/solr/crmds1")
+  (set-param! [:service :mongo :db] "crossref")
+  (set-param! [:service :mongo :host] "localhost")
+  (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
   (set-param! [:service :solr :insert-list-max-size] 1000)
   (set-param! [:service :solr :commit-on-add] true)
   (set-param! [:service :datomic :url] "datomic:mem://test")
