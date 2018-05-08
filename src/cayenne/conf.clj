@@ -111,11 +111,11 @@
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
   (set-param! [:service :solr :update-list]
-              [{:url "http://localhost:8983/solr" :core "crmds1"}])
+              [{:url "http://mdsplus1:8983/solr" :core "crmds1"}])
 
-  (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "localhost")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
+  (set-param! [:service :mongo :db] "mongodb://indx1/crossref-test")
+  (set-param! [:service :mongo :host] "indx1")
+  (set-param! [:service :solr :url] "http://mdsplus1:8983/solr/crmds1")
   (set-param! [:service :solr :insert-list-max-size] 1000)
   (set-param! [:service :solr :commit-on-add] true)
   (set-param! [:service :datomic :url] "datomic:mem://test")
@@ -141,7 +141,7 @@
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")
   (set-param! [:id :contributor :path] "http://id.crossref.org/contributor/")
   (set-param! [:id :member :path] "http://id.crossref.org/member/")
-  
+
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
@@ -171,7 +171,7 @@
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 
 (with-core :default
-  (add-startup-task 
+  (add-startup-task
    :base
    (fn [profiles]
      (set-service! :executor (Executors/newScheduledThreadPool 20))
@@ -190,4 +190,3 @@
      (set-service! :nrepl (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
-

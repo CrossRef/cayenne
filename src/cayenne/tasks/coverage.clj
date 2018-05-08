@@ -212,7 +212,7 @@
 (defn checks-for-timespans
   [member]
   (let [currenttypes (get-types (:id member) {:from-pub-date (back-file-cut-off)})
-        backfiletypes (get-types (:id member) {:to-pub-date (back-file-cut-off)})
+        backfiletypes (get-types (:id member) {:until-pub-date (back-file-cut-off)})
         alltypes (get-types (:id member) nil)
         ;t1    (println "currenttypes: " currenttypes)
         current  {:current (check-record-coverage-per-type member currenttypes :timing :current :id-field :id)}
@@ -237,8 +237,8 @@
   [collection]
   (println "start check members:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [member  (m/fetch collection  :sort {:id 1} :options [:notimeout])]
-      ;(println "doing member:" (:id member) "for collection " collection)
+    (doseq [member  (m/fetch collection :sort {:id 1} :options [:notimeout])]
+      (println "doing member:" (:id member) "for collection " collection)
         (try
           (m/update!
            collection
