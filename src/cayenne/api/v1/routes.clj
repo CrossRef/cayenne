@@ -166,8 +166,7 @@
   :allowed-methods [:get :options :head]
   :media-type-available? (conneg/content-type-matches t/work-transform)
   :exists? (->1 #(when-let [work (-> doi
-                                     (URLDecoder/decode)
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok #(let [links (link/make-link-headers
@@ -184,8 +183,7 @@
   :allowed-methods [:get :options :head]
   :media-type-available? (fn [_] (some #{content-type} t/work-transform))
   :exists? (->1 #(when-let [work (-> doi
-                                     (URLDecoder/decode)
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok #(let [links (link/make-link-headers
