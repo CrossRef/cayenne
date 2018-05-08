@@ -286,7 +286,7 @@
    "journal"  {"_all" {:enabled false} :properties journal-properties}})
 
 (def index-settings
-  {"work"     {:number_of_shards 24 :number_of_replicas 3}
+  {"work"     {:number_of_shards 1  :number_of_replicas 3}
    "member"   {:number_of_shards 1  :number_of_replicas 3}
    "funder"   {:number_of_shards 1  :number_of_replicas 3}
    "subject"  {:number_of_shards 1  :number_of_replicas 3}
