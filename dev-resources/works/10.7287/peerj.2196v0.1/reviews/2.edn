@@ -41,7 +41,6 @@
  {:date-parts [[2018 1 9]],
   :date-time "2018-01-09T18:42:21Z",
   :timestamp 1515523341000},
- :score 4.787492,
  :subtitle ["The Subtitle"],
  :short-title [],
  :issued {:date-parts [[2017 4 19]]},

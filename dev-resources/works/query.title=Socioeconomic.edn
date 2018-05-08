@@ -69,7 +69,6 @@
    {:date-parts [[2017 11 30]],
     :date-time "2017-11-30T15:51:07Z",
     :timestamp 1512057067000},
-   :score 4.9771366,
    :issued {:date-parts [[2017 1 1]]},
    :references-count 34,
    :alternative-id ["S0306453016307545"],

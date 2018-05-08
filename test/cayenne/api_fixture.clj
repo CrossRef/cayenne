@@ -23,6 +23,11 @@
                            (update :items (partial sort-by sorter)))
       (:descendants message) (update :descendants sort))))
 
+(defn no-scores [m]
+  (cond-> m
+      (:score m) (dissoc :score)
+      (:items m) (-> (update :items (partial map #(dissoc % :score))))))
+
 (def api-with-works
   (api-with user/index-feed))
 

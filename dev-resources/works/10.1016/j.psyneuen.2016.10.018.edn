@@ -79,7 +79,6 @@
  {:date-parts [[2017 11 30]],
   :date-time "2017-11-30T15:51:45Z",
   :timestamp 1512057105000},
- :score 4.787492,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2017 1]]},

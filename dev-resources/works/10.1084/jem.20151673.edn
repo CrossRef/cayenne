@@ -39,7 +39,6 @@
  {:date-parts [[2017 4 19]],
   :date-time "2017-04-19T23:50:05Z",
   :timestamp 1492645805000},
- :score 4.787492,
  :subtitle [],
  :free-to-read
  {:start-date {:date-parts [[2015 1 15]]},
