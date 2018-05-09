@@ -931,13 +931,13 @@
 (defn parse-content-item-type [content-item-loc]
   (let [type (xml/xselect1 content-item-loc ["component_type"])]
     (cond
-     (= type "chapter") :chapter
-     (= type "section") :section
-     (= type "part") :part
-     (= type "track") :track
-     (= type "reference_entry") :reference-entry
-     (= type "other") :other
-     :else :other)))
+      (= type "chapter") :book-chapter
+      (= type "section") :book-section
+      (= type "part") :book-part
+      (= type "track") :book-track
+      (= type "reference_entry") :reference-entry
+      (= type "other") :other
+      :else :other)))
 
 (defn parse-content-item [content-item-loc]
   (when content-item-loc
