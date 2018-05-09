@@ -6,8 +6,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -27,8 +27,8 @@
    :DOI "10.1016/j.jad.2016.11.046",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T09:30:54Z",
+   {:date-time "2016-11-30T09:30:54Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480498254000},
    :page "209-216",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -86,8 +86,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 2 13]],
-    :date-time "2018-02-13T02:55:51Z",
+   {:date-time "2018-02-13T02:55:51Z",
+    :date-parts [[2018 2 13]],
     :timestamp 1518490551000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -119,8 +119,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -140,8 +140,8 @@
    :DOI "10.1016/j.neurobiolaging.2016.11.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 1]],
-    :date-time "2016-12-01T07:05:09Z",
+   {:date-time "2016-12-01T07:05:09Z",
+    :date-parts [[2016 12 1]],
     :timestamp 1480575909000},
    :page "1-8",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -193,8 +193,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 1 4]],
-    :date-time "2018-01-04T22:08:16Z",
+   {:date-time "2018-01-04T22:08:16Z",
+    :date-parts [[2018 1 4]],
     :timestamp 1515103696000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -226,8 +226,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -244,8 +244,8 @@
    :DOI "10.1016/j.neuroimage.2016.12.046",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 16]],
-    :date-time "2016-12-16T05:16:22Z",
+   {:date-time "2016-12-16T05:16:22Z",
+    :date-parts [[2016 12 16]],
     :timestamp 1481865382000},
    :page "314-329",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -287,8 +287,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 1 20]],
-    :date-time "2018-01-20T14:43:22Z",
+   {:date-time "2018-01-20T14:43:22Z",
+    :date-parts [[2018 1 20]],
     :timestamp 1516459402000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -318,8 +318,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -338,8 +338,8 @@
    :DOI "10.1016/j.physbeh.2016.10.010",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 16]],
-    :date-time "2016-10-16T20:59:08Z",
+   {:date-time "2016-10-16T20:59:08Z",
+    :date-parts [[2016 10 16]],
     :timestamp 1476651548000},
    :page "1-10",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -401,8 +401,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 3 27]],
-    :date-time "2018-03-27T00:25:41Z",
+   {:date-time "2018-03-27T00:25:41Z",
+    :date-parts [[2018 3 27]],
     :timestamp 1522110341000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -447,8 +447,8 @@
    :DOI "10.1021/acschemneuro.6b00308",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 14]],
-    :date-time "2016-12-14T15:42:38Z",
+   {:date-time "2016-12-14T15:42:38Z",
+    :date-parts [[2016 12 14]],
     :timestamp 1481730158000},
    :page "290-299",
    :source "Crossref",
@@ -482,8 +482,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 1 3]],
-    :date-time "2018-01-03T12:44:56Z",
+   {:date-time "2018-01-03T12:44:56Z",
+    :date-parts [[2018 1 3]],
     :timestamp 1514983496000},
    :score 1.0,
    :issued {:date-parts [[2017 1 3]]},
@@ -504,8 +504,8 @@
    :license
    [{:URL "http://www.springer.com/tdm",
      :start
-     {:date-parts [[2016 11 24]],
-      :date-time "2016-11-24T00:00:00Z",
+     {:date-time "2016-11-24T00:00:00Z",
+      :date-parts [[2016 11 24]],
       :timestamp 1479945600000},
      :delay-in-days 0,
      :content-version "unspecified"}],
@@ -516,8 +516,8 @@
    :DOI "10.1038/nrn.2016.155",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 24]],
-    :date-time "2016-11-24T06:40:41Z",
+   {:date-time "2016-11-24T06:40:41Z",
+    :date-parts [[2016 11 24]],
     :timestamp 1479969641000},
    :page "7-19",
    :update-policy
@@ -559,8 +559,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 1 18]],
-    :date-time "2018-01-18T05:29:31Z",
+   {:date-time "2018-01-18T05:29:31Z",
+    :date-parts [[2018 1 18]],
     :timestamp 1516253371000},
    :score 1.0,
    :issued {:date-parts [[2016 11 24]]},
@@ -585,8 +585,8 @@
    :DOI "10.1101/026963",
    :type "posted-content",
    :created
-   {:date-parts [[2015 9 17]],
-    :date-time "2015-09-17T05:01:45Z",
+   {:date-time "2015-09-17T05:01:45Z",
+    :date-parts [[2015 9 17]],
     :timestamp 1442466105000},
    :source "Crossref",
    :is-referenced-by-count 11,
@@ -702,8 +702,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 3 30]],
-    :date-time "2018-03-30T21:35:55Z",
+   {:date-time "2018-03-30T21:35:55Z",
+    :date-parts [[2018 3 30]],
     :timestamp 1522445755000},
    :score 1.0,
    :issued {:date-parts [[2015 9 16]]},
@@ -726,8 +726,8 @@
    :DOI "10.1192/bjp.209.6.533",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 1]],
-    :date-time "2016-12-01T08:31:49Z",
+   {:date-time "2016-12-01T08:31:49Z",
+    :date-parts [[2016 12 1]],
     :timestamp 1480581109000},
    :page "533-534",
    :source "Crossref",
@@ -759,8 +759,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 1 17]],
-    :date-time "2018-01-17T07:22:20Z",
+   {:date-time "2018-01-17T07:22:20Z",
+    :date-parts [[2018 1 17]],
     :timestamp 1516173740000},
    :score 1.0,
    :issued {:date-parts [[2016 12]]},
@@ -778,8 +778,8 @@
    :license
    [{:URL "https://creativecommons.org/licenses/by/4.0/",
      :start
-     {:date-parts [[2016 12 15]],
-      :date-time "2016-12-15T00:00:00Z",
+     {:date-time "2016-12-15T00:00:00Z",
+      :date-parts [[2016 12 15]],
       :timestamp 1481760000000},
      :delay-in-days 0,
      :content-version "unspecified"}],
@@ -806,8 +806,8 @@
    :DOI "10.3389/fendo.2016.00158",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 15]],
-    :date-time "2016-12-15T03:59:50Z",
+   {:date-time "2016-12-15T03:59:50Z",
+    :date-parts [[2016 12 15]],
     :timestamp 1481774390000},
    :update-policy "http://dx.doi.org/10.3389/crossmark-policy",
    :source "Crossref",
@@ -871,8 +871,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 2 26]],
-    :date-time "2018-02-26T12:35:01Z",
+   {:date-time "2018-02-26T12:35:01Z",
+    :date-parts [[2018 2 26]],
     :timestamp 1519648501000},
    :score 1.0,
    :issued {:date-parts [[2016 12 15]]},
@@ -887,8 +887,8 @@
    :license
    [{:URL "https://creativecommons.org/licenses/by/4.0/",
      :start
-     {:date-parts [[2016 12 2]],
-      :date-time "2016-12-02T00:00:00Z",
+     {:date-time "2016-12-02T00:00:00Z",
+      :date-parts [[2016 12 2]],
       :timestamp 1480636800000},
      :delay-in-days 0,
      :content-version "unspecified"}],
@@ -897,8 +897,8 @@
    :DOI "10.3390/children3040040",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 2]],
-    :date-time "2016-12-02T15:36:37Z",
+   {:date-time "2016-12-02T15:36:37Z",
+    :date-parts [[2016 12 2]],
     :timestamp 1480692997000},
    :page "40",
    :source "Crossref",
@@ -938,8 +938,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 3 19]],
-    :date-time "2018-03-19T12:25:35Z",
+   {:date-time "2018-03-19T12:25:35Z",
+    :date-parts [[2018 3 19]],
     :timestamp 1521462335000},
    :score 1.0,
    :issued {:date-parts [[2016 12 2]]},
@@ -953,14 +953,15 @@
   {:edition-number "2",
    :reference-count 0,
    :publisher "Sample Publisher",
-   :isbn-type [{:value "0064410145", :type "print"}
-               {:value "0571089895", :type "electronic"}],
+   :isbn-type
+   [{:value "0064410145", :type "print"}
+    {:value "0571089895", :type "electronic"}],
    :content-domain {:domain [], :crossmark-restriction false},
    :DOI "10.5555/test5",
    :type "book-set",
    :created
-   {:date-parts [[2009 3 10]],
-    :date-time "2009-03-10T18:21:05Z",
+   {:date-time "2009-03-10T18:21:05Z",
+    :date-parts [[2009 3 10]],
     :timestamp 1236709265000},
    :source "Crossref",
    :is-referenced-by-count 0,
@@ -973,8 +974,8 @@
      :content-version "vor",
      :intended-application "similarity-checking"}],
    :deposited
-   {:date-parts [[2018 3 19]],
-    :date-time "2018-03-19T20:42:34Z",
+   {:date-time "2018-03-19T20:42:34Z",
+    :date-parts [[2018 3 19]],
     :timestamp 1521492154000},
    :score 1.0,
    :issued {:date-parts [[nil]]},
@@ -989,8 +990,8 @@
    :DOI "10.7287/peerj.1078v0.2/reviews/1",
    :type "peer-review",
    :created
-   {:date-parts [[2018 1 10]],
-    :date-time "2018-01-10T17:22:19Z",
+   {:date-time "2018-01-10T17:22:19Z",
+    :date-parts [[2018 1 10]],
     :timestamp 1515604939000},
    :source "Crossref",
    :is-referenced-by-count 0,
@@ -998,9 +999,10 @@
    ["Peer Review #1 of \"Multimodal Imaging Brain Connectivity Analysis (MIBCA) toolbox (v0.2)\""],
    :prefix "10.7287",
    :member "4443",
+   :review {:revision-round "3", :stage "pre-publication"},
    :deposited
-   {:date-parts [[2018 1 10]],
-    :date-time "2018-01-10T17:22:19Z",
+   {:date-time "2018-01-10T17:22:19Z",
+    :date-parts [[2018 1 10]],
     :timestamp 1515604939000},
    :score 1.0,
    :issued {:date-parts [[2015 7 14]]},
@@ -1018,8 +1020,8 @@
    :DOI "10.7287/peerj.2196v0.1/reviews/2",
    :type "peer-review",
    :created
-   {:date-parts [[2018 1 9]],
-    :date-time "2018-01-09T23:59:03Z",
+   {:date-time "2018-01-09T23:59:03Z",
+    :date-parts [[2018 1 9]],
     :timestamp 1515542343000},
    :source "Crossref",
    :is-referenced-by-count 0,
@@ -1027,9 +1029,10 @@
    ["Peer Review #2 of \"Tissue mortality by Caribbean ciliate infection and white band disease in three reef-building coral species (v0.1)\""],
    :prefix "10.7287",
    :member "4443",
+   :review {:revision-round "2", :stage "pre-publication"},
    :deposited
-   {:date-parts [[2018 1 9]],
-    :date-time "2018-01-09T23:59:03Z",
+   {:date-time "2018-01-09T23:59:03Z",
+    :date-parts [[2018 1 9]],
     :timestamp 1515542343000},
    :score 1.0,
    :issued {:date-parts [[2016 7 26]]},

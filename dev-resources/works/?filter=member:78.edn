@@ -7,8 +7,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -17,8 +17,8 @@
    :DOI "10.1016/b978-0-12-803592-4.00001-8",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T20:26:21Z",
+   {:date-time "2016-11-29T20:26:21Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480451181000},
    :page "1-57",
    :source "Crossref",
@@ -48,8 +48,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:46:58Z",
+   {:date-time "2017-06-25T04:46:58Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366018000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -62,8 +62,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -72,8 +72,8 @@
    :DOI "10.1016/b978-0-12-803592-4.00015-8",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T20:48:43Z",
+   {:date-time "2016-11-29T20:48:43Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480452523000},
    :page "423-438",
    :source "Crossref",
@@ -103,8 +103,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:47:24Z",
+   {:date-time "2017-06-25T04:47:24Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366044000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -117,8 +117,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -127,8 +127,8 @@
    :DOI "10.1016/b978-0-12-803592-4.00016-x",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T20:48:15Z",
+   {:date-time "2016-11-29T20:48:15Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480452495000},
    :page "439-451",
    :source "Crossref",
@@ -162,8 +162,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:47:24Z",
+   {:date-time "2017-06-25T04:47:24Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366044000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -176,8 +176,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -186,8 +186,8 @@
    :DOI "10.1016/b978-0-12-803592-4.00046-8",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T20:52:01Z",
+   {:date-time "2016-11-29T20:52:01Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480452721000},
    :page "83-99",
    :source "Crossref",
@@ -225,8 +225,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:47:27Z",
+   {:date-time "2017-06-25T04:47:27Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366047000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -239,8 +239,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -249,8 +249,8 @@
    :DOI "10.1016/b978-0-12-803592-4.00111-5",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T20:47:22Z",
+   {:date-time "2016-11-29T20:47:22Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480452442000},
    :page "443-463",
    :source "Crossref",
@@ -290,8 +290,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:47:22Z",
+   {:date-time "2017-06-25T04:47:22Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366042000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -304,8 +304,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -314,8 +314,8 @@
    :DOI "10.1016/b978-0-12-804042-3.00094-4",
    :type "book-chapter",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T20:24:38Z",
+   {:date-time "2016-11-30T20:24:38Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480537478000},
    :page "461-474",
    :source "Crossref",
@@ -342,8 +342,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:54:02Z",
+   {:date-time "2017-06-25T04:54:02Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366442000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -355,8 +355,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -381,8 +381,8 @@
    :DOI "10.1016/j.alcohol.2016.08.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 16]],
-    :date-time "2016-12-16T08:43:21Z",
+   {:date-time "2016-12-16T08:43:21Z",
+    :date-parts [[2016 12 16]],
     :timestamp 1481877801000},
    :page "139-151",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -444,8 +444,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T06:03:02Z",
+   {:date-time "2017-06-25T06:03:02Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498370582000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -475,8 +475,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 7 1]],
-      :date-time "2017-07-01T00:00:00Z",
+     {:date-time "2017-07-01T00:00:00Z",
+      :date-parts [[2017 7 1]],
       :timestamp 1498867200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -495,8 +495,8 @@
    :DOI "10.1016/j.bbi.2016.10.007",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 15]],
-    :date-time "2016-10-15T16:36:45Z",
+   {:date-time "2016-10-15T16:36:45Z",
+    :date-parts [[2016 10 15]],
     :timestamp 1476549405000},
    :page "148-159",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -530,8 +530,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 12 23]],
-    :date-time "2017-12-23T23:38:34Z",
+   {:date-time "2017-12-23T23:38:34Z",
+    :date-parts [[2017 12 23]],
     :timestamp 1514072314000},
    :score 1.0,
    :issued {:date-parts [[2017 7]]},
@@ -563,8 +563,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -583,8 +583,8 @@
    :DOI "10.1016/j.bbr.2016.10.035",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 27]],
-    :date-time "2016-10-27T21:37:25Z",
+   {:date-time "2016-10-27T21:37:25Z",
+    :date-parts [[2016 10 27]],
     :timestamp 1477604245000},
    :page "464-472",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -622,8 +622,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:16:53Z",
+   {:date-time "2017-06-25T02:16:53Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498357013000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -655,8 +655,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -668,8 +668,8 @@
    :DOI "10.1016/j.biopsycho.2016.12.010",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 15]],
-    :date-time "2016-12-15T17:45:19Z",
+   {:date-time "2016-12-15T17:45:19Z",
+    :date-parts [[2016 12 15]],
     :timestamp 1481823919000},
    :page "136-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -723,8 +723,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T06:01:29Z",
+   {:date-time "2017-06-25T06:01:29Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498370489000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -757,8 +757,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -776,8 +776,8 @@
    :DOI "10.1016/j.bmc.2016.10.035",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 1]],
-    :date-time "2016-11-01T08:31:03Z",
+   {:date-time "2016-11-01T08:31:03Z",
+    :date-parts [[2016 11 1]],
     :timestamp 1477989063000},
    :page "305-315",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -837,8 +837,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:29:54Z",
+   {:date-time "2017-06-25T02:29:54Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498357794000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -873,8 +873,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -892,8 +892,8 @@
    :DOI "10.1016/j.explore.2016.10.009",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 29]],
-    :date-time "2016-10-29T03:46:29Z",
+   {:date-time "2016-10-29T03:46:29Z",
+    :date-parts [[2016 10 29]],
     :timestamp 1477712789000},
    :page "6-8",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -923,8 +923,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:22:59Z",
+   {:date-time "2017-06-25T02:22:59Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498357379000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -960,8 +960,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 11 1]],
-      :date-time "2016-11-01T00:00:00Z",
+     {:date-time "2016-11-01T00:00:00Z",
+      :date-parts [[2016 11 1]],
       :timestamp 1477958400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -980,8 +980,8 @@
    :DOI "10.1016/j.infbeh.2016.09.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 14]],
-    :date-time "2016-10-14T09:48:19Z",
+   {:date-time "2016-10-14T09:48:19Z",
+    :date-parts [[2016 10 14]],
     :timestamp 1476438499000},
    :page "71-82",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1037,8 +1037,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T01:08:48Z",
+   {:date-time "2017-06-25T01:08:48Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498352928000},
    :score 1.0,
    :issued {:date-parts [[2016 11]]},
@@ -1070,8 +1070,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 12 1]],
-      :date-time "2017-12-01T00:00:00Z",
+     {:date-time "2017-12-01T00:00:00Z",
+      :date-parts [[2017 12 1]],
       :timestamp 1512086400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1091,8 +1091,8 @@
    :DOI "10.1016/j.jad.2016.10.035",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 27]],
-    :date-time "2016-10-27T22:03:58Z",
+   {:date-time "2016-10-27T22:03:58Z",
+    :date-parts [[2016 10 27]],
     :timestamp 1477605838000},
    :page "76-86",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1129,8 +1129,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 9 16]],
-    :date-time "2017-09-16T03:19:36Z",
+   {:date-time "2017-09-16T03:19:36Z",
+    :date-parts [[2017 9 16]],
     :timestamp 1505531976000},
    :score 1.0,
    :issued {:date-parts [[2017 12]]},
@@ -1161,8 +1161,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1182,8 +1182,8 @@
    :DOI "10.1016/j.jad.2016.11.036",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T09:31:23Z",
+   {:date-time "2016-11-30T09:31:23Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480498283000},
    :page "43-48",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1218,8 +1218,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:50:17Z",
+   {:date-time "2017-06-25T04:50:17Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366217000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -1251,8 +1251,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1272,8 +1272,8 @@
    :DOI "10.1016/j.jad.2016.11.046",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T09:30:54Z",
+   {:date-time "2016-11-30T09:30:54Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480498254000},
    :page "209-216",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1331,8 +1331,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 2 13]],
-    :date-time "2018-02-13T02:55:51Z",
+   {:date-time "2018-02-13T02:55:51Z",
+    :date-parts [[2018 2 13]],
     :timestamp 1518490551000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -1365,8 +1365,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 5 1]],
-      :date-time "2017-05-01T00:00:00Z",
+     {:date-time "2017-05-01T00:00:00Z",
+      :date-parts [[2017 5 1]],
       :timestamp 1493596800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1387,8 +1387,8 @@
    :DOI "10.1016/j.joms.2016.10.033",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 4]],
-    :date-time "2016-11-04T01:47:03Z",
+   {:date-time "2016-11-04T01:47:03Z",
+    :date-parts [[2016 11 4]],
     :timestamp 1478224023000},
    :page "927-930",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1418,8 +1418,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 4 24]],
-    :date-time "2017-04-24T00:15:56Z",
+   {:date-time "2017-04-24T00:15:56Z",
+    :date-parts [[2017 4 24]],
     :timestamp 1492992956000},
    :score 1.0,
    :issued {:date-parts [[2017 5]]},
@@ -1454,8 +1454,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1473,8 +1473,8 @@
    :DOI "10.1016/j.neubiorev.2016.12.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 5]],
-    :date-time "2016-12-05T05:30:33Z",
+   {:date-time "2016-12-05T05:30:33Z",
+    :date-parts [[2016 12 5]],
     :timestamp 1480915833000},
    :page "232-242",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1512,8 +1512,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:13:23Z",
+   {:date-time "2017-06-25T05:13:23Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498367603000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -1545,8 +1545,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1566,8 +1566,8 @@
    :DOI "10.1016/j.neubiorev.2016.12.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 13]],
-    :date-time "2016-12-13T23:18:23Z",
+   {:date-time "2016-12-13T23:18:23Z",
+    :date-parts [[2016 12 13]],
     :timestamp 1481671103000},
    :page "123-164",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1629,8 +1629,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:51:22Z",
+   {:date-time "2017-06-25T05:51:22Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498369882000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -1662,8 +1662,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1692,8 +1692,8 @@
    :DOI "10.1016/j.neubiorev.2016.12.013",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 16]],
-    :date-time "2016-12-16T23:37:30Z",
+   {:date-time "2016-12-16T23:37:30Z",
+    :date-parts [[2016 12 16]],
     :timestamp 1481931450000},
    :page "191-218",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1735,8 +1735,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T06:04:21Z",
+   {:date-time "2017-06-25T06:04:21Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498370661000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -1768,8 +1768,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 5 1]],
-      :date-time "2017-05-01T00:00:00Z",
+     {:date-time "2017-05-01T00:00:00Z",
+      :date-parts [[2017 5 1]],
       :timestamp 1493596800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1792,8 +1792,8 @@
    :DOI "10.1016/j.neulet.2016.11.064",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 1]],
-    :date-time "2016-12-01T19:15:56Z",
+   {:date-time "2016-12-01T19:15:56Z",
+    :date-parts [[2016 12 1]],
     :timestamp 1480619756000},
    :page "147-155",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1843,8 +1843,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 12 19]],
-    :date-time "2017-12-19T01:21:02Z",
+   {:date-time "2017-12-19T01:21:02Z",
+    :date-parts [[2017 12 19]],
     :timestamp 1513646462000},
    :score 1.0,
    :issued {:date-parts [[2017 5]]},
@@ -1876,8 +1876,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -1904,8 +1904,8 @@
    :DOI "10.1016/j.neuro.2016.11.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 17]],
-    :date-time "2016-11-17T21:32:49Z",
+   {:date-time "2016-11-17T21:32:49Z",
+    :date-parts [[2016 11 17]],
     :timestamp 1479418369000},
    :page "103-109",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -1964,8 +1964,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 12 7]],
-    :date-time "2017-12-07T18:03:59Z",
+   {:date-time "2017-12-07T18:03:59Z",
+    :date-parts [[2017 12 7]],
     :timestamp 1512669839000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -1997,8 +1997,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2018,8 +2018,8 @@
    :DOI "10.1016/j.neurobiolaging.2016.11.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 1]],
-    :date-time "2016-12-01T07:05:09Z",
+   {:date-time "2016-12-01T07:05:09Z",
+    :date-parts [[2016 12 1]],
     :timestamp 1480575909000},
    :page "1-8",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2071,8 +2071,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 1 4]],
-    :date-time "2018-01-04T22:08:16Z",
+   {:date-time "2018-01-04T22:08:16Z",
+    :date-parts [[2018 1 4]],
     :timestamp 1515103696000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -2104,8 +2104,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2122,8 +2122,8 @@
    :DOI "10.1016/j.neuroimage.2016.12.046",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 16]],
-    :date-time "2016-12-16T05:16:22Z",
+   {:date-time "2016-12-16T05:16:22Z",
+    :date-parts [[2016 12 16]],
     :timestamp 1481865382000},
    :page "314-329",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2165,8 +2165,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 1 20]],
-    :date-time "2018-01-20T14:43:22Z",
+   {:date-time "2018-01-20T14:43:22Z",
+    :date-parts [[2018 1 20]],
     :timestamp 1516459402000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -2197,15 +2197,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 10 1]],
-      :date-time "2016-10-01T00:00:00Z",
+     {:date-time "2016-10-01T00:00:00Z",
+      :date-parts [[2016 10 1]],
       :timestamp 1475280000000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://www.elsevier.com/open-access/userlicense/1.0/",
      :start
-     {:date-parts [[2017 10 5]],
-      :date-time "2017-10-05T00:00:00Z",
+     {:date-time "2017-10-05T00:00:00Z",
+      :date-parts [[2017 10 5]],
       :timestamp 1507161600000},
      :delay-in-days 369,
      :content-version "vor"}],
@@ -2226,8 +2226,8 @@
    :DOI "10.1016/j.neuron.2016.09.039",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 5]],
-    :date-time "2016-10-05T17:06:26Z",
+   {:date-time "2016-10-05T17:06:26Z",
+    :date-parts [[2016 10 5]],
     :timestamp 1475687186000},
    :page "14-30",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2261,8 +2261,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 10 28]],
-    :date-time "2017-10-28T20:46:11Z",
+   {:date-time "2017-10-28T20:46:11Z",
+    :date-parts [[2017 10 28]],
     :timestamp 1509223571000},
    :score 1.0,
    :issued {:date-parts [[2016 10]]},
@@ -2294,15 +2294,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by/4.0/",
      :start
-     {:date-parts [[2016 11 16]],
-      :date-time "2016-11-16T00:00:00Z",
+     {:date-time "2016-11-16T00:00:00Z",
+      :date-parts [[2016 11 16]],
       :timestamp 1479254400000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -2321,8 +2321,8 @@
    :DOI "10.1016/j.nicl.2016.11.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 17]],
-    :date-time "2016-11-17T20:00:20Z",
+   {:date-time "2016-11-17T20:00:20Z",
+    :date-parts [[2016 11 17]],
     :timestamp 1479412820000},
    :page "62-69",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2370,8 +2370,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 9 23]],
-    :date-time "2017-09-23T07:54:55Z",
+   {:date-time "2017-09-23T07:54:55Z",
+    :date-parts [[2017 9 23]],
     :timestamp 1506153295000},
    :score 1.0,
    :issued {:date-parts [[2017]]},
@@ -2403,8 +2403,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 12 1]],
-      :date-time "2016-12-01T00:00:00Z",
+     {:date-time "2016-12-01T00:00:00Z",
+      :date-parts [[2016 12 1]],
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2416,8 +2416,8 @@
    :DOI "10.1016/j.nlm.2016.10.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 11]],
-    :date-time "2016-10-11T01:25:28Z",
+   {:date-time "2016-10-11T01:25:28Z",
+    :date-parts [[2016 10 11]],
     :timestamp 1476149128000},
    :page "139-146",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2467,8 +2467,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T00:48:02Z",
+   {:date-time "2017-06-25T00:48:02Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498351682000},
    :score 1.0,
    :issued {:date-parts [[2016 12]]},
@@ -2500,8 +2500,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 7 1]],
-      :date-time "2017-07-01T00:00:00Z",
+     {:date-time "2017-07-01T00:00:00Z",
+      :date-parts [[2017 7 1]],
       :timestamp 1498867200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2518,8 +2518,8 @@
    :DOI "10.1016/j.nlm.2016.11.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 18]],
-    :date-time "2016-11-18T20:46:23Z",
+   {:date-time "2016-11-18T20:46:23Z",
+    :date-parts [[2016 11 18]],
     :timestamp 1479501983000},
    :page "126-134",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2553,8 +2553,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 12 29]],
-    :date-time "2017-12-29T11:50:46Z",
+   {:date-time "2017-12-29T11:50:46Z",
+    :date-parts [[2017 12 29]],
     :timestamp 1514548246000},
    :score 1.0,
    :issued {:date-parts [[2017 7]]},
@@ -2586,8 +2586,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2603,8 +2603,8 @@
    :DOI "10.1016/j.peptides.2016.11.001",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 6]],
-    :date-time "2016-11-06T15:01:28Z",
+   {:date-time "2016-11-06T15:01:28Z",
+    :date-parts [[2016 11 6]],
     :timestamp 1478444488000},
    :page "1-11",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2646,8 +2646,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:57:32Z",
+   {:date-time "2017-06-25T02:57:32Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498359452000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -2677,8 +2677,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2697,8 +2697,8 @@
    :DOI "10.1016/j.physbeh.2016.10.010",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 16]],
-    :date-time "2016-10-16T20:59:08Z",
+   {:date-time "2016-10-16T20:59:08Z",
+    :date-parts [[2016 10 16]],
     :timestamp 1476651548000},
    :page "1-10",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2760,8 +2760,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2018 3 27]],
-    :date-time "2018-03-27T00:25:41Z",
+   {:date-time "2018-03-27T00:25:41Z",
+    :date-parts [[2018 3 27]],
     :timestamp 1522110341000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -2793,8 +2793,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2826,8 +2826,8 @@
    :DOI "10.1016/j.physbeh.2016.11.030",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 24]],
-    :date-time "2016-11-24T22:18:36Z",
+   {:date-time "2016-11-24T22:18:36Z",
+    :date-parts [[2016 11 24]],
     :timestamp 1480025916000},
    :page "47-53",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2883,8 +2883,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:26:38Z",
+   {:date-time "2017-06-25T04:26:38Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498364798000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -2916,8 +2916,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -2936,8 +2936,8 @@
    :DOI "10.1016/j.physbeh.2016.12.004",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 5]],
-    :date-time "2016-12-05T17:48:33Z",
+   {:date-time "2016-12-05T17:48:33Z",
+    :date-parts [[2016 12 5]],
     :timestamp 1480960113000},
    :page "169-177",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -2989,8 +2989,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:16:33Z",
+   {:date-time "2017-06-25T05:16:33Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498367793000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -3023,8 +3023,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3044,8 +3044,8 @@
    :DOI "10.1016/j.psym.2016.11.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 17]],
-    :date-time "2016-11-17T21:45:48Z",
+   {:date-time "2016-11-17T21:45:48Z",
+    :date-parts [[2016 11 17]],
     :timestamp 1479419148000},
    :page "214-215",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3083,8 +3083,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:53:24Z",
+   {:date-time "2017-06-25T03:53:24Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498362804000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -3121,8 +3121,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3142,8 +3142,8 @@
    :DOI "10.1016/j.psyneuen.2016.09.025",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 10]],
-    :date-time "2016-10-10T07:11:11Z",
+   {:date-time "2016-10-10T07:11:11Z",
+    :date-parts [[2016 10 10]],
     :timestamp 1476083471000},
    :page "36-43",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3181,8 +3181,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:07Z",
+   {:date-time "2017-11-30T15:51:07Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057067000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -3214,8 +3214,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 12 1]],
-      :date-time "2016-12-01T00:00:00Z",
+     {:date-time "2016-12-01T00:00:00Z",
+      :date-parts [[2016 12 1]],
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3235,8 +3235,8 @@
    :DOI "10.1016/j.psyneuen.2016.09.027",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 8]],
-    :date-time "2016-10-08T17:45:26Z",
+   {:date-time "2016-10-08T17:45:26Z",
+    :date-parts [[2016 10 8]],
     :timestamp 1475948726000},
    :page "342-349",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3290,8 +3290,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T00:40:57Z",
+   {:date-time "2017-06-25T00:40:57Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498351257000},
    :score 1.0,
    :issued {:date-parts [[2016 12]]},
@@ -3323,8 +3323,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 12 1]],
-      :date-time "2016-12-01T00:00:00Z",
+     {:date-time "2016-12-01T00:00:00Z",
+      :date-parts [[2016 12 1]],
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3349,8 +3349,8 @@
    :DOI "10.1016/j.psyneuen.2016.09.028",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 9]],
-    :date-time "2016-10-09T08:09:37Z",
+   {:date-time "2016-10-09T08:09:37Z",
+    :date-parts [[2016 10 9]],
     :timestamp 1476000577000},
    :page "371-379",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3424,8 +3424,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T00:42:04Z",
+   {:date-time "2017-06-25T00:42:04Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498351324000},
    :score 1.0,
    :issued {:date-parts [[2016 12]]},
@@ -3457,8 +3457,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2016 12 1]],
-      :date-time "2016-12-01T00:00:00Z",
+     {:date-time "2016-12-01T00:00:00Z",
+      :date-parts [[2016 12 1]],
       :timestamp 1480550400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3478,8 +3478,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.001",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 10]],
-    :date-time "2016-10-10T07:02:58Z",
+   {:date-time "2016-10-10T07:02:58Z",
+    :date-parts [[2016 10 10]],
     :timestamp 1476082978000},
    :page "387-396",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3537,8 +3537,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T00:44:04Z",
+   {:date-time "2017-06-25T00:44:04Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498351444000},
    :score 1.0,
    :issued {:date-parts [[2016 12]]},
@@ -3570,8 +3570,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3592,8 +3592,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.002",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 19]],
-    :date-time "2016-10-19T07:06:54Z",
+   {:date-time "2016-10-19T07:06:54Z",
+    :date-parts [[2016 10 19]],
     :timestamp 1476860814000},
    :page "52-55",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3647,8 +3647,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:13Z",
+   {:date-time "2017-11-30T15:51:13Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057073000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -3680,8 +3680,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3701,8 +3701,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 17]],
-    :date-time "2016-10-17T18:06:11Z",
+   {:date-time "2016-10-17T18:06:11Z",
+    :date-parts [[2016 10 17]],
     :timestamp 1476727571000},
    :page "26-35",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3756,8 +3756,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:29Z",
+   {:date-time "2017-11-30T15:50:29Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057029000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -3789,8 +3789,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3810,8 +3810,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.004",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 18]],
-    :date-time "2016-10-18T15:51:12Z",
+   {:date-time "2016-10-18T15:51:12Z",
+    :date-parts [[2016 10 18]],
     :timestamp 1476805872000},
    :page "5-14",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3841,8 +3841,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:55Z",
+   {:date-time "2017-11-30T15:50:55Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057055000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -3874,8 +3874,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3901,8 +3901,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.005",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 18]],
-    :date-time "2016-10-18T01:27:09Z",
+   {:date-time "2016-10-18T01:27:09Z",
+    :date-parts [[2016 10 18]],
     :timestamp 1476754029000},
    :page "56-63",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -3944,8 +3944,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:09Z",
+   {:date-time "2017-11-30T15:51:09Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057069000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -3977,8 +3977,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -3998,8 +3998,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 16]],
-    :date-time "2016-10-16T19:04:53Z",
+   {:date-time "2016-10-16T19:04:53Z",
+    :date-parts [[2016 10 16]],
     :timestamp 1476644693000},
    :page "1-4",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4045,8 +4045,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:34Z",
+   {:date-time "2017-11-30T15:51:34Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057094000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4078,8 +4078,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4099,8 +4099,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.007",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 19]],
-    :date-time "2016-10-19T15:14:11Z",
+   {:date-time "2016-10-19T15:14:11Z",
+    :date-parts [[2016 10 19]],
     :timestamp 1476890051000},
    :page "164-172",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4158,8 +4158,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:31Z",
+   {:date-time "2017-11-30T15:51:31Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057091000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4191,8 +4191,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4212,8 +4212,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 19]],
-    :date-time "2016-10-19T15:10:40Z",
+   {:date-time "2016-10-19T15:10:40Z",
+    :date-parts [[2016 10 19]],
     :timestamp 1476889840000},
    :page "91-99",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4255,8 +4255,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:48Z",
+   {:date-time "2017-11-30T15:51:48Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057108000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4288,8 +4288,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4312,8 +4312,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.009",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 17]],
-    :date-time "2016-10-17T18:06:04Z",
+   {:date-time "2016-10-17T18:06:04Z",
+    :date-parts [[2016 10 17]],
     :timestamp 1476727564000},
    :page "44-51",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4355,8 +4355,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:22Z",
+   {:date-time "2017-11-30T15:51:22Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057082000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4388,8 +4388,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4409,8 +4409,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.010",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 20]],
-    :date-time "2016-10-20T18:32:30Z",
+   {:date-time "2016-10-20T18:32:30Z",
+    :date-parts [[2016 10 20]],
     :timestamp 1476988350000},
    :page "72-82",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4488,8 +4488,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:59Z",
+   {:date-time "2017-11-30T15:50:59Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057059000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4521,8 +4521,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4555,8 +4555,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.011",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 5]],
-    :date-time "2016-11-05T07:02:53Z",
+   {:date-time "2016-11-05T07:02:53Z",
+    :date-parts [[2016 11 5]],
     :timestamp 1478329373000},
    :page "67-76",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4614,8 +4614,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:55:28Z",
+   {:date-time "2017-06-25T02:55:28Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498359328000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -4647,8 +4647,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4668,8 +4668,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.012",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 25]],
-    :date-time "2016-10-25T17:18:31Z",
+   {:date-time "2016-10-25T17:18:31Z",
+    :date-parts [[2016 10 25]],
     :timestamp 1477415911000},
    :page "64-71",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4719,8 +4719,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:44Z",
+   {:date-time "2017-11-30T15:51:44Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057104000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4752,8 +4752,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4773,8 +4773,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.013",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 25]],
-    :date-time "2016-10-25T17:16:12Z",
+   {:date-time "2016-10-25T17:16:12Z",
+    :date-parts [[2016 10 25]],
     :timestamp 1477415772000},
    :page "141-151",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4808,8 +4808,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:18Z",
+   {:date-time "2017-11-30T15:51:18Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057078000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4841,8 +4841,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4862,8 +4862,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 19]],
-    :date-time "2016-10-19T21:19:38Z",
+   {:date-time "2016-10-19T21:19:38Z",
+    :date-parts [[2016 10 19]],
     :timestamp 1476911978000},
    :page "222-227",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -4901,8 +4901,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:41Z",
+   {:date-time "2017-11-30T15:50:41Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057041000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -4934,8 +4934,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -4955,8 +4955,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.015",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 20]],
-    :date-time "2016-10-20T18:31:33Z",
+   {:date-time "2016-10-20T18:31:33Z",
+    :date-parts [[2016 10 20]],
     :timestamp 1476988293000},
    :page "183-191",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5030,8 +5030,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T01:42:48Z",
+   {:date-time "2017-06-25T01:42:48Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498354968000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -5063,15 +5063,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by/4.0/",
      :start
-     {:date-parts [[2016 10 21]],
-      :date-time "2016-10-21T00:00:00Z",
+     {:date-time "2016-10-21T00:00:00Z",
+      :date-parts [[2016 10 21]],
       :timestamp 1477008000000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -5096,8 +5096,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.016",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 21]],
-    :date-time "2016-10-21T17:18:50Z",
+   {:date-time "2016-10-21T17:18:50Z",
+    :date-parts [[2016 10 21]],
     :timestamp 1477070330000},
    :page "173-182",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5152,8 +5152,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:26Z",
+   {:date-time "2017-11-30T15:51:26Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057086000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5185,8 +5185,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5206,8 +5206,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.017",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 21]],
-    :date-time "2016-10-21T17:16:32Z",
+   {:date-time "2016-10-21T17:16:32Z",
+    :date-parts [[2016 10 21]],
     :timestamp 1477070192000},
    :page "124-131",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5261,8 +5261,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:18Z",
+   {:date-time "2017-11-30T15:51:18Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057078000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5294,8 +5294,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5315,8 +5315,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.018",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 22]],
-    :date-time "2016-10-22T16:18:08Z",
+   {:date-time "2016-10-22T16:18:08Z",
+    :date-parts [[2016 10 22]],
     :timestamp 1477153088000},
    :page "132-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5366,8 +5366,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:45Z",
+   {:date-time "2017-11-30T15:51:45Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057105000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5399,15 +5399,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://www.elsevier.com/open-access/userlicense/1.0/",
      :start
-     {:date-parts [[2017 11 9]],
-      :date-time "2017-11-09T00:00:00Z",
+     {:date-time "2017-11-09T00:00:00Z",
+      :date-parts [[2017 11 9]],
       :timestamp 1510185600000},
      :delay-in-days 312,
      :content-version "am"}],
@@ -5427,8 +5427,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.019",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 24]],
-    :date-time "2016-10-24T19:45:40Z",
+   {:date-time "2016-10-24T19:45:40Z",
+    :date-parts [[2016 10 24]],
     :timestamp 1477338340000},
    :page "183-191",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5474,8 +5474,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:51Z",
+   {:date-time "2017-11-30T15:51:51Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057111000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5507,8 +5507,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5528,8 +5528,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.020",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 24]],
-    :date-time "2016-10-24T20:30:15Z",
+   {:date-time "2016-10-24T20:30:15Z",
+    :date-parts [[2016 10 24]],
     :timestamp 1477341015000},
    :page "116-123",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5587,8 +5587,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:58Z",
+   {:date-time "2017-11-30T15:50:58Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057058000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5620,8 +5620,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5641,8 +5641,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.021",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 10]],
-    :date-time "2016-11-10T18:31:09Z",
+   {:date-time "2016-11-10T18:31:09Z",
+    :date-parts [[2016 11 10]],
     :timestamp 1478802669000},
    :page "77-83",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5696,8 +5696,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:19:26Z",
+   {:date-time "2017-06-25T03:19:26Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498360766000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -5729,8 +5729,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5755,8 +5755,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.022",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 26]],
-    :date-time "2016-10-26T03:30:55Z",
+   {:date-time "2016-10-26T03:30:55Z",
+    :date-parts [[2016 10 26]],
     :timestamp 1477452655000},
    :page "100-109",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5806,8 +5806,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:29Z",
+   {:date-time "2017-11-30T15:51:29Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057089000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -5839,8 +5839,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5869,8 +5869,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.023",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 19]],
-    :date-time "2016-11-19T17:02:15Z",
+   {:date-time "2016-11-19T17:02:15Z",
+    :date-parts [[2016 11 19]],
     :timestamp 1479574935000},
    :page "97-106",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -5904,8 +5904,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:01:56Z",
+   {:date-time "2017-06-25T04:01:56Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498363316000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -5937,8 +5937,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -5964,8 +5964,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.024",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 27]],
-    :date-time "2016-10-27T21:15:43Z",
+   {:date-time "2016-10-27T21:15:43Z",
+    :date-parts [[2016 10 27]],
     :timestamp 1477602943000},
    :page "83-90",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6019,8 +6019,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:50:13Z",
+   {:date-time "2017-11-30T15:50:13Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057013000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -6053,8 +6053,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6074,8 +6074,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.025",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 29]],
-    :date-time "2016-10-29T03:31:33Z",
+   {:date-time "2016-10-29T03:31:33Z",
+    :date-parts [[2016 10 29]],
     :timestamp 1477711893000},
    :page "110-115",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6129,8 +6129,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:49:55Z",
+   {:date-time "2017-11-30T15:49:55Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512056995000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -6162,8 +6162,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6196,8 +6196,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.026",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 29]],
-    :date-time "2016-10-29T15:01:26Z",
+   {:date-time "2016-10-29T15:01:26Z",
+    :date-parts [[2016 10 29]],
     :timestamp 1477753286000},
    :page "152-163",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6255,8 +6255,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:40Z",
+   {:date-time "2017-11-30T15:51:40Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057100000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -6288,8 +6288,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6309,8 +6309,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.027",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 10]],
-    :date-time "2016-11-10T18:31:33Z",
+   {:date-time "2016-11-10T18:31:33Z",
+    :date-parts [[2016 11 10]],
     :timestamp 1478802693000},
    :page "49-56",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6384,8 +6384,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:19:26Z",
+   {:date-time "2017-06-25T03:19:26Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498360766000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -6417,8 +6417,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6438,8 +6438,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.028",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 5]],
-    :date-time "2016-11-05T17:48:21Z",
+   {:date-time "2016-11-05T17:48:21Z",
+    :date-parts [[2016 11 5]],
     :timestamp 1478368101000},
    :page "29-37",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6473,8 +6473,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T02:56:49Z",
+   {:date-time "2017-06-25T02:56:49Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498359409000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -6506,8 +6506,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6561,8 +6561,8 @@
    :DOI "10.1016/j.psyneuen.2016.10.029",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 14]],
-    :date-time "2016-11-14T19:05:24Z",
+   {:date-time "2016-11-14T19:05:24Z",
+    :date-parts [[2016 11 14]],
     :timestamp 1479150324000},
    :page "107-113",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6609,8 +6609,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:33:24Z",
+   {:date-time "2017-06-25T03:33:24Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498361604000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -6639,8 +6639,8 @@
      :label "Copyright"}]}
   {:update-to
    [{:updated
-     {:date-parts [[2017 4 1]],
-      :date-time "2017-04-01T00:00:00Z",
+     {:date-time "2017-04-01T00:00:00Z",
+      :date-parts [[2017 4 1]],
       :timestamp 1491004800000},
      :DOI "10.1016/j.psyneuen.2015.09.028",
      :type "erratum",
@@ -6650,8 +6650,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 4 1]],
-      :date-time "2017-04-01T00:00:00Z",
+     {:date-time "2017-04-01T00:00:00Z",
+      :date-parts [[2017 4 1]],
       :timestamp 1491004800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6671,8 +6671,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.001",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 18]],
-    :date-time "2016-11-18T17:46:38Z",
+   {:date-time "2016-11-18T17:46:38Z",
+    :date-parts [[2016 11 18]],
     :timestamp 1479491198000},
    :page "257",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6727,8 +6727,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 12 21]],
-    :date-time "2017-12-21T03:37:35Z",
+   {:date-time "2017-12-21T03:37:35Z",
+    :date-parts [[2017 12 21]],
     :timestamp 1513827455000},
    :score 1.0,
    :issued {:date-parts [[2017 4]]},
@@ -6765,8 +6765,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6786,8 +6786,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.002",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 5]],
-    :date-time "2016-11-05T07:33:00Z",
+   {:date-time "2016-11-05T07:33:00Z",
+    :date-parts [[2016 11 5]],
     :timestamp 1478331180000},
    :page "192-202",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6829,8 +6829,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:41Z",
+   {:date-time "2017-11-30T15:51:41Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057101000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -6862,8 +6862,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6883,8 +6883,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 6]],
-    :date-time "2016-11-06T10:15:32Z",
+   {:date-time "2016-11-06T10:15:32Z",
+    :date-parts [[2016 11 6]],
     :timestamp 1478427332000},
    :page "203-212",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -6938,8 +6938,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:52:20Z",
+   {:date-time "2017-11-30T15:52:20Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057140000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -6971,8 +6971,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -6992,8 +6992,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.004",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 11]],
-    :date-time "2016-11-11T18:02:35Z",
+   {:date-time "2016-11-11T18:02:35Z",
+    :date-parts [[2016 11 11]],
     :timestamp 1478887355000},
    :page "127-134",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7048,8 +7048,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:24:46Z",
+   {:date-time "2017-06-25T03:24:46Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498361086000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7082,15 +7082,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://www.elsevier.com/open-access/userlicense/1.0/",
      :start
-     {:date-parts [[2017 11 10]],
-      :date-time "2017-11-10T00:00:00Z",
+     {:date-time "2017-11-10T00:00:00Z",
+      :date-parts [[2017 11 10]],
       :timestamp 1510272000000},
      :delay-in-days 313,
      :content-version "am"}],
@@ -7114,8 +7114,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.005",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 8]],
-    :date-time "2016-11-08T05:19:30Z",
+   {:date-time "2016-11-08T05:19:30Z",
+    :date-parts [[2016 11 8]],
     :timestamp 1478582370000},
    :page "213-221",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7165,8 +7165,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 11 30]],
-    :date-time "2017-11-30T15:51:46Z",
+   {:date-time "2017-11-30T15:51:46Z",
+    :date-parts [[2017 11 30]],
     :timestamp 1512057106000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -7198,8 +7198,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7219,8 +7219,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 8]],
-    :date-time "2016-11-08T05:19:15Z",
+   {:date-time "2016-11-08T05:19:15Z",
+    :date-parts [[2016 11 8]],
     :timestamp 1478582355000},
    :page "14-18",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7270,8 +7270,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:02:43Z",
+   {:date-time "2017-06-25T03:02:43Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498359763000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7303,8 +7303,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7324,8 +7324,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.007",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 10]],
-    :date-time "2016-11-10T18:33:42Z",
+   {:date-time "2016-11-10T18:33:42Z",
+    :date-parts [[2016 11 10]],
     :timestamp 1478802822000},
    :page "38-48",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7399,8 +7399,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:19:29Z",
+   {:date-time "2017-06-25T03:19:29Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498360769000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7432,8 +7432,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7458,8 +7458,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 9]],
-    :date-time "2016-11-09T22:33:31Z",
+   {:date-time "2016-11-09T22:33:31Z",
+    :date-parts [[2016 11 9]],
     :timestamp 1478730811000},
    :page "1-10",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7525,8 +7525,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:14:07Z",
+   {:date-time "2017-06-25T03:14:07Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498360447000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7558,8 +7558,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7579,8 +7579,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.009",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 14]],
-    :date-time "2016-11-14T19:05:11Z",
+   {:date-time "2016-11-14T19:05:11Z",
+    :date-parts [[2016 11 14]],
     :timestamp 1479150311000},
    :page "84-87",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7634,8 +7634,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:33:24Z",
+   {:date-time "2017-06-25T03:33:24Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498361604000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7667,8 +7667,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7688,8 +7688,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.010",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 16]],
-    :date-time "2016-11-16T00:13:15Z",
+   {:date-time "2016-11-16T00:13:15Z",
+    :date-parts [[2016 11 16]],
     :timestamp 1479255195000},
    :page "11-13",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7727,8 +7727,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:39:19Z",
+   {:date-time "2017-06-25T03:39:19Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498361959000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7760,15 +7760,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://www.elsevier.com/open-access/userlicense/1.0/",
      :start
-     {:date-parts [[2017 12 4]],
-      :date-time "2017-12-04T00:00:00Z",
+     {:date-time "2017-12-04T00:00:00Z",
+      :date-parts [[2017 12 4]],
       :timestamp 1512345600000},
      :delay-in-days 306,
      :content-version "am"}],
@@ -7788,8 +7788,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.011",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 18]],
-    :date-time "2016-11-18T00:01:34Z",
+   {:date-time "2016-11-18T00:01:34Z",
+    :date-parts [[2016 11 18]],
     :timestamp 1479427294000},
    :page "144-153",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7847,8 +7847,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 10 9]],
-    :date-time "2017-10-09T19:55:05Z",
+   {:date-time "2017-10-09T19:55:05Z",
+    :date-parts [[2017 10 9]],
     :timestamp 1507578905000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7880,8 +7880,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -7901,8 +7901,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.012",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 11]],
-    :date-time "2016-11-11T17:47:45Z",
+   {:date-time "2016-11-11T17:47:45Z",
+    :date-parts [[2016 11 11]],
     :timestamp 1478886465000},
    :page "19-28",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -7960,8 +7960,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:24:39Z",
+   {:date-time "2017-06-25T03:24:39Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498361079000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -7993,8 +7993,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8014,8 +8014,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 17]],
-    :date-time "2016-11-17T00:30:37Z",
+   {:date-time "2016-11-17T00:30:37Z",
+    :date-parts [[2016 11 17]],
     :timestamp 1479342637000},
    :page "114-118",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8085,8 +8085,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:46:05Z",
+   {:date-time "2017-06-25T03:46:05Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498362365000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -8118,8 +8118,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8142,8 +8142,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.015",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 17]],
-    :date-time "2016-11-17T00:17:50Z",
+   {:date-time "2016-11-17T00:17:50Z",
+    :date-parts [[2016 11 17]],
     :timestamp 1479341870000},
    :page "119-126",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8193,8 +8193,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:46:01Z",
+   {:date-time "2017-06-25T03:46:01Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498362361000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -8226,15 +8226,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by-nc-nd/4.0/",
      :start
-     {:date-parts [[2016 12 7]],
-      :date-time "2016-12-07T00:00:00Z",
+     {:date-time "2016-12-07T00:00:00Z",
+      :date-parts [[2016 12 7]],
       :timestamp 1481068800000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -8254,8 +8254,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.016",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 5]],
-    :date-time "2016-12-05T06:17:51Z",
+   {:date-time "2016-12-05T06:17:51Z",
+    :date-parts [[2016 12 5]],
     :timestamp 1480918671000},
    :page "90-94",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8309,8 +8309,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:23Z",
+   {:date-time "2017-08-18T11:20:23Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055223000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -8342,8 +8342,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8363,8 +8363,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.017",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 23]],
-    :date-time "2016-11-23T01:29:01Z",
+   {:date-time "2016-11-23T01:29:01Z",
+    :date-parts [[2016 11 23]],
     :timestamp 1479864541000},
    :page "174-182",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8406,8 +8406,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:14:47Z",
+   {:date-time "2017-06-25T04:14:47Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498364087000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -8439,15 +8439,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://www.elsevier.com/open-access/userlicense/1.0/",
      :start
-     {:date-parts [[2017 11 23]],
-      :date-time "2017-11-23T00:00:00Z",
+     {:date-time "2017-11-23T00:00:00Z",
+      :date-parts [[2017 11 23]],
       :timestamp 1511395200000},
      :delay-in-days 295,
      :content-version "am"}],
@@ -8484,8 +8484,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.018",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 18]],
-    :date-time "2016-11-18T20:17:20Z",
+   {:date-time "2016-11-18T20:17:20Z",
+    :date-parts [[2016 11 18]],
     :timestamp 1479500240000},
    :page "57-66",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8531,8 +8531,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 10 9]],
-    :date-time "2017-10-09T19:55:19Z",
+   {:date-time "2017-10-09T19:55:19Z",
+    :date-parts [[2017 10 9]],
     :timestamp 1507578919000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -8564,8 +8564,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8585,8 +8585,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.019",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 24]],
-    :date-time "2016-11-24T23:32:27Z",
+   {:date-time "2016-11-24T23:32:27Z",
+    :date-parts [[2016 11 24]],
     :timestamp 1480030347000},
    :page "131-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8628,8 +8628,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:42Z",
+   {:date-time "2017-08-18T11:20:42Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055242000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -8661,8 +8661,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8682,8 +8682,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.020",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 24]],
-    :date-time "2016-11-24T23:31:48Z",
+   {:date-time "2016-11-24T23:31:48Z",
+    :date-parts [[2016 11 24]],
     :timestamp 1480030308000},
    :page "47-50",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8741,8 +8741,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:18:17Z",
+   {:date-time "2017-08-18T11:18:17Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055097000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -8774,8 +8774,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8812,8 +8812,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.021",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 24]],
-    :date-time "2016-11-24T23:32:18Z",
+   {:date-time "2016-11-24T23:32:18Z",
+    :date-parts [[2016 11 24]],
     :timestamp 1480030338000},
    :page "105-111",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8871,8 +8871,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:42Z",
+   {:date-time "2017-08-18T11:19:42Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055182000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -8904,8 +8904,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -8925,8 +8925,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.022",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 18]],
-    :date-time "2016-11-18T21:31:56Z",
+   {:date-time "2016-11-18T21:31:56Z",
+    :date-parts [[2016 11 18]],
     :timestamp 1479504716000},
    :page "88-96",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -8964,8 +8964,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:59:09Z",
+   {:date-time "2017-06-25T03:59:09Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498363149000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -8997,8 +8997,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9023,8 +9023,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.023",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T18:48:01Z",
+   {:date-time "2016-11-29T18:48:01Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480445281000},
    :page "51-55",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9074,8 +9074,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:22Z",
+   {:date-time "2017-08-18T11:20:22Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055222000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9107,8 +9107,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9137,8 +9137,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.024",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 25]],
-    :date-time "2016-11-25T01:17:12Z",
+   {:date-time "2016-11-25T01:17:12Z",
+    :date-parts [[2016 11 25]],
     :timestamp 1480036632000},
    :page "68-74",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9192,8 +9192,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:36Z",
+   {:date-time "2017-08-18T11:19:36Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055176000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9225,8 +9225,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9246,8 +9246,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.025",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:35:55Z",
+   {:date-time "2016-11-30T17:35:55Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527355000},
    :page "112-121",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9282,8 +9282,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:48Z",
+   {:date-time "2017-08-18T11:20:48Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055248000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9315,8 +9315,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9346,8 +9346,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.026",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:33:15Z",
+   {:date-time "2016-11-30T17:33:15Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527195000},
    :page "56-62",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9417,8 +9417,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:04Z",
+   {:date-time "2017-08-18T11:20:04Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055204000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9450,8 +9450,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9471,8 +9471,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.027",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 25]],
-    :date-time "2016-11-25T09:01:12Z",
+   {:date-time "2016-11-25T09:01:12Z",
+    :date-parts [[2016 11 25]],
     :timestamp 1480064472000},
    :page "95-104",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9506,8 +9506,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:44Z",
+   {:date-time "2017-08-18T11:19:44Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055184000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9539,8 +9539,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9560,8 +9560,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.028",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:34:24Z",
+   {:date-time "2016-11-30T17:34:24Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527264000},
    :page "203-210",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9615,8 +9615,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:18:57Z",
+   {:date-time "2017-08-18T11:18:57Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055137000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9648,15 +9648,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by/4.0/",
      :start
-     {:date-parts [[2016 11 25]],
-      :date-time "2016-11-25T00:00:00Z",
+     {:date-time "2016-11-25T00:00:00Z",
+      :date-parts [[2016 11 25]],
       :timestamp 1480032000000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -9681,8 +9681,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.029",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:32:49Z",
+   {:date-time "2016-11-30T17:32:49Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527169000},
    :page "1-8",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9733,8 +9733,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:04Z",
+   {:date-time "2017-08-18T11:19:04Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055144000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9766,8 +9766,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9787,8 +9787,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.030",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:32:19Z",
+   {:date-time "2016-11-30T17:32:19Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527139000},
    :page "9-17",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9830,8 +9830,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:32Z",
+   {:date-time "2017-08-18T11:20:32Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055232000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -9863,8 +9863,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -9901,8 +9901,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.031",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:39:59Z",
+   {:date-time "2016-11-30T17:39:59Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527599000},
    :page "197-205",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -9980,8 +9980,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:53:05Z",
+   {:date-time "2017-06-25T04:53:05Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366385000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -10013,8 +10013,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10034,8 +10034,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.032",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T17:32:34Z",
+   {:date-time "2016-11-30T17:32:34Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480527154000},
    :page "154-161",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10077,8 +10077,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:53:02Z",
+   {:date-time "2017-06-25T04:53:02Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366382000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -10110,8 +10110,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10136,8 +10136,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.033",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 29]],
-    :date-time "2016-11-29T18:48:05Z",
+   {:date-time "2016-11-29T18:48:05Z",
+    :date-parts [[2016 11 29]],
     :timestamp 1480445285000},
    :page "135-143",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10207,8 +10207,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:46:28Z",
+   {:date-time "2017-06-25T04:46:28Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498365988000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -10240,8 +10240,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10261,8 +10261,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.034",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 1]],
-    :date-time "2016-12-01T20:03:06Z",
+   {:date-time "2016-12-01T20:03:06Z",
+    :date-parts [[2016 12 1]],
     :timestamp 1480622586000},
    :page "192-196",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10336,8 +10336,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:03:55Z",
+   {:date-time "2017-06-25T05:03:55Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498367035000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -10369,8 +10369,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10390,8 +10390,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.035",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 5]],
-    :date-time "2016-12-05T06:17:29Z",
+   {:date-time "2016-12-05T06:17:29Z",
+    :date-parts [[2016 12 5]],
     :timestamp 1480918649000},
    :page "122-130",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10461,8 +10461,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:11Z",
+   {:date-time "2017-08-18T11:20:11Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055211000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -10494,8 +10494,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10515,8 +10515,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.036",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 8]],
-    :date-time "2016-12-08T20:48:27Z",
+   {:date-time "2016-12-08T20:48:27Z",
+    :date-parts [[2016 12 8]],
     :timestamp 1481230107000},
    :page "25-36",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10566,8 +10566,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:42Z",
+   {:date-time "2017-08-18T11:20:42Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055242000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -10599,8 +10599,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10621,8 +10621,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.037",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 30]],
-    :date-time "2016-11-30T06:56:59Z",
+   {:date-time "2016-11-30T06:56:59Z",
+    :date-parts [[2016 11 30]],
     :timestamp 1480489019000},
    :page "162-173",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10668,8 +10668,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:49:46Z",
+   {:date-time "2017-06-25T04:49:46Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498366186000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -10701,8 +10701,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10722,8 +10722,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.039",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 3]],
-    :date-time "2016-12-03T23:16:54Z",
+   {:date-time "2016-12-03T23:16:54Z",
+    :date-parts [[2016 12 3]],
     :timestamp 1480807014000},
    :page "18-24",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10765,8 +10765,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:04Z",
+   {:date-time "2017-08-18T11:19:04Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055144000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -10798,8 +10798,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -10824,8 +10824,8 @@
    :DOI "10.1016/j.psyneuen.2016.11.040",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 2]],
-    :date-time "2016-12-02T22:16:35Z",
+   {:date-time "2016-12-02T22:16:35Z",
+    :date-parts [[2016 12 2]],
     :timestamp 1480716995000},
    :page "37-46",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10879,8 +10879,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:14Z",
+   {:date-time "2017-08-18T11:19:14Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055154000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -10912,15 +10912,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by-nc-nd/4.0/",
      :start
-     {:date-parts [[2016 12 8]],
-      :date-time "2016-12-08T00:00:00Z",
+     {:date-time "2016-12-08T00:00:00Z",
+      :date-parts [[2016 12 8]],
       :timestamp 1481155200000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -10940,8 +10940,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.002",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 10]],
-    :date-time "2016-12-10T01:47:41Z",
+   {:date-time "2016-12-10T01:47:41Z",
+    :date-parts [[2016 12 10]],
     :timestamp 1481334461000},
    :page "63-67",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -10987,8 +10987,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:33Z",
+   {:date-time "2017-08-18T11:19:33Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055173000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -11020,8 +11020,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11041,8 +11041,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 7]],
-    :date-time "2016-12-07T20:01:41Z",
+   {:date-time "2016-12-07T20:01:41Z",
+    :date-parts [[2016 12 7]],
     :timestamp 1481140901000},
    :page "84-89",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11112,8 +11112,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:20:37Z",
+   {:date-time "2017-08-18T11:20:37Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055237000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -11145,8 +11145,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11166,8 +11166,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.004",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 10]],
-    :date-time "2016-12-10T01:48:20Z",
+   {:date-time "2016-12-10T01:48:20Z",
+    :date-parts [[2016 12 10]],
     :timestamp 1481334500000},
    :page "75-83",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11205,8 +11205,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:42Z",
+   {:date-time "2017-08-18T11:19:42Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055182000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -11238,8 +11238,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11270,8 +11270,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.005",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 8]],
-    :date-time "2016-12-08T20:48:35Z",
+   {:date-time "2016-12-08T20:48:35Z",
+    :date-parts [[2016 12 8]],
     :timestamp 1481230115000},
    :page "206-217",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11333,8 +11333,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:32:33Z",
+   {:date-time "2017-06-25T05:32:33Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498368753000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -11366,8 +11366,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11387,8 +11387,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 16]],
-    :date-time "2016-12-16T22:28:32Z",
+   {:date-time "2016-12-16T22:28:32Z",
+    :date-parts [[2016 12 16]],
     :timestamp 1481927312000},
    :page "165-174",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11430,8 +11430,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:19:11Z",
+   {:date-time "2017-08-18T11:19:11Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055151000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -11463,8 +11463,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 3 1]],
-      :date-time "2017-03-01T00:00:00Z",
+     {:date-time "2017-03-01T00:00:00Z",
+      :date-parts [[2017 3 1]],
       :timestamp 1488326400000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11485,8 +11485,8 @@
    :DOI "10.1016/j.psyneuen.2016.12.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 19]],
-    :date-time "2016-12-19T21:18:28Z",
+   {:date-time "2016-12-19T21:18:28Z",
+    :date-parts [[2016 12 19]],
     :timestamp 1482182308000},
    :page "275-283",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11524,8 +11524,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 18]],
-    :date-time "2017-08-18T11:18:43Z",
+   {:date-time "2017-08-18T11:18:43Z",
+    :date-parts [[2017 8 18]],
     :timestamp 1503055123000},
    :score 1.0,
    :issued {:date-parts [[2017 3]]},
@@ -11557,8 +11557,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 5 1]],
-      :date-time "2017-05-01T00:00:00Z",
+     {:date-time "2017-05-01T00:00:00Z",
+      :date-parts [[2017 5 1]],
       :timestamp 1493596800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11578,8 +11578,8 @@
    :DOI "10.1016/j.schres.2016.11.002",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 10]],
-    :date-time "2016-11-10T03:15:34Z",
+   {:date-time "2016-11-10T03:15:34Z",
+    :date-parts [[2016 11 10]],
     :timestamp 1478747734000},
    :page "151-156",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11617,8 +11617,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 5 12]],
-    :date-time "2017-05-12T09:18:40Z",
+   {:date-time "2017-05-12T09:18:40Z",
+    :date-parts [[2017 5 12]],
     :timestamp 1494580720000},
    :score 1.0,
    :issued {:date-parts [[2017 5]]},
@@ -11650,8 +11650,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 7 1]],
-      :date-time "2017-07-01T00:00:00Z",
+     {:date-time "2017-07-01T00:00:00Z",
+      :date-parts [[2017 7 1]],
       :timestamp 1498867200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11671,8 +11671,8 @@
    :DOI "10.1016/j.schres.2016.12.016",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 18]],
-    :date-time "2016-12-18T02:33:29Z",
+   {:date-time "2016-12-18T02:33:29Z",
+    :date-parts [[2016 12 18]],
     :timestamp 1482028409000},
    :page "51-57",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11724,8 +11724,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 13]],
-    :date-time "2017-06-13T02:49:45Z",
+   {:date-time "2017-06-13T02:49:45Z",
+    :date-parts [[2017 6 13]],
     :timestamp 1497322185000},
    :score 1.0,
    :issued {:date-parts [[2017 7]]},
@@ -11757,8 +11757,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11770,8 +11770,8 @@
    :DOI "10.1016/j.steroids.2016.12.008",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 18]],
-    :date-time "2016-12-18T13:00:22Z",
+   {:date-time "2016-12-18T13:00:22Z",
+    :date-parts [[2016 12 18]],
     :timestamp 1482066022000},
    :page "61-67",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11817,8 +11817,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T06:09:59Z",
+   {:date-time "2017-06-25T06:09:59Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498370999000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -11848,8 +11848,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11876,8 +11876,8 @@
    :DOI "10.1016/j.yfrne.2016.12.001",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 10]],
-    :date-time "2016-12-10T01:54:26Z",
+   {:date-time "2016-12-10T01:54:26Z",
+    :date-parts [[2016 12 10]],
     :timestamp 1481334866000},
    :page "83-102",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -11927,8 +11927,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T05:38:47Z",
+   {:date-time "2017-06-25T05:38:47Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498369127000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -11960,8 +11960,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -11989,8 +11989,8 @@
    :DOI "10.1016/j.yfrne.2016.12.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 12 19]],
-    :date-time "2016-12-19T21:31:26Z",
+   {:date-time "2016-12-19T21:31:26Z",
+    :date-parts [[2016 12 19]],
     :timestamp 1482183086000},
    :page "122-137",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12023,8 +12023,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 10]],
-    :date-time "2017-06-10T02:01:10Z",
+   {:date-time "2017-06-10T02:01:10Z",
+    :date-parts [[2017 6 10]],
     :timestamp 1497060070000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -12055,8 +12055,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12075,8 +12075,8 @@
    :DOI "10.1016/j.yhbeh.2016.10.009",
    :type "journal-article",
    :created
-   {:date-parts [[2016 10 26]],
-    :date-time "2016-10-26T04:01:20Z",
+   {:date-time "2016-10-26T04:01:20Z",
+    :date-parts [[2016 10 26]],
     :timestamp 1477454480000},
    :page "16-24",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12122,8 +12122,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 8 24]],
-    :date-time "2017-08-24T19:55:39Z",
+   {:date-time "2017-08-24T19:55:39Z",
+    :date-parts [[2017 8 24]],
     :timestamp 1503604539000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
@@ -12155,8 +12155,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 6 1]],
-      :date-time "2017-06-01T00:00:00Z",
+     {:date-time "2017-06-01T00:00:00Z",
+      :date-parts [[2017 6 1]],
       :timestamp 1496275200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12168,8 +12168,8 @@
    :DOI "10.1016/j.yhbeh.2016.10.014",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 2]],
-    :date-time "2016-11-02T18:18:40Z",
+   {:date-time "2016-11-02T18:18:40Z",
+    :date-parts [[2016 11 2]],
     :timestamp 1478110720000},
    :page "117-127",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12219,8 +12219,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 16]],
-    :date-time "2017-06-16T02:48:07Z",
+   {:date-time "2017-06-16T02:48:07Z",
+    :date-parts [[2017 6 16]],
     :timestamp 1497581287000},
    :score 1.0,
    :issued {:date-parts [[2017 6]]},
@@ -12252,8 +12252,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 6 1]],
-      :date-time "2017-06-01T00:00:00Z",
+     {:date-time "2017-06-01T00:00:00Z",
+      :date-parts [[2017 6 1]],
       :timestamp 1496275200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12271,8 +12271,8 @@
    :DOI "10.1016/j.yhbeh.2016.10.020",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 1]],
-    :date-time "2016-11-01T21:46:54Z",
+   {:date-time "2016-11-01T21:46:54Z",
+    :date-parts [[2016 11 1]],
     :timestamp 1478036814000},
    :page "128-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12322,8 +12322,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 16]],
-    :date-time "2017-06-16T02:47:24Z",
+   {:date-time "2017-06-16T02:47:24Z",
+    :date-parts [[2017 6 16]],
     :timestamp 1497581244000},
    :score 1.0,
    :issued {:date-parts [[2017 6]]},
@@ -12355,8 +12355,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 6 1]],
-      :date-time "2017-06-01T00:00:00Z",
+     {:date-time "2017-06-01T00:00:00Z",
+      :date-parts [[2017 6 1]],
       :timestamp 1496275200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12373,8 +12373,8 @@
    :DOI "10.1016/j.yhbeh.2016.11.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 10]],
-    :date-time "2016-11-10T09:46:30Z",
+   {:date-time "2016-11-10T09:46:30Z",
+    :date-parts [[2016 11 10]],
     :timestamp 1478771190000},
    :page "172-181",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12408,8 +12408,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 16]],
-    :date-time "2017-06-16T02:46:21Z",
+   {:date-time "2017-06-16T02:46:21Z",
+    :date-parts [[2017 6 16]],
     :timestamp 1497581181000},
    :score 1.0,
    :issued {:date-parts [[2017 6]]},
@@ -12441,8 +12441,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 6 1]],
-      :date-time "2017-06-01T00:00:00Z",
+     {:date-time "2017-06-01T00:00:00Z",
+      :date-parts [[2017 6 1]],
       :timestamp 1496275200000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12454,8 +12454,8 @@
    :DOI "10.1016/j.yhbeh.2016.11.006",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 11]],
-    :date-time "2016-11-11T08:17:00Z",
+   {:date-time "2016-11-11T08:17:00Z",
+    :date-parts [[2016 11 11]],
     :timestamp 1478852220000},
    :page "155-163",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12485,8 +12485,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 16]],
-    :date-time "2017-06-16T02:47:38Z",
+   {:date-time "2017-06-16T02:47:38Z",
+    :date-parts [[2017 6 16]],
     :timestamp 1497581258000},
    :score 1.0,
    :issued {:date-parts [[2017 6]]},
@@ -12518,15 +12518,15 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 2 1]],
-      :date-time "2017-02-01T00:00:00Z",
+     {:date-time "2017-02-01T00:00:00Z",
+      :date-parts [[2017 2 1]],
       :timestamp 1485907200000},
      :delay-in-days 0,
      :content-version "tdm"}
     {:URL "http://creativecommons.org/licenses/by-nc-nd/4.0/",
      :start
-     {:date-parts [[2016 7 1]],
-      :date-time "2016-07-01T00:00:00Z",
+     {:date-time "2016-07-01T00:00:00Z",
+      :date-parts [[2016 7 1]],
       :timestamp 1467331200000},
      :delay-in-days 0,
      :content-version "vor"}],
@@ -12545,8 +12545,8 @@
    :DOI "10.1016/j.ynstr.2016.11.001",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 12]],
-    :date-time "2016-11-12T07:31:05Z",
+   {:date-time "2016-11-12T07:31:05Z",
+    :date-parts [[2016 11 12]],
     :timestamp 1478935865000},
    :page "113-126",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12595,8 +12595,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 7 13]],
-    :date-time "2017-07-13T16:58:45Z",
+   {:date-time "2017-07-13T16:58:45Z",
+    :date-parts [[2017 7 13]],
     :timestamp 1499965125000},
    :score 1.0,
    :issued {:date-parts [[2017 2]]},
@@ -12627,8 +12627,8 @@
    :license
    [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
      :start
-     {:date-parts [[2017 1 1]],
-      :date-time "2017-01-01T00:00:00Z",
+     {:date-time "2017-01-01T00:00:00Z",
+      :date-parts [[2017 1 1]],
       :timestamp 1483228800000},
      :delay-in-days 0,
      :content-version "tdm"}],
@@ -12647,8 +12647,8 @@
    :DOI "10.1016/j.ypmed.2016.11.003",
    :type "journal-article",
    :created
-   {:date-parts [[2016 11 9]],
-    :date-time "2016-11-09T12:01:48Z",
+   {:date-time "2016-11-09T12:01:48Z",
+    :date-parts [[2016 11 9]],
     :timestamp 1478692908000},
    :page "12-19",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -12692,8 +12692,8 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T03:10:36Z",
+   {:date-time "2017-06-25T03:10:36Z",
+    :date-parts [[2017 6 25]],
     :timestamp 1498360236000},
    :score 1.0,
    :issued {:date-parts [[2017 1]]},
