@@ -27,6 +27,7 @@
     (merge
      {:flags                  (get-in coverage-doc [:coverage :flags])
       :coverage               (get-in coverage-doc [:coverage :coverage])
+      :breakdowns             (get-in coverage-doc [:breakdowns :breakdowns])
       :counts                 (select-keys coverage-doc [:current-dois
                                                          :backfile-dois
                                                          :total-dois])
