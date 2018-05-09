@@ -1,5 +1,5 @@
 (ns cayenne.members-test
-  (:require [cayenne.api-fixture :refer [api-get api-with-works]]
+  (:require [cayenne.api-fixture :refer [api-get api-with-works no-scores]]
             [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]))
 
@@ -11,10 +11,11 @@
 
   (testing "members endpoint returns expected result for member works"
     (doseq [member-id ["78"]]
-      (let [response (api-get (str "/v1/members/" member-id "/works?rows=200"))
+      (let [response (-> (api-get (str "/v1/members/" member-id "/works?rows=200"))
+                         no-scores)
             expected-response (read-string (slurp (resource (str "members/" member-id "-works.edn"))))]
         (is (= expected-response response))))))
 
-(use-fixtures 
-  :once 
+(use-fixtures
+  :once
   api-with-works)
