@@ -143,8 +143,8 @@
    (make-filter-check-for-type "deposits" "orcids" :has-orcid "true")
    (make-filter-check-for-type "deposits" "award-numbers" :has-award "true")
    (make-filter-check-for-type "deposits" "funders" :has-funder "true")
-   (make-filter-check-for-type "deposits" "open-references" :reference-visibility "open")])
-   (make-filter-check-for-type "deposits" "similarity-checking" :full-text {"application" ["similarity-checking"]})
+   (make-filter-check-for-type "deposits" "open-references" :reference-visibility "open")
+   (make-filter-check-for-type "deposits" "similarity-checking" :full-text {"application" ["similarity-checking"]})])
 
 (defn check-record-coverage [record & {:keys [type id-field]}]
   (-> {:last-status-check-time (dc/to-long (dt/now))}
