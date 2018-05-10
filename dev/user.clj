@@ -45,7 +45,14 @@
           (println "Waiting for elasticsearch to be ready..")
           (Thread/sleep 500))
         (create-elastic-indexes)
-        (start-core! :default :api :feed-api)))))
+        (when-not @core-started?
+          (when (start-core! :default :api :feed-api)
+            (with-core :default
+              (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+              (->> (.getPath (resource "registry.rdf"))
+                   (str "file://")
+                   (set-param! [:location :cr-funder-registry])))
+            (reset! core-started? true)))))))
 
 (defn stop []
   (sh "docker-compose" "down"))
@@ -55,10 +62,6 @@
   (start-core! :default :api :feed-api))
 
 (defn load-test-funders []
-  (with-core :default
-    (->> (.getPath (resource "registry.rdf"))
-         (str "file://")
-         (set-param! [:location :cr-funder-registry])))
   (println "Loading test funders from" (get-param [:location :cr-funder-registry]))
   (with-redefs
    [cayenne.tasks.funder/get-country-literal-name
