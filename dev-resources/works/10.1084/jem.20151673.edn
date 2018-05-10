@@ -4,15 +4,15 @@
  :license
  [{:URL "http://www.rupress.org/terms/",
    :start
-   {:date-parts [[2016 12 6]],
-    :date-time "2016-12-06T00:00:00Z",
+   {:date-time "2016-12-06T00:00:00Z",
+    :date-parts [[2016 12 6]],
     :timestamp 1480982400000},
    :delay-in-days 0,
    :content-version "vor"}
   {:URL "https://creativecommons.org/licenses/by-nc-sa/4.0/",
    :start
-   {:date-parts [[2017 7 3]],
-    :date-time "2017-07-03T00:00:00Z",
+   {:date-time "2017-07-03T00:00:00Z",
+    :date-parts [[2017 7 3]],
     :timestamp 1499040000000},
    :delay-in-days 209,
    :content-version "vor"}],
@@ -30,8 +30,8 @@
  :DOI "10.1084/jem.20151673",
  :type "journal-article",
  :created
- {:date-parts [[2016 12 7]],
-  :date-time "2016-12-07T15:10:13Z",
+ {:date-time "2016-12-07T15:10:13Z",
+  :date-parts [[2016 12 7]],
   :timestamp 1481123413000},
  :page "245-267",
  :update-policy "http://dx.doi.org/10.1084/jem.crossmarkpolicy",
@@ -144,8 +144,8 @@
    :content-version "vor",
    :intended-application "similarity-checking"}],
  :deposited
- {:date-parts [[2017 4 19]],
-  :date-time "2017-04-19T23:50:05Z",
+ {:date-time "2017-04-19T23:50:05Z",
+  :date-parts [[2017 4 19]],
   :timestamp 1492645805000},
  :score 1.0,
  :subtitle [],
