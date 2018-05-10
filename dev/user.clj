@@ -77,11 +77,6 @@
           url)))]
     (index-funders)))
 
-(defn load-test-journals []
-  (with-core :default
-    (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv"))))
-  (index-journals))
-
 (defn setup-feed [& {:keys [source-dir] :or {source-dir "/source"}}]
   (let [feed-dir (.getPath (resource "feeds"))
         feed-source-dir (str feed-dir source-dir)
