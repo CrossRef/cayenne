@@ -518,7 +518,7 @@
         (assoc-exists :part-number (get solr-doc "part_number"))
         (assoc-exists :event (->event solr-doc))
         (assoc-exists :institution (->institution solr-doc))
-        (assoc-exists :review (keys review) review)
+        (assoc-exists :review (seq review) review)
         (assoc-exists :reference (->citeproc-citations solr-doc))
         (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
         (assoc-exists :free-to-read (->citeproc-free-to-read solr-doc))
