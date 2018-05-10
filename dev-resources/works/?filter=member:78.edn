@@ -3,6 +3,7 @@
  :items
  ({:reference-count 873,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -14,7 +15,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-803592-4.00001-8",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 29]],
     :date-time "2016-11-29T20:26:21Z",
@@ -52,10 +53,12 @@
     :timestamp 1498366018000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128036082"],
    :references-count 873,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00001-8"}
   {:reference-count 256,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -67,7 +70,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-803592-4.00015-8",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 29]],
     :date-time "2016-11-29T20:48:43Z",
@@ -105,10 +108,12 @@
     :timestamp 1498366044000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128036082"],
    :references-count 256,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00015-8"}
   {:reference-count 167,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -120,7 +125,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-803592-4.00016-x",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 29]],
     :date-time "2016-11-29T20:48:15Z",
@@ -162,10 +167,12 @@
     :timestamp 1498366044000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128036082"],
    :references-count 167,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00016-x"}
   {:reference-count 183,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -177,7 +184,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-803592-4.00046-8",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 29]],
     :date-time "2016-11-29T20:52:01Z",
@@ -223,10 +230,12 @@
     :timestamp 1498366047000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128036082"],
    :references-count 183,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00046-8"}
   {:reference-count 273,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128036082", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -238,7 +247,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-803592-4.00111-5",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 29]],
     :date-time "2016-11-29T20:47:22Z",
@@ -286,10 +295,12 @@
     :timestamp 1498366042000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128036082"],
    :references-count 273,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00111-5"}
   {:reference-count 193,
    :publisher "Elsevier",
+   :isbn-type [{:value "9780128040966", :type "print"}],
    :license
    [{:start
      {:date-parts [[2017 1 1]],
@@ -301,7 +312,7 @@
    :content-domain {:domain [], :crossmark-restriction false},
    :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/b978-0-12-804042-3.00094-4",
-   :type "chapter",
+   :type "book-chapter",
    :created
    {:date-parts [[2016 11 30]],
     :date-time "2016-11-30T20:24:38Z",
@@ -336,6 +347,7 @@
     :timestamp 1498366442000},
    :score 0.0,
    :issued {:date-parts [[2017 1 1]]},
+   :ISBN ["9780128040966"],
    :references-count 193,
    :URL "http://dx.doi.org/10.1016/b978-0-12-804042-3.00094-4"}
   {:reference-count 112,
