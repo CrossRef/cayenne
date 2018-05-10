@@ -119,8 +119,10 @@
           (Thread/sleep 10000))
         (if (not= (elastic-doc-count) feed-file-count)
           (println "Gave up waiting for elasticsearch to finish indexing....")))
+      (Thread/sleep 2000)
       (check-journals)
-      (check-members))))
+      (check-members)
+      (Thread/sleep 2000))))
 
 (defn elastic-work-hits []
   (map elastic-convert/es-doc->citeproc
