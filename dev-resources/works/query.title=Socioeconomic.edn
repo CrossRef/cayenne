@@ -1,7 +1,7 @@
 {:facets {},
  :total-results 1,
  :items
- ({:reference-count 34,
+ ({:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -70,7 +70,7 @@
     :date-time "2017-11-30T15:51:07Z",
     :timestamp 1512057067000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 34,
+   :references-count 0,
    :alternative-id ["S0306453016307545"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.025",
    :ISSN ["0306-4530"],

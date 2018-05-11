@@ -1,7 +1,7 @@
 {:facets {},
  :total-results 121,
  :items
- ({:reference-count 873,
+ ({:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128036082", :type "print"}],
    :license
@@ -53,9 +53,9 @@
     :timestamp 1498366018000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128036082"],
-   :references-count 873,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00001-8"}
-  {:reference-count 256,
+  {:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128036082", :type "print"}],
    :license
@@ -107,9 +107,9 @@
     :timestamp 1498366044000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128036082"],
-   :references-count 256,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00015-8"}
-  {:reference-count 167,
+  {:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128036082", :type "print"}],
    :license
@@ -165,9 +165,9 @@
     :timestamp 1498366044000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128036082"],
-   :references-count 167,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00016-x"}
-  {:reference-count 183,
+  {:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128036082", :type "print"}],
    :license
@@ -227,9 +227,9 @@
     :timestamp 1498366047000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128036082"],
-   :references-count 183,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00046-8"}
-  {:reference-count 273,
+  {:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128036082", :type "print"}],
    :license
@@ -291,9 +291,9 @@
     :timestamp 1498366042000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128036082"],
-   :references-count 273,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-803592-4.00111-5"}
-  {:reference-count 193,
+  {:reference-count 0,
    :publisher "Elsevier",
    :isbn-type [{:value "9780128040966", :type "print"}],
    :license
@@ -342,9 +342,9 @@
     :timestamp 1498366442000},
    :issued {:date-parts [[2017 1 1]]},
    :ISBN ["9780128040966"],
-   :references-count 193,
+   :references-count 0,
    :URL "http://dx.doi.org/10.1016/b978-0-12-804042-3.00094-4"}
-  {:reference-count 112,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -380,7 +380,7 @@
    :page "139-151",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 1,
+   :is-referenced-by-count 2,
    :title
    ["Analyses of differentially expressed genes after exposure to acute stress, acute ethanol, or a combination of both in mice"],
    :prefix "10.1016",
@@ -441,7 +441,7 @@
     :date-time "2017-06-25T06:03:02Z",
     :timestamp 1498370582000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 112,
+   :references-count 0,
    :alternative-id ["S0741832916300714"],
    :URL "http://dx.doi.org/10.1016/j.alcohol.2016.08.008",
    :ISSN ["0741-8329"],
@@ -462,13 +462,13 @@
     {:value "Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 73,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
-     {:date-parts [[2017 5 12]],
-      :date-time "2017-05-12T09:19:30Z",
-      :timestamp 1494580770000},
+     {:date-parts [[2017 7 1]],
+      :date-time "2017-07-01T00:00:00Z",
+      :timestamp 1498867200000},
      :content-version "tdm",
      :delay-in-days 0,
      :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
@@ -493,7 +493,7 @@
    :page "148-159",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 3,
    :title
    ["Mechanical allodynia corresponds to Oprm1 downregulation within the descending pain network of male and female rats exposed to neonatal immune challenge"],
    :prefix "10.1016",
@@ -512,21 +512,21 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S0889159116304706?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S0889159116304706?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0889159116304706?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 5 12]],
-    :date-time "2017-05-12T09:19:30Z",
-    :timestamp 1494580770000},
-   :issued {:date-parts [[2017 5 12]]},
-   :references-count 73,
+   {:date-parts [[2017 12 23]],
+    :date-time "2017-12-23T23:38:34Z",
+    :timestamp 1514072314000},
+   :issued {:date-parts [[2017 7 1]]},
+   :references-count 0,
    :alternative-id ["S0889159116304706"],
    :URL "http://dx.doi.org/10.1016/j.bbi.2016.10.007",
    :ISSN ["0889-1591"],
@@ -549,7 +549,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 76,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -615,7 +615,7 @@
     :date-time "2017-06-25T02:16:53Z",
     :timestamp 1498357013000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 76,
+   :references-count 0,
    :alternative-id ["S0166432816309007"],
    :URL "http://dx.doi.org/10.1016/j.bbr.2016.10.035",
    :ISSN ["0166-4328"],
@@ -638,7 +638,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 21,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -715,7 +715,7 @@
     :date-time "2017-06-25T06:01:29Z",
     :timestamp 1498370489000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 21,
+   :references-count 0,
    :alternative-id ["S0301051116303738"],
    :URL "http://dx.doi.org/10.1016/j.biopsycho.2016.12.010",
    :ISSN ["0301-0511"],
@@ -738,7 +738,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 53,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :issue "1",
    :license
@@ -827,7 +827,7 @@
     :date-time "2017-06-25T02:29:54Z",
     :timestamp 1498357794000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 53,
+   :references-count 0,
    :journal-issue
    {:issue "1", :published-print {:date-parts [[2017 1 1]]}},
    :alternative-id ["S0968089616310872"],
@@ -852,7 +852,7 @@
     {:value "Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 19,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :issue "1",
    :license
@@ -912,7 +912,7 @@
     :date-time "2017-06-25T02:22:59Z",
     :timestamp 1498357379000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 19,
+   :references-count 0,
    :journal-issue
    {:issue "1", :published-print {:date-parts [[2017 1 1]]}},
    :alternative-id ["S1550830716301707"],
@@ -939,7 +939,7 @@
     {:value "© 2016 Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 66,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1023,7 +1023,7 @@
     :date-time "2017-06-25T01:08:48Z",
     :timestamp 1498352928000},
    :issued {:date-parts [[2016 11 1]]},
-   :references-count 66,
+   :references-count 0,
    :alternative-id ["S0163638316300455"],
    :URL "http://dx.doi.org/10.1016/j.infbeh.2016.09.006",
    :ISSN ["0163-6383"],
@@ -1046,7 +1046,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 164,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1114,7 +1114,7 @@
     :date-time "2017-09-16T03:19:36Z",
     :timestamp 1505531976000},
    :issued {:date-parts [[2017 9 16]]},
-   :references-count 164,
+   :references-count 0,
    :alternative-id ["S0165032716312022"],
    :URL "http://dx.doi.org/10.1016/j.jad.2016.10.035",
    :ISSN ["0165-0327"],
@@ -1136,7 +1136,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 46,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1202,7 +1202,7 @@
     :date-time "2017-06-25T04:50:17Z",
     :timestamp 1498366217000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 46,
+   :references-count 0,
    :alternative-id ["S0165032716312113"],
    :URL "http://dx.doi.org/10.1016/j.jad.2016.11.036",
    :ISSN ["0165-0327"],
@@ -1225,7 +1225,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 79,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1241,8 +1241,8 @@
      "clinicalkey.com"
      "jad-journal.com"
      "clinicalkey.es"
-     "clinicalkey.com.au"
      "clinicalkey.fr"
+     "clinicalkey.com.au"
      "elsevier.com"
      "sciencedirect.com"],
     :crossmark-restriction true},
@@ -1300,21 +1300,21 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S0165032716317256?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S0165032716317256?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0165032716317256?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:50:17Z",
-    :timestamp 1498366217000},
+   {:date-parts [[2018 2 13]],
+    :date-time "2018-02-13T02:55:51Z",
+    :timestamp 1518490551000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 79,
+   :references-count 0,
    :alternative-id ["S0165032716317256"],
    :URL "http://dx.doi.org/10.1016/j.jad.2016.11.046",
    :ISSN ["0165-0327"],
@@ -1337,7 +1337,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 34,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :issue "5",
    :license
@@ -1400,7 +1400,7 @@
     :date-time "2017-04-24T00:15:56Z",
     :timestamp 1492992956000},
    :issued {:date-parts [[2017 4 24]]},
-   :references-count 34,
+   :references-count 0,
    :journal-issue
    {:issue "5", :published-print {:date-parts [[2017 5 1]]}},
    :alternative-id ["S0278239116310667"],
@@ -1426,7 +1426,7 @@
      "© 2016 American Association of Oral and Maxillofacial Surgeons",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 189,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1455,7 +1455,7 @@
    :page "232-242",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 4,
+   :is-referenced-by-count 7,
    :title
    ["Mate-choice copying, social information processing, and the roles of oxytocin"],
    :prefix "10.1016",
@@ -1492,7 +1492,7 @@
     :date-time "2017-06-25T05:13:23Z",
     :timestamp 1498367603000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 189,
+   :references-count 0,
    :alternative-id ["S0149763416306285"],
    :URL "http://dx.doi.org/10.1016/j.neubiorev.2016.12.003",
    :ISSN ["0149-7634"],
@@ -1515,7 +1515,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 193,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1545,7 +1545,7 @@
    :page "123-164",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 14,
    :title
    ["A systematic review of the psychobiological burden of informal caregiving for patients with dementia: Focus on cognitive and biological markers of chronic stress"],
    :prefix "10.1016",
@@ -1606,7 +1606,7 @@
     :date-time "2017-06-25T05:51:22Z",
     :timestamp 1498369882000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 193,
+   :references-count 0,
    :alternative-id ["S0149763416302792"],
    :URL "http://dx.doi.org/10.1016/j.neubiorev.2016.12.006",
    :ISSN ["0149-7634"],
@@ -1629,7 +1629,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 397,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1665,7 +1665,7 @@
    :page "191-218",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 15,
+   :is-referenced-by-count 19,
    :title
    ["The neural diathesis-stress model of schizophrenia revisited: An update on recent findings considering illness stage and neurobiological and methodological complexities"],
    :prefix "10.1016",
@@ -1706,7 +1706,7 @@
     :date-time "2017-06-25T06:04:21Z",
     :timestamp 1498370661000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 397,
+   :references-count 0,
    :alternative-id ["S0149763416301713"],
    :URL "http://dx.doi.org/10.1016/j.neubiorev.2016.12.013",
    :ISSN ["0149-7634"],
@@ -1729,7 +1729,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 84,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1761,7 +1761,7 @@
    :page "147-155",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 8,
+   :is-referenced-by-count 10,
    :title
    ["Glutamate dysregulation and glutamatergic therapeutics for PTSD: Evidence from human studies"],
    :prefix "10.1016",
@@ -1806,11 +1806,11 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 5 4]],
-    :date-time "2017-05-04T23:03:23Z",
-    :timestamp 1493939003000},
+   {:date-parts [[2017 12 19]],
+    :date-time "2017-12-19T01:21:02Z",
+    :timestamp 1513646462000},
    :issued {:date-parts [[2017 5 1]]},
-   :references-count 84,
+   :references-count 0,
    :alternative-id ["S0304394016309351"],
    :URL "http://dx.doi.org/10.1016/j.neulet.2016.11.064",
    :ISSN ["0304-3940"],
@@ -1833,7 +1833,7 @@
     {:value "Published by Elsevier Ireland Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 38,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1867,7 +1867,7 @@
    :page "103-109",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 4,
+   :is-referenced-by-count 5,
    :title
    ["Parkinson’s disease-like motor and non-motor symptoms in rotenone-treated zebrafish"],
    :prefix "10.1016",
@@ -1925,7 +1925,7 @@
     :date-time "2017-12-07T18:03:59Z",
     :timestamp 1512669839000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 38,
+   :references-count 0,
    :alternative-id ["S0161813X16302443"],
    :URL "http://dx.doi.org/10.1016/j.neuro.2016.11.006",
    :ISSN ["0161-813X"],
@@ -1948,7 +1948,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 56,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -1964,8 +1964,8 @@
      "clinicalkey.com"
      "neurobiologyofaging.org"
      "clinicalkey.es"
-     "clinicalkey.com.au"
      "clinicalkey.fr"
+     "clinicalkey.com.au"
      "elsevier.com"
      "sciencedirect.com"],
     :crossmark-restriction true},
@@ -2017,21 +2017,21 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S0197458016303013?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S0197458016303013?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0197458016303013?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T04:57:19Z",
-    :timestamp 1498366639000},
+   {:date-parts [[2018 1 4]],
+    :date-time "2018-01-04T22:08:16Z",
+    :timestamp 1515103696000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 56,
+   :references-count 0,
    :alternative-id ["S0197458016303013"],
    :URL "http://dx.doi.org/10.1016/j.neurobiolaging.2016.11.014",
    :ISSN ["0197-4580"],
@@ -2054,7 +2054,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 70,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2109,21 +2109,21 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S1053811916307650?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S1053811916307650?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S1053811916307650?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T06:02:50Z",
-    :timestamp 1498370570000},
+   {:date-parts [[2018 1 20]],
+    :date-time "2018-01-20T14:43:22Z",
+    :timestamp 1516459402000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 70,
+   :references-count 0,
    :alternative-id ["S1053811916307650"],
    :URL "http://dx.doi.org/10.1016/j.neuroimage.2016.12.046",
    :ISSN ["1053-8119"],
@@ -2144,7 +2144,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 204,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :issue "1",
    :license
@@ -2183,7 +2183,7 @@
    :page "14-30",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 31,
+   :is-referenced-by-count 39,
    :title
    ["Context Processing and the Neurobiology of Post-Traumatic Stress Disorder"],
    :prefix "10.1016",
@@ -2216,7 +2216,7 @@
     :date-time "2017-10-28T20:46:11Z",
     :timestamp 1509223571000},
    :issued {:date-parts [[2016 10 1]]},
-   :references-count 204,
+   :references-count 0,
    :journal-issue
    {:issue "1", :published-print {:date-parts [[2016 10 1]]}},
    :alternative-id ["S0896627316306407"],
@@ -2239,7 +2239,7 @@
     {:value "Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 78,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2322,7 +2322,7 @@
     :date-time "2017-09-23T07:54:55Z",
     :timestamp 1506153295000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 78,
+   :references-count 0,
    :alternative-id ["S2213158216302224"],
    :URL "http://dx.doi.org/10.1016/j.nicl.2016.11.014",
    :ISSN ["2213-1582"],
@@ -2345,7 +2345,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 82,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2418,7 +2418,7 @@
     :date-time "2017-06-25T00:48:02Z",
     :timestamp 1498351682000},
    :issued {:date-parts [[2016 12 1]]},
-   :references-count 82,
+   :references-count 0,
    :alternative-id ["S1074742716302519"],
    :URL "http://dx.doi.org/10.1016/j.nlm.2016.10.006",
    :ISSN ["1074-7427"],
@@ -2441,13 +2441,13 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 119,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
-     {:date-parts [[2017 5 30]],
-      :date-time "2017-05-30T20:25:25Z",
-      :timestamp 1496175925000},
+     {:date-parts [[2017 7 1]],
+      :date-time "2017-07-01T00:00:00Z",
+      :timestamp 1498867200000},
      :content-version "tdm",
      :delay-in-days 0,
      :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
@@ -2469,7 +2469,7 @@
    :page "126-134",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 6,
    :title
    ["The role of glucocorticoids in emotional memory reconsolidation"],
    :prefix "10.1016",
@@ -2498,11 +2498,11 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 5 30]],
-    :date-time "2017-05-30T20:25:25Z",
-    :timestamp 1496175925000},
-   :issued {:date-parts [[2017 5 30]]},
-   :references-count 119,
+   {:date-parts [[2017 12 29]],
+    :date-time "2017-12-29T11:50:46Z",
+    :timestamp 1514548246000},
+   :issued {:date-parts [[2017 7 1]]},
+   :references-count 0,
    :alternative-id ["S107474271630315X"],
    :URL "http://dx.doi.org/10.1016/j.nlm.2016.11.008",
    :ISSN ["1074-7427"],
@@ -2525,7 +2525,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 65,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2552,7 +2552,7 @@
    :page "1-11",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 4,
    :title
    ["Opposite effects of central oxytocin and arginine vasopressin on changes in gastric motor function induced by chronic stress"],
    :prefix "10.1016",
@@ -2593,7 +2593,7 @@
     :date-time "2017-06-25T02:57:32Z",
     :timestamp 1498359452000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 65,
+   :references-count 0,
    :alternative-id ["S0196978116302157"],
    :URL "http://dx.doi.org/10.1016/j.peptides.2016.11.001",
    :ISSN ["0196-9781"],
@@ -2614,7 +2614,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 63,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2645,7 +2645,7 @@
    :page "1-10",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 3,
+   :is-referenced-by-count 4,
    :title
    ["Protective effect of low dose caffeine on psychological stress and cognitive function"],
    :prefix "10.1016",
@@ -2692,21 +2692,21 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S0031938416307041?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S0031938416307041?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0031938416307041?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 6 25]],
-    :date-time "2017-06-25T01:17:03Z",
-    :timestamp 1498353423000},
+   {:date-parts [[2018 3 27]],
+    :date-time "2018-03-27T00:25:41Z",
+    :timestamp 1522110341000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 63,
+   :references-count 0,
    :alternative-id ["S0031938416307041"],
    :URL "http://dx.doi.org/10.1016/j.physbeh.2016.10.010",
    :ISSN ["0031-9384"],
@@ -2729,7 +2729,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 61,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2770,7 +2770,7 @@
    :page "47-53",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 1,
+   :is-referenced-by-count 2,
    :title
    ["Aged mice receiving caffeine since adulthood show distinct patterns of anxiety-related behavior"],
    :prefix "10.1016",
@@ -2825,7 +2825,7 @@
     :date-time "2017-06-25T04:26:38Z",
     :timestamp 1498364798000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 61,
+   :references-count 0,
    :alternative-id ["S0031938416309064"],
    :URL "http://dx.doi.org/10.1016/j.physbeh.2016.11.030",
    :ISSN ["0031-9384"],
@@ -2848,7 +2848,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 80,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -2930,7 +2930,7 @@
     :date-time "2017-06-25T05:16:33Z",
     :timestamp 1498367793000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 80,
+   :references-count 0,
    :alternative-id ["S0031938416305728"],
    :URL "http://dx.doi.org/10.1016/j.physbeh.2016.12.004",
    :ISSN ["0031-9384"],
@@ -2953,7 +2953,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 5,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :issue "2",
    :license
@@ -3023,7 +3023,7 @@
     :date-time "2017-06-25T03:53:24Z",
     :timestamp 1498362804000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 5,
+   :references-count 0,
    :journal-issue
    {:issue "2", :published-print {:date-parts [[2017 3 1]]}},
    :alternative-id ["S0033318216301426"],
@@ -3051,7 +3051,7 @@
      "© 2016 Academy of Psychosomatic Medicine. Published by Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 34,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3120,7 +3120,7 @@
     :date-time "2017-11-30T15:51:07Z",
     :timestamp 1512057067000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 34,
+   :references-count 0,
    :alternative-id ["S0306453016307545"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.025",
    :ISSN ["0306-4530"],
@@ -3143,7 +3143,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3228,7 +3228,7 @@
     :date-time "2017-06-25T00:40:57Z",
     :timestamp 1498351257000},
    :issued {:date-parts [[2016 12 1]]},
-   :references-count 55,
+   :references-count 0,
    :alternative-id ["S0306453016307594"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.027",
    :ISSN ["0306-4530"],
@@ -3251,7 +3251,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3287,7 +3287,7 @@
    :page "371-379",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 4,
    :title
    ["Subcortical gray matter changes in transgender subjects after long-term cross-sex hormone administration"],
    :prefix "10.1016",
@@ -3360,7 +3360,7 @@
     :date-time "2017-06-25T00:42:04Z",
     :timestamp 1498351324000},
    :issued {:date-parts [[2016 12 1]]},
-   :references-count 67,
+   :references-count 0,
    :alternative-id ["S0306453016307144"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.028",
    :ISSN ["0306-4530"],
@@ -3383,7 +3383,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 80,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3415,7 +3415,7 @@
    :page "387-396",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 3,
    :title
    ["Exploring the neural mechanisms of finasteride: a proteomic analysis in the nucleus accumbens"],
    :prefix "10.1016",
@@ -3472,7 +3472,7 @@
     :date-time "2017-06-25T00:44:04Z",
     :timestamp 1498351444000},
    :issued {:date-parts [[2016 12 1]]},
-   :references-count 80,
+   :references-count 0,
    :alternative-id ["S0306453016307715"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.001",
    :ISSN ["0306-4530"],
@@ -3495,7 +3495,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 13,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3528,7 +3528,7 @@
    :page "52-55",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 4,
    :title
    ["Testing the ecological validity of the Trier Social Stress Test: Association with real-life exam stress"],
    :prefix "10.1016",
@@ -3581,7 +3581,7 @@
     :date-time "2017-11-30T15:51:13Z",
     :timestamp 1512057073000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 13,
+   :references-count 0,
    :alternative-id ["S0306453016307740"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.002",
    :ISSN ["0306-4530"],
@@ -3604,7 +3604,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 59,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3636,7 +3636,7 @@
    :page "26-35",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Do sex hormones or hormone therapy modify the relation of n-3 fatty acids with incident depressive symptoms in postmenopausal women? The MESA Study"],
    :prefix "10.1016",
@@ -3689,7 +3689,7 @@
     :date-time "2017-11-30T15:50:29Z",
     :timestamp 1512057029000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 59,
+   :references-count 0,
    :alternative-id ["S0306453016307867"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.003",
    :ISSN ["0306-4530"],
@@ -3712,7 +3712,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 95,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3773,7 +3773,7 @@
     :date-time "2017-11-30T15:50:55Z",
     :timestamp 1512057055000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 95,
+   :references-count 0,
    :alternative-id ["S0306453016307880"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.004",
    :ISSN ["0306-4530"],
@@ -3796,7 +3796,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 74,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3832,7 +3832,7 @@
    :page "56-63",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 7,
    :title
    ["Prenatal maternal cortisol concentrations predict neurodevelopment in middle childhood"],
    :prefix "10.1016",
@@ -3873,7 +3873,7 @@
     :date-time "2017-11-30T15:51:09Z",
     :timestamp 1512057069000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 74,
+   :references-count 0,
    :alternative-id ["S0306453016307892"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.005",
    :ISSN ["0306-4530"],
@@ -3896,7 +3896,7 @@
     {:value "© 2016 Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 15,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -3973,7 +3973,7 @@
     :date-time "2017-11-30T15:51:34Z",
     :timestamp 1512057094000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 15,
+   :references-count 0,
    :alternative-id ["S0306453016307909"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.006",
    :ISSN ["0306-4530"],
@@ -3996,7 +3996,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4085,7 +4085,7 @@
     :date-time "2017-11-30T15:51:31Z",
     :timestamp 1512057091000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 54,
+   :references-count 0,
    :alternative-id ["S0306453016305327"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.007",
    :ISSN ["0306-4530"],
@@ -4108,7 +4108,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 51,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4181,7 +4181,7 @@
     :date-time "2017-11-30T15:51:48Z",
     :timestamp 1512057108000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 51,
+   :references-count 0,
    :alternative-id ["S0306453016302190"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.008",
    :ISSN ["0306-4530"],
@@ -4204,7 +4204,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4278,7 +4278,7 @@
     :date-time "2017-11-30T15:51:22Z",
     :timestamp 1512057082000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 48,
+   :references-count 0,
    :alternative-id ["S0306453016307983"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.009",
    :ISSN ["0306-4530"],
@@ -4301,7 +4301,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 83,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4410,7 +4410,7 @@
     :date-time "2017-11-30T15:50:59Z",
     :timestamp 1512057059000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 83,
+   :references-count 0,
    :alternative-id ["S0306453016308022"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.010",
    :ISSN ["0306-4530"],
@@ -4433,7 +4433,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 70,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4532,7 +4532,7 @@
     :date-time "2017-06-25T02:55:28Z",
     :timestamp 1498359328000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 70,
+   :references-count 0,
    :alternative-id ["S030645301630806X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.011",
    :ISSN ["0306-4530"],
@@ -4555,7 +4555,7 @@
     {:value "Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 64,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4636,7 +4636,7 @@
     :date-time "2017-11-30T15:51:44Z",
     :timestamp 1512057104000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 64,
+   :references-count 0,
    :alternative-id ["S0306453016308083"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.012",
    :ISSN ["0306-4530"],
@@ -4659,7 +4659,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 88,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4724,7 +4724,7 @@
     :date-time "2017-11-30T15:51:18Z",
     :timestamp 1512057078000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 88,
+   :references-count 0,
    :alternative-id ["S0306453016302128"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.013",
    :ISSN ["0306-4530"],
@@ -4747,7 +4747,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4816,7 +4816,7 @@
     :date-time "2017-11-30T15:50:41Z",
     :timestamp 1512057041000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 45,
+   :references-count 0,
    :alternative-id ["S0306453016308216"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.014",
    :ISSN ["0306-4530"],
@@ -4839,7 +4839,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 39,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -4944,7 +4944,7 @@
     :date-time "2017-06-25T01:42:48Z",
     :timestamp 1498354968000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 39,
+   :references-count 0,
    :alternative-id ["S0306453016308332"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.015",
    :ISSN ["0306-4530"],
@@ -4967,7 +4967,7 @@
     {:value "© 2016 Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5064,7 +5064,7 @@
     :date-time "2017-11-30T15:51:26Z",
     :timestamp 1512057086000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 45,
+   :references-count 0,
    :alternative-id ["S0306453016305595"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.016",
    :ISSN ["0306-4530"],
@@ -5087,7 +5087,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5119,7 +5119,7 @@
    :page "124-131",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 3,
+   :is-referenced-by-count 5,
    :title
    ["The impact of perceived intensity and frequency of police work occupational stressors on the cortisol awakening response (CAR): Findings from the BCOPS study"],
    :prefix "10.1016",
@@ -5172,7 +5172,7 @@
     :date-time "2017-11-30T15:51:18Z",
     :timestamp 1512057078000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 36,
+   :references-count 0,
    :alternative-id ["S0306453016302025"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.017",
    :ISSN ["0306-4530"],
@@ -5195,7 +5195,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 83,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5227,7 +5227,7 @@
    :page "132-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Effects of mineralocorticoid-receptor stimulation on risk taking behavior in young healthy men and women"],
    :prefix "10.1016",
@@ -5276,7 +5276,7 @@
     :date-time "2017-11-30T15:51:45Z",
     :timestamp 1512057105000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 83,
+   :references-count 0,
    :alternative-id ["S0306453016308447"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.018",
    :ISSN ["0306-4530"],
@@ -5299,7 +5299,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 41,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5338,7 +5338,7 @@
    :page "183-191",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 7,
    :title
    ["Cortisol reactivity and suicidal behavior: Investigating the role of hypothalamic-pituitary-adrenal axis responses to stress in suicide attempters and ideators"],
    :prefix "10.1016",
@@ -5383,7 +5383,7 @@
     :date-time "2017-11-30T15:51:51Z",
     :timestamp 1512057111000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 41,
+   :references-count 0,
    :alternative-id ["S0306453016308435"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.019",
    :ISSN ["0306-4530"],
@@ -5406,7 +5406,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 43,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5495,7 +5495,7 @@
     :date-time "2017-11-30T15:50:58Z",
     :timestamp 1512057058000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 43,
+   :references-count 0,
    :alternative-id ["S0306453016308459"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.020",
    :ISSN ["0306-4530"],
@@ -5518,7 +5518,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 47,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5550,7 +5550,7 @@
    :page "77-83",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 3,
    :title
    ["The role of oxytocin in modulating interpersonal space: A pharmacological fMRI study"],
    :prefix "10.1016",
@@ -5603,7 +5603,7 @@
     :date-time "2017-06-25T03:19:26Z",
     :timestamp 1498360766000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 47,
+   :references-count 0,
    :alternative-id ["S0306453016304668"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.021",
    :ISSN ["0306-4530"],
@@ -5626,7 +5626,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 51,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5711,7 +5711,7 @@
     :date-time "2017-11-30T15:51:29Z",
     :timestamp 1512057089000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 51,
+   :references-count 0,
    :alternative-id ["S0306453016308587"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.022",
    :ISSN ["0306-4530"],
@@ -5734,7 +5734,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5773,7 +5773,7 @@
    :page "97-106",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 6,
    :title
    ["Motherhood and infant contact regulate neuroplasticity in the serotonergic midbrain dorsal raphe"],
    :prefix "10.1016",
@@ -5806,7 +5806,7 @@
     :date-time "2017-06-25T04:01:56Z",
     :timestamp 1498363316000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 54,
+   :references-count 0,
    :alternative-id ["S0306453016308605"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.023",
    :ISSN ["0306-4530"],
@@ -5829,7 +5829,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 63,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -5918,7 +5918,7 @@
     :date-time "2017-11-30T15:50:13Z",
     :timestamp 1512057013000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 63,
+   :references-count 0,
    :alternative-id ["S0306453016308630"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.024",
    :ISSN ["0306-4530"],
@@ -5942,7 +5942,7 @@
      "Crown Copyright © 2016 Published by Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 44,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6027,7 +6027,7 @@
     :date-time "2017-11-30T15:49:55Z",
     :timestamp 1512056995000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 44,
+   :references-count 0,
    :alternative-id ["S0306453016308563"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.025",
    :ISSN ["0306-4530"],
@@ -6050,7 +6050,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6152,7 +6152,7 @@
     :date-time "2017-11-30T15:51:40Z",
     :timestamp 1512057100000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 67,
+   :references-count 0,
    :alternative-id ["S0306453016308654"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.026",
    :ISSN ["0306-4530"],
@@ -6175,7 +6175,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6280,7 +6280,7 @@
     :date-time "2017-06-25T03:19:26Z",
     :timestamp 1498360766000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 54,
+   :references-count 0,
    :alternative-id ["S0306453016304528"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.027",
    :ISSN ["0306-4530"],
@@ -6303,7 +6303,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 56,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6335,7 +6335,7 @@
    :page "29-37",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 2,
    :title
    ["Maternal care and affective behavior in female offspring: Implication of the neurosteroid/GABAergic system"],
    :prefix "10.1016",
@@ -6368,7 +6368,7 @@
     :date-time "2017-06-25T02:56:49Z",
     :timestamp 1498359409000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 56,
+   :references-count 0,
    :alternative-id ["S0306453016304723"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.028",
    :ISSN ["0306-4530"],
@@ -6391,7 +6391,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 45,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6475,7 +6475,7 @@
     :date-time "2017-06-25T03:33:24Z",
     :timestamp 1498361604000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 45,
+   :references-count 0,
    :alternative-id ["S030645301630470X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.029",
    :ISSN ["0306-4530"],
@@ -6510,9 +6510,9 @@
    :publisher "Elsevier BV",
    :license
    [{:start
-     {:date-parts [[2017 3 17]],
-      :date-time "2017-03-17T15:31:03Z",
-      :timestamp 1489764663000},
+     {:date-parts [[2017 4 1]],
+      :date-time "2017-04-01T00:00:00Z",
+      :timestamp 1491004800000},
      :content-version "tdm",
      :delay-in-days 0,
      :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
@@ -6522,8 +6522,8 @@
      "clinicalkey.jp"
      "clinicalkey.com"
      "clinicalkey.es"
-     "clinicalkey.com.au"
      "clinicalkey.fr"
+     "clinicalkey.com.au"
      "elsevier.com"
      "sciencedirect.com"],
     :crossmark-restriction true},
@@ -6578,20 +6578,20 @@
    :language "en",
    :link
    [{:URL
-     "http://api.elsevier.com/content/article/PII:S0306453016308757?httpAccept=text/plain",
-     :content-type "text/plain",
-     :content-version "vor",
-     :intended-application "text-mining"}
-    {:URL
      "http://api.elsevier.com/content/article/PII:S0306453016308757?httpAccept=text/xml",
      :content-type "text/xml",
      :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016308757?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-parts [[2017 3 17]],
-    :date-time "2017-03-17T15:31:03Z",
-    :timestamp 1489764663000},
-   :issued {:date-parts [[2017 3 17]]},
+   {:date-parts [[2017 12 21]],
+    :date-time "2017-12-21T03:37:35Z",
+    :timestamp 1513827455000},
+   :issued {:date-parts [[2017 4 1]]},
    :references-count 0,
    :alternative-id ["S0306453016308757"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.001",
@@ -6620,7 +6620,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 64,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6693,7 +6693,7 @@
     :date-time "2017-11-30T15:51:41Z",
     :timestamp 1512057101000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 64,
+   :references-count 0,
    :alternative-id ["S0306453016308824"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.002",
    :ISSN ["0306-4530"],
@@ -6716,7 +6716,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 81,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6801,7 +6801,7 @@
     :date-time "2017-11-30T15:52:20Z",
     :timestamp 1512057140000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 81,
+   :references-count 0,
    :alternative-id ["S0306453016308836"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.003",
    :ISSN ["0306-4530"],
@@ -6824,7 +6824,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 50,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -6910,7 +6910,7 @@
     :date-time "2017-06-25T03:24:46Z",
     :timestamp 1498361086000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 50,
+   :references-count 0,
    :alternative-id ["S030645301630511X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.004",
    :ISSN ["0306-4530"],
@@ -6934,7 +6934,7 @@
      "Crown Copyright © 2016 Published by Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 54,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7025,7 +7025,7 @@
     :date-time "2017-11-30T15:51:46Z",
     :timestamp 1512057106000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 54,
+   :references-count 0,
    :alternative-id ["S0306453016308903"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.005",
    :ISSN ["0306-4530"],
@@ -7048,7 +7048,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 19,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7129,7 +7129,7 @@
     :date-time "2017-06-25T03:02:43Z",
     :timestamp 1498359763000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 19,
+   :references-count 0,
    :alternative-id ["S0306453016308915"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.006",
    :ISSN ["0306-4530"],
@@ -7152,7 +7152,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 52,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7184,7 +7184,7 @@
    :page "38-48",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 6,
    :title
    ["Hypothalamic-pituitary-adrenal axis activity and cognition in major depression: The role of remission status"],
    :prefix "10.1016",
@@ -7257,7 +7257,7 @@
     :date-time "2017-06-25T03:19:29Z",
     :timestamp 1498360769000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 52,
+   :references-count 0,
    :alternative-id ["S0306453016302293"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.007",
    :ISSN ["0306-4530"],
@@ -7280,7 +7280,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 67,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7381,7 +7381,7 @@
     :date-time "2017-06-25T03:14:07Z",
     :timestamp 1498360447000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 67,
+   :references-count 0,
    :alternative-id ["S0306453016308952"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.008",
    :ISSN ["0306-4530"],
@@ -7404,7 +7404,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 19,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7489,7 +7489,7 @@
     :date-time "2017-06-25T03:33:24Z",
     :timestamp 1498361604000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 19,
+   :references-count 0,
    :alternative-id ["S0306453016305005"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.009",
    :ISSN ["0306-4530"],
@@ -7512,7 +7512,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 17,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7581,7 +7581,7 @@
     :date-time "2017-06-25T03:39:19Z",
     :timestamp 1498361959000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 17,
+   :references-count 0,
    :alternative-id ["S030645301630899X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.010",
    :ISSN ["0306-4530"],
@@ -7604,7 +7604,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7643,7 +7643,7 @@
    :page "144-153",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 8,
+   :is-referenced-by-count 10,
    :title
    ["Sociodemographic, lifestyle, and psychosocial determinants of hair cortisol in a South London community sample"],
    :prefix "10.1016",
@@ -7700,7 +7700,7 @@
     :date-time "2017-10-09T19:55:05Z",
     :timestamp 1507578905000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 36,
+   :references-count 0,
    :alternative-id ["S0306453016305923"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.011",
    :ISSN ["0306-4530"],
@@ -7723,7 +7723,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 92,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7755,7 +7755,7 @@
    :page "19-28",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 6,
+   :is-referenced-by-count 7,
    :title
    ["Trauma exposure relates to heightened stress, altered amygdala morphology and deficient extinction learning: Implications for psychopathology"],
    :prefix "10.1016",
@@ -7812,7 +7812,7 @@
     :date-time "2017-06-25T03:24:39Z",
     :timestamp 1498361079000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 92,
+   :references-count 0,
    :alternative-id ["S0306453016309015"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.012",
    :ISSN ["0306-4530"],
@@ -7835,7 +7835,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 18,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -7867,7 +7867,7 @@
    :page "114-118",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Association between dehydroepiandrosterone-sulfate and attention in long-term survivors of childhood acute lymphoblastic leukemia treated with only chemotherapy"],
    :prefix "10.1016",
@@ -7936,7 +7936,7 @@
     :date-time "2017-06-25T03:46:05Z",
     :timestamp 1498362365000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 18,
+   :references-count 0,
    :alternative-id ["S0306453016305601"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.014",
    :ISSN ["0306-4530"],
@@ -7959,7 +7959,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 69,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8041,7 +8041,7 @@
     :date-time "2017-06-25T03:46:01Z",
     :timestamp 1498362361000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 69,
+   :references-count 0,
    :alternative-id ["S0306453016305996"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.015",
    :ISSN ["0306-4530"],
@@ -8064,7 +8064,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 20,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8156,7 +8156,7 @@
     :date-time "2017-08-18T11:20:23Z",
     :timestamp 1503055223000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 20,
+   :references-count 0,
    :alternative-id ["S0306453016302049"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.016",
    :ISSN ["0306-4530"],
@@ -8179,7 +8179,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 47,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8211,7 +8211,7 @@
    :page "174-182",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 3,
    :title
    ["Women recovering from social rejection: The effect of the person and the situation on a hormonal mechanism of affiliation"],
    :prefix "10.1016",
@@ -8252,7 +8252,7 @@
     :date-time "2017-06-25T04:14:47Z",
     :timestamp 1498364087000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 47,
+   :references-count 0,
    :alternative-id ["S0306453016305066"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.017",
    :ISSN ["0306-4530"],
@@ -8275,7 +8275,7 @@
     {:value "Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 68,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8326,7 +8326,7 @@
    :page "57-66",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 1,
+   :is-referenced-by-count 3,
    :title
    ["Increased anxiety-like behaviors, but blunted cortisol stress response after neonatal hippocampal lesions in monkeys"],
    :prefix "10.1016",
@@ -8371,7 +8371,7 @@
     :date-time "2017-10-09T19:55:19Z",
     :timestamp 1507578919000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 68,
+   :references-count 0,
    :alternative-id ["S0306453016309210"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.018",
    :ISSN ["0306-4530"],
@@ -8394,7 +8394,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 49,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8426,7 +8426,7 @@
    :page "131-140",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 8,
+   :is-referenced-by-count 11,
    :title
    ["Rapid effects of dorsal hippocampal G-protein coupled estrogen receptor on learning in female mice"],
    :prefix "10.1016",
@@ -8467,7 +8467,7 @@
     :date-time "2017-08-18T11:20:42Z",
     :timestamp 1503055242000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 49,
+   :references-count 0,
    :alternative-id ["S0306453016304267"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.019",
    :ISSN ["0306-4530"],
@@ -8490,7 +8490,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 15,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8579,7 +8579,7 @@
     :date-time "2017-08-18T11:18:17Z",
     :timestamp 1503055097000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 15,
+   :references-count 0,
    :alternative-id ["S030645301630703X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.020",
    :ISSN ["0306-4530"],
@@ -8602,7 +8602,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8642,7 +8642,7 @@
    :page "105-111",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 3,
+   :is-referenced-by-count 4,
    :title
    ["Allostatic load and reduced cortical thickness in schizophrenia"],
    :prefix "10.1016",
@@ -8699,7 +8699,7 @@
     :date-time "2017-08-18T11:19:42Z",
     :timestamp 1503055182000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 48,
+   :references-count 0,
    :alternative-id ["S0306453016307600"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.021",
    :ISSN ["0306-4530"],
@@ -8722,7 +8722,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 71,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8791,7 +8791,7 @@
     :date-time "2017-06-25T03:59:09Z",
     :timestamp 1498363149000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 71,
+   :references-count 0,
    :alternative-id ["S0306453016309362"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.022",
    :ISSN ["0306-4530"],
@@ -8814,7 +8814,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 18,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -8850,7 +8850,7 @@
    :page "51-55",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Validation of autonomic and endocrine reactivity to a laboratory stressor in young children"],
    :prefix "10.1016",
@@ -8899,7 +8899,7 @@
     :date-time "2017-08-18T11:20:22Z",
     :timestamp 1503055222000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 18,
+   :references-count 0,
    :alternative-id ["S0306453016306503"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.023",
    :ISSN ["0306-4530"],
@@ -8922,7 +8922,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 46,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9014,7 +9014,7 @@
     :date-time "2017-08-18T11:19:36Z",
     :timestamp 1503055176000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 46,
+   :references-count 0,
    :alternative-id ["S030645301630498X"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.024",
    :ISSN ["0306-4530"],
@@ -9037,7 +9037,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9069,7 +9069,7 @@
    :page "112-121",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 4,
    :title
    ["Association between anxiety and metabolic syndrome: A systematic review and meta-analysis of epidemiological studies"],
    :prefix "10.1016",
@@ -9103,7 +9103,7 @@
     :date-time "2017-08-18T11:20:48Z",
     :timestamp 1503055248000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 48,
+   :references-count 0,
    :alternative-id ["S0306453016304711"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.025",
    :ISSN ["0306-4530"],
@@ -9126,7 +9126,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 36,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9234,7 +9234,7 @@
     :date-time "2017-08-18T11:20:04Z",
     :timestamp 1503055204000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 36,
+   :references-count 0,
    :alternative-id ["S0306453016305364"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.026",
    :ISSN ["0306-4530"],
@@ -9257,7 +9257,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 66,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9289,7 +9289,7 @@
    :page "95-104",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 4,
+   :is-referenced-by-count 5,
    :title
    ["Stress disrupts the reconsolidation of fear memories in men"],
    :prefix "10.1016",
@@ -9322,7 +9322,7 @@
     :date-time "2017-08-18T11:19:44Z",
     :timestamp 1503055184000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 66,
+   :references-count 0,
    :alternative-id ["S0306453016305583"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.027",
    :ISSN ["0306-4530"],
@@ -9345,7 +9345,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 52,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9377,7 +9377,7 @@
    :page "203-210",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Altered cerebral insulin response in transgenic mice expressing the epsilon-4 allele of the human apolipoprotein E gene"],
    :prefix "10.1016",
@@ -9430,7 +9430,7 @@
     :date-time "2017-08-18T11:18:57Z",
     :timestamp 1503055137000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 52,
+   :references-count 0,
    :alternative-id ["S0306453016306199"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.028",
    :ISSN ["0306-4530"],
@@ -9453,7 +9453,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 30,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9546,7 +9546,7 @@
     :date-time "2017-08-18T11:19:04Z",
     :timestamp 1503055144000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 30,
+   :references-count 0,
    :alternative-id ["S0306453016307922"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.029",
    :ISSN ["0306-4530"],
@@ -9569,7 +9569,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 73,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9601,7 +9601,7 @@
    :page "9-17",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 3,
+   :is-referenced-by-count 4,
    :title
    ["Effects of the cortisol stress response on the psychotherapy outcome of panic disorder patients"],
    :prefix "10.1016",
@@ -9642,7 +9642,7 @@
     :date-time "2017-08-18T11:20:32Z",
     :timestamp 1503055232000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 73,
+   :references-count 0,
    :alternative-id ["S0306453016308125"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.030",
    :ISSN ["0306-4530"],
@@ -9665,7 +9665,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9709,7 +9709,7 @@
    :page "197-205",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 19,
+   :is-referenced-by-count 22,
    :title
    ["Oxidative stress, inflammation and treatment response in major depression"],
    :prefix "10.1016",
@@ -9786,7 +9786,7 @@
     :date-time "2017-06-25T04:53:05Z",
     :timestamp 1498366385000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 55,
+   :references-count 0,
    :alternative-id ["S0306453016306862"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.031",
    :ISSN ["0306-4530"],
@@ -9809,7 +9809,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 35,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9841,7 +9841,7 @@
    :page "154-161",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Adolescent binge alcohol exposure increases risk assessment behaviors in male Wistar rats after exposure to an acute psychological stressor in adulthood"],
    :prefix "10.1016",
@@ -9882,7 +9882,7 @@
     :date-time "2017-06-25T04:53:02Z",
     :timestamp 1498366382000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 35,
+   :references-count 0,
    :alternative-id ["S0306453016309623"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.032",
    :ISSN ["0306-4530"],
@@ -9905,7 +9905,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 37,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -9941,7 +9941,7 @@
    :page "135-143",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 8,
+   :is-referenced-by-count 11,
    :title
    ["Combined oral contraceptive use is associated with both improvement and worsening of mood in the different phases of the treatment cycle—A double-blind, placebo-controlled randomized trial"],
    :prefix "10.1016",
@@ -10010,7 +10010,7 @@
     :date-time "2017-06-25T04:46:28Z",
     :timestamp 1498365988000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 37,
+   :references-count 0,
    :alternative-id ["S0306453016309635"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.033",
    :ISSN ["0306-4530"],
@@ -10033,7 +10033,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 13,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10138,7 +10138,7 @@
     :date-time "2017-06-25T05:03:55Z",
     :timestamp 1498367035000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 13,
+   :references-count 0,
    :alternative-id ["S0306453016309659"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.034",
    :ISSN ["0306-4530"],
@@ -10161,7 +10161,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 44,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10193,7 +10193,7 @@
    :page "122-130",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["Higher serum DHEA concentrations before and after SSRI treatment are associated with remission of major depression"],
    :prefix "10.1016",
@@ -10262,7 +10262,7 @@
     :date-time "2017-08-18T11:20:11Z",
     :timestamp 1503055211000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 44,
+   :references-count 0,
    :alternative-id ["S0306453016307466"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.035",
    :ISSN ["0306-4530"],
@@ -10285,7 +10285,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 60,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10317,7 +10317,7 @@
    :page "25-36",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 25,
+   :is-referenced-by-count 30,
    :title
    ["Cortisol stress reactivity across psychiatric disorders: A systematic review and meta-analysis"],
    :prefix "10.1016",
@@ -10366,7 +10366,7 @@
     :date-time "2017-08-18T11:20:42Z",
     :timestamp 1503055242000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 60,
+   :references-count 0,
    :alternative-id ["S0306453016304735"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.036",
    :ISSN ["0306-4530"],
@@ -10389,7 +10389,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 63,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10422,7 +10422,7 @@
    :page "162-173",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 5,
+   :is-referenced-by-count 6,
    :title
    ["Mineralocorticoid receptor haplotype, estradiol, progesterone and emotional information processing"],
    :prefix "10.1016",
@@ -10467,7 +10467,7 @@
     :date-time "2017-06-25T04:49:46Z",
     :timestamp 1498366186000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 63,
+   :references-count 0,
    :alternative-id ["S0306453016309660"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.037",
    :ISSN ["0306-4530"],
@@ -10490,7 +10490,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 55,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10522,7 +10522,7 @@
    :page "18-24",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 3,
+   :is-referenced-by-count 4,
    :title
    ["Oxytocin modulates third-party sanctioning of selfish and generous behavior within and between groups"],
    :prefix "10.1016",
@@ -10563,7 +10563,7 @@
     :date-time "2017-08-18T11:19:04Z",
     :timestamp 1503055144000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 55,
+   :references-count 0,
    :alternative-id ["S0306453016308678"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.039",
    :ISSN ["0306-4530"],
@@ -10586,7 +10586,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 53,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10675,7 +10675,7 @@
     :date-time "2017-08-18T11:19:14Z",
     :timestamp 1503055154000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 53,
+   :references-count 0,
    :alternative-id ["S0306453016304279"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.11.040",
    :ISSN ["0306-4530"],
@@ -10698,7 +10698,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 24,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10782,7 +10782,7 @@
     :date-time "2017-08-18T11:19:33Z",
     :timestamp 1503055173000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 24,
+   :references-count 0,
    :alternative-id ["S0306453016305315"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.002",
    :ISSN ["0306-4530"],
@@ -10805,7 +10805,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Ltd.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 42,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10837,7 +10837,7 @@
    :page "84-89",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 0,
+   :is-referenced-by-count 1,
    :title
    ["OXTR  polymorphism in depression and completed suicide—A study on a large population sample"],
    :prefix "10.1016",
@@ -10906,7 +10906,7 @@
     :date-time "2017-08-18T11:20:37Z",
     :timestamp 1503055237000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 42,
+   :references-count 0,
    :alternative-id ["S0306453016307132"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.003",
    :ISSN ["0306-4530"],
@@ -10929,7 +10929,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 49,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -10998,7 +10998,7 @@
     :date-time "2017-08-18T11:19:42Z",
     :timestamp 1503055182000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 49,
+   :references-count 0,
    :alternative-id ["S0306453016302268"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.004",
    :ISSN ["0306-4530"],
@@ -11021,7 +11021,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 73,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11061,7 +11061,7 @@
    :page "206-217",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 4,
+   :is-referenced-by-count 5,
    :title
    ["Sex-specific associations of testosterone with prefrontal-hippocampal development and executive function"],
    :prefix "10.1016",
@@ -11122,7 +11122,7 @@
     :date-time "2017-06-25T05:32:33Z",
     :timestamp 1498368753000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 73,
+   :references-count 0,
    :alternative-id ["S0306453016309994"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.005",
    :ISSN ["0306-4530"],
@@ -11145,7 +11145,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 66,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11218,7 +11218,7 @@
     :date-time "2017-08-18T11:19:11Z",
     :timestamp 1503055151000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 66,
+   :references-count 0,
    :alternative-id ["S0306453016306801"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.006",
    :ISSN ["0306-4530"],
@@ -11241,7 +11241,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 48,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11311,7 +11311,7 @@
     :date-time "2017-08-18T11:18:43Z",
     :timestamp 1503055123000},
    :issued {:date-parts [[2017 3 1]]},
-   :references-count 48,
+   :references-count 0,
    :alternative-id ["S0306453016310289"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.008",
    :ISSN ["0306-4530"],
@@ -11334,7 +11334,7 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 47,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11366,7 +11366,7 @@
    :page "151-156",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 1,
+   :is-referenced-by-count 3,
    :title
    ["Neurocognitive deficits or stress overload: Why do individuals with schizophrenia show poor performance in neurocognitive tests?"],
    :prefix "10.1016",
@@ -11403,7 +11403,7 @@
     :date-time "2017-05-12T09:18:40Z",
     :timestamp 1494580720000},
    :issued {:date-parts [[2017 5 1]]},
-   :references-count 47,
+   :references-count 0,
    :alternative-id ["S0920996416304959"],
    :URL "http://dx.doi.org/10.1016/j.schres.2016.11.002",
    :ISSN ["0920-9964"],
@@ -11426,7 +11426,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 59,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11509,7 +11509,7 @@
     :date-time "2017-06-13T02:49:45Z",
     :timestamp 1497322185000},
    :issued {:date-parts [[2017 6 13]]},
-   :references-count 59,
+   :references-count 0,
    :alternative-id ["S0920996416305904"],
    :URL "http://dx.doi.org/10.1016/j.schres.2016.12.016",
    :ISSN ["0920-9964"],
@@ -11532,7 +11532,7 @@
     {:value "© 2016 Elsevier B.V. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 51,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11556,7 +11556,7 @@
    :page "61-67",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 2,
+   :is-referenced-by-count 4,
    :title
    ["Intraindividual stability of cortisol and cortisone and the ratio of cortisol to cortisone in saliva, urine and hair"],
    :prefix "10.1016",
@@ -11601,7 +11601,7 @@
     :date-time "2017-06-25T06:09:59Z",
     :timestamp 1498370999000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 51,
+   :references-count 0,
    :alternative-id ["S0039128X16301969"],
    :URL "http://dx.doi.org/10.1016/j.steroids.2016.12.008",
    :ISSN ["0039-128X"],
@@ -11622,7 +11622,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 357,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11659,7 +11659,7 @@
    :page "83-102",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 7,
+   :is-referenced-by-count 9,
    :title
    ["The exercise-glucocorticoid paradox: How exercise is beneficial to cognition, mood, and the brain while increasing glucocorticoid levels"],
    :prefix "10.1016",
@@ -11708,7 +11708,7 @@
     :date-time "2017-06-25T05:38:47Z",
     :timestamp 1498369127000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 357,
+   :references-count 0,
    :alternative-id ["S0091302216300619"],
    :URL "http://dx.doi.org/10.1016/j.yfrne.2016.12.001",
    :ISSN ["0091-3022"],
@@ -11731,7 +11731,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 152,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11768,7 +11768,7 @@
    :page "122-137",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 6,
+   :is-referenced-by-count 12,
    :title ["Puberty and structural brain development in humans"],
    :prefix "10.1016",
    :volume "44",
@@ -11800,7 +11800,7 @@
     :date-time "2017-06-10T02:01:10Z",
     :timestamp 1497060070000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 152,
+   :references-count 0,
    :alternative-id ["S0091302216300632"],
    :URL "http://dx.doi.org/10.1016/j.yfrne.2016.12.003",
    :ISSN ["0091-3022"],
@@ -11822,7 +11822,7 @@
     {:value "© 2017 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 82,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11851,7 +11851,7 @@
    :page "16-24",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 7,
+   :is-referenced-by-count 10,
    :title
    ["Oxytocin receptors modulate a social salience neural network in male prairie voles"],
    :prefix "10.1016",
@@ -11896,7 +11896,7 @@
     :date-time "2017-08-24T19:55:39Z",
     :timestamp 1503604539000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 82,
+   :references-count 0,
    :alternative-id ["S0018506X1630280X"],
    :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.10.009",
    :ISSN ["0018-506X"],
@@ -11919,7 +11919,7 @@
     {:value "Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 98,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -11992,7 +11992,7 @@
     :date-time "2017-06-16T02:48:07Z",
     :timestamp 1497581287000},
    :issued {:date-parts [[2017 6 1]]},
-   :references-count 98,
+   :references-count 0,
    :alternative-id ["S0018506X16301039"],
    :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.10.014",
    :ISSN ["0018-506X"],
@@ -12015,7 +12015,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 112,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -12093,7 +12093,7 @@
     :date-time "2017-06-16T02:47:24Z",
     :timestamp 1497581244000},
    :issued {:date-parts [[2017 6 1]]},
-   :references-count 112,
+   :references-count 0,
    :alternative-id ["S0018506X16300277"],
    :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.10.020",
    :ISSN ["0018-506X"],
@@ -12116,7 +12116,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 76,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -12177,7 +12177,7 @@
     :date-time "2017-06-16T02:46:21Z",
     :timestamp 1497581181000},
    :issued {:date-parts [[2017 6 1]]},
-   :references-count 76,
+   :references-count 0,
    :alternative-id ["S0018506X1630023X"],
    :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.11.003",
    :ISSN ["0018-506X"],
@@ -12200,7 +12200,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 104,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -12253,7 +12253,7 @@
     :date-time "2017-06-16T02:47:38Z",
     :timestamp 1497581258000},
    :issued {:date-parts [[2017 6 1]]},
-   :references-count 104,
+   :references-count 0,
    :alternative-id ["S0018506X16300848"],
    :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.11.006",
    :ISSN ["0018-506X"],
@@ -12276,7 +12276,7 @@
     {:value "© 2016 Elsevier Inc. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 171,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -12312,7 +12312,7 @@
    :page "113-126",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
    :source "Crossref",
-   :is-referenced-by-count 6,
+   :is-referenced-by-count 9,
    :title ["The Trier Social Stress Test: Principles and practice"],
    :prefix "10.1016",
    :volume "6",
@@ -12360,7 +12360,7 @@
     :date-time "2017-07-13T16:58:45Z",
     :timestamp 1499965125000},
    :issued {:date-parts [[2017 2 1]]},
-   :references-count 171,
+   :references-count 0,
    :alternative-id ["S2352289516300224"],
    :URL "http://dx.doi.org/10.1016/j.ynstr.2016.11.001",
    :ISSN ["2352-2895"],
@@ -12382,7 +12382,7 @@
     {:value "© 2016 The Authors. Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
-  {:reference-count 68,
+  {:reference-count 0,
    :publisher "Elsevier BV",
    :license
    [{:start
@@ -12456,7 +12456,7 @@
     :date-time "2017-06-25T03:10:36Z",
     :timestamp 1498360236000},
    :issued {:date-parts [[2017 1 1]]},
-   :references-count 68,
+   :references-count 0,
    :alternative-id ["S0091743516303486"],
    :URL "http://dx.doi.org/10.1016/j.ypmed.2016.11.003",
    :ISSN ["0091-7435"],

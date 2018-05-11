@@ -19,7 +19,7 @@
   :abstracts-backfile 0,
   :resource-links-current 1.0,
   :abstracts-current 0.0,
-  :references-current 0.9868421052631579},
+  :references-current 0.0},
  :title "Psychoneuroendocrinology",
  :subjects [],
  :flags
@@ -37,7 +37,7 @@
   :deposits-abstracts-backfile false,
   :deposits-licenses-backfile false,
   :deposits-award-numbers-backfile false,
-  :deposits-references-current true,
+  :deposits-references-current false,
   :deposits-resource-links-backfile false,
   :deposits-orcids-backfile false,
   :deposits-funders-backfile false,

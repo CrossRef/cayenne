@@ -80,7 +80,7 @@
           url)))]
     (index-funders)))
 
-(defn setup-feed [& {:keys [source-dir] :or {source-dir "/source"}}]
+(defn setup-feed [& {:keys [source-dir] :or {source-dir "/corpus"}}]
   (let [feed-dir (.getPath (resource "feeds"))
         feed-source-dir (str feed-dir source-dir)
         feed-in-dir (str feed-dir "/feed-in")
@@ -98,7 +98,7 @@
      :feed-file-count feed-file-count}))
 
 (defn index-feed [& {:keys [source-dir]
-                     :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/source")}}]
+                     :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/corpus")}}]
   (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed :source-dir source-dir)]
     (copy-dir feed-source-dir feed-in-dir)
     (index-journals)

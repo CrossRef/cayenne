@@ -20,7 +20,7 @@
    "sciencedirect.com"],
   :crossmark-restriction true},
  :short-container-title ["Psychoneuroendocrinology"],
- :published-print {:date-parts [[2017 1]]},
+ :published-print {:date-parts [[2017 1 1]]},
  :DOI "10.1016/j.psyneuen.2016.10.018",
  :type "journal-article",
  :created
@@ -81,7 +81,7 @@
   :timestamp 1512057105000},
  :subtitle [],
  :short-title [],
- :issued {:date-parts [[2017 1]]},
+ :issued {:date-parts [[2017 1 1]]},
  :references-count 0,
  :alternative-id ["S0306453016308447"],
  :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.018",
