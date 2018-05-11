@@ -11,7 +11,7 @@ Make sure you have these dependencies installed within your development environm
 - Leiningen
 - Docker
 
-The tests require Docker to spin up service dependencies on development machine (ElasticSearcElasticSearch). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
+The tests require Docker to spin up service dependencies on development machine (ElasticSearch). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
 
 ### Preparing CSL Resources
 
