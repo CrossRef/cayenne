@@ -5,61 +5,27 @@ services:
     build: .
     command: lein run :nrepl :api :deposit-api
     links:
-      - mongo
-      - solr
+      - elasticsearch
     environment:
-      - MONGO_HOST
-      - SOLR_HOST=${CAYENNE_SOLR_HOST}
       - API_PORT=3000
       - NREPL_PORT=7880
     ports:
       - 80:3000
       - 7880:7880
-  indexer:
-    build: .
-    command: lein run :nrepl :index
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
+    container_name: elasticsearch
     environment:
-      - MONGO_HOST
-      - SOLR_HOST=${CAYENNE_SOLR_HOST}
-      - NREPL_PORT=7881
-    links:
-      - mongo
+      - cluster.name=docker-cluster
+      - xpack.security.enabled=false
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
     ports:
-      - 7881
-  updater:
-    build: .
-    command: lein run :nrepl :update-members :update-journals :update-funders
-    environment:
-      - MONGO_HOST
-      - SOLR_HOST=${CAYENNE_SOLR_HOST}
-      - NREPL_PORT=7882
-    links:
-      - mongo
-    ports:
-      - 7882
-  feeder:
-    build: .
-    command: lein run :nrepl :api :feed-api :process-feed-files
-    environment:
-      - MONGO_HOST
-      - SOLR_HOST=${CAYENNE_SOLR_HOST}
-      - NREPL_PORT=7883
-      - API_PORT=3001
-    links:
-      - mongo
-    ports:
-      - 80:3001
-      - 7883
-    tmpfs:
-      - /tmp
-  mongo:
-    image: mongo
-    ports:
-      - 27017:27017
-  solr:
-    image: crossref/cayenne-solr
-    ports:
-      - 8983:8983
+      - 9200:9200
 networks:
   default:
     external:

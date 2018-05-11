@@ -6,8 +6,8 @@
  :DOI "10.7287/peerj.2196v0.1/reviews/2",
  :type "peer-review",
  :created
- {:date-time "2018-01-09T23:59:03Z",
-  :date-parts [[2018 1 9]],
+ {:date-parts [[2018 1 9]],
+  :date-time "2018-01-09T23:59:03Z",
   :timestamp 1515542343000},
  :source "Crossref",
  :is-referenced-by-count 0,
@@ -19,10 +19,9 @@
  :review {:revision-round "2", :stage "pre-publication"},
  :original-title [],
  :deposited
- {:date-time "2018-01-09T23:59:03Z",
-  :date-parts [[2018 1 9]],
+ {:date-parts [[2018 1 9]],
+  :date-time "2018-01-09T23:59:03Z",
   :timestamp 1515542343000},
- :score 1.0,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2016 7 26]]},

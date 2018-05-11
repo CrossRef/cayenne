@@ -75,7 +75,3 @@
 
 (defn ->type-id [index-str]
   (get reverse-dictionary index-str))
-
-(defn ->index-id [id]
-  (when-let [t (get type-dictionary (keyword id))]
-    (:index-id t)))

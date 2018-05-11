@@ -19,7 +19,7 @@
       <http://purl.org/dc/terms/creator>
               <http://id.crossref.org/contributor/dominique-piber-503qfqbenfar> , <http://id.crossref.org/contributor/christian-eric-deuter-503qfqbenfar> , <http://id.crossref.org/contributor/julian-hellmann-regen-503qfqbenfar> , <http://id.crossref.org/contributor/katharina-schultebraucks-503qfqbenfar> , <http://id.crossref.org/contributor/katja-wingenfeld-503qfqbenfar> , <http://id.crossref.org/contributor/christian-otte-503qfqbenfar> ;
       <http://purl.org/dc/terms/date>
-              "2017-01"^^<http://www.w3.org/2001/XMLSchema#gYearMonth> ;
+              "2017-01-01"^^<http://www.w3.org/2001/XMLSchema#date> ;
       <http://purl.org/dc/terms/identifier>
               "10.1016/j.psyneuen.2016.10.018" ;
       <http://purl.org/dc/terms/isPartOf>

@@ -1,5 +1,5 @@
 (ns cayenne.works-test
-  (:require [cayenne.api-fixture :refer [api-root api-get api-with-works]]
+  (:require [cayenne.api-fixture :refer [api-root api-get api-with-works no-scores]]
             [clj-http.client :as http]
             [clojure.data.json :refer [write-str]]
             [clojure.test :refer [use-fixtures deftest testing is]]
@@ -10,16 +10,18 @@
     (doseq [doi ["10.1016/j.psyneuen.2016.10.018"
                  "10.7287/peerj.2196v0.1/reviews/2"
                  "10.7287/peerj.1078v0.2/reviews/1"
-                 "10.1084/jem.20151673"
                  "10.1101/026963"
-                 "10.5555/test5"]]
-      (let [response (api-get (str "/v1/works/" doi))
+                 "10.5555/test5"
+                 "10.1084/jem.20151673"]]
+      (let [response (-> (api-get (str "/v1/works/" doi))
+                         no-scores)
             expected-response (read-string (slurp (resource (str "works/" doi ".edn"))))]
         (is (= expected-response response) (str "Unexpected response for DOI " doi)))))
 
   (testing "works endpoint returns expected result for query"
     (doseq [q-filter ["query.title=Peer" "query.title=Socioeconomic"]]
-      (let [response (api-get (str "/v1/works?" q-filter))
+      (let [response (-> (api-get (str "/v1/works?" q-filter))
+                         no-scores)
             expected-response (read-string (slurp (resource (str "works/" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for query " q-filter)))))
 
@@ -36,6 +38,11 @@
       (let [response (api-get (str "/v1/works?rows=1000&filter=" q-filter))
             expected-response (read-string (slurp (resource (str "works/?filter=" q-filter ".edn"))))]
         (is (= expected-response response) (str "unexpected result for filter " q-filter)))))
+
+  (testing "works endpoint returns results for sample"
+    (let [response (api-get "/v1/works?sample=100")
+          expected-count 100]
+      (is (= (count (:items response)) expected-count))))
 
   (testing "works related endpoints agree on work counts"
     (let [work-count (:total-results (api-get (str "/v1/works?filter=member:78")))

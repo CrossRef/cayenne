@@ -1,9 +1,8 @@
-{:edition-number "2",
- :reference-count 0,
+{:reference-count 0,
  :publisher "Sample Publisher",
  :isbn-type
- [{:value "0064410145", :type "print"}
-  {:value "0571089895", :type "electronic"}],
+ [{:value "0571089895", :type "electronic"}
+  {:value "0064410145", :type "print"}],
  :content-domain {:domain [], :crossmark-restriction false},
  :short-container-title [],
  :DOI "10.5555/test5",
@@ -28,12 +27,10 @@
  {:date-time "2018-03-19T20:42:34Z",
   :date-parts [[2018 3 19]],
   :timestamp 1521492154000},
- :score 1.0,
  :subtitle [],
  :short-title [],
- :issued {:date-parts [[nil]]},
+ :issued {:date-parts [[2018 3 19]]},
  :ISBN ["0571089895" "0064410145"],
  :references-count 0,
- :part-number "33-6",
  :URL "http://dx.doi.org/10.5555/test5",
  :relation {}}

@@ -2,36 +2,38 @@
  :publisher "Rockefeller University Press",
  :issue "1",
  :license
- [{:URL "http://www.rupress.org/terms/",
-   :start
-   {:date-time "2016-12-06T00:00:00Z",
-    :date-parts [[2016 12 6]],
+ [{:start
+   {:date-parts [[2016 12 6]],
+    :date-time "2016-12-06T00:00:00Z",
     :timestamp 1480982400000},
+   :content-version "vor",
    :delay-in-days 0,
-   :content-version "vor"}
-  {:URL "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-   :start
-   {:date-time "2017-07-03T00:00:00Z",
-    :date-parts [[2017 7 3]],
+   :URL "http://www.rupress.org/terms/"}
+  {:start
+   {:date-parts [[2017 7 3]],
+    :date-time "2017-07-03T00:00:00Z",
     :timestamp 1499040000000},
+   :content-version "vor",
    :delay-in-days 209,
-   :content-version "vor"}],
+   :URL "https://creativecommons.org/licenses/by-nc-sa/4.0/"}],
  :funder
  [{:DOI "10.13039/https://doi.org/10.13039/100000002",
    :name "National Institutes of Health",
-   :doi-asserted-by "publisher",
-   :award ["CA184090" "NS091080" "NS099175" "S10OD018205"]}],
+   :doi-asserted-by "publisher"}
+  {:DOI "10.13039/https://doi.org/10.13039/100000002",
+   :name "National Institutes of Health",
+   :doi-asserted-by "publisher"}],
  :content-domain
  {:domain ["rupress.org"], :crossmark-restriction true},
  :short-container-title ["J. Exp. Med."],
- :published-print {:date-parts [[2017 1]]},
+ :published-print {:date-parts [[2017 1 1]]},
  :abstract
  "<jats:p>Glioblastoma is the most lethal brain tumor and harbors glioma stem cells (GSCs) with potent tumorigenic capacity. The function of GSCs in tumor propagation is maintained by several core transcriptional regulators including c-Myc. c-Myc protein is tightly regulated by posttranslational modification. However, the posttranslational regulatory mechanisms for c-Myc in GSCs have not been defined. In this study, we demonstrate that the deubiquitinase USP13 stabilizes c-Myc by antagonizing FBXL14-mediated ubiquitination to maintain GSC self-renewal and tumorigenic potential. USP13 was preferentially expressed in GSCs, and its depletion potently inhibited GSC proliferation and tumor growth by promoting c-Myc ubiquitination and degradation. In contrast, overexpression of the ubiquitin E3 ligase FBXL14 induced c-Myc degradation, promoted GSC differentiation, and inhibited tumor growth. Ectopic expression of the ubiquitin-insensitive mutant T58A–c-Myc rescued the effects caused by FBXL14 overexpression or USP13 disruption. These data suggest that USP13 and FBXL14 play opposing roles in the regulation of GSCs through reversible ubiquitination of c-Myc.</jats:p>",
  :DOI "10.1084/jem.20151673",
  :type "journal-article",
  :created
- {:date-time "2016-12-07T15:10:13Z",
-  :date-parts [[2016 12 7]],
+ {:date-parts [[2016 12 7]],
+  :date-time "2016-12-07T15:10:13Z",
   :timestamp 1481123413000},
  :page "245-267",
  :update-policy "http://dx.doi.org/10.1084/jem.crossmarkpolicy",
@@ -144,18 +146,17 @@
    :content-version "vor",
    :intended-application "similarity-checking"}],
  :deposited
- {:date-time "2017-04-19T23:50:05Z",
-  :date-parts [[2017 4 19]],
+ {:date-parts [[2017 4 19]],
+  :date-time "2017-04-19T23:50:05Z",
   :timestamp 1492645805000},
- :score 1.0,
  :subtitle [],
  :short-title [],
  :issued {:date-parts [[2016 12 6]]},
  :references-count 83,
  :journal-issue
- {:published-online {:date-parts [[2017 1 2]]},
-  :published-print {:date-parts [[2017 1]]},
-  :issue "1"},
+ {:issue "1",
+  :published-online {:date-parts [[2017 1 2]]},
+  :published-print {:date-parts [[2017 1 1]]}},
  :alternative-id ["10.1084/jem.20151673"],
  :URL "http://dx.doi.org/10.1084/jem.20151673",
  :relation {},

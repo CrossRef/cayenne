@@ -4,79 +4,43 @@
             [cayenne.api.v1.response :as r]
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
-            [cayenne.data.quality :as quality]
             [cayenne.ids.doi :as doi-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
-            [cayenne.formats.citeproc :as citeproc]
-            [somnium.congomongo :as m]
             [org.httpkit.client :as http]
             [clojure.string :as string]
             [clojure.data.json :as json]
             [cayenne.ids.doi :as doi]
-            [clojure.set :as set])
+            [clojure.set :as set]
+            [qbits.spandex :as elastic]
+            [cayenne.elastic.convert :as convert])
   (:import [java.lang RuntimeException]
-           [java.net URLEncoder]
-           [org.apache.solr.client.solrj SolrRequest SolrRequest$METHOD])
-  )
-
-;; todo eventually produce citeproc from more detailed data stored in mongo
-;; for each DOI that comes back from solr. For now, covert the solr fields
-;; to some (occasionally ambiguous) citeproc structures.
-
-;; todo API links - orcids, subject ids, doi, issn, isbn, owner prefix
-
-;; todo conneg. currently returning two different formats - item-tree
-;; where a DOI is known, citeproc for search results.
-
-;; todo should be included in solr data
-(defn get-id-for-prefix [collection prefix]
-  (m/with-mongo (conf/get-service :mongo)
-    (-> collection 
-        (m/fetch-one :where {:prefixes (prefix-id/extract-prefix prefix)})
-        :id
-        member-id/to-member-id-uri)))
-
-(defn get-member-prefix-info [collection id]
-  (m/with-mongo (conf/get-service :mongo)
-    (-> collection
-        (m/fetch-one :where {:id (Integer/parseInt (member-id/extract-member-id id))})
-        :prefix)))
-
-(defn with-member-id [metadata]
-  (if (:member metadata)
-    metadata
-    (assoc metadata :member (get-id-for-prefix "members" (:prefix metadata)))))
-
-(def reference-visibilities
-  {"open" ["open"]
-   "limited" ["open" "limited"]
-   "closed" ["open" "limited" "closed"]})
+           [java.net URLEncoder]))
 
 (defn display-citations? [metadata]
   (when (:member metadata)
-    (let [prefix (prefix-id/extract-prefix (:prefix metadata))
-          member-id (member-id/extract-member-id (:member metadata))
-          member-prefix-info (get-member-prefix-info "members" member-id)
-          visibilities (or (-> [:service :api :references]
-                               conf/get-param
-                               reference-visibilities)
-                           ["open"])]
+    (when-let [member-doc (-> (elastic/request
+                               (conf/get-service :elastic)
+                               {:method :get
+                                :url "/member/member/_search"
+                                :body (-> {:size 1}
+                                          (assoc-in
+                                           [:query :bool :filter]
+                                           [{:term {:id (:member metadata)}}]))})
+                              (get-in [:body :hits :hits])
+                              first
+                              :_source)]
       (not
        (empty?
-        (filter #(and (= (:value %) prefix)
-                      (some #{(:reference-visibility %)} visibilities))
-                member-prefix-info))))))
+        (filter #(and (= (:value %) (:prefix metadata))
+                      (= (:reference-visibility %) "open"))
+                (:prefix member-doc)))))))
 
 (defn with-citations [metadata]
   (if (display-citations? metadata)
     metadata
     (-> metadata
-        (dissoc :reference)
-        (update-in [:relation] dissoc :cites))))
-
-(defn partial-response? [query-response]
-  (.. query-response (getResponseHeader) (get "partialResults")))
+        (dissoc :reference))))
 
 (defn render-record [query-context doc]
   (into
@@ -85,13 +49,11 @@
     #(not (if (coll? (second %)) (empty? (second %)) (nil? (second %))))
     (if (empty? (:select query-context))
       (-> doc
-          citeproc/->citeproc
-          with-member-id
+          convert/es-doc->citeproc
           with-citations)
       (-> doc
-          citeproc/->citeproc
+          convert/es-doc->citeproc
           (select-keys (map keyword (:select query-context)))
-          with-member-id
           with-citations)))))
 
 (defn indexed
@@ -134,51 +96,48 @@
      (drop 20 records))))
 
 (defn fetch [query-context & {:keys [id-field] :or {id-field nil}}]
-  (let [response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query query-context
-                                                 :id-field id-field
-                                                 :filters filter/std-filters) SolrRequest$METHOD/POST ))
-        doc-list (.getResults response)]
-    (if (partial-response? response)
-      (throw (RuntimeException. "Solr returned a partial result set"))
-      (-> (r/api-response :work-list)
-          (r/with-debug-info response query-context)
-          (r/with-result-facets (facet/->response-facets response))
-          (r/with-result-items
-            (.getNumFound doc-list)
-            (-> (map render-record (repeat query-context) doc-list)
-                reordered-preprints)
-            :next-cursor (.getNextCursorMark response))
-          (r/with-query-context-info query-context)))))
+  (let [es-request (query/->es-request query-context
+                                       :id-field id-field
+                                       :filters filter/std-filters)
+        response (elastic/request (conf/get-service :elastic) es-request)
+        doc-list (get-in response [:body :hits :hits])]
+    (-> (r/api-response :work-list)
+        (r/with-debug-info query-context es-request)
+        (r/with-result-facets (-> response
+                                  (get-in [:body :aggregations])
+                                  facet/->response-facets))
+        (r/with-result-items
+          (get-in response [:body :hits :total])
+          (-> (map render-record (repeat query-context) doc-list)
+              reordered-preprints)
+          :next-cursor (get-in response [:body :_scroll_id]))
+        (r/with-query-context-info query-context))))
 
 (defn fetch-reverse [query-context]
-  (let [terms (query/clean-terms (:terms query-context) :remove-syntax true)
-        q (str "content_citation:(" terms ")")
-        response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query {:raw-terms q
-                                                  :rows (int 1)})))
-        doc-list (.getResults response)]
-    (if (partial-response? response)
-      (throw (RuntimeException. "Solr returned a partial result set"))
-      (if (zero? (.getNumFound doc-list))
-        (r/api-response :nothing)
-        (let [doc (-> doc-list first citeproc/->citeproc with-member-id)]
-          (if (or (< (count (string/split terms #"\s")) 4) (< (:score doc) 2))
-            (r/api-response :nothing)
-            (r/api-response :work :content doc)))))))
+  (let [terms (:terms query-context)
+        es-request (query/->es-request {:field-terms {"bibliographic" terms}
+                                        :rows 1})
+        response (elastic/request (conf/get-service :elastic) es-request)
+        doc-list (get-in response [:body :hits :hits])]
+    (if (zero? (count doc-list))
+      (r/api-response :nothing)
+      (let [doc (-> doc-list first convert/es-doc->citeproc)]
+        (if (or (< (count (string/split terms #"\s")) 4) (< (:_score doc) 2))
+          (r/api-response :nothing)
+          (r/api-response :work :content doc))))))
 
 (defn fetch-one
   "Fetch a known DOI."
-  [doi-uri]
-  (let [response (-> (conf/get-service :solr)
-                     (.query (query/->solr-query {:id doi-uri}
-                                                 :id-field "doi")))]
-    (if (partial-response? response)
-      (throw (RuntimeException. "Solr returned a partail result set"))
-      (when-let [doc (-> response (.getResults) first)]
-        (r/api-response :work :content (-> (citeproc/->citeproc doc)
-                                           with-member-id
-                                           with-citations))))))
+  [doi]
+  (let [response (elastic/request
+                  (conf/get-service :elastic)
+                  (query/->es-request {:id doi}
+                                      :id-field :doi
+                                      :paged false))]
+    (when-let [doc (first (get-in response [:body :hits :hits]))]
+      (r/api-response :work :content (-> doc
+                                         convert/es-doc->citeproc
+                                         with-citations)))))
 
 (defn get-agency [doi]
   @(http/get (str (conf/get-param [:upstream :doi-ra-url])
@@ -192,7 +151,7 @@
         :RA)))
 
 (defn ->agency-response [doi agency]
-  (r/api-response 
+  (r/api-response
    :work-agency
    :content {:DOI (doi-id/normalize-long-doi doi)
              :agency {:id (clojure.string/lower-case agency)

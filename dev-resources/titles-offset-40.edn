@@ -2,7 +2,7 @@
  :query {:start-index 40, :search-terms nil},
  :total-results 366,
  :items
- ({:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+ ({:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Mary Ann Liebert",
    :coverage
@@ -47,11 +47,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2329-7670" "2329-7662"],
+   :ISSN ["2329-7662" "2329-7670"],
    :issn-type
-   [{:value "2329-7670", :type "electronic"}
-    {:value "2329-7662", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "2329-7662", :type "print"}
+    {:value "2329-7670", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Springer (Biomed Central Ltd.)",
    :coverage
@@ -98,7 +98,7 @@
     :deposits-licenses-current false},
    :ISSN ["2365-6271"],
    :issn-type [{:value "2365-6271", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Springer-Verlag",
    :coverage
@@ -145,7 +145,7 @@
     :deposits-licenses-current false},
    :ISSN ["2092-6731"],
    :issn-type [{:value "2092-6731", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Penerbit Universiti Kebangsaan Malaysia (UKM Press)",
    :coverage
@@ -190,11 +190,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2550-2247" "0128-5157"],
+   :ISSN ["0128-5157" "2550-2247"],
    :issn-type
-   [{:value "2550-2247", :type "electronic"}
-    {:value "0128-5157", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "0128-5157", :type "print"}
+    {:value "2550-2247", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "EDP Sciences",
    :coverage
@@ -241,7 +241,7 @@
     :deposits-licenses-current false},
    :ISSN ["2557-0250"],
    :issn-type [{:value "2557-0250", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Springer-Verlag",
    :coverage
@@ -286,11 +286,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["1614-2411" "1619-4500"],
+   :ISSN ["1619-4500" "1614-2411"],
    :issn-type
-   [{:value "1614-2411", :type "electronic"}
-    {:value "1619-4500", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "1619-4500", :type "print"}
+    {:value "1614-2411", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Mark Allen Group",
    :coverage
@@ -335,11 +335,11 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2052-4595" "1746-7500"],
+   :ISSN ["1746-7500" "2052-4595"],
    :issn-type
-   [{:value "2052-4595", :type "electronic"}
-    {:value "1746-7500", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+   [{:value "1746-7500", :type "print"}
+    {:value "2052-4595", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher
    "Ovid Technologies (Wolters Kluwer)  - Anesthesia & Analgesia",
@@ -387,7 +387,7 @@
     :deposits-licenses-current false},
    :ISSN ["2325-7237"],
    :issn-type [{:value "2325-7237", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher
    "Ovid Technologies (Wolters Kluwer)  - Anesthesia & Analgesia",
@@ -435,7 +435,7 @@
     :deposits-licenses-current false},
    :ISSN ["2575-3126"],
    :issn-type [{:value "2575-3126", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "International Monetary Fund",
    :coverage
@@ -482,7 +482,7 @@
     :deposits-licenses-current false},
    :ISSN ["1934-7073"],
    :issn-type [{:value "1934-7073", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher
    "Centro interdisciplinar de Pesquisa em Educacao e Direito CIPED",
@@ -530,7 +530,7 @@
     :deposits-licenses-current false},
    :ISSN ["2236-6695"],
    :issn-type [{:value "2236-6695", :type "electronic"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Universidade Estadual de Feira de Santana",
    :coverage
@@ -577,7 +577,7 @@
     :deposits-licenses-current false},
    :ISSN ["1415-8973"],
    :issn-type [{:value "1415-8973", :type "print"}]}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "SAGE Publications",
    :coverage
@@ -622,21 +622,59 @@
     :deposits-funders-backfile false,
     :deposits-update-policies-current false,
     :deposits-licenses-current false},
-   :ISSN ["2376-6662" "0011-3255"],
+   :ISSN ["0011-3255" "2376-6662"],
    :issn-type
-   [{:value "2376-6662", :type "electronic"}
-    {:value "0011-3255", :type "print"}]}
-  {:counts nil,
-   :breakdowns nil,
+   [{:value "0011-3255", :type "print"}
+    {:value "2376-6662", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Fundacao Educacional de Criciuma- FUCRI",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title
    "A ESCALA DE BORG COMO INSTRUMENTO DE MENSURAÇÃO DA INTENSIDADE DE AULAS DE ZUMBA",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "\"Universidade Autonoma de Lisboa, EdiUal\"",
    :coverage
@@ -683,18 +721,56 @@
     :deposits-licenses-current false},
    :ISSN ["0873-495X" "0873-495X"],
    :issn-type
-   [{:value "0873-495X", :type "electronic"}
-    {:value "0873-495X", :type "print"}]}
-  {:counts nil,
-   :breakdowns nil,
+   [{:value "0873-495X", :type "print"}
+    {:value "0873-495X", :type "electronic"}]}
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Cairo Center for Development Benchmarking",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title "A General Approach to Panel Data Set-Theoretic Research",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts {:total-dois 0, :current-dois 0, :backfile-dois 0},
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
    :breakdowns {:dois-by-issued-year []},
    :publisher "Informa UK (Taylor & Francis)",
    :coverage
@@ -741,33 +817,147 @@
     :deposits-licenses-current false},
    :ISSN ["0569-5554"],
    :issn-type [{:value "0569-5554", :type "print"}]}
-  {:counts nil,
-   :breakdowns nil,
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Fundacao Educacional de Criciuma- FUCRI",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title
    "A INFLUÊNCIA DA PUBLICIDADE NA TRANSIÇÃO NUTRICIONAL UMA SÍNTESE PARA ENTENDER A OBESIDADE",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts nil,
-   :breakdowns nil,
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Fundacao Educacional de Criciuma- FUCRI",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title
    "A INFLUÊNCIA DE 15 SEMANAS DE ATIVIDADES PSICOMOTORAS NA AUTONOMIA FUNCIONAL DE IDOSOS",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []}
-  {:counts nil,
-   :breakdowns nil,
+  {:counts {:current-dois 0, :backfile-dois 0, :total-dois 0},
+   :breakdowns {:dois-by-issued-year []},
    :publisher "Fundacao Educacional de Criciuma- FUCRI",
-   :coverage nil,
+   :coverage
+   {:affiliations-current 0,
+    :funders-backfile 0,
+    :licenses-backfile 0,
+    :funders-current 0,
+    :affiliations-backfile 0,
+    :resource-links-backfile 0,
+    :orcids-backfile 0,
+    :update-policies-current 0,
+    :orcids-current 0,
+    :references-backfile 0,
+    :award-numbers-backfile 0,
+    :update-policies-backfile 0,
+    :licenses-current 0,
+    :award-numbers-current 0,
+    :abstracts-backfile 0,
+    :resource-links-current 0,
+    :abstracts-current 0,
+    :references-current 0},
    :title
    "A INFLUÊNCIA DE 15 SEMANAS DE ATIVIDADES PSICOMOTORAS NA AUTONOMIA FUNCIONAL DE IDOSOS",
    :subjects [],
-   :flags nil,
+   :flags
+   {:deposits-abstracts-current false,
+    :deposits-orcids-current false,
+    :deposits false,
+    :deposits-affiliations-backfile false,
+    :deposits-update-policies-backfile false,
+    :deposits-award-numbers-current false,
+    :deposits-resource-links-current false,
+    :deposits-articles false,
+    :deposits-affiliations-current false,
+    :deposits-funders-current false,
+    :deposits-references-backfile false,
+    :deposits-abstracts-backfile false,
+    :deposits-licenses-backfile false,
+    :deposits-award-numbers-backfile false,
+    :deposits-references-current false,
+    :deposits-resource-links-backfile false,
+    :deposits-orcids-backfile false,
+    :deposits-funders-backfile false,
+    :deposits-update-policies-current false,
+    :deposits-licenses-current false},
    :ISSN [],
    :issn-type []})}

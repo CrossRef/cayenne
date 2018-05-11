@@ -7,7 +7,8 @@
     xmlns:j.3="http://xmlns.com/foaf/0.1/">
   <rdf:Description rdf:about="http://dx.doi.org/10.1016/j.psyneuen.2016.10.018">
     <owl:sameAs rdf:resource="doi:10.1016/j.psyneuen.2016.10.018"/>
-    <j.0:publisher>Elsevier BV</j.0:publisher>
+    <j.0:date rdf:datatype="http://www.w3.org/2001/XMLSchema#date"
+    >2017-01-01</j.0:date>
     <j.1:startingPage>132</j.1:startingPage>
     <j.1:volume>75</j.1:volume>
     <j.0:creator>
@@ -37,8 +38,6 @@
         <j.3:givenName>Katharina</j.3:givenName>
       </j.3:Person>
     </j.0:creator>
-    <j.0:date rdf:datatype="http://www.w3.org/2001/XMLSchema#gYearMonth"
-    >2017-01</j.0:date>
     <j.0:creator>
       <j.3:Person rdf:about="http://id.crossref.org/contributor/christian-otte-503qfqbenfar">
         <j.3:name>Christian Otte</j.3:name>
@@ -70,6 +69,7 @@
         <j.3:givenName>Katja</j.3:givenName>
       </j.3:Person>
     </j.0:creator>
+    <j.0:publisher>Elsevier BV</j.0:publisher>
     <j.1:endingPage>140</j.1:endingPage>
   </rdf:Description>
 </rdf:RDF>

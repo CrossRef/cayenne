@@ -2,7 +2,6 @@
   (:require [cayenne.conf :as conf]
             [cayenne.api.v1.routes :as v1]
             [cayenne.api.v1.doc :as v1-doc]
-            [cayenne.api.v1.graph :as graph-v1]
             [cayenne.api.v1.feed :as feed-v1]
             [cayenne.api.conneg :as conneg]
             [cayenne.api.auth.crossref :as cr-auth]
@@ -32,15 +31,6 @@
   (str (conf/get-param [:upstream :unixsd-url])
        (conf/get-param [:test :doi])))
 
-(defn create-protected-api-routes []
-  (wrap-routes
-   (routes
-    v1/restricted-api-routes
-    (context "/v1" [] v1/restricted-api-routes)
-    (context "/v1.0" [] v1/restricted-api-routes))
-   wrap-basic-authentication
-   cr-auth/authenticated?))
-
 (defn create-unprotected-api-routes []
   (routes
    v1/api-routes
@@ -56,12 +46,6 @@
         (redirect "https://github.com/CrossRef/rest-api-doc"))
    (ANY "/" [] 
         (redirect "/help"))))
-
-(defn create-graph-routes []
-  (routes
-   (context "/graph" [] graph-v1/graph-api-routes)
-   (context "/v1/graph" [] graph-v1/graph-api-routes)
-   (context "/v1.0/graph" [] graph-v1/graph-api-routes)))
 
 (defn create-feed-routes []
   (wrap-routes
@@ -84,13 +68,10 @@
             (response/status 404)
             (response/header "Content-Type" "application/json")))))
 
-(defn create-all-routes [& {:keys [graph-api feed-api]
-                            :or {graph-api false
-                                 feed-api false}}]
+(defn create-all-routes [& {:keys [feed-api]
+                            :or {feed-api false}}]
   (apply routes
-         (cond-> [(create-protected-api-routes)
-                  (create-docs-routes)]
-           graph-api (conj (create-graph-routes))
+         (cond-> [(create-docs-routes)]
            feed-api (conj (create-feed-routes))
            true (conj (create-unprotected-api-routes))
            true (conj (create-unknown-route)))))
@@ -138,9 +119,8 @@
                                      (subs uri 0 (dec (count uri)))
                                      uri))))))
 
-(defn create-handler [& {:keys [graph-api feed-api] :or {graph-api false
-                                                         feed-api false}}]
-  (-> (create-all-routes :graph-api graph-api :feed-api feed-api)
+(defn create-handler [& {:keys [feed-api] :or {feed-api false}}]
+  (-> (create-all-routes :feed-api feed-api)
       (logstash/wrap-logstash :host (conf/get-param [:service :logstash :host])
                               :port (conf/get-param [:service :logstash :port])
                               :name (conf/get-param [:service :logstash :name]))
@@ -161,14 +141,10 @@
   (conf/add-startup-task
    :api
    (fn [profiles]
-     (when (some #{:graph} profiles)
-       (require 'cayenne.tasks.datomic)
-       (cayenne.tasks.datomic/connect!))
      (conf/set-service! 
       :api 
       (hs/run-server 
-       (create-handler :graph-api (some #{:graph-api} profiles)
-                       :feed-api (some #{:feed-api} profiles))
+       (create-handler :feed-api (some #{:feed-api} profiles))
        {:join? false
         :thread 128
         :port (conf/get-param [:service :api :port])})))))

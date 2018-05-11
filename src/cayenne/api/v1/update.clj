@@ -1,5 +1,5 @@
 (ns cayenne.api.v1.update
-  (:require [cayenne.tasks.solr :as solr]
+  (:require [cayenne.elastic.update :as es-update]
             [clojure.data.json :as json]))
 
 (defn parse-update
@@ -32,18 +32,20 @@
                         (json/read :key-fn keyword))]
     (map parse-update (:message message-doc))))
   
-(defn update-as-solr-doc [update-map]
+(defn update-as-elastic-command [update-map]
   (cond
     (and (= :set (:action update-map))
          (= :is-cited-by-count (:predicate update-map)))
-    (solr/as-cited-count-set-document (:subject-doi update-map)
-                                      (:object update-map))
+    (es-update/update-reference-count-command
+     (:subject-doi update-map)
+     (:object update-map))
 
     (and (= :set (:action update-map))
          (= :cites (:predicate update-map)))
-    (solr/as-citation-doi-set-document (:subject-doi update-map)
-                                       (:subject-citation-id update-map)
-                                       (:object update-map))
+    (es-update/update-reference-doi-command
+     (:subject-doi update-map)
+     (:subject-citation-id update-map)
+     (:object update-map))
                                                      
     :else
     (throw (Exception. "Unsupported action / predicate combination"))))

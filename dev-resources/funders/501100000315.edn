@@ -2,7 +2,7 @@
  :replaced-by [],
  :work-count 0,
  :name "Aberystwyth University",
- :descendants [],
+ :descendants (),
  :descendant-work-count 0,
  :id "501100000315",
  :tokens ["aberystwyth" "university"],

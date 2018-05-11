@@ -3,7 +3,6 @@
             [clojure.data.json :as json]
             [cayenne.conf :as conf]
             [cayenne.ids.doi :as doi-id]
-            [cayenne.tasks.patent :as patent]
             [cayenne.data.deposit :as deposit-data]
             [cayenne.data.work :as work]
             [cayenne.api.v1.query :as q]
@@ -184,24 +183,6 @@
        TimeUnit/MILLISECONDS)))
   context)
 
-(defn perform-patent-citation-deposit [context separator]
-  (let [batch-id (:batch-id context)
-        test? (:test context)]
-    (try
-      (let [data-object (if (:deflate? context)
-                          (GZIPInputStream.
-                           (deposit-data/fetch-data {:id (:batch-id context)}))
-                          (deposit-data/fetch-data {:id (:batch-id context)}))]
-        (deposit-data/begin-handoff! batch-id)
-        (with-open [rdr (clojure.java.io/reader data-object)]
-          (patent/load-citation-csv rdr
-                                    :consume (not test?) 
-                                    :separator separator))
-        (deposit-data/end-handoff! batch-id)
-        (deposit-data/complete! batch-id))
-      (catch Exception e
-        (deposit-data/failed! batch-id :exception e)))))
-
 (defn matched-citations [citations]
   (map
    #(let [clean-text (string/replace (:text %) #"(?U)[^\w]+" " ")
@@ -297,36 +278,6 @@
       alter-xml-email
       create-deposit
       perform-xml-deposit)
-  (:batch-id context))
-
-(defmethod deposit! "application/vnd.crossref.patent-citations+csv" [context]
-  (-> context
-      download-object
-      create-deposit
-      (perform-patent-citation-deposit \,))
-  (:batch-id context))
-
-(defmethod deposit! "application/vnd.crossref.patent-citations+csv+g-zip" [context]
-  (-> context
-      download-object
-      create-deposit
-      deflate-object
-      (perform-patent-citation-deposit \,))
-  (:batch-id context))
-
-(defmethod deposit! "application/vnd.crossref.patent-citations+tab-separated-values" [context]
-  (-> context
-      download-object
-      create-deposit
-      (perform-patent-citation-deposit \tab))
-  (:batch-id context))
-
-(defmethod deposit! "application/vnd.crossref.patent-citations+tab-separated-values+g-zip" [context]
-  (-> context
-      download-object
-      create-deposit
-      deflate-object
-      (perform-patent-citation-deposit \tab))
   (:batch-id context))
 
 (defmethod deposit! "application/pdf" [context]

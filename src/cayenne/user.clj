@@ -5,9 +5,12 @@
             [cayenne.schedule :as schedule]
             [cayenne.api.route :as route]
             [cayenne.action :as action]
-            [taoensso.timbre.appenders.irc :as irc-appender]
-            [taoensso.timbre :as timbre])
-  (:import [org.apache.solr.client.solrj SolrQuery]))
+            [taoensso.timbre :as timbre]
+            [cayenne.tasks.category :as category]
+            [cayenne.tasks.journal :as journal]
+            [cayenne.tasks.publisher :as publisher]
+            [cayenne.tasks.funder :as funder]
+            [cayenne.data.member :as member]))
 
 (defn begin [& profiles]
   (timbre/set-config! [:appenders :standard-out :enabled?] false)
@@ -29,13 +32,9 @@
                            (get-in [conf/*core-name* :services])
                            keys)))))
 
-(defn print-solr-doi [doi]
-  (-> (conf/get-service :solr)
-      (.query 
-       (doto (SolrQuery.)
-         (.setQuery (str "doi_key:\"" (doi-id/to-long-doi-uri doi) "\""))))
-      (.getResults)
-      first
-      prn)
-  nil)
+(defn index-ancillary []
+  (category/index-subjects)
+  (publisher/index-members)
+  (journal/index-journals)
+  (category/update-journal-subjects))
 

@@ -4,13 +4,13 @@
  ({:reference-count 0,
    :publisher "Elsevier BV",
    :license
-   [{:URL "http://www.elsevier.com/tdm/userlicense/1.0/",
-     :start
-     {:date-time "2017-01-01T00:00:00Z",
-      :date-parts [[2017 1 1]],
+   [{:start
+     {:date-parts [[2017 1 1]],
+      :date-time "2017-01-01T00:00:00Z",
       :timestamp 1483228800000},
+     :content-version "tdm",
      :delay-in-days 0,
-     :content-version "tdm"}],
+     :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
    :content-domain
    {:domain
     ["psyneuen-journal.com"
@@ -23,12 +23,12 @@
      "sciencedirect.com"],
     :crossmark-restriction true},
    :short-container-title ["Psychoneuroendocrinology"],
-   :published-print {:date-parts [[2017 1]]},
+   :published-print {:date-parts [[2017 1 1]]},
    :DOI "10.1016/j.psyneuen.2016.09.025",
    :type "journal-article",
    :created
-   {:date-time "2016-10-10T07:11:11Z",
-    :date-parts [[2016 10 10]],
+   {:date-parts [[2016 10 10]],
+    :date-time "2016-10-10T07:11:11Z",
     :timestamp 1476083471000},
    :page "36-43",
    :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
@@ -66,11 +66,10 @@
      :content-version "vor",
      :intended-application "text-mining"}],
    :deposited
-   {:date-time "2017-11-30T15:51:07Z",
-    :date-parts [[2017 11 30]],
+   {:date-parts [[2017 11 30]],
+    :date-time "2017-11-30T15:51:07Z",
     :timestamp 1512057067000},
-   :score 4.5334864,
-   :issued {:date-parts [[2017 1]]},
+   :issued {:date-parts [[2017 1 1]]},
    :references-count 0,
    :alternative-id ["S0306453016307545"],
    :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.09.025",

@@ -1,6 +1,5 @@
 (ns cayenne.conf
-  (:import [org.apache.solr.client.solrj.impl HttpSolrClient]
-           [java.net URI]
+  (:import [java.net URI]
            [java.util UUID]
            [java.util.concurrent Executors])
   (:use [clojure.core.incubator :only [dissoc-in]])
@@ -8,7 +7,7 @@
             [clojure.data.json :as json]
             [clojure.java.io :as io]
             [clojure.tools.trace :as trace]
-            [somnium.congomongo :as m]
+            [qbits.spandex :as elastic]
             [clj-http.conn-mgr :as conn]
             [clojure.tools.nrepl.server :as nrepl]
             [robert.bruce :as rb]))
@@ -110,15 +109,7 @@
   (set-param! [:dir :test-data] (str (get-param [:dir :home]) "/test-data"))
   (set-param! [:dir :tmp] (str (get-param [:dir :home]) "/tmp"))
 
-  (set-param! [:service :solr :update-list]
-              [{:url "http://localhost:8983/solr" :core "crmds1"}])
-
-  (set-param! [:service :mongo :db] "crossref")
-  (set-param! [:service :mongo :host] "localhost")
-  (set-param! [:service :solr :url] "http://localhost:8983/solr/crmds1")
-  (set-param! [:service :solr :insert-list-max-size] 1000)
-  (set-param! [:service :solr :commit-on-add] true)
-  (set-param! [:service :datomic :url] "datomic:mem://test")
+  (set-param! [:service :elastic :urls] ["http://localhost:9200"])
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
   (set-param! [:service :logstash :host] "5.9.51.2")
@@ -127,10 +118,6 @@
   (set-param! [:service :nrepl :port] 7888)
 
   (set-param! [:deposit :email] "crlabs@fastmail.fm")
-
-  (set-param! [:oai :datacite :dir] (str (get-param [:dir :data]) "/oai/datacite"))
-  (set-param! [:oai :datacite :url] "http://oai.datacite.org/oai")
-  (set-param! [:oai :datacite :type] "datacite")
 
   (set-param! [:id :issn :path] "http://id.crossref.org/issn/")
   (set-param! [:id :isbn :path] "http://id.crossref.org/isbn/")
@@ -141,7 +128,7 @@
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")
   (set-param! [:id :contributor :path] "http://id.crossref.org/contributor/")
   (set-param! [:id :member :path] "http://id.crossref.org/member/")
-  
+
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
@@ -153,41 +140,35 @@
   (set-param! [:res :funder-update] "data/funder-update.date")
 
   (set-param! [:location :cr-titles-csv] "http://ftp.crossref.org/titlelist/titleFile.csv")
-  (set-param! [:location :cr-funder-registry] "http://dx.doi.org/10.13039/fundref_registry")
+  (set-param! [:location :cr-funder-registry] "http://data.crossref.org/fundingdata/registry")
+  (set-param! [:location :scopus-title-list] "https://www.elsevier.com/?a=91122&origin=sbrowse&zone=TitleList&category=TitleListLink")
 
   (set-param! [:test :doi] "10.5555/12345678")
 
   (set-param! [:upstream :pdf-service] "http://46.4.83.72:3000/pdf")
-  (set-param! [:upstream :crmds-dois] "http://search.crossref.org/dois?q=")
-  (set-param! [:upstream :funder-dois-live] "http://search.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :funder-dois-dev] "http://search-dev.labs.crossref.org/funders/dois?rows=10000000000")
-  (set-param! [:upstream :openurl-url] "http://www.crossref.org/openurl/?noredirect=true&pid=cnproxy@crossref.org&format=unixref&id=doi:")
   (set-param! [:upstream :doi-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :doi-ra-url] "https://doi.crossref.org/doiRA/")
-  (set-param! [:upstream :unixref-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixref&doi=")
-  (set-param! [:upstream :unixsd-url] "http://doi.crossref.org/search/doi?pid=cnproxy@crossref.org&format=unixsd&doi=")
   (set-param! [:upstream :prefix-info-url] "http://doi.crossref.org/getPrefixPublisher/?prefix=")
   (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 
 (with-core :default
-  (add-startup-task 
+  (add-startup-task
    :base
    (fn [profiles]
-     (set-service! :executor (Executors/newScheduledThreadPool 20))
-     (set-service! :conn-mgr (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
-     (set-service! :mongo (m/make-connection (get-param [:service :mongo :db])
-                                             :host (get-param [:service :mongo :host])))
-     (set-service! :solr (HttpSolrClient. (get-param [:service :solr :url])))
-     (set-service! :solr-update-list
-                   (map #(HttpSolrClient. (str (:url %) "/" (:core %)))
-                        (get-param [:service :solr :update-list]))))))
+     (set-service! :executor
+                   (Executors/newScheduledThreadPool 20))
+     (set-service! :conn-mgr
+                   (conn/make-reusable-conn-manager {:timeout 120 :threads 10}))
+     (set-service! :elastic
+                   (elastic/client {:hosts (get-param [:service :elastic :urls])})))))
 
 (with-core :default
   (add-startup-task
    :nrepl
    (fn [profiles]
-     (set-service! :nrepl (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
+     (set-service!
+      :nrepl
+      (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
-

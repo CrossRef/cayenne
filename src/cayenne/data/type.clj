@@ -4,15 +4,12 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.api.v1.facet :as facet]
             [cayenne.data.work :as work]
-            [cayenne.formats.citeproc :as citeproc]
             [cayenne.ids.type :as type-id]
             [cayenne.conf :as conf]))
 
 (defn ->pretty-type [id t]
   {:id id
    :label (:label t)})
-
-(def solr-type-id-field "type")
 
 (defn fetch-all []
   (-> (r/api-response :type-list)
@@ -31,6 +28,4 @@
            (r/api-response :type :content)))))
 
 (defn fetch-works [query-context]
-  (-> query-context
-      (update-in [:id] type-id/->index-id)
-      (work/fetch :id-field solr-type-id-field)))
+  (work/fetch query-context :id-field :type))

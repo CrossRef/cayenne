@@ -2,13 +2,10 @@
   (:import [java.net URL URLDecoder])
   (:require [cayenne.ids :as ids]
             [cayenne.ids.doi :as doi-id]
-            [cayenne.ids.fundref :as fr-id]
             [cayenne.ids.prefix :as prefix-id]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.issn :as issn-id]
             [cayenne.conf :as conf]
-            [cayenne.data.quality :as quality]
-            [cayenne.data.deposit :as d]
             [cayenne.data.core :as c]
             [cayenne.data.work :as work]
             [cayenne.data.funder :as funder]
@@ -17,10 +14,8 @@
             [cayenne.data.journal :as journal]
             [cayenne.data.type :as data-types]
             [cayenne.data.csl :as csl]
-            [cayenne.data.license :as license]
             [cayenne.api.transform :as transform]
             [cayenne.api.link :as link]
-            [cayenne.api.deposit :as dc]
             [cayenne.api.v1.types :as t]
             [cayenne.api.v1.query :as q]
             [cayenne.api.v1.parameters :as p]
@@ -34,7 +29,6 @@
             [compojure.core :refer [defroutes routes context ANY]]))
 
 (extend java.util.Date json/JSONWriter {:-write #(json/write (.toString %1) %2)})
-(extend org.bson.types.ObjectId json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend clojure.lang.Var json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 (extend java.lang.Object json/JSONWriter {:-write #(json/write (.toString %1) %2)})
 
@@ -49,7 +43,7 @@
 (defn get-passwd [context]
   (get-in context [:request :basic-authentication 1]))
 
-(defn known-post-type? 
+(defn known-post-type?
   "Does the content type submitted match a known content type, if the
    method is POST? Otherwise, if not method POST, accept the request
    regardless of content type."
@@ -120,85 +114,6 @@
   :exists? (->1 #(c/exists? core-name))
   :handle-ok (->1 #(c/fetch core-name)))
 
-;; This resource looks a little odd because we are trying to handle
-;; any exception that comes about due to the post! action. If there
-;; is an exception, we return a 400.
-
-(defn deposit-failure [exception]
-  (ring-response
-   {:status 400
-    :body 
-    {:status :failed
-     :message-type :entity-parsing-failure
-     :message {:exception (.toString exception)}}}))
-
-(defresource deposits-resource [data]
-  :malformed? (v/malformed? :filter-validator v/validate-deposit-filters
-                            :unlimited-offset true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :known-content-type? #(known-post-type? % t/depositable)
-  :allowed-methods [:get :post :options :head]
-  :available-media-types t/json
-  :handle-ok #(d/fetch (q/->query-context % :filters {:owner (get-owner %)}))
-  :post-redirect? #(hash-map :location (rel-url "deposits" (:id %)))
-  :handle-see-other #(if (:id %)
-                       (ring-response
-                        {:status 303
-                         :body ""
-                         :headers {"Location"
-                                   (rel-url "deposits" (:id %))}})
-                       (deposit-failure (:ex %)))
-  :post! #(try (hash-map :id (-> (dc/make-deposit-context
-                               data
-                               (get-in % [:request :headers "content-type"])
-                               (get-owner %)
-                               (get-passwd %)
-                               (truth-param % :test)
-                               (param % :pingback)
-                               (param % :url)
-                               (param % :filename)
-                               (param % :parent))
-                              (dc/deposit!)))
-               (catch Exception e {:ex e})))
-
-(defresource deposit-resource [id]
-  :malformed? (v/malformed? :singleton true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :allowed-methods [:get :post :options :head]
-  :available-media-types t/json
-  :exists? #(when-let [deposit 
-                       (-> % 
-                           (q/->query-context 
-                            :filters {:owner (get-owner %)}
-                            :id id)
-                           (d/fetch-one))]
-              {:deposit deposit})
-  :handle-ok :deposit
-  :post! #(do
-            (->> (get-in % [:request :body])
-                 (.bytes)
-                 slurp
-                 (d/modify! id))))
-
-(defresource deposit-data-resource [id]
-  :malformed? (v/malformed? :singleton true)
-  :handle-malformed :validation-result
-  :authorized? authed?
-  :allowed-methods [:get :options :head]
-  :media-type-available? (constantly true) ;; todo should return {:representation ...}
-  :exists? #(when-let [deposit (d/fetch-one 
-                                (q/->query-context 
-                                 % 
-                                 :filters {:owner (get-owner %)} 
-                                 :id id))] 
-              {:deposit deposit})
-  :handle-ok #(d/fetch-data (q/->query-context
-                             %
-                             :filters {:owner (get-owner %)} 
-                             :id id)))
-
 (defresource works-resource
   :malformed? (v/malformed? :facet-validator v/validate-work-facets
                             :filter-validator v/validate-work-filters
@@ -218,17 +133,10 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? (->1 #(when-let [work (-> doi
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok :work)
-
-(defresource work-health-resource [doi]
-  :malformed? (v/malformed? :singleton true)
-  :handle-malformed :validation-result
-  :allowed-methods [:get :options :head]
-  :available-media-types t/json
-  :handle-ok (->1 #(quality/fetch-quality doi)))
 
 (defresource work-agency-resource [doi]
   :malformed? (v/malformed? :singleton true)
@@ -245,12 +153,12 @@
    so we avoid the canonical lower-case DOI and present metadata for the DOI
    exactly as requested."
   [request doi]
-  (assoc (get-in request [:work :message]) 
-    :URL 
-    (->> doi
-         (URLDecoder/decode)
-         (doi-id/extract-long-doi)
-         (str "http://dx.doi.org/"))))
+  (assoc (get-in request [:work :message])
+         :URL
+         (->> doi
+              (URLDecoder/decode)
+              (doi-id/extract-long-doi)
+              (str "http://dx.doi.org/"))))
 
 (defresource work-transform-resource [doi]
   :malformed? (v/malformed? :singleton true)
@@ -258,8 +166,7 @@
   :allowed-methods [:get :options :head]
   :media-type-available? (conneg/content-type-matches t/work-transform)
   :exists? (->1 #(when-let [work (-> doi
-                                     (URLDecoder/decode)
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok #(let [links (link/make-link-headers
@@ -276,8 +183,7 @@
   :allowed-methods [:get :options :head]
   :media-type-available? (fn [_] (some #{content-type} t/work-transform))
   :exists? (->1 #(when-let [work (-> doi
-                                     (URLDecoder/decode)
-                                     (doi-id/to-long-doi-uri)
+                                     doi-id/extract-long-doi
                                      (work/fetch-one))]
                    {:work work}))
   :handle-ok #(let [links (link/make-link-headers
@@ -302,8 +208,8 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :exists? #(when-let [f (funder/fetch-one 
-                          (q/->query-context % :id (fr-id/id-to-doi-uri funder-id)))]
+  :exists? #(when-let [f (funder/fetch-one
+                          (q/->query-context % :id funder-id))]
               {:funder f})
   :handle-ok :funder)
 
@@ -318,7 +224,9 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :handle-ok #(funder/fetch-works (q/->query-context % :id (fr-id/id-to-doi-uri funder-id))))
+  :handle-ok #(funder/fetch-works (->> funder-id
+                                       doi-id/with-funder-prefix
+                                       (q/->query-context % :id))))
 
 (defresource prefix-resource [px]
   :malformed? (v/malformed? :singleton true)
@@ -326,7 +234,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [p (prefix/fetch-one
-                          (q/->query-context % :id (prefix-id/to-prefix-uri px)))]
+                          (q/->query-context % :id (prefix-id/normalize-prefix px)))]
               {:publisher p})
   :handle-ok :publisher)
 
@@ -341,7 +249,7 @@
   :handle-malformed :validation-result
   :allowed-methods [:get :options :head]
   :available-media-types t/json
-  :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/to-prefix-uri px))))
+  :handle-ok #(prefix/fetch-works (q/->query-context % :id (prefix-id/normalize-prefix px))))
 
 (defresource members-resource
   :malformed? (v/malformed? :filter-validator v/validate-member-filters
@@ -357,7 +265,7 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
-                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+                          (q/->query-context % :id id))]
               {:member m})
   :handle-ok :member)
 
@@ -373,9 +281,9 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :exists? #(when-let [m (member/fetch-one
-                          (q/->query-context % :id (member-id/to-member-id-uri id)))]
+                          (q/->query-context % :id id))]
               {:member m})
-  :handle-ok #(member/fetch-works (q/->query-context % :id (member-id/to-member-id-uri id))))
+  :handle-ok #(member/fetch-works (q/->query-context % :id id)))
 
 (defresource journals-resource
   :malformed? (v/malformed? :unlimited-offset true)
@@ -409,13 +317,6 @@
                           (q/->query-context % :id (issn-id/normalize-issn issn)))]
               {:journal j})
   :handle-ok #(journal/fetch-works (q/->query-context % :id (issn-id/normalize-issn issn))))
-
-(defresource licenses-resource
-  :malformed? (v/malformed? :unlimited-offset true)
-  :handle-malformed :validation-result
-  :allowed-methods [:get :options :head]
-  :available-media-types t/json
-  :handle-ok #(license/fetch-all (q/->query-context %)))
 
 (defresource types-resource
   :malformed? (v/malformed? :unlimited-offset true)
@@ -457,72 +358,60 @@
                                               (.bytes)
                                               slurp)}))
 
-(defroutes restricted-api-routes
-  (ANY "/deposits" {body :body}
-       (deposits-resource body))
-  (ANY "/deposits/:id" [id]
-       (deposit-resource id))
-  (ANY "/deposits/:id/data" [id]
-       (deposit-data-resource id)))
-
 (defroutes api-routes
   (ANY "/reverse" []
-       reverse-lookup-resource)
-  (ANY "/licenses" []
-       licenses-resource)
+    reverse-lookup-resource)
   (ANY "/styles" []
-       csl-styles-resource)
+    csl-styles-resource)
   (ANY "/locales" []
-       csl-locales-resource)
+    csl-locales-resource)
   (ANY "/funders" []
-       funders-resource)
+    funders-resource)
   (ANY "/funders/*" {{id :*} :params}
-       (if (.endsWith id "/works")
-         (funder-works-resource (string/replace id #"/works\z" ""))
-         (funder-resource id)))
+    (if (.endsWith id "/works")
+      (funder-works-resource (string/replace id #"/works\z" ""))
+      (funder-resource id)))
   (ANY "/members" []
-       members-resource)
+    members-resource)
   (ANY "/members/:id" [id]
-       (member-resource id))
+    (member-resource id))
   (ANY "/members/:id/works" [id]
-       (member-works-resource id))
+    (member-works-resource id))
   (ANY "/journals" []
-       journals-resource)
+    journals-resource)
   (ANY "/journals/:issn" [issn]
-       (journal-resource issn))
+    (journal-resource issn))
   (ANY "/journals/:issn/works" [issn]
-       (journal-works-resource issn))
+    (journal-works-resource issn))
   (ANY "/prefixes/:prefix" [prefix]
-       (prefix-resource prefix))
+    (prefix-resource prefix))
   (ANY "/prefixes/:prefix/works" [prefix]
-       (prefix-works-resource prefix))
+    (prefix-works-resource prefix))
   (ANY "/works" []
-       works-resource)
+    works-resource)
   (ANY "/works/*" {{doi :*} :params}
-       (cond (.endsWith doi ".xml")
-             (redirect (str 
-                        "/works/"
-                        (string/replace doi #".xml" "")
-                        "/transform/application/vnd.crossref.unixsd+xml"))
-             (.endsWith doi "/agency")
-             (work-agency-resource (string/replace doi #"/agency\z" ""))
-             (.endsWith doi "/quality")
-             (work-health-resource (string/replace doi #"/quality\z" ""))
-             (.endsWith doi "/transform")
-             (work-transform-resource (string/replace doi #"/transform\z" ""))
-             (re-matches #".*/transform/.+\z" doi)
-             (explicit-work-transform-resource
-              (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
-              (second (re-matches #".*/transform/(.+)\z" doi)))
-             :else
-             (work-resource doi)))
+    (cond (.endsWith doi ".xml")
+          (redirect (str
+                     "/works/"
+                     (string/replace doi #".xml" "")
+                     "/transform/application/vnd.crossref.unixsd+xml"))
+          (.endsWith doi "/agency")
+          (work-agency-resource (string/replace doi #"/agency\z" ""))
+          (.endsWith doi "/transform")
+          (work-transform-resource (string/replace doi #"/transform\z" ""))
+          (re-matches #".*/transform/.+\z" doi)
+          (explicit-work-transform-resource
+           (string/replace doi #"/transform/[^/]+/[^/]+\z" "")
+           (second (re-matches #".*/transform/(.+)\z" doi)))
+          :else
+          (work-resource doi)))
   (ANY "/types" []
-       types-resource)
+    types-resource)
   (ANY "/types/:id" [id]
-       (type-resource id))
+    (type-resource id))
   (ANY "/types/:id/works" [id]
-       (type-works-resource id))
+    (type-works-resource id))
   (ANY "/cores" []
-       cores-resource)
+    cores-resource)
   (ANY "/cores/:name" [name]
-       (core-resource name)))
+    (core-resource name)))

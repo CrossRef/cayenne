@@ -5,6 +5,7 @@
             [cayenne.conf :as conf]
             [cayenne.util :as util]
             [cayenne.data.work :as works]
+            [cayenne.elastic.util :as elastic-util]
             [cayenne.util :refer [?> ?>>]]
             [clojure.data.xml :as xml]
             [clojure.zip :as zip]
@@ -16,33 +17,11 @@
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
             [clj-http.client :as http]
-            [somnium.congomongo :as m]))
+            [qbits.spandex :as elastic]))
 
-(defn ensure-publisher-indexes! [collection-name]
-  (m/add-index! collection-name [:id])
-  (m/add-index! collection-name [:tokens])
-  (m/add-index! collection-name [:prefixes])
-  (m/add-index! collection-name [:names])
-  (m/add-index! collection-name [:public-references]))
-
-(defn update-publisher!
-  "Upsert a publisher, combining multiple prefixes."
-  [collection id prefixes name location prefix-names prefix-infos]
-  (m/update! collection
-             {:id id}
-             {"$set" {:id id
-                      :location (string/trim location)
-                      :primary-name (string/trim name)
-                      :prefixes prefixes
-                      :tokens (util/tokenize-name name)
-                      :prefix prefix-infos
-                      :public-references (not (nil?
-                                               (some true?
-                                                     (map :public-references prefix-infos))))
-                      :names (set (conj (map string/trim prefix-names)
-                                        (string/trim name)))}}))
-
-(defn get-member-list []
+(defn get-member-list
+  "Get a list of members from the Crossref prefix information API."
+  []
   (let [url (str (conf/get-param [:upstream :prefix-info-url]) "all")
         response (http/get url
                            {:connection-manager (conf/get-service :conn-mgr)
@@ -51,7 +30,10 @@
     (when (= 200 (:status response))
       (-> response :body (json/read-str :key-fn keyword)))))
 
-(defn get-prefix-info [prefix]
+(defn get-prefix-info
+  "Return information about an owner prefix from the Crossref prefix information
+   API."
+  [member-id prefix]
   (let [url (str
              (conf/get-param [:upstream :prefix-info-url])
              prefix)
@@ -62,30 +44,42 @@
                (-> (:body response) io/reader xml/parse zip/xml-zip))]
     (when root
       {:value prefix
+       :member-id member-id
        :name (zx/text (zx/xml1-> root :publisher :prefix_name))
        :location (zx/text (zx/xml1-> root :publisher :publisher_location))
-       :public-references
-       (-> (zx/xml1-> root :publisher :reference_distribution)
-           zx/text
-           (= "open"))
        :reference-visibility
-       (-> (zx/xml1-> root :publisher :reference_distribution)
-           zx/text)})))
+       (if-let [ref-loc (zx/xml1-> root
+                                   :publisher
+                                   :reference_distribution)]
+         (-> ref-loc zx/text keyword)
+         :closed)})))
 
-(defn load-publishers [collection]
-  (m/with-mongo (conf/get-service :mongo)
-    (ensure-publisher-indexes! collection)
-    (doseq [member (get-member-list)]
-      (let [prefixes (filter (complement string/blank?) (:prefixes member))
-            prefix-infos (map get-prefix-info prefixes)
-            prefix-names (map :name prefix-infos)
-            publisher-location (first (filter (complement nil?)
-                                              (map :location prefix-infos)))]
-        (update-publisher!
-         collection
-         (:memberId member)
-         prefixes
-         (:name member)
-         publisher-location
-         prefix-names
-         (map #(dissoc % :location) prefix-infos))))))
+(defn index-command
+  "Turn a member record from the Crossref prefix information API into
+   a command, document pair that will index the member in ES."
+  [member]
+  (let [member-id (:memberId member)
+        prefixes (filter (complement string/blank?) (:prefixes member))
+        prefixes (map (partial get-prefix-info member-id) prefixes)
+        publisher-location (first (filter (complement nil?)
+                                              (map :location prefixes)))]
+    [{:index {:_id member-id}}
+     {:id member-id
+      :primary-name (:name member)
+      :location publisher-location
+      :token (util/tokenize-name (:name member))
+      :prefix prefixes}]))
+
+(defn index-members
+  "Index members into ES."
+  []
+  (doseq [some-members (partition-all 100 (get-member-list))]
+    (let [bulk-body (->> some-members
+                         (map index-command)
+                         flatten)]
+      (elastic/request
+       (conf/get-service :elastic)
+       {:method :post
+        :url "member/member/_bulk"
+        :body (elastic-util/raw-jsons bulk-body)}))))
+     

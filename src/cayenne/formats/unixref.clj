@@ -1,10 +1,10 @@
 (ns cayenne.formats.unixref
   (:require [clj-time.format :as ftime]
             [clj-time.core :as t]
+            [cayenne.ids.doi :as doi-id]
             [cayenne.xml :as xml]
             [cayenne.conf :as conf]
             [cayenne.ids :as ids]
-            [cayenne.ids.fundref :as fundref]
             [cayenne.item-tree :as itree]
             [clojure.tools.trace :as trace]
             [taoensso.timbre :as timbre :refer [info error]]
@@ -553,7 +553,7 @@
 (defn normalize-funder-id-val [funder-id-val]
   (when funder-id-val
     (if-let [id-only (re-find #"\A\d+\Z" (.trim funder-id-val))]
-      (fundref/id-to-doi-uri id-only)
+      (doi-id/with-funder-prefix id-only)
       (to-long-doi-uri funder-id-val))))
 
 (defn parse-funder [funder-group-loc]
@@ -931,13 +931,13 @@
 (defn parse-content-item-type [content-item-loc]
   (let [type (xml/xselect1 content-item-loc ["component_type"])]
     (cond
-     (= type "chapter") :chapter
-     (= type "section") :section
-     (= type "part") :part
-     (= type "track") :track
-     (= type "reference_entry") :reference-entry
-     (= type "other") :other
-     :else :other)))
+      (= type "chapter") :book-chapter
+      (= type "section") :book-section
+      (= type "part") :book-part
+      (= type "track") :book-track
+      (= type "reference_entry") :reference-entry
+      (= type "other") :other
+      :else :other)))
 
 (defn parse-content-item [content-item-loc]
   (when content-item-loc

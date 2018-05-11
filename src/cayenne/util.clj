@@ -7,7 +7,7 @@
   (assert (even? (count kvs)))
   (into m
         (for [[k v] (partition 2 kvs)
-         :when v]
+              :when v]
           [k v])))
 
 (defn assoc-str
@@ -17,8 +17,27 @@
   (assert (even? (count kvs)))
   (into m
         (for [[k v] (partition 2 kvs)
-         :when (not (string/blank? v))]
+              :when (not (string/blank? v))]
           [k (string/trim v)])))
+
+(defn assoc-exists
+  "Like assoc except only performs the assoc if value is
+   a non-empty string, non-empty list or a non-nil value."
+  ([m key value]
+   (assoc-exists m key value value))
+  ([m key value assoc-value]
+   (cond (= (type value) java.lang.String)
+         (if (clojure.string/blank? value)
+           m
+           (assoc m key assoc-value))
+         (sequential? value)
+         (if (empty? value)
+           m
+           (assoc m key assoc-value))
+         (nil? value)
+         m
+         :else
+         (assoc m key assoc-value))))
 
 (declare parse-int-safe)
 
@@ -29,7 +48,7 @@
   (assert (even? (count kvs)))
   (into m
         (for [[k v] (partition 2 kvs)
-         :when (parse-int-safe v)]
+              :when (parse-int-safe v)]
           [k (parse-int-safe v)])))
 
 (defn keys-in
@@ -40,12 +59,12 @@
      (keys m)
      (mapcat (comp keys-in (partial get m)) (keys m)))))
 
-(defn map-diff 
+(defn map-diff
   "Produce the list of keys in a but not in b."
   [a b]
   (filter #(not (get b %)) (keys a)))
 
-(defn map-intersect 
+(defn map-intersect
   "Produce a list of keys present in a and b."
   [a b]
   (filter #(get a %) (keys b)))
@@ -60,11 +79,11 @@
   [record]
   (reduce (fn [m [k v]] (if (keyword? v) (assoc m k (name v)) m)) record record))
 
-(defn with-java-array-vals 
+(defn with-java-array-vals
   "Convert all clojure vectors and seqs in a map to Java arrays."
   [record]
-  (reduce 
-   (fn [m [k v]] 
+  (reduce
+   (fn [m [k v]]
      (if (or (vector? v) (seq? v)) (assoc m k (into-array v)) m)) record record))
 
 (defn patherize [coll]
@@ -96,12 +115,12 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; File utils
 
-(defn file-of-kind? 
+(defn file-of-kind?
   "Does the path point to a file that ends with kind?"
   [kind path]
   (and (.isFile path) (.endsWith (.getName path) kind)))
 
-(defn file-kind-seq 
+(defn file-kind-seq
   "Return a seq of all xml files under the given directory."
   [kind file-or-dir count]
   (if (= count :all)
@@ -161,7 +180,7 @@
   (when uri
     (string/replace uri #"[^a-zA-Z0-9]" "_")))
 
-(defn ?- 
+(defn ?-
   "Return a fn that tries to take k out of a map, or returns
    a placeholder string if missing."
   [k]
@@ -170,7 +189,7 @@
       v
       "-")))
 
-(defn ?fn- 
+(defn ?fn-
   "Return a fn that tries to take k out of a map, or returns
    a placeholder string if missing."
   [k]
@@ -191,3 +210,34 @@
 
 (defn safe-trim [s]
   (when s (string/trim s)))
+
+(defn tree-seq-depth
+  "Returns a lazy sequence of vectors of the nodes in a tree and their
+  depth as [node depth], via a depth-first walk.  branch? must be a fn
+  of one arg that returns true if passed a node that can have
+  children (but may not).  children must be a fn of one arg that
+  returns a sequence of the children. Will only be called on nodes for
+  which branch? returns true. Root is the root node of the tree."
+  [branch? children root]
+  (let [walk (fn walk [depth node]
+               (lazy-seq
+                (cons [node depth]
+                      (when (branch? node)
+                        (mapcat (partial walk (inc depth)) (children node))))))]
+    (walk 0 root)))
+
+(defn dissoc-all [m ks]
+  (reduce (fn [ma [k va]]
+            (if (map? va)
+              (assoc ma k (dissoc-all va ks))
+              (if (not (some #{k} ks))
+                (assoc ma k va)
+                ma))) {} m))
+
+(defn get-all-in [m ks]
+  (reduce (fn [col [k va]]
+            (if (map? va)
+              (concat col (get-all-in va ks))
+              (if (some #{k} ks)
+                (cons va col)
+                col))) [] m))
