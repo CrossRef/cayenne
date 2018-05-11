@@ -11,7 +11,7 @@ Make sure you have these dependencies installed within your development environm
 - Leiningen
 - Docker
 
-The tests require Docker to spin up service dependencies on development machine (SOLR and MongoDB). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
+The tests require Docker to spin up service dependencies on development machine (ElasticSearcElasticSearch). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
 
 ### Preparing CSL Resources
 
@@ -51,7 +51,6 @@ Run as a production service with some profiles:
 - :graph-api - Must be specified along with :api and :graph. Enables the graph API. Requires datomic leiningen profile.
 - :feed-api - Must be specified along with :api. Enables the feed API for real-time metadata ingest.
 - :process-feed-files - Run async processing of incoming feed files. Should be enabled with :feed-api.
-- :solr-inserts - Run solr inserts. Should be enabled with :feed-api or instances perform OAI-PMH harvesting.
 
 ## Run as a Daemon
 
@@ -79,27 +78,19 @@ Create a docker image:
 
     $ lein uberimage
 
-
 ## Running tests
 
-Running with `lein test` should take care of creating any required infrastructure, typically MongoDB and Solr. 
+Running with `lein test` should take care of creating any required infrastructure, typically ElasticSearch. 
 
-The Solr instance will be created using docker image `crossref/cayenne-solr`, this docker image is available in docker hub but
-can also be created locally by cloning `https://github.com/crossref/cayenne-solr` and running `docker image build ./ -t crossref/cayenne-solr`, building
-the image locally is useful if you want to make changes to the Solr schema. 
+The ElasticSearch instance will be created using docker image `docker.elastic.co/elasticsearch/elasticsearch:6.2.3`.
 
-In order for the tests to pass there must be a specific set of feed files present in the feed input directory, these feed files
-are not currently in this repository because of distribution issues but this will be addressed. For now, if the expected number of feed files is not
-present an exception will be thrown: 
+The default corpus loaded into ElasticSearch is located in `dev-resources/feeds/corpus`, you can switch to a different corpus using: 
 
-```
-actual: java.lang.Exception: The number of feed input files is not as expected. Expected to find 174 files in /home/markwoodhall/src/crossref/cayenne/dev-resources/feeds/source
+``` 
+CAYENNE_API_TEST_CORPUS=/large-corpus lein test cayenne.corpus-test
 ```
 
-Note. Occasionally HTTP Kit will hold onto port 3000 after starting the API, this can sometimes cause problems with multiple
-test runs, running a subset, e.g. `lein test cayenne.works-test` is more reliable.
-
-Running tests from the REPL will also work.
+The example above switches to a larger corpus located in `dev-resources/feeds/large-corpus` for the specific test run. Keep in mind that many of tests rely on a specific corpus being loaded into ElasticSearch.
 
 ## Reference Visibility
 
