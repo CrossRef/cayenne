@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.5667/tang.2016.0010</doi>
+        <crm-item name="publisher-name" type="string">Association of Genuine Traditional Korean Medicine</crm-item>
+        <crm-item name="prefix-name" type="string">Association of Genuine Traditional Korean Medicine</crm-item>
+        <crm-item name="member-id" type="number">3645</crm-item>
+        <crm-item name="citation-id" type="number">85625667</crm-item>
+        <crm-item name="journal-id" type="number">167965</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20161006094426</crm-item>
+        <crm-item name="owner-prefix" type="string">10.5667</crm-item>
+        <crm-item name="last-update" type="date">2017-06-25T00:27:21Z</crm-item>
+        <crm-item name="created" type="date">2016-10-06T00:48:48Z</crm-item>
+        <crm-item name="citedby-count" type="number">0</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>TANG [HUMANITAS MEDICINE]</full_title>
+                <abbrev_title>TANG [HUMANITAS MEDICINE]</abbrev_title>
+                <issn media_type="electronic">2233-8985</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="online">
+                  <month>08</month>
+                  <day>31</day>
+                  <year>2016</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>6</volume>
+                </journal_volume>
+                <issue>3</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>The effect of Changbu-taryung on stress management: An outstanding chef on Changbu-taryung, Korean traditional music, Tae-yong Jeon is cook on YouTube (https://youtu.be/HKa8ds7PjKE)</title>
+                </titles>
+                <contributors>
+                  <person_name sequence="first" contributor_role="author">
+                    <given_name>Kyung-Ja</given_name>
+                    <surname>Ko</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>08</month>
+                  <day>31</day>
+                  <year>2016</year>
+                </publication_date>
+                <pages>
+                  <first_page>20.1</first_page>
+                  <last_page>20.3</last_page>
+                </pages>
+                <publisher_item>
+                  <item_number>TJHOBI_2016_v6n3_20.1</item_number>
+                </publisher_item>
+                <doi_data>
+                  <doi>10.5667/tang.2016.0010</doi>
+                  <resource>http://koreascience.or.kr/journal/view.jsp?kj=TJHOBI&amp;py=2016&amp;vnc=v6n3&amp;sp=20.1</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource>http://ocean.kisti.re.kr/downfile/crosscheck/agtkm/JAKO201627939273336.pdf</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>
