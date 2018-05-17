@@ -123,8 +123,6 @@
         (Thread/sleep 1000))
       (load-journals)
       (load-members)
-      ;(check-journals "journals")  check-journals happens with load-journals
-      ;(check-members "members")
      )))
 
 (defn setup-for-feeds []
