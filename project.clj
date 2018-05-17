@@ -25,6 +25,7 @@
                  [org.clojure/core.async "0.2.395"]
                  [org.clojure/tools.nrepl "0.2.3"]
                  [org.clojure/tools.trace "0.7.8"]
+                 [org.clojure/tools.logging "0.4.1"]
                  [org.mozilla/rhino "1.7.7.1"]
                  [de.undercouch/citeproc-java "0.6"]
                  [org.jbibtex/jbibtex "1.0.14"]

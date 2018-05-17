@@ -19,3 +19,4 @@ pom.xml
 /src/cayenne/user.clj
 out.json
 out.txt
+/dev-resources/feeds/feed-processed
