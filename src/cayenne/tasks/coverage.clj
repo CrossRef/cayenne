@@ -246,7 +246,7 @@
   (log/info "start check members:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
     (doseq [member  (m/fetch collection :sort {:id 1} :options [:notimeout])]
-      (println "doing member:" (:id member) "for collection " collection)
+      (log/info "doing member:" (:id member) "for collection " collection)
         (try
           (m/update!
            collection
