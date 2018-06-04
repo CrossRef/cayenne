@@ -172,6 +172,10 @@
      :reference-visibility "closed"}],
    :id 78,
    :tokens ["elsevier" "bv"],
+   :counts-type
+                 {:all {:book-chapter 6, :journal-article 115},
+                  :current {:book-chapter 6, :journal-article 115},
+                  :backfile {}},
    :coverage-type
    {:all
     {:book-chapter

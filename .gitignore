@@ -20,3 +20,5 @@ pom.xml
 out.json
 out.txt
 /dev-resources/feeds/feed-processed
+
+*.body

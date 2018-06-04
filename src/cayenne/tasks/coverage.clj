@@ -10,7 +10,8 @@
             [taoensso.timbre :as timbre :refer [error]]
             [somnium.congomongo :as m]
             [clojure.tools.logging :as log]
-            [cayenne.ids.type :refer [->type-id]] ))
+            [clojure.set :as s]
+            [cayenne.ids.type :refer [->type-id reverse-dictionary]] ))
 
 (def year-date-format (df/formatter "yyyy"))
 
@@ -231,6 +232,22 @@
         result {:coverage-type (merge  current backfile all)}]
     result))
 
+
+(defn check-type-counts [memberid]
+  "generates the counts-type map for the given member id.
+   Best to run this immediately before (checks-for-timespans) to take
+   advantage of caching"
+  (let [current-types (get-types memberid {:from-pub-date (current-start-year)})
+        backfile-types (get-types memberid {:until-pub-date (back-file-cut-off)})
+        all-types (get-types memberid nil)
+
+    result {:counts-type
+     {:backfile (s/rename-keys backfile-types reverse-dictionary)
+      :current (s/rename-keys current-types reverse-dictionary)
+      :all (s/rename-keys all-types reverse-dictionary)
+      }}]
+    result))
+
 (defn checks-for-timespans-journals
   "calls check-record-coverage-type-for-journal for each of the 3 time spans and populates a map
    with a key of :coverage-type and value of the merged result"
@@ -245,7 +262,7 @@
   [collection]
   (log/info "start check members:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
-    (doseq [member  (m/fetch collection :sort {:id 1} :options [:notimeout])]
+    (doseq [member (m/fetch collection :sort {:id 1} :options [:notimeout])]
       (log/info "doing member:" (:id member) "for collection " collection)
         (try
           (m/update!
@@ -253,6 +270,7 @@
            {:id (:id member)}
            (merge member
                   (check-breakdowns member :type :member :id-field :id)
+                  (check-type-counts (:id member))
                   (checks-for-timespans member)
                   (check-record-coverage member :type :member :id-field :id)
                   (check-record-counts member :type :member :id-field :id)))
