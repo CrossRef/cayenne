@@ -16,9 +16,10 @@
 (def year-date-format (df/formatter "yyyy"))
 
 (defn back-file-cut-off []
-  (df/unparse year-date-format  (dt/minus (dt/now) (dt/years 3))))
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 3))))
+
 (defn current-start-year []
-  (df/unparse year-date-format  (dt/minus (dt/now) (dt/years 2))))
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 2))))
 
 (defn make-id-filter [type id]
   (cond (= type :member)
@@ -50,10 +51,11 @@
         (get-in [:message :total-results]))))
 
 (defn coverage [total-count check-count]
-  (if (> check-count total-count)
-    (log/warn "Alert!!!!! More check count:" check-count " than total!" total-count))
+  (when (> check-count total-count)
+    (log/warn "Alert! More check count:" check-count " than total!" total-count))
+
   (if (zero? total-count)
-    0
+    0.0
     (float (/ check-count total-count))))
 
 (defn make-filter-check [member-action check-name filter-name filter-value]
@@ -63,6 +65,7 @@
           total-current-count (get-work-count type id :timing :current)
           filter-back-file-count (get-work-count type id :filters {filter-name filter-value} :timing :backfile)
           filter-current-count (get-work-count type id :filters {filter-name filter-value} :timing :current)]
+
       {:flags {(keyword (str member-action "-" check-name "-current"))
                (not (zero? filter-current-count))
                (keyword (str member-action "-" check-name "-backfile"))
@@ -79,9 +82,9 @@
     total count for that timing and type"
   (fn [type id total timing]
       (let
-        [filter-current-count (get-work-count :member id :filters {filter-name filter-value  "type-name" type} :timing timing)
-         result  {:coverage {(keyword  check-name)
-                             (coverage total filter-current-count)}}]
+        [filter-current-count (get-work-count :member id :filters {filter-name filter-value "type-name" type} :timing timing)
+         result {:coverage {(keyword check-name)
+                            (coverage total filter-current-count)}}]
         result)))
 
 (defn make-check-for-journal [member-action check-name filter-name filter-value]
@@ -92,8 +95,8 @@
   (fn [id timing total]
     (let
       [filter-current-count (get-work-count :issn id :filters {filter-name filter-value} :timing timing)
-        result  {:coverage {(keyword  check-name)
-                            (coverage total filter-current-count)}}]
+        result {:coverage {(keyword check-name)
+                           (coverage total filter-current-count)}}]
       result)))
 
 (defn check-deposits [type id]
@@ -118,7 +121,7 @@
    (make-filter-check "deposits" "update-policies" :has-update-policy "true")
    (make-filter-check "deposits" "references" :has-references "true")
    (make-filter-check "deposits" "licenses" :has-license "true")
-   ; the compound field "full-text" has a sub field of "application". Specifying more than one application
+   ; The compound field "full-text" has a sub field of "application". Specifying more than one application
    ; requires passing a sequence to the query generator as the value of the compound field.
    ; it will OR the key/values
    (make-filter-check "deposits" "resource-links" :full-text [{"application" ["unspecified"]} {"application" ["text-mining"]}])
@@ -164,6 +167,7 @@
                     :coverage (merge (:coverage rslt) (:coverage check-result))}))
                {}
                checkles))))
+
 (defn check-record-coverage-per-type [record types & {:keys [timing id-field] :or {:timing :all}}]
   "Makes a map of each given type containing each check defined in checkles-by-type,
    within the given timing"
@@ -178,23 +182,24 @@
                              (fn [rslt chk-fn]
                                (let [check-result (chk-fn typestr (get record id-field) valnum timing)
                                      content {:last-status-check-time (dc/to-long (dt/now))}]
-                                    (merge content  rslt (:coverage check-result))))
+                                    (merge content rslt (:coverage check-result))))
                              {}
                              checkles-by-type)))))
                   types)]
         (into {} result))
-    (log/info "No types for member: " (get record id-field) " timing: " timing)))
+    (log/info "No types for member:" (get record id-field) " timing:" timing)))
 
 (defn check-record-coverage-type-for-journal [record & {:keys [timing id-field] :or {:timing :all}}]
     "Makes a map of given journal containing each check defined in checkles-for-journals,
      within the given timing"
-  (let [totalc (get-work-count :issn (get record id-field) :timing timing)]
-    (-> {:last-status-check-time (dc/to-long (dt/now))} ; probably don't want this
+  (let [total-count (get-work-count :issn (get record id-field) :timing timing)]
+    ; Probably don't want this.
+    (-> {:last-status-check-time (dc/to-long (dt/now))} 
         (merge
           (reduce (fn [rslt chk-fn]
-                  (let [check-result (chk-fn  (get record id-field) timing totalc)
+                  (let [check-result (chk-fn (get record id-field) timing total-count)
                         content {:last-status-check-time (dc/to-long (dt/now))}]
-                     (merge content  rslt (:coverage check-result))))
+                     (merge content rslt (:coverage check-result))))
              {}
              checkles-for-journals)))))
 
@@ -215,10 +220,12 @@
   (let [record-id (get record id-field)
         backfile-count (get-work-count type record-id :timing :backfile)
         current-count (get-work-count type record-id :timing :current)]
+
     {:counts
      {:backfile-dois backfile-count
       :current-dois current-count
       :total-dois (+ backfile-count current-count)}}))
+
 (defn checks-for-timespans
   "calls check-record-coverage-per-type for each of the 3 time spans and populates a map
    with a key of :coverage-type and value of the merged result"
@@ -226,12 +233,11 @@
   (let [current-types (get-types (:id member) {:from-pub-date (current-start-year)})
         backfile-types (get-types (:id member) {:until-pub-date (back-file-cut-off)})
         all-types (get-types (:id member) nil)
-        current  {:current (check-record-coverage-per-type member current-types :timing :current :id-field :id)}
+        current {:current (check-record-coverage-per-type member current-types :timing :current :id-field :id)}
         backfile {:backfile (check-record-coverage-per-type member backfile-types :timing :backfile :id-field :id)}
-        all  {:all (check-record-coverage-per-type member all-types :id-field :id)}
-        result {:coverage-type (merge  current backfile all)}]
+        all {:all (check-record-coverage-per-type member all-types :id-field :id)}
+        result {:coverage-type (merge current backfile all)}]
     result))
-
 
 (defn check-type-counts [memberid]
   "generates the counts-type map for the given member id.
@@ -244,26 +250,26 @@
     result {:counts-type
      {:backfile (s/rename-keys backfile-types reverse-dictionary)
       :current (s/rename-keys current-types reverse-dictionary)
-      :all (s/rename-keys all-types reverse-dictionary)
-      }}]
+      :all (s/rename-keys all-types reverse-dictionary)}}]
     result))
 
 (defn checks-for-timespans-journals
   "calls check-record-coverage-type-for-journal for each of the 3 time spans and populates a map
    with a key of :coverage-type and value of the merged result"
   [journal]
-  (let [current  {:current (check-record-coverage-type-for-journal journal :id-field :issn :timing :current)}
-        backfile {:backfile (check-record-coverage-type-for-journal journal :id-field :issn  :timing :backfile)}
-        all  {:all (check-record-coverage-type-for-journal journal :id-field :issn)}
-        result {:coverage-type (merge  current backfile all)}]
+  (let [current {:current (check-record-coverage-type-for-journal journal :id-field :issn :timing :current)}
+        backfile {:backfile (check-record-coverage-type-for-journal journal :id-field :issn :timing :backfile)}
+        all {:all (check-record-coverage-type-for-journal journal :id-field :issn)}
+        result {:coverage-type (merge current backfile all)}]
     result))
+
 (defn check-members
   "Calculate and insert member metadata coverage metrics into a collection."
   [collection]
-  (log/info "start check members:" (dc/to-long (dt/now)))
+  (log/info "Start check members:" (dc/to-long (dt/now)))
   (m/with-mongo (conf/get-service :mongo)
     (doseq [member (m/fetch collection :sort {:id 1} :options [:notimeout])]
-      (log/info "doing member:" (:id member) "for collection " collection)
+      (log/info "Doing member:" (:id member) "for collection:" collection)
         (try
           (m/update!
            collection
@@ -277,15 +283,14 @@
           (catch Exception e
             (error e "Failed to update coverage for member with ID " (:id member))
             (.printStackTrace e)))))
-  (log/info "end check members:" (dc/to-long (dt/now))))
-
+  (log/info "End check members:" (dc/to-long (dt/now))))
 
 (defn check-journals
   "Calculate and insert journal metadata coverage metrics into a collection. Only consider
    journals that have an ISSN."
   [collection]
   (let [start (dc/to-long (dt/now))]
-    (log/info "start check journals:" start)
+    (log/info "Start check journals:" start)
     (m/with-mongo (conf/get-service :mongo)
       (doseq [journal (m/fetch collection :where {:issn {:$exists true :$ne []}} :options [:notimeout])]
         (try
