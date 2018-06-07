@@ -11,8 +11,8 @@
  :DOI "10.1101/026963",
  :type "posted-content",
  :created
- {:date-parts [[2015 9 17]],
-  :date-time "2015-09-17T05:01:45Z",
+ {:date-time "2015-09-17T05:01:45Z",
+  :date-parts [[2015 9 17]],
   :timestamp 1442466105000},
  :source "Crossref",
  :is-referenced-by-count 11,
@@ -126,8 +126,8 @@
    :content-version "vor",
    :intended-application "similarity-checking"}],
  :deposited
- {:date-parts [[2018 3 30]],
-  :date-time "2018-03-30T21:35:55Z",
+ {:date-time "2018-03-30T21:35:55Z",
+  :date-parts [[2018 3 30]],
   :timestamp 1522445755000},
  :score 1.0,
  :subtitle [],

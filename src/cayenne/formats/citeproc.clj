@@ -316,14 +316,14 @@
         (assoc-date solr-doc :end "event_end"))))
 
 (defn ->review [solr-doc]
-  (when-let [peer-review-type (get solr-doc "peer_review_type")]
-    (-> {:type peer-review-type}
-        (assoc-exists :running-number (get solr-doc "peer_review_running_number"))
-        (assoc-exists :revision-round (get solr-doc "peer_review_revision_round"))
-        (assoc-exists :stage (get solr-doc "peer_review_stage"))
-        (assoc-exists :competing-interest-statement (get solr-doc "peer_review_competing_interest_statement"))
-        (assoc-exists :recommendation (get solr-doc "peer_review_recommendation"))
-        (assoc-exists :language (get solr-doc "peer_review_language")))))
+  (-> {}
+      (assoc-exists :type (get solr-doc "peer_review_type"))
+      (assoc-exists :running-number (get solr-doc "peer_review_running_number"))
+      (assoc-exists :revision-round (get solr-doc "peer_review_revision_round"))
+      (assoc-exists :stage (get solr-doc "peer_review_stage"))
+      (assoc-exists :competing-interest-statement (get solr-doc "peer_review_competing_interest_statement"))
+      (assoc-exists :recommendation (get solr-doc "peer_review_recommendation"))
+      (assoc-exists :language (get solr-doc "peer_review_language"))))
 
 (defn ->institution [solr-doc]
   (when-let [institution-name (first (get solr-doc "institution_name"))]
@@ -454,7 +454,8 @@
   (let [type-id (type-id/->type-id (get solr-doc "type"))
         type-key (keyword type-id)
         domain (-> (get type-id/type-dictionary type-key)
-                   (->content-domains solr-doc))]
+                   (->content-domains solr-doc))
+        review (->review solr-doc)]
     (-> {:source (get solr-doc "source")
          :prefix (prefix-id/extract-prefix (get solr-doc "owner_prefix"))
          :member (member-id/extract-member-id (get solr-doc "member_id"))
@@ -517,7 +518,7 @@
         (assoc-exists :part-number (get solr-doc "part_number"))
         (assoc-exists :event (->event solr-doc))
         (assoc-exists :institution (->institution solr-doc))
-        (assoc-exists :review (->review solr-doc))
+        (assoc-exists :review (seq review) review)
         (assoc-exists :reference (->citeproc-citations solr-doc))
         (assoc-exists :standards-body (->citeproc-standards-body solr-doc))
         (assoc-exists :free-to-read (->citeproc-free-to-read solr-doc))

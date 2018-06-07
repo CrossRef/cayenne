@@ -9,8 +9,8 @@
  :DOI "10.5555/test5",
  :type "book-set",
  :created
- {:date-parts [[2009 3 10]],
-  :date-time "2009-03-10T18:21:05Z",
+ {:date-time "2009-03-10T18:21:05Z",
+  :date-parts [[2009 3 10]],
   :timestamp 1236709265000},
  :source "Crossref",
  :is-referenced-by-count 0,
@@ -25,8 +25,8 @@
    :content-version "vor",
    :intended-application "similarity-checking"}],
  :deposited
- {:date-parts [[2018 3 19]],
-  :date-time "2018-03-19T20:42:34Z",
+ {:date-time "2018-03-19T20:42:34Z",
+  :date-parts [[2018 3 19]],
   :timestamp 1521492154000},
  :score 1.0,
  :subtitle [],
