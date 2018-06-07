@@ -108,7 +108,7 @@
       (set-param! [:dir :test-data] feed-dir)
       (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
       (set-param! [:service :solr :insert-list-max-size] 0))
-    (load-journals)
+
     (with-redefs
      [cayenne.tasks.publisher/get-member-list
       (fn get-member-list []
@@ -116,14 +116,16 @@
       cayenne.tasks.publisher/get-prefix-info
       (fn get-prefix-info [prefix]
         (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
-      (load-members)
       (start-insert-list-processing)
       (start-feed-processing)
+
+
       (while (not= (solr-doc-count) feed-file-count)
         (println "Waiting for solr to finish indexing....")
         (Thread/sleep 1000))
-      (check-journals "journals")
-      (check-members "members"))))
+      (load-journals)
+      (load-members)
+     )))
 
 (defn setup-for-feeds []
   (let [feed-dir (.getPath (resource "feeds"))

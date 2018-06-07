@@ -141,7 +141,7 @@
   (set-param! [:id :supplementary :path] "http://id.crossref.org/supp/")
   (set-param! [:id :contributor :path] "http://id.crossref.org/contributor/")
   (set-param! [:id :member :path] "http://id.crossref.org/member/")
-  
+
   (set-param! [:id-generic :path] "http://id.crossref.org/")
   (set-param! [:id-generic :data-path] "http://data.crossref.org/")
 
@@ -171,7 +171,7 @@
   (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
 
 (with-core :default
-  (add-startup-task 
+  (add-startup-task
    :base
    (fn [profiles]
      (set-service! :executor (Executors/newScheduledThreadPool 20))
@@ -190,4 +190,3 @@
      (set-service! :nrepl (nrepl/start-server :port (get-param [:service :nrepl :port]))))))
 
 (set-core! :default)
-

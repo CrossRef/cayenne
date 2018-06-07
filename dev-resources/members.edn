@@ -36,6 +36,7 @@
     "10.4065"],
    :coverage
    {:affiliations-current 0.0,
+    :similarity-checking-current 0.0,
     :funders-backfile 0,
     :licenses-backfile 0,
     :funders-current 0.38842976093292236,
@@ -43,7 +44,9 @@
     :resource-links-backfile 0,
     :orcids-backfile 0,
     :update-policies-current 0.9504132270812988,
+    :open-references-backfile 0,
     :orcids-current 0.06611569970846176,
+    :similarity-checking-backfile 0,
     :references-backfile 0,
     :award-numbers-backfile 0,
     :update-policies-backfile 0,
@@ -52,128 +55,186 @@
     :abstracts-backfile 0,
     :resource-links-current 1.0,
     :abstracts-current 0.0,
+    :open-references-current 0.0,
     :references-current 0.0},
    :prefix
-   [{:reference-visibility "closed",
-     :public-references false,
+   [{:value "10.7424",
      :name "Elsevier ",
-     :value "10.7424"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.25013",
      :name "Elsevier ",
-     :value "10.25013"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.14219",
      :name "Elsevier ",
-     :value "10.14219"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1602",
      :name "Elsevier ",
-     :value "10.1602"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1529",
      :name "Elsevier ",
-     :value "10.1529"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1533",
      :name "Elsevier ",
-     :value "10.1533"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1580",
      :name "Elsevier ",
-     :value "10.1580"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.3816",
      :name "Elsevier ",
-     :value "10.3816"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1240",
      :name "Elsevier ",
-     :value "10.1240"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1205",
      :name "Elsevier ",
-     :value "10.1205"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1197",
      :name "Elsevier ",
-     :value "10.1197"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1157",
      :name "Elsevier ",
-     :value "10.1157"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.3921",
      :name "Elsevier ",
-     :value "10.3921"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1367",
      :name "Elsevier ",
-     :value "10.1367"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1331",
      :name "Elsevier ",
-     :value "10.1331"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1383",
      :name "Elsevier ",
-     :value "10.1383"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.2111",
      :name "Elsevier ",
-     :value "10.2111"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.2139",
      :name "Elsevier ",
-     :value "10.2139"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1006",
      :name "Elsevier ",
-     :value "10.1006"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1016",
      :name "Elsevier ",
-     :value "10.1016"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1067",
      :name "Elsevier ",
-     :value "10.1067"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1078",
      :name "Elsevier ",
-     :value "10.1078"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.2353",
      :name "Elsevier ",
-     :value "10.2353"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1054",
      :name "Elsevier ",
-     :value "10.1054"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.1053",
      :name "Elsevier ",
-     :value "10.1053"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.3182",
      :name "Elsevier ",
-     :value "10.3182"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.7811",
      :name "Elsevier ",
-     :value "10.7811"}
-    {:reference-visibility "closed",
      :public-references false,
+     :reference-visibility "closed"}
+    {:value "10.4065",
      :name "Elsevier ",
-     :value "10.4065"}],
+     :public-references false,
+     :reference-visibility "closed"}],
    :id 78,
    :tokens ["elsevier" "bv"],
+   :counts-type
+                 {:all {:book-chapter 6, :journal-article 115},
+                  :current {:book-chapter 6, :journal-article 115},
+                  :backfile {}},
+   :coverage-type
+   {:all
+    {:book-chapter
+     {:affiliations 0.0,
+      :abstracts 0.0,
+      :orcids 0.0,
+      :licenses 1.0,
+      :references 0.0,
+      :funders 0.0,
+      :similarity-checking 0.0,
+      :award-numbers 0.0,
+      :update-policies 0.0,
+      :resource-links 1.0,
+      :open-references 0.0},
+     :journal-article
+     {:affiliations 0.0,
+      :abstracts 0.0,
+      :orcids 0.06956521421670914,
+      :licenses 1.0,
+      :references 0.0,
+      :funders 0.40869563817977905,
+      :similarity-checking 0.0,
+      :award-numbers 0.27826085686683655,
+      :update-policies 1.0,
+      :resource-links 1.0,
+      :open-references 0.0}},
+    :backfile nil,
+    :current
+    {:book-chapter
+     {:affiliations 0.0,
+      :abstracts 0.0,
+      :orcids 0.0,
+      :licenses 1.0,
+      :references 0.0,
+      :funders 0.0,
+      :similarity-checking 0.0,
+      :award-numbers 0.0,
+      :update-policies 0.0,
+      :resource-links 1.0,
+      :open-references 0.0},
+     :journal-article
+     {:affiliations 0.0,
+      :abstracts 0.0,
+      :orcids 0.06956521421670914,
+      :licenses 1.0,
+      :references 0.0,
+      :funders 0.40869563817977905,
+      :similarity-checking 0.0,
+      :award-numbers 0.27826085686683655,
+      :update-policies 1.0,
+      :resource-links 1.0,
+      :open-references 0.0}}},
    :flags
    {:deposits-abstracts-current false,
     :deposits-orcids-current true,
     :deposits true,
     :deposits-affiliations-backfile false,
     :deposits-update-policies-backfile false,
+    :deposits-similarity-checking-backfile false,
     :deposits-award-numbers-current true,
     :deposits-resource-links-current true,
     :deposits-articles true,
@@ -183,11 +244,14 @@
     :deposits-abstracts-backfile false,
     :deposits-licenses-backfile false,
     :deposits-award-numbers-backfile false,
+    :deposits-open-references-backfile false,
+    :deposits-open-references-current false,
     :deposits-references-current false,
     :deposits-resource-links-backfile false,
     :deposits-orcids-backfile false,
     :deposits-funders-backfile false,
     :deposits-update-policies-current true,
+    :deposits-similarity-checking-current false,
     :deposits-licenses-current true},
    :location
    "230 Park Avenue Suite 800 Shantae McGee New York NY 10169-0935 United States",
