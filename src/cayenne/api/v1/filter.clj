@@ -95,11 +95,10 @@
 ;; todo :transformers
 (defn nested-terms [prefix suffixes & {:keys [transformers]}]
   (fn [val]
-    (println val)
     (let [field-name (->> val first (str (name prefix) ".") keyword)]
       {:occurrence :filter
        :clause
-       {:nested {:path prefix :query {:term {field-name (-> val second first)}}}}})))
+       {:nested {:path prefix :query {:terms {field-name  (second val) }}}}})))
 
   ;; (letfn [(field-name [field]
   ;;           (keyword (str (name prefix)
