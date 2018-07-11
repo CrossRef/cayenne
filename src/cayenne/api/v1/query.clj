@@ -259,7 +259,7 @@
 
     ;; todo could be rewritten to use /type/type/id
     id-field
-    (update-in [:query :bool :should] conj {:term {id-field (:id query-context)}})
+          (assoc-in [:query :bool :should] [(conj {:term {id-field (:id query-context)}})])
 
     ;; todo only considering first filter value
     (-> query-context :filters empty? not)

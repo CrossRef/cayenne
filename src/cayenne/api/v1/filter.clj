@@ -182,12 +182,12 @@
    "funder-doi-asserted-by"    (-> (equality :funder.doi-asserted-by) (nested :funder))
    "has-assertion"             (-> (existence :assertion) (nested :assertion))
    "has-clinical-trial-number" (-> (existence :clinical-trial) (nested :clinical-trial))
-   "full-text"                 (nested-terms :link {:type :content-type
+   "full-text"                 (nested-terms :link {:type        :content-type
                                                     :application :application
-                                                    :version :version})
-   "license"                   (nested-terms :license {:url :url
+                                                    :version     :version})
+   "license"                   (nested-terms :license {:url     :url
                                                        :version :version
-                                                       :delay :delay}
+                                                       :delay   :delay}
                                              :matchers {:delay #(str ":[* TO " % "]")})
    "archive"                   (equality :archive)
    "article-number"            (equality :article-number)
@@ -209,24 +209,26 @@
    "award"                     (nested-terms :funder {:funder-doi :doi
                                                       :funder     :doi
                                                       :number     :award}
-                                       :transformers
-                                       {:funder-doi doi-id/with-funder-prefix
-                                        :funder doi-id/with-funder-prefix
-                                        :number #(-> %
-                                                     string/lower-case
-                                                     string/replace #"[\s_\-]+" "")})
-   "relation"                  (nested-terms :relation {:type :type
+                                             :transformers
+                                             {:funder-doi doi-id/with-funder-prefix
+                                              :funder     doi-id/with-funder-prefix
+                                              :number     #(-> %
+                                                               string/lower-case
+                                                               string/replace #"[\s_\-]+" "")})
+   "relation"                  (nested-terms :relation {:type        :type
                                                         :object-type :object-type
-                                                        :object-ns :object-ns
-                                                        :claimed-by :claimed-by
-                                                        :object :object})
+                                                        :object-ns   :object-ns
+                                                        :claimed-by  :claimed-by
+                                                        :object      :object})
    "member"                    (equality :member-id
                                          :transformer member-id/extract-member-id)
    "journal"                   (equality :journal-id)
    "prefix"                    (equality :owner-prefix
                                          :transformer prefix/extract-prefix)
-   "funder"                    (equality :funder-doi
-                                         :transformer doi-id/with-funder-prefix)})
+   "funder"                    (nested-terms :funder {:funder-doi :doi}
+                                             :transformers
+                                             {:funder-doi doi-id/with-funder-prefix})
+   })
                               
 (def member-filters
   {"prefix"                (equality :prefix.value)

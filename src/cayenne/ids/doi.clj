@@ -67,9 +67,13 @@
   (when s
     (ids/get-id-uri :short-doi (normalize-short-doi s))))
 
+(defn doi-uri-to-id
+  [doi]
+  (last (string/split doi #"/")))
+
 (defn with-prefix [doi prefix]
   (->> doi
-       extract-long-suffix
+       doi-uri-to-id
        (str prefix "/")))
 
 (defn with-funder-prefix [doi]
