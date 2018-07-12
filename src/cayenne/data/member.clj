@@ -31,6 +31,7 @@
       :counts                 (select-keys coverage-doc [:current-dois
                                                          :backfile-dois
                                                          :total-dois])
+      :counts-type            (:type-counts coverage-doc)
       :last-status-check-time (-> coverage-doc :finished dc/to-long)})))
 
 (defn get-coverage [subject-type subject-ids]

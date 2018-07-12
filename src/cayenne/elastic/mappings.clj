@@ -274,6 +274,7 @@
    :total-dois    {:type "long"}
    :backfile-dois {:type "long"}
    :current-dois  {:type "long"}
+   :type-counts   {:type "object"}
    :breakdowns    {:type "object"}
    :coverage      {:type "object"}})
 

@@ -1,5 +1,6 @@
 (ns cayenne.tasks.coverage
   (:require [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.type :as type-id]
             [cayenne.conf :as conf]
             [cayenne.util :refer [?> ?>>]]
             [cayenne.data.work :as works]
@@ -119,10 +120,29 @@
      :current-dois current-count
      :total-dois (+ backfile-count current-count)}))
 
+(defn get-type-counts [record-id content-type]
+  (let [backfile-count (get-work-count type record-id :timing :backfile :filters {:type [(name content-type)]})
+        current-count (get-work-count type record-id :timing :current :filters {:type [(name content-type)]})]
+    (cond-> {}
+      (pos? backfile-count) 
+      (assoc :backfile {content-type backfile-count})
+      (pos? current-count) 
+      (assoc :current {content-type current-count})
+      (or (pos? current-count) (pos? backfile-count)) 
+      (assoc :all {content-type (+ current-count backfile-count)}))))
+
+(defn check-type-counts [record & {:keys [type id-field]}]
+  (let [record-id (get record id-field)]
+    (apply
+     merge-with
+     merge
+     (map (partial get-type-counts record-id) (keys type-id/type-dictionary)))))
+
 (defn index-coverage-command [record & {:keys [type id-field]}]
   (let [started-date (dt/now)
         record-source (:_source record)
         record-counts (check-record-counts record-source :type type :id-field id-field)
+        type-counts (check-type-counts record-source :type type :id-field id-field)
         breakdowns (check-breakdowns record-source :type type :id-field id-field)
         coverage (check-record-coverage record-source :type type :id-field id-field)]
     [{:index {:_id (.toString (UUID/randomUUID))}}
@@ -133,6 +153,7 @@
       :total-dois    (:total-dois record-counts)
       :backfile-dois (:backfile-dois record-counts)
       :current-dois  (:current-dois record-counts)
+      :type-counts   type-counts
       :breakdowns    breakdowns
       :coverage      coverage}]))
 

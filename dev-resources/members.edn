@@ -5,6 +5,22 @@
  ({:primary-name "Elsevier BV",
    :counts {:current-dois 121, :backfile-dois 0, :total-dois 121},
    :breakdowns {:dois-by-issued-year [[2017 115] [2016 6]]},
+   :counts-type
+   {:backfile
+    {:peer-review 1,
+     :journal-article 5,
+     :posted-content 1},
+    :current
+    {:peer-review 1,
+     :journal-article 163,
+     :reference-entry 1,
+     :book-chapter 6},
+    :all
+    {:peer-review 2,
+     :journal-article 168,
+     :reference-entry 1,
+     :book-chapter 6,
+     :posted-content 1}}
    :prefixes
    ["10.7424"
     "10.25013"
