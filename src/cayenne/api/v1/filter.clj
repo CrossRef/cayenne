@@ -99,6 +99,8 @@
       {:occurrence :filter
        :clause
        {:nested {:path prefix :query {:terms {field-name  (second val) }}}}})))
+      ; nested terms could be called with a list of values,
+      ; the es-fetch handles them, so don't take only the first item
 
   ;; (letfn [(field-name [field]
   ;;           (keyword (str (name prefix)
