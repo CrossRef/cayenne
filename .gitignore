@@ -6,6 +6,8 @@
 /doc
 /tmp/*
 /log
+/dev-resources/feeds/feed-processed
+/.idea
 pom.xml
 .#*
 *.class
