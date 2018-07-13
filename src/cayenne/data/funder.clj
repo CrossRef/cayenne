@@ -21,6 +21,8 @@
       (get-in [:body :_source :descendant])))
 
 (defn fetch-descendant-work-count [funder-doi]
+  ;funders are indexed with the funder id as their database id, they are linked, however, with their
+  ;doi (with the funder prefix) so we must turn the doi to an id to do the query
   (let [funder-dois (conj (fetch-descendant-dois (doi-id/doi-uri-to-id funder-doi))
                           funder-doi)
         nested-query {:bool
@@ -99,13 +101,16 @@
           (get-in response [:body :hits :total])
           (map ->response-doc docs)))))
 
-;; todo currently won't work due to filter.clj compounds only accepting
-;;      one value per filter name 
+
 (defn fetch-works [query-context]
+  "for a given set of funders in a funders/works query, fetch all the descendant funders,
+   then fetch all works with those funders."
+  ; funders are fetched using their ids
   (let [funder-doi  (doi-id/doi-uri-to-id (:id query-context))
 
         filter-dois (conj (fetch-descendant-dois funder-doi) funder-doi)
         filter-dois-with-prefix (map doi-id/with-funder-prefix filter-dois)]
     (work/fetch
-     (-> query-context
+     (-> query-context    ;works linking to (including funders linking to funders by realations
+                          ;funders need their ids to be dois
          (assoc :filters {"funder" {"doi" filter-dois-with-prefix}})))))

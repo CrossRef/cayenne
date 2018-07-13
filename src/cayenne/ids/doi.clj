@@ -60,7 +60,8 @@
       (if (string/blank? normalized-doi)
         nil
         (ids/get-id-uri :long-doi normalized-doi)))))
- 
+
+; todo: put funder id functions in their own namespace again?
 (defn to-short-doi-uri 
   "Ensure a short DOI is in a normalized URI form."
   [s]
@@ -68,12 +69,14 @@
     (ids/get-id-uri :short-doi (normalize-short-doi s))))
 
 (defn doi-uri-to-id
+  "takes the last portion of a doi after the last /. Useful for funder identifiers"
   [doi]
   (last (string/split doi #"/")))
 
 (defn with-prefix [doi prefix]
+  "used to convert a funder id to a funder doi"
   (->> doi
-       doi-uri-to-id
+       doi-uri-to-id ;in case we're passed a funder doi instead of just the ID
        (str prefix "/")))
 
 (defn with-funder-prefix [doi]
