@@ -40,8 +40,9 @@
 (def subjects-column 3)
 (def pissn-column 4)
 (def eissn-column 5)
-(def doi-column 6)
-(def issues-column 7)
+(def additional-issns-column 6)
+(def doi-column 7)
+(def issues-column 8)
 
 (defn load-journals-from-cr-title-list-csv [collection]
   (m/with-mongo (conf/get-service :mongo)
