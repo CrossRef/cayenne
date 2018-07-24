@@ -274,7 +274,6 @@
    :total-dois    {:type "long"}
    :backfile-dois {:type "long"}
    :current-dois  {:type "long"}
-   :type-counts   {:type "object"}
    :breakdowns    {:type "object"}
    :coverage      {:type "object"}})
 
@@ -291,7 +290,7 @@
    "member"   {:number_of_shards 1  :number_of_replicas 3}
    "funder"   {:number_of_shards 1  :number_of_replicas 3}
    "subject"  {:number_of_shards 1  :number_of_replicas 3}
-   "coverage" {:number_of_shards 1  :number_of_replicas 3}
+   "coverage" {:number_of_shards 1  :number_of_replicas 3 :index.mapping.total_fields.limit 1500}
    "journal"  {:number_of_shards 1  :number_of_replicas 3}})
 
 (defn create-indexes

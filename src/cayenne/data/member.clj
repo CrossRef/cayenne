@@ -6,6 +6,7 @@
             [cayenne.api.v1.filter :as filter]
             [cayenne.data.prefix :as prefix]
             [cayenne.data.work :as work]
+            [cayenne.data.coverage :as coverage]
             [cayenne.ids.member :as member-id]
             [cayenne.ids.prefix :as prefix-id]
             [clojure.string :as string]
@@ -25,13 +26,16 @@
            :tokens       (:token member-doc)}
     (not (nil? coverage-doc))
     (merge
-     {:flags                  (get-in coverage-doc [:coverage :flags])
-      :coverage               (get-in coverage-doc [:coverage :coverage])
-      :breakdowns             (get-in coverage-doc [:breakdowns :breakdowns])
+     (merge-with
+      merge
+      (coverage/coverage coverage-doc :current)
+      (coverage/coverage coverage-doc :backfile))
+     {:breakdowns             (get-in coverage-doc [:breakdowns :breakdowns])
       :counts                 (select-keys coverage-doc [:current-dois
                                                          :backfile-dois
                                                          :total-dois])
-      :counts-type            (:type-counts coverage-doc)
+      :coverage-type          (coverage/coverage-type coverage-doc)
+      :counts-type            (coverage/type-counts coverage-doc)
       :last-status-check-time (-> coverage-doc :finished dc/to-long)})))
 
 (defn get-coverage [subject-type subject-ids]

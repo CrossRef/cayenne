@@ -128,7 +128,8 @@
    :relation ["type" "object_type" "object"]})
 
 (def std-filters
-  {"from-update-date"          (date-range :deposited :from)
+  {"reference-visibility"      (equality :reference-visibility)
+   "from-update-date"          (date-range :deposited :from)
    "until-update-date"         (date-range :deposited :until)
    "from-index-date"           (date-range :indexed :from)
    "until-index-date"          (date-range :indexed :until)
