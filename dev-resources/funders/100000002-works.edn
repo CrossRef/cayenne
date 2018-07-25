@@ -723,6 +723,107 @@
    :publisher "Elsevier BV",
    :license
    [{:start
+     {:date-parts [[2017 1 1]],
+      :date-time "2017-01-01T00:00:00Z",
+      :timestamp 1483228800000},
+     :content-version "tdm",
+     :delay-in-days 0,
+     :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
+   :funder
+   [{:DOI "10.13039/100000002",
+     :name "NIH",
+     :doi-asserted-by "publisher"}],
+   :content-domain
+   {:domain
+    ["psyneuen-journal.com"
+     "clinicalkey.jp"
+     "clinicalkey.com"
+     "clinicalkey.es"
+     "clinicalkey.com.au"
+     "clinicalkey.fr"
+     "elsevier.com"
+     "sciencedirect.com"],
+    :crossmark-restriction true},
+   :short-container-title ["Psychoneuroendocrinology"],
+   :published-print {:date-parts [[2017 1 1]]},
+   :DOI "10.1016/j.psyneuen.2016.10.005",
+   :type "journal-article",
+   :created
+   {:date-parts [[2016 10 18]],
+    :date-time "2016-10-18T01:27:09Z",
+    :timestamp 1476754029000},
+   :page "56-63",
+   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
+   :source "Crossref",
+   :is-referenced-by-count 7,
+   :title
+   ["Prenatal maternal cortisol concentrations predict neurodevelopment in middle childhood"],
+   :prefix "10.1016",
+   :volume "75",
+   :author
+   [{:given "Elysia Poggi",
+     :family "Davis",
+     :sequence "first",
+     :affiliation []}
+    {:given "Kevin",
+     :family "Head",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Claudia",
+     :family "Buss",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Curt A.",
+     :family "Sandman",
+     :sequence "additional",
+     :affiliation []}],
+   :member "78",
+   :container-title ["Psychoneuroendocrinology"],
+   :language "en",
+   :link
+   [{:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016307892?httpAccept=text/xml",
+     :content-type "text/xml",
+     :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016307892?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
+     :intended-application "text-mining"}],
+   :deposited
+   {:date-parts [[2017 11 30]],
+    :date-time "2017-11-30T15:51:09Z",
+    :timestamp 1512057069000},
+   :score 0.0,
+   :issued {:date-parts [[2017 1 1]]},
+   :references-count 0,
+   :alternative-id ["S0306453016307892"],
+   :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.10.005",
+   :ISSN ["0306-4530"],
+   :issn-type [{:value "0306-4530", :type "print"}],
+   :assertion
+   [{:value "Elsevier",
+     :name "publisher",
+     :label "This article is maintained by"}
+    {:value
+     "Prenatal maternal cortisol concentrations predict neurodevelopment in middle childhood",
+     :name "articletitle",
+     :label "Article Title"}
+    {:value "Psychoneuroendocrinology",
+     :name "journaltitle",
+     :label "Journal Title"}
+    {:value "http://dx.doi.org/10.1016/j.psyneuen.2016.10.005",
+     :name "articlelink",
+     :label "CrossRef DOI link to publisher maintained version"}
+    {:value "article", :name "content_type", :label "Content Type"}
+    {:value "© 2016 Published by Elsevier Ltd.",
+     :name "copyright",
+     :label "Copyright"}]}
+  {:reference-count 0,
+   :publisher "Elsevier BV",
+   :license
+   [{:start
      {:date-parts [[2017 2 1]],
       :date-time "2017-02-01T00:00:00Z",
       :timestamp 1485907200000},
@@ -1669,6 +1770,131 @@
    :publisher "Elsevier BV",
    :license
    [{:start
+     {:date-parts [[2017 2 1]],
+      :date-time "2017-02-01T00:00:00Z",
+      :timestamp 1485907200000},
+     :content-version "tdm",
+     :delay-in-days 0,
+     :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
+   :funder
+   [{:name
+     "Federal funds from the National Institute of Child Health and Human Development"}
+    {:name
+     "National Institute on Drug Abuse, the National Institute of Mental Health"}
+    {:DOI "10.13039/100000065",
+     :name "National Institute of Neurological Disorders and Stroke",
+     :doi-asserted-by "publisher"}],
+   :content-domain
+   {:domain
+    ["psyneuen-journal.com"
+     "clinicalkey.jp"
+     "clinicalkey.com"
+     "clinicalkey.es"
+     "clinicalkey.com.au"
+     "clinicalkey.fr"
+     "elsevier.com"
+     "sciencedirect.com"],
+    :crossmark-restriction true},
+   :short-container-title ["Psychoneuroendocrinology"],
+   :published-print {:date-parts [[2017 2 1]]},
+   :DOI "10.1016/j.psyneuen.2016.12.005",
+   :type "journal-article",
+   :created
+   {:date-parts [[2016 12 8]],
+    :date-time "2016-12-08T20:48:35Z",
+    :timestamp 1481230115000},
+   :page "206-217",
+   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
+   :source "Crossref",
+   :is-referenced-by-count 5,
+   :title
+   ["Sex-specific associations of testosterone with prefrontal-hippocampal development and executive function"],
+   :prefix "10.1016",
+   :volume "76",
+   :author
+   [{:given "Tuong-Vi",
+     :family "Nguyen",
+     :sequence "first",
+     :affiliation []}
+    {:given "Jimin",
+     :family "Lew",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Matthew D.",
+     :family "Albaugh",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Kelly N.",
+     :family "Botteron",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James J.",
+     :family "Hudziak",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Vladimir S.",
+     :family "Fonov",
+     :sequence "additional",
+     :affiliation []}
+    {:given "D. Louis",
+     :family "Collins",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Simon",
+     :family "Ducharme",
+     :sequence "additional",
+     :affiliation []}
+    {:given "James T.",
+     :family "McCracken",
+     :sequence "additional",
+     :affiliation []}],
+   :member "78",
+   :container-title ["Psychoneuroendocrinology"],
+   :language "en",
+   :link
+   [{:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016309994?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0306453016309994?httpAccept=text/xml",
+     :content-type "text/xml",
+     :content-version "vor",
+     :intended-application "text-mining"}],
+   :deposited
+   {:date-parts [[2017 6 25]],
+    :date-time "2017-06-25T05:32:33Z",
+    :timestamp 1498368753000},
+   :score 0.0,
+   :issued {:date-parts [[2017 2 1]]},
+   :references-count 0,
+   :alternative-id ["S0306453016309994"],
+   :URL "http://dx.doi.org/10.1016/j.psyneuen.2016.12.005",
+   :ISSN ["0306-4530"],
+   :issn-type [{:value "0306-4530", :type "print"}],
+   :assertion
+   [{:value "Elsevier",
+     :name "publisher",
+     :label "This article is maintained by"}
+    {:value
+     "Sex-specific associations of testosterone with prefrontal-hippocampal development and executive function",
+     :name "articletitle",
+     :label "Article Title"}
+    {:value "Psychoneuroendocrinology",
+     :name "journaltitle",
+     :label "Journal Title"}
+    {:value "http://dx.doi.org/10.1016/j.psyneuen.2016.12.005",
+     :name "articlelink",
+     :label "CrossRef DOI link to publisher maintained version"}
+    {:value "article", :name "content_type", :label "Content Type"}
+    {:value "© 2016 Elsevier Ltd. All rights reserved.",
+     :name "copyright",
+     :label "Copyright"}]}
+  {:reference-count 0,
+   :publisher "Elsevier BV",
+   :license
+   [{:start
      {:date-parts [[2017 1 1]],
       :date-time "2017-01-01T00:00:00Z",
       :timestamp 1483228800000},
@@ -1755,6 +1981,104 @@
      :label "CrossRef DOI link to publisher maintained version"}
     {:value "article", :name "content_type", :label "Content Type"}
     {:value "© 2017 Elsevier Inc. All rights reserved.",
+     :name "copyright",
+     :label "Copyright"}]}
+  {:reference-count 0,
+   :publisher "Elsevier BV",
+   :license
+   [{:start
+     {:date-parts [[2017 1 1]],
+      :date-time "2017-01-01T00:00:00Z",
+      :timestamp 1483228800000},
+     :content-version "tdm",
+     :delay-in-days 0,
+     :URL "http://www.elsevier.com/tdm/userlicense/1.0/"}],
+   :funder
+   [{:DOI "10.13039/100000002",
+     :name "NIH",
+     :doi-asserted-by "publisher"}
+    {:name "NIH Office of Research Infrastructure Programs"}],
+   :content-domain
+   {:domain ["elsevier.com" "sciencedirect.com"],
+    :crossmark-restriction true},
+   :short-container-title ["Hormones and Behavior"],
+   :published-print {:date-parts [[2017 1 1]]},
+   :DOI "10.1016/j.yhbeh.2016.10.009",
+   :type "journal-article",
+   :created
+   {:date-parts [[2016 10 26]],
+    :date-time "2016-10-26T04:01:20Z",
+    :timestamp 1477454480000},
+   :page "16-24",
+   :update-policy "http://dx.doi.org/10.1016/elsevier_cm_policy",
+   :source "Crossref",
+   :is-referenced-by-count 10,
+   :title
+   ["Oxytocin receptors modulate a social salience neural network in male prairie voles"],
+   :prefix "10.1016",
+   :volume "87",
+   :author
+   [{:given "Zachary V.",
+     :family "Johnson",
+     :sequence "first",
+     :affiliation []}
+    {:given "Hasse",
+     :family "Walum",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Yao",
+     :family "Xiao",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Paula C.",
+     :family "Riefkohl",
+     :sequence "additional",
+     :affiliation []}
+    {:given "Larry J.",
+     :family "Young",
+     :sequence "additional",
+     :affiliation []}],
+   :member "78",
+   :container-title ["Hormones and Behavior"],
+   :language "en",
+   :link
+   [{:URL
+     "http://api.elsevier.com/content/article/PII:S0018506X1630280X?httpAccept=text/xml",
+     :content-type "text/xml",
+     :content-version "vor",
+     :intended-application "text-mining"}
+    {:URL
+     "http://api.elsevier.com/content/article/PII:S0018506X1630280X?httpAccept=text/plain",
+     :content-type "text/plain",
+     :content-version "vor",
+     :intended-application "text-mining"}],
+   :deposited
+   {:date-parts [[2017 8 24]],
+    :date-time "2017-08-24T19:55:39Z",
+    :timestamp 1503604539000},
+   :score 0.0,
+   :issued {:date-parts [[2017 1 1]]},
+   :references-count 0,
+   :alternative-id ["S0018506X1630280X"],
+   :URL "http://dx.doi.org/10.1016/j.yhbeh.2016.10.009",
+   :ISSN ["0018-506X"],
+   :issn-type [{:value "0018-506X", :type "print"}],
+   :assertion
+   [{:value "Elsevier",
+     :name "publisher",
+     :label "This article is maintained by"}
+    {:value
+     "Oxytocin receptors modulate a social salience neural network in male prairie voles",
+     :name "articletitle",
+     :label "Article Title"}
+    {:value "Hormones and Behavior",
+     :name "journaltitle",
+     :label "Journal Title"}
+    {:value "http://dx.doi.org/10.1016/j.yhbeh.2016.10.009",
+     :name "articlelink",
+     :label "CrossRef DOI link to publisher maintained version"}
+    {:value "article", :name "content_type", :label "Content Type"}
+    {:value "Published by Elsevier Inc.",
      :name "copyright",
      :label "Copyright"}]}
   {:reference-count 0,
@@ -2127,5 +2451,5 @@
    :URL "http://dx.doi.org/10.3389/fnbeh.2016.00221",
    :ISSN ["1662-5153"],
    :issn-type [{:value "1662-5153", :type "electronic"}]}),
- :items-per-page 20,
+ :items-per-page 1000,
  :query {:start-index 0, :search-terms nil}}

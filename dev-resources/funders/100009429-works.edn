@@ -97,5 +97,5 @@
     {:value "© 2016 Elsevier Ltd. All rights reserved.",
      :name "copyright",
      :label "Copyright"}]}),
- :items-per-page 20,
+ :items-per-page 1000,
  :query {:start-index 0, :search-terms nil}}

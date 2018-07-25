@@ -20,11 +20,12 @@
       (let [response (api-get (str "/v1/funders/" funder))
             expected-response (read-string (slurp (resource (str "funders/" funder ".edn"))))]
         (is (= expected-response response)))))
+
   (testing "funders/works endpoint returns expected result for funder"
-  (doseq [funder ["100000002" "100009429" "501100001602" ]]
-    (let [response (api-get (str "/v1/funders/" funder "/works"))
-          expected-response (read-string (slurp (resource (str "funders/" funder "-works.edn"))))]
-      (is (= expected-response response))))))
+    (doseq [funder ["100000002" "100009429" "501100001602" ]]
+      (let [response (api-get (str "/v1/funders/" funder "/works?rows=1000"))
+            expected-response (read-string (slurp (resource (str "funders/" funder "-works.edn"))))]
+        (is (= expected-response response))))))
 
 (use-fixtures
   :once
