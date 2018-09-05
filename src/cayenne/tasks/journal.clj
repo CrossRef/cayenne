@@ -37,11 +37,10 @@
 (def title-column 0)
 (def id-column 1)
 (def publisher-column 2)
-(def subjects-column 3)
-(def pissn-column 4)
-(def eissn-column 5)
-(def doi-column 6)
-(def issues-column 7)
+(def pissn-column 3)
+(def eissn-column 4)
+(def doi-column 5)
+(def issues-column 6)
 
 (defn load-journals-from-cr-title-list-csv [collection]
   (m/with-mongo (conf/get-service :mongo)
