@@ -37,7 +37,6 @@
 (def title-column 0)
 (def id-column 1)
 (def publisher-column 2)
-;(def subjects-column 3)
 (def pissn-column 3)
 (def eissn-column 4)
 (def doi-column 5)
