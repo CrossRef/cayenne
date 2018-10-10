@@ -166,7 +166,7 @@
                                        :source
                                        (-> feed-context :provider provider-names))
                     doi (first (itree/get-item-ids parsed :long-doi))]
-                   (feed-log (filename) (str "parsed file for DOI:" doi))
+                   (feed-log filename (str "parsed file for DOI:" doi))
                    (solr/insert-item with-source))]
        (xml/process-xml rdr "crossref_result" f)))
    feed-context))
