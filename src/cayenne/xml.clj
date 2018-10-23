@@ -132,13 +132,7 @@
 
 (defn xselect1 [& args]
   (let [res (first (apply xselect args))]
-    (cond
-     (string? res)
+    (if (string? res)
       (string/trim res)
-     :else
-      res
-      )
-
-    )
-  )
+      res)))
 

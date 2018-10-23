@@ -249,7 +249,7 @@
 
 (def times [:year :month :day :hour :minute :second])
 
-(defn getOrderedValidDate [date]
+(defn get-ordered-valid-date [date]
   "Given a map of date values, keys as defined by 'times' [:year :month :day :hour :minute :second]
   return an ordered list of valid numeric values in descending significance"
 
@@ -272,7 +272,7 @@
   "Given a map of date part k,v converts vals to numbers and creates
   clj-time date-time object using most significant date parts until one
   fails"
-  (parse-date-while-ok (getOrderedValidDate particle-date))
+  (parse-date-while-ok (get-ordered-valid-date particle-date))
 
 )
 
