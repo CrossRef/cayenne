@@ -21,4 +21,4 @@ out.json
 out.txt
 /dev-resources/feeds/feed-processed
 
-.idea/*
+*.body
