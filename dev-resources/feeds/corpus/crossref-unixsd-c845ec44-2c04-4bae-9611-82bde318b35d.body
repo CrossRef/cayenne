@@ -26,6 +26,8 @@
                 </titles>
                 <publication_date media_type="print">
                   <year>2017</year>
+                  <month>21</month>
+                  <day>1</day>
                 </publication_date>
                 <isbn media_type="print">9780128036082</isbn>
                 <publisher>
@@ -57,7 +59,7 @@
                   <item_number item_number_type="sequence-number">B9780128035924000158</item_number>
                 </publisher_item>
                 <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
-                  <ai:license_ref applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
+                  <ai:license_ref start_date="2018-09-21" applies_to="tdm">http://www.elsevier.com/tdm/userlicense/1.0/</ai:license_ref>
                 </ai:program>
                 <doi_data>
                   <doi>10.1016/B978-0-12-803592-4.00015-8</doi>
