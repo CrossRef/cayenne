@@ -2,8 +2,8 @@
   (:require [clojure.data.json :as json]
             [clojure.java.io :as io]
             [metrics.meters :refer [defmeter] :as meter]
-            [metrics.counters :refer [defcounter] :as counter]))
-
+            [metrics.counters :refer [defcounter] :as counter]
+            [clojure.string :as string]))
 (defcounter [cayenne xml records-processed])
 (defmeter [cayenne xml record-process-rate] "record-process-rate")
 
@@ -131,5 +131,8 @@
       (xselect-result result))))
 
 (defn xselect1 [& args]
-  (first (apply xselect args)))
+  (let [res (first (apply xselect args))]
+    (if (string? res)
+      (string/trim res)
+      res)))
 
