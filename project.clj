@@ -1,4 +1,4 @@
-(defproject crossref/cayenne "1.2.3"
+(defproject crossref/cayenne "1.2.4"
   :description "Index and serve CrossRef metadata"
   :url "http://github.com/CrossRef/cayenne"
   :signing {:gpg-key "labs@crossref.org"}
