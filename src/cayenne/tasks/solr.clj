@@ -252,19 +252,20 @@
 (defn get-ordered-valid-date [date]
   "Given a map of date values, keys as defined by 'times' [:year :month :day :hour :minute :second]
   return an ordered list of valid numeric values in descending significance"
+  (take-while identity (map   cayenne.util/parse-int-safe (map date times))))
 
-  (take-while identity (map   cayenne.util/parse-int-safe (map date times)))
-)
 (defn parse-date-while-ok
   "Expects a vector of date values in descending significance
   return a clj-time datetime with all valid date parts up to the first invalid one.
-  2018 2 30 12 15 7 will return 2018-2 date object."
+  [2018 2 30 12 15 7] will return 2018-2 date object."
   [date-vec]
   ; Recurse until empty.
   (if (empty? date-vec)
     nil
     (try
       (apply t/date-time date-vec)
+      ; A variety of errors can occur here, including out-of-range and wrong type.
+      ; Stop at the first error of any kind in date parsing.
       (catch Exception ex
         (parse-date-while-ok (drop-last 1 date-vec))))))
 
@@ -272,9 +273,7 @@
   "Given a map of date part k,v converts vals to numbers and creates
   clj-time date-time object using most significant date parts until one
   fails"
-  (parse-date-while-ok (get-ordered-valid-date particle-date))
-
-)
+  (parse-date-while-ok (get-ordered-valid-date particle-date)))
 
 (defn as-datetime-string [particle-date]
   (when-let [dt (as-datetime particle-date)]
