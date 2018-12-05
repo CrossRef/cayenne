@@ -103,9 +103,10 @@
     (.renameTo from-file to-file)))
 
 (defn make-feed-context
-  ([content-type provider]
+  ([content-type provider doi]
    (let [base {:content-type content-type
                :provider provider
+               :doi doi
                :id (new-id)}]
      (-> base
          (assoc :incoming-file (incoming-file base))
@@ -126,22 +127,27 @@
         (move-file! (:incoming-file feed-context)
                     (:processed-file feed-context)))
       (catch Exception e
+        (feed-log (:incoming-file feed-context) (str "Exception while processing file: " (.getMessage e)))
+        (error e (str "Failed to process feed file " (:incoming-file feed-context)))
         (move-file! (:incoming-file feed-context)
                     (:failed-file feed-context))))))
   
 (defmulti process! :content-type)
 
-(defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context]
+(defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context filename]
   (process-with
    (fn [rdr]
-     (let [f #(->> %
-                   unixsd/unixsd-record-parser
-                   (apply itree/centre-on)
-                   es-index/index-item)]
-       (xml/process-xml rdr "crossref_result" f)))
+     (let [f #(let [parsed (->> %
+                           unixsd/unixsd-record-parser
+                           (apply itree/centre-on))
+                   doi (first (itree/get-item-ids parsed :long-doi))]
+                   (es-index/index-item parsed)
+                   (feed-log filename (str "parsed file for DOI:" doi)))]
+
+          (xml/process-xml rdr "crossref_result" f)))
    feed-context))
 
-(defmethod process! "application/vnd.crossref.update+json" [feed-context]
+(defmethod process! "application/vnd.crossref.update+json" [feed-context filename]
   (process-with
    #(->> %
          read-updates-message
@@ -152,7 +158,7 @@
 (defn process-feed-file! [f]
   (try
     (feed-log (.getName f) "Preparing to process")
-    (-> f .getAbsolutePath make-feed-context process!)
+    (-> f .getAbsolutePath make-feed-context (process! (.getName f)))
     (feed-log (.getName f) "Processed")
     (catch Exception e
       (feed-log (.getName f) "Failed")
@@ -164,7 +170,7 @@
     (.mkdirs (.getParentFile incoming-file))
     (io/copy body incoming-file)
     (meter/mark! files-received)
-    (feed-log (.getName incoming-file) "Received and stored")
+    (feed-log (.getName incoming-file)  (str "Received and stored for doi:" (:doi feed-context)))
     (assoc feed-context :digest (digest/md5 incoming-file))))
 
 (defn strip-content-type-params [ct]
@@ -185,7 +191,7 @@
   :post! #(let [result (-> %
                            (get-in [:request :headers "content-type"])
                            strip-content-type-params
-                           (make-feed-context provider)
+                           (make-feed-context provider (get-in % [:request :headers "doi"]))
                            (record! (get-in % [:request :body])))]
             (assoc % :digest (:digest result)))
   :handle-created #(r/api-response :feed-file-creation
