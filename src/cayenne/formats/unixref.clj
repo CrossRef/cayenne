@@ -173,12 +173,12 @@
      :else nil)))
 
 (defn parse-date
-  "Parse 'print' or 'online' publication dates."
+  "Parse 'print' or 'online' publication dates. Can return nil"
   [date-loc]
   (let [day-val (xml/xselect1 date-loc "day" :text)
         month-val (xml/xselect1 date-loc "month" :text)
         year-val (xml/xselect1 date-loc "year" :text)]
-    (when (> (Integer/parseInt year-val) 0)
+    (when (and year-val (> (Integer/parseInt year-val) 0))
       {:type :date
        :day day-val 
        :month (parse-month month-val) 
