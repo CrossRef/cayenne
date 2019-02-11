@@ -47,7 +47,7 @@
                  [org.clojure/core.memoize "0.5.8"]
                  [org.clojure/math.combinatorics "0.0.4"]
                  [com.novemberain/langohr "1.4.1"]
-                 [liberator "0.12.2"]
+                 [liberator "0.15.2"]
                  [compojure "1.6.0"]
                  [ring "1.3.0"]
                  [metosin/ring-swagger "0.26.0"]
@@ -64,6 +64,7 @@
                  [digest "1.4.4"]
                  [cc.qbits/spandex "0.5.2"]
                  [dk.ative/docjure "1.11.0"]
-                 [environ "1.0.3"]])
+                 [environ "1.0.3"]
+                 [javax.xml.bind/jaxb-api "2.3.1"]])
 
 
