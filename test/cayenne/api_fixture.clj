@@ -3,7 +3,8 @@
 
 (defonce api-root "http://localhost:3000")
 
-(defn api-with [with-f]
+(defn api-with
+  [with-f]
   (fn [f]
     (try
       (user/start)
@@ -23,12 +24,15 @@
                            (update :items (partial sort-by sorter)))
       (:descendants message) (update :descendants sort))))
 
-(defn no-scores [m]
+(defn no-scores
+  "Update an API result, removing all scores."
+  [m]
   (cond-> m
       (:score m) (dissoc :score)
       (:items m) (-> (update :items (partial map #(dissoc % :score))))))
 
 (def api-with-works
+  "Function to build an index with test data, with a callback function to execute in that context."
   (api-with user/index-feed))
 
 (def feed-ready-api

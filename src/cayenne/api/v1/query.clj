@@ -88,6 +88,7 @@
    "clinical-trial-number"  [:clinical-trial.*]
    "issn-type"              [:issn.*]
    "event"                  [:event.*]
+   ;; TODO TYPO?
    "reference"              [:refernece.*]
    "author"                 [:contributor.*]
    "editor"                 [:contributor.*]

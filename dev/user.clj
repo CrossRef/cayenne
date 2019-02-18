@@ -80,10 +80,20 @@
           url)))]
     (index-funders)))
 
-(defn setup-feed [& {:keys [source-dir] :or {source-dir "/corpus"}}]
+(defn setup-feed
+  "Build structure of corpus, feed in and feed out directories.
+   Start by deleting the feed in and out directories.
+   May be used either for testing or production.
+   TODO? should this be part of cayenne.conf ?"
+  [& {:keys [source-dir] :or {source-dir "/corpus"}}]
   (let [feed-dir (.getPath (resource "feeds"))
+
+        ; source-dir is configurable or '/corpus'
         feed-source-dir (str feed-dir source-dir)
+
+        ; feed-in is where the 'pusher' places files to be indexed in production.
         feed-in-dir (str feed-dir "/feed-in")
+
         feed-processed-dir (str feed-dir "/feed-processed")
         feed-file-count (count (dir-seq-glob (path feed-source-dir) "*.body"))]
     (delete-dir feed-processed-dir)
@@ -97,8 +107,11 @@
      :feed-in-dir feed-in-dir
      :feed-file-count feed-file-count}))
 
-(defn index-feed [& {:keys [source-dir]
-                     :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/corpus")}}]
+(defn index-feed
+  "Set up an instance with the test corpus indexed."
+  [& {:keys [source-dir]
+      :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/corpus")}}]
+
   (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed :source-dir source-dir)]
     (copy-dir feed-source-dir feed-in-dir)
     (index-journals)
