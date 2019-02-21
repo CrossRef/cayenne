@@ -1,15 +1,22 @@
 (ns cayenne.api-fixture
-  (:require [clj-http.client :as http]))
+  (:require [clj-http.client :as http]
+            [clj-time.core :as clj-time]))
 
 (defonce api-root "http://localhost:3000")
+
+; Narnia – where it's always winter but never Christmas.
+(def frozen-time (clj-time/date-time 2018 12 1))
 
 (defn api-with
   [with-f]
   (fn [f]
     (try
-      (user/start)
-      (with-f)
-      (f)
+      ; Run all tests at a known, given point in time.
+      (clj-time/do-at
+       frozen-time
+       (user/start)
+       (with-f)
+       (f))
       (finally
         (user/stop)))))
 
@@ -36,4 +43,6 @@
   (api-with user/index-feed))
 
 (def feed-ready-api
+  "Provide an empty API setup that's ready to index data."
   (api-with user/setup-feed))
+
