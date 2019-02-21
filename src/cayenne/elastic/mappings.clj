@@ -1,5 +1,7 @@
 (ns cayenne.elastic.mappings
-  (:require [qbits.spandex :as elastic]))
+  (:require [qbits.spandex :as elastic]
+            [taoensso.timbre :as timbre :refer [info]]
+            [slingshot.slingshot :refer [try+]]))
 
 (def contributor-properties
   {:contribution        {:type "keyword"}
@@ -299,8 +301,16 @@
    multiple types per index unworkable.)"
   [conn]
   (doseq [[index-name index-data] index-mappings]
-    (elastic/request conn
-                     {:url index-name
-                      :method :put
-                      :body {:settings (index-settings index-name)
-                             :mappings {index-name index-data}}})))
+    (info "Ensure Elastic Search index" index-name)
+
+    ; Be tolerant of pre-existing indexes.
+    ; If one does already exist, continue to create others.
+    (try+
+      (elastic/request conn
+                       {:url index-name
+                        :method :put
+                        :body {:settings (index-settings index-name)
+                               :mappings {index-name index-data}}})
+      (catch #(-> % :body :error :root_cause first :type #{"resource_already_exists_exception"}) _
+       (info "Index" index-name "already exists, skipping.")))))
+
