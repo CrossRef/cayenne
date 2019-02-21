@@ -7,7 +7,7 @@
             [nio2.io :refer [path]]
             [nio2.dir-seq :refer [dir-seq-glob]]))
 
-(deftest pushing-files
+(deftest ^:component pushing-files
   (testing "file is deposited exactly as pushed"
     (doseq [file ["crossref-unixsd-f0e08fdd-459c-4b59-96da-ede1a1483f81.body"]]
       (let [feed-dir (get-param [:dir :data])

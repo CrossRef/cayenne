@@ -3,12 +3,14 @@
             [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]))
 
-(deftest querying-members
+(deftest ^:integration all-members
   (testing "members endpoint returns expected result"
+
     (let [response (api-get "/v1/members")
           expected-response (read-string (slurp (resource "members.edn")))]
-      (is (= expected-response response))))
+      (is (= expected-response response)))))
 
+(deftest ^:integration all-members-works
   (testing "members endpoint returns expected result for member works"
     (doseq [member-id ["78"]]
       (let [response (-> (api-get (str "/v1/members/" member-id "/works?rows=200"))

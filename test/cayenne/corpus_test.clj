@@ -29,7 +29,7 @@
       first
       (select-keys [:DOI :score])))
 
-(deftest citation-matching
+(deftest ^:manual-live citation-matching
 
   (testing "bibliographic matches return expected results for DOIS"
     (with-redefs [cayenne.api.v1.query/max-rows 10000]

@@ -1,6 +1,6 @@
 # cayenne
 
-The cayenne base codebase. Implements useful metadata transforms, ID handling, a resource API, OAI metadata
+Cayenne serves the Crossref REST API. Implements useful metadata transforms, ID handling, a resource API, OAI metadata
 download and ingest / indexing.
 
 ## Quick Start
@@ -11,7 +11,7 @@ Make sure you have these dependencies installed within your development environm
 - Leiningen
 - Docker
 
-The tests require Docker to spin up service dependencies on development machine (ElasticSearch). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. 
+The tests require Docker to spin up service dependencies on development machine (Elastic Search). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. All tests run in Docker Compose.
 
 ### Preparing CSL Resources
 
@@ -26,6 +26,28 @@ Update git submodules to bring in CSL style and locale files:
 Refresh `resources/styles.edn` and `resources/locales.edn`:
 
     $ lein csl
+
+### Run tests
+
+Tests fall into a few categories.
+
+ - Unit tests run in isolation, and work purely by running Cayenne source code. They usually centre around single functions.
+ - Component tests exercise a given chunk of service, for example, a particular API endpoint, but make no dependency on Elastic.
+ - Integration tests involve a dependency to test how Cayenne works with it. Currently this is only Elastic Search.
+ - Manual tests are for experimental or development work. They may depend on external resources, such as the previous version of the API, and may not be reliable.
+ 
+All tests are run using Docker Compose. In the case of integration tests, the Elastic Search instance is provided as part of the Docker Compose setup, and the test fixtures are responsible for clearing all data between tests. In theory Docker isn't required for unit and component tests, but it's better that the tests run on the target platform. 
+
+To run each type:
+
+    docker-compose  -f docker-compose.yml  run api lein test :unit
+    docker-compose  -f docker-compose.yml  run api lein test :component
+    docker-compose  -f docker-compose.yml  run api lein test :integration
+    docker-compose  -f docker-compose.yml  run api lein test :manual
+
+Or in a repl:
+
+    (clojure.test/test-vars [#'the-ns/the-test])
 
 ### Running in a REPL
 

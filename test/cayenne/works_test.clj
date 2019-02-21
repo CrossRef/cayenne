@@ -5,7 +5,7 @@
             [clojure.test :refer [use-fixtures deftest testing is]]
             [clojure.java.io :refer [resource]]))
 
-(deftest querying-works
+(deftest ^:integration querying-works
   (testing "works endpoint returns expected result for DOI"
     (doseq [doi ["10.1016/j.psyneuen.2016.10.018"
                  "10.7287/peerj.2196v0.1/reviews/2"
