@@ -8,15 +8,18 @@
             [clj-time.core :as dt]
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
-            [taoensso.timbre :as timbre :refer [error]]
+            [taoensso.timbre :as timbre :refer [error info]]
             [qbits.spandex :as elastic]
             [cayenne.elastic.util :as elastic-util])
   (:import [java.util UUID]))
 
-(def date-format (df/formatter "yyyy-MM-dd"))
+(def year-date-format (df/formatter "yyyy"))
 
 (defn back-file-cut-off []
-  (df/unparse date-format (dt/minus (dt/now) (dt/years 2))))
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 3))))
+
+(defn current-start-year []
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 2))))
 
 (defn make-id-filter [type id]
   (cond (= type :member)
@@ -31,8 +34,8 @@
   (let [combined-filters
         (-> (make-id-filter type id)
             (?> filters merge filters)
-            (?> (= timing :current) assoc :from-pub-date [(back-file-cut-off)])
-            (?> (= timing :backfile) assoc :until-pub-date [(back-file-cut-off)]))]
+             (?> (= timing :current) assoc :from-pub-date [(current-start-year)])
+             (?> (= timing :backfile) assoc :until-pub-date [(back-file-cut-off)]))]
     (-> (assoc {:rows (int 0)} :filters combined-filters)
         (works/fetch)
         (get-in [:message :total-results]))))
@@ -132,25 +135,30 @@
       :coverage      coverage}]))
 
 ;; todo use scroll
-(defn check-index [index-name id-field]
-  (doseq [some-records
-          (as->
-           (elastic/request
-            (conf/get-service :elastic)
-            {:method :get
-             :url (str "/" (name index-name) "/" (name index-name) "/_search")
-             :body {:_source [id-field] :query {:match_all {}} :size 10000}})
-           $
-            (get-in $ [:body :hits :hits])
-            (partition-all 100 $))]
-    (elastic/request
-     (conf/get-service :elastic)
-     {:method :post
-      :url "/coverage/coverage/_bulk"
-      :body (->> some-records
-                 (map #(index-coverage-command % :type index-name :id-field id-field))
-                 flatten
-                 elastic-util/raw-jsons)})))
+(defn check-index
+  "Generage coverage and save to Elastic Search."
+  [index-name id-field]
+  (let [cnt (atom 0)]
+    (doseq [some-records
+            (as->
+             (elastic/request
+              (conf/get-service :elastic)
+              {:method :get
+               :url (str "/" (name index-name) "/" (name index-name) "/_search")
+               :body {:_source [id-field] :query {:match_all {}} :size 10000}})
+             $
+             (get-in $ [:body :hits :hits])
+             (partition-all 100 $))]
+      (swap! cnt #(+ % (count some-records)))
+      (info "Done" @cnt "coverage checks...")
+      (elastic/request
+       (conf/get-service :elastic)
+       {:method :post
+        :url "/coverage/coverage/_bulk"
+        :body (->> some-records
+                   (map #(index-coverage-command % :type index-name :id-field id-field))
+                   flatten
+                   elastic-util/raw-jsons)}))))
 
 (defn check-members [] (check-index :member :id))
 
