@@ -1,0 +1,146 @@
+(["http://dx.doi.org/10.5555/515151"
+  {:type :work,
+   :id
+   ("http://id.crossref.org/issn/5555-5152"
+    "http://id.crossref.org/issn/5555-6167"),
+   :rel
+   {:title
+    ({:type :title,
+      :subtype :long,
+      :value "Annals of Psychoceramics B"}
+     {:type :title,
+      :subtype :short,
+      :value "Annals Psychoceramics B"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/5555-5152",
+      :original "5555-5152"}
+     {:type :id,
+      :subtype :issn,
+      :kind :electronic,
+      :value "http://id.crossref.org/issn/5555-6167",
+      :original "5555-6167"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day nil,
+         :month nil,
+         :year "2013",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "2013",
+         :rel
+         {:component
+          ({:type :work,
+            :id
+            ("http://dx.doi.org/10.5555/515151"
+             "http://id.crossref.org/supp/515151"
+             "http://id.crossref.org/supp/515151"),
+            :rel
+            {:funder
+             ({:type :org,
+               :name "National Science Foundation",
+               :rel
+               {:awarded
+                ({:type :grant, :id ["psychoceramics-1152342"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/100000001"]}
+              {:type :org,
+               :name
+               "Basic Energy Sciences, Office of Science, U.S. Department of Energy",
+               :rel
+               {:awarded
+                ({:type :grant,
+                  :id ["high-energy-metaphysics-SC0001091"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/100006151"]}),
+             :domains ("annalsofpsychoceramics.labs.crossref.org"),
+             :published-print
+             ({:type :date,
+               :day "3",
+               :month 2,
+               :year "2013",
+               :time-of-year nil}),
+             :domain-exclusive (true),
+             :update-policy
+             ({:type :id,
+               :subtype :doi,
+               :value "http://dx.doi.org/10.5555/crossmark_policy",
+               :original "10.5555/crossmark_policy"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value "The Global State of Psychoceramics Research"}),
+             :author
+             ({:type :person,
+               :first-name "Josiah",
+               :last-name "Carberry",
+               :sequence "first",
+               :suffix nil,
+               :orcid-authenticated true,
+               :id ["http://orcid.org/0000-0002-1825-0097"]}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://annalsofpsychoceramics.labs.crossref.org/abstract/515151/"}),
+             :assertion
+             ({:explanation-url nil,
+               :name "orcid",
+               :value "http://orcid.org/0000-0002-1825-0097",
+               :type :assertion,
+               :group-label "Identifiers",
+               :group-name "identifiers",
+               :label "ORCID",
+               :url "http://orcid.org/0000-0002-1825-0097",
+               :order "0"}
+              {:explanation-url nil,
+               :name "received",
+               :value "2013-02-01",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Received",
+               :url nil,
+               :order "0"}
+              {:explanation-url nil,
+               :name "accepted",
+               :value "2013-02-02",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Accepted",
+               :url nil,
+               :order "1"}
+              {:explanation-url nil,
+               :name "published",
+               :value "2013-02-03",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Published",
+               :url nil,
+               :order "2"})},
+            :subtype :journal-article,
+            :first-page "1",
+            :last-page "8",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering nil,
+      :published-print
+      {:type :date,
+       :day nil,
+       :month nil,
+       :year "2013",
+       :time-of-year nil},
+      :published-online nil,
+      :issue nil}),
+    :publisher [{:type :org, :id [nil nil]}],
+    :relation ()},
+   :subtype :journal,
+   :language "en"}])

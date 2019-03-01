@@ -137,6 +137,8 @@
       (wrap-exception-handler)
       (wrap-ignore-trailing-slash)))
 
+; Register a startup task in the default core.
+; This task will register the a service called 'api', which is a running server.
 (conf/with-core :default
   (conf/add-startup-task
    :api

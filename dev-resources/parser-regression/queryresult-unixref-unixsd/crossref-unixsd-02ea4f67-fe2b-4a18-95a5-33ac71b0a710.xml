@@ -1,0 +1,880 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<crossref_result xmlns="http://www.crossref.org/qrschema/3.0" version="3.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.crossref.org/qrschema/3.0 http://www.crossref.org/schemas/crossref_query_output3.0.xsd">
+  <query_result>
+    <head>
+      <doi_batch_id>none</doi_batch_id>
+    </head>
+    <body>
+      <query status="resolved">
+        <doi type="journal_article">10.1007/s11682-016-9638-y</doi>
+        <crm-item name="publisher-name" type="string">Springer Nature</crm-item>
+        <crm-item name="prefix-name" type="string">Springer-Verlag</crm-item>
+        <crm-item name="member-id" type="number">297</crm-item>
+        <crm-item name="citation-id" type="number">85727236</crm-item>
+        <crm-item name="journal-id" type="number">64626</crm-item>
+        <crm-item name="deposit-timestamp" type="number">20171023123749602</crm-item>
+        <crm-item name="owner-prefix" type="string">10.1007</crm-item>
+        <crm-item name="last-update" type="date">2017-10-23T23:12:19Z</crm-item>
+        <crm-item name="created" type="date">2016-10-12T03:38:48Z</crm-item>
+        <crm-item name="citedby-count" type="number">2</crm-item>
+        <doi_record>
+          <crossref xmlns="http://www.crossref.org/xschema/1.1" xsi:schemaLocation="http://www.crossref.org/xschema/1.1 http://doi.crossref.org/schemas/unixref1.1.xsd">
+            <journal>
+              <journal_metadata language="en">
+                <full_title>Brain Imaging and Behavior</full_title>
+                <abbrev_title>Brain Imaging and Behavior</abbrev_title>
+                <issn media_type="print">1931-7557</issn>
+                <issn media_type="electronic">1931-7565</issn>
+              </journal_metadata>
+              <journal_issue>
+                <publication_date media_type="print">
+                  <month>10</month>
+                  <year>2017</year>
+                </publication_date>
+                <journal_volume>
+                  <volume>11</volume>
+                </journal_volume>
+                <issue>5</issue>
+              </journal_issue>
+              <journal_article publication_type="full_text">
+                <titles>
+                  <title>Early effects of a high-caloric diet and physical exercise on brain volumetry and behavior: a combined MRI and histology study in mice</title>
+                </titles>
+                <contributors>
+                  <person_name contributor_role="author" sequence="first">
+                    <given_name>Markus</given_name>
+                    <surname>Sack</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jenny N.</given_name>
+                    <surname>Lenz</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Mira</given_name>
+                    <surname>Jakovcevski</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Sarah V.</given_name>
+                    <surname>Biedermann</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Claudia</given_name>
+                    <surname>Falfán-Melgoza</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Jan</given_name>
+                    <surname>Deussing</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Maximilian</given_name>
+                    <surname>Bielohuby</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Martin</given_name>
+                    <surname>Bidlingmaier</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Frederik</given_name>
+                    <surname>Pfister</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Günter K.</given_name>
+                    <surname>Stalla</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Alexander</given_name>
+                    <surname>Sartorius</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Peter</given_name>
+                    <surname>Gass</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Wolfgang</given_name>
+                    <surname>Weber-Fahr</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Johannes</given_name>
+                    <surname>Fuss</surname>
+                  </person_name>
+                  <person_name contributor_role="author" sequence="additional">
+                    <given_name>Matthias K.</given_name>
+                    <surname>Auer</surname>
+                  </person_name>
+                </contributors>
+                <publication_date media_type="online">
+                  <month>10</month>
+                  <day>12</day>
+                  <year>2016</year>
+                </publication_date>
+                <publication_date media_type="print">
+                  <month>10</month>
+                  <year>2017</year>
+                </publication_date>
+                <pages>
+                  <first_page>1385</first_page>
+                  <last_page>1396</last_page>
+                </pages>
+                <publisher_item>
+                  <identifier id_type="pii">9638</identifier>
+                </publisher_item>
+                <crossmark>
+                  <crossmark_version>1</crossmark_version>
+                  <crossmark_policy>10.1007/springer_crossmark_policy</crossmark_policy>
+                  <crossmark_domains>
+                    <crossmark_domain>
+                      <domain>link.springer.com</domain>
+                    </crossmark_domain>
+                  </crossmark_domains>
+                  <crossmark_domain_exclusive>false</crossmark_domain_exclusive>
+                  <custom_metadata>
+                    <fr:program xmlns:fr="http://www.crossref.org/fundref.xsd" name="fundref">
+                      <fr:assertion name="funder_name">
+                        Max-Planck-Gesellschaft
+                        <fr:assertion name="funder_identifier">http://dx.doi.org/10.13039/501100004189</fr:assertion>
+                      </fr:assertion>
+                    </fr:program>
+                    <ai:program xmlns:ai="http://www.crossref.org/AccessIndicators.xsd" name="AccessIndicators">
+                      <ai:license_ref>http://creativecommons.org/licenses/by/4.0</ai:license_ref>
+                    </ai:program>
+                  </custom_metadata>
+                </crossmark>
+                <doi_data>
+                  <doi>10.1007/s11682-016-9638-y</doi>
+                  <timestamp>20171023123749602</timestamp>
+                  <resource>http://link.springer.com/10.1007/s11682-016-9638-y</resource>
+                  <collection property="crawler-based">
+                    <item crawler="iParadigms">
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s11682-016-9638-y.pdf</resource>
+                    </item>
+                  </collection>
+                  <collection property="text-mining">
+                    <item>
+                      <resource mime_type="text/html">http://link.springer.com/article/10.1007/s11682-016-9638-y/fulltext.html</resource>
+                    </item>
+                    <item>
+                      <resource mime_type="application/pdf">http://link.springer.com/content/pdf/10.1007/s11682-016-9638-y.pdf</resource>
+                    </item>
+                  </collection>
+                </doi_data>
+                <citation_list>
+                  <citation key="9638_CR1">
+                    <journal_title>Neurology</journal_title>
+                    <author>S Ahtiluoto</author>
+                    <volume>75</volume>
+                    <issue>13</issue>
+                    <first_page>1195</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1212/WNL.0b013e3181f4d7f8</doi>
+                    <unstructured_citation>Ahtiluoto, S., Polvikoski, T., Peltonen, M., Solomon, A., Tuomileh, J., Winblad, B., et al. (2010). Diabetes, Alzheimer disease, and vascular dementia. A population-based neuropathologic study. Neurology, 75(13), 1195–1202.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR2">
+                    <journal_title>Journal of Cerebral Blood Flow and Metabolism</journal_title>
+                    <author>MK Auer</author>
+                    <volume>35</volume>
+                    <issue>4</issue>
+                    <first_page>554</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1038/jcbfm.2014.231</doi>
+                    <unstructured_citation>Auer, M. K., Sack, M., Lenz, J. N., Jakovcevski, M., Biedermann, S. V., Falfán-Melgoza, C., et al. (2015). Effects of a high-caloric diet and physical exercise on brain metabolite levels: a combined proton MRS and histologic study. Journal of Cerebral Blood Flow and Metabolism, 35(4), 554–564.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR3">
+                    <journal_title>Neurobiology of Aging</journal_title>
+                    <author>G Bartzokis</author>
+                    <volume>25</volume>
+                    <issue>7</issue>
+                    <first_page>843</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neurobiolaging.2003.09.005</doi>
+                    <unstructured_citation>Bartzokis, G., Sultzer, D., Lu, P. H., Nuechterlein, K. H., Mintz, J., &amp; Cummings, J. L. (2004). Heterogeneous age-related breakdown of white matter structural integrity: implications for cortical “disconnection” in aging and Alzheimer’s disease. Neurobiology of Aging, 25(7), 843–851.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR4">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>NMB Ben Abdallah</author>
+                    <volume>17</volume>
+                    <issue>12</issue>
+                    <first_page>1230</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1002/hipo.20358</doi>
+                    <unstructured_citation>Ben Abdallah, N. M. B., Slomianka, L., &amp; Lipp, H. P. (2007). Reversible effect of X-irradiation on proliferation, neurogenesis, and cell death in the dentate gyrus of adult mice. Hippocampus, 17(12), 1230–1240.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR5">
+                    <journal_title>NeuroImage</journal_title>
+                    <author>S Biedermann</author>
+                    <volume>61</volume>
+                    <issue>4</issue>
+                    <first_page>1206</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2012.04.010</doi>
+                    <unstructured_citation>Biedermann, S., Fuss, J., Zheng, L., Sartorius, A., Falfan-Melgoza, C., Demirakca, T., et al. (2012). In vivo voxel based morphometry: detection of increased hippocampal volume and decreased glutamate levels in exercising mice. NeuroImage, 61(4), 1206–1212.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR6">
+                    <journal_title>Brain Structure &amp; Function</journal_title>
+                    <author>S Biedermann</author>
+                    <volume>221</volume>
+                    <issue>3</issue>
+                    <first_page>1353</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1007/s00429-014-0976-5</doi>
+                    <unstructured_citation>Biedermann, S., Fuss, J., Steinle, J., Auer, M., Dormann, C., Falfán-Melgoza, C., et al. (2016). The hippocampus and exercise: histological correlates of MR-detected volume changes. Brain Structure &amp; Function, 221(3), 1353–1363.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR7">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>C Boitard</author>
+                    <volume>22</volume>
+                    <issue>11</issue>
+                    <first_page>2095</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1002/hipo.22032</doi>
+                    <unstructured_citation>Boitard, C., Etchamendy, N., Sauvant, J., Aubert, A., Tronel, S., Marighetto, A., et al. (2012). Juvenile, but not adult exposure to high-fat diet impairs relational memory and hippocampal neurogenesis in mice. Hippocampus, 22(11), 2095–2100.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR8">
+                    <journal_title>Diabetes Research and Clinical Practice</journal_title>
+                    <author>DG Bruce</author>
+                    <volume>61</volume>
+                    <issue>1</issue>
+                    <first_page>59</first_page>
+                    <cYear>2003</cYear>
+                    <doi provider="crossref">10.1016/S0168-8227(03)00084-6</doi>
+                    <unstructured_citation>Bruce, D. G., Casey, G. P., Grange, V., Clarnette, R. C., Almeida, O. P., Foster, J. K., et al. (2003). Cognitive impairment, physical disability and depressive symptoms in older diabetic patients: the Fremantle cognition in diabetes study. Diabetes Research and Clinical Practice, 61(1), 59–67.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR9">
+                    <journal_title>Journal of Neuroendocrinology</journal_title>
+                    <author>F Bussel</author>
+                    <volume>28</volume>
+                    <issue>3</issue>
+                    <first_page>12366</first_page>
+                    <cYear>2016</cYear>
+                    <unstructured_citation>Bussel, F., Backes, W. H., Hofman, P. A., Boxtel, M., Schram, M. T., Stehouwer C., D., et al. (2016). Altered hippocampal white matter connectivity in type 2 diabetes mellitus and memory decrements. Journal of Neuroendocrinology, 28(3), 12366.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR10">
+                    <journal_title>Journal of Neuroimaging</journal_title>
+                    <author>Z Chen</author>
+                    <volume>24</volume>
+                    <issue>5</issue>
+                    <first_page>484</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1111/jon.12059</doi>
+                    <unstructured_citation>Chen, Z., Li, J., Sun, J., &amp; Ma, L. (2014). Brain expansion in patients with type II diabetes following insulin therapy: a preliminary study with longitudinal voxel-based morphometry. Journal of Neuroimaging, 24(5), 484–491.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR11">
+                    <journal_title>Internal Medicine Journal</journal_title>
+                    <author>G Cheng</author>
+                    <volume>42</volume>
+                    <issue>5</issue>
+                    <first_page>484</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1111/j.1445-5994.2012.02758.x</doi>
+                    <unstructured_citation>Cheng, G., Huang, C., Deng, H., &amp; Wang, H. (2012). Diabetes as a risk factor for dementia and mild cognitive impairment: a meta-analysis of longitudinal studies. Internal Medicine Journal, 42(5), 484–491.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR12">
+                    <journal_title>Neurology</journal_title>
+                    <author>N Cherbuin</author>
+                    <volume>79</volume>
+                    <issue>10</issue>
+                    <first_page>1019</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1212/WNL.0b013e31826846de</doi>
+                    <unstructured_citation>Cherbuin, N., Sachdev, P., &amp; Anstey, K. J. (2012). Higher normal fasting plasma glucose is associated with hippocampal atrophy the PATH study. Neurology, 79(10), 1019–1026.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR13">
+                    <journal_title>The Journals of Gerontology. Series A, Biological Sciences and Medical Sciences</journal_title>
+                    <author>SJ Colcombe</author>
+                    <volume>61</volume>
+                    <issue>11</issue>
+                    <first_page>1166</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1093/gerona/61.11.1166</doi>
+                    <unstructured_citation>Colcombe, S. J., Erickson, K. I., Scalf, P. E., Kim, J. S., Prakash, R., McAuley, E., et al. (2006). Aerobic exercise training increases brain volume in aging humans. The Journals of Gerontology. Series A, Biological Sciences and Medical Sciences, 61(11), 1166–1170.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR14">
+                    <journal_title>Trends in Neurosciences</journal_title>
+                    <author>CW Cotman</author>
+                    <volume>30</volume>
+                    <issue>9</issue>
+                    <first_page>464</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1016/j.tins.2007.06.011</doi>
+                    <unstructured_citation>Cotman, C. W., Berchtold, N. C., &amp; Christie, L. (2007). Exercise builds brain health: key roles of growth factor cascades and inflammation. Trends in Neurosciences, 30(9), 464–472.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR15">
+                    <journal_title>Neurobiology of Aging</journal_title>
+                    <author>S Debette</author>
+                    <volume>35</volume>
+                    <issue>2</issue>
+                    <first_page>378</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1016/j.neurobiolaging.2013.07.022</doi>
+                    <unstructured_citation>Debette, S., Wolf, C., Lambert, J. C., Crivello, F., Soumaré, A., Zhu, Y. C., et al. (2014). Abdominal obesity and lower gray matter volume: a Mendelian randomization study. Neurobiology of Aging, 35(2), 378–386.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR16">
+                    <journal_title>NeuroImage</journal_title>
+                    <author>A Dorr</author>
+                    <volume>42</volume>
+                    <issue>1</issue>
+                    <first_page>60</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2008.03.037</doi>
+                    <unstructured_citation>Dorr, A., Lerch, J. P., Spring, S., Kabani, N., &amp; Henkelman, R. M. (2008). High resolution three-dimensional brain atlas using an average magnetic resonance image of 40 adult C57Bl/6 J mice. NeuroImage, 42(1), 60–69.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR17">
+                    <journal_title>Diabetes Research and Clinical Practice</journal_title>
+                    <author>S Ebady</author>
+                    <volume>82</volume>
+                    <issue>3</issue>
+                    <first_page>305</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1016/j.diabres.2008.08.020</doi>
+                    <unstructured_citation>Ebady, S., Arami, M., &amp; Shafigh, M. (2008). Investigation on the relationship between diabetes mellitus type 2 and cognitive impairment. Diabetes Research and Clinical Practice, 82(3), 305–309.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR18">
+                    <journal_title>Neurology</journal_title>
+                    <author>K Erickson</author>
+                    <volume>75</volume>
+                    <issue>16</issue>
+                    <first_page>1415</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1212/WNL.0b013e3181f88359</doi>
+                    <unstructured_citation>Erickson, K., Raji, C., Lopez, O., Becker, J., Rosano, C., Newman, A., et al. (2010). Physical activity predicts gray matter volume in late adulthood the cardiovascular health study. Neurology, 75(16), 1415–1422.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR19">
+                    <journal_title>Proceedings of the National Academy of Sciences of the United States of America</journal_title>
+                    <author>KI Erickson</author>
+                    <volume>108</volume>
+                    <issue>7</issue>
+                    <first_page>3017</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1073/pnas.1015950108</doi>
+                    <unstructured_citation>Erickson, K. I., Voss, M. W., Prakash, R. S., Basak, C., Szabo, A., Chaddock, L., et al. (2011). Exercise training increases size of hippocampus and improves memory. Proceedings of the National Academy of Sciences of the United States of America, 108(7), 3017–3302.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR20">
+                    <journal_title>Scientific American</journal_title>
+                    <author>RD Fields</author>
+                    <volume>298</volume>
+                    <issue>3</issue>
+                    <first_page>54</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1038/scientificamerican0308-54</doi>
+                    <unstructured_citation>Fields, R. D. (2008). White matter matters. Scientific American, 298(3), 54–61.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR21">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>J Fuss</author>
+                    <volume>20</volume>
+                    <issue>3</issue>
+                    <first_page>364</first_page>
+                    <cYear>2010</cYear>
+                    <unstructured_citation>Fuss, J., Ben Abdallah, N. M. B., Vogt, M. A., Touma, C., Pacifici, P. G., Palme, R., et al. (2010a). Voluntary exercise induces anxiety-like behavior in adult C57BL/6 J mice correlating with hippocampal neurogenesis. Hippocampus, 20(3), 364–376.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR22">
+                    <journal_title>PloS One</journal_title>
+                    <author>J Fuss</author>
+                    <volume>5</volume>
+                    <issue>9</issue>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1371/journal.pone.0012769</doi>
+                    <unstructured_citation>Fuss, J., Ben, A., B., N. M., Hensley, F. W., Weber, K. J., Hellweg, R., et al. (2010b). Deletion of running-induced hippocampal neurogenesis by irradiation prevents development of an anxious phenotype in mice. PloS One, 5(9), e12769.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR23">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>J Fuss</author>
+                    <volume>24</volume>
+                    <issue>2</issue>
+                    <first_page>131</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.1002/hipo.22227</doi>
+                    <unstructured_citation>Fuss, J., Biedermann, S., Falfan-Melgoza, C., Auer, M. K., Zheng, L., Steinle, J., et al. (2014). Exercise boosts hippocampal volume by preventing early age-related gray matter loss. Hippocampus, 24(2), 131–134.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR24">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>AK Hornsby</author>
+                    <volume>63</volume>
+                    <first_page>198</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2015.09.023</doi>
+                    <unstructured_citation>Hornsby, A. K., Redhead, Y. T., Rees, D. J., Ratcliff, M. S., Reichenbach, A., Wells, T., et al. (2016). Short-term calorie restriction enhances adult hippocampal neurogenesis and remote fear memory in a Ghsr-dependent manner. Psychoneuroendocrinology, 63, 198–207.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR25">
+                    <journal_title>Circulation Research</journal_title>
+                    <author>S Hummasti</author>
+                    <volume>107</volume>
+                    <issue>5</issue>
+                    <first_page>579</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1161/CIRCRESAHA.110.225698</doi>
+                    <unstructured_citation>Hummasti, S., &amp; Hotamisligil, G. S. (2010). Endoplasmic reticulum stress and inflammation in obesity and diabetes. Circulation Research, 107(5), 579–591.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR26">
+                    <journal_title>Anat Rec (Hoboken)</journal_title>
+                    <author>E Jensen</author>
+                    <volume>296</volume>
+                    <issue>3</issue>
+                    <first_page>378</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.1002/ar.22641</doi>
+                    <unstructured_citation>Jensen, E. (2013). Quantitative analysis of histological staining and fluorescence using ImageJ. Anat Rec (Hoboken), 296(3), 378–381.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR27">
+                    <journal_title>Journal of Lipid Research</journal_title>
+                    <author>PR Johnson</author>
+                    <volume>13</volume>
+                    <issue>1</issue>
+                    <first_page>2</first_page>
+                    <cYear>1972</cYear>
+                    <unstructured_citation>Johnson, P. R., &amp; Hirsch, J. (1972). Cellularity of adipose depots in six strains of genetically obese mice. Journal of Lipid Research, 13(1), 2–11.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR28">
+                    <journal_title>Japanese Journal of Radiology</journal_title>
+                    <author>K Kamiyama</author>
+                    <volume>28</volume>
+                    <issue>4</issue>
+                    <first_page>266</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1007/s11604-009-0416-2</doi>
+                    <unstructured_citation>Kamiyama, K., Wada, A., Sugihara, M., Kurioka, S., Hayashi, K., Hayashi, T., et al. (2010). Potential hippocampal region atrophy in diabetes mellitus type 2: a voxel-based morphometry VSRAD study. Japanese Journal of Radiology, 28(4), 266–272.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR29">
+                    <journal_title>NeuroImage</journal_title>
+                    <author>G Karas</author>
+                    <volume>23</volume>
+                    <issue>2</issue>
+                    <first_page>708</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2004.07.006</doi>
+                    <unstructured_citation>Karas, G., Scheltens, P., Rombouts, S. A., Visser, P. J., van Schijndel, R. A., Fox, N. C., et al. (2004). Global and local gray matter loss in mild cognitive impairment and Alzheimer's disease. NeuroImage, 23(2), 708–716.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR30">
+                    <journal_title>Nature</journal_title>
+                    <author>G Kempermann</author>
+                    <volume>386</volume>
+                    <issue>6624</issue>
+                    <first_page>493</first_page>
+                    <cYear>1997</cYear>
+                    <doi provider="crossref">10.1038/386493a0</doi>
+                    <unstructured_citation>Kempermann, G., Kuhn, H. G., &amp; Gage, F. H. (1997). More hippocampal neurons in adult mice living in an enriched environment. Nature, 386(6624), 493–495.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR31">
+                    <journal_title>Endocrine Journal</journal_title>
+                    <author>Y Kim</author>
+                    <volume>62</volume>
+                    <issue>3</issue>
+                    <first_page>269</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1507/endocrj.EJ14-0436</doi>
+                    <unstructured_citation>Kim, Y., Kim, S., Kim, C., Sato, T., Kojima, M., &amp; Park, S. (2015). Ghrelin is required for dietary restriction-induced enhancement of hippocampal neurogenesis: lessons from ghrelin knockout mice. Endocrine Journal, 62(3), 269–275.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR32">
+                    <journal_title>Neurobiology of Aging</journal_title>
+                    <author>P Kochunov</author>
+                    <volume>33</volume>
+                    <issue>1</issue>
+                    <first_page>9</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.neurobiolaging.2010.01.014</doi>
+                    <unstructured_citation>Kochunov, P., Williamson, D., Lancaster, J., Fox, P., Cornell, J., Blangero, J., et al. (2012). Fractional anisotropy of water diffusion in cerebral white matter across the lifespan. Neurobiology of Aging, 33(1), 9–20.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR33">
+                    <journal_title>The American Journal of Clinical Nutrition</journal_title>
+                    <author>M Lahti-Koski</author>
+                    <volume>75</volume>
+                    <issue>5</issue>
+                    <first_page>809</first_page>
+                    <cYear>2002</cYear>
+                    <unstructured_citation>Lahti-Koski, M., Pietinen, P., Heliövaara, M., &amp; Vartiainen, E. (2002). Associations of body mass index and obesity with physical activity, food choices, alcohol intake, and smoking in the 1982–1997 FINRISK studies. The American Journal of Clinical Nutrition, 75(5), 809–817.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR34">
+                    <journal_title>Journal of Neurochemistry</journal_title>
+                    <author>J Lee</author>
+                    <volume>80</volume>
+                    <issue>3</issue>
+                    <first_page>539</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1046/j.0022-3042.2001.00747.x</doi>
+                    <unstructured_citation>Lee, J., Seroogy, K. B., &amp; Mattson, M. P. (2002). Dietary restriction enhances neurotrophin expression and neurogenesis in the hippocampus of adult mice. Journal of Neurochemistry, 80(3), 539–547.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR35">
+                    <journal_title>NeuroImage</journal_title>
+                    <author>JP Lerch</author>
+                    <volume>54</volume>
+                    <issue>3</issue>
+                    <first_page>2086</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2010.09.086</doi>
+                    <unstructured_citation>Lerch, J. P., Yiu, A. P., Martinez-Canabal, A., Pekar, T., Bohbot, V. D., Frankland, P. W., et al. (2011). Maze training in mice induces MRI-detectable brain shape changes specific to the type of learning. NeuroImage, 54(3), 2086–2095.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR36">
+                    <journal_title>Nature Cell Biology</journal_title>
+                    <author>J Li</author>
+                    <volume>14</volume>
+                    <issue>10</issue>
+                    <first_page>999</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1038/ncb2562</doi>
+                    <unstructured_citation>Li, J., Tang, Y., &amp; Cai, D. (2012). IKKβ/NF-κB disrupts adult hypothalamic neural stem cells to mediate a neurodegenerative mechanism of dietary obesity and pre-diabetes. Nature Cell Biology, 14(10), 999–1012.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR37">
+                    <journal_title>Nature Neuroscience</journal_title>
+                    <author>W Lin</author>
+                    <volume>12</volume>
+                    <issue>4</issue>
+                    <first_page>379</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1038/nn.2273</doi>
+                    <unstructured_citation>Lin, W., &amp; Popko, B. (2009). Endoplasmic reticulum stress in disorders of myelinating cells. Nature Neuroscience, 12(4), 379–385.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR38">
+                    <journal_title>AJNR. American Journal of Neuroradiology</journal_title>
+                    <author>Y Lin</author>
+                    <volume>34</volume>
+                    <issue>9</issue>
+                    <first_page>1692</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.3174/ajnr.A3492</doi>
+                    <unstructured_citation>Lin, Y., Zhou, J., Sha, L., Li, Y., Qu, X., Liu, L., et al. (2013). Metabolite differences in the lenticular nucleus in type 2 diabetes mellitus shown by proton MR spectroscopy. AJNR. American Journal of Neuroradiology, 34(9), 1692–1696.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR39">
+                    <unstructured_citation>Lugar, H. M., Koller, J. M., Rutlin, J., Marshall, B. A., Kanekura, K., Urano, F., et al. (2016). Neuroimaging evidence of deficient axon myelination in Wolfram syndrome. Scientific Reports, 6.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR40">
+                    <journal_title>International Journal of Obesity</journal_title>
+                    <author>TH Meek</author>
+                    <volume>34</volume>
+                    <issue>6</issue>
+                    <first_page>960</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1038/ijo.2010.25</doi>
+                    <unstructured_citation>Meek, T. H., Eisenmann, J. C., &amp; Garland, T. (2010). Western diet increases wheel running in mice selectively bred for high voluntary wheel running. International Journal of Obesity, 34(6), 960–969.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR41">
+                    <journal_title>Physiology &amp; Behavior</journal_title>
+                    <author>T Meek</author>
+                    <volume>106</volume>
+                    <issue>2</issue>
+                    <first_page>252</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1016/j.physbeh.2012.02.012</doi>
+                    <unstructured_citation>Meek, T., Dlugosz, E. M., Vu, K. T., &amp; Garland Jr., T. (2012). Effects of leptin treatment and western diet on wheel running in selectively bred high runner mice. Physiology &amp; Behavior, 106(2), 252–258.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR42">
+                    <journal_title>Neuron</journal_title>
+                    <author>G-l Ming</author>
+                    <volume>70</volume>
+                    <issue>4</issue>
+                    <first_page>687</first_page>
+                    <cYear>2011</cYear>
+                    <doi provider="crossref">10.1016/j.neuron.2011.05.001</doi>
+                    <unstructured_citation>Ming, G.-l., &amp; Song, H. (2011). Adult neurogenesis in the mammalian brain: significant answers and significant questions. Neuron, 70(4), 687–702.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR43">
+                    <journal_title>Neuroscience</journal_title>
+                    <author>R Molteni</author>
+                    <volume>112</volume>
+                    <issue>4</issue>
+                    <first_page>803</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1016/S0306-4522(02)00123-9</doi>
+                    <unstructured_citation>Molteni, R., Barnard, R. J., Ying, Z., Roberts, C. K., &amp; Gómez-Pinilla, F. (2002). A high-fat, refined sugar diet reduces hippocampal brain-derived neurotrophic factor, neuronal plasticity, and learning. Neuroscience, 112(4), 803–881.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR44">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>C Moran</author>
+                    <volume>36</volume>
+                    <issue>12</issue>
+                    <first_page>4036</first_page>
+                    <cYear>2013</cYear>
+                    <doi provider="crossref">10.2337/dc13-0143</doi>
+                    <unstructured_citation>Moran, C., Phan, T. G., Chen, J., Blizzard, L., Beare, R., Venn, A., et al. (2013). Brain atrophy in type 2 diabetes regional distribution and influence on cognition. Diabetes Care, 36(12), 4036–4404.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR45">
+                    <journal_title>Brain Imaging and Behavior</journal_title>
+                    <author>CD Moulton</author>
+                    <volume>9</volume>
+                    <issue>4</issue>
+                    <first_page>651</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1007/s11682-014-9348-2</doi>
+                    <unstructured_citation>Moulton, C. D., Costafreda, S. G., Horton, P., Ismail, K., &amp; Fu, C. H. (2015a). Meta-analyses of structural regional cerebral effects in type 1 and type 2 diabetes. Brain Imaging and Behavior, 9(4), 651–662.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR46">
+                    <journal_title>Aging &amp; Mental Health</journal_title>
+                    <author>CD Moulton</author>
+                    <volume>20</volume>
+                    <issue>8</issue>
+                    <first_page>840</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1080/13607863.2015.1040723</doi>
+                    <unstructured_citation>Moulton, C. D., Stewart, R., Amiel, S. A., Laake, J. P., &amp; Ismail, K. (2016). Factors associated with cognitive impairment in patients with newly diagnosed type 2 diabetes: a cross-sectional study. Aging &amp; Mental Health, 20(8), 840–847.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR47">
+                    <journal_title>Science</journal_title>
+                    <author>U Özcan</author>
+                    <volume>306</volume>
+                    <issue>5695</issue>
+                    <first_page>457</first_page>
+                    <cYear>2004</cYear>
+                    <doi provider="crossref">10.1126/science.1103160</doi>
+                    <unstructured_citation>Özcan, U., Cao, Q., Yilmaz, E., Lee, A.-H., Iwakoshi, N. N., Özdelen, E., et al. (2004). Endoplasmic reticulum stress links obesity, insulin action, and type 2 diabetes. Science, 306(5695), 457–461.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR48">
+                    <journal_title>NeuroImage</journal_title>
+                    <author>N Pannacciulli</author>
+                    <volume>31</volume>
+                    <issue>4</issue>
+                    <first_page>1419</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1016/j.neuroimage.2006.01.047</doi>
+                    <unstructured_citation>Pannacciulli, N., Del Parigi, A., Chen, K., Le, D. S. N. T., Reiman, E. M., &amp; Tataranni, P. A. (2006). Brain abnormalities in human obesity: a voxel-based morphometric study. NeuroImage, 31(4), 1419–1425.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR49">
+                    <journal_title>Neuroscience Letters</journal_title>
+                    <author>HR Park</author>
+                    <volume>482</volume>
+                    <issue>3</issue>
+                    <first_page>235</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1016/j.neulet.2010.07.046</doi>
+                    <unstructured_citation>Park, H. R., Park, M., Choi, J., Park, K. Y., Chung, H. Y., &amp; Lee, J. (2010). A high-fat diet impairs neurogenesis: involvement of lipid peroxidation and brain-derived neurotrophic factor. Neuroscience Letters, 482(3), 235–239.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR50">
+                    <journal_title>Journal of Neuroimmunology</journal_title>
+                    <author>PJ Pistell</author>
+                    <volume>26</volume>
+                    <issue>219</issue>
+                    <first_page>1</first_page>
+                    <cYear>2010</cYear>
+                    <unstructured_citation>Pistell, P. J., Morrison, C. D., Gupta, S., Knight, A. G., Keller, J. N., Ingram, D. K., et al. (2010). Cognitive impairment following high fat diet consumption is associated with brain inflammation. Journal of Neuroimmunology, 26(219), 1–2.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR51">
+                    <journal_title>Human Brain Mapping</journal_title>
+                    <author>CA Raji</author>
+                    <volume>31</volume>
+                    <issue>3</issue>
+                    <first_page>353</first_page>
+                    <cYear>2010</cYear>
+                    <unstructured_citation>Raji, C. A., Ho, A. J., Parikshak, N. N., Becker, J. T., Lopez, O. L., Kuller, L. H., et al. (2010). Brain structure and obesity. Human Brain Mapping, 31(3), 353–364.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR52">
+                    <journal_title>Stroke</journal_title>
+                    <author>GA Rosenberg</author>
+                    <volume>40</volume>
+                    <issue>3 suppl 1</issue>
+                    <first_page>20</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1161/STROKEAHA.108.533133</doi>
+                    <unstructured_citation>Rosenberg, G. A. (2009). Inflammation and white matter damage in vascular cognitive impairment. Stroke, 40(3 suppl 1), 20–23.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR53">
+                    <journal_title>Brain</journal_title>
+                    <author>S Rosi</author>
+                    <volume>132</volume>
+                    <issue>9</issue>
+                    <first_page>2464</first_page>
+                    <cYear>2009</cYear>
+                    <doi provider="crossref">10.1093/brain/awp148</doi>
+                    <unstructured_citation>Rosi, S., Ramirez-Amaya, V., Vazdarjanova, A., Esparza, E., Larkin, P., Fike, J., et al. (2009). Accuracy of hippocampal network activity is disrupted by neuroinflammation: rescue by memantine. Brain, 132(9), 2464–2477.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR54">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>CM Ryan</author>
+                    <volume>23</volume>
+                    <issue>10</issue>
+                    <first_page>1486</first_page>
+                    <cYear>2000</cYear>
+                    <doi provider="crossref">10.2337/diacare.23.10.1486</doi>
+                    <unstructured_citation>Ryan, C. M., &amp; Geckle, M. O. (2000). Circumscribed cognitive dysfunction in middle-aged adults with type 2 diabetes. Diabetes Care, 23(10), 1486–1493.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR55">
+                    <doi provider="crossref">10.1007/s11357-013-9613-0</doi>
+                    <unstructured_citation>Samaras, K., Lutgers, H., Kochan, N., Crawford, J., Campbell, L., Wen, W. et al. (2014). The impact of glucose disorders on cognition and brain volumes in the elderly: the Sydney memory and ageing study. Age, 36(2), 977–993.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR56">
+                    <journal_title>Acta Diabetologica</journal_title>
+                    <author>AA Sima</author>
+                    <volume>47</volume>
+                    <issue>4</issue>
+                    <first_page>279</first_page>
+                    <cYear>2010</cYear>
+                    <doi provider="crossref">10.1007/s00592-010-0218-0</doi>
+                    <unstructured_citation>Sima, A. A. (2010). Encephalopathies: the emerging diabetic complications. Acta Diabetologica, 47(4), 279–293.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR57">
+                    <journal_title>Experimental Neurology</journal_title>
+                    <author>C Sims-Robinson</author>
+                    <volume>277</volume>
+                    <first_page>261</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.expneurol.2016.01.007</doi>
+                    <unstructured_citation>Sims-Robinson, C., Bakeman, A., Glasser, R., Boggs, J., Pacut, C., &amp; Feldman, E. L. (2016). The role of endoplasmic reticulum stress in hippocampal insulin resistance. Experimental Neurology, 277, 261–267.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR58">
+                    <journal_title>The New England Journal of Medicine</journal_title>
+                    <author>R Sinha</author>
+                    <volume>346</volume>
+                    <issue>11</issue>
+                    <first_page>802</first_page>
+                    <cYear>2002</cYear>
+                    <doi provider="crossref">10.1056/NEJMoa012578</doi>
+                    <unstructured_citation>Sinha, R., Fisch, G., Teague, B., Tamborlane, W. V., Banyas, B., Allen, K., et al. (2002). Prevalence of impaired glucose tolerance among children and adolescents with marked obesity. The New England Journal of Medicine, 346(11), 802–810.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR59">
+                    <doi provider="crossref">10.1016/j.neuroimage.2004.07.051</doi>
+                    <unstructured_citation>Smith, S. M., Jenkinson, M., Woolrich, M. W., Beckmann, C. F., Behrens, T. E. J., Johansen-Berg, H., et al. (2004) Advances in functional and structural MR image analysis and implementation as FSL. NeuroImage, 23, S208–S219</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR60">
+                    <journal_title>Hippocampus</journal_title>
+                    <author>AM Stranahan</author>
+                    <volume>18</volume>
+                    <issue>11</issue>
+                    <first_page>1085</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1002/hipo.20470</doi>
+                    <unstructured_citation>Stranahan, A. M., Norman, E. D., Lee, K., Cutler, R. G., Telljohann, R. S., Egan, J. M., et al. (2008). Diet-induced insulin resistance impairs hippocampal synaptic plasticity and cognition in middle-aged rats. Hippocampus, 18(11), 1085–1088.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR61">
+                    <journal_title>Neuroreport</journal_title>
+                    <author>J Strandberg</author>
+                    <volume>19</volume>
+                    <issue>12</issue>
+                    <first_page>1235</first_page>
+                    <cYear>2008</cYear>
+                    <doi provider="crossref">10.1097/WNR.0b013e32830a7109</doi>
+                    <unstructured_citation>Strandberg, J., Kondziella, D., Thorlin, T., &amp; Asztely, F. (2008). Ketogenic diet does not disturb neurogenesis in the dentate gyrus in rats. Neuroreport, 19(12), 1235–1237.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR62">
+                    <journal_title>Diabetes Care</journal_title>
+                    <author>PW Sullivan</author>
+                    <volume>28</volume>
+                    <issue>7</issue>
+                    <first_page>1599</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.2337/diacare.28.7.1599</doi>
+                    <unstructured_citation>Sullivan, P. W., Morrato, E. H., Ghushchyan, V., Wyatt, H. R., &amp; Hill, J. O. (2005). Obesity, inactivity, and the prevalence of diabetes and diabetes-related cardiovascular comorbidities in the US, 2000–2002. Diabetes Care, 28(7), 1599–1603.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR63">
+                    <journal_title>The Journal of Clinical Investigation</journal_title>
+                    <author>JP Thaler</author>
+                    <volume>122</volume>
+                    <issue>1</issue>
+                    <first_page>153</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1172/JCI59660</doi>
+                    <unstructured_citation>Thaler, J. P., Yi, C.-X., Schur, E. A., Guyenet, S. J., Hwang, B. H., Dietrich, et al. (2012). Obesity is associated with hypothalamic injury in rodents and humans. The Journal of Clinical Investigation, 122(1), 153–162.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR64">
+                    <journal_title>The Journal of Neuroscience</journal_title>
+                    <author>H Van Praag</author>
+                    <volume>25</volume>
+                    <issue>38</issue>
+                    <first_page>8680</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1523/JNEUROSCI.1731-05.2005</doi>
+                    <unstructured_citation>Van Praag, H., Shubert, T., Zhao, C., &amp; Gage, F. (2005). Exercise enhances learning and hippocampal neurogenesis in aged mice. The Journal of Neuroscience, 25(38), 8680–8685.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR65">
+                    <journal_title>Psychoneuroendocrinology</journal_title>
+                    <author>A Vinuesa</author>
+                    <volume>72</volume>
+                    <first_page>22</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.1016/j.psyneuen.2016.06.004</doi>
+                    <unstructured_citation>Vinuesa, A., Pomilio, C., Menafra, M., Bonaventura, M. M., Garay, L., Mercogliano, M. F., et al. (2016). Juvenile exposure to a high fat diet promotes behavioural and limbic alterations in the absence of obesity. Psychoneuroendocrinology, 72, 22–33.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR66">
+                    <journal_title>Neural Regeneration Research</journal_title>
+                    <author>C Wang</author>
+                    <volume>9</volume>
+                    <issue>16</issue>
+                    <first_page>1548</first_page>
+                    <cYear>2014</cYear>
+                    <doi provider="crossref">10.4103/1673-5374.139482</doi>
+                    <unstructured_citation>Wang, C., Fu, K., Liu, H., Xing, F., &amp; Zhang, S. (2014). Brain structural changes and their correlation with vascular disease in type 2 diabetes mellitus patients: a voxel-based morphometric study. Neural Regeneration Research, 9(16), 1548.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR67">
+                    <journal_title>BMC Neurology</journal_title>
+                    <author>M Ward</author>
+                    <volume>5</volume>
+                    <issue>1</issue>
+                    <first_page>23</first_page>
+                    <cYear>2005</cYear>
+                    <doi provider="crossref">10.1186/1471-2377-5-23</doi>
+                    <unstructured_citation>Ward, M., Carlsson, C., Trivedi, M., Sager, M., &amp; Johnson, S. (2005). The effect of body mass index on global brain volume in middle-aged adults: a cross sectional study. BMC Neurology, 5(1), 23.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR68">
+                    <journal_title>American Journal of Physiology. Endocrinology and Metabolism</journal_title>
+                    <author>Y Wei</author>
+                    <volume>291</volume>
+                    <issue>2</issue>
+                    <first_page>275</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1152/ajpendo.00644.2005</doi>
+                    <unstructured_citation>Wei, Y., Wang, D., Topczewski, F., &amp; Pagliassotti, M. J. (2006). Saturated fatty acids induce endoplasmic reticulum stress and apoptosis independently of ceramide in liver cells. American Journal of Physiology. Endocrinology and Metabolism, 291(2), 275–281.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR69">
+                    <journal_title>Neurology</journal_title>
+                    <author>G Weinstein</author>
+                    <volume>84</volume>
+                    <issue>23</issue>
+                    <first_page>2329</first_page>
+                    <cYear>2015</cYear>
+                    <doi provider="crossref">10.1212/WNL.0000000000001655</doi>
+                    <unstructured_citation>Weinstein, G., Maillard, P., Himali, J. J., Beiser, A. S., Au, R., Wolf, P. A., et al. (2015). Glucose indices are associated with cognitive and structural brain measures in young adults. Neurology, 84(23), 2329–2337.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR70">
+                    <journal_title>Diabetologia</journal_title>
+                    <author>A Wessels</author>
+                    <volume>49</volume>
+                    <issue>10</issue>
+                    <first_page>2474</first_page>
+                    <cYear>2006</cYear>
+                    <doi provider="crossref">10.1007/s00125-006-0283-7</doi>
+                    <unstructured_citation>Wessels, A., Simsek, S., Remijnse, P., Veltman, D., Biessels, G., Barkhof, F., et al. (2006). Voxel-based morphometry demonstrates reduced grey matter density on brain MRI in patients with diabetic retinopathy. Diabetologia, 49(10), 2474–2480.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR71">
+                    <journal_title>Anat Rec (Hoboken)</journal_title>
+                    <author>M West</author>
+                    <volume>231</volume>
+                    <issue>4</issue>
+                    <first_page>482</first_page>
+                    <cYear>1991</cYear>
+                    <doi provider="crossref">10.1002/ar.1092310411</doi>
+                    <unstructured_citation>West, M., Slomianka, L., &amp; Gundersen, H. J. G. (1991). Unbiased stereological estimation of the total number of neurons in the subdivisions of the rat hippocampus using the optical fractionator. Anat Rec (Hoboken), 231(4), 482–497.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR72">
+                    <journal_title>Journal of Neurochemistry</journal_title>
+                    <author>CW Wu</author>
+                    <volume>103</volume>
+                    <issue>6</issue>
+                    <first_page>2471</first_page>
+                    <cYear>2007</cYear>
+                    <doi provider="crossref">10.1111/j.1471-4159.2007.04987.x</doi>
+                    <unstructured_citation>Wu, C. W., Chen, Y. C., Yu, L., Chen, H. I., Jen, C. J., Huang, A. M., et al. (2007). Treadmill exercise counteracts the suppressive effects of peripheral lipopolysaccharide on hippocampal neurogenesis and learning and memory. Journal of Neurochemistry, 103(6), 2471–2481.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR73">
+                    <journal_title>AJNR. American Journal of Neuroradiology</journal_title>
+                    <author>Y Xiong</author>
+                    <volume>37</volume>
+                    <issue>8</issue>
+                    <first_page>1462</first_page>
+                    <cYear>2016</cYear>
+                    <doi provider="crossref">10.3174/ajnr.A4740</doi>
+                    <unstructured_citation>Xiong, Y., Sui, Y., Xu, Z., Zhang, Q., Karaman, M., Cai, K., et al. (2016). A diffusion tensor imaging study on white matter abnormalities in patients with type 2 diabetes using tract-based spatial statistics. AJNR. American Journal of Neuroradiology, 37(8), 1462–1469.</unstructured_citation>
+                  </citation>
+                  <citation key="9638_CR74">
+                    <journal_title>Nature Neuroscience</journal_title>
+                    <author>RJ Zatorre</author>
+                    <volume>15</volume>
+                    <issue>4</issue>
+                    <first_page>528</first_page>
+                    <cYear>2012</cYear>
+                    <doi provider="crossref">10.1038/nn.3045</doi>
+                    <unstructured_citation>Zatorre, R. J., Fields, R. D., &amp; Johansen-Berg, H. (2012). Plasticity in gray and white: neuroimaging changes in brain structure during learning. Nature Neuroscience, 15(4), 528–536.</unstructured_citation>
+                  </citation>
+                </citation_list>
+              </journal_article>
+            </journal>
+          </crossref>
+        </doi_record>
+      </query>
+    </body>
+  </query_result>
+</crossref_result>

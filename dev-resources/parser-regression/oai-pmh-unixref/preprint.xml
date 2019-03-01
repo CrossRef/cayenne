@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record>
+  <header>
+    <identifier>info:doi/0.50505/preprint_sample_doi_1</identifier>
+  </header>
+  <metadata>
+    <crossref>
+      <preprint>
+        <contributors>
+          <person_name sequence="first" contributor_role="author">
+            <given_name>Chuck</given_name>
+            <surname>Setti</surname>
+            <ORCID>http://orcid.org/0000-0003-2181-9595</ORCID>
+          </person_name>
+        </contributors>
+        <titles>
+          <title>Bibliometric Indicators: Why Do We Need More Than One?</title>
+        </titles>
+        <posted_date>
+          <month>01</month>
+          <day>15</day>
+          <year>2014</year>
+        </posted_date>
+        <acceptance_date>
+          <month>01</month>
+          <day>01</day>
+          <year>2014</year>
+        </acceptance_date>
+        <abstract xmlns="http://www.ncbi.nlm.nih.gov/JATS1">
+          <p>This would be the abstract for this paper</p>
+        </abstract>
+        <program xmlns="http://www.crossref.org/fundref.xsd" name="fundref">
+          <assertion name="fundgroup">
+            <assertion name="funder_name">
+              U.S. Department of Energy
+              <assertion name="funder_identifier">http://dx.doi.org/10.13039/100000015</assertion>
+            </assertion>
+            <assertion name="award_number">DE-FG03-03SF22691</assertion>
+          </assertion>
+          <assertion name="fundgroup">
+            <assertion name="funder_name">
+              U.S. Department of Energy
+              <assertion name="funder_identifier">http://dx.doi.org/10.13039/100000015</assertion>
+            </assertion>
+            <assertion name="award_number">DE-AC52-06NA27279</assertion>
+          </assertion>
+        </program>
+        <program xmlns="http://www.crossref.org/relations.xsd">
+          <related_item>
+            <intra_work_relation relationship-type="isPreprintOf" identifier-type="doi">10.5555/doi_for_the_Vor</intra_work_relation>
+          </related_item>
+        </program>
+        <doi_data>
+          <doi>10.50505/preprint_sample_doi_1</doi>
+          <resource>http://www.crossref.org/index.html</resource>
+        </doi_data>
+      </preprint>
+    </crossref>
+  </metadata>
+</record>

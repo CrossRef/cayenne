@@ -1,0 +1,116 @@
+(["http://dx.doi.org/10.5555/25252525x"
+  {:type :work,
+   :id ("http://id.crossref.org/issn/0264-3561"),
+   :rel
+   {:title
+    ({:type :title, :subtype :long, :value "Journal of Psychoceramics"}
+     {:type :title,
+      :subtype :short,
+      :value "Journal of Psychoceramics"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :electronic,
+      :value "http://id.crossref.org/issn/0264-3561",
+      :original "0264-3561"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day "29",
+         :month 2,
+         :year "2012",
+         :time-of-year nil}),
+       :published-online
+       ({:type :date,
+         :day "29",
+         :month 2,
+         :year "2012",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "9",
+         :rel
+         {:component
+          ({:type :work,
+            :id ("http://dx.doi.org/10.5555/25252525x"),
+            :rel
+            {:number
+             ({:type :number, :kind "sequence-number", :value "1"}),
+             :domains ("psychoceramics.labs.crossref.org"),
+             :published-print
+             ({:type :date,
+               :day "29",
+               :month 2,
+               :year "2012",
+               :time-of-year nil}),
+             :update-policy
+             ({:type :id,
+               :subtype :doi,
+               :value "http://dx.doi.org/10.5555/crossmark_policy",
+               :original "10.5555/crossmark_policy"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Correction: Developing Thin Clients Using Amphibious Epistemologies"}),
+             :author
+             ({:type :person,
+               :first-name "Josiah",
+               :last-name "Carberry",
+               :sequence "first",
+               :suffix nil}),
+             :published-online
+             ({:type :date,
+               :day "29",
+               :month 2,
+               :year "2012",
+               :time-of-year nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://psychoceramics.labs.crossref.org/10.5555-25252525x.html"}),
+             :updates
+             ({:type :update,
+               :subtype "correction",
+               :label "Correction",
+               :value "http://dx.doi.org/10.5555/12345679",
+               :original "10.5555/12345679",
+               :rel
+               {:updated
+                ({:type :date, :day 29, :month 2, :year 2012})}}),
+             :assertion
+             ({:explanation-url nil,
+               :name "scale_of_mistake",
+               :value "9 (out of 10)",
+               :type :assertion,
+               :group-label "Publication Notes",
+               :group-name "publication_notes",
+               :label "Scale of Mistake",
+               :url nil,
+               :order nil})},
+            :subtype :journal-article,
+            :first-page "1",
+            :last-page "3",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering nil,
+      :published-print
+      {:type :date,
+       :day "29",
+       :month 2,
+       :year "2012",
+       :time-of-year nil},
+      :published-online
+      {:type :date,
+       :day "29",
+       :month 2,
+       :year "2012",
+       :time-of-year nil},
+      :issue "11"}),
+    :publisher [{:type :org, :id [nil nil]}],
+    :relation ()},
+   :subtype :journal,
+   :language "en"}])

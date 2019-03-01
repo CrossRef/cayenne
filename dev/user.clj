@@ -71,6 +71,9 @@
 (def core-started? (atom false))
 
 (defn start []
+  ; For easier debugging ingest only one at once.
+  (set-param! [:val :feed-concurrency] 1)
+
   (set-param! [:service :elastic :urls] ["http://elasticsearch:9200"])
 
   (when-not (wait-for-elastic?)
@@ -220,3 +223,4 @@
         (spit clean-file-path (slurp (str "https://www.crossref.org/openurl/?pid={REPLACE-ME}&noredirect=true&format=unixsd&id=doi:" doi)))
         (Thread/sleep 1000)
         (println "Saved clean version of" doi "to" clean-file-path)))))
+

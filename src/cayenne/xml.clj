@@ -47,8 +47,13 @@
   (when attribute
     (.getValue attribute)))
 
-(defn process-xml [^java.io.Reader rdr tag-name process-fn]
-  (let [keep? (atom false)
+(defn process-xml
+  "Parse an XML document and apply supplied function all instances of the named element.
+   Also return a nu.xom.Document matching the given node."
+  [^java.io.Reader rdr tag-name process-fn]
+  (let [; Stateful event-based parser.
+        ; When we see a matching node set flag.
+        keep? (atom false)
         empty (nu.xom.Nodes.)
         factory (proxy [nu.xom.NodeFactory] []
                   (startMakingElement [^String name ^String ns]
@@ -56,16 +61,27 @@
                       (reset! keep? true))
                     (proxy-super startMakingElement name ns))
                   (finishMakingElement [^nu.xom.Element element]
+                    ; Match when we've finished parsing an element with the given name.
                     (when (= (.getLocalName element) tag-name)
-                      (do 
+                      (do
                         (counter/inc! records-processed)
                         (meter/mark! record-process-rate)
                         (process-fn element)
                         (reset! keep? false)))
+                    ; If this node matched, call superclass.
+                    ; Or if root node, superclass to recurse down.
+                    ; It's not expected to match the same node more than once in a document.
                     (if (or @keep? (root-element? element))
                       (proxy-super finishMakingElement element)
                       empty)))]
     (.build (nu.xom.Builder. factory) rdr)))
+
+(defn get-elements
+  "Retrieve the elements with the given tag name."
+  [^java.io.Reader rdr tag-name]
+  (let [result (atom [])]
+    (process-xml rdr tag-name (fn [r] (swap! result #(conj % r))))
+    @result))
 
 (defn read-xml [^java.io.Reader rdr]
   (.getRootElement (.build (nu.xom.Builder.) rdr)))

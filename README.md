@@ -11,7 +11,7 @@ Make sure you have these dependencies installed within your development environm
 - Leiningen
 - Docker
 
-The tests require Docker to spin up service dependencies on development machine (Elastic Search). Download Docker for Mac from https://www.docker.com/docker-mac and confirm that it's installed with `docker-compose --version`. All tests run in Docker Compose.
+The tests require Docker to spin up service dependencies on development machine (Elastic Search). Download Docker for Mac from <https://www.docker.com/docker-mac> and confirm that it's installed with `docker-compose --version`. All tests run in Docker Compose.
 
 ### Preparing CSL Resources
 
@@ -27,7 +27,7 @@ Refresh `resources/styles.edn` and `resources/locales.edn`:
 
     $ lein csl
 
-### Run tests
+## Testing
 
 Tests fall into a few categories.
 
@@ -35,21 +35,35 @@ Tests fall into a few categories.
  - Component tests exercise a given chunk of service, for example, a particular API endpoint, but make no dependency on Elastic.
  - Integration tests involve a dependency to test how Cayenne works with it. Currently this is only Elastic Search.
  - Manual tests are for experimental or development work. They may depend on external resources, such as the previous version of the API, and may not be reliable.
- 
+
+### Running tests
+
 All tests are run using Docker Compose. In the case of integration tests, the Elastic Search instance is provided as part of the Docker Compose setup, and the test fixtures are responsible for clearing all data between tests. In theory Docker isn't required for unit and component tests, but it's better that the tests run on the target platform. 
-
-To run each type:
-
-    docker-compose  -f docker-compose.yml  run api lein test :unit
-    docker-compose  -f docker-compose.yml  run api lein test :component
-    docker-compose  -f docker-compose.yml  run api lein test :integration
-    docker-compose  -f docker-compose.yml  run api lein test :manual
+ 
+To run each category:
+ 
+     docker-compose  -f docker-compose.yml  run api lein test :unit
+     docker-compose  -f docker-compose.yml  run api lein test :component
+     docker-compose  -f docker-compose.yml  run api lein test :integration
+     docker-compose  -f docker-compose.yml  run api lein test :manual
 
 Or in a repl:
 
     (clojure.test/test-vars [#'the-ns/the-test])
 
-### Running in a REPL
+### Regression testing
+
+Regression testing ensures that things that used to work, keep working. They fall across a number of categories.
+
+#### Parser Regression tests
+
+The XML parser has a suite of regression XML files that are run for finding regressions. You will find full details of the below, including file paths and types in the `cayenne.formats.parser-regression-test` namespace. 
+
+The tests themselves are classed as unit tests because whilst the tests load data from disk, the code exercised is purely stateless. There is also a test to checks that there are no orphaned XML files without corresponding EDN output files. This ensures that we don't get into a situation where there are ambiguous files. 
+
+When a new feature is introduced, or a new bug found, a new XML file should be added. There's a function which parses the input and creates an EDN file of the output. You should run this, **check the output to see if it's actually correct**, and then then the new files into source control.
+
+## Running in a REPL
 
 Call `lein repl`, `(begin)` then try a few commands, for example, parse some XML downloaded from
 OAI-PMH:
@@ -113,6 +127,7 @@ CAYENNE_API_TEST_CORPUS=/large-corpus lein test cayenne.corpus-test
 ```
 
 The example above switches to a larger corpus located in `dev-resources/feeds/large-corpus` for the specific test run. Keep in mind that many of tests rely on a specific corpus being loaded into ElasticSearch.
+
 
 ## Reference Visibility
 
