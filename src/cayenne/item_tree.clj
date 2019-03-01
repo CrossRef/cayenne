@@ -1,4 +1,7 @@
 (ns cayenne.item-tree
+  "An item tree is a representation of objects and their relationships.
+   These are parsed out of XML documents which contain a few different entity types
+   so the structure will contain a corresponding set of entities and relationships."
   (:use [clojure.core.incubator :only [dissoc-in]])
   (:require [cayenne.ids :as ids]
             [cayenne.util :as util]
