@@ -11,6 +11,7 @@
 
 (def base "dev-resources/parser-regression")
 
+
 (def types-tags
   "Mapping of input types and the top level tag that we look for.
    Pairs of directory-name, tag name"
@@ -44,7 +45,7 @@
   ; Make sure no data is left behind to become irrelevant.
   (testing "Every input XML file should a corresponding EDN output file."
            (doseq [[dir _] types-tags]
-             (is (empty? (missing-result-files (io/file base "oai-pmh-unixref")))
+             (is (empty? (missing-result-files (io/file base dir)))
                  (str "Found orphaned XML files without Item Tree files in " dir ". Consider running generate-result-files.")))))
 
 (defn generate-result-files
