@@ -219,7 +219,7 @@
 (def feed-file-chan (chan (buffer 1000)))
 
 (defn start-feed-processing []
-  (feed-thread-log (str "Start with concurrency ") (conf/get-param [:val :feed-concurrency]))
+  (feed-thread-log (str "Start with concurrency " (conf/get-param [:val :feed-concurrency])))
   (dotimes [n (conf/get-param [:val :feed-concurrency])]
     (go-loop []
       (try
