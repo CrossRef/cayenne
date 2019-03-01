@@ -1,0 +1,222 @@
+(["http://dx.doi.org/10.1016/j.psyneuen.2016.11.028"
+  {:type :work,
+   :id ("http://id.crossref.org/issn/0306-4530"),
+   :rel
+   {:title
+    ({:type :title, :subtype :long, :value "Psychoneuroendocrinology"}
+     {:type :title,
+      :subtype :short,
+      :value "Psychoneuroendocrinology"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/0306-4530",
+      :original "03064530"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day nil,
+         :month 3,
+         :year "2017",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "77",
+         :rel
+         {:component
+          ({:type :work,
+            :id
+            ("http://dx.doi.org/10.1016/j.psyneuen.2016.11.028"
+             "http://id.crossref.org/supp/S0306453016306199"),
+            :rel
+            {:license
+             ({:type :url,
+               :content-version "tdm",
+               :value "http://www.elsevier.com/tdm/userlicense/1.0/"}),
+             :number
+             ({:type :number,
+               :kind "sequence-number",
+               :value "S0306453016306199"}),
+             :domains
+             ("psyneuen-journal.com"
+              "clinicalkey.jp"
+              "clinicalkey.com"
+              "clinicalkey.es"
+              "clinicalkey.com.au"
+              "clinicalkey.fr"
+              "elsevier.com"
+              "sciencedirect.com"),
+             :resource-fulltext
+             ({:type :url,
+               :content-version "vor",
+               :intended-application "text-mining",
+               :content-type "text/xml",
+               :value
+               "http://api.elsevier.com/content/article/PII:S0306453016306199?httpAccept=text/xml"}
+              {:type :url,
+               :content-version "vor",
+               :intended-application "text-mining",
+               :content-type "text/plain",
+               :value
+               "http://api.elsevier.com/content/article/PII:S0306453016306199?httpAccept=text/plain"}),
+             :published-print
+             ({:type :date,
+               :day nil,
+               :month 3,
+               :year "2017",
+               :time-of-year nil}),
+             :domain-exclusive (true),
+             :update-policy
+             ({:type :id,
+               :subtype :doi,
+               :value "http://dx.doi.org/10.1016/elsevier_cm_policy",
+               :original "10.1016/elsevier_cm_policy"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Altered cerebral insulin response in transgenic mice expressing the epsilon-4 allele of the human apolipoprotein E gene"}),
+             :author
+             ({:type :person,
+               :first-name "Marie-Thérèse",
+               :last-name "Traversy",
+               :sequence "first",
+               :suffix nil}
+              {:type :person,
+               :first-name "Milène",
+               :last-name "Vandal",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Cyntia",
+               :last-name "Tremblay",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Marine",
+               :last-name "Tournissac",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Ariane",
+               :last-name "Giguère-Rancourt",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "A. David",
+               :last-name "Bennett",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Frédéric",
+               :last-name "Calon",
+               :sequence "additional",
+               :suffix nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://linkinghub.elsevier.com/retrieve/pii/S0306453016306199"}),
+             :assertion
+             ({:explanation-url nil,
+               :name "publisher",
+               :value "Elsevier",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "This article is maintained by",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "articletitle",
+               :value
+               "Altered cerebral insulin response in transgenic mice expressing the epsilon-4 allele of the human apolipoprotein E gene",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Article Title",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "journaltitle",
+               :value "Psychoneuroendocrinology",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Journal Title",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "articlelink",
+               :value
+               "http://dx.doi.org/10.1016/j.psyneuen.2016.11.028",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label
+               "CrossRef DOI link to publisher maintained version",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "content_type",
+               :value "article",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Content Type",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "copyright",
+               :value "© 2016 Elsevier Ltd. All rights reserved.",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Copyright",
+               :url nil,
+               :order nil})},
+            :subtype :journal-article,
+            :first-page "203",
+            :last-page "210",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering "C",
+      :published-print
+      {:type :date,
+       :day nil,
+       :month 3,
+       :year "2017",
+       :time-of-year nil},
+      :published-online nil,
+      :issue nil}),
+    :publisher
+    [{:type :org,
+      :name "Elsevier BV",
+      :journal-id "1841",
+      :citation-id "86603439",
+      :id
+      ["http://id.crossref.org/member/78"
+       "http://id.crossref.org/prefix/10.1016"]}],
+    :relation (),
+    :deposited
+    [{:type :date,
+      :year 2017,
+      :month 8,
+      :day 18,
+      :hour 11,
+      :minute 18,
+      :second 57}],
+    :first-deposited
+    [{:type :date,
+      :year 2016,
+      :month 11,
+      :day 30,
+      :hour 17,
+      :minute 34,
+      :second 24}],
+    :cited-count [1]},
+   :subtype :journal,
+   :language "en"}])

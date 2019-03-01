@@ -72,6 +72,9 @@
                  [dk.ative/docjure "1.11.0"]
                  [environ "1.0.3"]
                  [javax.xml.bind/jaxb-api "2.3.1"]
-                 [slingshot "0.12.2"]])
+                 [slingshot "0.12.2"]
+
+                 ; Only for tests.
+                 [cheshire "5.8.1"]])
 
 
