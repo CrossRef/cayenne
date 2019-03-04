@@ -1,6 +1,6 @@
 (ns cayenne.elastic.mappings
   (:require [qbits.spandex :as elastic]
-            [cayenne.conf :as conf]))
+            [cayenne.conf :as conf]
             [taoensso.timbre :as timbre :refer [info]]
             [slingshot.slingshot :refer [try+]]))
 
