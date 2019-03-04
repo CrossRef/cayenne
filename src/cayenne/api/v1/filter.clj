@@ -95,11 +95,12 @@
 ;; todo :transformers
 (defn nested-terms [prefix suffixes & {:keys [transformers]}]
   (fn [val]
-    (println val)
     (let [field-name (->> val first (str (name prefix) ".") keyword)]
       {:occurrence :filter
        :clause
-       {:nested {:path prefix :query {:term {field-name (-> val second first)}}}}})))
+       {:nested {:path prefix :query {:terms {field-name  (second val) }}}}})))
+      ; nested terms could be called with a list of values,
+      ; the es-fetch handles them, so don't take only the first item
 
   ;; (letfn [(field-name [field]
   ;;           (keyword (str (name prefix)
@@ -127,7 +128,8 @@
    :relation ["type" "object_type" "object"]})
 
 (def std-filters
-  {"from-update-date"          (date-range :deposited :from)
+  {"reference-visibility"      (equality :reference-visibility)
+   "from-update-date"          (date-range :deposited :from)
    "until-update-date"         (date-range :deposited :until)
    "from-index-date"           (date-range :indexed :from)
    "until-index-date"          (date-range :indexed :until)
@@ -182,12 +184,12 @@
    "funder-doi-asserted-by"    (-> (equality :funder.doi-asserted-by) (nested :funder))
    "has-assertion"             (-> (existence :assertion) (nested :assertion))
    "has-clinical-trial-number" (-> (existence :clinical-trial) (nested :clinical-trial))
-   "full-text"                 (nested-terms :link {:type :content-type
+   "full-text"                 (nested-terms :link {:type        :content-type
                                                     :application :application
-                                                    :version :version})
-   "license"                   (nested-terms :license {:url :url
+                                                    :version     :version})
+   "license"                   (nested-terms :license {:url     :url
                                                        :version :version
-                                                       :delay :delay}
+                                                       :delay   :delay}
                                              :matchers {:delay #(str ":[* TO " % "]")})
    "archive"                   (equality :archive)
    "article-number"            (equality :article-number)
@@ -209,24 +211,26 @@
    "award"                     (nested-terms :funder {:funder-doi :doi
                                                       :funder     :doi
                                                       :number     :award}
-                                       :transformers
-                                       {:funder-doi doi-id/with-funder-prefix
-                                        :funder doi-id/with-funder-prefix
-                                        :number #(-> %
-                                                     string/lower-case
-                                                     string/replace #"[\s_\-]+" "")})
-   "relation"                  (nested-terms :relation {:type :type
+                                             :transformers
+                                             {:funder-doi doi-id/with-funder-prefix
+                                              :funder     doi-id/with-funder-prefix
+                                              :number     #(-> %
+                                                               string/lower-case
+                                                               string/replace #"[\s_\-]+" "")})
+   "relation"                  (nested-terms :relation {:type        :type
                                                         :object-type :object-type
-                                                        :object-ns :object-ns
-                                                        :claimed-by :claimed-by
-                                                        :object :object})
+                                                        :object-ns   :object-ns
+                                                        :claimed-by  :claimed-by
+                                                        :object      :object})
    "member"                    (equality :member-id
                                          :transformer member-id/extract-member-id)
    "journal"                   (equality :journal-id)
    "prefix"                    (equality :owner-prefix
                                          :transformer prefix/extract-prefix)
-   "funder"                    (equality :funder-doi
-                                         :transformer doi-id/with-funder-prefix)})
+   "funder"                    (nested-terms :funder {:funder-doi :doi}
+                                             :transformers
+                                             {:funder-doi doi-id/with-funder-prefix})
+   })
                               
 (def member-filters
   {"prefix"                (equality :prefix.value)

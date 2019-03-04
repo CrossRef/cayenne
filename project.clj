@@ -17,6 +17,12 @@
                                                :creds :gpg}}
               :dependencies [[com.datomic/datomic-pro "0.9.4894"
                               :exclusions [org.slf4j/log4j-over-slf4j]]]}}
+  :test-selectors {:default (constantly true)
+                   :unit :unit
+                   :component :component
+                   :integration :integration
+                   :all (constantly true)
+                   :manual :manual}
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/core.async "0.2.395"]
                  [org.clojure/tools.nrepl "0.2.3"]
@@ -47,7 +53,7 @@
                  [org.clojure/core.memoize "0.5.8"]
                  [org.clojure/math.combinatorics "0.0.4"]
                  [com.novemberain/langohr "1.4.1"]
-                 [liberator "0.12.2"]
+                 [liberator "0.15.2"]
                  [compojure "1.6.0"]
                  [ring "1.3.0"]
                  [metosin/ring-swagger "0.26.0"]
@@ -64,6 +70,11 @@
                  [digest "1.4.4"]
                  [cc.qbits/spandex "0.5.2"]
                  [dk.ative/docjure "1.11.0"]
-                 [environ "1.0.3"]])
+                 [environ "1.0.3"]
+                 [javax.xml.bind/jaxb-api "2.3.1"]
+                 [slingshot "0.12.2"]
+
+                 ; Only for tests.
+                 [cheshire "5.8.1"]])
 
 

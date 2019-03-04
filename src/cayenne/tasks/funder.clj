@@ -136,7 +136,10 @@
       (build-hierarchy model (first ancestors) (hierarcy-node model funder-resource descendants child))
       (hierarcy-node model funder-resource descendants child))))
 
-(defn index-command [model funder-resource]
+(defn index-command
+  "Build an Elastic Search object from a resource in the context of a model.
+   The unique ID is taken from the Resource ID."
+  [model funder-resource]
   (let [primary-name   (-> model (get-labels funder-resource "prefLabel") first)
         alt-names      (-> model (get-labels funder-resource "altLabel"))
         ancestors      (resource-ancestors model funder-resource)
@@ -169,7 +172,9 @@
                         (partition 2 (util/get-all-in hierarchy [:id :name])))
       :hierarchy       hierarchy}]))
 
-(defn index-funders []
+(defn index-funders
+  "Retrieve funder information RDF and index into Elastic."
+  []
   (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry]))
                   rdf/document->model)]
     (doseq [funders (->> model

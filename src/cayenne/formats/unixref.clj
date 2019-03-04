@@ -20,21 +20,22 @@
 ;; Helpers
 
 ;; todo rename to parse-attach-rel
+
 (defn parse-attach
   "Attach a relation by running a function on an xml location."
   [item relation loc kind parse-fn]
   (let [existing (get-in item [:rel relation] [])
         related (parse-fn loc)]
-    (cond 
-     (= kind :single)
-     (if related
-       (assoc-in item [:rel relation] (conj existing related))
-       item)
-     (= kind :multi)
-     (let [non-nil-related (remove nil? related)]
-       (if (not-empty non-nil-related)
-         (assoc-in item [:rel relation] (concat existing non-nil-related))
-         item)))))
+    (condp = kind
+      :single
+      (if related
+        (assoc-in item [:rel relation] (conj existing related))
+        item)
+      :multi
+      (let [non-nil-related (remove nil? related)]
+        (if (not-empty non-nil-related)
+          (assoc-in item [:rel relation] (concat existing non-nil-related))
+          item)))))
 
 (defn attach-rel
   "Attach related item to another item via relation."
@@ -161,24 +162,24 @@
 
 (defn parse-time-of-year [month]
   (if-let [month-val (try (Integer/parseInt month) (catch Exception _ nil))]
-    (cond
-     (= month-val 21) :spring
-     (= month-val 22) :summer
-     (= month-val 23) :autumn
-     (= month-val 24) :winter
-     (= month-val 31) :first-quarter
-     (= month-val 32) :second-quarter
-     (= month-val 33) :third-quarter
-     (= month-val 34) :forth-quarter
-     :else nil)))
+    (condp = month-val
+      21 :spring
+      22 :summer
+      23 :autumn
+      24 :winter
+      31 :first-quarter
+      32 :second-quarter
+      33 :third-quarter
+      34 :forth-quarter
+      nil)))
 
 (defn parse-date
-  "Parse 'print' or 'online' publication dates."
+  "Parse 'print' or 'online' publication dates. Can return nil"
   [date-loc]
   (let [day-val (xml/xselect1 date-loc "day" :text)
         month-val (xml/xselect1 date-loc "month" :text)
         year-val (xml/xselect1 date-loc "year" :text)]
-    (when (> (Integer/parseInt year-val) 0)
+    (when (and year-val (> (Integer/parseInt year-val) 0))
       {:type :date
        :day day-val 
        :month (parse-month month-val) 
@@ -930,14 +931,14 @@
 
 (defn parse-content-item-type [content-item-loc]
   (let [type (xml/xselect1 content-item-loc ["component_type"])]
-    (cond
-      (= type "chapter") :book-chapter
-      (= type "section") :book-section
-      (= type "part") :book-part
-      (= type "track") :book-track
-      (= type "reference_entry") :reference-entry
-      (= type "other") :other
-      :else :other)))
+    (condp = type
+      "chapter" :book-chapter
+      "section" :book-section
+      "part" :book-part
+      "track" :book-track
+      "reference_entry" :reference-entry
+      "other" :other
+      :other)))
 
 (defn parse-content-item [content-item-loc]
   (when content-item-loc
@@ -992,12 +993,12 @@
 
 (defn parse-book-type [book-loc]
   (let [type (xml/xselect1 book-loc ["book_type"])]
-    (cond
-     (= type "edited_book") :edited-book
-     (= type "monograph") :monograph
-     (= type "reference") :reference-book
-     (= type "other") :book
-     :else :book)))
+    (condp = type
+      "edited_book" :edited-book
+      "monograph" :monograph
+      "reference" :reference-book
+      "other" :book
+      :book)))
 
 (defn parse-book [book-loc]
   (let [book-meta-loc (xml/xselect1 book-loc "book_metadata")
@@ -1010,14 +1011,15 @@
      book-series-meta-loc (parse-book-series book-series-meta-loc content-item-loc book-type)
      book-set-meta-loc (parse-book-set book-set-meta-loc content-item-loc book-type))))
 
+
 (defn parse-dataset-type [dataset-loc]
   (let [type (xml/xselect1 dataset-loc ["dataset_type"])]
-    (cond
-     (= type "record") :record
-     (= type "collection") :collection
-     (= type "crossmark_policy") :crossmark-policy
-     (= type "other") :other
-     :else :record)))
+    (condp = type
+      "record" :record
+      "collection" :collection
+      "crossmark_policy" :crossmark-policy
+      "other" :other
+      :record)))
 
 ;; todo dates
 (defn parse-dataset [dataset-loc]

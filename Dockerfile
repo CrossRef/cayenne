@@ -1,6 +1,6 @@
 FROM clojure
 
-COPY . /app
-WORKDIR /app
+COPY . /usr/src/app
+WORKDIR /usr/src/app
 
 RUN lein deps

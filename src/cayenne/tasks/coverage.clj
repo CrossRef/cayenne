@@ -1,5 +1,6 @@
 (ns cayenne.tasks.coverage
   (:require [cayenne.ids.issn :as issn-id]
+            [cayenne.ids.type :as type-id]
             [cayenne.conf :as conf]
             [cayenne.util :refer [?> ?>>]]
             [cayenne.data.work :as works]
@@ -7,15 +8,18 @@
             [clj-time.core :as dt]
             [clj-time.format :as df]
             [clj-time.coerce :as dc]
-            [taoensso.timbre :as timbre :refer [error]]
+            [taoensso.timbre :as timbre :refer [error info]]
             [qbits.spandex :as elastic]
             [cayenne.elastic.util :as elastic-util])
   (:import [java.util UUID]))
 
-(def date-format (df/formatter "yyyy-MM-dd"))
+(def year-date-format (df/formatter "yyyy"))
 
 (defn back-file-cut-off []
-  (df/unparse date-format (dt/minus (dt/now) (dt/years 2))))
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 3))))
+
+(defn current-start-year []
+  (df/unparse year-date-format (dt/minus (dt/now) (dt/years 2))))
 
 (defn make-id-filter [type id]
   (cond (= type :member)
@@ -30,36 +34,16 @@
   (let [combined-filters
         (-> (make-id-filter type id)
             (?> filters merge filters)
-            (?> (= timing :current) assoc :from-pub-date [(back-file-cut-off)])
-            (?> (= timing :backfile) assoc :until-pub-date [(back-file-cut-off)]))]
+             (?> (= timing :current) assoc :from-pub-date [(current-start-year)])
+             (?> (= timing :backfile) assoc :until-pub-date [(back-file-cut-off)]))]
     (-> (assoc {:rows (int 0)} :filters combined-filters)
         (works/fetch)
         (get-in [:message :total-results]))))
 
 (defn coverage [total-count check-count]
   (if (zero? total-count)
-    0
+    0.0
     (double (/ check-count total-count))))
-
-(defn make-filter-check [member-action check-name filter-name filter-value]
-  (fn [type id]
-    (let [total-count (get-work-count type id)
-          total-back-file-count (get-work-count type id :timing :backfile)
-          total-current-count (get-work-count type id :timing :current)
-          filter-back-file-count (get-work-count type id
-                                                 :filters {filter-name [filter-value]}
-                                                 :timing :backfile)
-          filter-current-count (get-work-count type id
-                                               :filters {filter-name [filter-value]}
-                                               :timing :current)]
-      {:flags {(keyword (str member-action "-" check-name "-current"))
-               (not (zero? filter-current-count))
-               (keyword (str member-action "-" check-name "-backfile"))
-               (not (zero? filter-back-file-count))}
-       :coverage {(keyword (str check-name "-current"))
-                  (coverage total-current-count filter-current-count)
-                  (keyword (str check-name "-backfile"))
-                  (coverage total-back-file-count filter-back-file-count)}})))
 
 (defn check-deposits [type id]
   {:flags
@@ -76,27 +60,17 @@
         (not))}})
 
 (def checkles
-  [check-deposits
-   check-deposits-articles
-   (make-filter-check "deposits" "affiliations" :has-affiliation "true")
-   (make-filter-check "deposits" "abstracts" :has-abstract "true")
-   (make-filter-check "deposits" "update-policies" :has-update-policy "true")
-   (make-filter-check "deposits" "references" :has-references "true")
-   (make-filter-check "deposits" "licenses" :has-license "true")
-   (make-filter-check "deposits" "resource-links" :has-full-text "true")
-   (make-filter-check "deposits" "orcids" :has-orcid "true")
-   (make-filter-check "deposits" "award-numbers" :has-award "true")
-   (make-filter-check "deposits" "funders" :has-funder "true")])
-
-(defn check-record-coverage [record & {:keys [type id-field]}]
-  (-> {}
-      (merge
-       (reduce (fn [rslt chk-fn]
-                 (let [check-result (chk-fn type (get record id-field))]
-                   {:flags (merge (:flags rslt) (:flags check-result))
-                    :coverage (merge (:coverage rslt) (:coverage check-result))}))
-               {}
-               checkles))))
+  [{:name "affiliations"        :filter {:has-affiliation       ["true"]}}
+   {:name "abstracts"           :filter {:has-abstract          ["true"]}}
+   {:name "update-policies"     :filter {:has-update-policy     ["true"]}}
+   {:name "references"          :filter {:has-references        ["true"]}}
+   {:name "licenses"            :filter {:has-license           ["true"]}}
+   {:name "resource-links"      :filter {:has-full-text         ["true"]}}
+   {:name "orcids"              :filter {:has-orcid             ["true"]}}
+   {:name "award-numbers"       :filter {:has-award             ["true"]}}
+   {:name "funders"             :filter {:has-funder            ["true"]}}
+   {:name "open-references"     :filter {:reference-visibility   ["open"]}}
+   {:name "similarity-checking" :filter {:full-text [[:application ["similarity-checking"]]]}}])
 
 (defn check-breakdowns [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
@@ -119,12 +93,36 @@
      :current-dois current-count
      :total-dois (+ backfile-count current-count)}))
 
+(defn get-check-counts [record-id type content-type]
+  (let [filters (if (= content-type :all) {} {:type [(name content-type)]})
+        total-backfile-counts (get-work-count type record-id :timing :backfile :filters filters)
+        total-current-counts (get-work-count type record-id :timing :current :filters filters)]
+    (reduce
+     (fn [m v]
+       (let [check-backfile-counts (get-work-count type record-id :timing :backfile :filters (merge filters (:filter v)))
+             check-current-counts (get-work-count type record-id :timing :current :filters (merge filters (:filter v)))]
+         (-> m
+             (assoc-in [:backfile content-type (keyword (str (:name v)))] (coverage total-backfile-counts check-backfile-counts))
+             (assoc-in [:current content-type (keyword (str (:name v)))] (coverage total-current-counts check-current-counts))
+             (assoc-in [:all content-type (keyword (str (:name v)))] (coverage (+ total-current-counts total-backfile-counts) (+ check-backfile-counts check-current-counts))))))
+     {:all {content-type {:_count (+ total-backfile-counts total-current-counts)}}
+      :current {content-type {:_count total-current-counts}}
+      :backfile {content-type {:_count total-backfile-counts}}}
+     checkles)))
+
+(defn check-type-coverage [record & {:keys [type id-field]}]
+  (let [record-id (get record id-field)]
+    (apply
+     merge-with
+     merge
+     (map (partial get-check-counts record-id type) (conj (keys type-id/type-dictionary) :all)))))
+
 (defn index-coverage-command [record & {:keys [type id-field]}]
   (let [started-date (dt/now)
         record-source (:_source record)
         record-counts (check-record-counts record-source :type type :id-field id-field)
-        breakdowns (check-breakdowns record-source :type type :id-field id-field)
-        coverage (check-record-coverage record-source :type type :id-field id-field)]
+        coverage (check-type-coverage record-source :type type :id-field id-field)
+        breakdowns (check-breakdowns record-source :type type :id-field id-field)]
     [{:index {:_id (.toString (UUID/randomUUID))}}
      {:subject-type  (name type)
       :subject-id    (get record-source id-field)
@@ -137,25 +135,30 @@
       :coverage      coverage}]))
 
 ;; todo use scroll
-(defn check-index [index-name id-field]
-  (doseq [some-records
-          (as->
-           (elastic/request
-            (conf/get-service :elastic)
-            {:method :get
-             :url (str "/" (name index-name) "/" (name index-name) "/_search")
-             :body {:_source [id-field] :query {:match_all {}} :size 10000}})
-           $
-            (get-in $ [:body :hits :hits])
-            (partition-all 100 $))]
-    (elastic/request
-     (conf/get-service :elastic)
-     {:method :post
-      :url "/coverage/coverage/_bulk"
-      :body (->> some-records
-                 (map #(index-coverage-command % :type index-name :id-field id-field))
-                 flatten
-                 elastic-util/raw-jsons)})))
+(defn check-index
+  "Generage coverage and save to Elastic Search."
+  [index-name id-field]
+  (let [cnt (atom 0)]
+    (doseq [some-records
+            (as->
+             (elastic/request
+              (conf/get-service :elastic)
+              {:method :get
+               :url (str "/" (name index-name) "/" (name index-name) "/_search")
+               :body {:_source [id-field] :query {:match_all {}} :size 10000}})
+             $
+             (get-in $ [:body :hits :hits])
+             (partition-all 100 $))]
+      (swap! cnt #(+ % (count some-records)))
+      (info "Done" @cnt "coverage checks...")
+      (elastic/request
+       (conf/get-service :elastic)
+       {:method :post
+        :url "/coverage/coverage/_bulk"
+        :body (->> some-records
+                   (map #(index-coverage-command % :type index-name :id-field id-field))
+                   flatten
+                   elastic-util/raw-jsons)}))))
 
 (defn check-members [] (check-index :member :id))
 

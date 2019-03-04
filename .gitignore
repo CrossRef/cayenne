@@ -6,6 +6,8 @@
 /doc
 /tmp/*
 /log
+/dev-resources/feeds/feed-processed
+/.idea
 pom.xml
 .#*
 *.class
@@ -19,3 +21,6 @@ pom.xml
 /src/cayenne/user.clj
 out.json
 out.txt
+.m2-cache
+dev-resources/feeds
+.DS_Store

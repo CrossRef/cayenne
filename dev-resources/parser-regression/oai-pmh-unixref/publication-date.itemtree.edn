@@ -1,0 +1,143 @@
+(["http://dx.doi.org/10.1021/ja501260h"
+  {:type :work,
+   :id
+   ("http://id.crossref.org/issn/0002-7863"
+    "http://id.crossref.org/issn/1520-5126"),
+   :rel
+   {:title
+    ({:type :title,
+      :subtype :long,
+      :value "Journal of the American Chemical Society"}
+     {:type :title, :subtype :short, :value "J. Am. Chem. Soc."}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/0002-7863",
+      :original "0002-7863"}
+     {:type :id,
+      :subtype :issn,
+      :kind :electronic,
+      :value "http://id.crossref.org/issn/1520-5126",
+      :original "1520-5126"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day "04",
+         :month 6,
+         :year "2014",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "136",
+         :rel
+         {:component
+          ({:type :work,
+            :id
+            ("http://dx.doi.org/10.1021/ja501260h"
+             "http://id.crossref.org/supp/10.1021/ja501260h"),
+            :rel
+            {:funder
+             ({:type :org,
+               :name "National Institutes of Health",
+               :rel {:awarded ({:type :grant, :id ["U01 GM94622"]})},
+               :doi-asserted-by "publisher",
+               :id ["http://dx.doi.org/10.13039/100000002"]}
+              {:type :org,
+               :name "National Institutes of Health",
+               :rel {:awarded ({:type :grant, :id ["S10 RR027000"]})},
+               :doi-asserted-by "publisher",
+               :id ["http://dx.doi.org/10.13039/100000002"]}
+              {:type :org,
+               :name "National Institutes of Health",
+               :rel
+               {:awarded ({:type :grant, :id ["P41 RR02301-27S1"]})},
+               :doi-asserted-by "publisher",
+               :id ["http://dx.doi.org/10.13039/100000002"]}
+              {:type :org,
+               :name "National Institutes of Health",
+               :rel {:awarded ({:type :grant, :id ["P41 GM103399"]})},
+               :doi-asserted-by "publisher",
+               :id ["http://dx.doi.org/10.13039/100000002"]}
+              {:type :org,
+               :name "U.S. Department of Energy",
+               :rel
+               {:awarded
+                ({:type :grant,
+                  :id ["Contract No. DE-AC02-06CH11357"]})},
+               :doi-asserted-by "publisher",
+               :id ["http://dx.doi.org/10.13039/100000015"]}),
+             :author
+             ({:type :person,
+               :first-name "Jin Hae",
+               :last-name "Kim",
+               :sequence "first",
+               :suffix nil}
+              {:type :person,
+               :first-name "Jameson R.",
+               :last-name "Bothe",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Ronnie O.",
+               :last-name "Frederick",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Johneisa C.",
+               :last-name "Holder",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "John L.",
+               :last-name "Markley",
+               :sequence "additional",
+               :suffix nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://pubs.acs.org/doi/abs/10.1021/ja501260h"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Role of IscX in Iron–Sulfur Cluster Biogenesis in\n\t      Escherichia coli"}),
+             :published-print
+             ({:type :date,
+               :day "04",
+               :month 6,
+               :year "2014",
+               :time-of-year nil}),
+             :published-online
+             ({:type :date,
+               :day "04",
+               :month 4,
+               :year "2011",
+               :time-of-year nil}),
+             :published
+             ({:type :date,
+               :day nil,
+               :month 4,
+               :year "2010",
+               :time-of-year nil})},
+            :subtype :journal-article,
+            :first-page "7933",
+            :last-page "7942",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering nil,
+      :published-print
+      {:type :date,
+       :day "04",
+       :month 6,
+       :year "2014",
+       :time-of-year nil},
+      :published-online nil,
+      :issue "22"}),
+    :publisher [{:type :org, :id [nil nil]}],
+    :relation ()},
+   :subtype :journal,
+   :language "en"}])

@@ -225,7 +225,6 @@
   :allowed-methods [:get :options :head]
   :available-media-types t/json
   :handle-ok #(funder/fetch-works (->> funder-id
-                                       doi-id/with-funder-prefix
                                        (q/->query-context % :id))))
 
 (defresource prefix-resource [px]

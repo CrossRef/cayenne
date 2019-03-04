@@ -1,0 +1,130 @@
+(["http://dx.doi.org/10.1037/0022-006x.74.1.42"
+  {:type :work,
+   :id
+   ("http://id.crossref.org/issn/1939-2117"
+    "http://id.crossref.org/issn/0022-006X"),
+   :rel
+   {:title
+    ({:type :title,
+      :subtype :long,
+      :value "Journal of Consulting and Clinical Psychology"}
+     {:type :title,
+      :subtype :short,
+      :value "Journal of Consulting and Clinical Psychology"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :electronic,
+      :value "http://id.crossref.org/issn/1939-2117",
+      :original "1939-2117"}
+     {:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/0022-006X",
+      :original "0022-006X"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-online
+       ({:type :date,
+         :day nil,
+         :month nil,
+         :year "2006",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "74",
+         :rel
+         {:component
+          ({:type :work,
+            :id
+            ("http://dx.doi.org/10.1037/0022-006x.74.1.42"
+             "http://id.crossref.org/supp/2006-03253-005"),
+            :rel
+            {:funder
+             ({:type :org,
+               :name "NSF",
+               :rel
+               {:awarded
+                ({:type :grant,
+                  :id ["Invalid old-style funding identifier"]}
+                 {:type :grant, :id ["Invalid award number"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/1000001"]}
+              {:type :org,
+               :name "National Institutes of Health",
+               :rel
+               {:awarded
+                ({:type :grant, :id ["5R21HL108272"]}
+                 {:type :grant, :id ["Another award"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/100000002"]}
+              {:type :org,
+               :name "All within group",
+               :doi-asserted-by "publisher",
+               :id ["10.13039/1001"]}),
+             :author
+             ({:type :person,
+               :first-name "Scott W.",
+               :last-name "Henggeler",
+               :sequence "first",
+               :suffix nil}
+              {:type :person,
+               :first-name "Colleen A.",
+               :last-name "Halliday-Boykins",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Phillippe B.",
+               :last-name "Cunningham",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Jeff",
+               :last-name "Randall",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Steven B.",
+               :last-name "Shapiro",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Jason E.",
+               :last-name "Chapman",
+               :sequence "additional",
+               :suffix nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://doi.apa.org/getdoi.cfm?doi=10.1037/0022-006X.74.1.42"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Juvenile drug court: Enhancing outcomes by integrating evidence-based treatments."}),
+             :published-online
+             ({:type :date,
+               :day nil,
+               :month nil,
+               :year "2006",
+               :time-of-year nil})},
+            :subtype :journal-article,
+            :first-page "42",
+            :last-page "54",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering nil,
+      :published-print nil,
+      :published-online
+      {:type :date,
+       :day nil,
+       :month nil,
+       :year "2006",
+       :time-of-year nil},
+      :issue "1"}),
+    :publisher [{:type :org, :id [nil nil]}],
+    :relation ()},
+   :subtype :journal,
+   :language "en"}])

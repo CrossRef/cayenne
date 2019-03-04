@@ -152,7 +152,9 @@
   (set-param! [:upstream :doi-ra-url] "https://doi.crossref.org/doiRA/")
   (set-param! [:upstream :prefix-info-url] "http://doi.crossref.org/getPrefixPublisher/?prefix=")
   (set-param! [:upstream :crossref-auth] "https://doi.crossref.org/info")
-  (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info"))
+  (set-param! [:upstream :crossref-test-auth] "http://test.crossref.org/info")
+
+  (set-param! [:val :feed-concurrency] (- (.. Runtime getRuntime availableProcessors) 1)))
 
 (with-core :default
   (add-startup-task

@@ -21,24 +21,14 @@
 ;; todo generalize by looking at keys in get-param [:id]
 (defn id-uri-type [id-uri]
   (when id-uri
-    (cond (.startsWith id-uri (conf/get-param [:id :issn :path]))
-          :issn
-          (.startsWith id-uri (conf/get-param [:id :isbn :path]))
-          :isbn
-          (.startsWith id-uri (conf/get-param [:id :orcid :path]))
-          :orcid
-          (.startsWith id-uri (conf/get-param [:id :owner-prefix :path]))
-          :owner-prefix
-          (.startsWith id-uri (conf/get-param [:id :long-doi :path]))
-          :long-doi
-          (.startsWith id-uri (conf/get-param [:id :short-doi :path]))
-          :short-doi
-          (.startsWith id-uri (conf/get-param [:id :supplementary :path]))
-          :supplementary
-          (.startsWith id-uri (conf/get-param [:id :contributor :path]))
-          :contributor
-          (.startsWith id-uri (conf/get-param [:id :member :path]))
-          :member
-          :else
-          :unknown)))
-
+    (condp #(clojure.string/starts-with? %2 %1) id-uri
+      (conf/get-param [:id :issn :path]) :issn
+      (conf/get-param [:id :isbn :path]) :isbn
+      (conf/get-param [:id :orcid :path]) :orcid
+      (conf/get-param [:id :owner-prefix :path]) :owner-prefix
+      (conf/get-param [:id :long-doi :path]) :long-doi
+      (conf/get-param [:id :short-doi :path]) :short-doi
+      (conf/get-param [:id :supplementary :path]) :supplementary
+      (conf/get-param [:id :contributor :path]) :contributor
+      (conf/get-param [:id :member :path]) :member
+      :unknown)))

@@ -2,6 +2,7 @@
   (:require [cayenne.conf :as conf]
             [cayenne.util :as util]
             [cayenne.data.work :as work]
+            [cayenne.data.coverage :as coverage]
             [cayenne.ids.issn :as issn-id]
             [cayenne.api.v1.query :as query]
             [cayenne.api.v1.response :as r]
@@ -17,12 +18,16 @@
            :subjects (or (:subject journal-doc) [])} ;; todo {:ASJC :name}
     (not (nil? coverage-doc))
     (merge
-     {:flags                  (get-in coverage-doc [:coverage :flags])
-      :coverage               (get-in coverage-doc [:coverage :coverage])
-      :breakdowns             (get-in coverage-doc [:breakdowns :breakdowns])
+      (merge-with
+        merge
+        (coverage/coverage coverage-doc :current)
+        (coverage/coverage coverage-doc :backfile))
+     {:breakdowns             (get-in coverage-doc [:breakdowns :breakdowns])
       :counts                 (select-keys coverage-doc [:current-dois
                                                          :backfile-dois
                                                          :total-dois])
+      :coverage-type          (coverage/coverage-type coverage-doc)
+      :counts-type            (coverage/type-counts coverage-doc)
       :last-status-check-time (-> coverage-doc :finished dc/to-long)})))
 
 (defn get-coverage [subject-type subject-ids]

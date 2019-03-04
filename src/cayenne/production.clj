@@ -47,6 +47,8 @@
         (error (str "Unknown references setting " (env :references)))))
     (when (env :mongo-host)
       (conf/set-param! [:service :mongo :host] (env :mongo-host)))
+
+    ; TODO does this ever happen
     (when (env :solr-host)
       (conf/set-param! [:service :solr :url]
                        (str "http://" (env :solr-host) ":8983/solr/crmds1"))
@@ -68,6 +70,7 @@
 (def termination (promise))
 
 (defn -main [& args]
+  ; Drop leading colon from profile names.
   (let [profiles (map #(->> % (drop 1) (apply str) keyword) args)]
 
     (timbre/set-config! [:appenders :standard-out :enabled?] false)

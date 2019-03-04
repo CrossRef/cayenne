@@ -10,8 +10,13 @@ services:
       - API_PORT=3000
       - NREPL_PORT=7880
     ports:
-      - 80:3000
+      - 3000:3000
       - 7880:7880
+    volumes:
+    - .:/usr/src/app
+    - ./.m2-cache:/root/.m2
+    working_dir: "/usr/src/app"
+
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.2.3
     container_name: elasticsearch
