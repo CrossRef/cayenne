@@ -1,5 +1,6 @@
 (ns cayenne.elastic.mappings
   (:require [qbits.spandex :as elastic]
+            [cayenne.conf :as conf]))
             [taoensso.timbre :as timbre :refer [info]]
             [slingshot.slingshot :refer [try+]]))
 
@@ -288,12 +289,18 @@
    "journal"  {"_all" {:enabled false} :properties journal-properties}})
 
 (def index-settings
-  {"work"     {:number_of_shards 1  :number_of_replicas 3}
-   "member"   {:number_of_shards 1  :number_of_replicas 3}
-   "funder"   {:number_of_shards 1  :number_of_replicas 3}
-   "subject"  {:number_of_shards 1  :number_of_replicas 3}
-   "coverage" {:number_of_shards 1  :number_of_replicas 3 :index.mapping.total_fields.limit 1500}
-   "journal"  {:number_of_shards 1  :number_of_replicas 3}})
+  {"work"     {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}
+   "member"   {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}
+   "funder"   {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}
+   "subject"  {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}
+   "coverage" {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}
+   "journal"  {:number_of_shards (conf/get-param [:service :elastic :shard-count])
+               :number_of_replicas (conf/get-param [:service :elastic :replica-count])}})
 
 (defn create-indexes
   "Creates an index per top-level document type - in preparation for ES 6+
