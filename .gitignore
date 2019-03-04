@@ -21,3 +21,6 @@ pom.xml
 /src/cayenne/user.clj
 out.json
 out.txt
+.m2-cache
+dev-resources/feeds
+.DS_Store

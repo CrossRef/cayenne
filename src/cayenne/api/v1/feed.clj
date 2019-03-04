@@ -1,4 +1,6 @@
 (ns cayenne.api.v1.feed
+  "Feed ingests XML files that are pushed into Cayenne.
+   A directory structure of input and output files is expected: 'in', 'processed' and 'failed'."
   (:require [cayenne.conf :as conf]
             [cayenne.xml :as xml]
             [cayenne.formats.unixsd :as unixsd]
@@ -58,9 +60,12 @@
 (defn feed-in-dir []
   (str (conf/get-param [:dir :data]) "/feed-in"))
 
-(defn feed-filename [copy-name content-type provider id]
+(defn feed-filename
+  "Filenames are expected to take a prescribed pattern in an expected directory structure."
+  [stage-name content-type provider id]
+  {:pre [(#{"in" "processed" "failed"} stage-name )]}
   (str (conf/get-param [:dir :data])
-       "/feed-" copy-name
+       "/feed-" stage-name
        "/" provider
        "-" (content-type-mnemonics content-type)
        "-" id
@@ -103,6 +108,7 @@
     (.renameTo from-file to-file)))
 
 (defn make-feed-context
+  "A feed context describes a single input file's attributes."
   ([content-type provider doi]
    (let [base {:content-type content-type
                :provider provider
@@ -119,9 +125,12 @@
          (assoc :processed-file (processed-file base))
          (assoc :failed-file (failed-file base))))))
 
-(defn process-with [process-fn feed-context]
+(defn process-with
+  "Processes an input file according to supplied function.
+   Builds a reader over the input file, passes to the function, then moves to failed or processed dir."
+  [process-fn feed-context]
   (with-open [rdr (reader (:incoming-file feed-context))]
-    (try 
+    (try
       (do
         (process-fn rdr)
         (move-file! (:incoming-file feed-context)
@@ -137,6 +146,7 @@
 (defmethod process! "application/vnd.crossref.unixsd+xml" [feed-context filename]
   (process-with
    (fn [rdr]
+     ; xml/process-xml returns the document but we use the callback to do the work.
      (let [f #(let [parsed (->> %
                            unixsd/unixsd-record-parser
                            (apply itree/centre-on))
@@ -156,13 +166,18 @@
    feed-context))
 
 (defn process-feed-file! [f]
-  (try
-    (feed-log (.getName f) "Preparing to process")
-    (-> f .getAbsolutePath make-feed-context (process! (.getName f)))
-    (feed-log (.getName f) "Processed")
-    (catch Exception e
-      (feed-log (.getName f) "Failed")
-      (error e (str "Failed to process feed file " f)))))
+  (let [filename (.getName f)]
+    (try
+      (let [context (-> f .getAbsolutePath make-feed-context)]
+
+        (feed-log filename "Preparing to process")
+        (process! context filename)
+        (feed-log filename "Processed"))
+
+      (catch Exception e
+        (feed-log filename "Failed")
+        (error e (str "Failed to process feed file " f))))))
+
 
 (defn record! [feed-context body]
   (let [incoming-file (-> feed-context :incoming-file io/file)]
@@ -204,7 +219,8 @@
 (def feed-file-chan (chan (buffer 1000)))
 
 (defn start-feed-processing []
-  (dotimes [n (- (.. Runtime getRuntime availableProcessors) 1)]
+  (feed-thread-log (str "Start with concurrency " (conf/get-param [:val :feed-concurrency])))
+  (dotimes [n (conf/get-param [:val :feed-concurrency])]
     (go-loop []
       (try
         (feed-thread-log (str "Go loop #" n " iteration getting a job"))

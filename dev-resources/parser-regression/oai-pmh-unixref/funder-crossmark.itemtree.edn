@@ -1,0 +1,133 @@
+(["http://dx.doi.org/10.1063/1.4744984"
+  {:type :work,
+   :id ("http://id.crossref.org/issn/1070-6631"),
+   :rel
+   {:title
+    ({:type :title, :subtype :long, :value "Physics of Fluids"}
+     {:type :title, :subtype :short, :value "Phys. Fluids"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/1070-6631",
+      :original "10706631"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day nil,
+         :month nil,
+         :year "2012",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "24",
+         :rel
+         {:component
+          ({:type :work,
+            :id ("http://dx.doi.org/10.1063/1.4744984"),
+            :rel
+            {:funder
+             ({:type :org,
+               :name "NSF",
+               :rel
+               {:awarded
+                ({:type :grant,
+                  :id ["Invalid old-style funding identifier"]}
+                 {:type :grant, :id ["Invalid award number"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/1000001"]}
+              {:type :org,
+               :name "National Institutes of Health",
+               :rel
+               {:awarded
+                ({:type :grant, :id ["5R21HL108272"]}
+                 {:type :grant, :id ["Another award"]})},
+               :doi-asserted-by "publisher",
+               :id ["10.13039/100000002"]}
+              {:type :org,
+               :name "All within group",
+               :doi-asserted-by "publisher",
+               :id ["10.13039/1001"]}),
+             :domains ("aip.org"),
+             :published-print
+             ({:type :date,
+               :day nil,
+               :month nil,
+               :year "2012",
+               :time-of-year nil}),
+             :domain-exclusive (true),
+             :update-policy
+             ({:type :id,
+               :subtype :doi,
+               :value
+               "http://dx.doi.org/10.1063/aip-crossmark-policy-page",
+               :original "10.1063/aip-crossmark-policy-page"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Characterization of the transport topology in patient-specific abdominal aortic aneurysm models"}),
+             :author
+             ({:type :person,
+               :first-name "Amirhossein",
+               :last-name "Arzani",
+               :sequence "first",
+               :suffix nil}
+              {:type :person,
+               :first-name "Shawn C.",
+               :last-name "Shadden",
+               :sequence "additional",
+               :suffix nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://link.aip.org/link/PHFLE6/v24/i8/p081901/s1&Agg=doi"}),
+             :assertion
+             ({:explanation-url nil,
+               :name "received",
+               :value "2012-04-17",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Received",
+               :url nil,
+               :order "0"}
+              {:explanation-url nil,
+               :name "accepted",
+               :value "2012-07-19",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Accepted",
+               :url nil,
+               :order "1"}
+              {:explanation-url nil,
+               :name "published",
+               :value "2012-08-10",
+               :type :assertion,
+               :group-label "Publication History",
+               :group-name "publication_history",
+               :label "Published",
+               :url nil,
+               :order "2"})},
+            :subtype :journal-article,
+            :first-page "081901",
+            :last-page nil,
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering nil,
+      :published-print
+      {:type :date,
+       :day nil,
+       :month nil,
+       :year "2012",
+       :time-of-year nil},
+      :published-online nil,
+      :issue "8"}),
+    :publisher [{:type :org, :id [nil nil]}],
+    :relation ()},
+   :subtype :journal,
+   :language "en"}])

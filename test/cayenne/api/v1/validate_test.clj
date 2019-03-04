@@ -2,7 +2,7 @@
   (:require [clojure.test :refer [deftest testing are]]
             [cayenne.api.v1.validate :refer [validate-pair-list-form]]))
 
-(deftest validate-pair-list-form-test
+(deftest ^:todo validate-pair-list-form-test
   (testing "returns expected result when :also is nil"
     (are [pair context expected] (= (validate-pair-list-form context pair :also nil) expected)
          "a:1" {} {}

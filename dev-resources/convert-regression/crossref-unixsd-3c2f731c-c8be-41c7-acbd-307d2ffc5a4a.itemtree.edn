@@ -1,0 +1,247 @@
+(["http://dx.doi.org/10.1016/j.psyneuen.2016.11.007"
+  {:type :work,
+   :id ("http://id.crossref.org/issn/0306-4530"),
+   :rel
+   {:title
+    ({:type :title, :subtype :long, :value "Psychoneuroendocrinology"}
+     {:type :title,
+      :subtype :short,
+      :value "Psychoneuroendocrinology"}),
+    :issn
+    ({:type :id,
+      :subtype :issn,
+      :kind :print,
+      :value "http://id.crossref.org/issn/0306-4530",
+      :original "03064530"}),
+    :component
+    ({:type :work,
+      :rel
+      {:published-print
+       ({:type :date,
+         :day nil,
+         :month 2,
+         :year "2017",
+         :time-of-year nil}),
+       :component
+       ({:type :work,
+         :subtype :journal-volume,
+         :volume "76",
+         :rel
+         {:component
+          ({:type :work,
+            :id
+            ("http://dx.doi.org/10.1016/j.psyneuen.2016.11.007"
+             "http://id.crossref.org/supp/S0306453016302293"),
+            :rel
+            {:license
+             ({:type :url,
+               :content-version "tdm",
+               :value "http://www.elsevier.com/tdm/userlicense/1.0/"}),
+             :number
+             ({:type :number,
+               :kind "sequence-number",
+               :value "S0306453016302293"}),
+             :domains
+             ("psyneuen-journal.com"
+              "clinicalkey.jp"
+              "clinicalkey.com"
+              "clinicalkey.es"
+              "clinicalkey.com.au"
+              "clinicalkey.fr"
+              "elsevier.com"
+              "sciencedirect.com"),
+             :resource-fulltext
+             ({:type :url,
+               :content-version "vor",
+               :intended-application "text-mining",
+               :content-type "text/plain",
+               :value
+               "http://api.elsevier.com/content/article/PII:S0306453016302293?httpAccept=text/plain"}
+              {:type :url,
+               :content-version "vor",
+               :intended-application "text-mining",
+               :content-type "text/xml",
+               :value
+               "http://api.elsevier.com/content/article/PII:S0306453016302293?httpAccept=text/xml"}),
+             :published-print
+             ({:type :date,
+               :day nil,
+               :month 2,
+               :year "2017",
+               :time-of-year nil}),
+             :domain-exclusive (true),
+             :update-policy
+             ({:type :id,
+               :subtype :doi,
+               :value "http://dx.doi.org/10.1016/elsevier_cm_policy",
+               :original "10.1016/elsevier_cm_policy"}),
+             :title
+             ({:type :title,
+               :subtype :long,
+               :value
+               "Hypothalamic-pituitary-adrenal axis activity and cognition in major depression: The role of remission status"}),
+             :author
+             ({:type :person,
+               :first-name "Neus",
+               :last-name "Salvat-Pujol",
+               :sequence "first",
+               :suffix nil}
+              {:type :person,
+               :first-name "Javier",
+               :last-name "Labad",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Mikel",
+               :last-name "Urretavizcaya",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Aida",
+               :last-name "de Arriba-Arnau",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Cinto",
+               :last-name "Segalàs",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Eva",
+               :last-name "Real",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Alex",
+               :last-name "Ferrer",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "José M.",
+               :last-name "Crespo",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Susana",
+               :last-name "Jiménez-Murcia",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Carles",
+               :last-name "Soriano-Mas",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "José M.",
+               :last-name "Menchón",
+               :sequence "additional",
+               :suffix nil}
+              {:type :person,
+               :first-name "Virginia",
+               :last-name "Soria",
+               :sequence "additional",
+               :suffix nil}),
+             :resource-resolution
+             ({:type :url,
+               :value
+               "http://linkinghub.elsevier.com/retrieve/pii/S0306453016302293"}),
+             :assertion
+             ({:explanation-url nil,
+               :name "publisher",
+               :value "Elsevier",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "This article is maintained by",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "articletitle",
+               :value
+               "Hypothalamic-pituitary-adrenal axis activity and cognition in major depression: The role of remission status",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Article Title",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "journaltitle",
+               :value "Psychoneuroendocrinology",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Journal Title",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "articlelink",
+               :value
+               "http://dx.doi.org/10.1016/j.psyneuen.2016.11.007",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label
+               "CrossRef DOI link to publisher maintained version",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "content_type",
+               :value "article",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Content Type",
+               :url nil,
+               :order nil}
+              {:explanation-url nil,
+               :name "copyright",
+               :value "© 2016 Elsevier Ltd. All rights reserved.",
+               :type :assertion,
+               :group-label nil,
+               :group-name nil,
+               :label "Copyright",
+               :url nil,
+               :order nil})},
+            :subtype :journal-article,
+            :first-page "38",
+            :last-page "48",
+            :other-pages nil})}})},
+      :subtype :journal-issue,
+      :numbering "C",
+      :published-print
+      {:type :date,
+       :day nil,
+       :month 2,
+       :year "2017",
+       :time-of-year nil},
+      :published-online nil,
+      :issue nil}),
+    :publisher
+    [{:type :org,
+      :name "Elsevier BV",
+      :journal-id "1841",
+      :citation-id "86279700",
+      :id
+      ["http://id.crossref.org/member/78"
+       "http://id.crossref.org/prefix/10.1016"]}],
+    :relation (),
+    :deposited
+    [{:type :date,
+      :year 2017,
+      :month 6,
+      :day 25,
+      :hour 3,
+      :minute 19,
+      :second 29}],
+    :first-deposited
+    [{:type :date,
+      :year 2016,
+      :month 11,
+      :day 10,
+      :hour 18,
+      :minute 33,
+      :second 42}],
+    :cited-count [6]},
+   :subtype :journal,
+   :language "en"}])

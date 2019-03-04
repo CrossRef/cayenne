@@ -3,7 +3,7 @@
             [clojure.java.io :refer [resource]]
             [clojure.test :refer [use-fixtures deftest testing is]]))
 
-(deftest querying-funders
+(deftest ^:integration querying-funders
   (testing "funders endpoint returns expected result"
     (let [response (api-get "/v1/funders")
           expected-response (read-string (slurp (resource "funders.edn")))]
@@ -31,6 +31,4 @@
   :once
   (api-with
     #(do (user/load-test-funders)
-         (user/index-feed)
-         ;; todo wait until indexing finished
-         (Thread/sleep 5000))))
+         (user/index-feed))))

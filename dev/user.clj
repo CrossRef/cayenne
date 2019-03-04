@@ -1,4 +1,5 @@
 (ns user
+  "User namespace for testing and development."
   (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
             [cayenne.conf :refer [cores get-param set-param! start-core! stop-core! with-core]]
             [cayenne.elastic.convert :as elastic-convert]
@@ -12,50 +13,90 @@
             [clojure.java.shell :refer [sh]]
             [me.raynes.fs :refer [copy-dir delete-dir]]
             [nio2.dir-seq :refer [dir-seq-glob]]
-            [nio2.io :refer [path]]))
+            [nio2.io :refer [path]]
+            [qbits.spandex :as elastic]
+            [robert.bruce :as bruce]))
+
+
+
+(defn client []
+  (qbits.spandex/client {:hosts (get-param [:service :elastic :urls])}))
 
 (defn- elastic-ready? []
   (try
-    (= 200 (:status (http/get "http://localhost:9200")))
+    (-> (client)
+         (elastic/request {:url [:_cat :indices] :method :get})
+         :status
+         #{200}
+        boolean)
+
     (catch Exception e
       false)))
 
+(defn wait-for-elastic?
+  "Wait for Elastic to become ready, return success."
+  []
+  (bruce/try-try-again {:tries 100 :sleep 10000} elastic-ready?))
+
 (defn elastic-doc-count []
-  (-> (http/get "http://localhost:9200/work/_search" {:as :json})
-      :body
-      :hits
-      :total))
+  (-> (client)
+      (elastic/request {:url [:work :_search] :as :json})
+      :body :hits :total))
+
+
+(defn delete-elastic-indexes
+  "Restore Elastic Search to a initial state between tests."
+  ; Implemented in user because there's no good reason to do this in production.
+  []
+  (-> (client)
+      (elastic/request {:url [:_all ] :method :delete})))
+
+
+(defn flush-elastic
+  "Wait for all Elastic Search indexing activity to complete before proceeding."
+  []
+  (-> (client)
+      (elastic/request {:url [:_all :_flush]
+                        :method :post
+                        :query-string
+                        {:wait_if_ongoing true
+                         :force true}}))
+  (-> (client)
+      (elastic/request {:url [:_all :_refresh]
+                        :method :post})))
 
 (defn create-elastic-indexes []
-  (elastic-mappings/create-indexes
-   (qbits.spandex/client {:hosts (get-param [:service :elastic :urls])})))
+  (elastic-mappings/create-indexes (client)))
 
 (def core-started? (atom false))
 
 (defn start []
-  (sh "docker-compose" "down")
-  (let [result
-        (sh "docker-compose" "up" "-d" "elasticsearch"
-            :env {"PATH" (System/getenv "PATH")})]
-    (if-not (-> result :exit zero?)
-      (do (println "Error starting Docker Compose:")
-          (println result))
-      (do
-        (while (not (elastic-ready?))
-          (println "Waiting for elasticsearch to be ready..")
-          (Thread/sleep 500))
-        (create-elastic-indexes)
-        (when-not @core-started?
-          (when (start-core! :default :api :feed-api)
-            (with-core :default
-              (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
-              (->> (.getPath (resource "registry.rdf"))
-                   (str "file://")
-                   (set-param! [:location :cr-funder-registry])))
-            (reset! core-started? true)))))))
+  ; For easier debugging ingest only one at once.
+  (set-param! [:val :feed-concurrency] 1)
+
+  (set-param! [:service :elastic :urls] ["http://elasticsearch:9200"])
+
+  (when-not (wait-for-elastic?)
+    (println "Error: Can't start Elastic")
+    (System/exit 1))
+
+  ; Delete the Elastic index when starting, not stopping.
+  ; This allows us to inspect it after tests for debugging.
+  (delete-elastic-indexes)
+  (create-elastic-indexes)
+
+  (when-not @core-started?
+    (when (start-core! :default :api :feed-api)
+      (with-core :default
+        (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+        (->> (.getPath (resource "registry.rdf"))
+             (str "file://")
+             (set-param! [:location :cr-funder-registry])))
+      (reset! core-started? true))))
 
 (defn stop []
-  (sh "docker-compose" "down"))
+  ; TODO Maybe we don't need this any more.
+  (println "Stopping!"))
 
 (defn reset []
   (stop-core! :default)
@@ -124,18 +165,34 @@
         (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
       (index-members)
       (start-feed-processing)
-      (Thread/sleep 1000)
+
       (let [doc-count (atom -1)]
         (while (< @doc-count (elastic-doc-count))
-          (println "Waiting for elasticsearch to finish indexing....")
+          (println "Waiting for elasticsearch to finish indexing. Got" @doc-count "/" (elastic-doc-count))
           (reset! doc-count (elastic-doc-count))
           (Thread/sleep 10000))
-        (if (not= (elastic-doc-count) feed-file-count)
-          (println "Gave up waiting for elasticsearch to finish indexing....")))
-      (Thread/sleep 2000)
-      (check-journals)
+
+        (when (not= (elastic-doc-count) feed-file-count)
+          (println "Gave up waiting for elasticsearch to finish indexing...."))
+
+        (println "Elastic Search now has" @doc-count "/" (elastic-doc-count)))
+
+      ; Wait for all docs to be indexed becuase we're going to query them in coverage.
+      (println "Flush work indexes...")
+      (flush-elastic)
+
+      ; Build coverage.
+      (println "Generate coverage for journals...")
+        (check-journals)
+
+
+      (println "Generate coverage for members...")
       (check-members)
-      (Thread/sleep 2000))))
+
+      (println "Flush coverage indexes...")
+      (flush-elastic)
+
+      (println "Done creating instance."))))
 
 (defn elastic-work-hits []
   (map elastic-convert/es-doc->citeproc
@@ -166,3 +223,4 @@
         (spit clean-file-path (slurp (str "https://www.crossref.org/openurl/?pid={REPLACE-ME}&noredirect=true&format=unixsd&id=doi:" doi)))
         (Thread/sleep 1000)
         (println "Saved clean version of" doi "to" clean-file-path)))))
+
