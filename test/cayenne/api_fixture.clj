@@ -46,3 +46,6 @@
   "Provide an empty API setup that's ready to index data."
   (api-with user/setup-feed))
 
+(def empty-api
+  "An empty set up with indexes but no data."
+  (api-with (constantly nil)))

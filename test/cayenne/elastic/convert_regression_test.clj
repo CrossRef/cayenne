@@ -81,7 +81,7 @@
   (testing "Every input file should convert to a known result"
            (clj-time/do-at now
            (doseq [[in-file expected-result-file] (input-result-files)]
-             (println "Compare" in-file)
+             (println "Compare" (.getName in-file))
              (with-open [input (-> in-file io/reader PushbackReader.)]
                ; EDN file is sequence of pairs of [doi, itree]
                (let [result (map (fn [[doi itree]]

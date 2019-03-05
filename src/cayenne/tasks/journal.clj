@@ -10,44 +10,50 @@
             [cayenne.ids.issn :as issn]
             [cayenne.elastic.util :as elastic-util]))
 
-(def title-column 0)
-(def id-column 1)
-(def publisher-column 2)
-(def subjects-column 3)
-(def pissn-column 4)
-(def eissn-column 5)
-(def doi-column 6)
-(def issues-column 7)
-
 (defn issns [csv-row]
-  (let [p-issn (nth csv-row pissn-column)
-        e-issn (nth csv-row eissn-column)]
+  (let [p-issn (:pissn csv-row)
+        e-issn (:eissn csv-row)]
     (cond-> []
       (not (string/blank? p-issn))
       (conj {:value (issn/normalize-issn p-issn) :type "print"})
       (not (string/blank? e-issn))
       (conj {:value (issn/normalize-issn e-issn) :type "electronic"}))))
 
-(defn index-command [csv-row]
-  (let [title (nth csv-row title-column)
-        journal-id (nth csv-row id-column)]
+(defn index-command
+  "Convert a parsed CSV row and turn into an Elastic Search bulk index command."
+  [csv-row]
+  (let [title (:JournalTitle csv-row)
+        journal-id (:JournalID csv-row)]
     [{:index {:_id (Long/parseLong journal-id)}}
      {:title     title
       :token     (util/tokenize-name title)
       :id        (Long/parseLong journal-id)
-      :doi       (-> csv-row (nth doi-column) doi-id/normalize-long-doi)
-      :publisher (nth csv-row publisher-column)
+      :doi       (-> csv-row :doi doi-id/normalize-long-doi)
+      :publisher (:Publisher csv-row)
       :issn      (issns csv-row)}]))
 
+(defn fetch-titles
+  "Given an open reader, return a sequence of title entries as hashmaps.
+   Remember to consume the lazy seq before closing the reader!"
+  [rdr]
+  (let [rows (csv/read-csv rdr)
+        ; Header rows as keywords.
+        header (->> rows first (map keyword))
+        entries (rest rows)]
+    (map #(apply merge (map hash-map header %)) entries)))
+
+(def chunk-size
+  "Items in an index command. Note that this must be divisible by 2,
+   as it's concatenated pairs of index-command, body."
+  100)
+
 (defn index-journals []
-  (with-open [body (io/reader (conf/get-param [:location :cr-titles-csv]))]
-    (let [cleaned (string/replace (slurp body) #"\\\"" "")]
-      (doseq [titles (partition-all 100 (drop 1 (csv/read-csv cleaned)))]
+  (with-open [rdr (io/reader (conf/get-param [:location :cr-titles-csv]))]
+    (let [titles (fetch-titles rdr)
+          index-items (mapcat index-command titles)]
+      (doseq [chunk (partition-all chunk-size index-items)]
         (elastic/request
-         (conf/get-service :elastic)
-         {:method :post
-          :url "journal/journal/_bulk"
-          :body (->> titles
-                     (map index-command)
-                     flatten
-                     elastic-util/raw-jsons)})))))
+          (conf/get-service :elastic)
+            {:method :post
+             :url "journal/journal/_bulk"
+             :body (elastic-util/raw-jsons chunk)})))))
