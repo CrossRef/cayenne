@@ -17,9 +17,13 @@
        (map #(string/replace-first % #"\.csl" ""))))
 
 (defn csl [project & args]
+  (println "Generate CSL resources...")
+  (println "Generate Locales...")
   (->> (generate-locales-manifest)
        pr-str
        (spit "resources/locales.edn"))
+  (println "Generate Styles...")
   (->> (generate-styles-manifest)
        pr-str
-       (spit "resources/styles.edn")))
+       (spit "resources/styles.edn"))
+  (println "Done!"))
