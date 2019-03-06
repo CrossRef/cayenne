@@ -5,17 +5,15 @@ download and ingest / indexing.
 
 ## Quick Start
 
-Make sure you have these dependencies installed within your development environment:
+Cayenne runs in Docker, both in developmentt and production. In development the environment is mounted inside the container so any file changes are immediately reflected in the container.
 
-- Java 7
-- Leiningen
-- Docker
+Make sure you have Docker and Docker Compose installed. Check by running:
 
-The tests require Docker to spin up service dependencies on development machine (Elastic Search). Download Docker for Mac from <https://www.docker.com/docker-mac> and confirm that it's installed with `docker-compose --version`. All tests run in Docker Compose.
+    $ docker-compose --version
 
 ### Preparing CSL Resources
 
-Before running cayenne, building an uberjar or building a docker docker image, CSL resources
+Before running Cayenne, building an uberjar or building a production docker docker image, CSL resources
 must be pulled into the local repository via git submodules. Manifest files must then be
 created for CSL style files and locale files.
 
@@ -25,7 +23,31 @@ Update git submodules to bring in CSL style and locale files:
 
 Refresh `resources/styles.edn` and `resources/locales.edn`:
 
-    $ lein csl
+    $ docker-compose  -f docker-compose.yml run api lein csl
+
+## Running in a REPL
+
+To start a repl:
+
+    $ docker-compose -f docker-compose.yml run --service-ports api lein repl
+    
+Then call `(begin)` and try a few commands, for example, parse some XML downloaded from
+OAI-PMH:
+
+    > (begin)
+	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
+	
+To start a test version of the API type:
+
+      > (user/start)
+
+Then, to load the corpus of documents complete with coverage checks (the same function that's used in the integration tests):
+
+    >  (user/index-feed)
+    
+You can ctrl-c to stop coverage checks if you wish.
+
+Then visit e.g. <http://localhost:3000/v1/works>
 
 ## Testing
 
@@ -63,14 +85,7 @@ The tests themselves are classed as unit tests because whilst the tests load dat
 
 When a new feature is introduced, or a new bug found, a new XML file should be added. There's a function which parses the input and creates an EDN file of the output. You should run this, **check the output to see if it's actually correct**, and then then the new files into source control.
 
-## Running in a REPL
 
-Call `lein repl`, `(begin)` then try a few commands, for example, parse some XML downloaded from
-OAI-PMH:
-
-    $ lein repl
-    > (begin)
-	> (action/get-oai-records (conf/get-param [:oai :crossref-journals]) "2012-01-01" "2012-01-02" action/dump-plain-docs)
 
 ## Run in Foreground
 

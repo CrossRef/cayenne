@@ -111,7 +111,7 @@
 
   (set-param! [:service :elastic :shard-count] 2)
   (set-param! [:service :elastic :replica-count] 0)
-  (set-param! [:service :elastic :urls] ["http://localhost:9200"])
+  (set-param! [:service :elastic :urls] ["http://elasticsearch:9200"])
   (set-param! [:service :api :port] 3000)
   (set-param! [:service :queue :host] "5.9.51.150")
   (set-param! [:service :logstash :host] "5.9.51.2")
