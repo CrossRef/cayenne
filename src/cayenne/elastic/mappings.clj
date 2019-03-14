@@ -1,7 +1,7 @@
 (ns cayenne.elastic.mappings
   (:require [qbits.spandex :as elastic]
             [cayenne.conf :as conf]
-            [taoensso.timbre :as timbre :refer [info]]
+            [taoensso.timbre :as timbre :refer [info error]]
             [slingshot.slingshot :refer [try+]]))
 
 (def contributor-properties
@@ -270,6 +270,7 @@
    :issn      {:type "object" :properties issn-properties}})
 
 (def coverage-properties
+  ; Individual exemptions from the index.
   {:subject-type  {:type "keyword"}
    :subject-id    {:type "long"}
    :started       {:type "date"}
@@ -277,16 +278,17 @@
    :total-dois    {:type "long"}
    :backfile-dois {:type "long"}
    :current-dois  {:type "long"}
-   :breakdowns    {:type "object"}
-   :coverage      {:type "object"}})
+   ; Breakdowns and coverage are particularly large.
+   :breakdowns    {:type "object" :enabled false }
+   :coverage      {:type "object" :enabled false }})
 
 (def index-mappings
-  {"work"     {"_all" {:enabled false} :properties work-properties}
-   "member"   {"_all" {:enabled false} :properties member-properties}
-   "funder"   {"_all" {:enabled false} :properties funder-properties}
-   "subject"  {"_all" {:enabled false} :properties subject-properties}
-   "coverage" {"_all" {:enabled false} :properties coverage-properties}
-   "journal"  {"_all" {:enabled false} :properties journal-properties}})
+  {"work"     {:properties work-properties}
+   "member"   {:properties member-properties}
+   "funder"   {:properties funder-properties}
+   "subject"  {:properties subject-properties}
+   "coverage" {:properties coverage-properties}
+   "journal"  {:properties journal-properties}})
 
 (def index-settings
   {"work"     {:number_of_shards (conf/get-param [:service :elastic :shard-count])
@@ -319,5 +321,11 @@
                         :body {:settings (index-settings index-name)
                                :mappings {index-name index-data}}})
       (catch #(-> % :body :error :root_cause first :type #{"resource_already_exists_exception"}) _
-       (info "Index" index-name "already exists, skipping.")))))
+       (info "Index" index-name "already exists, skipping."))
+
+     (catch qbits.spandex.Response exception
+       (error "Error with mappings"
+              (-> exception :body :error :root_cause))
+       (throw exception)))))
+
 

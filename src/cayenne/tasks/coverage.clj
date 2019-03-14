@@ -151,14 +151,20 @@
              (partition-all 100 $))]
       (swap! cnt #(+ % (count some-records)))
       (info "Done" @cnt "coverage checks...")
-      (elastic/request
-       (conf/get-service :elastic)
-       {:method :post
-        :url "/coverage/coverage/_bulk"
-        :body (->> some-records
-                   (map #(index-coverage-command % :type index-name :id-field id-field))
-                   flatten
-                   elastic-util/raw-jsons)}))))
+      (let [body (->> some-records
+                      (map #(index-coverage-command % :type index-name :id-field id-field))
+                      flatten
+                      elastic-util/raw-jsons)
+
+            response (elastic/request
+                       (conf/get-service :elastic)
+                       {:method :post
+                        :url "/coverage/coverage/_bulk"
+                        :body body})]
+
+        (when (-> response :body :errors)
+          (error "Error saving coverage:" (-> response :body :items))
+          (throw (Exception. "Errors indexing coverage!")))))))
 
 (defn check-members [] (check-index :member :id))
 
