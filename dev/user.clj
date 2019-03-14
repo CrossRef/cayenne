@@ -1,6 +1,6 @@
 (ns user
   "User namespace for testing and development."
-  (:require [cayenne.api.v1.feed :refer [start-feed-processing]]
+  (:require [cayenne.api.v1.feed :as feed :refer [start-feed-processing feed-thread-log]]
             [cayenne.conf :refer [cores get-param set-param! start-core! stop-core! with-core]]
             [cayenne.elastic.convert :as elastic-convert]
             [cayenne.elastic.mappings :as elastic-mappings]
@@ -9,15 +9,14 @@
             [cayenne.tasks.coverage :refer [check-journals check-members]]
             [cayenne.tasks.funder :refer [index-funders select-country-stmts]]
             [clj-http.client :as http]
-            [clojure.java.io :refer [resource]]
+            [clojure.java.io :as io :refer [resource]]
             [clojure.java.shell :refer [sh]]
+            [clojure.string :as string]
             [me.raynes.fs :refer [copy-dir delete-dir]]
             [nio2.dir-seq :refer [dir-seq-glob]]
             [nio2.io :refer [path]]
             [qbits.spandex :as elastic]
             [robert.bruce :as bruce]))
-
-
 
 (defn client []
   (qbits.spandex/client {:hosts (get-param [:service :elastic :urls])}))
@@ -68,8 +67,6 @@
 (defn create-elastic-indexes []
   (elastic-mappings/create-indexes (client)))
 
-(def core-started? (atom false))
-
 (defn start []
   ; For easier debugging ingest only one at once.
   (set-param! [:val :feed-concurrency] 1)
@@ -85,14 +82,12 @@
   (delete-elastic-indexes)
   (create-elastic-indexes)
 
-  (when-not @core-started?
-    (when (start-core! :default :api :feed-api)
-      (with-core :default
-        (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
-        (->> (.getPath (resource "registry.rdf"))
-             (str "file://")
-             (set-param! [:location :cr-funder-registry])))
-      (reset! core-started? true))))
+  (when (start-core! :default :api :feed-api)
+    (with-core :default
+      (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
+      (->> (.getPath (resource "registry.rdf"))
+           (str "file://")
+           (set-param! [:location :cr-funder-registry])))))
 
 (defn stop []
   ; TODO Maybe we don't need this any more.
@@ -148,12 +143,23 @@
      :feed-in-dir feed-in-dir
      :feed-file-count feed-file-count}))
 
+(defn body-file-count
+  [dir]
+  (->> dir
+       io/file
+       file-seq
+       (map #(.getName %))
+       (filter #(clojure.string/ends-with? % ".body"))
+       count))
+
 (defn index-feed
   "Set up an instance with the test corpus indexed."
   [& {:keys [source-dir]
       :or {source-dir (or (System/getenv "CAYENNE_API_TEST_CORPUS") "/corpus")}}]
 
-  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed :source-dir source-dir)]
+  (let [{:keys [feed-source-dir feed-in-dir feed-file-count]} (setup-feed :source-dir source-dir)
+        num-feed-files (body-file-count feed-source-dir)]
+    (println "Copying" num-feed-files "files of test data from" feed-source-dir "to" feed-in-dir)
     (copy-dir feed-source-dir feed-in-dir)
     (index-journals)
     (with-redefs
@@ -162,20 +168,12 @@
         (read-string (slurp (resource "get-member-list.edn"))))
       cayenne.tasks.publisher/get-prefix-info
       (fn get-prefix-info [_ prefix]
-        (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))]
+        (assoc (read-string (slurp (resource "get-prefix-info.edn"))) :value prefix))
+
+      feed-thread-log println]
       (index-members)
-      (start-feed-processing)
 
-      (let [doc-count (atom -1)]
-        (while (< @doc-count (elastic-doc-count))
-          (println "Waiting for elasticsearch to finish indexing. Got" @doc-count "/" (elastic-doc-count))
-          (reset! doc-count (elastic-doc-count))
-          (Thread/sleep 10000))
-
-        (when (not= (elastic-doc-count) feed-file-count)
-          (println "Gave up waiting for elasticsearch to finish indexing...."))
-
-        (println "Elastic Search now has" @doc-count "/" (elastic-doc-count)))
+      (feed/feed-once!)
 
       ; Wait for all docs to be indexed becuase we're going to query them in coverage.
       (println "Flush work indexes...")
@@ -184,7 +182,6 @@
       ; Build coverage.
       (println "Generate coverage for journals...")
         (check-journals)
-
 
       (println "Generate coverage for members...")
       (check-members)

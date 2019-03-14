@@ -244,6 +244,22 @@
      5000
      TimeUnit/MILLISECONDS)))
 
+(defn feed-once!
+  "Feed in everything in feed-in directory. Blocking."
+  []
+  (let [cnt (atom 0)
+        entries (dir-seq-glob (path (feed-in-dir)) "*.body")
+        num-entries (count entries)]
+    (doseq [p entries]
+      (let [f (.toFile p)]
+        (swap! cnt inc)
+
+        (when (zero? (rem @cnt 100))
+          (println "Load" f "," @cnt "/" num-entries))
+
+        (when (.exists f)
+          (process-feed-file! f))))))
+
 (conf/with-core :default
   (conf/add-startup-task
    :process-feed-files
