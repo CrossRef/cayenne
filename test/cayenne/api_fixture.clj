@@ -1,6 +1,8 @@
 (ns cayenne.api-fixture
   (:require [clj-http.client :as http]
-            [clj-time.core :as clj-time]))
+            [clj-time.core :as clj-time]
+            [clojure.data.json :as json]
+            [ring.mock.request :as mock]))
 
 (defonce api-root "http://localhost:3000")
 
@@ -20,16 +22,33 @@
       (finally
         (user/stop)))))
 
-(defn api-get [route & {:keys [sorter] :or {sorter :DOI}}]
-  (let [message (-> (http/get (str api-root route) {:as :json})
+(defn clean-api-response
+  [message {:keys [sorter] :or {sorter :DOI}}]
+  (cond-> message
+    (:last-status-check-time message) (dissoc :last-status-check-time)
+    (:indexed message) (dissoc :indexed)
+    (:items message) (-> (update :items (partial map #(dissoc % :indexed :last-status-check-time)))
+                         (update :items (partial sort-by sorter)))
+    (:descendants message) (update :descendants sort)))
+
+(defn api-get-network
+  "Make an API request via the HTTP stack."
+  [route & options]
+  (-> (http/get (str api-root route) {:as :json})
                     :body
-                    :message)]
-    (cond-> message
-      (:last-status-check-time message) (dissoc :last-status-check-time)
-      (:indexed message) (dissoc :indexed)
-      (:items message) (-> (update :items (partial map #(dissoc % :indexed :last-status-check-time)))
-                           (update :items (partial sort-by sorter)))
-      (:descendants message) (update :descendants sort))))
+                    :message
+      (clean-api-response options)))
+
+(defn api-get
+  "Make an API request via directly via the Ring routes."
+  [route & options]
+  (let [api-handler (cayenne.api.route/create-handler)]
+        (-> (mock/request :get route)
+            api-handler
+            :body
+            (json/read-str :key-fn keyword)
+            :message
+            (clean-api-response options))))
 
 (defn no-scores
   "Update an API result, removing all scores."

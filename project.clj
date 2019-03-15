@@ -56,6 +56,7 @@
                  [liberator "0.15.2"]
                  [compojure "1.6.0"]
                  [ring "1.3.0"]
+                 [ring/ring-mock "0.3.2"]
                  [metosin/ring-swagger "0.26.0"]
                  [metosin/ring-swagger-ui "3.9.0"]
                  [ring-basic-authentication "1.0.5"]

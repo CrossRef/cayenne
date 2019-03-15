@@ -67,6 +67,8 @@
 (defn create-elastic-indexes []
   (elastic-mappings/create-indexes (client)))
 
+(def core-started? (atom false))
+
 (defn start []
   ; For easier debugging ingest only one at once.
   (set-param! [:val :feed-concurrency] 1)
@@ -82,7 +84,9 @@
   (delete-elastic-indexes)
   (create-elastic-indexes)
 
-  (when (start-core! :default :api :feed-api)
+  (when (and (not @core-started?)
+             (start-core! :default :api :feed-api))
+    (reset! core-started? true)
     (with-core :default
       (set-param! [:location :cr-titles-csv] (.getPath (resource "titles.csv")))
       (->> (.getPath (resource "registry.rdf"))
@@ -151,6 +155,8 @@
        (map #(.getName %))
        (filter #(clojure.string/ends-with? % ".body"))
        count))
+
+(def core-started? (atom false))
 
 (defn index-feed
   "Set up an instance with the test corpus indexed."
