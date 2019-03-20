@@ -282,7 +282,9 @@
       " "
       (:family-name contributor)))))
 
-(defn item-base-content [item]
+(defn item-base-content
+  "Build a string of basic content for general search indexing."
+  [item]
   (let [published-year (if-not (nil? (item-date item :published-print))
                          (t/year (item-date item :published-print))
                          nil)]
@@ -301,7 +303,7 @@
      (string/join " "))))
 
 (defn item-bibliographic-content
-  "Fields related to bibliographic citation look up"
+  "Build a string of bibliographic content for general search indexing."
   [item]
   (string/join
    " "
@@ -309,7 +311,7 @@
        (concat (map contributor-initials (item-contributors item))))))
 
 (defn item-metadata-content
-  "A default set of search fields"
+  "Build a string for general search indexing."
   [item]
   (string/join
    " "

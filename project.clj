@@ -3,7 +3,7 @@
   :url "http://github.com/CrossRef/cayenne"
   :repl-options {:port 9494 :init-ns cayenne.user}
   :main cayenne.production
-  :jvm-opts ["-XX:+UseG1GC"]
+  :jvm-opts ["-XX:+UseG1GC" "-XX:-OmitStackTraceInFastThrow"]
   :resource-paths ["csl/styles" "csl/locales" "resources"]
   :daemon {:cayenne {:ns cayenne.production
                      :pidfile "cayenne.pid"}}

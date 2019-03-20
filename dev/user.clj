@@ -50,7 +50,6 @@
   (-> (client)
       (elastic/request {:url [:_all ] :method :delete})))
 
-
 (defn flush-elastic
   "Wait for all Elastic Search indexing activity to complete before proceeding."
   []
@@ -63,6 +62,15 @@
   (-> (client)
       (elastic/request {:url [:_all :_refresh]
                         :method :post})))
+
+(defn delete-works
+  "Delete work data, leaving mappings intact."
+  []
+  (-> (client)
+      (elastic/request {:url [:work :_delete_by_query]
+                        :method :post
+                        :body {:query {:match_all {}}}}))
+  flush-elastic)
 
 (defn create-elastic-indexes []
   (elastic-mappings/create-indexes (client)))

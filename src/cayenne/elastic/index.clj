@@ -13,3 +13,9 @@
    (conf/get-service :elastic)
    {:method :post :url "/work/work/_bulk"
     :body (elastic-util/raw-jsons (index-command item))}))
+
+(defn index-items [items]
+  (elastic/request
+   (conf/get-service :elastic)
+   {:method :post :url "/work/work/_bulk"
+    :body (elastic-util/raw-jsons (mapcat index-command items))}))

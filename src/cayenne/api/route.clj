@@ -119,7 +119,9 @@
                                      (subs uri 0 (dec (count uri)))
                                      uri))))))
 
-(defn create-handler [& {:keys [feed-api] :or {feed-api false}}]
+(defn create-handler
+  "Construct the handlers. Feed API can be enabled or otherwise for security."
+  [& {:keys [feed-api] :or {feed-api false}}]
   (-> (create-all-routes :feed-api feed-api)
       (logstash/wrap-logstash :host (conf/get-param [:service :logstash :host])
                               :port (conf/get-param [:service :logstash :port])
@@ -144,7 +146,7 @@
    :api
    (fn [profiles]
      (conf/set-service! 
-      :api 
+      :api
       (hs/run-server 
        (create-handler :feed-api (some #{:feed-api} profiles))
        {:join? false

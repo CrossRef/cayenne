@@ -33,17 +33,18 @@
 
 (defn api-get-network
   "Make an API request via the HTTP stack."
-  [route & options]
-  (-> (http/get (str api-root route) {:as :json})
+  [route & {query-params :query-params :as options}]
+  (-> (http/get (str api-root route) {:as :json :query-params query-params})
                     :body
                     :message
       (clean-api-response options)))
 
 (defn api-get
   "Make an API request via directly via the Ring routes."
-  [route & options]
+  [route & {query-params :query-params :as options}]
   (let [api-handler (cayenne.api.route/create-handler)]
         (-> (mock/request :get route)
+            (mock/query-string query-params)
             api-handler
             :body
             (json/read-str :key-fn keyword)
