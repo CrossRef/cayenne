@@ -42,7 +42,7 @@
        (map (partial str "http://dx.doi.org/"))
        set))
 
-(deftest works-pagination
+(deftest ^:integration works-pagination
 
   ; Make sure there are no works left between tests.
   (user/delete-works)
