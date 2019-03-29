@@ -26,6 +26,14 @@
       (let [response (api-get (str "/v1/funders/" funder "/works?rows=1000"))
             expected-response (read-string (slurp (resource (str "funders/" funder "-works.edn"))))]
         (is (= expected-response response))))))
+(deftest ^:unit check-index-command-output
+  (testing "index-command output with and without optional argument yields same output except for elastic search index id")
+  (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+        funders (first (->> model find-funders (partition-all 5)))
+        with-es-id-output (->> funders (map (partial index-command model)) flatten)
+        without-es-id-output (->> "true" (map (partial index-command model) funders) flatten)]
+
+  )
 
 (use-fixtures
   :once
