@@ -135,10 +135,14 @@
     (if (not-empty ancestors)
       (build-hierarchy model (first ancestors) (hierarcy-node model funder-resource descendants child))
       (hierarcy-node model funder-resource descendants child))))
+(defn generate-es-id
+  "Generate an elastic search id from a resource in the context of a model. The unique id is taken from the resource ID"
+  [funder-resource]
+  {:index {:_id (res->id funder-resource)}}
+  )
 
-(defn index-command
-  "Build an Elastic Search object from a resource in the context of a model.
-   The unique ID is taken from the Resource ID."
+(defn generate-es-object
+  "Generates an Elastic Search object from a resource in the context of a model. The unique ID is taken from the Resource ID"
   [model funder-resource]
   (let [primary-name   (-> model (get-labels funder-resource "prefLabel") first)
         alt-names      (-> model (get-labels funder-resource "altLabel"))
@@ -148,29 +152,35 @@
         descendant-ids (->> descendants (map res->id) distinct sort)
         level          (-> ancestor-ids count (+ 1))
         hierarchy      (build-hierarchy model funder-resource (id-name model funder-resource))]
-    [{:index {:_id (res->id funder-resource)}}
-     {:doi             (res->doi funder-resource)
-      :id              (res->id funder-resource)
-      :primary-name    primary-name
-      :name            alt-names
-      :token           (concat
-                        (util/tokenize-name primary-name)
-                        (flatten (map util/tokenize-name alt-names)))
-      :country         (get-country-literal-name model funder-resource)
-      :parent          (-> model (broader funder-resource) first res->doi)
-      :ancestor        ancestor-ids
-      :level           level
-      :child           (distinct (map res->id (narrower model funder-resource)))
-      :descendant      descendant-ids
-      :affiliated      (distinct (map res->id (affiliated model funder-resource)))
-      :replaced-by     (distinct (map res->id (replaced-by model funder-resource)))
-      :replaces        (distinct (map res->id (replaces model funder-resource)))
-      :hierarchy-names (reduce
+    {:doi             (res->doi funder-resource)
+     :id              (res->id funder-resource)
+     :primary-name    primary-name
+     :name            alt-names
+     :token           (concat
+                      (util/tokenize-name primary-name)
+                      (flatten (map util/tokenize-name alt-names)))
+     :country         (get-country-literal-name model funder-resource)
+     :parent          (-> model (broader funder-resource) first res->doi)
+     :ancestor        ancestor-ids
+     :level           level
+     :child           (distinct (map res->id (narrower model funder-resource)))
+     :descendant      descendant-ids
+     :affiliated      (distinct (map res->id (affiliated model funder-resource)))
+     :replaced-by     (distinct (map res->id (replaced-by model funder-resource)))
+     :replaces        (distinct (map res->id (replaces model funder-resource)))
+     :hierarchy-names (reduce
                         (fn [m [k v]]
                           (assoc m k v))
-                        (if (> level 1) {:more nil} {})
-                        (partition 2 (util/get-all-in hierarchy [:id :name])))
-      :hierarchy       hierarchy}]))
+                          (if (> level 1) {:more nil} {})
+                          (partition 2 (util/get-all-in hierarchy [:id :name])))
+      :hierarchy hierarchy}))
+
+(defn index-command
+  "Build an Elastic Search object from a resource in the context of a model.
+  The unique ID is taken from the Resource ID."
+  [model funder-resource]
+  [(generate-es-id funder-resource) (generate-es-object model funder-resource)]
+  )
 
 (defn index-funders
   "Retrieve funder information RDF and index into Elastic."
