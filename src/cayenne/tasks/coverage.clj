@@ -28,7 +28,7 @@
         {:journal [(str id)]}))
 
 (defn get-work-count
-  "Get a count of works, with optional filters. timing may be one of :current, 
+  "Get a count of works, with optional filters. timing may be one of :current,
    :backfile or :all."
   [type id & {:keys [filters timing] :or {:timing :all}}]
   (let [combined-filters
@@ -84,23 +84,25 @@
        []
        (-> works
            (get-in [:message :facets "published" :values])))}}))
+(defn get-value [data key]
+  (key data))
 
 (defn check-record-counts [record & {:keys [type id-field]}]
   (let [record-id (get record id-field)
-        backfile-count (get-work-count type record-id :timing :backfile)
-        current-count (get-work-count type record-id :timing :current)]
+        backfile-count (get-value (get-work-count type record-id :timing :backfile) :value)
+        current-count (get-value (get-work-count type record-id :timing :current) :value)]
     {:backfile-dois backfile-count
      :current-dois current-count
      :total-dois (+ backfile-count current-count)}))
 
 (defn get-check-counts [record-id type content-type]
   (let [filters (if (= content-type :all) {} {:type [(name content-type)]})
-        total-backfile-counts (get-work-count type record-id :timing :backfile :filters filters)
-        total-current-counts (get-work-count type record-id :timing :current :filters filters)]
+        total-backfile-counts (get-value (get-work-count type record-id :timing :backfile :filters filters) :value)
+        total-current-counts (get-value (get-work-count type record-id :timing :current :filters filters) :value)]
     (reduce
      (fn [m v]
-       (let [check-backfile-counts (get-work-count type record-id :timing :backfile :filters (merge filters (:filter v)))
-             check-current-counts (get-work-count type record-id :timing :current :filters (merge filters (:filter v)))]
+       (let [check-backfile-counts (get-value (get-work-count type record-id :timing :backfile :filters (merge filters (:filter v))) :value)
+             check-current-counts (get-value (get-work-count type record-id :timing :current :filters (merge filters (:filter v))) :value)]
          (-> m
              (assoc-in [:backfile content-type (keyword (str (:name v)))] (coverage total-backfile-counts check-backfile-counts))
              (assoc-in [:current content-type (keyword (str (:name v)))] (coverage total-current-counts check-current-counts))
@@ -116,13 +118,18 @@
      merge-with
      merge
      (map (partial get-check-counts record-id type) (conj (keys type-id/type-dictionary) :all)))))
-
 (defn index-coverage-command [record & {:keys [type id-field]}]
+  (prn record)
+
+  )
+(defn index-coverage-command2 [record & {:keys [type id-field]}]
+  (prn "here")
   (let [started-date (dt/now)
         record-source (:_source record)
         record-counts (check-record-counts record-source :type type :id-field id-field)
         coverage (check-type-coverage record-source :type type :id-field id-field)
         breakdowns (check-breakdowns record-source :type type :id-field id-field)]
+
     [{:index {:_id (.toString (UUID/randomUUID))}}
      {:subject-type  (name type)
       :subject-id    (get record-source id-field)

@@ -318,8 +318,7 @@
       (elastic/request conn
                        {:url index-name
                         :method :put
-                        :body {:settings (index-settings index-name)
-                               :mappings {index-name index-data}}})
+                        :body {:settings (index-settings index-name)}})
       (catch #(-> % :body :error :root_cause first :type #{"resource_already_exists_exception"}) _
        (info "Index" index-name "already exists, skipping."))
 
@@ -327,5 +326,3 @@
        (error "Error with mappings"
               (-> exception :body :error :root_cause))
        (throw exception)))))
-
-
