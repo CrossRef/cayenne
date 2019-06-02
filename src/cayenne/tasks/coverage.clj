@@ -119,11 +119,13 @@
      merge
      (map (partial get-check-counts record-id type) (conj (keys type-id/type-dictionary) :all)))))
 (defn index-coverage-command [record & {:keys [type id-field]}]
-  (prn record)
-
-  )
+  (let [started-date (dt/now)
+        record-source (:_source record)
+        record-counts (check-record-counts record-source :type type :id-field id-field)
+        breakdowns (check-breakdowns record-source :type type :id-field id-field)]
+    [{:index {:_id (.toString (UUID/randomUUID))}}
+     {:subject-type  (name type)}]))
 (defn index-coverage-command2 [record & {:keys [type id-field]}]
-  (prn "here")
   (let [started-date (dt/now)
         record-source (:_source record)
         record-counts (check-record-counts record-source :type type :id-field id-field)
@@ -158,20 +160,23 @@
              (partition-all 100 $))]
       (swap! cnt #(+ % (count some-records)))
       (info "Done" @cnt "coverage checks...")
-      (let [body (->> some-records
-                      (map #(index-coverage-command % :type index-name :id-field id-field))
-                      flatten
-                      elastic-util/raw-jsons)
+      (prn (->> some-records
+                      (map #(index-coverage-command % :type index-name :id-field id-field)))))))
+      ;;(let [body (->> some-records
+                      ;;(map #(index-coverage-command % :type index-name :id-field id-field))
+                      ;;flatten
+                      ;;elastic-util/raw-jsons)]
 
-            response (elastic/request
-                       (conf/get-service :elastic)
-                       {:method :post
-                        :url "/coverage/coverage/_bulk"
-                        :body body})]
+            ;;response (elastic/request
+                       ;;(conf/get-service :elastic)
+                       ;;{:method :post
+                        ;;:url "/coverage/coverage/_bulk"
+                        ;;:body body})]
 
-        (when (-> response :body :errors)
-          (error "Error saving coverage:" (-> response :body :items))
-          (throw (Exception. "Errors indexing coverage!")))))))
+        ;;(when (-> response :body :errors)
+          ;;(error "Error saving coverage:" (-> response :body :items))
+          ;;(throw (Exception. "Errors indexing coverage!")))
+
 
 (defn check-members [] (check-index :member :id))
 
