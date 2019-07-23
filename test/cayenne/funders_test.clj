@@ -1,6 +1,7 @@
 (ns cayenne.funders-test
   (:require [cayenne.api-fixture :refer [api-root api-get api-with]]
             [clojure.java.io :refer [resource]]
+            [clojure.java.io :as io]
             [clojure.test :refer [use-fixtures deftest testing is]]
             [cayenne.tasks.funder :as funder]
             [cayenne.conf :as conf]
@@ -34,7 +35,7 @@
 ;; consolidate resource so that the same resource can be tested across multiple tests?
 (deftest ^:unit check-res->id
   (testing "unit testing res->id"
-  (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+  (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
         funders (->> model funder/find-funders (partition-all 5))
         funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
         response (funder/res->id funder-resource)
@@ -43,8 +44,8 @@
 
 (deftest ^:unit check-res->doi
   (testing "unit testing res->doi"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
-          funders (->> model funder/find-funders (partition-all 5))
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
+          funders (->> model funder/find-funders (partition-all 5)))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/1000000030"})) first)
           response (funder/res->doi funder-resource)
           expected-response "10.13039/100000030"]
@@ -52,17 +53,17 @@
 
 (deftest ^:unit check-ancestor
   (testing "unit testing check ancestor"
-  (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+  (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
         funders (->> model funder/find-funders (partition-all 5))
         funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000130"})) first)
         ancestors (funder/resource-ancestors model funder-resource)
         response (set (->> ancestors (map funder/res->id) distinct sort))
-        expected-response "10.13039/100000016"]
+        expected-response #{"100000016" "100000030"}]
         (is (= response expected-response)))))
 
 (deftest ^:unit check-parent
   (testing "unit testing check parent"
-  (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+  (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
         funders (->> model funder/find-funders (partition-all 5))
         funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
         response (-> model (funder/broader funder-resource) first funder/res->doi)
@@ -71,7 +72,7 @@
 
 (deftest ^:unit check-descendant
   (testing "unit testing check descendent"
-  (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+  (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
         funders (->> model funder/find-funders (partition-all 5))
         funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
         descendants (funder/resource-descendants model funder-resource)
@@ -81,7 +82,7 @@
 
  (deftest ^:unit check-children
     (testing "unit testing check children"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
           response (distinct (map funder/res->id (funder/narrower model funder-resource)))
@@ -90,7 +91,7 @@
 
   (deftest ^:unit check-country
     (testing "unit testing check country"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
         funders (->> model funder/find-funders (partition-all 5))
         funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
         response (funder/get-country-literal-name model funder-resource)
@@ -99,16 +100,16 @@
 
   (deftest ^:unit check-primary-name
     (testing "unit testing check primary name"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
-          response ((-> model (funder/get-labels funder-resource "prefLabel") first))
+          response (-> model (funder/get-labels funder-resource "prefLabel") first)
           expected-response "Centers for Disease Control and Prevention"]
       (is (= response expected-response)))))
 
   (deftest ^:unit check-alternate-name
     (testing "unit testing check alternate name"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100000030"})) first)
           response (-> model (funder/get-labels funder-resource "altLabel") first)
@@ -117,7 +118,7 @@
 
   (deftest ^:unit check-affiliation
     (testing "unit testing check affiliation"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100009658"})) first)
           response (first (distinct (map funder/res->id (funder/affiliated model funder-resource))))
@@ -126,7 +127,7 @@
 
   (deftest ^:unit check-replaces
     (testing "unit testing check replaces"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100009794"})) first)
           response (first (distinct (map funder/res->id (funder/replaces model funder-resource))))
@@ -135,7 +136,7 @@
 
   (deftest ^:unit check-replaced-by
     (testing "unit testing check replaced by"
-    (let [model (-> (java.net.URL. (conf/get-param [:location :cr-funder-registry])) rdf/document->model)
+    (let [model (-> (io/file "dev-resources/registry.rdf") rdf/document->model)
           funders (->> model funder/find-funders (partition-all 5))
           funder-resource (->> funders (apply concat) (filter #(-> % rdf/->uri #{"http://dx.doi.org/10.13039/100010260"})) first)
           response (first (distinct (map funder/res->id (funder/replaced-by model funder-resource))))
