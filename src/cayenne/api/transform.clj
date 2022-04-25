@@ -15,7 +15,7 @@
 (def csl-type
   {:journal-article :article-journal
    :book-chapter :chapter
-   :posted-conent :manuscript
+   :posted-content :manuscript
    :proceedings-article :paper-conference})
 
 (defmulti ->format :media-type)
